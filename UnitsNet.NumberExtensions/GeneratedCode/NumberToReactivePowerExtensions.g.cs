@@ -30,19 +30,19 @@ namespace UnitsNet.NumberExtensions.NumberToReactivePower
     {
         /// <inheritdoc cref="ReactivePower.FromGigavoltamperesReactive(UnitsNet.QuantityValue)" />
         public static ReactivePower GigavoltamperesReactive<T>(this T value) =>
-            ReactivePower.FromGigavoltamperesReactive(Convert.ToDouble(value));
+            ReactivePower.FromGigavoltamperesReactive(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ReactivePower.FromKilovoltamperesReactive(UnitsNet.QuantityValue)" />
         public static ReactivePower KilovoltamperesReactive<T>(this T value) =>
-            ReactivePower.FromKilovoltamperesReactive(Convert.ToDouble(value));
+            ReactivePower.FromKilovoltamperesReactive(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ReactivePower.FromMegavoltamperesReactive(UnitsNet.QuantityValue)" />
         public static ReactivePower MegavoltamperesReactive<T>(this T value) =>
-            ReactivePower.FromMegavoltamperesReactive(Convert.ToDouble(value));
+            ReactivePower.FromMegavoltamperesReactive(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ReactivePower.FromVoltamperesReactive(UnitsNet.QuantityValue)" />
         public static ReactivePower VoltamperesReactive<T>(this T value) =>
-            ReactivePower.FromVoltamperesReactive(Convert.ToDouble(value));
+            ReactivePower.FromVoltamperesReactive(Convert.ToDecimal(value));
 
     }
 }

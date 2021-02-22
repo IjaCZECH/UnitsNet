@@ -24,13 +24,13 @@ namespace UnitsNet
         /// <summary>Get <see cref="Energy"/> from <see cref="Power"/> times <see cref="TimeSpan"/>.</summary>
         public static Energy operator *(Power power, TimeSpan time)
         {
-            return Energy.FromJoules(power.Watts * time.TotalSeconds);
+            return Energy.FromJoules(power.Watts * (decimal)time.TotalSeconds);
         }
 
         /// <summary>Get <see cref="Energy"/> from <see cref="TimeSpan"/> times <see cref="Power"/>.</summary>
         public static Energy operator *(TimeSpan time, Power power)
         {
-            return Energy.FromJoules(power.Watts * time.TotalSeconds);
+            return Energy.FromJoules(power.Watts * (decimal)time.TotalSeconds);
         }
 
         /// <summary>Get <see cref="Energy"/> from <see cref="Power"/> times <see cref="Duration"/>.</summary>

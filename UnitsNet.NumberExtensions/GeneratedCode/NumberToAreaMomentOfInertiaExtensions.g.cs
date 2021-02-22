@@ -30,27 +30,27 @@ namespace UnitsNet.NumberExtensions.NumberToAreaMomentOfInertia
     {
         /// <inheritdoc cref="AreaMomentOfInertia.FromCentimetersToTheFourth(UnitsNet.QuantityValue)" />
         public static AreaMomentOfInertia CentimetersToTheFourth<T>(this T value) =>
-            AreaMomentOfInertia.FromCentimetersToTheFourth(Convert.ToDouble(value));
+            AreaMomentOfInertia.FromCentimetersToTheFourth(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="AreaMomentOfInertia.FromDecimetersToTheFourth(UnitsNet.QuantityValue)" />
         public static AreaMomentOfInertia DecimetersToTheFourth<T>(this T value) =>
-            AreaMomentOfInertia.FromDecimetersToTheFourth(Convert.ToDouble(value));
+            AreaMomentOfInertia.FromDecimetersToTheFourth(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="AreaMomentOfInertia.FromFeetToTheFourth(UnitsNet.QuantityValue)" />
         public static AreaMomentOfInertia FeetToTheFourth<T>(this T value) =>
-            AreaMomentOfInertia.FromFeetToTheFourth(Convert.ToDouble(value));
+            AreaMomentOfInertia.FromFeetToTheFourth(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="AreaMomentOfInertia.FromInchesToTheFourth(UnitsNet.QuantityValue)" />
         public static AreaMomentOfInertia InchesToTheFourth<T>(this T value) =>
-            AreaMomentOfInertia.FromInchesToTheFourth(Convert.ToDouble(value));
+            AreaMomentOfInertia.FromInchesToTheFourth(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="AreaMomentOfInertia.FromMetersToTheFourth(UnitsNet.QuantityValue)" />
         public static AreaMomentOfInertia MetersToTheFourth<T>(this T value) =>
-            AreaMomentOfInertia.FromMetersToTheFourth(Convert.ToDouble(value));
+            AreaMomentOfInertia.FromMetersToTheFourth(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="AreaMomentOfInertia.FromMillimetersToTheFourth(UnitsNet.QuantityValue)" />
         public static AreaMomentOfInertia MillimetersToTheFourth<T>(this T value) =>
-            AreaMomentOfInertia.FromMillimetersToTheFourth(Convert.ToDouble(value));
+            AreaMomentOfInertia.FromMillimetersToTheFourth(Convert.ToDecimal(value));
 
     }
 }

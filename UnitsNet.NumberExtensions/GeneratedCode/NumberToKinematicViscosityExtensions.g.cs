@@ -30,35 +30,35 @@ namespace UnitsNet.NumberExtensions.NumberToKinematicViscosity
     {
         /// <inheritdoc cref="KinematicViscosity.FromCentistokes(UnitsNet.QuantityValue)" />
         public static KinematicViscosity Centistokes<T>(this T value) =>
-            KinematicViscosity.FromCentistokes(Convert.ToDouble(value));
+            KinematicViscosity.FromCentistokes(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="KinematicViscosity.FromDecistokes(UnitsNet.QuantityValue)" />
         public static KinematicViscosity Decistokes<T>(this T value) =>
-            KinematicViscosity.FromDecistokes(Convert.ToDouble(value));
+            KinematicViscosity.FromDecistokes(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="KinematicViscosity.FromKilostokes(UnitsNet.QuantityValue)" />
         public static KinematicViscosity Kilostokes<T>(this T value) =>
-            KinematicViscosity.FromKilostokes(Convert.ToDouble(value));
+            KinematicViscosity.FromKilostokes(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="KinematicViscosity.FromMicrostokes(UnitsNet.QuantityValue)" />
         public static KinematicViscosity Microstokes<T>(this T value) =>
-            KinematicViscosity.FromMicrostokes(Convert.ToDouble(value));
+            KinematicViscosity.FromMicrostokes(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="KinematicViscosity.FromMillistokes(UnitsNet.QuantityValue)" />
         public static KinematicViscosity Millistokes<T>(this T value) =>
-            KinematicViscosity.FromMillistokes(Convert.ToDouble(value));
+            KinematicViscosity.FromMillistokes(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="KinematicViscosity.FromNanostokes(UnitsNet.QuantityValue)" />
         public static KinematicViscosity Nanostokes<T>(this T value) =>
-            KinematicViscosity.FromNanostokes(Convert.ToDouble(value));
+            KinematicViscosity.FromNanostokes(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="KinematicViscosity.FromSquareMetersPerSecond(UnitsNet.QuantityValue)" />
         public static KinematicViscosity SquareMetersPerSecond<T>(this T value) =>
-            KinematicViscosity.FromSquareMetersPerSecond(Convert.ToDouble(value));
+            KinematicViscosity.FromSquareMetersPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="KinematicViscosity.FromStokes(UnitsNet.QuantityValue)" />
         public static KinematicViscosity Stokes<T>(this T value) =>
-            KinematicViscosity.FromStokes(Convert.ToDouble(value));
+            KinematicViscosity.FromStokes(Convert.ToDecimal(value));
 
     }
 }

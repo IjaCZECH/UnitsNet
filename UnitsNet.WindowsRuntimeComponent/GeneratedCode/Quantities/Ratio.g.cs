@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -71,12 +71,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private Ratio(double value, RatioUnit unit)
+        private Ratio(decimal value, RatioUnit unit)
         {
             if(unit == RatioUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -100,12 +100,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of Ratio
         /// </summary>
-        public static Ratio MaxValue { get; } = new Ratio(double.MaxValue, BaseUnit);
+        public static Ratio MaxValue { get; } = new Ratio(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of Ratio
         /// </summary>
-        public static Ratio MinValue { get; } = new Ratio(double.MinValue, BaseUnit);
+        public static Ratio MinValue { get; } = new Ratio(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -129,7 +129,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -158,32 +158,32 @@ namespace UnitsNet
         /// <summary>
         ///     Get Ratio in DecimalFractions.
         /// </summary>
-        public double DecimalFractions => As(RatioUnit.DecimalFraction);
+        public decimal DecimalFractions => As(RatioUnit.DecimalFraction);
 
         /// <summary>
         ///     Get Ratio in PartsPerBillion.
         /// </summary>
-        public double PartsPerBillion => As(RatioUnit.PartPerBillion);
+        public decimal PartsPerBillion => As(RatioUnit.PartPerBillion);
 
         /// <summary>
         ///     Get Ratio in PartsPerMillion.
         /// </summary>
-        public double PartsPerMillion => As(RatioUnit.PartPerMillion);
+        public decimal PartsPerMillion => As(RatioUnit.PartPerMillion);
 
         /// <summary>
         ///     Get Ratio in PartsPerThousand.
         /// </summary>
-        public double PartsPerThousand => As(RatioUnit.PartPerThousand);
+        public decimal PartsPerThousand => As(RatioUnit.PartPerThousand);
 
         /// <summary>
         ///     Get Ratio in PartsPerTrillion.
         /// </summary>
-        public double PartsPerTrillion => As(RatioUnit.PartPerTrillion);
+        public decimal PartsPerTrillion => As(RatioUnit.PartPerTrillion);
 
         /// <summary>
         ///     Get Ratio in Percent.
         /// </summary>
-        public double Percent => As(RatioUnit.Percent);
+        public decimal Percent => As(RatioUnit.Percent);
 
         #endregion
 
@@ -220,9 +220,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Ratio FromDecimalFractions(double decimalfractions)
+        public static Ratio FromDecimalFractions(decimal decimalfractions)
         {
-            double value = (double) decimalfractions;
+            decimal value = (decimal) decimalfractions;
             return new Ratio(value, RatioUnit.DecimalFraction);
         }
         /// <summary>
@@ -230,9 +230,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Ratio FromPartsPerBillion(double partsperbillion)
+        public static Ratio FromPartsPerBillion(decimal partsperbillion)
         {
-            double value = (double) partsperbillion;
+            decimal value = (decimal) partsperbillion;
             return new Ratio(value, RatioUnit.PartPerBillion);
         }
         /// <summary>
@@ -240,9 +240,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Ratio FromPartsPerMillion(double partspermillion)
+        public static Ratio FromPartsPerMillion(decimal partspermillion)
         {
-            double value = (double) partspermillion;
+            decimal value = (decimal) partspermillion;
             return new Ratio(value, RatioUnit.PartPerMillion);
         }
         /// <summary>
@@ -250,9 +250,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Ratio FromPartsPerThousand(double partsperthousand)
+        public static Ratio FromPartsPerThousand(decimal partsperthousand)
         {
-            double value = (double) partsperthousand;
+            decimal value = (decimal) partsperthousand;
             return new Ratio(value, RatioUnit.PartPerThousand);
         }
         /// <summary>
@@ -260,9 +260,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Ratio FromPartsPerTrillion(double partspertrillion)
+        public static Ratio FromPartsPerTrillion(decimal partspertrillion)
         {
-            double value = (double) partspertrillion;
+            decimal value = (decimal) partspertrillion;
             return new Ratio(value, RatioUnit.PartPerTrillion);
         }
         /// <summary>
@@ -270,9 +270,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Ratio FromPercent(double percent)
+        public static Ratio FromPercent(decimal percent)
         {
-            double value = (double) percent;
+            decimal value = (decimal) percent;
             return new Ratio(value, RatioUnit.Percent);
         }
 
@@ -284,9 +284,9 @@ namespace UnitsNet
         /// <returns>Ratio unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static Ratio From(double value, RatioUnit fromUnit)
+        public static Ratio From(decimal value, RatioUnit fromUnit)
         {
-            return new Ratio((double)value, fromUnit);
+            return new Ratio((decimal)value, fromUnit);
         }
 
         #endregion
@@ -508,13 +508,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(Ratio other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(Ratio other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -532,19 +532,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((RatioUnit)unit);
+        decimal IQuantity.As(object unit) => As((RatioUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(RatioUnit unit)
+        public decimal As(RatioUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -562,22 +562,22 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
                 case RatioUnit.DecimalFraction: return _value;
-                case RatioUnit.PartPerBillion: return _value/1e9;
-                case RatioUnit.PartPerMillion: return _value/1e6;
-                case RatioUnit.PartPerThousand: return _value/1e3;
-                case RatioUnit.PartPerTrillion: return _value/1e12;
-                case RatioUnit.Percent: return _value/1e2;
+                case RatioUnit.PartPerBillion: return _value/1e9m;
+                case RatioUnit.PartPerMillion: return _value/1e6m;
+                case RatioUnit.PartPerThousand: return _value/1e3m;
+                case RatioUnit.PartPerTrillion: return _value/1e12m;
+                case RatioUnit.Percent: return _value/1e2m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(RatioUnit unit)
+        private decimal AsBaseNumericType(RatioUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -587,11 +587,11 @@ namespace UnitsNet
             switch(unit)
             {
                 case RatioUnit.DecimalFraction: return baseUnitValue;
-                case RatioUnit.PartPerBillion: return baseUnitValue*1e9;
-                case RatioUnit.PartPerMillion: return baseUnitValue*1e6;
-                case RatioUnit.PartPerThousand: return baseUnitValue*1e3;
-                case RatioUnit.PartPerTrillion: return baseUnitValue*1e12;
-                case RatioUnit.Percent: return baseUnitValue*1e2;
+                case RatioUnit.PartPerBillion: return baseUnitValue*1e9m;
+                case RatioUnit.PartPerMillion: return baseUnitValue*1e6m;
+                case RatioUnit.PartPerThousand: return baseUnitValue*1e3m;
+                case RatioUnit.PartPerTrillion: return baseUnitValue*1e12m;
+                case RatioUnit.Percent: return baseUnitValue*1e2m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -630,7 +630,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -650,7 +650,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

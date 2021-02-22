@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -71,12 +71,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private WarpingMomentOfInertia(double value, WarpingMomentOfInertiaUnit unit)
+        private WarpingMomentOfInertia(decimal value, WarpingMomentOfInertiaUnit unit)
         {
             if(unit == WarpingMomentOfInertiaUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -100,12 +100,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of WarpingMomentOfInertia
         /// </summary>
-        public static WarpingMomentOfInertia MaxValue { get; } = new WarpingMomentOfInertia(double.MaxValue, BaseUnit);
+        public static WarpingMomentOfInertia MaxValue { get; } = new WarpingMomentOfInertia(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of WarpingMomentOfInertia
         /// </summary>
-        public static WarpingMomentOfInertia MinValue { get; } = new WarpingMomentOfInertia(double.MinValue, BaseUnit);
+        public static WarpingMomentOfInertia MinValue { get; } = new WarpingMomentOfInertia(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -129,7 +129,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -158,32 +158,32 @@ namespace UnitsNet
         /// <summary>
         ///     Get WarpingMomentOfInertia in CentimetersToTheSixth.
         /// </summary>
-        public double CentimetersToTheSixth => As(WarpingMomentOfInertiaUnit.CentimeterToTheSixth);
+        public decimal CentimetersToTheSixth => As(WarpingMomentOfInertiaUnit.CentimeterToTheSixth);
 
         /// <summary>
         ///     Get WarpingMomentOfInertia in DecimetersToTheSixth.
         /// </summary>
-        public double DecimetersToTheSixth => As(WarpingMomentOfInertiaUnit.DecimeterToTheSixth);
+        public decimal DecimetersToTheSixth => As(WarpingMomentOfInertiaUnit.DecimeterToTheSixth);
 
         /// <summary>
         ///     Get WarpingMomentOfInertia in FeetToTheSixth.
         /// </summary>
-        public double FeetToTheSixth => As(WarpingMomentOfInertiaUnit.FootToTheSixth);
+        public decimal FeetToTheSixth => As(WarpingMomentOfInertiaUnit.FootToTheSixth);
 
         /// <summary>
         ///     Get WarpingMomentOfInertia in InchesToTheSixth.
         /// </summary>
-        public double InchesToTheSixth => As(WarpingMomentOfInertiaUnit.InchToTheSixth);
+        public decimal InchesToTheSixth => As(WarpingMomentOfInertiaUnit.InchToTheSixth);
 
         /// <summary>
         ///     Get WarpingMomentOfInertia in MetersToTheSixth.
         /// </summary>
-        public double MetersToTheSixth => As(WarpingMomentOfInertiaUnit.MeterToTheSixth);
+        public decimal MetersToTheSixth => As(WarpingMomentOfInertiaUnit.MeterToTheSixth);
 
         /// <summary>
         ///     Get WarpingMomentOfInertia in MillimetersToTheSixth.
         /// </summary>
-        public double MillimetersToTheSixth => As(WarpingMomentOfInertiaUnit.MillimeterToTheSixth);
+        public decimal MillimetersToTheSixth => As(WarpingMomentOfInertiaUnit.MillimeterToTheSixth);
 
         #endregion
 
@@ -220,9 +220,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static WarpingMomentOfInertia FromCentimetersToTheSixth(double centimeterstothesixth)
+        public static WarpingMomentOfInertia FromCentimetersToTheSixth(decimal centimeterstothesixth)
         {
-            double value = (double) centimeterstothesixth;
+            decimal value = (decimal) centimeterstothesixth;
             return new WarpingMomentOfInertia(value, WarpingMomentOfInertiaUnit.CentimeterToTheSixth);
         }
         /// <summary>
@@ -230,9 +230,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static WarpingMomentOfInertia FromDecimetersToTheSixth(double decimeterstothesixth)
+        public static WarpingMomentOfInertia FromDecimetersToTheSixth(decimal decimeterstothesixth)
         {
-            double value = (double) decimeterstothesixth;
+            decimal value = (decimal) decimeterstothesixth;
             return new WarpingMomentOfInertia(value, WarpingMomentOfInertiaUnit.DecimeterToTheSixth);
         }
         /// <summary>
@@ -240,9 +240,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static WarpingMomentOfInertia FromFeetToTheSixth(double feettothesixth)
+        public static WarpingMomentOfInertia FromFeetToTheSixth(decimal feettothesixth)
         {
-            double value = (double) feettothesixth;
+            decimal value = (decimal) feettothesixth;
             return new WarpingMomentOfInertia(value, WarpingMomentOfInertiaUnit.FootToTheSixth);
         }
         /// <summary>
@@ -250,9 +250,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static WarpingMomentOfInertia FromInchesToTheSixth(double inchestothesixth)
+        public static WarpingMomentOfInertia FromInchesToTheSixth(decimal inchestothesixth)
         {
-            double value = (double) inchestothesixth;
+            decimal value = (decimal) inchestothesixth;
             return new WarpingMomentOfInertia(value, WarpingMomentOfInertiaUnit.InchToTheSixth);
         }
         /// <summary>
@@ -260,9 +260,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static WarpingMomentOfInertia FromMetersToTheSixth(double meterstothesixth)
+        public static WarpingMomentOfInertia FromMetersToTheSixth(decimal meterstothesixth)
         {
-            double value = (double) meterstothesixth;
+            decimal value = (decimal) meterstothesixth;
             return new WarpingMomentOfInertia(value, WarpingMomentOfInertiaUnit.MeterToTheSixth);
         }
         /// <summary>
@@ -270,9 +270,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static WarpingMomentOfInertia FromMillimetersToTheSixth(double millimeterstothesixth)
+        public static WarpingMomentOfInertia FromMillimetersToTheSixth(decimal millimeterstothesixth)
         {
-            double value = (double) millimeterstothesixth;
+            decimal value = (decimal) millimeterstothesixth;
             return new WarpingMomentOfInertia(value, WarpingMomentOfInertiaUnit.MillimeterToTheSixth);
         }
 
@@ -284,9 +284,9 @@ namespace UnitsNet
         /// <returns>WarpingMomentOfInertia unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static WarpingMomentOfInertia From(double value, WarpingMomentOfInertiaUnit fromUnit)
+        public static WarpingMomentOfInertia From(decimal value, WarpingMomentOfInertiaUnit fromUnit)
         {
-            return new WarpingMomentOfInertia((double)value, fromUnit);
+            return new WarpingMomentOfInertia((decimal)value, fromUnit);
         }
 
         #endregion
@@ -508,13 +508,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(WarpingMomentOfInertia other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(WarpingMomentOfInertia other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -532,19 +532,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((WarpingMomentOfInertiaUnit)unit);
+        decimal IQuantity.As(object unit) => As((WarpingMomentOfInertiaUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(WarpingMomentOfInertiaUnit unit)
+        public decimal As(WarpingMomentOfInertiaUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -562,22 +562,22 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
-                case WarpingMomentOfInertiaUnit.CentimeterToTheSixth: return _value/1e12;
-                case WarpingMomentOfInertiaUnit.DecimeterToTheSixth: return _value/1e6;
-                case WarpingMomentOfInertiaUnit.FootToTheSixth: return _value*Math.Pow(0.3048, 6);
-                case WarpingMomentOfInertiaUnit.InchToTheSixth: return _value*Math.Pow(2.54e-2, 6);
+                case WarpingMomentOfInertiaUnit.CentimeterToTheSixth: return _value/1e12m;
+                case WarpingMomentOfInertiaUnit.DecimeterToTheSixth: return _value/1e6m;
+                case WarpingMomentOfInertiaUnit.FootToTheSixth: return _value*DecimalMath.DecimalE_value.Pow(0.3048, 6);
+                case WarpingMomentOfInertiaUnit.InchToTheSixth: return _value*DecimalMath.DecimalE_value.Pow(2.54e-2, 6);
                 case WarpingMomentOfInertiaUnit.MeterToTheSixth: return _value;
-                case WarpingMomentOfInertiaUnit.MillimeterToTheSixth: return _value/1e18;
+                case WarpingMomentOfInertiaUnit.MillimeterToTheSixth: return _value/1e18m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(WarpingMomentOfInertiaUnit unit)
+        private decimal AsBaseNumericType(WarpingMomentOfInertiaUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -586,12 +586,12 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case WarpingMomentOfInertiaUnit.CentimeterToTheSixth: return baseUnitValue*1e12;
-                case WarpingMomentOfInertiaUnit.DecimeterToTheSixth: return baseUnitValue*1e6;
-                case WarpingMomentOfInertiaUnit.FootToTheSixth: return baseUnitValue/Math.Pow(0.3048, 6);
-                case WarpingMomentOfInertiaUnit.InchToTheSixth: return baseUnitValue/Math.Pow(2.54e-2, 6);
+                case WarpingMomentOfInertiaUnit.CentimeterToTheSixth: return baseUnitValue*1e12m;
+                case WarpingMomentOfInertiaUnit.DecimeterToTheSixth: return baseUnitValue*1e6m;
+                case WarpingMomentOfInertiaUnit.FootToTheSixth: return baseUnitValue/DecimalMath.DecimalEbaseUnitValue.Pow(0.3048, 6);
+                case WarpingMomentOfInertiaUnit.InchToTheSixth: return baseUnitValue/DecimalMath.DecimalEbaseUnitValue.Pow(2.54e-2, 6);
                 case WarpingMomentOfInertiaUnit.MeterToTheSixth: return baseUnitValue;
-                case WarpingMomentOfInertiaUnit.MillimeterToTheSixth: return baseUnitValue*1e18;
+                case WarpingMomentOfInertiaUnit.MillimeterToTheSixth: return baseUnitValue*1e18m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -630,7 +630,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -650,7 +650,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

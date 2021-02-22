@@ -30,15 +30,15 @@ namespace UnitsNet.NumberExtensions.NumberToCoefficientOfThermalExpansion
     {
         /// <inheritdoc cref="CoefficientOfThermalExpansion.FromInverseDegreeCelsius(UnitsNet.QuantityValue)" />
         public static CoefficientOfThermalExpansion InverseDegreeCelsius<T>(this T value) =>
-            CoefficientOfThermalExpansion.FromInverseDegreeCelsius(Convert.ToDouble(value));
+            CoefficientOfThermalExpansion.FromInverseDegreeCelsius(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="CoefficientOfThermalExpansion.FromInverseDegreeFahrenheit(UnitsNet.QuantityValue)" />
         public static CoefficientOfThermalExpansion InverseDegreeFahrenheit<T>(this T value) =>
-            CoefficientOfThermalExpansion.FromInverseDegreeFahrenheit(Convert.ToDouble(value));
+            CoefficientOfThermalExpansion.FromInverseDegreeFahrenheit(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="CoefficientOfThermalExpansion.FromInverseKelvin(UnitsNet.QuantityValue)" />
         public static CoefficientOfThermalExpansion InverseKelvin<T>(this T value) =>
-            CoefficientOfThermalExpansion.FromInverseKelvin(Convert.ToDouble(value));
+            CoefficientOfThermalExpansion.FromInverseKelvin(Convert.ToDecimal(value));
 
     }
 }

@@ -30,23 +30,23 @@ namespace UnitsNet.NumberExtensions.NumberToElectricCharge
     {
         /// <inheritdoc cref="ElectricCharge.FromAmpereHours(UnitsNet.QuantityValue)" />
         public static ElectricCharge AmpereHours<T>(this T value) =>
-            ElectricCharge.FromAmpereHours(Convert.ToDouble(value));
+            ElectricCharge.FromAmpereHours(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricCharge.FromCoulombs(UnitsNet.QuantityValue)" />
         public static ElectricCharge Coulombs<T>(this T value) =>
-            ElectricCharge.FromCoulombs(Convert.ToDouble(value));
+            ElectricCharge.FromCoulombs(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricCharge.FromKiloampereHours(UnitsNet.QuantityValue)" />
         public static ElectricCharge KiloampereHours<T>(this T value) =>
-            ElectricCharge.FromKiloampereHours(Convert.ToDouble(value));
+            ElectricCharge.FromKiloampereHours(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricCharge.FromMegaampereHours(UnitsNet.QuantityValue)" />
         public static ElectricCharge MegaampereHours<T>(this T value) =>
-            ElectricCharge.FromMegaampereHours(Convert.ToDouble(value));
+            ElectricCharge.FromMegaampereHours(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricCharge.FromMilliampereHours(UnitsNet.QuantityValue)" />
         public static ElectricCharge MilliampereHours<T>(this T value) =>
-            ElectricCharge.FromMilliampereHours(Convert.ToDouble(value));
+            ElectricCharge.FromMilliampereHours(Convert.ToDecimal(value));
 
     }
 }

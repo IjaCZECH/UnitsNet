@@ -42,7 +42,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -68,12 +68,12 @@ namespace UnitsNet
         /// <param name="value">The numeric value to construct this quantity with.</param>
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        public ElectricSurfaceChargeDensity(double value, ElectricSurfaceChargeDensityUnit unit)
+        public ElectricSurfaceChargeDensity(decimal value, ElectricSurfaceChargeDensityUnit unit)
         {
             if(unit == ElectricSurfaceChargeDensityUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -85,14 +85,14 @@ namespace UnitsNet
         /// <param name="unitSystem">The unit system to create the quantity with.</param>
         /// <exception cref="ArgumentNullException">The given <see cref="UnitSystem"/> is null.</exception>
         /// <exception cref="ArgumentException">No unit was found for the given <see cref="UnitSystem"/>.</exception>
-        public ElectricSurfaceChargeDensity(double value, UnitSystem unitSystem)
+        public ElectricSurfaceChargeDensity(decimal value, UnitSystem unitSystem)
         {
             if(unitSystem is null) throw new ArgumentNullException(nameof(unitSystem));
 
             var unitInfos = Info.GetUnitInfosFor(unitSystem.BaseUnits);
             var firstUnitInfo = unitInfos.FirstOrDefault();
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = firstUnitInfo?.Value ?? throw new ArgumentException("No units were found for the given UnitSystem.", nameof(unitSystem));
         }
 
@@ -114,12 +114,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of ElectricSurfaceChargeDensity
         /// </summary>
-        public static ElectricSurfaceChargeDensity MaxValue { get; } = new ElectricSurfaceChargeDensity(double.MaxValue, BaseUnit);
+        public static ElectricSurfaceChargeDensity MaxValue { get; } = new ElectricSurfaceChargeDensity(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of ElectricSurfaceChargeDensity
         /// </summary>
-        public static ElectricSurfaceChargeDensity MinValue { get; } = new ElectricSurfaceChargeDensity(double.MinValue, BaseUnit);
+        public static ElectricSurfaceChargeDensity MinValue { get; } = new ElectricSurfaceChargeDensity(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -143,7 +143,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => _value;
+        public decimal Value => _value;
 
         Enum IQuantity.Unit => Unit;
 
@@ -173,17 +173,17 @@ namespace UnitsNet
         /// <summary>
         ///     Get ElectricSurfaceChargeDensity in CoulombsPerSquareCentimeter.
         /// </summary>
-        public double CoulombsPerSquareCentimeter => As(ElectricSurfaceChargeDensityUnit.CoulombPerSquareCentimeter);
+        public decimal CoulombsPerSquareCentimeter => As(ElectricSurfaceChargeDensityUnit.CoulombPerSquareCentimeter);
 
         /// <summary>
         ///     Get ElectricSurfaceChargeDensity in CoulombsPerSquareInch.
         /// </summary>
-        public double CoulombsPerSquareInch => As(ElectricSurfaceChargeDensityUnit.CoulombPerSquareInch);
+        public decimal CoulombsPerSquareInch => As(ElectricSurfaceChargeDensityUnit.CoulombPerSquareInch);
 
         /// <summary>
         ///     Get ElectricSurfaceChargeDensity in CoulombsPerSquareMeter.
         /// </summary>
-        public double CoulombsPerSquareMeter => As(ElectricSurfaceChargeDensityUnit.CoulombPerSquareMeter);
+        public decimal CoulombsPerSquareMeter => As(ElectricSurfaceChargeDensityUnit.CoulombPerSquareMeter);
 
         #endregion
 
@@ -220,7 +220,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ElectricSurfaceChargeDensity FromCoulombsPerSquareCentimeter(QuantityValue coulombspersquarecentimeter)
         {
-            double value = (double) coulombspersquarecentimeter;
+            decimal value = (decimal) coulombspersquarecentimeter;
             return new ElectricSurfaceChargeDensity(value, ElectricSurfaceChargeDensityUnit.CoulombPerSquareCentimeter);
         }
         /// <summary>
@@ -229,7 +229,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ElectricSurfaceChargeDensity FromCoulombsPerSquareInch(QuantityValue coulombspersquareinch)
         {
-            double value = (double) coulombspersquareinch;
+            decimal value = (decimal) coulombspersquareinch;
             return new ElectricSurfaceChargeDensity(value, ElectricSurfaceChargeDensityUnit.CoulombPerSquareInch);
         }
         /// <summary>
@@ -238,7 +238,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ElectricSurfaceChargeDensity FromCoulombsPerSquareMeter(QuantityValue coulombspersquaremeter)
         {
-            double value = (double) coulombspersquaremeter;
+            decimal value = (decimal) coulombspersquaremeter;
             return new ElectricSurfaceChargeDensity(value, ElectricSurfaceChargeDensityUnit.CoulombPerSquareMeter);
         }
 
@@ -250,7 +250,7 @@ namespace UnitsNet
         /// <returns>ElectricSurfaceChargeDensity unit value.</returns>
         public static ElectricSurfaceChargeDensity From(QuantityValue value, ElectricSurfaceChargeDensityUnit fromUnit)
         {
-            return new ElectricSurfaceChargeDensity((double)value, fromUnit);
+            return new ElectricSurfaceChargeDensity((decimal)value, fromUnit);
         }
 
         #endregion
@@ -420,25 +420,25 @@ namespace UnitsNet
         }
 
         /// <summary>Get <see cref="ElectricSurfaceChargeDensity"/> from multiplying value and <see cref="ElectricSurfaceChargeDensity"/>.</summary>
-        public static ElectricSurfaceChargeDensity operator *(double left, ElectricSurfaceChargeDensity right)
+        public static ElectricSurfaceChargeDensity operator *(decimal left, ElectricSurfaceChargeDensity right)
         {
             return new ElectricSurfaceChargeDensity(left * right.Value, right.Unit);
         }
 
         /// <summary>Get <see cref="ElectricSurfaceChargeDensity"/> from multiplying value and <see cref="ElectricSurfaceChargeDensity"/>.</summary>
-        public static ElectricSurfaceChargeDensity operator *(ElectricSurfaceChargeDensity left, double right)
+        public static ElectricSurfaceChargeDensity operator *(ElectricSurfaceChargeDensity left, decimal right)
         {
             return new ElectricSurfaceChargeDensity(left.Value * right, left.Unit);
         }
 
         /// <summary>Get <see cref="ElectricSurfaceChargeDensity"/> from dividing <see cref="ElectricSurfaceChargeDensity"/> by value.</summary>
-        public static ElectricSurfaceChargeDensity operator /(ElectricSurfaceChargeDensity left, double right)
+        public static ElectricSurfaceChargeDensity operator /(ElectricSurfaceChargeDensity left, decimal right)
         {
             return new ElectricSurfaceChargeDensity(left.Value / right, left.Unit);
         }
 
         /// <summary>Get ratio value from dividing <see cref="ElectricSurfaceChargeDensity"/> by <see cref="ElectricSurfaceChargeDensity"/>.</summary>
-        public static double operator /(ElectricSurfaceChargeDensity left, ElectricSurfaceChargeDensity right)
+        public static decimal operator /(ElectricSurfaceChargeDensity left, ElectricSurfaceChargeDensity right)
         {
             return left.CoulombsPerSquareMeter / right.CoulombsPerSquareMeter;
         }
@@ -472,14 +472,14 @@ namespace UnitsNet
         }
 
         /// <summary>Returns true if exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(ElectricSurfaceChargeDensity, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ElectricSurfaceChargeDensity, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator ==(ElectricSurfaceChargeDensity left, ElectricSurfaceChargeDensity right)
         {
             return left.Equals(right);
         }
 
         /// <summary>Returns true if not exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(ElectricSurfaceChargeDensity, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ElectricSurfaceChargeDensity, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator !=(ElectricSurfaceChargeDensity left, ElectricSurfaceChargeDensity right)
         {
             return !(left == right);
@@ -501,7 +501,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(ElectricSurfaceChargeDensity, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ElectricSurfaceChargeDensity, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public override bool Equals(object obj)
         {
             if(obj is null || !(obj is ElectricSurfaceChargeDensity objElectricSurfaceChargeDensity))
@@ -511,7 +511,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(ElectricSurfaceChargeDensity, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ElectricSurfaceChargeDensity, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public bool Equals(ElectricSurfaceChargeDensity other)
         {
             return _value.Equals(other.GetValueAs(this.Unit));
@@ -557,13 +557,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(ElectricSurfaceChargeDensity other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(ElectricSurfaceChargeDensity other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -585,17 +585,17 @@ namespace UnitsNet
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(ElectricSurfaceChargeDensityUnit unit)
+        public decimal As(ElectricSurfaceChargeDensityUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = GetValueAs(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <inheritdoc cref="IQuantity.As(UnitSystem)"/>
-        public double As(UnitSystem unitSystem)
+        public decimal As(UnitSystem unitSystem)
         {
             if(unitSystem is null)
                 throw new ArgumentNullException(nameof(unitSystem));
@@ -610,7 +610,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        double IQuantity.As(Enum unit)
+        decimal IQuantity.As(Enum unit)
         {
             if(!(unit is ElectricSurfaceChargeDensityUnit unitAsElectricSurfaceChargeDensityUnit))
                 throw new ArgumentException($"The given unit is of type {unit.GetType()}. Only {typeof(ElectricSurfaceChargeDensityUnit)} is supported.", nameof(unit));
@@ -666,12 +666,12 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double GetValueInBaseUnit()
+        private decimal GetValueInBaseUnit()
         {
             switch(Unit)
             {
-                case ElectricSurfaceChargeDensityUnit.CoulombPerSquareCentimeter: return _value * 1.0e4;
-                case ElectricSurfaceChargeDensityUnit.CoulombPerSquareInch: return _value * 1.5500031000062000e3;
+                case ElectricSurfaceChargeDensityUnit.CoulombPerSquareCentimeter: return _value * 1.0e4m;
+                case ElectricSurfaceChargeDensityUnit.CoulombPerSquareInch: return _value * 1.5500031000062000e3m;
                 case ElectricSurfaceChargeDensityUnit.CoulombPerSquareMeter: return _value;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
@@ -689,7 +689,7 @@ namespace UnitsNet
             return new ElectricSurfaceChargeDensity(baseUnitValue, BaseUnit);
         }
 
-        private double GetValueAs(ElectricSurfaceChargeDensityUnit unit)
+        private decimal GetValueAs(ElectricSurfaceChargeDensityUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -698,8 +698,8 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case ElectricSurfaceChargeDensityUnit.CoulombPerSquareCentimeter: return baseUnitValue / 1.0e4;
-                case ElectricSurfaceChargeDensityUnit.CoulombPerSquareInch: return baseUnitValue / 1.5500031000062000e3;
+                case ElectricSurfaceChargeDensityUnit.CoulombPerSquareCentimeter: return baseUnitValue / 1.0e4m;
+                case ElectricSurfaceChargeDensityUnit.CoulombPerSquareInch: return baseUnitValue / 1.5500031000062000e3m;
                 case ElectricSurfaceChargeDensityUnit.CoulombPerSquareMeter: return baseUnitValue;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
@@ -738,7 +738,7 @@ namespace UnitsNet
         [Obsolete(@"This method is deprecated and will be removed at a future release. Please use ToString(""s2"") or ToString(""s2"", provider) where 2 is an example of the number passed to significantDigitsAfterRadix.")]
         public string ToString(IFormatProvider? provider, int significantDigitsAfterRadix)
         {
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -758,7 +758,7 @@ namespace UnitsNet
 
             provider = provider ?? CultureInfo.CurrentUICulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

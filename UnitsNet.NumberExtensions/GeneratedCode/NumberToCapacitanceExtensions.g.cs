@@ -30,31 +30,31 @@ namespace UnitsNet.NumberExtensions.NumberToCapacitance
     {
         /// <inheritdoc cref="Capacitance.FromFarads(UnitsNet.QuantityValue)" />
         public static Capacitance Farads<T>(this T value) =>
-            Capacitance.FromFarads(Convert.ToDouble(value));
+            Capacitance.FromFarads(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Capacitance.FromKilofarads(UnitsNet.QuantityValue)" />
         public static Capacitance Kilofarads<T>(this T value) =>
-            Capacitance.FromKilofarads(Convert.ToDouble(value));
+            Capacitance.FromKilofarads(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Capacitance.FromMegafarads(UnitsNet.QuantityValue)" />
         public static Capacitance Megafarads<T>(this T value) =>
-            Capacitance.FromMegafarads(Convert.ToDouble(value));
+            Capacitance.FromMegafarads(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Capacitance.FromMicrofarads(UnitsNet.QuantityValue)" />
         public static Capacitance Microfarads<T>(this T value) =>
-            Capacitance.FromMicrofarads(Convert.ToDouble(value));
+            Capacitance.FromMicrofarads(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Capacitance.FromMillifarads(UnitsNet.QuantityValue)" />
         public static Capacitance Millifarads<T>(this T value) =>
-            Capacitance.FromMillifarads(Convert.ToDouble(value));
+            Capacitance.FromMillifarads(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Capacitance.FromNanofarads(UnitsNet.QuantityValue)" />
         public static Capacitance Nanofarads<T>(this T value) =>
-            Capacitance.FromNanofarads(Convert.ToDouble(value));
+            Capacitance.FromNanofarads(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Capacitance.FromPicofarads(UnitsNet.QuantityValue)" />
         public static Capacitance Picofarads<T>(this T value) =>
-            Capacitance.FromPicofarads(Convert.ToDouble(value));
+            Capacitance.FromPicofarads(Convert.ToDecimal(value));
 
     }
 }

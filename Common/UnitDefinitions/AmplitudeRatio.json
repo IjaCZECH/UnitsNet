@@ -44,8 +44,8 @@
     {
       "SingularName": "DecibelUnloaded",
       "PluralName": "DecibelsUnloaded",
-      "FromUnitToBaseFunc": "x - 2.218487499",
-      "FromBaseToUnitFunc": "x + 2.218487499",
+      "FromUnitToBaseFunc": "x - 2.218487499m",
+      "FromBaseToUnitFunc": "x + 2.218487499m",
       "Localization": [
         {
           "Culture": "en-US",

@@ -30,19 +30,19 @@ namespace UnitsNet.NumberExtensions.NumberToRotationalAcceleration
     {
         /// <inheritdoc cref="RotationalAcceleration.FromDegreesPerSecondSquared(UnitsNet.QuantityValue)" />
         public static RotationalAcceleration DegreesPerSecondSquared<T>(this T value) =>
-            RotationalAcceleration.FromDegreesPerSecondSquared(Convert.ToDouble(value));
+            RotationalAcceleration.FromDegreesPerSecondSquared(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="RotationalAcceleration.FromRadiansPerSecondSquared(UnitsNet.QuantityValue)" />
         public static RotationalAcceleration RadiansPerSecondSquared<T>(this T value) =>
-            RotationalAcceleration.FromRadiansPerSecondSquared(Convert.ToDouble(value));
+            RotationalAcceleration.FromRadiansPerSecondSquared(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="RotationalAcceleration.FromRevolutionsPerMinutePerSecond(UnitsNet.QuantityValue)" />
         public static RotationalAcceleration RevolutionsPerMinutePerSecond<T>(this T value) =>
-            RotationalAcceleration.FromRevolutionsPerMinutePerSecond(Convert.ToDouble(value));
+            RotationalAcceleration.FromRevolutionsPerMinutePerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="RotationalAcceleration.FromRevolutionsPerSecondSquared(UnitsNet.QuantityValue)" />
         public static RotationalAcceleration RevolutionsPerSecondSquared<T>(this T value) =>
-            RotationalAcceleration.FromRevolutionsPerSecondSquared(Convert.ToDouble(value));
+            RotationalAcceleration.FromRevolutionsPerSecondSquared(Convert.ToDecimal(value));
 
     }
 }

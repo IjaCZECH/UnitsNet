@@ -30,19 +30,19 @@ namespace UnitsNet.NumberExtensions.NumberToElectricInductance
     {
         /// <inheritdoc cref="ElectricInductance.FromHenries(UnitsNet.QuantityValue)" />
         public static ElectricInductance Henries<T>(this T value) =>
-            ElectricInductance.FromHenries(Convert.ToDouble(value));
+            ElectricInductance.FromHenries(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricInductance.FromMicrohenries(UnitsNet.QuantityValue)" />
         public static ElectricInductance Microhenries<T>(this T value) =>
-            ElectricInductance.FromMicrohenries(Convert.ToDouble(value));
+            ElectricInductance.FromMicrohenries(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricInductance.FromMillihenries(UnitsNet.QuantityValue)" />
         public static ElectricInductance Millihenries<T>(this T value) =>
-            ElectricInductance.FromMillihenries(Convert.ToDouble(value));
+            ElectricInductance.FromMillihenries(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricInductance.FromNanohenries(UnitsNet.QuantityValue)" />
         public static ElectricInductance Nanohenries<T>(this T value) =>
-            ElectricInductance.FromNanohenries(Convert.ToDouble(value));
+            ElectricInductance.FromNanohenries(Convert.ToDecimal(value));
 
     }
 }

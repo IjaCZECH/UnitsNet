@@ -30,7 +30,7 @@ namespace UnitsNet.NumberExtensions.NumberToLuminousIntensity
     {
         /// <inheritdoc cref="LuminousIntensity.FromCandela(UnitsNet.QuantityValue)" />
         public static LuminousIntensity Candela<T>(this T value) =>
-            LuminousIntensity.FromCandela(Convert.ToDouble(value));
+            LuminousIntensity.FromCandela(Convert.ToDecimal(value));
 
     }
 }

@@ -37,16 +37,16 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class AreaDensityTestsBase : QuantityTestsBase
     {
-        protected abstract double KilogramsPerSquareMeterInOneKilogramPerSquareMeter { get; }
+        protected abstract decimal KilogramsPerSquareMeterInOneKilogramPerSquareMeter { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double KilogramsPerSquareMeterTolerance { get { return 1e-5; } }
+        protected virtual decimal KilogramsPerSquareMeterTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new AreaDensity((double)0.0, AreaDensityUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new AreaDensity((decimal)0.0, AreaDensityUnit.Undefined));
         }
 
         [Fact]
@@ -57,19 +57,6 @@ namespace UnitsNet.Tests
             Assert.Equal(AreaDensityUnit.KilogramPerSquareMeter, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new AreaDensity(double.PositiveInfinity, AreaDensityUnit.KilogramPerSquareMeter));
-            Assert.Throws<ArgumentException>(() => new AreaDensity(double.NegativeInfinity, AreaDensityUnit.KilogramPerSquareMeter));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new AreaDensity(double.NaN, AreaDensityUnit.KilogramPerSquareMeter));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -130,19 +117,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromKilogramsPerSquareMeter_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => AreaDensity.FromKilogramsPerSquareMeter(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => AreaDensity.FromKilogramsPerSquareMeter(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromKilogramsPerSquareMeter_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => AreaDensity.FromKilogramsPerSquareMeter(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var kilogrampersquaremeter = AreaDensity.FromKilogramsPerSquareMeter(1);
@@ -157,7 +131,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -172,7 +146,7 @@ namespace UnitsNet.Tests
             var kilogrampersquaremeter = AreaDensity.FromKilogramsPerSquareMeter(1);
 
             var kilogrampersquaremeterQuantity = kilogrampersquaremeter.ToUnit(AreaDensityUnit.KilogramPerSquareMeter);
-            AssertEx.EqualTolerance(KilogramsPerSquareMeterInOneKilogramPerSquareMeter, (double)kilogrampersquaremeterQuantity.Value, KilogramsPerSquareMeterTolerance);
+            AssertEx.EqualTolerance(KilogramsPerSquareMeterInOneKilogramPerSquareMeter, (decimal)kilogrampersquaremeterQuantity.Value, KilogramsPerSquareMeterTolerance);
             Assert.Equal(AreaDensityUnit.KilogramPerSquareMeter, kilogrampersquaremeterQuantity.Unit);
         }
 
@@ -368,10 +342,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 kg/m²", new AreaDensity(0.123456, AreaDensityUnit.KilogramPerSquareMeter).ToString("s1"));
-                Assert.Equal("0.12 kg/m²", new AreaDensity(0.123456, AreaDensityUnit.KilogramPerSquareMeter).ToString("s2"));
-                Assert.Equal("0.123 kg/m²", new AreaDensity(0.123456, AreaDensityUnit.KilogramPerSquareMeter).ToString("s3"));
-                Assert.Equal("0.1235 kg/m²", new AreaDensity(0.123456, AreaDensityUnit.KilogramPerSquareMeter).ToString("s4"));
+                Assert.Equal("0.1 kg/m²", new AreaDensity(0.123456m, AreaDensityUnit.KilogramPerSquareMeter).ToString("s1"));
+                Assert.Equal("0.12 kg/m²", new AreaDensity(0.123456m, AreaDensityUnit.KilogramPerSquareMeter).ToString("s2"));
+                Assert.Equal("0.123 kg/m²", new AreaDensity(0.123456m, AreaDensityUnit.KilogramPerSquareMeter).ToString("s3"));
+                Assert.Equal("0.1235 kg/m²", new AreaDensity(0.123456m, AreaDensityUnit.KilogramPerSquareMeter).ToString("s4"));
             }
             finally
             {
@@ -383,10 +357,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 kg/m²", new AreaDensity(0.123456, AreaDensityUnit.KilogramPerSquareMeter).ToString("s1", culture));
-            Assert.Equal("0.12 kg/m²", new AreaDensity(0.123456, AreaDensityUnit.KilogramPerSquareMeter).ToString("s2", culture));
-            Assert.Equal("0.123 kg/m²", new AreaDensity(0.123456, AreaDensityUnit.KilogramPerSquareMeter).ToString("s3", culture));
-            Assert.Equal("0.1235 kg/m²", new AreaDensity(0.123456, AreaDensityUnit.KilogramPerSquareMeter).ToString("s4", culture));
+            Assert.Equal("0.1 kg/m²", new AreaDensity(0.123456m, AreaDensityUnit.KilogramPerSquareMeter).ToString("s1", culture));
+            Assert.Equal("0.12 kg/m²", new AreaDensity(0.123456m, AreaDensityUnit.KilogramPerSquareMeter).ToString("s2", culture));
+            Assert.Equal("0.123 kg/m²", new AreaDensity(0.123456m, AreaDensityUnit.KilogramPerSquareMeter).ToString("s3", culture));
+            Assert.Equal("0.1235 kg/m²", new AreaDensity(0.123456m, AreaDensityUnit.KilogramPerSquareMeter).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -564,7 +538,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = AreaDensity.FromKilogramsPerSquareMeter(value);
             Assert.Equal(AreaDensity.FromKilogramsPerSquareMeter(-value), -quantity);

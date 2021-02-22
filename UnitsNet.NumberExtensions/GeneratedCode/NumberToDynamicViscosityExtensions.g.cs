@@ -30,43 +30,43 @@ namespace UnitsNet.NumberExtensions.NumberToDynamicViscosity
     {
         /// <inheritdoc cref="DynamicViscosity.FromCentipoise(UnitsNet.QuantityValue)" />
         public static DynamicViscosity Centipoise<T>(this T value) =>
-            DynamicViscosity.FromCentipoise(Convert.ToDouble(value));
+            DynamicViscosity.FromCentipoise(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="DynamicViscosity.FromMicropascalSeconds(UnitsNet.QuantityValue)" />
         public static DynamicViscosity MicropascalSeconds<T>(this T value) =>
-            DynamicViscosity.FromMicropascalSeconds(Convert.ToDouble(value));
+            DynamicViscosity.FromMicropascalSeconds(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="DynamicViscosity.FromMillipascalSeconds(UnitsNet.QuantityValue)" />
         public static DynamicViscosity MillipascalSeconds<T>(this T value) =>
-            DynamicViscosity.FromMillipascalSeconds(Convert.ToDouble(value));
+            DynamicViscosity.FromMillipascalSeconds(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="DynamicViscosity.FromNewtonSecondsPerMeterSquared(UnitsNet.QuantityValue)" />
         public static DynamicViscosity NewtonSecondsPerMeterSquared<T>(this T value) =>
-            DynamicViscosity.FromNewtonSecondsPerMeterSquared(Convert.ToDouble(value));
+            DynamicViscosity.FromNewtonSecondsPerMeterSquared(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="DynamicViscosity.FromPascalSeconds(UnitsNet.QuantityValue)" />
         public static DynamicViscosity PascalSeconds<T>(this T value) =>
-            DynamicViscosity.FromPascalSeconds(Convert.ToDouble(value));
+            DynamicViscosity.FromPascalSeconds(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="DynamicViscosity.FromPoise(UnitsNet.QuantityValue)" />
         public static DynamicViscosity Poise<T>(this T value) =>
-            DynamicViscosity.FromPoise(Convert.ToDouble(value));
+            DynamicViscosity.FromPoise(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="DynamicViscosity.FromPoundsForceSecondPerSquareFoot(UnitsNet.QuantityValue)" />
         public static DynamicViscosity PoundsForceSecondPerSquareFoot<T>(this T value) =>
-            DynamicViscosity.FromPoundsForceSecondPerSquareFoot(Convert.ToDouble(value));
+            DynamicViscosity.FromPoundsForceSecondPerSquareFoot(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="DynamicViscosity.FromPoundsForceSecondPerSquareInch(UnitsNet.QuantityValue)" />
         public static DynamicViscosity PoundsForceSecondPerSquareInch<T>(this T value) =>
-            DynamicViscosity.FromPoundsForceSecondPerSquareInch(Convert.ToDouble(value));
+            DynamicViscosity.FromPoundsForceSecondPerSquareInch(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="DynamicViscosity.FromPoundsPerFootSecond(UnitsNet.QuantityValue)" />
         public static DynamicViscosity PoundsPerFootSecond<T>(this T value) =>
-            DynamicViscosity.FromPoundsPerFootSecond(Convert.ToDouble(value));
+            DynamicViscosity.FromPoundsPerFootSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="DynamicViscosity.FromReyns(UnitsNet.QuantityValue)" />
         public static DynamicViscosity Reyns<T>(this T value) =>
-            DynamicViscosity.FromReyns(Convert.ToDouble(value));
+            DynamicViscosity.FromReyns(Convert.ToDecimal(value));
 
     }
 }

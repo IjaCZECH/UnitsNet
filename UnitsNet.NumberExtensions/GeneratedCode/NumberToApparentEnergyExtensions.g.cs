@@ -30,15 +30,15 @@ namespace UnitsNet.NumberExtensions.NumberToApparentEnergy
     {
         /// <inheritdoc cref="ApparentEnergy.FromKilovoltampereHours(UnitsNet.QuantityValue)" />
         public static ApparentEnergy KilovoltampereHours<T>(this T value) =>
-            ApparentEnergy.FromKilovoltampereHours(Convert.ToDouble(value));
+            ApparentEnergy.FromKilovoltampereHours(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ApparentEnergy.FromMegavoltampereHours(UnitsNet.QuantityValue)" />
         public static ApparentEnergy MegavoltampereHours<T>(this T value) =>
-            ApparentEnergy.FromMegavoltampereHours(Convert.ToDouble(value));
+            ApparentEnergy.FromMegavoltampereHours(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ApparentEnergy.FromVoltampereHours(UnitsNet.QuantityValue)" />
         public static ApparentEnergy VoltampereHours<T>(this T value) =>
-            ApparentEnergy.FromVoltampereHours(Convert.ToDouble(value));
+            ApparentEnergy.FromVoltampereHours(Convert.ToDecimal(value));
 
     }
 }

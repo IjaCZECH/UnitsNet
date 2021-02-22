@@ -30,7 +30,7 @@ namespace UnitsNet.NumberExtensions.NumberToAreaDensity
     {
         /// <inheritdoc cref="AreaDensity.FromKilogramsPerSquareMeter(UnitsNet.QuantityValue)" />
         public static AreaDensity KilogramsPerSquareMeter<T>(this T value) =>
-            AreaDensity.FromKilogramsPerSquareMeter(Convert.ToDouble(value));
+            AreaDensity.FromKilogramsPerSquareMeter(Convert.ToDecimal(value));
 
     }
 }

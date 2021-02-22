@@ -42,7 +42,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -74,12 +74,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private Luminosity(double value, LuminosityUnit unit)
+        private Luminosity(decimal value, LuminosityUnit unit)
         {
             if(unit == LuminosityUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -103,12 +103,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of Luminosity
         /// </summary>
-        public static Luminosity MaxValue { get; } = new Luminosity(double.MaxValue, BaseUnit);
+        public static Luminosity MaxValue { get; } = new Luminosity(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of Luminosity
         /// </summary>
-        public static Luminosity MinValue { get; } = new Luminosity(double.MinValue, BaseUnit);
+        public static Luminosity MinValue { get; } = new Luminosity(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -132,7 +132,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -161,72 +161,72 @@ namespace UnitsNet
         /// <summary>
         ///     Get Luminosity in Decawatts.
         /// </summary>
-        public double Decawatts => As(LuminosityUnit.Decawatt);
+        public decimal Decawatts => As(LuminosityUnit.Decawatt);
 
         /// <summary>
         ///     Get Luminosity in Deciwatts.
         /// </summary>
-        public double Deciwatts => As(LuminosityUnit.Deciwatt);
+        public decimal Deciwatts => As(LuminosityUnit.Deciwatt);
 
         /// <summary>
         ///     Get Luminosity in Femtowatts.
         /// </summary>
-        public double Femtowatts => As(LuminosityUnit.Femtowatt);
+        public decimal Femtowatts => As(LuminosityUnit.Femtowatt);
 
         /// <summary>
         ///     Get Luminosity in Gigawatts.
         /// </summary>
-        public double Gigawatts => As(LuminosityUnit.Gigawatt);
+        public decimal Gigawatts => As(LuminosityUnit.Gigawatt);
 
         /// <summary>
         ///     Get Luminosity in Kilowatts.
         /// </summary>
-        public double Kilowatts => As(LuminosityUnit.Kilowatt);
+        public decimal Kilowatts => As(LuminosityUnit.Kilowatt);
 
         /// <summary>
         ///     Get Luminosity in Megawatts.
         /// </summary>
-        public double Megawatts => As(LuminosityUnit.Megawatt);
+        public decimal Megawatts => As(LuminosityUnit.Megawatt);
 
         /// <summary>
         ///     Get Luminosity in Microwatts.
         /// </summary>
-        public double Microwatts => As(LuminosityUnit.Microwatt);
+        public decimal Microwatts => As(LuminosityUnit.Microwatt);
 
         /// <summary>
         ///     Get Luminosity in Milliwatts.
         /// </summary>
-        public double Milliwatts => As(LuminosityUnit.Milliwatt);
+        public decimal Milliwatts => As(LuminosityUnit.Milliwatt);
 
         /// <summary>
         ///     Get Luminosity in Nanowatts.
         /// </summary>
-        public double Nanowatts => As(LuminosityUnit.Nanowatt);
+        public decimal Nanowatts => As(LuminosityUnit.Nanowatt);
 
         /// <summary>
         ///     Get Luminosity in Petawatts.
         /// </summary>
-        public double Petawatts => As(LuminosityUnit.Petawatt);
+        public decimal Petawatts => As(LuminosityUnit.Petawatt);
 
         /// <summary>
         ///     Get Luminosity in Picowatts.
         /// </summary>
-        public double Picowatts => As(LuminosityUnit.Picowatt);
+        public decimal Picowatts => As(LuminosityUnit.Picowatt);
 
         /// <summary>
         ///     Get Luminosity in SolarLuminosities.
         /// </summary>
-        public double SolarLuminosities => As(LuminosityUnit.SolarLuminosity);
+        public decimal SolarLuminosities => As(LuminosityUnit.SolarLuminosity);
 
         /// <summary>
         ///     Get Luminosity in Terawatts.
         /// </summary>
-        public double Terawatts => As(LuminosityUnit.Terawatt);
+        public decimal Terawatts => As(LuminosityUnit.Terawatt);
 
         /// <summary>
         ///     Get Luminosity in Watts.
         /// </summary>
-        public double Watts => As(LuminosityUnit.Watt);
+        public decimal Watts => As(LuminosityUnit.Watt);
 
         #endregion
 
@@ -263,9 +263,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Luminosity FromDecawatts(double decawatts)
+        public static Luminosity FromDecawatts(decimal decawatts)
         {
-            double value = (double) decawatts;
+            decimal value = (decimal) decawatts;
             return new Luminosity(value, LuminosityUnit.Decawatt);
         }
         /// <summary>
@@ -273,9 +273,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Luminosity FromDeciwatts(double deciwatts)
+        public static Luminosity FromDeciwatts(decimal deciwatts)
         {
-            double value = (double) deciwatts;
+            decimal value = (decimal) deciwatts;
             return new Luminosity(value, LuminosityUnit.Deciwatt);
         }
         /// <summary>
@@ -283,9 +283,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Luminosity FromFemtowatts(double femtowatts)
+        public static Luminosity FromFemtowatts(decimal femtowatts)
         {
-            double value = (double) femtowatts;
+            decimal value = (decimal) femtowatts;
             return new Luminosity(value, LuminosityUnit.Femtowatt);
         }
         /// <summary>
@@ -293,9 +293,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Luminosity FromGigawatts(double gigawatts)
+        public static Luminosity FromGigawatts(decimal gigawatts)
         {
-            double value = (double) gigawatts;
+            decimal value = (decimal) gigawatts;
             return new Luminosity(value, LuminosityUnit.Gigawatt);
         }
         /// <summary>
@@ -303,9 +303,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Luminosity FromKilowatts(double kilowatts)
+        public static Luminosity FromKilowatts(decimal kilowatts)
         {
-            double value = (double) kilowatts;
+            decimal value = (decimal) kilowatts;
             return new Luminosity(value, LuminosityUnit.Kilowatt);
         }
         /// <summary>
@@ -313,9 +313,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Luminosity FromMegawatts(double megawatts)
+        public static Luminosity FromMegawatts(decimal megawatts)
         {
-            double value = (double) megawatts;
+            decimal value = (decimal) megawatts;
             return new Luminosity(value, LuminosityUnit.Megawatt);
         }
         /// <summary>
@@ -323,9 +323,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Luminosity FromMicrowatts(double microwatts)
+        public static Luminosity FromMicrowatts(decimal microwatts)
         {
-            double value = (double) microwatts;
+            decimal value = (decimal) microwatts;
             return new Luminosity(value, LuminosityUnit.Microwatt);
         }
         /// <summary>
@@ -333,9 +333,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Luminosity FromMilliwatts(double milliwatts)
+        public static Luminosity FromMilliwatts(decimal milliwatts)
         {
-            double value = (double) milliwatts;
+            decimal value = (decimal) milliwatts;
             return new Luminosity(value, LuminosityUnit.Milliwatt);
         }
         /// <summary>
@@ -343,9 +343,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Luminosity FromNanowatts(double nanowatts)
+        public static Luminosity FromNanowatts(decimal nanowatts)
         {
-            double value = (double) nanowatts;
+            decimal value = (decimal) nanowatts;
             return new Luminosity(value, LuminosityUnit.Nanowatt);
         }
         /// <summary>
@@ -353,9 +353,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Luminosity FromPetawatts(double petawatts)
+        public static Luminosity FromPetawatts(decimal petawatts)
         {
-            double value = (double) petawatts;
+            decimal value = (decimal) petawatts;
             return new Luminosity(value, LuminosityUnit.Petawatt);
         }
         /// <summary>
@@ -363,9 +363,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Luminosity FromPicowatts(double picowatts)
+        public static Luminosity FromPicowatts(decimal picowatts)
         {
-            double value = (double) picowatts;
+            decimal value = (decimal) picowatts;
             return new Luminosity(value, LuminosityUnit.Picowatt);
         }
         /// <summary>
@@ -373,9 +373,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Luminosity FromSolarLuminosities(double solarluminosities)
+        public static Luminosity FromSolarLuminosities(decimal solarluminosities)
         {
-            double value = (double) solarluminosities;
+            decimal value = (decimal) solarluminosities;
             return new Luminosity(value, LuminosityUnit.SolarLuminosity);
         }
         /// <summary>
@@ -383,9 +383,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Luminosity FromTerawatts(double terawatts)
+        public static Luminosity FromTerawatts(decimal terawatts)
         {
-            double value = (double) terawatts;
+            decimal value = (decimal) terawatts;
             return new Luminosity(value, LuminosityUnit.Terawatt);
         }
         /// <summary>
@@ -393,9 +393,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Luminosity FromWatts(double watts)
+        public static Luminosity FromWatts(decimal watts)
         {
-            double value = (double) watts;
+            decimal value = (decimal) watts;
             return new Luminosity(value, LuminosityUnit.Watt);
         }
 
@@ -407,9 +407,9 @@ namespace UnitsNet
         /// <returns>Luminosity unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static Luminosity From(double value, LuminosityUnit fromUnit)
+        public static Luminosity From(decimal value, LuminosityUnit fromUnit)
         {
-            return new Luminosity((double)value, fromUnit);
+            return new Luminosity((decimal)value, fromUnit);
         }
 
         #endregion
@@ -631,13 +631,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(Luminosity other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(Luminosity other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -655,19 +655,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((LuminosityUnit)unit);
+        decimal IQuantity.As(object unit) => As((LuminosityUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(LuminosityUnit unit)
+        public decimal As(LuminosityUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -685,30 +685,30 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
-                case LuminosityUnit.Decawatt: return (_value) * 1e1d;
-                case LuminosityUnit.Deciwatt: return (_value) * 1e-1d;
-                case LuminosityUnit.Femtowatt: return (_value) * 1e-15d;
-                case LuminosityUnit.Gigawatt: return (_value) * 1e9d;
-                case LuminosityUnit.Kilowatt: return (_value) * 1e3d;
-                case LuminosityUnit.Megawatt: return (_value) * 1e6d;
-                case LuminosityUnit.Microwatt: return (_value) * 1e-6d;
-                case LuminosityUnit.Milliwatt: return (_value) * 1e-3d;
-                case LuminosityUnit.Nanowatt: return (_value) * 1e-9d;
-                case LuminosityUnit.Petawatt: return (_value) * 1e15d;
-                case LuminosityUnit.Picowatt: return (_value) * 1e-12d;
-                case LuminosityUnit.SolarLuminosity: return _value * 3.846e26;
-                case LuminosityUnit.Terawatt: return (_value) * 1e12d;
+                case LuminosityUnit.Decawatt: return (_value) * 1e1m;
+                case LuminosityUnit.Deciwatt: return (_value) * 1e-1m;
+                case LuminosityUnit.Femtowatt: return (_value) * 1e-15m;
+                case LuminosityUnit.Gigawatt: return (_value) * 1e9m;
+                case LuminosityUnit.Kilowatt: return (_value) * 1e3m;
+                case LuminosityUnit.Megawatt: return (_value) * 1e6m;
+                case LuminosityUnit.Microwatt: return (_value) * 1e-6m;
+                case LuminosityUnit.Milliwatt: return (_value) * 1e-3m;
+                case LuminosityUnit.Nanowatt: return (_value) * 1e-9m;
+                case LuminosityUnit.Petawatt: return (_value) * 1e15m;
+                case LuminosityUnit.Picowatt: return (_value) * 1e-12m;
+                case LuminosityUnit.SolarLuminosity: return _value * 3.846e26m;
+                case LuminosityUnit.Terawatt: return (_value) * 1e12m;
                 case LuminosityUnit.Watt: return _value;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(LuminosityUnit unit)
+        private decimal AsBaseNumericType(LuminosityUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -717,19 +717,19 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case LuminosityUnit.Decawatt: return (baseUnitValue) / 1e1d;
-                case LuminosityUnit.Deciwatt: return (baseUnitValue) / 1e-1d;
-                case LuminosityUnit.Femtowatt: return (baseUnitValue) / 1e-15d;
-                case LuminosityUnit.Gigawatt: return (baseUnitValue) / 1e9d;
-                case LuminosityUnit.Kilowatt: return (baseUnitValue) / 1e3d;
-                case LuminosityUnit.Megawatt: return (baseUnitValue) / 1e6d;
-                case LuminosityUnit.Microwatt: return (baseUnitValue) / 1e-6d;
-                case LuminosityUnit.Milliwatt: return (baseUnitValue) / 1e-3d;
-                case LuminosityUnit.Nanowatt: return (baseUnitValue) / 1e-9d;
-                case LuminosityUnit.Petawatt: return (baseUnitValue) / 1e15d;
-                case LuminosityUnit.Picowatt: return (baseUnitValue) / 1e-12d;
-                case LuminosityUnit.SolarLuminosity: return baseUnitValue / 3.846e26;
-                case LuminosityUnit.Terawatt: return (baseUnitValue) / 1e12d;
+                case LuminosityUnit.Decawatt: return (baseUnitValue) / 1e1m;
+                case LuminosityUnit.Deciwatt: return (baseUnitValue) / 1e-1m;
+                case LuminosityUnit.Femtowatt: return (baseUnitValue) / 1e-15m;
+                case LuminosityUnit.Gigawatt: return (baseUnitValue) / 1e9m;
+                case LuminosityUnit.Kilowatt: return (baseUnitValue) / 1e3m;
+                case LuminosityUnit.Megawatt: return (baseUnitValue) / 1e6m;
+                case LuminosityUnit.Microwatt: return (baseUnitValue) / 1e-6m;
+                case LuminosityUnit.Milliwatt: return (baseUnitValue) / 1e-3m;
+                case LuminosityUnit.Nanowatt: return (baseUnitValue) / 1e-9m;
+                case LuminosityUnit.Petawatt: return (baseUnitValue) / 1e15m;
+                case LuminosityUnit.Picowatt: return (baseUnitValue) / 1e-12m;
+                case LuminosityUnit.SolarLuminosity: return baseUnitValue / 3.846e26m;
+                case LuminosityUnit.Terawatt: return (baseUnitValue) / 1e12m;
                 case LuminosityUnit.Watt: return baseUnitValue;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
@@ -769,7 +769,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -789,7 +789,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

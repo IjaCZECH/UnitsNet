@@ -30,23 +30,23 @@ namespace UnitsNet.NumberExtensions.NumberToElectricPotentialDc
     {
         /// <inheritdoc cref="ElectricPotentialDc.FromKilovoltsDc(UnitsNet.QuantityValue)" />
         public static ElectricPotentialDc KilovoltsDc<T>(this T value) =>
-            ElectricPotentialDc.FromKilovoltsDc(Convert.ToDouble(value));
+            ElectricPotentialDc.FromKilovoltsDc(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricPotentialDc.FromMegavoltsDc(UnitsNet.QuantityValue)" />
         public static ElectricPotentialDc MegavoltsDc<T>(this T value) =>
-            ElectricPotentialDc.FromMegavoltsDc(Convert.ToDouble(value));
+            ElectricPotentialDc.FromMegavoltsDc(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricPotentialDc.FromMicrovoltsDc(UnitsNet.QuantityValue)" />
         public static ElectricPotentialDc MicrovoltsDc<T>(this T value) =>
-            ElectricPotentialDc.FromMicrovoltsDc(Convert.ToDouble(value));
+            ElectricPotentialDc.FromMicrovoltsDc(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricPotentialDc.FromMillivoltsDc(UnitsNet.QuantityValue)" />
         public static ElectricPotentialDc MillivoltsDc<T>(this T value) =>
-            ElectricPotentialDc.FromMillivoltsDc(Convert.ToDouble(value));
+            ElectricPotentialDc.FromMillivoltsDc(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricPotentialDc.FromVoltsDc(UnitsNet.QuantityValue)" />
         public static ElectricPotentialDc VoltsDc<T>(this T value) =>
-            ElectricPotentialDc.FromVoltsDc(Convert.ToDouble(value));
+            ElectricPotentialDc.FromVoltsDc(Convert.ToDecimal(value));
 
     }
 }

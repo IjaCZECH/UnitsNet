@@ -30,15 +30,15 @@ namespace UnitsNet.NumberExtensions.NumberToHeatTransferCoefficient
     {
         /// <inheritdoc cref="HeatTransferCoefficient.FromBtusPerSquareFootDegreeFahrenheit(UnitsNet.QuantityValue)" />
         public static HeatTransferCoefficient BtusPerSquareFootDegreeFahrenheit<T>(this T value) =>
-            HeatTransferCoefficient.FromBtusPerSquareFootDegreeFahrenheit(Convert.ToDouble(value));
+            HeatTransferCoefficient.FromBtusPerSquareFootDegreeFahrenheit(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="HeatTransferCoefficient.FromWattsPerSquareMeterCelsius(UnitsNet.QuantityValue)" />
         public static HeatTransferCoefficient WattsPerSquareMeterCelsius<T>(this T value) =>
-            HeatTransferCoefficient.FromWattsPerSquareMeterCelsius(Convert.ToDouble(value));
+            HeatTransferCoefficient.FromWattsPerSquareMeterCelsius(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="HeatTransferCoefficient.FromWattsPerSquareMeterKelvin(UnitsNet.QuantityValue)" />
         public static HeatTransferCoefficient WattsPerSquareMeterKelvin<T>(this T value) =>
-            HeatTransferCoefficient.FromWattsPerSquareMeterKelvin(Convert.ToDouble(value));
+            HeatTransferCoefficient.FromWattsPerSquareMeterKelvin(Convert.ToDecimal(value));
 
     }
 }

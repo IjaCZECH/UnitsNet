@@ -30,11 +30,11 @@ namespace UnitsNet.NumberExtensions.NumberToRatioChangeRate
     {
         /// <inheritdoc cref="RatioChangeRate.FromDecimalFractionsPerSecond(UnitsNet.QuantityValue)" />
         public static RatioChangeRate DecimalFractionsPerSecond<T>(this T value) =>
-            RatioChangeRate.FromDecimalFractionsPerSecond(Convert.ToDouble(value));
+            RatioChangeRate.FromDecimalFractionsPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="RatioChangeRate.FromPercentsPerSecond(UnitsNet.QuantityValue)" />
         public static RatioChangeRate PercentsPerSecond<T>(this T value) =>
-            RatioChangeRate.FromPercentsPerSecond(Convert.ToDouble(value));
+            RatioChangeRate.FromPercentsPerSecond(Convert.ToDecimal(value));
 
     }
 }

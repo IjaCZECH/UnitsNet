@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -65,12 +65,12 @@ namespace UnitsNet
         /// <param name="value">The numeric value to construct this quantity with.</param>
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        public SpecificVolume(double value, SpecificVolumeUnit unit)
+        public SpecificVolume(decimal value, SpecificVolumeUnit unit)
         {
             if(unit == SpecificVolumeUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -82,14 +82,14 @@ namespace UnitsNet
         /// <param name="unitSystem">The unit system to create the quantity with.</param>
         /// <exception cref="ArgumentNullException">The given <see cref="UnitSystem"/> is null.</exception>
         /// <exception cref="ArgumentException">No unit was found for the given <see cref="UnitSystem"/>.</exception>
-        public SpecificVolume(double value, UnitSystem unitSystem)
+        public SpecificVolume(decimal value, UnitSystem unitSystem)
         {
             if(unitSystem is null) throw new ArgumentNullException(nameof(unitSystem));
 
             var unitInfos = Info.GetUnitInfosFor(unitSystem.BaseUnits);
             var firstUnitInfo = unitInfos.FirstOrDefault();
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = firstUnitInfo?.Value ?? throw new ArgumentException("No units were found for the given UnitSystem.", nameof(unitSystem));
         }
 
@@ -111,12 +111,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of SpecificVolume
         /// </summary>
-        public static SpecificVolume MaxValue { get; } = new SpecificVolume(double.MaxValue, BaseUnit);
+        public static SpecificVolume MaxValue { get; } = new SpecificVolume(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of SpecificVolume
         /// </summary>
-        public static SpecificVolume MinValue { get; } = new SpecificVolume(double.MinValue, BaseUnit);
+        public static SpecificVolume MinValue { get; } = new SpecificVolume(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -140,7 +140,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => _value;
+        public decimal Value => _value;
 
         Enum IQuantity.Unit => Unit;
 
@@ -170,17 +170,17 @@ namespace UnitsNet
         /// <summary>
         ///     Get SpecificVolume in CubicFeetPerPound.
         /// </summary>
-        public double CubicFeetPerPound => As(SpecificVolumeUnit.CubicFootPerPound);
+        public decimal CubicFeetPerPound => As(SpecificVolumeUnit.CubicFootPerPound);
 
         /// <summary>
         ///     Get SpecificVolume in CubicMetersPerKilogram.
         /// </summary>
-        public double CubicMetersPerKilogram => As(SpecificVolumeUnit.CubicMeterPerKilogram);
+        public decimal CubicMetersPerKilogram => As(SpecificVolumeUnit.CubicMeterPerKilogram);
 
         /// <summary>
         ///     Get SpecificVolume in MillicubicMetersPerKilogram.
         /// </summary>
-        public double MillicubicMetersPerKilogram => As(SpecificVolumeUnit.MillicubicMeterPerKilogram);
+        public decimal MillicubicMetersPerKilogram => As(SpecificVolumeUnit.MillicubicMeterPerKilogram);
 
         #endregion
 
@@ -217,7 +217,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static SpecificVolume FromCubicFeetPerPound(QuantityValue cubicfeetperpound)
         {
-            double value = (double) cubicfeetperpound;
+            decimal value = (decimal) cubicfeetperpound;
             return new SpecificVolume(value, SpecificVolumeUnit.CubicFootPerPound);
         }
         /// <summary>
@@ -226,7 +226,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static SpecificVolume FromCubicMetersPerKilogram(QuantityValue cubicmetersperkilogram)
         {
-            double value = (double) cubicmetersperkilogram;
+            decimal value = (decimal) cubicmetersperkilogram;
             return new SpecificVolume(value, SpecificVolumeUnit.CubicMeterPerKilogram);
         }
         /// <summary>
@@ -235,7 +235,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static SpecificVolume FromMillicubicMetersPerKilogram(QuantityValue millicubicmetersperkilogram)
         {
-            double value = (double) millicubicmetersperkilogram;
+            decimal value = (decimal) millicubicmetersperkilogram;
             return new SpecificVolume(value, SpecificVolumeUnit.MillicubicMeterPerKilogram);
         }
 
@@ -247,7 +247,7 @@ namespace UnitsNet
         /// <returns>SpecificVolume unit value.</returns>
         public static SpecificVolume From(QuantityValue value, SpecificVolumeUnit fromUnit)
         {
-            return new SpecificVolume((double)value, fromUnit);
+            return new SpecificVolume((decimal)value, fromUnit);
         }
 
         #endregion
@@ -417,25 +417,25 @@ namespace UnitsNet
         }
 
         /// <summary>Get <see cref="SpecificVolume"/> from multiplying value and <see cref="SpecificVolume"/>.</summary>
-        public static SpecificVolume operator *(double left, SpecificVolume right)
+        public static SpecificVolume operator *(decimal left, SpecificVolume right)
         {
             return new SpecificVolume(left * right.Value, right.Unit);
         }
 
         /// <summary>Get <see cref="SpecificVolume"/> from multiplying value and <see cref="SpecificVolume"/>.</summary>
-        public static SpecificVolume operator *(SpecificVolume left, double right)
+        public static SpecificVolume operator *(SpecificVolume left, decimal right)
         {
             return new SpecificVolume(left.Value * right, left.Unit);
         }
 
         /// <summary>Get <see cref="SpecificVolume"/> from dividing <see cref="SpecificVolume"/> by value.</summary>
-        public static SpecificVolume operator /(SpecificVolume left, double right)
+        public static SpecificVolume operator /(SpecificVolume left, decimal right)
         {
             return new SpecificVolume(left.Value / right, left.Unit);
         }
 
         /// <summary>Get ratio value from dividing <see cref="SpecificVolume"/> by <see cref="SpecificVolume"/>.</summary>
-        public static double operator /(SpecificVolume left, SpecificVolume right)
+        public static decimal operator /(SpecificVolume left, SpecificVolume right)
         {
             return left.CubicMetersPerKilogram / right.CubicMetersPerKilogram;
         }
@@ -469,14 +469,14 @@ namespace UnitsNet
         }
 
         /// <summary>Returns true if exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(SpecificVolume, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(SpecificVolume, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator ==(SpecificVolume left, SpecificVolume right)
         {
             return left.Equals(right);
         }
 
         /// <summary>Returns true if not exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(SpecificVolume, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(SpecificVolume, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator !=(SpecificVolume left, SpecificVolume right)
         {
             return !(left == right);
@@ -498,7 +498,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(SpecificVolume, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(SpecificVolume, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public override bool Equals(object obj)
         {
             if(obj is null || !(obj is SpecificVolume objSpecificVolume))
@@ -508,7 +508,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(SpecificVolume, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(SpecificVolume, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public bool Equals(SpecificVolume other)
         {
             return _value.Equals(other.GetValueAs(this.Unit));
@@ -554,13 +554,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(SpecificVolume other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(SpecificVolume other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -582,17 +582,17 @@ namespace UnitsNet
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(SpecificVolumeUnit unit)
+        public decimal As(SpecificVolumeUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = GetValueAs(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <inheritdoc cref="IQuantity.As(UnitSystem)"/>
-        public double As(UnitSystem unitSystem)
+        public decimal As(UnitSystem unitSystem)
         {
             if(unitSystem is null)
                 throw new ArgumentNullException(nameof(unitSystem));
@@ -607,7 +607,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        double IQuantity.As(Enum unit)
+        decimal IQuantity.As(Enum unit)
         {
             if(!(unit is SpecificVolumeUnit unitAsSpecificVolumeUnit))
                 throw new ArgumentException($"The given unit is of type {unit.GetType()}. Only {typeof(SpecificVolumeUnit)} is supported.", nameof(unit));
@@ -663,13 +663,13 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double GetValueInBaseUnit()
+        private decimal GetValueInBaseUnit()
         {
             switch(Unit)
             {
-                case SpecificVolumeUnit.CubicFootPerPound: return _value/16.01846353;
+                case SpecificVolumeUnit.CubicFootPerPound: return _value/16.01846353m;
                 case SpecificVolumeUnit.CubicMeterPerKilogram: return _value;
-                case SpecificVolumeUnit.MillicubicMeterPerKilogram: return (_value) * 1e-3d;
+                case SpecificVolumeUnit.MillicubicMeterPerKilogram: return (_value) * 1e-3m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
@@ -686,7 +686,7 @@ namespace UnitsNet
             return new SpecificVolume(baseUnitValue, BaseUnit);
         }
 
-        private double GetValueAs(SpecificVolumeUnit unit)
+        private decimal GetValueAs(SpecificVolumeUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -695,9 +695,9 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case SpecificVolumeUnit.CubicFootPerPound: return baseUnitValue*16.01846353;
+                case SpecificVolumeUnit.CubicFootPerPound: return baseUnitValue*16.01846353m;
                 case SpecificVolumeUnit.CubicMeterPerKilogram: return baseUnitValue;
-                case SpecificVolumeUnit.MillicubicMeterPerKilogram: return (baseUnitValue) / 1e-3d;
+                case SpecificVolumeUnit.MillicubicMeterPerKilogram: return (baseUnitValue) / 1e-3m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -735,7 +735,7 @@ namespace UnitsNet
         [Obsolete(@"This method is deprecated and will be removed at a future release. Please use ToString(""s2"") or ToString(""s2"", provider) where 2 is an example of the number passed to significantDigitsAfterRadix.")]
         public string ToString(IFormatProvider? provider, int significantDigitsAfterRadix)
         {
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -755,7 +755,7 @@ namespace UnitsNet
 
             provider = provider ?? CultureInfo.CurrentUICulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

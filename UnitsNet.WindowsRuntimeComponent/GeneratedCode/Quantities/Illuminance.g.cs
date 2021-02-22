@@ -42,7 +42,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -74,12 +74,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private Illuminance(double value, IlluminanceUnit unit)
+        private Illuminance(decimal value, IlluminanceUnit unit)
         {
             if(unit == IlluminanceUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -103,12 +103,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of Illuminance
         /// </summary>
-        public static Illuminance MaxValue { get; } = new Illuminance(double.MaxValue, BaseUnit);
+        public static Illuminance MaxValue { get; } = new Illuminance(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of Illuminance
         /// </summary>
-        public static Illuminance MinValue { get; } = new Illuminance(double.MinValue, BaseUnit);
+        public static Illuminance MinValue { get; } = new Illuminance(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -132,7 +132,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -161,22 +161,22 @@ namespace UnitsNet
         /// <summary>
         ///     Get Illuminance in Kilolux.
         /// </summary>
-        public double Kilolux => As(IlluminanceUnit.Kilolux);
+        public decimal Kilolux => As(IlluminanceUnit.Kilolux);
 
         /// <summary>
         ///     Get Illuminance in Lux.
         /// </summary>
-        public double Lux => As(IlluminanceUnit.Lux);
+        public decimal Lux => As(IlluminanceUnit.Lux);
 
         /// <summary>
         ///     Get Illuminance in Megalux.
         /// </summary>
-        public double Megalux => As(IlluminanceUnit.Megalux);
+        public decimal Megalux => As(IlluminanceUnit.Megalux);
 
         /// <summary>
         ///     Get Illuminance in Millilux.
         /// </summary>
-        public double Millilux => As(IlluminanceUnit.Millilux);
+        public decimal Millilux => As(IlluminanceUnit.Millilux);
 
         #endregion
 
@@ -213,9 +213,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Illuminance FromKilolux(double kilolux)
+        public static Illuminance FromKilolux(decimal kilolux)
         {
-            double value = (double) kilolux;
+            decimal value = (decimal) kilolux;
             return new Illuminance(value, IlluminanceUnit.Kilolux);
         }
         /// <summary>
@@ -223,9 +223,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Illuminance FromLux(double lux)
+        public static Illuminance FromLux(decimal lux)
         {
-            double value = (double) lux;
+            decimal value = (decimal) lux;
             return new Illuminance(value, IlluminanceUnit.Lux);
         }
         /// <summary>
@@ -233,9 +233,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Illuminance FromMegalux(double megalux)
+        public static Illuminance FromMegalux(decimal megalux)
         {
-            double value = (double) megalux;
+            decimal value = (decimal) megalux;
             return new Illuminance(value, IlluminanceUnit.Megalux);
         }
         /// <summary>
@@ -243,9 +243,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Illuminance FromMillilux(double millilux)
+        public static Illuminance FromMillilux(decimal millilux)
         {
-            double value = (double) millilux;
+            decimal value = (decimal) millilux;
             return new Illuminance(value, IlluminanceUnit.Millilux);
         }
 
@@ -257,9 +257,9 @@ namespace UnitsNet
         /// <returns>Illuminance unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static Illuminance From(double value, IlluminanceUnit fromUnit)
+        public static Illuminance From(decimal value, IlluminanceUnit fromUnit)
         {
-            return new Illuminance((double)value, fromUnit);
+            return new Illuminance((decimal)value, fromUnit);
         }
 
         #endregion
@@ -481,13 +481,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(Illuminance other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(Illuminance other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -505,19 +505,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((IlluminanceUnit)unit);
+        decimal IQuantity.As(object unit) => As((IlluminanceUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(IlluminanceUnit unit)
+        public decimal As(IlluminanceUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -535,20 +535,20 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
-                case IlluminanceUnit.Kilolux: return (_value) * 1e3d;
+                case IlluminanceUnit.Kilolux: return (_value) * 1e3m;
                 case IlluminanceUnit.Lux: return _value;
-                case IlluminanceUnit.Megalux: return (_value) * 1e6d;
-                case IlluminanceUnit.Millilux: return (_value) * 1e-3d;
+                case IlluminanceUnit.Megalux: return (_value) * 1e6m;
+                case IlluminanceUnit.Millilux: return (_value) * 1e-3m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(IlluminanceUnit unit)
+        private decimal AsBaseNumericType(IlluminanceUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -557,10 +557,10 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case IlluminanceUnit.Kilolux: return (baseUnitValue) / 1e3d;
+                case IlluminanceUnit.Kilolux: return (baseUnitValue) / 1e3m;
                 case IlluminanceUnit.Lux: return baseUnitValue;
-                case IlluminanceUnit.Megalux: return (baseUnitValue) / 1e6d;
-                case IlluminanceUnit.Millilux: return (baseUnitValue) / 1e-3d;
+                case IlluminanceUnit.Megalux: return (baseUnitValue) / 1e6m;
+                case IlluminanceUnit.Millilux: return (baseUnitValue) / 1e-3m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -599,7 +599,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -619,7 +619,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

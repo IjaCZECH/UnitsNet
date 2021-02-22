@@ -37,28 +37,28 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class PressureChangeRateTestsBase : QuantityTestsBase
     {
-        protected abstract double AtmospheresPerSecondInOnePascalPerSecond { get; }
-        protected abstract double KilopascalsPerMinuteInOnePascalPerSecond { get; }
-        protected abstract double KilopascalsPerSecondInOnePascalPerSecond { get; }
-        protected abstract double MegapascalsPerMinuteInOnePascalPerSecond { get; }
-        protected abstract double MegapascalsPerSecondInOnePascalPerSecond { get; }
-        protected abstract double PascalsPerMinuteInOnePascalPerSecond { get; }
-        protected abstract double PascalsPerSecondInOnePascalPerSecond { get; }
+        protected abstract decimal AtmospheresPerSecondInOnePascalPerSecond { get; }
+        protected abstract decimal KilopascalsPerMinuteInOnePascalPerSecond { get; }
+        protected abstract decimal KilopascalsPerSecondInOnePascalPerSecond { get; }
+        protected abstract decimal MegapascalsPerMinuteInOnePascalPerSecond { get; }
+        protected abstract decimal MegapascalsPerSecondInOnePascalPerSecond { get; }
+        protected abstract decimal PascalsPerMinuteInOnePascalPerSecond { get; }
+        protected abstract decimal PascalsPerSecondInOnePascalPerSecond { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double AtmospheresPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double KilopascalsPerMinuteTolerance { get { return 1e-5; } }
-        protected virtual double KilopascalsPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double MegapascalsPerMinuteTolerance { get { return 1e-5; } }
-        protected virtual double MegapascalsPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double PascalsPerMinuteTolerance { get { return 1e-5; } }
-        protected virtual double PascalsPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal AtmospheresPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal KilopascalsPerMinuteTolerance { get { return 1e-5; } }
+        protected virtual decimal KilopascalsPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal MegapascalsPerMinuteTolerance { get { return 1e-5; } }
+        protected virtual decimal MegapascalsPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal PascalsPerMinuteTolerance { get { return 1e-5; } }
+        protected virtual decimal PascalsPerSecondTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new PressureChangeRate((double)0.0, PressureChangeRateUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new PressureChangeRate((decimal)0.0, PressureChangeRateUnit.Undefined));
         }
 
         [Fact]
@@ -69,19 +69,6 @@ namespace UnitsNet.Tests
             Assert.Equal(PressureChangeRateUnit.PascalPerSecond, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new PressureChangeRate(double.PositiveInfinity, PressureChangeRateUnit.PascalPerSecond));
-            Assert.Throws<ArgumentException>(() => new PressureChangeRate(double.NegativeInfinity, PressureChangeRateUnit.PascalPerSecond));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new PressureChangeRate(double.NaN, PressureChangeRateUnit.PascalPerSecond));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -172,19 +159,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromPascalsPerSecond_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => PressureChangeRate.FromPascalsPerSecond(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => PressureChangeRate.FromPascalsPerSecond(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromPascalsPerSecond_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => PressureChangeRate.FromPascalsPerSecond(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var pascalpersecond = PressureChangeRate.FromPascalsPerSecond(1);
@@ -205,7 +179,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -220,31 +194,31 @@ namespace UnitsNet.Tests
             var pascalpersecond = PressureChangeRate.FromPascalsPerSecond(1);
 
             var atmospherepersecondQuantity = pascalpersecond.ToUnit(PressureChangeRateUnit.AtmospherePerSecond);
-            AssertEx.EqualTolerance(AtmospheresPerSecondInOnePascalPerSecond, (double)atmospherepersecondQuantity.Value, AtmospheresPerSecondTolerance);
+            AssertEx.EqualTolerance(AtmospheresPerSecondInOnePascalPerSecond, (decimal)atmospherepersecondQuantity.Value, AtmospheresPerSecondTolerance);
             Assert.Equal(PressureChangeRateUnit.AtmospherePerSecond, atmospherepersecondQuantity.Unit);
 
             var kilopascalperminuteQuantity = pascalpersecond.ToUnit(PressureChangeRateUnit.KilopascalPerMinute);
-            AssertEx.EqualTolerance(KilopascalsPerMinuteInOnePascalPerSecond, (double)kilopascalperminuteQuantity.Value, KilopascalsPerMinuteTolerance);
+            AssertEx.EqualTolerance(KilopascalsPerMinuteInOnePascalPerSecond, (decimal)kilopascalperminuteQuantity.Value, KilopascalsPerMinuteTolerance);
             Assert.Equal(PressureChangeRateUnit.KilopascalPerMinute, kilopascalperminuteQuantity.Unit);
 
             var kilopascalpersecondQuantity = pascalpersecond.ToUnit(PressureChangeRateUnit.KilopascalPerSecond);
-            AssertEx.EqualTolerance(KilopascalsPerSecondInOnePascalPerSecond, (double)kilopascalpersecondQuantity.Value, KilopascalsPerSecondTolerance);
+            AssertEx.EqualTolerance(KilopascalsPerSecondInOnePascalPerSecond, (decimal)kilopascalpersecondQuantity.Value, KilopascalsPerSecondTolerance);
             Assert.Equal(PressureChangeRateUnit.KilopascalPerSecond, kilopascalpersecondQuantity.Unit);
 
             var megapascalperminuteQuantity = pascalpersecond.ToUnit(PressureChangeRateUnit.MegapascalPerMinute);
-            AssertEx.EqualTolerance(MegapascalsPerMinuteInOnePascalPerSecond, (double)megapascalperminuteQuantity.Value, MegapascalsPerMinuteTolerance);
+            AssertEx.EqualTolerance(MegapascalsPerMinuteInOnePascalPerSecond, (decimal)megapascalperminuteQuantity.Value, MegapascalsPerMinuteTolerance);
             Assert.Equal(PressureChangeRateUnit.MegapascalPerMinute, megapascalperminuteQuantity.Unit);
 
             var megapascalpersecondQuantity = pascalpersecond.ToUnit(PressureChangeRateUnit.MegapascalPerSecond);
-            AssertEx.EqualTolerance(MegapascalsPerSecondInOnePascalPerSecond, (double)megapascalpersecondQuantity.Value, MegapascalsPerSecondTolerance);
+            AssertEx.EqualTolerance(MegapascalsPerSecondInOnePascalPerSecond, (decimal)megapascalpersecondQuantity.Value, MegapascalsPerSecondTolerance);
             Assert.Equal(PressureChangeRateUnit.MegapascalPerSecond, megapascalpersecondQuantity.Unit);
 
             var pascalperminuteQuantity = pascalpersecond.ToUnit(PressureChangeRateUnit.PascalPerMinute);
-            AssertEx.EqualTolerance(PascalsPerMinuteInOnePascalPerSecond, (double)pascalperminuteQuantity.Value, PascalsPerMinuteTolerance);
+            AssertEx.EqualTolerance(PascalsPerMinuteInOnePascalPerSecond, (decimal)pascalperminuteQuantity.Value, PascalsPerMinuteTolerance);
             Assert.Equal(PressureChangeRateUnit.PascalPerMinute, pascalperminuteQuantity.Unit);
 
             var pascalpersecondQuantity = pascalpersecond.ToUnit(PressureChangeRateUnit.PascalPerSecond);
-            AssertEx.EqualTolerance(PascalsPerSecondInOnePascalPerSecond, (double)pascalpersecondQuantity.Value, PascalsPerSecondTolerance);
+            AssertEx.EqualTolerance(PascalsPerSecondInOnePascalPerSecond, (decimal)pascalpersecondQuantity.Value, PascalsPerSecondTolerance);
             Assert.Equal(PressureChangeRateUnit.PascalPerSecond, pascalpersecondQuantity.Unit);
         }
 
@@ -458,10 +432,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 Pa/s", new PressureChangeRate(0.123456, PressureChangeRateUnit.PascalPerSecond).ToString("s1"));
-                Assert.Equal("0.12 Pa/s", new PressureChangeRate(0.123456, PressureChangeRateUnit.PascalPerSecond).ToString("s2"));
-                Assert.Equal("0.123 Pa/s", new PressureChangeRate(0.123456, PressureChangeRateUnit.PascalPerSecond).ToString("s3"));
-                Assert.Equal("0.1235 Pa/s", new PressureChangeRate(0.123456, PressureChangeRateUnit.PascalPerSecond).ToString("s4"));
+                Assert.Equal("0.1 Pa/s", new PressureChangeRate(0.123456m, PressureChangeRateUnit.PascalPerSecond).ToString("s1"));
+                Assert.Equal("0.12 Pa/s", new PressureChangeRate(0.123456m, PressureChangeRateUnit.PascalPerSecond).ToString("s2"));
+                Assert.Equal("0.123 Pa/s", new PressureChangeRate(0.123456m, PressureChangeRateUnit.PascalPerSecond).ToString("s3"));
+                Assert.Equal("0.1235 Pa/s", new PressureChangeRate(0.123456m, PressureChangeRateUnit.PascalPerSecond).ToString("s4"));
             }
             finally
             {
@@ -473,10 +447,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 Pa/s", new PressureChangeRate(0.123456, PressureChangeRateUnit.PascalPerSecond).ToString("s1", culture));
-            Assert.Equal("0.12 Pa/s", new PressureChangeRate(0.123456, PressureChangeRateUnit.PascalPerSecond).ToString("s2", culture));
-            Assert.Equal("0.123 Pa/s", new PressureChangeRate(0.123456, PressureChangeRateUnit.PascalPerSecond).ToString("s3", culture));
-            Assert.Equal("0.1235 Pa/s", new PressureChangeRate(0.123456, PressureChangeRateUnit.PascalPerSecond).ToString("s4", culture));
+            Assert.Equal("0.1 Pa/s", new PressureChangeRate(0.123456m, PressureChangeRateUnit.PascalPerSecond).ToString("s1", culture));
+            Assert.Equal("0.12 Pa/s", new PressureChangeRate(0.123456m, PressureChangeRateUnit.PascalPerSecond).ToString("s2", culture));
+            Assert.Equal("0.123 Pa/s", new PressureChangeRate(0.123456m, PressureChangeRateUnit.PascalPerSecond).ToString("s3", culture));
+            Assert.Equal("0.1235 Pa/s", new PressureChangeRate(0.123456m, PressureChangeRateUnit.PascalPerSecond).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -654,7 +628,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = PressureChangeRate.FromPascalsPerSecond(value);
             Assert.Equal(PressureChangeRate.FromPascalsPerSecond(-value), -quantity);

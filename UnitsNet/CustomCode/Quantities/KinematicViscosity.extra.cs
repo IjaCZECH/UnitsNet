@@ -16,13 +16,13 @@ namespace UnitsNet
         /// <summary>Get <see cref="Area"/> from <see cref="KinematicViscosity"/> times <see cref="TimeSpan"/>.</summary>
         public static Area operator *(KinematicViscosity kinematicViscosity, TimeSpan timeSpan)
         {
-            return Area.FromSquareMeters(kinematicViscosity.SquareMetersPerSecond * timeSpan.TotalSeconds);
+            return Area.FromSquareMeters(kinematicViscosity.SquareMetersPerSecond * (decimal)timeSpan.TotalSeconds);
         }
 
         /// <summary>Get <see cref="Area"/> from <see cref="TimeSpan"/> times <see cref="KinematicViscosity"/>.</summary>
         public static Area operator *(TimeSpan timeSpan, KinematicViscosity kinematicViscosity)
         {
-            return Area.FromSquareMeters(kinematicViscosity.SquareMetersPerSecond * timeSpan.TotalSeconds);
+            return Area.FromSquareMeters(kinematicViscosity.SquareMetersPerSecond * (decimal)timeSpan.TotalSeconds);
         }
 
         /// <summary>Get <see cref="Area"/> from <see cref="KinematicViscosity"/> times <see cref="Duration"/>.</summary>

@@ -37,44 +37,44 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class AmountOfSubstanceTestsBase : QuantityTestsBase
     {
-        protected abstract double CentimolesInOneMole { get; }
-        protected abstract double CentipoundMolesInOneMole { get; }
-        protected abstract double DecimolesInOneMole { get; }
-        protected abstract double DecipoundMolesInOneMole { get; }
-        protected abstract double KilomolesInOneMole { get; }
-        protected abstract double KilopoundMolesInOneMole { get; }
-        protected abstract double MegamolesInOneMole { get; }
-        protected abstract double MicromolesInOneMole { get; }
-        protected abstract double MicropoundMolesInOneMole { get; }
-        protected abstract double MillimolesInOneMole { get; }
-        protected abstract double MillipoundMolesInOneMole { get; }
-        protected abstract double MolesInOneMole { get; }
-        protected abstract double NanomolesInOneMole { get; }
-        protected abstract double NanopoundMolesInOneMole { get; }
-        protected abstract double PoundMolesInOneMole { get; }
+        protected abstract decimal CentimolesInOneMole { get; }
+        protected abstract decimal CentipoundMolesInOneMole { get; }
+        protected abstract decimal DecimolesInOneMole { get; }
+        protected abstract decimal DecipoundMolesInOneMole { get; }
+        protected abstract decimal KilomolesInOneMole { get; }
+        protected abstract decimal KilopoundMolesInOneMole { get; }
+        protected abstract decimal MegamolesInOneMole { get; }
+        protected abstract decimal MicromolesInOneMole { get; }
+        protected abstract decimal MicropoundMolesInOneMole { get; }
+        protected abstract decimal MillimolesInOneMole { get; }
+        protected abstract decimal MillipoundMolesInOneMole { get; }
+        protected abstract decimal MolesInOneMole { get; }
+        protected abstract decimal NanomolesInOneMole { get; }
+        protected abstract decimal NanopoundMolesInOneMole { get; }
+        protected abstract decimal PoundMolesInOneMole { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double CentimolesTolerance { get { return 1e-5; } }
-        protected virtual double CentipoundMolesTolerance { get { return 1e-5; } }
-        protected virtual double DecimolesTolerance { get { return 1e-5; } }
-        protected virtual double DecipoundMolesTolerance { get { return 1e-5; } }
-        protected virtual double KilomolesTolerance { get { return 1e-5; } }
-        protected virtual double KilopoundMolesTolerance { get { return 1e-5; } }
-        protected virtual double MegamolesTolerance { get { return 1e-5; } }
-        protected virtual double MicromolesTolerance { get { return 1e-5; } }
-        protected virtual double MicropoundMolesTolerance { get { return 1e-5; } }
-        protected virtual double MillimolesTolerance { get { return 1e-5; } }
-        protected virtual double MillipoundMolesTolerance { get { return 1e-5; } }
-        protected virtual double MolesTolerance { get { return 1e-5; } }
-        protected virtual double NanomolesTolerance { get { return 1e-5; } }
-        protected virtual double NanopoundMolesTolerance { get { return 1e-5; } }
-        protected virtual double PoundMolesTolerance { get { return 1e-5; } }
+        protected virtual decimal CentimolesTolerance { get { return 1e-5; } }
+        protected virtual decimal CentipoundMolesTolerance { get { return 1e-5; } }
+        protected virtual decimal DecimolesTolerance { get { return 1e-5; } }
+        protected virtual decimal DecipoundMolesTolerance { get { return 1e-5; } }
+        protected virtual decimal KilomolesTolerance { get { return 1e-5; } }
+        protected virtual decimal KilopoundMolesTolerance { get { return 1e-5; } }
+        protected virtual decimal MegamolesTolerance { get { return 1e-5; } }
+        protected virtual decimal MicromolesTolerance { get { return 1e-5; } }
+        protected virtual decimal MicropoundMolesTolerance { get { return 1e-5; } }
+        protected virtual decimal MillimolesTolerance { get { return 1e-5; } }
+        protected virtual decimal MillipoundMolesTolerance { get { return 1e-5; } }
+        protected virtual decimal MolesTolerance { get { return 1e-5; } }
+        protected virtual decimal NanomolesTolerance { get { return 1e-5; } }
+        protected virtual decimal NanopoundMolesTolerance { get { return 1e-5; } }
+        protected virtual decimal PoundMolesTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new AmountOfSubstance((double)0.0, AmountOfSubstanceUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new AmountOfSubstance((decimal)0.0, AmountOfSubstanceUnit.Undefined));
         }
 
         [Fact]
@@ -85,19 +85,6 @@ namespace UnitsNet.Tests
             Assert.Equal(AmountOfSubstanceUnit.Mole, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new AmountOfSubstance(double.PositiveInfinity, AmountOfSubstanceUnit.Mole));
-            Assert.Throws<ArgumentException>(() => new AmountOfSubstance(double.NegativeInfinity, AmountOfSubstanceUnit.Mole));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new AmountOfSubstance(double.NaN, AmountOfSubstanceUnit.Mole));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -228,19 +215,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromMoles_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => AmountOfSubstance.FromMoles(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => AmountOfSubstance.FromMoles(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromMoles_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => AmountOfSubstance.FromMoles(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var mole = AmountOfSubstance.FromMoles(1);
@@ -269,7 +243,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -284,63 +258,63 @@ namespace UnitsNet.Tests
             var mole = AmountOfSubstance.FromMoles(1);
 
             var centimoleQuantity = mole.ToUnit(AmountOfSubstanceUnit.Centimole);
-            AssertEx.EqualTolerance(CentimolesInOneMole, (double)centimoleQuantity.Value, CentimolesTolerance);
+            AssertEx.EqualTolerance(CentimolesInOneMole, (decimal)centimoleQuantity.Value, CentimolesTolerance);
             Assert.Equal(AmountOfSubstanceUnit.Centimole, centimoleQuantity.Unit);
 
             var centipoundmoleQuantity = mole.ToUnit(AmountOfSubstanceUnit.CentipoundMole);
-            AssertEx.EqualTolerance(CentipoundMolesInOneMole, (double)centipoundmoleQuantity.Value, CentipoundMolesTolerance);
+            AssertEx.EqualTolerance(CentipoundMolesInOneMole, (decimal)centipoundmoleQuantity.Value, CentipoundMolesTolerance);
             Assert.Equal(AmountOfSubstanceUnit.CentipoundMole, centipoundmoleQuantity.Unit);
 
             var decimoleQuantity = mole.ToUnit(AmountOfSubstanceUnit.Decimole);
-            AssertEx.EqualTolerance(DecimolesInOneMole, (double)decimoleQuantity.Value, DecimolesTolerance);
+            AssertEx.EqualTolerance(DecimolesInOneMole, (decimal)decimoleQuantity.Value, DecimolesTolerance);
             Assert.Equal(AmountOfSubstanceUnit.Decimole, decimoleQuantity.Unit);
 
             var decipoundmoleQuantity = mole.ToUnit(AmountOfSubstanceUnit.DecipoundMole);
-            AssertEx.EqualTolerance(DecipoundMolesInOneMole, (double)decipoundmoleQuantity.Value, DecipoundMolesTolerance);
+            AssertEx.EqualTolerance(DecipoundMolesInOneMole, (decimal)decipoundmoleQuantity.Value, DecipoundMolesTolerance);
             Assert.Equal(AmountOfSubstanceUnit.DecipoundMole, decipoundmoleQuantity.Unit);
 
             var kilomoleQuantity = mole.ToUnit(AmountOfSubstanceUnit.Kilomole);
-            AssertEx.EqualTolerance(KilomolesInOneMole, (double)kilomoleQuantity.Value, KilomolesTolerance);
+            AssertEx.EqualTolerance(KilomolesInOneMole, (decimal)kilomoleQuantity.Value, KilomolesTolerance);
             Assert.Equal(AmountOfSubstanceUnit.Kilomole, kilomoleQuantity.Unit);
 
             var kilopoundmoleQuantity = mole.ToUnit(AmountOfSubstanceUnit.KilopoundMole);
-            AssertEx.EqualTolerance(KilopoundMolesInOneMole, (double)kilopoundmoleQuantity.Value, KilopoundMolesTolerance);
+            AssertEx.EqualTolerance(KilopoundMolesInOneMole, (decimal)kilopoundmoleQuantity.Value, KilopoundMolesTolerance);
             Assert.Equal(AmountOfSubstanceUnit.KilopoundMole, kilopoundmoleQuantity.Unit);
 
             var megamoleQuantity = mole.ToUnit(AmountOfSubstanceUnit.Megamole);
-            AssertEx.EqualTolerance(MegamolesInOneMole, (double)megamoleQuantity.Value, MegamolesTolerance);
+            AssertEx.EqualTolerance(MegamolesInOneMole, (decimal)megamoleQuantity.Value, MegamolesTolerance);
             Assert.Equal(AmountOfSubstanceUnit.Megamole, megamoleQuantity.Unit);
 
             var micromoleQuantity = mole.ToUnit(AmountOfSubstanceUnit.Micromole);
-            AssertEx.EqualTolerance(MicromolesInOneMole, (double)micromoleQuantity.Value, MicromolesTolerance);
+            AssertEx.EqualTolerance(MicromolesInOneMole, (decimal)micromoleQuantity.Value, MicromolesTolerance);
             Assert.Equal(AmountOfSubstanceUnit.Micromole, micromoleQuantity.Unit);
 
             var micropoundmoleQuantity = mole.ToUnit(AmountOfSubstanceUnit.MicropoundMole);
-            AssertEx.EqualTolerance(MicropoundMolesInOneMole, (double)micropoundmoleQuantity.Value, MicropoundMolesTolerance);
+            AssertEx.EqualTolerance(MicropoundMolesInOneMole, (decimal)micropoundmoleQuantity.Value, MicropoundMolesTolerance);
             Assert.Equal(AmountOfSubstanceUnit.MicropoundMole, micropoundmoleQuantity.Unit);
 
             var millimoleQuantity = mole.ToUnit(AmountOfSubstanceUnit.Millimole);
-            AssertEx.EqualTolerance(MillimolesInOneMole, (double)millimoleQuantity.Value, MillimolesTolerance);
+            AssertEx.EqualTolerance(MillimolesInOneMole, (decimal)millimoleQuantity.Value, MillimolesTolerance);
             Assert.Equal(AmountOfSubstanceUnit.Millimole, millimoleQuantity.Unit);
 
             var millipoundmoleQuantity = mole.ToUnit(AmountOfSubstanceUnit.MillipoundMole);
-            AssertEx.EqualTolerance(MillipoundMolesInOneMole, (double)millipoundmoleQuantity.Value, MillipoundMolesTolerance);
+            AssertEx.EqualTolerance(MillipoundMolesInOneMole, (decimal)millipoundmoleQuantity.Value, MillipoundMolesTolerance);
             Assert.Equal(AmountOfSubstanceUnit.MillipoundMole, millipoundmoleQuantity.Unit);
 
             var moleQuantity = mole.ToUnit(AmountOfSubstanceUnit.Mole);
-            AssertEx.EqualTolerance(MolesInOneMole, (double)moleQuantity.Value, MolesTolerance);
+            AssertEx.EqualTolerance(MolesInOneMole, (decimal)moleQuantity.Value, MolesTolerance);
             Assert.Equal(AmountOfSubstanceUnit.Mole, moleQuantity.Unit);
 
             var nanomoleQuantity = mole.ToUnit(AmountOfSubstanceUnit.Nanomole);
-            AssertEx.EqualTolerance(NanomolesInOneMole, (double)nanomoleQuantity.Value, NanomolesTolerance);
+            AssertEx.EqualTolerance(NanomolesInOneMole, (decimal)nanomoleQuantity.Value, NanomolesTolerance);
             Assert.Equal(AmountOfSubstanceUnit.Nanomole, nanomoleQuantity.Unit);
 
             var nanopoundmoleQuantity = mole.ToUnit(AmountOfSubstanceUnit.NanopoundMole);
-            AssertEx.EqualTolerance(NanopoundMolesInOneMole, (double)nanopoundmoleQuantity.Value, NanopoundMolesTolerance);
+            AssertEx.EqualTolerance(NanopoundMolesInOneMole, (decimal)nanopoundmoleQuantity.Value, NanopoundMolesTolerance);
             Assert.Equal(AmountOfSubstanceUnit.NanopoundMole, nanopoundmoleQuantity.Unit);
 
             var poundmoleQuantity = mole.ToUnit(AmountOfSubstanceUnit.PoundMole);
-            AssertEx.EqualTolerance(PoundMolesInOneMole, (double)poundmoleQuantity.Value, PoundMolesTolerance);
+            AssertEx.EqualTolerance(PoundMolesInOneMole, (decimal)poundmoleQuantity.Value, PoundMolesTolerance);
             Assert.Equal(AmountOfSubstanceUnit.PoundMole, poundmoleQuantity.Unit);
         }
 
@@ -578,10 +552,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 mol", new AmountOfSubstance(0.123456, AmountOfSubstanceUnit.Mole).ToString("s1"));
-                Assert.Equal("0.12 mol", new AmountOfSubstance(0.123456, AmountOfSubstanceUnit.Mole).ToString("s2"));
-                Assert.Equal("0.123 mol", new AmountOfSubstance(0.123456, AmountOfSubstanceUnit.Mole).ToString("s3"));
-                Assert.Equal("0.1235 mol", new AmountOfSubstance(0.123456, AmountOfSubstanceUnit.Mole).ToString("s4"));
+                Assert.Equal("0.1 mol", new AmountOfSubstance(0.123456m, AmountOfSubstanceUnit.Mole).ToString("s1"));
+                Assert.Equal("0.12 mol", new AmountOfSubstance(0.123456m, AmountOfSubstanceUnit.Mole).ToString("s2"));
+                Assert.Equal("0.123 mol", new AmountOfSubstance(0.123456m, AmountOfSubstanceUnit.Mole).ToString("s3"));
+                Assert.Equal("0.1235 mol", new AmountOfSubstance(0.123456m, AmountOfSubstanceUnit.Mole).ToString("s4"));
             }
             finally
             {
@@ -593,10 +567,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 mol", new AmountOfSubstance(0.123456, AmountOfSubstanceUnit.Mole).ToString("s1", culture));
-            Assert.Equal("0.12 mol", new AmountOfSubstance(0.123456, AmountOfSubstanceUnit.Mole).ToString("s2", culture));
-            Assert.Equal("0.123 mol", new AmountOfSubstance(0.123456, AmountOfSubstanceUnit.Mole).ToString("s3", culture));
-            Assert.Equal("0.1235 mol", new AmountOfSubstance(0.123456, AmountOfSubstanceUnit.Mole).ToString("s4", culture));
+            Assert.Equal("0.1 mol", new AmountOfSubstance(0.123456m, AmountOfSubstanceUnit.Mole).ToString("s1", culture));
+            Assert.Equal("0.12 mol", new AmountOfSubstance(0.123456m, AmountOfSubstanceUnit.Mole).ToString("s2", culture));
+            Assert.Equal("0.123 mol", new AmountOfSubstance(0.123456m, AmountOfSubstanceUnit.Mole).ToString("s3", culture));
+            Assert.Equal("0.1235 mol", new AmountOfSubstance(0.123456m, AmountOfSubstanceUnit.Mole).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -774,7 +748,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = AmountOfSubstance.FromMoles(value);
             Assert.Equal(AmountOfSubstance.FromMoles(-value), -quantity);

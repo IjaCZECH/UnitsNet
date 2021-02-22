@@ -37,38 +37,38 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class MassFluxTestsBase : QuantityTestsBase
     {
-        protected abstract double GramsPerHourPerSquareCentimeterInOneKilogramPerSecondPerSquareMeter { get; }
-        protected abstract double GramsPerHourPerSquareMeterInOneKilogramPerSecondPerSquareMeter { get; }
-        protected abstract double GramsPerHourPerSquareMillimeterInOneKilogramPerSecondPerSquareMeter { get; }
-        protected abstract double GramsPerSecondPerSquareCentimeterInOneKilogramPerSecondPerSquareMeter { get; }
-        protected abstract double GramsPerSecondPerSquareMeterInOneKilogramPerSecondPerSquareMeter { get; }
-        protected abstract double GramsPerSecondPerSquareMillimeterInOneKilogramPerSecondPerSquareMeter { get; }
-        protected abstract double KilogramsPerHourPerSquareCentimeterInOneKilogramPerSecondPerSquareMeter { get; }
-        protected abstract double KilogramsPerHourPerSquareMeterInOneKilogramPerSecondPerSquareMeter { get; }
-        protected abstract double KilogramsPerHourPerSquareMillimeterInOneKilogramPerSecondPerSquareMeter { get; }
-        protected abstract double KilogramsPerSecondPerSquareCentimeterInOneKilogramPerSecondPerSquareMeter { get; }
-        protected abstract double KilogramsPerSecondPerSquareMeterInOneKilogramPerSecondPerSquareMeter { get; }
-        protected abstract double KilogramsPerSecondPerSquareMillimeterInOneKilogramPerSecondPerSquareMeter { get; }
+        protected abstract decimal GramsPerHourPerSquareCentimeterInOneKilogramPerSecondPerSquareMeter { get; }
+        protected abstract decimal GramsPerHourPerSquareMeterInOneKilogramPerSecondPerSquareMeter { get; }
+        protected abstract decimal GramsPerHourPerSquareMillimeterInOneKilogramPerSecondPerSquareMeter { get; }
+        protected abstract decimal GramsPerSecondPerSquareCentimeterInOneKilogramPerSecondPerSquareMeter { get; }
+        protected abstract decimal GramsPerSecondPerSquareMeterInOneKilogramPerSecondPerSquareMeter { get; }
+        protected abstract decimal GramsPerSecondPerSquareMillimeterInOneKilogramPerSecondPerSquareMeter { get; }
+        protected abstract decimal KilogramsPerHourPerSquareCentimeterInOneKilogramPerSecondPerSquareMeter { get; }
+        protected abstract decimal KilogramsPerHourPerSquareMeterInOneKilogramPerSecondPerSquareMeter { get; }
+        protected abstract decimal KilogramsPerHourPerSquareMillimeterInOneKilogramPerSecondPerSquareMeter { get; }
+        protected abstract decimal KilogramsPerSecondPerSquareCentimeterInOneKilogramPerSecondPerSquareMeter { get; }
+        protected abstract decimal KilogramsPerSecondPerSquareMeterInOneKilogramPerSecondPerSquareMeter { get; }
+        protected abstract decimal KilogramsPerSecondPerSquareMillimeterInOneKilogramPerSecondPerSquareMeter { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double GramsPerHourPerSquareCentimeterTolerance { get { return 1e-5; } }
-        protected virtual double GramsPerHourPerSquareMeterTolerance { get { return 1e-5; } }
-        protected virtual double GramsPerHourPerSquareMillimeterTolerance { get { return 1e-5; } }
-        protected virtual double GramsPerSecondPerSquareCentimeterTolerance { get { return 1e-5; } }
-        protected virtual double GramsPerSecondPerSquareMeterTolerance { get { return 1e-5; } }
-        protected virtual double GramsPerSecondPerSquareMillimeterTolerance { get { return 1e-5; } }
-        protected virtual double KilogramsPerHourPerSquareCentimeterTolerance { get { return 1e-5; } }
-        protected virtual double KilogramsPerHourPerSquareMeterTolerance { get { return 1e-5; } }
-        protected virtual double KilogramsPerHourPerSquareMillimeterTolerance { get { return 1e-5; } }
-        protected virtual double KilogramsPerSecondPerSquareCentimeterTolerance { get { return 1e-5; } }
-        protected virtual double KilogramsPerSecondPerSquareMeterTolerance { get { return 1e-5; } }
-        protected virtual double KilogramsPerSecondPerSquareMillimeterTolerance { get { return 1e-5; } }
+        protected virtual decimal GramsPerHourPerSquareCentimeterTolerance { get { return 1e-5; } }
+        protected virtual decimal GramsPerHourPerSquareMeterTolerance { get { return 1e-5; } }
+        protected virtual decimal GramsPerHourPerSquareMillimeterTolerance { get { return 1e-5; } }
+        protected virtual decimal GramsPerSecondPerSquareCentimeterTolerance { get { return 1e-5; } }
+        protected virtual decimal GramsPerSecondPerSquareMeterTolerance { get { return 1e-5; } }
+        protected virtual decimal GramsPerSecondPerSquareMillimeterTolerance { get { return 1e-5; } }
+        protected virtual decimal KilogramsPerHourPerSquareCentimeterTolerance { get { return 1e-5; } }
+        protected virtual decimal KilogramsPerHourPerSquareMeterTolerance { get { return 1e-5; } }
+        protected virtual decimal KilogramsPerHourPerSquareMillimeterTolerance { get { return 1e-5; } }
+        protected virtual decimal KilogramsPerSecondPerSquareCentimeterTolerance { get { return 1e-5; } }
+        protected virtual decimal KilogramsPerSecondPerSquareMeterTolerance { get { return 1e-5; } }
+        protected virtual decimal KilogramsPerSecondPerSquareMillimeterTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new MassFlux((double)0.0, MassFluxUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new MassFlux((decimal)0.0, MassFluxUnit.Undefined));
         }
 
         [Fact]
@@ -79,19 +79,6 @@ namespace UnitsNet.Tests
             Assert.Equal(MassFluxUnit.KilogramPerSecondPerSquareMeter, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new MassFlux(double.PositiveInfinity, MassFluxUnit.KilogramPerSecondPerSquareMeter));
-            Assert.Throws<ArgumentException>(() => new MassFlux(double.NegativeInfinity, MassFluxUnit.KilogramPerSecondPerSquareMeter));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new MassFlux(double.NaN, MassFluxUnit.KilogramPerSecondPerSquareMeter));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -207,19 +194,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromKilogramsPerSecondPerSquareMeter_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => MassFlux.FromKilogramsPerSecondPerSquareMeter(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => MassFlux.FromKilogramsPerSecondPerSquareMeter(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromKilogramsPerSecondPerSquareMeter_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => MassFlux.FromKilogramsPerSecondPerSquareMeter(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var kilogrampersecondpersquaremeter = MassFlux.FromKilogramsPerSecondPerSquareMeter(1);
@@ -245,7 +219,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -260,51 +234,51 @@ namespace UnitsNet.Tests
             var kilogrampersecondpersquaremeter = MassFlux.FromKilogramsPerSecondPerSquareMeter(1);
 
             var gramperhourpersquarecentimeterQuantity = kilogrampersecondpersquaremeter.ToUnit(MassFluxUnit.GramPerHourPerSquareCentimeter);
-            AssertEx.EqualTolerance(GramsPerHourPerSquareCentimeterInOneKilogramPerSecondPerSquareMeter, (double)gramperhourpersquarecentimeterQuantity.Value, GramsPerHourPerSquareCentimeterTolerance);
+            AssertEx.EqualTolerance(GramsPerHourPerSquareCentimeterInOneKilogramPerSecondPerSquareMeter, (decimal)gramperhourpersquarecentimeterQuantity.Value, GramsPerHourPerSquareCentimeterTolerance);
             Assert.Equal(MassFluxUnit.GramPerHourPerSquareCentimeter, gramperhourpersquarecentimeterQuantity.Unit);
 
             var gramperhourpersquaremeterQuantity = kilogrampersecondpersquaremeter.ToUnit(MassFluxUnit.GramPerHourPerSquareMeter);
-            AssertEx.EqualTolerance(GramsPerHourPerSquareMeterInOneKilogramPerSecondPerSquareMeter, (double)gramperhourpersquaremeterQuantity.Value, GramsPerHourPerSquareMeterTolerance);
+            AssertEx.EqualTolerance(GramsPerHourPerSquareMeterInOneKilogramPerSecondPerSquareMeter, (decimal)gramperhourpersquaremeterQuantity.Value, GramsPerHourPerSquareMeterTolerance);
             Assert.Equal(MassFluxUnit.GramPerHourPerSquareMeter, gramperhourpersquaremeterQuantity.Unit);
 
             var gramperhourpersquaremillimeterQuantity = kilogrampersecondpersquaremeter.ToUnit(MassFluxUnit.GramPerHourPerSquareMillimeter);
-            AssertEx.EqualTolerance(GramsPerHourPerSquareMillimeterInOneKilogramPerSecondPerSquareMeter, (double)gramperhourpersquaremillimeterQuantity.Value, GramsPerHourPerSquareMillimeterTolerance);
+            AssertEx.EqualTolerance(GramsPerHourPerSquareMillimeterInOneKilogramPerSecondPerSquareMeter, (decimal)gramperhourpersquaremillimeterQuantity.Value, GramsPerHourPerSquareMillimeterTolerance);
             Assert.Equal(MassFluxUnit.GramPerHourPerSquareMillimeter, gramperhourpersquaremillimeterQuantity.Unit);
 
             var grampersecondpersquarecentimeterQuantity = kilogrampersecondpersquaremeter.ToUnit(MassFluxUnit.GramPerSecondPerSquareCentimeter);
-            AssertEx.EqualTolerance(GramsPerSecondPerSquareCentimeterInOneKilogramPerSecondPerSquareMeter, (double)grampersecondpersquarecentimeterQuantity.Value, GramsPerSecondPerSquareCentimeterTolerance);
+            AssertEx.EqualTolerance(GramsPerSecondPerSquareCentimeterInOneKilogramPerSecondPerSquareMeter, (decimal)grampersecondpersquarecentimeterQuantity.Value, GramsPerSecondPerSquareCentimeterTolerance);
             Assert.Equal(MassFluxUnit.GramPerSecondPerSquareCentimeter, grampersecondpersquarecentimeterQuantity.Unit);
 
             var grampersecondpersquaremeterQuantity = kilogrampersecondpersquaremeter.ToUnit(MassFluxUnit.GramPerSecondPerSquareMeter);
-            AssertEx.EqualTolerance(GramsPerSecondPerSquareMeterInOneKilogramPerSecondPerSquareMeter, (double)grampersecondpersquaremeterQuantity.Value, GramsPerSecondPerSquareMeterTolerance);
+            AssertEx.EqualTolerance(GramsPerSecondPerSquareMeterInOneKilogramPerSecondPerSquareMeter, (decimal)grampersecondpersquaremeterQuantity.Value, GramsPerSecondPerSquareMeterTolerance);
             Assert.Equal(MassFluxUnit.GramPerSecondPerSquareMeter, grampersecondpersquaremeterQuantity.Unit);
 
             var grampersecondpersquaremillimeterQuantity = kilogrampersecondpersquaremeter.ToUnit(MassFluxUnit.GramPerSecondPerSquareMillimeter);
-            AssertEx.EqualTolerance(GramsPerSecondPerSquareMillimeterInOneKilogramPerSecondPerSquareMeter, (double)grampersecondpersquaremillimeterQuantity.Value, GramsPerSecondPerSquareMillimeterTolerance);
+            AssertEx.EqualTolerance(GramsPerSecondPerSquareMillimeterInOneKilogramPerSecondPerSquareMeter, (decimal)grampersecondpersquaremillimeterQuantity.Value, GramsPerSecondPerSquareMillimeterTolerance);
             Assert.Equal(MassFluxUnit.GramPerSecondPerSquareMillimeter, grampersecondpersquaremillimeterQuantity.Unit);
 
             var kilogramperhourpersquarecentimeterQuantity = kilogrampersecondpersquaremeter.ToUnit(MassFluxUnit.KilogramPerHourPerSquareCentimeter);
-            AssertEx.EqualTolerance(KilogramsPerHourPerSquareCentimeterInOneKilogramPerSecondPerSquareMeter, (double)kilogramperhourpersquarecentimeterQuantity.Value, KilogramsPerHourPerSquareCentimeterTolerance);
+            AssertEx.EqualTolerance(KilogramsPerHourPerSquareCentimeterInOneKilogramPerSecondPerSquareMeter, (decimal)kilogramperhourpersquarecentimeterQuantity.Value, KilogramsPerHourPerSquareCentimeterTolerance);
             Assert.Equal(MassFluxUnit.KilogramPerHourPerSquareCentimeter, kilogramperhourpersquarecentimeterQuantity.Unit);
 
             var kilogramperhourpersquaremeterQuantity = kilogrampersecondpersquaremeter.ToUnit(MassFluxUnit.KilogramPerHourPerSquareMeter);
-            AssertEx.EqualTolerance(KilogramsPerHourPerSquareMeterInOneKilogramPerSecondPerSquareMeter, (double)kilogramperhourpersquaremeterQuantity.Value, KilogramsPerHourPerSquareMeterTolerance);
+            AssertEx.EqualTolerance(KilogramsPerHourPerSquareMeterInOneKilogramPerSecondPerSquareMeter, (decimal)kilogramperhourpersquaremeterQuantity.Value, KilogramsPerHourPerSquareMeterTolerance);
             Assert.Equal(MassFluxUnit.KilogramPerHourPerSquareMeter, kilogramperhourpersquaremeterQuantity.Unit);
 
             var kilogramperhourpersquaremillimeterQuantity = kilogrampersecondpersquaremeter.ToUnit(MassFluxUnit.KilogramPerHourPerSquareMillimeter);
-            AssertEx.EqualTolerance(KilogramsPerHourPerSquareMillimeterInOneKilogramPerSecondPerSquareMeter, (double)kilogramperhourpersquaremillimeterQuantity.Value, KilogramsPerHourPerSquareMillimeterTolerance);
+            AssertEx.EqualTolerance(KilogramsPerHourPerSquareMillimeterInOneKilogramPerSecondPerSquareMeter, (decimal)kilogramperhourpersquaremillimeterQuantity.Value, KilogramsPerHourPerSquareMillimeterTolerance);
             Assert.Equal(MassFluxUnit.KilogramPerHourPerSquareMillimeter, kilogramperhourpersquaremillimeterQuantity.Unit);
 
             var kilogrampersecondpersquarecentimeterQuantity = kilogrampersecondpersquaremeter.ToUnit(MassFluxUnit.KilogramPerSecondPerSquareCentimeter);
-            AssertEx.EqualTolerance(KilogramsPerSecondPerSquareCentimeterInOneKilogramPerSecondPerSquareMeter, (double)kilogrampersecondpersquarecentimeterQuantity.Value, KilogramsPerSecondPerSquareCentimeterTolerance);
+            AssertEx.EqualTolerance(KilogramsPerSecondPerSquareCentimeterInOneKilogramPerSecondPerSquareMeter, (decimal)kilogrampersecondpersquarecentimeterQuantity.Value, KilogramsPerSecondPerSquareCentimeterTolerance);
             Assert.Equal(MassFluxUnit.KilogramPerSecondPerSquareCentimeter, kilogrampersecondpersquarecentimeterQuantity.Unit);
 
             var kilogrampersecondpersquaremeterQuantity = kilogrampersecondpersquaremeter.ToUnit(MassFluxUnit.KilogramPerSecondPerSquareMeter);
-            AssertEx.EqualTolerance(KilogramsPerSecondPerSquareMeterInOneKilogramPerSecondPerSquareMeter, (double)kilogrampersecondpersquaremeterQuantity.Value, KilogramsPerSecondPerSquareMeterTolerance);
+            AssertEx.EqualTolerance(KilogramsPerSecondPerSquareMeterInOneKilogramPerSecondPerSquareMeter, (decimal)kilogrampersecondpersquaremeterQuantity.Value, KilogramsPerSecondPerSquareMeterTolerance);
             Assert.Equal(MassFluxUnit.KilogramPerSecondPerSquareMeter, kilogrampersecondpersquaremeterQuantity.Unit);
 
             var kilogrampersecondpersquaremillimeterQuantity = kilogrampersecondpersquaremeter.ToUnit(MassFluxUnit.KilogramPerSecondPerSquareMillimeter);
-            AssertEx.EqualTolerance(KilogramsPerSecondPerSquareMillimeterInOneKilogramPerSecondPerSquareMeter, (double)kilogrampersecondpersquaremillimeterQuantity.Value, KilogramsPerSecondPerSquareMillimeterTolerance);
+            AssertEx.EqualTolerance(KilogramsPerSecondPerSquareMillimeterInOneKilogramPerSecondPerSquareMeter, (decimal)kilogrampersecondpersquaremillimeterQuantity.Value, KilogramsPerSecondPerSquareMillimeterTolerance);
             Assert.Equal(MassFluxUnit.KilogramPerSecondPerSquareMillimeter, kilogrampersecondpersquaremillimeterQuantity.Unit);
         }
 
@@ -533,10 +507,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 kg·s⁻¹·m⁻²", new MassFlux(0.123456, MassFluxUnit.KilogramPerSecondPerSquareMeter).ToString("s1"));
-                Assert.Equal("0.12 kg·s⁻¹·m⁻²", new MassFlux(0.123456, MassFluxUnit.KilogramPerSecondPerSquareMeter).ToString("s2"));
-                Assert.Equal("0.123 kg·s⁻¹·m⁻²", new MassFlux(0.123456, MassFluxUnit.KilogramPerSecondPerSquareMeter).ToString("s3"));
-                Assert.Equal("0.1235 kg·s⁻¹·m⁻²", new MassFlux(0.123456, MassFluxUnit.KilogramPerSecondPerSquareMeter).ToString("s4"));
+                Assert.Equal("0.1 kg·s⁻¹·m⁻²", new MassFlux(0.123456m, MassFluxUnit.KilogramPerSecondPerSquareMeter).ToString("s1"));
+                Assert.Equal("0.12 kg·s⁻¹·m⁻²", new MassFlux(0.123456m, MassFluxUnit.KilogramPerSecondPerSquareMeter).ToString("s2"));
+                Assert.Equal("0.123 kg·s⁻¹·m⁻²", new MassFlux(0.123456m, MassFluxUnit.KilogramPerSecondPerSquareMeter).ToString("s3"));
+                Assert.Equal("0.1235 kg·s⁻¹·m⁻²", new MassFlux(0.123456m, MassFluxUnit.KilogramPerSecondPerSquareMeter).ToString("s4"));
             }
             finally
             {
@@ -548,10 +522,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 kg·s⁻¹·m⁻²", new MassFlux(0.123456, MassFluxUnit.KilogramPerSecondPerSquareMeter).ToString("s1", culture));
-            Assert.Equal("0.12 kg·s⁻¹·m⁻²", new MassFlux(0.123456, MassFluxUnit.KilogramPerSecondPerSquareMeter).ToString("s2", culture));
-            Assert.Equal("0.123 kg·s⁻¹·m⁻²", new MassFlux(0.123456, MassFluxUnit.KilogramPerSecondPerSquareMeter).ToString("s3", culture));
-            Assert.Equal("0.1235 kg·s⁻¹·m⁻²", new MassFlux(0.123456, MassFluxUnit.KilogramPerSecondPerSquareMeter).ToString("s4", culture));
+            Assert.Equal("0.1 kg·s⁻¹·m⁻²", new MassFlux(0.123456m, MassFluxUnit.KilogramPerSecondPerSquareMeter).ToString("s1", culture));
+            Assert.Equal("0.12 kg·s⁻¹·m⁻²", new MassFlux(0.123456m, MassFluxUnit.KilogramPerSecondPerSquareMeter).ToString("s2", culture));
+            Assert.Equal("0.123 kg·s⁻¹·m⁻²", new MassFlux(0.123456m, MassFluxUnit.KilogramPerSecondPerSquareMeter).ToString("s3", culture));
+            Assert.Equal("0.1235 kg·s⁻¹·m⁻²", new MassFlux(0.123456m, MassFluxUnit.KilogramPerSecondPerSquareMeter).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -729,7 +703,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = MassFlux.FromKilogramsPerSecondPerSquareMeter(value);
             Assert.Equal(MassFlux.FromKilogramsPerSecondPerSquareMeter(-value), -quantity);

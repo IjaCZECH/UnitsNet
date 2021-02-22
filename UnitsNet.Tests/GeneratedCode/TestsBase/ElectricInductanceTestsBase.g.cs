@@ -37,22 +37,22 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class ElectricInductanceTestsBase : QuantityTestsBase
     {
-        protected abstract double HenriesInOneHenry { get; }
-        protected abstract double MicrohenriesInOneHenry { get; }
-        protected abstract double MillihenriesInOneHenry { get; }
-        protected abstract double NanohenriesInOneHenry { get; }
+        protected abstract decimal HenriesInOneHenry { get; }
+        protected abstract decimal MicrohenriesInOneHenry { get; }
+        protected abstract decimal MillihenriesInOneHenry { get; }
+        protected abstract decimal NanohenriesInOneHenry { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double HenriesTolerance { get { return 1e-5; } }
-        protected virtual double MicrohenriesTolerance { get { return 1e-5; } }
-        protected virtual double MillihenriesTolerance { get { return 1e-5; } }
-        protected virtual double NanohenriesTolerance { get { return 1e-5; } }
+        protected virtual decimal HenriesTolerance { get { return 1e-5; } }
+        protected virtual decimal MicrohenriesTolerance { get { return 1e-5; } }
+        protected virtual decimal MillihenriesTolerance { get { return 1e-5; } }
+        protected virtual decimal NanohenriesTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new ElectricInductance((double)0.0, ElectricInductanceUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new ElectricInductance((decimal)0.0, ElectricInductanceUnit.Undefined));
         }
 
         [Fact]
@@ -63,19 +63,6 @@ namespace UnitsNet.Tests
             Assert.Equal(ElectricInductanceUnit.Henry, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new ElectricInductance(double.PositiveInfinity, ElectricInductanceUnit.Henry));
-            Assert.Throws<ArgumentException>(() => new ElectricInductance(double.NegativeInfinity, ElectricInductanceUnit.Henry));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new ElectricInductance(double.NaN, ElectricInductanceUnit.Henry));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -151,19 +138,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromHenries_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => ElectricInductance.FromHenries(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => ElectricInductance.FromHenries(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromHenries_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => ElectricInductance.FromHenries(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var henry = ElectricInductance.FromHenries(1);
@@ -181,7 +155,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -196,19 +170,19 @@ namespace UnitsNet.Tests
             var henry = ElectricInductance.FromHenries(1);
 
             var henryQuantity = henry.ToUnit(ElectricInductanceUnit.Henry);
-            AssertEx.EqualTolerance(HenriesInOneHenry, (double)henryQuantity.Value, HenriesTolerance);
+            AssertEx.EqualTolerance(HenriesInOneHenry, (decimal)henryQuantity.Value, HenriesTolerance);
             Assert.Equal(ElectricInductanceUnit.Henry, henryQuantity.Unit);
 
             var microhenryQuantity = henry.ToUnit(ElectricInductanceUnit.Microhenry);
-            AssertEx.EqualTolerance(MicrohenriesInOneHenry, (double)microhenryQuantity.Value, MicrohenriesTolerance);
+            AssertEx.EqualTolerance(MicrohenriesInOneHenry, (decimal)microhenryQuantity.Value, MicrohenriesTolerance);
             Assert.Equal(ElectricInductanceUnit.Microhenry, microhenryQuantity.Unit);
 
             var millihenryQuantity = henry.ToUnit(ElectricInductanceUnit.Millihenry);
-            AssertEx.EqualTolerance(MillihenriesInOneHenry, (double)millihenryQuantity.Value, MillihenriesTolerance);
+            AssertEx.EqualTolerance(MillihenriesInOneHenry, (decimal)millihenryQuantity.Value, MillihenriesTolerance);
             Assert.Equal(ElectricInductanceUnit.Millihenry, millihenryQuantity.Unit);
 
             var nanohenryQuantity = henry.ToUnit(ElectricInductanceUnit.Nanohenry);
-            AssertEx.EqualTolerance(NanohenriesInOneHenry, (double)nanohenryQuantity.Value, NanohenriesTolerance);
+            AssertEx.EqualTolerance(NanohenriesInOneHenry, (decimal)nanohenryQuantity.Value, NanohenriesTolerance);
             Assert.Equal(ElectricInductanceUnit.Nanohenry, nanohenryQuantity.Unit);
         }
 
@@ -413,10 +387,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 H", new ElectricInductance(0.123456, ElectricInductanceUnit.Henry).ToString("s1"));
-                Assert.Equal("0.12 H", new ElectricInductance(0.123456, ElectricInductanceUnit.Henry).ToString("s2"));
-                Assert.Equal("0.123 H", new ElectricInductance(0.123456, ElectricInductanceUnit.Henry).ToString("s3"));
-                Assert.Equal("0.1235 H", new ElectricInductance(0.123456, ElectricInductanceUnit.Henry).ToString("s4"));
+                Assert.Equal("0.1 H", new ElectricInductance(0.123456m, ElectricInductanceUnit.Henry).ToString("s1"));
+                Assert.Equal("0.12 H", new ElectricInductance(0.123456m, ElectricInductanceUnit.Henry).ToString("s2"));
+                Assert.Equal("0.123 H", new ElectricInductance(0.123456m, ElectricInductanceUnit.Henry).ToString("s3"));
+                Assert.Equal("0.1235 H", new ElectricInductance(0.123456m, ElectricInductanceUnit.Henry).ToString("s4"));
             }
             finally
             {
@@ -428,10 +402,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 H", new ElectricInductance(0.123456, ElectricInductanceUnit.Henry).ToString("s1", culture));
-            Assert.Equal("0.12 H", new ElectricInductance(0.123456, ElectricInductanceUnit.Henry).ToString("s2", culture));
-            Assert.Equal("0.123 H", new ElectricInductance(0.123456, ElectricInductanceUnit.Henry).ToString("s3", culture));
-            Assert.Equal("0.1235 H", new ElectricInductance(0.123456, ElectricInductanceUnit.Henry).ToString("s4", culture));
+            Assert.Equal("0.1 H", new ElectricInductance(0.123456m, ElectricInductanceUnit.Henry).ToString("s1", culture));
+            Assert.Equal("0.12 H", new ElectricInductance(0.123456m, ElectricInductanceUnit.Henry).ToString("s2", culture));
+            Assert.Equal("0.123 H", new ElectricInductance(0.123456m, ElectricInductanceUnit.Henry).ToString("s3", culture));
+            Assert.Equal("0.1235 H", new ElectricInductance(0.123456m, ElectricInductanceUnit.Henry).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -609,7 +583,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = ElectricInductance.FromHenries(value);
             Assert.Equal(ElectricInductance.FromHenries(-value), -quantity);

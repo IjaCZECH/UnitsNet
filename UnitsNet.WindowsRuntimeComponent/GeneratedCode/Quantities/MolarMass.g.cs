@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -71,12 +71,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private MolarMass(double value, MolarMassUnit unit)
+        private MolarMass(decimal value, MolarMassUnit unit)
         {
             if(unit == MolarMassUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -100,12 +100,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of MolarMass
         /// </summary>
-        public static MolarMass MaxValue { get; } = new MolarMass(double.MaxValue, BaseUnit);
+        public static MolarMass MaxValue { get; } = new MolarMass(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of MolarMass
         /// </summary>
-        public static MolarMass MinValue { get; } = new MolarMass(double.MinValue, BaseUnit);
+        public static MolarMass MinValue { get; } = new MolarMass(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -129,7 +129,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -158,62 +158,62 @@ namespace UnitsNet
         /// <summary>
         ///     Get MolarMass in CentigramsPerMole.
         /// </summary>
-        public double CentigramsPerMole => As(MolarMassUnit.CentigramPerMole);
+        public decimal CentigramsPerMole => As(MolarMassUnit.CentigramPerMole);
 
         /// <summary>
         ///     Get MolarMass in DecagramsPerMole.
         /// </summary>
-        public double DecagramsPerMole => As(MolarMassUnit.DecagramPerMole);
+        public decimal DecagramsPerMole => As(MolarMassUnit.DecagramPerMole);
 
         /// <summary>
         ///     Get MolarMass in DecigramsPerMole.
         /// </summary>
-        public double DecigramsPerMole => As(MolarMassUnit.DecigramPerMole);
+        public decimal DecigramsPerMole => As(MolarMassUnit.DecigramPerMole);
 
         /// <summary>
         ///     Get MolarMass in GramsPerMole.
         /// </summary>
-        public double GramsPerMole => As(MolarMassUnit.GramPerMole);
+        public decimal GramsPerMole => As(MolarMassUnit.GramPerMole);
 
         /// <summary>
         ///     Get MolarMass in HectogramsPerMole.
         /// </summary>
-        public double HectogramsPerMole => As(MolarMassUnit.HectogramPerMole);
+        public decimal HectogramsPerMole => As(MolarMassUnit.HectogramPerMole);
 
         /// <summary>
         ///     Get MolarMass in KilogramsPerMole.
         /// </summary>
-        public double KilogramsPerMole => As(MolarMassUnit.KilogramPerMole);
+        public decimal KilogramsPerMole => As(MolarMassUnit.KilogramPerMole);
 
         /// <summary>
         ///     Get MolarMass in KilopoundsPerMole.
         /// </summary>
-        public double KilopoundsPerMole => As(MolarMassUnit.KilopoundPerMole);
+        public decimal KilopoundsPerMole => As(MolarMassUnit.KilopoundPerMole);
 
         /// <summary>
         ///     Get MolarMass in MegapoundsPerMole.
         /// </summary>
-        public double MegapoundsPerMole => As(MolarMassUnit.MegapoundPerMole);
+        public decimal MegapoundsPerMole => As(MolarMassUnit.MegapoundPerMole);
 
         /// <summary>
         ///     Get MolarMass in MicrogramsPerMole.
         /// </summary>
-        public double MicrogramsPerMole => As(MolarMassUnit.MicrogramPerMole);
+        public decimal MicrogramsPerMole => As(MolarMassUnit.MicrogramPerMole);
 
         /// <summary>
         ///     Get MolarMass in MilligramsPerMole.
         /// </summary>
-        public double MilligramsPerMole => As(MolarMassUnit.MilligramPerMole);
+        public decimal MilligramsPerMole => As(MolarMassUnit.MilligramPerMole);
 
         /// <summary>
         ///     Get MolarMass in NanogramsPerMole.
         /// </summary>
-        public double NanogramsPerMole => As(MolarMassUnit.NanogramPerMole);
+        public decimal NanogramsPerMole => As(MolarMassUnit.NanogramPerMole);
 
         /// <summary>
         ///     Get MolarMass in PoundsPerMole.
         /// </summary>
-        public double PoundsPerMole => As(MolarMassUnit.PoundPerMole);
+        public decimal PoundsPerMole => As(MolarMassUnit.PoundPerMole);
 
         #endregion
 
@@ -250,9 +250,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MolarMass FromCentigramsPerMole(double centigramspermole)
+        public static MolarMass FromCentigramsPerMole(decimal centigramspermole)
         {
-            double value = (double) centigramspermole;
+            decimal value = (decimal) centigramspermole;
             return new MolarMass(value, MolarMassUnit.CentigramPerMole);
         }
         /// <summary>
@@ -260,9 +260,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MolarMass FromDecagramsPerMole(double decagramspermole)
+        public static MolarMass FromDecagramsPerMole(decimal decagramspermole)
         {
-            double value = (double) decagramspermole;
+            decimal value = (decimal) decagramspermole;
             return new MolarMass(value, MolarMassUnit.DecagramPerMole);
         }
         /// <summary>
@@ -270,9 +270,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MolarMass FromDecigramsPerMole(double decigramspermole)
+        public static MolarMass FromDecigramsPerMole(decimal decigramspermole)
         {
-            double value = (double) decigramspermole;
+            decimal value = (decimal) decigramspermole;
             return new MolarMass(value, MolarMassUnit.DecigramPerMole);
         }
         /// <summary>
@@ -280,9 +280,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MolarMass FromGramsPerMole(double gramspermole)
+        public static MolarMass FromGramsPerMole(decimal gramspermole)
         {
-            double value = (double) gramspermole;
+            decimal value = (decimal) gramspermole;
             return new MolarMass(value, MolarMassUnit.GramPerMole);
         }
         /// <summary>
@@ -290,9 +290,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MolarMass FromHectogramsPerMole(double hectogramspermole)
+        public static MolarMass FromHectogramsPerMole(decimal hectogramspermole)
         {
-            double value = (double) hectogramspermole;
+            decimal value = (decimal) hectogramspermole;
             return new MolarMass(value, MolarMassUnit.HectogramPerMole);
         }
         /// <summary>
@@ -300,9 +300,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MolarMass FromKilogramsPerMole(double kilogramspermole)
+        public static MolarMass FromKilogramsPerMole(decimal kilogramspermole)
         {
-            double value = (double) kilogramspermole;
+            decimal value = (decimal) kilogramspermole;
             return new MolarMass(value, MolarMassUnit.KilogramPerMole);
         }
         /// <summary>
@@ -310,9 +310,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MolarMass FromKilopoundsPerMole(double kilopoundspermole)
+        public static MolarMass FromKilopoundsPerMole(decimal kilopoundspermole)
         {
-            double value = (double) kilopoundspermole;
+            decimal value = (decimal) kilopoundspermole;
             return new MolarMass(value, MolarMassUnit.KilopoundPerMole);
         }
         /// <summary>
@@ -320,9 +320,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MolarMass FromMegapoundsPerMole(double megapoundspermole)
+        public static MolarMass FromMegapoundsPerMole(decimal megapoundspermole)
         {
-            double value = (double) megapoundspermole;
+            decimal value = (decimal) megapoundspermole;
             return new MolarMass(value, MolarMassUnit.MegapoundPerMole);
         }
         /// <summary>
@@ -330,9 +330,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MolarMass FromMicrogramsPerMole(double microgramspermole)
+        public static MolarMass FromMicrogramsPerMole(decimal microgramspermole)
         {
-            double value = (double) microgramspermole;
+            decimal value = (decimal) microgramspermole;
             return new MolarMass(value, MolarMassUnit.MicrogramPerMole);
         }
         /// <summary>
@@ -340,9 +340,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MolarMass FromMilligramsPerMole(double milligramspermole)
+        public static MolarMass FromMilligramsPerMole(decimal milligramspermole)
         {
-            double value = (double) milligramspermole;
+            decimal value = (decimal) milligramspermole;
             return new MolarMass(value, MolarMassUnit.MilligramPerMole);
         }
         /// <summary>
@@ -350,9 +350,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MolarMass FromNanogramsPerMole(double nanogramspermole)
+        public static MolarMass FromNanogramsPerMole(decimal nanogramspermole)
         {
-            double value = (double) nanogramspermole;
+            decimal value = (decimal) nanogramspermole;
             return new MolarMass(value, MolarMassUnit.NanogramPerMole);
         }
         /// <summary>
@@ -360,9 +360,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MolarMass FromPoundsPerMole(double poundspermole)
+        public static MolarMass FromPoundsPerMole(decimal poundspermole)
         {
-            double value = (double) poundspermole;
+            decimal value = (decimal) poundspermole;
             return new MolarMass(value, MolarMassUnit.PoundPerMole);
         }
 
@@ -374,9 +374,9 @@ namespace UnitsNet
         /// <returns>MolarMass unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static MolarMass From(double value, MolarMassUnit fromUnit)
+        public static MolarMass From(decimal value, MolarMassUnit fromUnit)
         {
-            return new MolarMass((double)value, fromUnit);
+            return new MolarMass((decimal)value, fromUnit);
         }
 
         #endregion
@@ -598,13 +598,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(MolarMass other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(MolarMass other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -622,19 +622,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((MolarMassUnit)unit);
+        decimal IQuantity.As(object unit) => As((MolarMassUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(MolarMassUnit unit)
+        public decimal As(MolarMassUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -652,28 +652,28 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
-                case MolarMassUnit.CentigramPerMole: return (_value/1e3) * 1e-2d;
-                case MolarMassUnit.DecagramPerMole: return (_value/1e3) * 1e1d;
-                case MolarMassUnit.DecigramPerMole: return (_value/1e3) * 1e-1d;
-                case MolarMassUnit.GramPerMole: return _value/1e3;
-                case MolarMassUnit.HectogramPerMole: return (_value/1e3) * 1e2d;
-                case MolarMassUnit.KilogramPerMole: return (_value/1e3) * 1e3d;
-                case MolarMassUnit.KilopoundPerMole: return (_value*0.45359237) * 1e3d;
-                case MolarMassUnit.MegapoundPerMole: return (_value*0.45359237) * 1e6d;
-                case MolarMassUnit.MicrogramPerMole: return (_value/1e3) * 1e-6d;
-                case MolarMassUnit.MilligramPerMole: return (_value/1e3) * 1e-3d;
-                case MolarMassUnit.NanogramPerMole: return (_value/1e3) * 1e-9d;
-                case MolarMassUnit.PoundPerMole: return _value*0.45359237;
+                case MolarMassUnit.CentigramPerMole: return (_value/1e3m) * 1e-2m;
+                case MolarMassUnit.DecagramPerMole: return (_value/1e3m) * 1e1m;
+                case MolarMassUnit.DecigramPerMole: return (_value/1e3m) * 1e-1m;
+                case MolarMassUnit.GramPerMole: return _value/1e3m;
+                case MolarMassUnit.HectogramPerMole: return (_value/1e3m) * 1e2m;
+                case MolarMassUnit.KilogramPerMole: return (_value/1e3m) * 1e3m;
+                case MolarMassUnit.KilopoundPerMole: return (_value*0.45359237m) * 1e3m;
+                case MolarMassUnit.MegapoundPerMole: return (_value*0.45359237m) * 1e6m;
+                case MolarMassUnit.MicrogramPerMole: return (_value/1e3m) * 1e-6m;
+                case MolarMassUnit.MilligramPerMole: return (_value/1e3m) * 1e-3m;
+                case MolarMassUnit.NanogramPerMole: return (_value/1e3m) * 1e-9m;
+                case MolarMassUnit.PoundPerMole: return _value*0.45359237m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(MolarMassUnit unit)
+        private decimal AsBaseNumericType(MolarMassUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -682,18 +682,18 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case MolarMassUnit.CentigramPerMole: return (baseUnitValue*1e3) / 1e-2d;
-                case MolarMassUnit.DecagramPerMole: return (baseUnitValue*1e3) / 1e1d;
-                case MolarMassUnit.DecigramPerMole: return (baseUnitValue*1e3) / 1e-1d;
-                case MolarMassUnit.GramPerMole: return baseUnitValue*1e3;
-                case MolarMassUnit.HectogramPerMole: return (baseUnitValue*1e3) / 1e2d;
-                case MolarMassUnit.KilogramPerMole: return (baseUnitValue*1e3) / 1e3d;
-                case MolarMassUnit.KilopoundPerMole: return (baseUnitValue/0.45359237) / 1e3d;
-                case MolarMassUnit.MegapoundPerMole: return (baseUnitValue/0.45359237) / 1e6d;
-                case MolarMassUnit.MicrogramPerMole: return (baseUnitValue*1e3) / 1e-6d;
-                case MolarMassUnit.MilligramPerMole: return (baseUnitValue*1e3) / 1e-3d;
-                case MolarMassUnit.NanogramPerMole: return (baseUnitValue*1e3) / 1e-9d;
-                case MolarMassUnit.PoundPerMole: return baseUnitValue/0.45359237;
+                case MolarMassUnit.CentigramPerMole: return (baseUnitValue*1e3m) / 1e-2m;
+                case MolarMassUnit.DecagramPerMole: return (baseUnitValue*1e3m) / 1e1m;
+                case MolarMassUnit.DecigramPerMole: return (baseUnitValue*1e3m) / 1e-1m;
+                case MolarMassUnit.GramPerMole: return baseUnitValue*1e3m;
+                case MolarMassUnit.HectogramPerMole: return (baseUnitValue*1e3m) / 1e2m;
+                case MolarMassUnit.KilogramPerMole: return (baseUnitValue*1e3m) / 1e3m;
+                case MolarMassUnit.KilopoundPerMole: return (baseUnitValue/0.45359237m) / 1e3m;
+                case MolarMassUnit.MegapoundPerMole: return (baseUnitValue/0.45359237m) / 1e6m;
+                case MolarMassUnit.MicrogramPerMole: return (baseUnitValue*1e3m) / 1e-6m;
+                case MolarMassUnit.MilligramPerMole: return (baseUnitValue*1e3m) / 1e-3m;
+                case MolarMassUnit.NanogramPerMole: return (baseUnitValue*1e3m) / 1e-9m;
+                case MolarMassUnit.PoundPerMole: return baseUnitValue/0.45359237m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -732,7 +732,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -752,7 +752,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

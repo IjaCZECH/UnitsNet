@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -71,12 +71,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private ElectricPotential(double value, ElectricPotentialUnit unit)
+        private ElectricPotential(decimal value, ElectricPotentialUnit unit)
         {
             if(unit == ElectricPotentialUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -100,12 +100,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of ElectricPotential
         /// </summary>
-        public static ElectricPotential MaxValue { get; } = new ElectricPotential(double.MaxValue, BaseUnit);
+        public static ElectricPotential MaxValue { get; } = new ElectricPotential(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of ElectricPotential
         /// </summary>
-        public static ElectricPotential MinValue { get; } = new ElectricPotential(double.MinValue, BaseUnit);
+        public static ElectricPotential MinValue { get; } = new ElectricPotential(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -129,7 +129,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -158,27 +158,27 @@ namespace UnitsNet
         /// <summary>
         ///     Get ElectricPotential in Kilovolts.
         /// </summary>
-        public double Kilovolts => As(ElectricPotentialUnit.Kilovolt);
+        public decimal Kilovolts => As(ElectricPotentialUnit.Kilovolt);
 
         /// <summary>
         ///     Get ElectricPotential in Megavolts.
         /// </summary>
-        public double Megavolts => As(ElectricPotentialUnit.Megavolt);
+        public decimal Megavolts => As(ElectricPotentialUnit.Megavolt);
 
         /// <summary>
         ///     Get ElectricPotential in Microvolts.
         /// </summary>
-        public double Microvolts => As(ElectricPotentialUnit.Microvolt);
+        public decimal Microvolts => As(ElectricPotentialUnit.Microvolt);
 
         /// <summary>
         ///     Get ElectricPotential in Millivolts.
         /// </summary>
-        public double Millivolts => As(ElectricPotentialUnit.Millivolt);
+        public decimal Millivolts => As(ElectricPotentialUnit.Millivolt);
 
         /// <summary>
         ///     Get ElectricPotential in Volts.
         /// </summary>
-        public double Volts => As(ElectricPotentialUnit.Volt);
+        public decimal Volts => As(ElectricPotentialUnit.Volt);
 
         #endregion
 
@@ -215,9 +215,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ElectricPotential FromKilovolts(double kilovolts)
+        public static ElectricPotential FromKilovolts(decimal kilovolts)
         {
-            double value = (double) kilovolts;
+            decimal value = (decimal) kilovolts;
             return new ElectricPotential(value, ElectricPotentialUnit.Kilovolt);
         }
         /// <summary>
@@ -225,9 +225,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ElectricPotential FromMegavolts(double megavolts)
+        public static ElectricPotential FromMegavolts(decimal megavolts)
         {
-            double value = (double) megavolts;
+            decimal value = (decimal) megavolts;
             return new ElectricPotential(value, ElectricPotentialUnit.Megavolt);
         }
         /// <summary>
@@ -235,9 +235,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ElectricPotential FromMicrovolts(double microvolts)
+        public static ElectricPotential FromMicrovolts(decimal microvolts)
         {
-            double value = (double) microvolts;
+            decimal value = (decimal) microvolts;
             return new ElectricPotential(value, ElectricPotentialUnit.Microvolt);
         }
         /// <summary>
@@ -245,9 +245,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ElectricPotential FromMillivolts(double millivolts)
+        public static ElectricPotential FromMillivolts(decimal millivolts)
         {
-            double value = (double) millivolts;
+            decimal value = (decimal) millivolts;
             return new ElectricPotential(value, ElectricPotentialUnit.Millivolt);
         }
         /// <summary>
@@ -255,9 +255,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ElectricPotential FromVolts(double volts)
+        public static ElectricPotential FromVolts(decimal volts)
         {
-            double value = (double) volts;
+            decimal value = (decimal) volts;
             return new ElectricPotential(value, ElectricPotentialUnit.Volt);
         }
 
@@ -269,9 +269,9 @@ namespace UnitsNet
         /// <returns>ElectricPotential unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static ElectricPotential From(double value, ElectricPotentialUnit fromUnit)
+        public static ElectricPotential From(decimal value, ElectricPotentialUnit fromUnit)
         {
-            return new ElectricPotential((double)value, fromUnit);
+            return new ElectricPotential((decimal)value, fromUnit);
         }
 
         #endregion
@@ -493,13 +493,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(ElectricPotential other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(ElectricPotential other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -517,19 +517,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((ElectricPotentialUnit)unit);
+        decimal IQuantity.As(object unit) => As((ElectricPotentialUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(ElectricPotentialUnit unit)
+        public decimal As(ElectricPotentialUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -547,21 +547,21 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
-                case ElectricPotentialUnit.Kilovolt: return (_value) * 1e3d;
-                case ElectricPotentialUnit.Megavolt: return (_value) * 1e6d;
-                case ElectricPotentialUnit.Microvolt: return (_value) * 1e-6d;
-                case ElectricPotentialUnit.Millivolt: return (_value) * 1e-3d;
+                case ElectricPotentialUnit.Kilovolt: return (_value) * 1e3m;
+                case ElectricPotentialUnit.Megavolt: return (_value) * 1e6m;
+                case ElectricPotentialUnit.Microvolt: return (_value) * 1e-6m;
+                case ElectricPotentialUnit.Millivolt: return (_value) * 1e-3m;
                 case ElectricPotentialUnit.Volt: return _value;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(ElectricPotentialUnit unit)
+        private decimal AsBaseNumericType(ElectricPotentialUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -570,10 +570,10 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case ElectricPotentialUnit.Kilovolt: return (baseUnitValue) / 1e3d;
-                case ElectricPotentialUnit.Megavolt: return (baseUnitValue) / 1e6d;
-                case ElectricPotentialUnit.Microvolt: return (baseUnitValue) / 1e-6d;
-                case ElectricPotentialUnit.Millivolt: return (baseUnitValue) / 1e-3d;
+                case ElectricPotentialUnit.Kilovolt: return (baseUnitValue) / 1e3m;
+                case ElectricPotentialUnit.Megavolt: return (baseUnitValue) / 1e6m;
+                case ElectricPotentialUnit.Microvolt: return (baseUnitValue) / 1e-6m;
+                case ElectricPotentialUnit.Millivolt: return (baseUnitValue) / 1e-3m;
                 case ElectricPotentialUnit.Volt: return baseUnitValue;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
@@ -613,7 +613,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -633,7 +633,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

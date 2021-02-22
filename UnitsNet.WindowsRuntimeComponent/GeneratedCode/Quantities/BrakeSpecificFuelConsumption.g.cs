@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -71,12 +71,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private BrakeSpecificFuelConsumption(double value, BrakeSpecificFuelConsumptionUnit unit)
+        private BrakeSpecificFuelConsumption(decimal value, BrakeSpecificFuelConsumptionUnit unit)
         {
             if(unit == BrakeSpecificFuelConsumptionUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -100,12 +100,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of BrakeSpecificFuelConsumption
         /// </summary>
-        public static BrakeSpecificFuelConsumption MaxValue { get; } = new BrakeSpecificFuelConsumption(double.MaxValue, BaseUnit);
+        public static BrakeSpecificFuelConsumption MaxValue { get; } = new BrakeSpecificFuelConsumption(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of BrakeSpecificFuelConsumption
         /// </summary>
-        public static BrakeSpecificFuelConsumption MinValue { get; } = new BrakeSpecificFuelConsumption(double.MinValue, BaseUnit);
+        public static BrakeSpecificFuelConsumption MinValue { get; } = new BrakeSpecificFuelConsumption(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -129,7 +129,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -158,17 +158,17 @@ namespace UnitsNet
         /// <summary>
         ///     Get BrakeSpecificFuelConsumption in GramsPerKiloWattHour.
         /// </summary>
-        public double GramsPerKiloWattHour => As(BrakeSpecificFuelConsumptionUnit.GramPerKiloWattHour);
+        public decimal GramsPerKiloWattHour => As(BrakeSpecificFuelConsumptionUnit.GramPerKiloWattHour);
 
         /// <summary>
         ///     Get BrakeSpecificFuelConsumption in KilogramsPerJoule.
         /// </summary>
-        public double KilogramsPerJoule => As(BrakeSpecificFuelConsumptionUnit.KilogramPerJoule);
+        public decimal KilogramsPerJoule => As(BrakeSpecificFuelConsumptionUnit.KilogramPerJoule);
 
         /// <summary>
         ///     Get BrakeSpecificFuelConsumption in PoundsPerMechanicalHorsepowerHour.
         /// </summary>
-        public double PoundsPerMechanicalHorsepowerHour => As(BrakeSpecificFuelConsumptionUnit.PoundPerMechanicalHorsepowerHour);
+        public decimal PoundsPerMechanicalHorsepowerHour => As(BrakeSpecificFuelConsumptionUnit.PoundPerMechanicalHorsepowerHour);
 
         #endregion
 
@@ -205,9 +205,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BrakeSpecificFuelConsumption FromGramsPerKiloWattHour(double gramsperkilowatthour)
+        public static BrakeSpecificFuelConsumption FromGramsPerKiloWattHour(decimal gramsperkilowatthour)
         {
-            double value = (double) gramsperkilowatthour;
+            decimal value = (decimal) gramsperkilowatthour;
             return new BrakeSpecificFuelConsumption(value, BrakeSpecificFuelConsumptionUnit.GramPerKiloWattHour);
         }
         /// <summary>
@@ -215,9 +215,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BrakeSpecificFuelConsumption FromKilogramsPerJoule(double kilogramsperjoule)
+        public static BrakeSpecificFuelConsumption FromKilogramsPerJoule(decimal kilogramsperjoule)
         {
-            double value = (double) kilogramsperjoule;
+            decimal value = (decimal) kilogramsperjoule;
             return new BrakeSpecificFuelConsumption(value, BrakeSpecificFuelConsumptionUnit.KilogramPerJoule);
         }
         /// <summary>
@@ -225,9 +225,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BrakeSpecificFuelConsumption FromPoundsPerMechanicalHorsepowerHour(double poundspermechanicalhorsepowerhour)
+        public static BrakeSpecificFuelConsumption FromPoundsPerMechanicalHorsepowerHour(decimal poundspermechanicalhorsepowerhour)
         {
-            double value = (double) poundspermechanicalhorsepowerhour;
+            decimal value = (decimal) poundspermechanicalhorsepowerhour;
             return new BrakeSpecificFuelConsumption(value, BrakeSpecificFuelConsumptionUnit.PoundPerMechanicalHorsepowerHour);
         }
 
@@ -239,9 +239,9 @@ namespace UnitsNet
         /// <returns>BrakeSpecificFuelConsumption unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static BrakeSpecificFuelConsumption From(double value, BrakeSpecificFuelConsumptionUnit fromUnit)
+        public static BrakeSpecificFuelConsumption From(decimal value, BrakeSpecificFuelConsumptionUnit fromUnit)
         {
-            return new BrakeSpecificFuelConsumption((double)value, fromUnit);
+            return new BrakeSpecificFuelConsumption((decimal)value, fromUnit);
         }
 
         #endregion
@@ -463,13 +463,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(BrakeSpecificFuelConsumption other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(BrakeSpecificFuelConsumption other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -487,19 +487,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((BrakeSpecificFuelConsumptionUnit)unit);
+        decimal IQuantity.As(object unit) => As((BrakeSpecificFuelConsumptionUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(BrakeSpecificFuelConsumptionUnit unit)
+        public decimal As(BrakeSpecificFuelConsumptionUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -517,19 +517,19 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
-                case BrakeSpecificFuelConsumptionUnit.GramPerKiloWattHour: return _value/3.6e9;
+                case BrakeSpecificFuelConsumptionUnit.GramPerKiloWattHour: return _value/3.6e9m;
                 case BrakeSpecificFuelConsumptionUnit.KilogramPerJoule: return _value;
-                case BrakeSpecificFuelConsumptionUnit.PoundPerMechanicalHorsepowerHour: return _value*1.689659410672e-7;
+                case BrakeSpecificFuelConsumptionUnit.PoundPerMechanicalHorsepowerHour: return _value*1.689659410672e-7m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(BrakeSpecificFuelConsumptionUnit unit)
+        private decimal AsBaseNumericType(BrakeSpecificFuelConsumptionUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -538,9 +538,9 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case BrakeSpecificFuelConsumptionUnit.GramPerKiloWattHour: return baseUnitValue*3.6e9;
+                case BrakeSpecificFuelConsumptionUnit.GramPerKiloWattHour: return baseUnitValue*3.6e9m;
                 case BrakeSpecificFuelConsumptionUnit.KilogramPerJoule: return baseUnitValue;
-                case BrakeSpecificFuelConsumptionUnit.PoundPerMechanicalHorsepowerHour: return baseUnitValue/1.689659410672e-7;
+                case BrakeSpecificFuelConsumptionUnit.PoundPerMechanicalHorsepowerHour: return baseUnitValue/1.689659410672e-7m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -579,7 +579,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -599,7 +599,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

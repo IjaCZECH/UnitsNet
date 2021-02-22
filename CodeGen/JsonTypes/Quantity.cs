@@ -1,4 +1,4 @@
-// Licensed under MIT No Attribution, see LICENSE file at the root.
+﻿// Licensed under MIT No Attribution, see LICENSE file at the root.
 // Copyright 2013 Andreas Gullberg Larsen (andreas.larsen84@gmail.com). Maintained at https://github.com/angularsen/UnitsNet.
 
 using System;
@@ -12,7 +12,7 @@ namespace CodeGen.JsonTypes
 #pragma warning disable 0649
 
         public BaseDimensions BaseDimensions = new BaseDimensions(); // Default to empty
-        public string BaseType = "double"; // TODO Rename to ValueType
+        public string BaseType = "decimal"; // TODO Rename to ValueType
         public string BaseUnit; // TODO Rename to DefaultUnit or IntermediateConversionUnit to avoid confusion with Unit.BaseUnits
         public bool GenerateArithmetic = true;
         public bool Logarithmic = false;

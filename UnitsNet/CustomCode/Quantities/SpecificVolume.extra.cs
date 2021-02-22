@@ -5,8 +5,8 @@ namespace UnitsNet
 {
     public partial struct SpecificVolume
     {
-        /// <summary>Get <see cref="Density"/> from <see cref="double"/> divided by <see cref="SpecificVolume"/>.</summary>
-        public static Density operator /(double constant, SpecificVolume volume)
+        /// <summary>Get <see cref="Density"/> from <see cref="decimal"/> divided by <see cref="SpecificVolume"/>.</summary>
+        public static Density operator /(decimal constant, SpecificVolume volume)
         {
             return Density.FromKilogramsPerCubicMeter(constant / volume.CubicMetersPerKilogram);
         }

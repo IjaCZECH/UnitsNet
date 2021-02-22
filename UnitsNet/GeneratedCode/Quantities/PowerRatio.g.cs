@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -64,12 +64,12 @@ namespace UnitsNet
         /// <param name="value">The numeric value to construct this quantity with.</param>
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        public PowerRatio(double value, PowerRatioUnit unit)
+        public PowerRatio(decimal value, PowerRatioUnit unit)
         {
             if(unit == PowerRatioUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -81,14 +81,14 @@ namespace UnitsNet
         /// <param name="unitSystem">The unit system to create the quantity with.</param>
         /// <exception cref="ArgumentNullException">The given <see cref="UnitSystem"/> is null.</exception>
         /// <exception cref="ArgumentException">No unit was found for the given <see cref="UnitSystem"/>.</exception>
-        public PowerRatio(double value, UnitSystem unitSystem)
+        public PowerRatio(decimal value, UnitSystem unitSystem)
         {
             if(unitSystem is null) throw new ArgumentNullException(nameof(unitSystem));
 
             var unitInfos = Info.GetUnitInfosFor(unitSystem.BaseUnits);
             var firstUnitInfo = unitInfos.FirstOrDefault();
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = firstUnitInfo?.Value ?? throw new ArgumentException("No units were found for the given UnitSystem.", nameof(unitSystem));
         }
 
@@ -110,12 +110,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of PowerRatio
         /// </summary>
-        public static PowerRatio MaxValue { get; } = new PowerRatio(double.MaxValue, BaseUnit);
+        public static PowerRatio MaxValue { get; } = new PowerRatio(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of PowerRatio
         /// </summary>
-        public static PowerRatio MinValue { get; } = new PowerRatio(double.MinValue, BaseUnit);
+        public static PowerRatio MinValue { get; } = new PowerRatio(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -139,7 +139,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => _value;
+        public decimal Value => _value;
 
         Enum IQuantity.Unit => Unit;
 
@@ -169,12 +169,12 @@ namespace UnitsNet
         /// <summary>
         ///     Get PowerRatio in DecibelMilliwatts.
         /// </summary>
-        public double DecibelMilliwatts => As(PowerRatioUnit.DecibelMilliwatt);
+        public decimal DecibelMilliwatts => As(PowerRatioUnit.DecibelMilliwatt);
 
         /// <summary>
         ///     Get PowerRatio in DecibelWatts.
         /// </summary>
-        public double DecibelWatts => As(PowerRatioUnit.DecibelWatt);
+        public decimal DecibelWatts => As(PowerRatioUnit.DecibelWatt);
 
         #endregion
 
@@ -211,7 +211,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static PowerRatio FromDecibelMilliwatts(QuantityValue decibelmilliwatts)
         {
-            double value = (double) decibelmilliwatts;
+            decimal value = (decimal) decibelmilliwatts;
             return new PowerRatio(value, PowerRatioUnit.DecibelMilliwatt);
         }
         /// <summary>
@@ -220,7 +220,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static PowerRatio FromDecibelWatts(QuantityValue decibelwatts)
         {
-            double value = (double) decibelwatts;
+            decimal value = (decimal) decibelwatts;
             return new PowerRatio(value, PowerRatioUnit.DecibelWatt);
         }
 
@@ -232,7 +232,7 @@ namespace UnitsNet
         /// <returns>PowerRatio unit value.</returns>
         public static PowerRatio From(QuantityValue value, PowerRatioUnit fromUnit)
         {
-            return new PowerRatio((double)value, fromUnit);
+            return new PowerRatio((decimal)value, fromUnit);
         }
 
         #endregion
@@ -394,7 +394,7 @@ namespace UnitsNet
         {
             // Logarithmic addition
             // Formula: 10*log10(10^(x/10) + 10^(y/10))
-            return new PowerRatio(10*Math.Log10(Math.Pow(10, left.Value/10) + Math.Pow(10, right.GetValueAs(left.Unit)/10)), left.Unit);
+            return new PowerRatio(10*DecimalMath.DecimalEx.Log10(DecimalMath.DecimalEx.Pow(10, left.Value/10) + DecimalMath.DecimalEx.Pow(10, right.GetValueAs(left.Unit)/10)), left.Unit);
         }
 
         /// <summary>Get <see cref="PowerRatio"/> from logarithmic subtraction of two <see cref="PowerRatio"/>.</summary>
@@ -402,35 +402,35 @@ namespace UnitsNet
         {
             // Logarithmic subtraction
             // Formula: 10*log10(10^(x/10) - 10^(y/10))
-            return new PowerRatio(10*Math.Log10(Math.Pow(10, left.Value/10) - Math.Pow(10, right.GetValueAs(left.Unit)/10)), left.Unit);
+            return new PowerRatio(10*DecimalMath.DecimalEx.Log10(DecimalMath.DecimalEx.Pow(10, left.Value/10) - DecimalMath.DecimalEx.Pow(10, right.GetValueAs(left.Unit)/10)), left.Unit);
         }
 
         /// <summary>Get <see cref="PowerRatio"/> from logarithmic multiplication of value and <see cref="PowerRatio"/>.</summary>
-        public static PowerRatio operator *(double left, PowerRatio right)
+        public static PowerRatio operator *(decimal left, PowerRatio right)
         {
             // Logarithmic multiplication = addition
             return new PowerRatio(left + right.Value, right.Unit);
         }
 
         /// <summary>Get <see cref="PowerRatio"/> from logarithmic multiplication of value and <see cref="PowerRatio"/>.</summary>
-        public static PowerRatio operator *(PowerRatio left, double right)
+        public static PowerRatio operator *(PowerRatio left, decimal right)
         {
             // Logarithmic multiplication = addition
-            return new PowerRatio(left.Value + (double)right, left.Unit);
+            return new PowerRatio(left.Value + (decimal)right, left.Unit);
         }
 
         /// <summary>Get <see cref="PowerRatio"/> from logarithmic division of <see cref="PowerRatio"/> by value.</summary>
-        public static PowerRatio operator /(PowerRatio left, double right)
+        public static PowerRatio operator /(PowerRatio left, decimal right)
         {
             // Logarithmic division = subtraction
-            return new PowerRatio(left.Value - (double)right, left.Unit);
+            return new PowerRatio(left.Value - (decimal)right, left.Unit);
         }
 
         /// <summary>Get ratio value from logarithmic division of <see cref="PowerRatio"/> by <see cref="PowerRatio"/>.</summary>
-        public static double operator /(PowerRatio left, PowerRatio right)
+        public static decimal operator /(PowerRatio left, PowerRatio right)
         {
             // Logarithmic division = subtraction
-            return Convert.ToDouble(left.Value - right.GetValueAs(left.Unit));
+            return Convert.ToDecimal(left.Value - right.GetValueAs(left.Unit));
         }
 
         #endregion
@@ -462,14 +462,14 @@ namespace UnitsNet
         }
 
         /// <summary>Returns true if exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(PowerRatio, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(PowerRatio, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator ==(PowerRatio left, PowerRatio right)
         {
             return left.Equals(right);
         }
 
         /// <summary>Returns true if not exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(PowerRatio, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(PowerRatio, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator !=(PowerRatio left, PowerRatio right)
         {
             return !(left == right);
@@ -491,7 +491,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(PowerRatio, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(PowerRatio, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public override bool Equals(object obj)
         {
             if(obj is null || !(obj is PowerRatio objPowerRatio))
@@ -501,7 +501,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(PowerRatio, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(PowerRatio, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public bool Equals(PowerRatio other)
         {
             return _value.Equals(other.GetValueAs(this.Unit));
@@ -547,13 +547,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(PowerRatio other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(PowerRatio other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -575,17 +575,17 @@ namespace UnitsNet
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(PowerRatioUnit unit)
+        public decimal As(PowerRatioUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = GetValueAs(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <inheritdoc cref="IQuantity.As(UnitSystem)"/>
-        public double As(UnitSystem unitSystem)
+        public decimal As(UnitSystem unitSystem)
         {
             if(unitSystem is null)
                 throw new ArgumentNullException(nameof(unitSystem));
@@ -600,7 +600,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        double IQuantity.As(Enum unit)
+        decimal IQuantity.As(Enum unit)
         {
             if(!(unit is PowerRatioUnit unitAsPowerRatioUnit))
                 throw new ArgumentException($"The given unit is of type {unit.GetType()}. Only {typeof(PowerRatioUnit)} is supported.", nameof(unit));
@@ -656,7 +656,7 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double GetValueInBaseUnit()
+        private decimal GetValueInBaseUnit()
         {
             switch(Unit)
             {
@@ -678,7 +678,7 @@ namespace UnitsNet
             return new PowerRatio(baseUnitValue, BaseUnit);
         }
 
-        private double GetValueAs(PowerRatioUnit unit)
+        private decimal GetValueAs(PowerRatioUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -726,7 +726,7 @@ namespace UnitsNet
         [Obsolete(@"This method is deprecated and will be removed at a future release. Please use ToString(""s2"") or ToString(""s2"", provider) where 2 is an example of the number passed to significantDigitsAfterRadix.")]
         public string ToString(IFormatProvider? provider, int significantDigitsAfterRadix)
         {
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -746,7 +746,7 @@ namespace UnitsNet
 
             provider = provider ?? CultureInfo.CurrentUICulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

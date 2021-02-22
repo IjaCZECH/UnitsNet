@@ -37,20 +37,20 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class ElectricConductivityTestsBase : QuantityTestsBase
     {
-        protected abstract double SiemensPerFootInOneSiemensPerMeter { get; }
-        protected abstract double SiemensPerInchInOneSiemensPerMeter { get; }
-        protected abstract double SiemensPerMeterInOneSiemensPerMeter { get; }
+        protected abstract decimal SiemensPerFootInOneSiemensPerMeter { get; }
+        protected abstract decimal SiemensPerInchInOneSiemensPerMeter { get; }
+        protected abstract decimal SiemensPerMeterInOneSiemensPerMeter { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double SiemensPerFootTolerance { get { return 1e-5; } }
-        protected virtual double SiemensPerInchTolerance { get { return 1e-5; } }
-        protected virtual double SiemensPerMeterTolerance { get { return 1e-5; } }
+        protected virtual decimal SiemensPerFootTolerance { get { return 1e-5; } }
+        protected virtual decimal SiemensPerInchTolerance { get { return 1e-5; } }
+        protected virtual decimal SiemensPerMeterTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new ElectricConductivity((double)0.0, ElectricConductivityUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new ElectricConductivity((decimal)0.0, ElectricConductivityUnit.Undefined));
         }
 
         [Fact]
@@ -61,19 +61,6 @@ namespace UnitsNet.Tests
             Assert.Equal(ElectricConductivityUnit.SiemensPerMeter, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new ElectricConductivity(double.PositiveInfinity, ElectricConductivityUnit.SiemensPerMeter));
-            Assert.Throws<ArgumentException>(() => new ElectricConductivity(double.NegativeInfinity, ElectricConductivityUnit.SiemensPerMeter));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new ElectricConductivity(double.NaN, ElectricConductivityUnit.SiemensPerMeter));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -144,19 +131,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromSiemensPerMeter_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => ElectricConductivity.FromSiemensPerMeter(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => ElectricConductivity.FromSiemensPerMeter(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromSiemensPerMeter_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => ElectricConductivity.FromSiemensPerMeter(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var siemenspermeter = ElectricConductivity.FromSiemensPerMeter(1);
@@ -173,7 +147,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -188,15 +162,15 @@ namespace UnitsNet.Tests
             var siemenspermeter = ElectricConductivity.FromSiemensPerMeter(1);
 
             var siemensperfootQuantity = siemenspermeter.ToUnit(ElectricConductivityUnit.SiemensPerFoot);
-            AssertEx.EqualTolerance(SiemensPerFootInOneSiemensPerMeter, (double)siemensperfootQuantity.Value, SiemensPerFootTolerance);
+            AssertEx.EqualTolerance(SiemensPerFootInOneSiemensPerMeter, (decimal)siemensperfootQuantity.Value, SiemensPerFootTolerance);
             Assert.Equal(ElectricConductivityUnit.SiemensPerFoot, siemensperfootQuantity.Unit);
 
             var siemensperinchQuantity = siemenspermeter.ToUnit(ElectricConductivityUnit.SiemensPerInch);
-            AssertEx.EqualTolerance(SiemensPerInchInOneSiemensPerMeter, (double)siemensperinchQuantity.Value, SiemensPerInchTolerance);
+            AssertEx.EqualTolerance(SiemensPerInchInOneSiemensPerMeter, (decimal)siemensperinchQuantity.Value, SiemensPerInchTolerance);
             Assert.Equal(ElectricConductivityUnit.SiemensPerInch, siemensperinchQuantity.Unit);
 
             var siemenspermeterQuantity = siemenspermeter.ToUnit(ElectricConductivityUnit.SiemensPerMeter);
-            AssertEx.EqualTolerance(SiemensPerMeterInOneSiemensPerMeter, (double)siemenspermeterQuantity.Value, SiemensPerMeterTolerance);
+            AssertEx.EqualTolerance(SiemensPerMeterInOneSiemensPerMeter, (decimal)siemenspermeterQuantity.Value, SiemensPerMeterTolerance);
             Assert.Equal(ElectricConductivityUnit.SiemensPerMeter, siemenspermeterQuantity.Unit);
         }
 
@@ -398,10 +372,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 S/m", new ElectricConductivity(0.123456, ElectricConductivityUnit.SiemensPerMeter).ToString("s1"));
-                Assert.Equal("0.12 S/m", new ElectricConductivity(0.123456, ElectricConductivityUnit.SiemensPerMeter).ToString("s2"));
-                Assert.Equal("0.123 S/m", new ElectricConductivity(0.123456, ElectricConductivityUnit.SiemensPerMeter).ToString("s3"));
-                Assert.Equal("0.1235 S/m", new ElectricConductivity(0.123456, ElectricConductivityUnit.SiemensPerMeter).ToString("s4"));
+                Assert.Equal("0.1 S/m", new ElectricConductivity(0.123456m, ElectricConductivityUnit.SiemensPerMeter).ToString("s1"));
+                Assert.Equal("0.12 S/m", new ElectricConductivity(0.123456m, ElectricConductivityUnit.SiemensPerMeter).ToString("s2"));
+                Assert.Equal("0.123 S/m", new ElectricConductivity(0.123456m, ElectricConductivityUnit.SiemensPerMeter).ToString("s3"));
+                Assert.Equal("0.1235 S/m", new ElectricConductivity(0.123456m, ElectricConductivityUnit.SiemensPerMeter).ToString("s4"));
             }
             finally
             {
@@ -413,10 +387,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 S/m", new ElectricConductivity(0.123456, ElectricConductivityUnit.SiemensPerMeter).ToString("s1", culture));
-            Assert.Equal("0.12 S/m", new ElectricConductivity(0.123456, ElectricConductivityUnit.SiemensPerMeter).ToString("s2", culture));
-            Assert.Equal("0.123 S/m", new ElectricConductivity(0.123456, ElectricConductivityUnit.SiemensPerMeter).ToString("s3", culture));
-            Assert.Equal("0.1235 S/m", new ElectricConductivity(0.123456, ElectricConductivityUnit.SiemensPerMeter).ToString("s4", culture));
+            Assert.Equal("0.1 S/m", new ElectricConductivity(0.123456m, ElectricConductivityUnit.SiemensPerMeter).ToString("s1", culture));
+            Assert.Equal("0.12 S/m", new ElectricConductivity(0.123456m, ElectricConductivityUnit.SiemensPerMeter).ToString("s2", culture));
+            Assert.Equal("0.123 S/m", new ElectricConductivity(0.123456m, ElectricConductivityUnit.SiemensPerMeter).ToString("s3", culture));
+            Assert.Equal("0.1235 S/m", new ElectricConductivity(0.123456m, ElectricConductivityUnit.SiemensPerMeter).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -594,7 +568,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = ElectricConductivity.FromSiemensPerMeter(value);
             Assert.Equal(ElectricConductivity.FromSiemensPerMeter(-value), -quantity);

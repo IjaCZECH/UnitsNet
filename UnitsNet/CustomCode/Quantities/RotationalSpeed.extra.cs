@@ -10,13 +10,13 @@ namespace UnitsNet
         /// <summary>Get <see cref="Angle"/> from <see cref="RotationalSpeed"/> times <see cref="TimeSpan"/>.</summary>
         public static Angle operator *(RotationalSpeed rotationalSpeed, TimeSpan timeSpan)
         {
-            return Angle.FromRadians(rotationalSpeed.RadiansPerSecond * timeSpan.TotalSeconds);
+            return Angle.FromRadians(rotationalSpeed.RadiansPerSecond * (decimal)timeSpan.TotalSeconds);
         }
 
         /// <summary>Get <see cref="Angle"/> from <see cref="TimeSpan"/> times <see cref="RotationalSpeed"/>.</summary>
         public static Angle operator *(TimeSpan timeSpan, RotationalSpeed rotationalSpeed)
         {
-            return Angle.FromRadians(rotationalSpeed.RadiansPerSecond * timeSpan.TotalSeconds);
+            return Angle.FromRadians(rotationalSpeed.RadiansPerSecond * (decimal)timeSpan.TotalSeconds);
         }
 
         /// <summary>Get <see cref="Angle"/> from <see cref="RotationalSpeed"/> times <see cref="Duration"/>.</summary>

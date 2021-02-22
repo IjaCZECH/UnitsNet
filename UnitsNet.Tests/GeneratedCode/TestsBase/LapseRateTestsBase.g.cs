@@ -37,16 +37,16 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class LapseRateTestsBase : QuantityTestsBase
     {
-        protected abstract double DegreesCelciusPerKilometerInOneDegreeCelsiusPerKilometer { get; }
+        protected abstract decimal DegreesCelciusPerKilometerInOneDegreeCelsiusPerKilometer { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double DegreesCelciusPerKilometerTolerance { get { return 1e-5; } }
+        protected virtual decimal DegreesCelciusPerKilometerTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new LapseRate((double)0.0, LapseRateUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new LapseRate((decimal)0.0, LapseRateUnit.Undefined));
         }
 
         [Fact]
@@ -57,19 +57,6 @@ namespace UnitsNet.Tests
             Assert.Equal(LapseRateUnit.DegreeCelsiusPerKilometer, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new LapseRate(double.PositiveInfinity, LapseRateUnit.DegreeCelsiusPerKilometer));
-            Assert.Throws<ArgumentException>(() => new LapseRate(double.NegativeInfinity, LapseRateUnit.DegreeCelsiusPerKilometer));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new LapseRate(double.NaN, LapseRateUnit.DegreeCelsiusPerKilometer));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -130,19 +117,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromDegreesCelciusPerKilometer_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => LapseRate.FromDegreesCelciusPerKilometer(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => LapseRate.FromDegreesCelciusPerKilometer(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromDegreesCelciusPerKilometer_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => LapseRate.FromDegreesCelciusPerKilometer(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var degreecelsiusperkilometer = LapseRate.FromDegreesCelciusPerKilometer(1);
@@ -157,7 +131,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -172,7 +146,7 @@ namespace UnitsNet.Tests
             var degreecelsiusperkilometer = LapseRate.FromDegreesCelciusPerKilometer(1);
 
             var degreecelsiusperkilometerQuantity = degreecelsiusperkilometer.ToUnit(LapseRateUnit.DegreeCelsiusPerKilometer);
-            AssertEx.EqualTolerance(DegreesCelciusPerKilometerInOneDegreeCelsiusPerKilometer, (double)degreecelsiusperkilometerQuantity.Value, DegreesCelciusPerKilometerTolerance);
+            AssertEx.EqualTolerance(DegreesCelciusPerKilometerInOneDegreeCelsiusPerKilometer, (decimal)degreecelsiusperkilometerQuantity.Value, DegreesCelciusPerKilometerTolerance);
             Assert.Equal(LapseRateUnit.DegreeCelsiusPerKilometer, degreecelsiusperkilometerQuantity.Unit);
         }
 
@@ -368,10 +342,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 ∆°C/km", new LapseRate(0.123456, LapseRateUnit.DegreeCelsiusPerKilometer).ToString("s1"));
-                Assert.Equal("0.12 ∆°C/km", new LapseRate(0.123456, LapseRateUnit.DegreeCelsiusPerKilometer).ToString("s2"));
-                Assert.Equal("0.123 ∆°C/km", new LapseRate(0.123456, LapseRateUnit.DegreeCelsiusPerKilometer).ToString("s3"));
-                Assert.Equal("0.1235 ∆°C/km", new LapseRate(0.123456, LapseRateUnit.DegreeCelsiusPerKilometer).ToString("s4"));
+                Assert.Equal("0.1 ∆°C/km", new LapseRate(0.123456m, LapseRateUnit.DegreeCelsiusPerKilometer).ToString("s1"));
+                Assert.Equal("0.12 ∆°C/km", new LapseRate(0.123456m, LapseRateUnit.DegreeCelsiusPerKilometer).ToString("s2"));
+                Assert.Equal("0.123 ∆°C/km", new LapseRate(0.123456m, LapseRateUnit.DegreeCelsiusPerKilometer).ToString("s3"));
+                Assert.Equal("0.1235 ∆°C/km", new LapseRate(0.123456m, LapseRateUnit.DegreeCelsiusPerKilometer).ToString("s4"));
             }
             finally
             {
@@ -383,10 +357,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 ∆°C/km", new LapseRate(0.123456, LapseRateUnit.DegreeCelsiusPerKilometer).ToString("s1", culture));
-            Assert.Equal("0.12 ∆°C/km", new LapseRate(0.123456, LapseRateUnit.DegreeCelsiusPerKilometer).ToString("s2", culture));
-            Assert.Equal("0.123 ∆°C/km", new LapseRate(0.123456, LapseRateUnit.DegreeCelsiusPerKilometer).ToString("s3", culture));
-            Assert.Equal("0.1235 ∆°C/km", new LapseRate(0.123456, LapseRateUnit.DegreeCelsiusPerKilometer).ToString("s4", culture));
+            Assert.Equal("0.1 ∆°C/km", new LapseRate(0.123456m, LapseRateUnit.DegreeCelsiusPerKilometer).ToString("s1", culture));
+            Assert.Equal("0.12 ∆°C/km", new LapseRate(0.123456m, LapseRateUnit.DegreeCelsiusPerKilometer).ToString("s2", culture));
+            Assert.Equal("0.123 ∆°C/km", new LapseRate(0.123456m, LapseRateUnit.DegreeCelsiusPerKilometer).ToString("s3", culture));
+            Assert.Equal("0.1235 ∆°C/km", new LapseRate(0.123456m, LapseRateUnit.DegreeCelsiusPerKilometer).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -564,7 +538,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = LapseRate.FromDegreesCelciusPerKilometer(value);
             Assert.Equal(LapseRate.FromDegreesCelciusPerKilometer(-value), -quantity);

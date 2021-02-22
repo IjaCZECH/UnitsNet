@@ -30,7 +30,7 @@ namespace UnitsNet.NumberExtensions.NumberToElectricChargeDensity
     {
         /// <inheritdoc cref="ElectricChargeDensity.FromCoulombsPerCubicMeter(UnitsNet.QuantityValue)" />
         public static ElectricChargeDensity CoulombsPerCubicMeter<T>(this T value) =>
-            ElectricChargeDensity.FromCoulombsPerCubicMeter(Convert.ToDouble(value));
+            ElectricChargeDensity.FromCoulombsPerCubicMeter(Convert.ToDecimal(value));
 
     }
 }

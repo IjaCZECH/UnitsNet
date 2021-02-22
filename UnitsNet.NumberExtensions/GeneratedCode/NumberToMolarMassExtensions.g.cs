@@ -30,51 +30,51 @@ namespace UnitsNet.NumberExtensions.NumberToMolarMass
     {
         /// <inheritdoc cref="MolarMass.FromCentigramsPerMole(UnitsNet.QuantityValue)" />
         public static MolarMass CentigramsPerMole<T>(this T value) =>
-            MolarMass.FromCentigramsPerMole(Convert.ToDouble(value));
+            MolarMass.FromCentigramsPerMole(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="MolarMass.FromDecagramsPerMole(UnitsNet.QuantityValue)" />
         public static MolarMass DecagramsPerMole<T>(this T value) =>
-            MolarMass.FromDecagramsPerMole(Convert.ToDouble(value));
+            MolarMass.FromDecagramsPerMole(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="MolarMass.FromDecigramsPerMole(UnitsNet.QuantityValue)" />
         public static MolarMass DecigramsPerMole<T>(this T value) =>
-            MolarMass.FromDecigramsPerMole(Convert.ToDouble(value));
+            MolarMass.FromDecigramsPerMole(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="MolarMass.FromGramsPerMole(UnitsNet.QuantityValue)" />
         public static MolarMass GramsPerMole<T>(this T value) =>
-            MolarMass.FromGramsPerMole(Convert.ToDouble(value));
+            MolarMass.FromGramsPerMole(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="MolarMass.FromHectogramsPerMole(UnitsNet.QuantityValue)" />
         public static MolarMass HectogramsPerMole<T>(this T value) =>
-            MolarMass.FromHectogramsPerMole(Convert.ToDouble(value));
+            MolarMass.FromHectogramsPerMole(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="MolarMass.FromKilogramsPerMole(UnitsNet.QuantityValue)" />
         public static MolarMass KilogramsPerMole<T>(this T value) =>
-            MolarMass.FromKilogramsPerMole(Convert.ToDouble(value));
+            MolarMass.FromKilogramsPerMole(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="MolarMass.FromKilopoundsPerMole(UnitsNet.QuantityValue)" />
         public static MolarMass KilopoundsPerMole<T>(this T value) =>
-            MolarMass.FromKilopoundsPerMole(Convert.ToDouble(value));
+            MolarMass.FromKilopoundsPerMole(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="MolarMass.FromMegapoundsPerMole(UnitsNet.QuantityValue)" />
         public static MolarMass MegapoundsPerMole<T>(this T value) =>
-            MolarMass.FromMegapoundsPerMole(Convert.ToDouble(value));
+            MolarMass.FromMegapoundsPerMole(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="MolarMass.FromMicrogramsPerMole(UnitsNet.QuantityValue)" />
         public static MolarMass MicrogramsPerMole<T>(this T value) =>
-            MolarMass.FromMicrogramsPerMole(Convert.ToDouble(value));
+            MolarMass.FromMicrogramsPerMole(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="MolarMass.FromMilligramsPerMole(UnitsNet.QuantityValue)" />
         public static MolarMass MilligramsPerMole<T>(this T value) =>
-            MolarMass.FromMilligramsPerMole(Convert.ToDouble(value));
+            MolarMass.FromMilligramsPerMole(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="MolarMass.FromNanogramsPerMole(UnitsNet.QuantityValue)" />
         public static MolarMass NanogramsPerMole<T>(this T value) =>
-            MolarMass.FromNanogramsPerMole(Convert.ToDouble(value));
+            MolarMass.FromNanogramsPerMole(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="MolarMass.FromPoundsPerMole(UnitsNet.QuantityValue)" />
         public static MolarMass PoundsPerMole<T>(this T value) =>
-            MolarMass.FromPoundsPerMole(Convert.ToDouble(value));
+            MolarMass.FromPoundsPerMole(Convert.ToDecimal(value));
 
     }
 }

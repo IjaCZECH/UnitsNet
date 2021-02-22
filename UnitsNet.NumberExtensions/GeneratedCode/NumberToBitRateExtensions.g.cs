@@ -30,107 +30,107 @@ namespace UnitsNet.NumberExtensions.NumberToBitRate
     {
         /// <inheritdoc cref="BitRate.FromBitsPerSecond(UnitsNet.QuantityValue)" />
         public static BitRate BitsPerSecond<T>(this T value) =>
-            BitRate.FromBitsPerSecond(Convert.ToDouble(value));
+            BitRate.FromBitsPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="BitRate.FromBytesPerSecond(UnitsNet.QuantityValue)" />
         public static BitRate BytesPerSecond<T>(this T value) =>
-            BitRate.FromBytesPerSecond(Convert.ToDouble(value));
+            BitRate.FromBytesPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="BitRate.FromExabitsPerSecond(UnitsNet.QuantityValue)" />
         public static BitRate ExabitsPerSecond<T>(this T value) =>
-            BitRate.FromExabitsPerSecond(Convert.ToDouble(value));
+            BitRate.FromExabitsPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="BitRate.FromExabytesPerSecond(UnitsNet.QuantityValue)" />
         public static BitRate ExabytesPerSecond<T>(this T value) =>
-            BitRate.FromExabytesPerSecond(Convert.ToDouble(value));
+            BitRate.FromExabytesPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="BitRate.FromExbibitsPerSecond(UnitsNet.QuantityValue)" />
         public static BitRate ExbibitsPerSecond<T>(this T value) =>
-            BitRate.FromExbibitsPerSecond(Convert.ToDouble(value));
+            BitRate.FromExbibitsPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="BitRate.FromExbibytesPerSecond(UnitsNet.QuantityValue)" />
         public static BitRate ExbibytesPerSecond<T>(this T value) =>
-            BitRate.FromExbibytesPerSecond(Convert.ToDouble(value));
+            BitRate.FromExbibytesPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="BitRate.FromGibibitsPerSecond(UnitsNet.QuantityValue)" />
         public static BitRate GibibitsPerSecond<T>(this T value) =>
-            BitRate.FromGibibitsPerSecond(Convert.ToDouble(value));
+            BitRate.FromGibibitsPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="BitRate.FromGibibytesPerSecond(UnitsNet.QuantityValue)" />
         public static BitRate GibibytesPerSecond<T>(this T value) =>
-            BitRate.FromGibibytesPerSecond(Convert.ToDouble(value));
+            BitRate.FromGibibytesPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="BitRate.FromGigabitsPerSecond(UnitsNet.QuantityValue)" />
         public static BitRate GigabitsPerSecond<T>(this T value) =>
-            BitRate.FromGigabitsPerSecond(Convert.ToDouble(value));
+            BitRate.FromGigabitsPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="BitRate.FromGigabytesPerSecond(UnitsNet.QuantityValue)" />
         public static BitRate GigabytesPerSecond<T>(this T value) =>
-            BitRate.FromGigabytesPerSecond(Convert.ToDouble(value));
+            BitRate.FromGigabytesPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="BitRate.FromKibibitsPerSecond(UnitsNet.QuantityValue)" />
         public static BitRate KibibitsPerSecond<T>(this T value) =>
-            BitRate.FromKibibitsPerSecond(Convert.ToDouble(value));
+            BitRate.FromKibibitsPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="BitRate.FromKibibytesPerSecond(UnitsNet.QuantityValue)" />
         public static BitRate KibibytesPerSecond<T>(this T value) =>
-            BitRate.FromKibibytesPerSecond(Convert.ToDouble(value));
+            BitRate.FromKibibytesPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="BitRate.FromKilobitsPerSecond(UnitsNet.QuantityValue)" />
         public static BitRate KilobitsPerSecond<T>(this T value) =>
-            BitRate.FromKilobitsPerSecond(Convert.ToDouble(value));
+            BitRate.FromKilobitsPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="BitRate.FromKilobytesPerSecond(UnitsNet.QuantityValue)" />
         public static BitRate KilobytesPerSecond<T>(this T value) =>
-            BitRate.FromKilobytesPerSecond(Convert.ToDouble(value));
+            BitRate.FromKilobytesPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="BitRate.FromMebibitsPerSecond(UnitsNet.QuantityValue)" />
         public static BitRate MebibitsPerSecond<T>(this T value) =>
-            BitRate.FromMebibitsPerSecond(Convert.ToDouble(value));
+            BitRate.FromMebibitsPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="BitRate.FromMebibytesPerSecond(UnitsNet.QuantityValue)" />
         public static BitRate MebibytesPerSecond<T>(this T value) =>
-            BitRate.FromMebibytesPerSecond(Convert.ToDouble(value));
+            BitRate.FromMebibytesPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="BitRate.FromMegabitsPerSecond(UnitsNet.QuantityValue)" />
         public static BitRate MegabitsPerSecond<T>(this T value) =>
-            BitRate.FromMegabitsPerSecond(Convert.ToDouble(value));
+            BitRate.FromMegabitsPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="BitRate.FromMegabytesPerSecond(UnitsNet.QuantityValue)" />
         public static BitRate MegabytesPerSecond<T>(this T value) =>
-            BitRate.FromMegabytesPerSecond(Convert.ToDouble(value));
+            BitRate.FromMegabytesPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="BitRate.FromPebibitsPerSecond(UnitsNet.QuantityValue)" />
         public static BitRate PebibitsPerSecond<T>(this T value) =>
-            BitRate.FromPebibitsPerSecond(Convert.ToDouble(value));
+            BitRate.FromPebibitsPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="BitRate.FromPebibytesPerSecond(UnitsNet.QuantityValue)" />
         public static BitRate PebibytesPerSecond<T>(this T value) =>
-            BitRate.FromPebibytesPerSecond(Convert.ToDouble(value));
+            BitRate.FromPebibytesPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="BitRate.FromPetabitsPerSecond(UnitsNet.QuantityValue)" />
         public static BitRate PetabitsPerSecond<T>(this T value) =>
-            BitRate.FromPetabitsPerSecond(Convert.ToDouble(value));
+            BitRate.FromPetabitsPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="BitRate.FromPetabytesPerSecond(UnitsNet.QuantityValue)" />
         public static BitRate PetabytesPerSecond<T>(this T value) =>
-            BitRate.FromPetabytesPerSecond(Convert.ToDouble(value));
+            BitRate.FromPetabytesPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="BitRate.FromTebibitsPerSecond(UnitsNet.QuantityValue)" />
         public static BitRate TebibitsPerSecond<T>(this T value) =>
-            BitRate.FromTebibitsPerSecond(Convert.ToDouble(value));
+            BitRate.FromTebibitsPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="BitRate.FromTebibytesPerSecond(UnitsNet.QuantityValue)" />
         public static BitRate TebibytesPerSecond<T>(this T value) =>
-            BitRate.FromTebibytesPerSecond(Convert.ToDouble(value));
+            BitRate.FromTebibytesPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="BitRate.FromTerabitsPerSecond(UnitsNet.QuantityValue)" />
         public static BitRate TerabitsPerSecond<T>(this T value) =>
-            BitRate.FromTerabitsPerSecond(Convert.ToDouble(value));
+            BitRate.FromTerabitsPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="BitRate.FromTerabytesPerSecond(UnitsNet.QuantityValue)" />
         public static BitRate TerabytesPerSecond<T>(this T value) =>
-            BitRate.FromTerabytesPerSecond(Convert.ToDouble(value));
+            BitRate.FromTerabytesPerSecond(Convert.ToDecimal(value));
 
     }
 }

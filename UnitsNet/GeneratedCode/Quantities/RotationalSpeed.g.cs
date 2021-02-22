@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -75,12 +75,12 @@ namespace UnitsNet
         /// <param name="value">The numeric value to construct this quantity with.</param>
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        public RotationalSpeed(double value, RotationalSpeedUnit unit)
+        public RotationalSpeed(decimal value, RotationalSpeedUnit unit)
         {
-            if(unit == RotationalSpeedUnit.Undefined)
-              throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
+            if (unit == RotationalSpeedUnit.Undefined)
+                throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -92,14 +92,14 @@ namespace UnitsNet
         /// <param name="unitSystem">The unit system to create the quantity with.</param>
         /// <exception cref="ArgumentNullException">The given <see cref="UnitSystem"/> is null.</exception>
         /// <exception cref="ArgumentException">No unit was found for the given <see cref="UnitSystem"/>.</exception>
-        public RotationalSpeed(double value, UnitSystem unitSystem)
+        public RotationalSpeed(decimal value, UnitSystem unitSystem)
         {
-            if(unitSystem is null) throw new ArgumentNullException(nameof(unitSystem));
+            if (unitSystem is null) throw new ArgumentNullException(nameof(unitSystem));
 
             var unitInfos = Info.GetUnitInfosFor(unitSystem.BaseUnits);
             var firstUnitInfo = unitInfos.FirstOrDefault();
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = firstUnitInfo?.Value ?? throw new ArgumentException("No units were found for the given UnitSystem.", nameof(unitSystem));
         }
 
@@ -121,12 +121,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of RotationalSpeed
         /// </summary>
-        public static RotationalSpeed MaxValue { get; } = new RotationalSpeed(double.MaxValue, BaseUnit);
+        public static RotationalSpeed MaxValue { get; } = new RotationalSpeed(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of RotationalSpeed
         /// </summary>
-        public static RotationalSpeed MinValue { get; } = new RotationalSpeed(double.MinValue, BaseUnit);
+        public static RotationalSpeed MinValue { get; } = new RotationalSpeed(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -136,7 +136,7 @@ namespace UnitsNet
         /// <summary>
         ///     All units of measurement for the RotationalSpeed quantity.
         /// </summary>
-        public static RotationalSpeedUnit[] Units { get; } = Enum.GetValues(typeof(RotationalSpeedUnit)).Cast<RotationalSpeedUnit>().Except(new RotationalSpeedUnit[]{ RotationalSpeedUnit.Undefined }).ToArray();
+        public static RotationalSpeedUnit[] Units { get; } = Enum.GetValues(typeof(RotationalSpeedUnit)).Cast<RotationalSpeedUnit>().Except(new RotationalSpeedUnit[] { RotationalSpeedUnit.Undefined }).ToArray();
 
         /// <summary>
         ///     Gets an instance of this quantity with a value of 0 in the base unit RadianPerSecond.
@@ -150,7 +150,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => _value;
+        public decimal Value => _value;
 
         Enum IQuantity.Unit => Unit;
 
@@ -180,67 +180,67 @@ namespace UnitsNet
         /// <summary>
         ///     Get RotationalSpeed in CentiradiansPerSecond.
         /// </summary>
-        public double CentiradiansPerSecond => As(RotationalSpeedUnit.CentiradianPerSecond);
+        public decimal CentiradiansPerSecond => As(RotationalSpeedUnit.CentiradianPerSecond);
 
         /// <summary>
         ///     Get RotationalSpeed in DeciradiansPerSecond.
         /// </summary>
-        public double DeciradiansPerSecond => As(RotationalSpeedUnit.DeciradianPerSecond);
+        public decimal DeciradiansPerSecond => As(RotationalSpeedUnit.DeciradianPerSecond);
 
         /// <summary>
         ///     Get RotationalSpeed in DegreesPerMinute.
         /// </summary>
-        public double DegreesPerMinute => As(RotationalSpeedUnit.DegreePerMinute);
+        public decimal DegreesPerMinute => As(RotationalSpeedUnit.DegreePerMinute);
 
         /// <summary>
         ///     Get RotationalSpeed in DegreesPerSecond.
         /// </summary>
-        public double DegreesPerSecond => As(RotationalSpeedUnit.DegreePerSecond);
+        public decimal DegreesPerSecond => As(RotationalSpeedUnit.DegreePerSecond);
 
         /// <summary>
         ///     Get RotationalSpeed in MicrodegreesPerSecond.
         /// </summary>
-        public double MicrodegreesPerSecond => As(RotationalSpeedUnit.MicrodegreePerSecond);
+        public decimal MicrodegreesPerSecond => As(RotationalSpeedUnit.MicrodegreePerSecond);
 
         /// <summary>
         ///     Get RotationalSpeed in MicroradiansPerSecond.
         /// </summary>
-        public double MicroradiansPerSecond => As(RotationalSpeedUnit.MicroradianPerSecond);
+        public decimal MicroradiansPerSecond => As(RotationalSpeedUnit.MicroradianPerSecond);
 
         /// <summary>
         ///     Get RotationalSpeed in MillidegreesPerSecond.
         /// </summary>
-        public double MillidegreesPerSecond => As(RotationalSpeedUnit.MillidegreePerSecond);
+        public decimal MillidegreesPerSecond => As(RotationalSpeedUnit.MillidegreePerSecond);
 
         /// <summary>
         ///     Get RotationalSpeed in MilliradiansPerSecond.
         /// </summary>
-        public double MilliradiansPerSecond => As(RotationalSpeedUnit.MilliradianPerSecond);
+        public decimal MilliradiansPerSecond => As(RotationalSpeedUnit.MilliradianPerSecond);
 
         /// <summary>
         ///     Get RotationalSpeed in NanodegreesPerSecond.
         /// </summary>
-        public double NanodegreesPerSecond => As(RotationalSpeedUnit.NanodegreePerSecond);
+        public decimal NanodegreesPerSecond => As(RotationalSpeedUnit.NanodegreePerSecond);
 
         /// <summary>
         ///     Get RotationalSpeed in NanoradiansPerSecond.
         /// </summary>
-        public double NanoradiansPerSecond => As(RotationalSpeedUnit.NanoradianPerSecond);
+        public decimal NanoradiansPerSecond => As(RotationalSpeedUnit.NanoradianPerSecond);
 
         /// <summary>
         ///     Get RotationalSpeed in RadiansPerSecond.
         /// </summary>
-        public double RadiansPerSecond => As(RotationalSpeedUnit.RadianPerSecond);
+        public decimal RadiansPerSecond => As(RotationalSpeedUnit.RadianPerSecond);
 
         /// <summary>
         ///     Get RotationalSpeed in RevolutionsPerMinute.
         /// </summary>
-        public double RevolutionsPerMinute => As(RotationalSpeedUnit.RevolutionPerMinute);
+        public decimal RevolutionsPerMinute => As(RotationalSpeedUnit.RevolutionPerMinute);
 
         /// <summary>
         ///     Get RotationalSpeed in RevolutionsPerSecond.
         /// </summary>
-        public double RevolutionsPerSecond => As(RotationalSpeedUnit.RevolutionPerSecond);
+        public decimal RevolutionsPerSecond => As(RotationalSpeedUnit.RevolutionPerSecond);
 
         #endregion
 
@@ -277,7 +277,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static RotationalSpeed FromCentiradiansPerSecond(QuantityValue centiradianspersecond)
         {
-            double value = (double) centiradianspersecond;
+            decimal value = (decimal)centiradianspersecond;
             return new RotationalSpeed(value, RotationalSpeedUnit.CentiradianPerSecond);
         }
         /// <summary>
@@ -286,7 +286,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static RotationalSpeed FromDeciradiansPerSecond(QuantityValue deciradianspersecond)
         {
-            double value = (double) deciradianspersecond;
+            decimal value = (decimal)deciradianspersecond;
             return new RotationalSpeed(value, RotationalSpeedUnit.DeciradianPerSecond);
         }
         /// <summary>
@@ -295,7 +295,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static RotationalSpeed FromDegreesPerMinute(QuantityValue degreesperminute)
         {
-            double value = (double) degreesperminute;
+            decimal value = (decimal)degreesperminute;
             return new RotationalSpeed(value, RotationalSpeedUnit.DegreePerMinute);
         }
         /// <summary>
@@ -304,7 +304,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static RotationalSpeed FromDegreesPerSecond(QuantityValue degreespersecond)
         {
-            double value = (double) degreespersecond;
+            decimal value = (decimal)degreespersecond;
             return new RotationalSpeed(value, RotationalSpeedUnit.DegreePerSecond);
         }
         /// <summary>
@@ -313,7 +313,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static RotationalSpeed FromMicrodegreesPerSecond(QuantityValue microdegreespersecond)
         {
-            double value = (double) microdegreespersecond;
+            decimal value = (decimal)microdegreespersecond;
             return new RotationalSpeed(value, RotationalSpeedUnit.MicrodegreePerSecond);
         }
         /// <summary>
@@ -322,7 +322,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static RotationalSpeed FromMicroradiansPerSecond(QuantityValue microradianspersecond)
         {
-            double value = (double) microradianspersecond;
+            decimal value = (decimal)microradianspersecond;
             return new RotationalSpeed(value, RotationalSpeedUnit.MicroradianPerSecond);
         }
         /// <summary>
@@ -331,7 +331,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static RotationalSpeed FromMillidegreesPerSecond(QuantityValue millidegreespersecond)
         {
-            double value = (double) millidegreespersecond;
+            decimal value = (decimal)millidegreespersecond;
             return new RotationalSpeed(value, RotationalSpeedUnit.MillidegreePerSecond);
         }
         /// <summary>
@@ -340,7 +340,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static RotationalSpeed FromMilliradiansPerSecond(QuantityValue milliradianspersecond)
         {
-            double value = (double) milliradianspersecond;
+            decimal value = (decimal)milliradianspersecond;
             return new RotationalSpeed(value, RotationalSpeedUnit.MilliradianPerSecond);
         }
         /// <summary>
@@ -349,7 +349,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static RotationalSpeed FromNanodegreesPerSecond(QuantityValue nanodegreespersecond)
         {
-            double value = (double) nanodegreespersecond;
+            decimal value = (decimal)nanodegreespersecond;
             return new RotationalSpeed(value, RotationalSpeedUnit.NanodegreePerSecond);
         }
         /// <summary>
@@ -358,7 +358,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static RotationalSpeed FromNanoradiansPerSecond(QuantityValue nanoradianspersecond)
         {
-            double value = (double) nanoradianspersecond;
+            decimal value = (decimal)nanoradianspersecond;
             return new RotationalSpeed(value, RotationalSpeedUnit.NanoradianPerSecond);
         }
         /// <summary>
@@ -367,7 +367,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static RotationalSpeed FromRadiansPerSecond(QuantityValue radianspersecond)
         {
-            double value = (double) radianspersecond;
+            decimal value = (decimal)radianspersecond;
             return new RotationalSpeed(value, RotationalSpeedUnit.RadianPerSecond);
         }
         /// <summary>
@@ -376,7 +376,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static RotationalSpeed FromRevolutionsPerMinute(QuantityValue revolutionsperminute)
         {
-            double value = (double) revolutionsperminute;
+            decimal value = (decimal)revolutionsperminute;
             return new RotationalSpeed(value, RotationalSpeedUnit.RevolutionPerMinute);
         }
         /// <summary>
@@ -385,7 +385,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static RotationalSpeed FromRevolutionsPerSecond(QuantityValue revolutionspersecond)
         {
-            double value = (double) revolutionspersecond;
+            decimal value = (decimal)revolutionspersecond;
             return new RotationalSpeed(value, RotationalSpeedUnit.RevolutionPerSecond);
         }
 
@@ -397,7 +397,7 @@ namespace UnitsNet
         /// <returns>RotationalSpeed unit value.</returns>
         public static RotationalSpeed From(QuantityValue value, RotationalSpeedUnit fromUnit)
         {
-            return new RotationalSpeed((double)value, fromUnit);
+            return new RotationalSpeed((decimal)value, fromUnit);
         }
 
         #endregion
@@ -567,25 +567,25 @@ namespace UnitsNet
         }
 
         /// <summary>Get <see cref="RotationalSpeed"/> from multiplying value and <see cref="RotationalSpeed"/>.</summary>
-        public static RotationalSpeed operator *(double left, RotationalSpeed right)
+        public static RotationalSpeed operator *(decimal left, RotationalSpeed right)
         {
             return new RotationalSpeed(left * right.Value, right.Unit);
         }
 
         /// <summary>Get <see cref="RotationalSpeed"/> from multiplying value and <see cref="RotationalSpeed"/>.</summary>
-        public static RotationalSpeed operator *(RotationalSpeed left, double right)
+        public static RotationalSpeed operator *(RotationalSpeed left, decimal right)
         {
             return new RotationalSpeed(left.Value * right, left.Unit);
         }
 
         /// <summary>Get <see cref="RotationalSpeed"/> from dividing <see cref="RotationalSpeed"/> by value.</summary>
-        public static RotationalSpeed operator /(RotationalSpeed left, double right)
+        public static RotationalSpeed operator /(RotationalSpeed left, decimal right)
         {
             return new RotationalSpeed(left.Value / right, left.Unit);
         }
 
         /// <summary>Get ratio value from dividing <see cref="RotationalSpeed"/> by <see cref="RotationalSpeed"/>.</summary>
-        public static double operator /(RotationalSpeed left, RotationalSpeed right)
+        public static decimal operator /(RotationalSpeed left, RotationalSpeed right)
         {
             return left.RadiansPerSecond / right.RadiansPerSecond;
         }
@@ -619,14 +619,14 @@ namespace UnitsNet
         }
 
         /// <summary>Returns true if exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(RotationalSpeed, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(RotationalSpeed, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator ==(RotationalSpeed left, RotationalSpeed right)
         {
             return left.Equals(right);
         }
 
         /// <summary>Returns true if not exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(RotationalSpeed, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(RotationalSpeed, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator !=(RotationalSpeed left, RotationalSpeed right)
         {
             return !(left == right);
@@ -635,8 +635,8 @@ namespace UnitsNet
         /// <inheritdoc />
         public int CompareTo(object obj)
         {
-            if(obj is null) throw new ArgumentNullException(nameof(obj));
-            if(!(obj is RotationalSpeed objRotationalSpeed)) throw new ArgumentException("Expected type RotationalSpeed.", nameof(obj));
+            if (obj is null) throw new ArgumentNullException(nameof(obj));
+            if (!(obj is RotationalSpeed objRotationalSpeed)) throw new ArgumentException("Expected type RotationalSpeed.", nameof(obj));
 
             return CompareTo(objRotationalSpeed);
         }
@@ -648,17 +648,17 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(RotationalSpeed, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(RotationalSpeed, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public override bool Equals(object obj)
         {
-            if(obj is null || !(obj is RotationalSpeed objRotationalSpeed))
+            if (obj is null || !(obj is RotationalSpeed objRotationalSpeed))
                 return false;
 
             return Equals(objRotationalSpeed);
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(RotationalSpeed, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(RotationalSpeed, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public bool Equals(RotationalSpeed other)
         {
             return _value.Equals(other.GetValueAs(this.Unit));
@@ -704,13 +704,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(RotationalSpeed other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(RotationalSpeed other, decimal tolerance, ComparisonType comparisonType)
         {
-            if(tolerance < 0)
+            if (tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -732,34 +732,34 @@ namespace UnitsNet
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(RotationalSpeedUnit unit)
+        public decimal As(RotationalSpeedUnit unit)
         {
-            if(Unit == unit)
-                return Convert.ToDouble(Value);
+            if (Unit == unit)
+                return Convert.ToDecimal(Value);
 
             var converted = GetValueAs(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <inheritdoc cref="IQuantity.As(UnitSystem)"/>
-        public double As(UnitSystem unitSystem)
+        public decimal As(UnitSystem unitSystem)
         {
-            if(unitSystem is null)
+            if (unitSystem is null)
                 throw new ArgumentNullException(nameof(unitSystem));
 
             var unitInfos = Info.GetUnitInfosFor(unitSystem.BaseUnits);
 
             var firstUnitInfo = unitInfos.FirstOrDefault();
-            if(firstUnitInfo == null)
+            if (firstUnitInfo == null)
                 throw new ArgumentException("No units were found for the given UnitSystem.", nameof(unitSystem));
 
             return As(firstUnitInfo.Value);
         }
 
         /// <inheritdoc />
-        double IQuantity.As(Enum unit)
+        decimal IQuantity.As(Enum unit)
         {
-            if(!(unit is RotationalSpeedUnit unitAsRotationalSpeedUnit))
+            if (!(unit is RotationalSpeedUnit unitAsRotationalSpeedUnit))
                 throw new ArgumentException($"The given unit is of type {unit.GetType()}. Only {typeof(RotationalSpeedUnit)} is supported.", nameof(unit));
 
             return As(unitAsRotationalSpeedUnit);
@@ -778,7 +778,7 @@ namespace UnitsNet
         /// <inheritdoc />
         IQuantity IQuantity.ToUnit(Enum unit)
         {
-            if(!(unit is RotationalSpeedUnit unitAsRotationalSpeedUnit))
+            if (!(unit is RotationalSpeedUnit unitAsRotationalSpeedUnit))
                 throw new ArgumentException($"The given unit is of type {unit.GetType()}. Only {typeof(RotationalSpeedUnit)} is supported.", nameof(unit));
 
             return ToUnit(unitAsRotationalSpeedUnit);
@@ -787,13 +787,13 @@ namespace UnitsNet
         /// <inheritdoc cref="IQuantity.ToUnit(UnitSystem)"/>
         public RotationalSpeed ToUnit(UnitSystem unitSystem)
         {
-            if(unitSystem is null)
+            if (unitSystem is null)
                 throw new ArgumentNullException(nameof(unitSystem));
 
             var unitInfos = Info.GetUnitInfosFor(unitSystem.BaseUnits);
 
             var firstUnitInfo = unitInfos.FirstOrDefault();
-            if(firstUnitInfo == null)
+            if (firstUnitInfo == null)
                 throw new ArgumentException("No units were found for the given UnitSystem.", nameof(unitSystem));
 
             return ToUnit(firstUnitInfo.Value);
@@ -813,23 +813,23 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double GetValueInBaseUnit()
+        private decimal GetValueInBaseUnit()
         {
-            switch(Unit)
+            switch (Unit)
             {
-                case RotationalSpeedUnit.CentiradianPerSecond: return (_value) * 1e-2d;
-                case RotationalSpeedUnit.DeciradianPerSecond: return (_value) * 1e-1d;
-                case RotationalSpeedUnit.DegreePerMinute: return (Math.PI/(180*60))*_value;
-                case RotationalSpeedUnit.DegreePerSecond: return (Math.PI/180)*_value;
-                case RotationalSpeedUnit.MicrodegreePerSecond: return ((Math.PI/180)*_value) * 1e-6d;
-                case RotationalSpeedUnit.MicroradianPerSecond: return (_value) * 1e-6d;
-                case RotationalSpeedUnit.MillidegreePerSecond: return ((Math.PI/180)*_value) * 1e-3d;
-                case RotationalSpeedUnit.MilliradianPerSecond: return (_value) * 1e-3d;
-                case RotationalSpeedUnit.NanodegreePerSecond: return ((Math.PI/180)*_value) * 1e-9d;
-                case RotationalSpeedUnit.NanoradianPerSecond: return (_value) * 1e-9d;
+                case RotationalSpeedUnit.CentiradianPerSecond: return (_value) * 1e-2m;
+                case RotationalSpeedUnit.DeciradianPerSecond: return (_value) * 1e-1m;
+                case RotationalSpeedUnit.DegreePerMinute: return (UnitsNet.CustomCode.CustomMath.PI / (180m * 60)) * _value;
+                case RotationalSpeedUnit.DegreePerSecond: return (UnitsNet.CustomCode.CustomMath.PI / 180) * _value;
+                case RotationalSpeedUnit.MicrodegreePerSecond: return ((UnitsNet.CustomCode.CustomMath.PI / 180) * _value) * 1e-6m;
+                case RotationalSpeedUnit.MicroradianPerSecond: return (_value) * 1e-6m;
+                case RotationalSpeedUnit.MillidegreePerSecond: return ((UnitsNet.CustomCode.CustomMath.PI / 180) * _value) * 1e-3m;
+                case RotationalSpeedUnit.MilliradianPerSecond: return (_value) * 1e-3m;
+                case RotationalSpeedUnit.NanodegreePerSecond: return ((UnitsNet.CustomCode.CustomMath.PI / 180) * _value) * 1e-9m;
+                case RotationalSpeedUnit.NanoradianPerSecond: return (_value) * 1e-9m;
                 case RotationalSpeedUnit.RadianPerSecond: return _value;
-                case RotationalSpeedUnit.RevolutionPerMinute: return (_value*6.2831853072)/60;
-                case RotationalSpeedUnit.RevolutionPerSecond: return _value*6.2831853072;
+                case RotationalSpeedUnit.RevolutionPerMinute: return (_value * 6.2831853072m) / 60m;
+                case RotationalSpeedUnit.RevolutionPerSecond: return _value * 6.2831853072m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
@@ -846,28 +846,28 @@ namespace UnitsNet
             return new RotationalSpeed(baseUnitValue, BaseUnit);
         }
 
-        private double GetValueAs(RotationalSpeedUnit unit)
+        private decimal GetValueAs(RotationalSpeedUnit unit)
         {
-            if(Unit == unit)
+            if (Unit == unit)
                 return _value;
 
             var baseUnitValue = GetValueInBaseUnit();
 
-            switch(unit)
+            switch (unit)
             {
-                case RotationalSpeedUnit.CentiradianPerSecond: return (baseUnitValue) / 1e-2d;
-                case RotationalSpeedUnit.DeciradianPerSecond: return (baseUnitValue) / 1e-1d;
-                case RotationalSpeedUnit.DegreePerMinute: return (180*60/Math.PI)*baseUnitValue;
-                case RotationalSpeedUnit.DegreePerSecond: return (180/Math.PI)*baseUnitValue;
-                case RotationalSpeedUnit.MicrodegreePerSecond: return ((180/Math.PI)*baseUnitValue) / 1e-6d;
-                case RotationalSpeedUnit.MicroradianPerSecond: return (baseUnitValue) / 1e-6d;
-                case RotationalSpeedUnit.MillidegreePerSecond: return ((180/Math.PI)*baseUnitValue) / 1e-3d;
-                case RotationalSpeedUnit.MilliradianPerSecond: return (baseUnitValue) / 1e-3d;
-                case RotationalSpeedUnit.NanodegreePerSecond: return ((180/Math.PI)*baseUnitValue) / 1e-9d;
-                case RotationalSpeedUnit.NanoradianPerSecond: return (baseUnitValue) / 1e-9d;
+                case RotationalSpeedUnit.CentiradianPerSecond: return (baseUnitValue) / 1e-2m;
+                case RotationalSpeedUnit.DeciradianPerSecond: return (baseUnitValue) / 1e-1m;
+                case RotationalSpeedUnit.DegreePerMinute: return (180m * 60m / UnitsNet.CustomCode.CustomMath.PI) * baseUnitValue;
+                case RotationalSpeedUnit.DegreePerSecond: return (180m / UnitsNet.CustomCode.CustomMath.PI) * baseUnitValue;
+                case RotationalSpeedUnit.MicrodegreePerSecond: return ((180m / UnitsNet.CustomCode.CustomMath.PI) * baseUnitValue) / 1e-6m;
+                case RotationalSpeedUnit.MicroradianPerSecond: return (baseUnitValue) / 1e-6m;
+                case RotationalSpeedUnit.MillidegreePerSecond: return ((180m / UnitsNet.CustomCode.CustomMath.PI) * baseUnitValue) / 1e-3m;
+                case RotationalSpeedUnit.MilliradianPerSecond: return (baseUnitValue) / 1e-3m;
+                case RotationalSpeedUnit.NanodegreePerSecond: return ((180m / UnitsNet.CustomCode.CustomMath.PI) * baseUnitValue) / 1e-9m;
+                case RotationalSpeedUnit.NanoradianPerSecond: return (baseUnitValue) / 1e-9m;
                 case RotationalSpeedUnit.RadianPerSecond: return baseUnitValue;
-                case RotationalSpeedUnit.RevolutionPerMinute: return (baseUnitValue/6.2831853072)*60;
-                case RotationalSpeedUnit.RevolutionPerSecond: return baseUnitValue/6.2831853072;
+                case RotationalSpeedUnit.RevolutionPerMinute: return (baseUnitValue / 6.2831853072m) * 60m;
+                case RotationalSpeedUnit.RevolutionPerSecond: return baseUnitValue / 6.2831853072m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -905,7 +905,7 @@ namespace UnitsNet
         [Obsolete(@"This method is deprecated and will be removed at a future release. Please use ToString(""s2"") or ToString(""s2"", provider) where 2 is an example of the number passed to significantDigitsAfterRadix.")]
         public string ToString(IFormatProvider? provider, int significantDigitsAfterRadix)
         {
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -925,7 +925,7 @@ namespace UnitsNet
 
             provider = provider ?? CultureInfo.CurrentUICulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }
@@ -1024,13 +1024,13 @@ namespace UnitsNet
 
         object IConvertible.ToType(Type conversionType, IFormatProvider provider)
         {
-            if(conversionType == typeof(RotationalSpeed))
+            if (conversionType == typeof(RotationalSpeed))
                 return this;
-            else if(conversionType == typeof(RotationalSpeedUnit))
+            else if (conversionType == typeof(RotationalSpeedUnit))
                 return Unit;
-            else if(conversionType == typeof(QuantityType))
+            else if (conversionType == typeof(QuantityType))
                 return RotationalSpeed.QuantityType;
-            else if(conversionType == typeof(BaseDimensions))
+            else if (conversionType == typeof(BaseDimensions))
                 return RotationalSpeed.BaseDimensions;
             else
                 throw new InvalidCastException($"Converting {typeof(RotationalSpeed)} to {conversionType} is not supported.");

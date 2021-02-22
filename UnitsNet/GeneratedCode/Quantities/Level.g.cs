@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -64,12 +64,12 @@ namespace UnitsNet
         /// <param name="value">The numeric value to construct this quantity with.</param>
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        public Level(double value, LevelUnit unit)
+        public Level(decimal value, LevelUnit unit)
         {
-            if(unit == LevelUnit.Undefined)
-              throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
+            if (unit == LevelUnit.Undefined)
+                throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -81,14 +81,14 @@ namespace UnitsNet
         /// <param name="unitSystem">The unit system to create the quantity with.</param>
         /// <exception cref="ArgumentNullException">The given <see cref="UnitSystem"/> is null.</exception>
         /// <exception cref="ArgumentException">No unit was found for the given <see cref="UnitSystem"/>.</exception>
-        public Level(double value, UnitSystem unitSystem)
+        public Level(decimal value, UnitSystem unitSystem)
         {
-            if(unitSystem is null) throw new ArgumentNullException(nameof(unitSystem));
+            if (unitSystem is null) throw new ArgumentNullException(nameof(unitSystem));
 
             var unitInfos = Info.GetUnitInfosFor(unitSystem.BaseUnits);
             var firstUnitInfo = unitInfos.FirstOrDefault();
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = firstUnitInfo?.Value ?? throw new ArgumentException("No units were found for the given UnitSystem.", nameof(unitSystem));
         }
 
@@ -110,12 +110,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of Level
         /// </summary>
-        public static Level MaxValue { get; } = new Level(double.MaxValue, BaseUnit);
+        public static Level MaxValue { get; } = new Level(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of Level
         /// </summary>
-        public static Level MinValue { get; } = new Level(double.MinValue, BaseUnit);
+        public static Level MinValue { get; } = new Level(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -125,7 +125,7 @@ namespace UnitsNet
         /// <summary>
         ///     All units of measurement for the Level quantity.
         /// </summary>
-        public static LevelUnit[] Units { get; } = Enum.GetValues(typeof(LevelUnit)).Cast<LevelUnit>().Except(new LevelUnit[]{ LevelUnit.Undefined }).ToArray();
+        public static LevelUnit[] Units { get; } = Enum.GetValues(typeof(LevelUnit)).Cast<LevelUnit>().Except(new LevelUnit[] { LevelUnit.Undefined }).ToArray();
 
         /// <summary>
         ///     Gets an instance of this quantity with a value of 0 in the base unit Decibel.
@@ -139,7 +139,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => _value;
+        public decimal Value => _value;
 
         Enum IQuantity.Unit => Unit;
 
@@ -169,12 +169,12 @@ namespace UnitsNet
         /// <summary>
         ///     Get Level in Decibels.
         /// </summary>
-        public double Decibels => As(LevelUnit.Decibel);
+        public decimal Decibels => As(LevelUnit.Decibel);
 
         /// <summary>
         ///     Get Level in Nepers.
         /// </summary>
-        public double Nepers => As(LevelUnit.Neper);
+        public decimal Nepers => As(LevelUnit.Neper);
 
         #endregion
 
@@ -211,7 +211,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static Level FromDecibels(QuantityValue decibels)
         {
-            double value = (double) decibels;
+            decimal value = (decimal)decibels;
             return new Level(value, LevelUnit.Decibel);
         }
         /// <summary>
@@ -220,7 +220,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static Level FromNepers(QuantityValue nepers)
         {
-            double value = (double) nepers;
+            decimal value = (decimal)nepers;
             return new Level(value, LevelUnit.Neper);
         }
 
@@ -232,7 +232,7 @@ namespace UnitsNet
         /// <returns>Level unit value.</returns>
         public static Level From(QuantityValue value, LevelUnit fromUnit)
         {
-            return new Level((double)value, fromUnit);
+            return new Level((decimal)value, fromUnit);
         }
 
         #endregion
@@ -394,7 +394,7 @@ namespace UnitsNet
         {
             // Logarithmic addition
             // Formula: 10*log10(10^(x/10) + 10^(y/10))
-            return new Level(10*Math.Log10(Math.Pow(10, left.Value/10) + Math.Pow(10, right.GetValueAs(left.Unit)/10)), left.Unit);
+            return new Level(10 * DecimalMath.DecimalEx.Log10(DecimalMath.DecimalEx.Pow(10, left.Value / 10) + DecimalMath.DecimalEx.Pow(10, right.GetValueAs(left.Unit) / 10)), left.Unit);
         }
 
         /// <summary>Get <see cref="Level"/> from logarithmic subtraction of two <see cref="Level"/>.</summary>
@@ -402,35 +402,35 @@ namespace UnitsNet
         {
             // Logarithmic subtraction
             // Formula: 10*log10(10^(x/10) - 10^(y/10))
-            return new Level(10*Math.Log10(Math.Pow(10, left.Value/10) - Math.Pow(10, right.GetValueAs(left.Unit)/10)), left.Unit);
+            return new Level(10 * DecimalMath.DecimalEx.Log10(DecimalMath.DecimalEx.Pow(10, left.Value / 10) - DecimalMath.DecimalEx.Pow(10, right.GetValueAs(left.Unit) / 10)), left.Unit);
         }
 
         /// <summary>Get <see cref="Level"/> from logarithmic multiplication of value and <see cref="Level"/>.</summary>
-        public static Level operator *(double left, Level right)
+        public static Level operator *(decimal left, Level right)
         {
             // Logarithmic multiplication = addition
             return new Level(left + right.Value, right.Unit);
         }
 
         /// <summary>Get <see cref="Level"/> from logarithmic multiplication of value and <see cref="Level"/>.</summary>
-        public static Level operator *(Level left, double right)
+        public static Level operator *(Level left, decimal right)
         {
             // Logarithmic multiplication = addition
-            return new Level(left.Value + (double)right, left.Unit);
+            return new Level(left.Value + (decimal)right, left.Unit);
         }
 
         /// <summary>Get <see cref="Level"/> from logarithmic division of <see cref="Level"/> by value.</summary>
-        public static Level operator /(Level left, double right)
+        public static Level operator /(Level left, decimal right)
         {
             // Logarithmic division = subtraction
-            return new Level(left.Value - (double)right, left.Unit);
+            return new Level(left.Value - (decimal)right, left.Unit);
         }
 
         /// <summary>Get ratio value from logarithmic division of <see cref="Level"/> by <see cref="Level"/>.</summary>
-        public static double operator /(Level left, Level right)
+        public static decimal operator /(Level left, Level right)
         {
             // Logarithmic division = subtraction
-            return Convert.ToDouble(left.Value - right.GetValueAs(left.Unit));
+            return Convert.ToDecimal(left.Value - right.GetValueAs(left.Unit));
         }
 
         #endregion
@@ -462,14 +462,14 @@ namespace UnitsNet
         }
 
         /// <summary>Returns true if exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(Level, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(Level, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator ==(Level left, Level right)
         {
             return left.Equals(right);
         }
 
         /// <summary>Returns true if not exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(Level, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(Level, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator !=(Level left, Level right)
         {
             return !(left == right);
@@ -478,8 +478,8 @@ namespace UnitsNet
         /// <inheritdoc />
         public int CompareTo(object obj)
         {
-            if(obj is null) throw new ArgumentNullException(nameof(obj));
-            if(!(obj is Level objLevel)) throw new ArgumentException("Expected type Level.", nameof(obj));
+            if (obj is null) throw new ArgumentNullException(nameof(obj));
+            if (!(obj is Level objLevel)) throw new ArgumentException("Expected type Level.", nameof(obj));
 
             return CompareTo(objLevel);
         }
@@ -491,17 +491,17 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(Level, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(Level, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public override bool Equals(object obj)
         {
-            if(obj is null || !(obj is Level objLevel))
+            if (obj is null || !(obj is Level objLevel))
                 return false;
 
             return Equals(objLevel);
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(Level, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(Level, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public bool Equals(Level other)
         {
             return _value.Equals(other.GetValueAs(this.Unit));
@@ -547,13 +547,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(Level other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(Level other, decimal tolerance, ComparisonType comparisonType)
         {
-            if(tolerance < 0)
+            if (tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -575,34 +575,34 @@ namespace UnitsNet
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(LevelUnit unit)
+        public decimal As(LevelUnit unit)
         {
-            if(Unit == unit)
-                return Convert.ToDouble(Value);
+            if (Unit == unit)
+                return Convert.ToDecimal(Value);
 
             var converted = GetValueAs(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <inheritdoc cref="IQuantity.As(UnitSystem)"/>
-        public double As(UnitSystem unitSystem)
+        public decimal As(UnitSystem unitSystem)
         {
-            if(unitSystem is null)
+            if (unitSystem is null)
                 throw new ArgumentNullException(nameof(unitSystem));
 
             var unitInfos = Info.GetUnitInfosFor(unitSystem.BaseUnits);
 
             var firstUnitInfo = unitInfos.FirstOrDefault();
-            if(firstUnitInfo == null)
+            if (firstUnitInfo == null)
                 throw new ArgumentException("No units were found for the given UnitSystem.", nameof(unitSystem));
 
             return As(firstUnitInfo.Value);
         }
 
         /// <inheritdoc />
-        double IQuantity.As(Enum unit)
+        decimal IQuantity.As(Enum unit)
         {
-            if(!(unit is LevelUnit unitAsLevelUnit))
+            if (!(unit is LevelUnit unitAsLevelUnit))
                 throw new ArgumentException($"The given unit is of type {unit.GetType()}. Only {typeof(LevelUnit)} is supported.", nameof(unit));
 
             return As(unitAsLevelUnit);
@@ -621,7 +621,7 @@ namespace UnitsNet
         /// <inheritdoc />
         IQuantity IQuantity.ToUnit(Enum unit)
         {
-            if(!(unit is LevelUnit unitAsLevelUnit))
+            if (!(unit is LevelUnit unitAsLevelUnit))
                 throw new ArgumentException($"The given unit is of type {unit.GetType()}. Only {typeof(LevelUnit)} is supported.", nameof(unit));
 
             return ToUnit(unitAsLevelUnit);
@@ -630,13 +630,13 @@ namespace UnitsNet
         /// <inheritdoc cref="IQuantity.ToUnit(UnitSystem)"/>
         public Level ToUnit(UnitSystem unitSystem)
         {
-            if(unitSystem is null)
+            if (unitSystem is null)
                 throw new ArgumentNullException(nameof(unitSystem));
 
             var unitInfos = Info.GetUnitInfosFor(unitSystem.BaseUnits);
 
             var firstUnitInfo = unitInfos.FirstOrDefault();
-            if(firstUnitInfo == null)
+            if (firstUnitInfo == null)
                 throw new ArgumentException("No units were found for the given UnitSystem.", nameof(unitSystem));
 
             return ToUnit(firstUnitInfo.Value);
@@ -656,12 +656,12 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double GetValueInBaseUnit()
+        private decimal GetValueInBaseUnit()
         {
-            switch(Unit)
+            switch (Unit)
             {
                 case LevelUnit.Decibel: return _value;
-                case LevelUnit.Neper: return (1/0.115129254)*_value;
+                case LevelUnit.Neper: return (1m / 0.115129254m) * _value;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
@@ -678,17 +678,17 @@ namespace UnitsNet
             return new Level(baseUnitValue, BaseUnit);
         }
 
-        private double GetValueAs(LevelUnit unit)
+        private decimal GetValueAs(LevelUnit unit)
         {
-            if(Unit == unit)
+            if (Unit == unit)
                 return _value;
 
             var baseUnitValue = GetValueInBaseUnit();
 
-            switch(unit)
+            switch (unit)
             {
                 case LevelUnit.Decibel: return baseUnitValue;
-                case LevelUnit.Neper: return 0.115129254*baseUnitValue;
+                case LevelUnit.Neper: return 0.115129254m * baseUnitValue;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -726,7 +726,7 @@ namespace UnitsNet
         [Obsolete(@"This method is deprecated and will be removed at a future release. Please use ToString(""s2"") or ToString(""s2"", provider) where 2 is an example of the number passed to significantDigitsAfterRadix.")]
         public string ToString(IFormatProvider? provider, int significantDigitsAfterRadix)
         {
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -746,7 +746,7 @@ namespace UnitsNet
 
             provider = provider ?? CultureInfo.CurrentUICulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }
@@ -845,13 +845,13 @@ namespace UnitsNet
 
         object IConvertible.ToType(Type conversionType, IFormatProvider provider)
         {
-            if(conversionType == typeof(Level))
+            if (conversionType == typeof(Level))
                 return this;
-            else if(conversionType == typeof(LevelUnit))
+            else if (conversionType == typeof(LevelUnit))
                 return Unit;
-            else if(conversionType == typeof(QuantityType))
+            else if (conversionType == typeof(QuantityType))
                 return Level.QuantityType;
-            else if(conversionType == typeof(BaseDimensions))
+            else if (conversionType == typeof(BaseDimensions))
                 return Level.BaseDimensions;
             else
                 throw new InvalidCastException($"Converting {typeof(Level)} to {conversionType} is not supported.");

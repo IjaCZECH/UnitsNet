@@ -30,35 +30,35 @@ namespace UnitsNet.NumberExtensions.NumberToMolarity
     {
         /// <inheritdoc cref="Molarity.FromCentimolesPerLiter(UnitsNet.QuantityValue)" />
         public static Molarity CentimolesPerLiter<T>(this T value) =>
-            Molarity.FromCentimolesPerLiter(Convert.ToDouble(value));
+            Molarity.FromCentimolesPerLiter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Molarity.FromDecimolesPerLiter(UnitsNet.QuantityValue)" />
         public static Molarity DecimolesPerLiter<T>(this T value) =>
-            Molarity.FromDecimolesPerLiter(Convert.ToDouble(value));
+            Molarity.FromDecimolesPerLiter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Molarity.FromMicromolesPerLiter(UnitsNet.QuantityValue)" />
         public static Molarity MicromolesPerLiter<T>(this T value) =>
-            Molarity.FromMicromolesPerLiter(Convert.ToDouble(value));
+            Molarity.FromMicromolesPerLiter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Molarity.FromMillimolesPerLiter(UnitsNet.QuantityValue)" />
         public static Molarity MillimolesPerLiter<T>(this T value) =>
-            Molarity.FromMillimolesPerLiter(Convert.ToDouble(value));
+            Molarity.FromMillimolesPerLiter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Molarity.FromMolesPerCubicMeter(UnitsNet.QuantityValue)" />
         public static Molarity MolesPerCubicMeter<T>(this T value) =>
-            Molarity.FromMolesPerCubicMeter(Convert.ToDouble(value));
+            Molarity.FromMolesPerCubicMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Molarity.FromMolesPerLiter(UnitsNet.QuantityValue)" />
         public static Molarity MolesPerLiter<T>(this T value) =>
-            Molarity.FromMolesPerLiter(Convert.ToDouble(value));
+            Molarity.FromMolesPerLiter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Molarity.FromNanomolesPerLiter(UnitsNet.QuantityValue)" />
         public static Molarity NanomolesPerLiter<T>(this T value) =>
-            Molarity.FromNanomolesPerLiter(Convert.ToDouble(value));
+            Molarity.FromNanomolesPerLiter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Molarity.FromPicomolesPerLiter(UnitsNet.QuantityValue)" />
         public static Molarity PicomolesPerLiter<T>(this T value) =>
-            Molarity.FromPicomolesPerLiter(Convert.ToDouble(value));
+            Molarity.FromPicomolesPerLiter(Convert.ToDecimal(value));
 
     }
 }

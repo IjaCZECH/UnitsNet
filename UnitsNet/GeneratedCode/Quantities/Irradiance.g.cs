@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -76,12 +76,12 @@ namespace UnitsNet
         /// <param name="value">The numeric value to construct this quantity with.</param>
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        public Irradiance(double value, IrradianceUnit unit)
+        public Irradiance(decimal value, IrradianceUnit unit)
         {
             if(unit == IrradianceUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -93,14 +93,14 @@ namespace UnitsNet
         /// <param name="unitSystem">The unit system to create the quantity with.</param>
         /// <exception cref="ArgumentNullException">The given <see cref="UnitSystem"/> is null.</exception>
         /// <exception cref="ArgumentException">No unit was found for the given <see cref="UnitSystem"/>.</exception>
-        public Irradiance(double value, UnitSystem unitSystem)
+        public Irradiance(decimal value, UnitSystem unitSystem)
         {
             if(unitSystem is null) throw new ArgumentNullException(nameof(unitSystem));
 
             var unitInfos = Info.GetUnitInfosFor(unitSystem.BaseUnits);
             var firstUnitInfo = unitInfos.FirstOrDefault();
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = firstUnitInfo?.Value ?? throw new ArgumentException("No units were found for the given UnitSystem.", nameof(unitSystem));
         }
 
@@ -122,12 +122,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of Irradiance
         /// </summary>
-        public static Irradiance MaxValue { get; } = new Irradiance(double.MaxValue, BaseUnit);
+        public static Irradiance MaxValue { get; } = new Irradiance(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of Irradiance
         /// </summary>
-        public static Irradiance MinValue { get; } = new Irradiance(double.MinValue, BaseUnit);
+        public static Irradiance MinValue { get; } = new Irradiance(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -151,7 +151,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => _value;
+        public decimal Value => _value;
 
         Enum IQuantity.Unit => Unit;
 
@@ -181,72 +181,72 @@ namespace UnitsNet
         /// <summary>
         ///     Get Irradiance in KilowattsPerSquareCentimeter.
         /// </summary>
-        public double KilowattsPerSquareCentimeter => As(IrradianceUnit.KilowattPerSquareCentimeter);
+        public decimal KilowattsPerSquareCentimeter => As(IrradianceUnit.KilowattPerSquareCentimeter);
 
         /// <summary>
         ///     Get Irradiance in KilowattsPerSquareMeter.
         /// </summary>
-        public double KilowattsPerSquareMeter => As(IrradianceUnit.KilowattPerSquareMeter);
+        public decimal KilowattsPerSquareMeter => As(IrradianceUnit.KilowattPerSquareMeter);
 
         /// <summary>
         ///     Get Irradiance in MegawattsPerSquareCentimeter.
         /// </summary>
-        public double MegawattsPerSquareCentimeter => As(IrradianceUnit.MegawattPerSquareCentimeter);
+        public decimal MegawattsPerSquareCentimeter => As(IrradianceUnit.MegawattPerSquareCentimeter);
 
         /// <summary>
         ///     Get Irradiance in MegawattsPerSquareMeter.
         /// </summary>
-        public double MegawattsPerSquareMeter => As(IrradianceUnit.MegawattPerSquareMeter);
+        public decimal MegawattsPerSquareMeter => As(IrradianceUnit.MegawattPerSquareMeter);
 
         /// <summary>
         ///     Get Irradiance in MicrowattsPerSquareCentimeter.
         /// </summary>
-        public double MicrowattsPerSquareCentimeter => As(IrradianceUnit.MicrowattPerSquareCentimeter);
+        public decimal MicrowattsPerSquareCentimeter => As(IrradianceUnit.MicrowattPerSquareCentimeter);
 
         /// <summary>
         ///     Get Irradiance in MicrowattsPerSquareMeter.
         /// </summary>
-        public double MicrowattsPerSquareMeter => As(IrradianceUnit.MicrowattPerSquareMeter);
+        public decimal MicrowattsPerSquareMeter => As(IrradianceUnit.MicrowattPerSquareMeter);
 
         /// <summary>
         ///     Get Irradiance in MilliwattsPerSquareCentimeter.
         /// </summary>
-        public double MilliwattsPerSquareCentimeter => As(IrradianceUnit.MilliwattPerSquareCentimeter);
+        public decimal MilliwattsPerSquareCentimeter => As(IrradianceUnit.MilliwattPerSquareCentimeter);
 
         /// <summary>
         ///     Get Irradiance in MilliwattsPerSquareMeter.
         /// </summary>
-        public double MilliwattsPerSquareMeter => As(IrradianceUnit.MilliwattPerSquareMeter);
+        public decimal MilliwattsPerSquareMeter => As(IrradianceUnit.MilliwattPerSquareMeter);
 
         /// <summary>
         ///     Get Irradiance in NanowattsPerSquareCentimeter.
         /// </summary>
-        public double NanowattsPerSquareCentimeter => As(IrradianceUnit.NanowattPerSquareCentimeter);
+        public decimal NanowattsPerSquareCentimeter => As(IrradianceUnit.NanowattPerSquareCentimeter);
 
         /// <summary>
         ///     Get Irradiance in NanowattsPerSquareMeter.
         /// </summary>
-        public double NanowattsPerSquareMeter => As(IrradianceUnit.NanowattPerSquareMeter);
+        public decimal NanowattsPerSquareMeter => As(IrradianceUnit.NanowattPerSquareMeter);
 
         /// <summary>
         ///     Get Irradiance in PicowattsPerSquareCentimeter.
         /// </summary>
-        public double PicowattsPerSquareCentimeter => As(IrradianceUnit.PicowattPerSquareCentimeter);
+        public decimal PicowattsPerSquareCentimeter => As(IrradianceUnit.PicowattPerSquareCentimeter);
 
         /// <summary>
         ///     Get Irradiance in PicowattsPerSquareMeter.
         /// </summary>
-        public double PicowattsPerSquareMeter => As(IrradianceUnit.PicowattPerSquareMeter);
+        public decimal PicowattsPerSquareMeter => As(IrradianceUnit.PicowattPerSquareMeter);
 
         /// <summary>
         ///     Get Irradiance in WattsPerSquareCentimeter.
         /// </summary>
-        public double WattsPerSquareCentimeter => As(IrradianceUnit.WattPerSquareCentimeter);
+        public decimal WattsPerSquareCentimeter => As(IrradianceUnit.WattPerSquareCentimeter);
 
         /// <summary>
         ///     Get Irradiance in WattsPerSquareMeter.
         /// </summary>
-        public double WattsPerSquareMeter => As(IrradianceUnit.WattPerSquareMeter);
+        public decimal WattsPerSquareMeter => As(IrradianceUnit.WattPerSquareMeter);
 
         #endregion
 
@@ -283,7 +283,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static Irradiance FromKilowattsPerSquareCentimeter(QuantityValue kilowattspersquarecentimeter)
         {
-            double value = (double) kilowattspersquarecentimeter;
+            decimal value = (decimal) kilowattspersquarecentimeter;
             return new Irradiance(value, IrradianceUnit.KilowattPerSquareCentimeter);
         }
         /// <summary>
@@ -292,7 +292,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static Irradiance FromKilowattsPerSquareMeter(QuantityValue kilowattspersquaremeter)
         {
-            double value = (double) kilowattspersquaremeter;
+            decimal value = (decimal) kilowattspersquaremeter;
             return new Irradiance(value, IrradianceUnit.KilowattPerSquareMeter);
         }
         /// <summary>
@@ -301,7 +301,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static Irradiance FromMegawattsPerSquareCentimeter(QuantityValue megawattspersquarecentimeter)
         {
-            double value = (double) megawattspersquarecentimeter;
+            decimal value = (decimal) megawattspersquarecentimeter;
             return new Irradiance(value, IrradianceUnit.MegawattPerSquareCentimeter);
         }
         /// <summary>
@@ -310,7 +310,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static Irradiance FromMegawattsPerSquareMeter(QuantityValue megawattspersquaremeter)
         {
-            double value = (double) megawattspersquaremeter;
+            decimal value = (decimal) megawattspersquaremeter;
             return new Irradiance(value, IrradianceUnit.MegawattPerSquareMeter);
         }
         /// <summary>
@@ -319,7 +319,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static Irradiance FromMicrowattsPerSquareCentimeter(QuantityValue microwattspersquarecentimeter)
         {
-            double value = (double) microwattspersquarecentimeter;
+            decimal value = (decimal) microwattspersquarecentimeter;
             return new Irradiance(value, IrradianceUnit.MicrowattPerSquareCentimeter);
         }
         /// <summary>
@@ -328,7 +328,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static Irradiance FromMicrowattsPerSquareMeter(QuantityValue microwattspersquaremeter)
         {
-            double value = (double) microwattspersquaremeter;
+            decimal value = (decimal) microwattspersquaremeter;
             return new Irradiance(value, IrradianceUnit.MicrowattPerSquareMeter);
         }
         /// <summary>
@@ -337,7 +337,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static Irradiance FromMilliwattsPerSquareCentimeter(QuantityValue milliwattspersquarecentimeter)
         {
-            double value = (double) milliwattspersquarecentimeter;
+            decimal value = (decimal) milliwattspersquarecentimeter;
             return new Irradiance(value, IrradianceUnit.MilliwattPerSquareCentimeter);
         }
         /// <summary>
@@ -346,7 +346,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static Irradiance FromMilliwattsPerSquareMeter(QuantityValue milliwattspersquaremeter)
         {
-            double value = (double) milliwattspersquaremeter;
+            decimal value = (decimal) milliwattspersquaremeter;
             return new Irradiance(value, IrradianceUnit.MilliwattPerSquareMeter);
         }
         /// <summary>
@@ -355,7 +355,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static Irradiance FromNanowattsPerSquareCentimeter(QuantityValue nanowattspersquarecentimeter)
         {
-            double value = (double) nanowattspersquarecentimeter;
+            decimal value = (decimal) nanowattspersquarecentimeter;
             return new Irradiance(value, IrradianceUnit.NanowattPerSquareCentimeter);
         }
         /// <summary>
@@ -364,7 +364,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static Irradiance FromNanowattsPerSquareMeter(QuantityValue nanowattspersquaremeter)
         {
-            double value = (double) nanowattspersquaremeter;
+            decimal value = (decimal) nanowattspersquaremeter;
             return new Irradiance(value, IrradianceUnit.NanowattPerSquareMeter);
         }
         /// <summary>
@@ -373,7 +373,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static Irradiance FromPicowattsPerSquareCentimeter(QuantityValue picowattspersquarecentimeter)
         {
-            double value = (double) picowattspersquarecentimeter;
+            decimal value = (decimal) picowattspersquarecentimeter;
             return new Irradiance(value, IrradianceUnit.PicowattPerSquareCentimeter);
         }
         /// <summary>
@@ -382,7 +382,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static Irradiance FromPicowattsPerSquareMeter(QuantityValue picowattspersquaremeter)
         {
-            double value = (double) picowattspersquaremeter;
+            decimal value = (decimal) picowattspersquaremeter;
             return new Irradiance(value, IrradianceUnit.PicowattPerSquareMeter);
         }
         /// <summary>
@@ -391,7 +391,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static Irradiance FromWattsPerSquareCentimeter(QuantityValue wattspersquarecentimeter)
         {
-            double value = (double) wattspersquarecentimeter;
+            decimal value = (decimal) wattspersquarecentimeter;
             return new Irradiance(value, IrradianceUnit.WattPerSquareCentimeter);
         }
         /// <summary>
@@ -400,7 +400,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static Irradiance FromWattsPerSquareMeter(QuantityValue wattspersquaremeter)
         {
-            double value = (double) wattspersquaremeter;
+            decimal value = (decimal) wattspersquaremeter;
             return new Irradiance(value, IrradianceUnit.WattPerSquareMeter);
         }
 
@@ -412,7 +412,7 @@ namespace UnitsNet
         /// <returns>Irradiance unit value.</returns>
         public static Irradiance From(QuantityValue value, IrradianceUnit fromUnit)
         {
-            return new Irradiance((double)value, fromUnit);
+            return new Irradiance((decimal)value, fromUnit);
         }
 
         #endregion
@@ -582,25 +582,25 @@ namespace UnitsNet
         }
 
         /// <summary>Get <see cref="Irradiance"/> from multiplying value and <see cref="Irradiance"/>.</summary>
-        public static Irradiance operator *(double left, Irradiance right)
+        public static Irradiance operator *(decimal left, Irradiance right)
         {
             return new Irradiance(left * right.Value, right.Unit);
         }
 
         /// <summary>Get <see cref="Irradiance"/> from multiplying value and <see cref="Irradiance"/>.</summary>
-        public static Irradiance operator *(Irradiance left, double right)
+        public static Irradiance operator *(Irradiance left, decimal right)
         {
             return new Irradiance(left.Value * right, left.Unit);
         }
 
         /// <summary>Get <see cref="Irradiance"/> from dividing <see cref="Irradiance"/> by value.</summary>
-        public static Irradiance operator /(Irradiance left, double right)
+        public static Irradiance operator /(Irradiance left, decimal right)
         {
             return new Irradiance(left.Value / right, left.Unit);
         }
 
         /// <summary>Get ratio value from dividing <see cref="Irradiance"/> by <see cref="Irradiance"/>.</summary>
-        public static double operator /(Irradiance left, Irradiance right)
+        public static decimal operator /(Irradiance left, Irradiance right)
         {
             return left.WattsPerSquareMeter / right.WattsPerSquareMeter;
         }
@@ -634,14 +634,14 @@ namespace UnitsNet
         }
 
         /// <summary>Returns true if exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(Irradiance, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(Irradiance, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator ==(Irradiance left, Irradiance right)
         {
             return left.Equals(right);
         }
 
         /// <summary>Returns true if not exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(Irradiance, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(Irradiance, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator !=(Irradiance left, Irradiance right)
         {
             return !(left == right);
@@ -663,7 +663,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(Irradiance, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(Irradiance, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public override bool Equals(object obj)
         {
             if(obj is null || !(obj is Irradiance objIrradiance))
@@ -673,7 +673,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(Irradiance, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(Irradiance, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public bool Equals(Irradiance other)
         {
             return _value.Equals(other.GetValueAs(this.Unit));
@@ -719,13 +719,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(Irradiance other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(Irradiance other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -747,17 +747,17 @@ namespace UnitsNet
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(IrradianceUnit unit)
+        public decimal As(IrradianceUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = GetValueAs(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <inheritdoc cref="IQuantity.As(UnitSystem)"/>
-        public double As(UnitSystem unitSystem)
+        public decimal As(UnitSystem unitSystem)
         {
             if(unitSystem is null)
                 throw new ArgumentNullException(nameof(unitSystem));
@@ -772,7 +772,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        double IQuantity.As(Enum unit)
+        decimal IQuantity.As(Enum unit)
         {
             if(!(unit is IrradianceUnit unitAsIrradianceUnit))
                 throw new ArgumentException($"The given unit is of type {unit.GetType()}. Only {typeof(IrradianceUnit)} is supported.", nameof(unit));
@@ -828,23 +828,23 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double GetValueInBaseUnit()
+        private decimal GetValueInBaseUnit()
         {
             switch(Unit)
             {
-                case IrradianceUnit.KilowattPerSquareCentimeter: return (_value*10000) * 1e3d;
-                case IrradianceUnit.KilowattPerSquareMeter: return (_value) * 1e3d;
-                case IrradianceUnit.MegawattPerSquareCentimeter: return (_value*10000) * 1e6d;
-                case IrradianceUnit.MegawattPerSquareMeter: return (_value) * 1e6d;
-                case IrradianceUnit.MicrowattPerSquareCentimeter: return (_value*10000) * 1e-6d;
-                case IrradianceUnit.MicrowattPerSquareMeter: return (_value) * 1e-6d;
-                case IrradianceUnit.MilliwattPerSquareCentimeter: return (_value*10000) * 1e-3d;
-                case IrradianceUnit.MilliwattPerSquareMeter: return (_value) * 1e-3d;
-                case IrradianceUnit.NanowattPerSquareCentimeter: return (_value*10000) * 1e-9d;
-                case IrradianceUnit.NanowattPerSquareMeter: return (_value) * 1e-9d;
-                case IrradianceUnit.PicowattPerSquareCentimeter: return (_value*10000) * 1e-12d;
-                case IrradianceUnit.PicowattPerSquareMeter: return (_value) * 1e-12d;
-                case IrradianceUnit.WattPerSquareCentimeter: return _value*10000;
+                case IrradianceUnit.KilowattPerSquareCentimeter: return (_value*10000m) * 1e3m;
+                case IrradianceUnit.KilowattPerSquareMeter: return (_value) * 1e3m;
+                case IrradianceUnit.MegawattPerSquareCentimeter: return (_value*10000m) * 1e6m;
+                case IrradianceUnit.MegawattPerSquareMeter: return (_value) * 1e6m;
+                case IrradianceUnit.MicrowattPerSquareCentimeter: return (_value*10000m) * 1e-6m;
+                case IrradianceUnit.MicrowattPerSquareMeter: return (_value) * 1e-6m;
+                case IrradianceUnit.MilliwattPerSquareCentimeter: return (_value*10000m) * 1e-3m;
+                case IrradianceUnit.MilliwattPerSquareMeter: return (_value) * 1e-3m;
+                case IrradianceUnit.NanowattPerSquareCentimeter: return (_value*10000m) * 1e-9m;
+                case IrradianceUnit.NanowattPerSquareMeter: return (_value) * 1e-9m;
+                case IrradianceUnit.PicowattPerSquareCentimeter: return (_value*10000m) * 1e-12m;
+                case IrradianceUnit.PicowattPerSquareMeter: return (_value) * 1e-12m;
+                case IrradianceUnit.WattPerSquareCentimeter: return _value*10000m;
                 case IrradianceUnit.WattPerSquareMeter: return _value;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
@@ -862,7 +862,7 @@ namespace UnitsNet
             return new Irradiance(baseUnitValue, BaseUnit);
         }
 
-        private double GetValueAs(IrradianceUnit unit)
+        private decimal GetValueAs(IrradianceUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -871,19 +871,19 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case IrradianceUnit.KilowattPerSquareCentimeter: return (baseUnitValue*0.0001) / 1e3d;
-                case IrradianceUnit.KilowattPerSquareMeter: return (baseUnitValue) / 1e3d;
-                case IrradianceUnit.MegawattPerSquareCentimeter: return (baseUnitValue*0.0001) / 1e6d;
-                case IrradianceUnit.MegawattPerSquareMeter: return (baseUnitValue) / 1e6d;
-                case IrradianceUnit.MicrowattPerSquareCentimeter: return (baseUnitValue*0.0001) / 1e-6d;
-                case IrradianceUnit.MicrowattPerSquareMeter: return (baseUnitValue) / 1e-6d;
-                case IrradianceUnit.MilliwattPerSquareCentimeter: return (baseUnitValue*0.0001) / 1e-3d;
-                case IrradianceUnit.MilliwattPerSquareMeter: return (baseUnitValue) / 1e-3d;
-                case IrradianceUnit.NanowattPerSquareCentimeter: return (baseUnitValue*0.0001) / 1e-9d;
-                case IrradianceUnit.NanowattPerSquareMeter: return (baseUnitValue) / 1e-9d;
-                case IrradianceUnit.PicowattPerSquareCentimeter: return (baseUnitValue*0.0001) / 1e-12d;
-                case IrradianceUnit.PicowattPerSquareMeter: return (baseUnitValue) / 1e-12d;
-                case IrradianceUnit.WattPerSquareCentimeter: return baseUnitValue*0.0001;
+                case IrradianceUnit.KilowattPerSquareCentimeter: return (baseUnitValue*0.0001m) / 1e3m;
+                case IrradianceUnit.KilowattPerSquareMeter: return (baseUnitValue) / 1e3m;
+                case IrradianceUnit.MegawattPerSquareCentimeter: return (baseUnitValue*0.0001m) / 1e6m;
+                case IrradianceUnit.MegawattPerSquareMeter: return (baseUnitValue) / 1e6m;
+                case IrradianceUnit.MicrowattPerSquareCentimeter: return (baseUnitValue*0.0001m) / 1e-6m;
+                case IrradianceUnit.MicrowattPerSquareMeter: return (baseUnitValue) / 1e-6m;
+                case IrradianceUnit.MilliwattPerSquareCentimeter: return (baseUnitValue*0.0001m) / 1e-3m;
+                case IrradianceUnit.MilliwattPerSquareMeter: return (baseUnitValue) / 1e-3m;
+                case IrradianceUnit.NanowattPerSquareCentimeter: return (baseUnitValue*0.0001m) / 1e-9m;
+                case IrradianceUnit.NanowattPerSquareMeter: return (baseUnitValue) / 1e-9m;
+                case IrradianceUnit.PicowattPerSquareCentimeter: return (baseUnitValue*0.0001m) / 1e-12m;
+                case IrradianceUnit.PicowattPerSquareMeter: return (baseUnitValue) / 1e-12m;
+                case IrradianceUnit.WattPerSquareCentimeter: return baseUnitValue*0.0001m;
                 case IrradianceUnit.WattPerSquareMeter: return baseUnitValue;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
@@ -922,7 +922,7 @@ namespace UnitsNet
         [Obsolete(@"This method is deprecated and will be removed at a future release. Please use ToString(""s2"") or ToString(""s2"", provider) where 2 is an example of the number passed to significantDigitsAfterRadix.")]
         public string ToString(IFormatProvider? provider, int significantDigitsAfterRadix)
         {
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -942,7 +942,7 @@ namespace UnitsNet
 
             provider = provider ?? CultureInfo.CurrentUICulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

@@ -37,26 +37,26 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class WarpingMomentOfInertiaTestsBase : QuantityTestsBase
     {
-        protected abstract double CentimetersToTheSixthInOneMeterToTheSixth { get; }
-        protected abstract double DecimetersToTheSixthInOneMeterToTheSixth { get; }
-        protected abstract double FeetToTheSixthInOneMeterToTheSixth { get; }
-        protected abstract double InchesToTheSixthInOneMeterToTheSixth { get; }
-        protected abstract double MetersToTheSixthInOneMeterToTheSixth { get; }
-        protected abstract double MillimetersToTheSixthInOneMeterToTheSixth { get; }
+        protected abstract decimal CentimetersToTheSixthInOneMeterToTheSixth { get; }
+        protected abstract decimal DecimetersToTheSixthInOneMeterToTheSixth { get; }
+        protected abstract decimal FeetToTheSixthInOneMeterToTheSixth { get; }
+        protected abstract decimal InchesToTheSixthInOneMeterToTheSixth { get; }
+        protected abstract decimal MetersToTheSixthInOneMeterToTheSixth { get; }
+        protected abstract decimal MillimetersToTheSixthInOneMeterToTheSixth { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double CentimetersToTheSixthTolerance { get { return 1e-5; } }
-        protected virtual double DecimetersToTheSixthTolerance { get { return 1e-5; } }
-        protected virtual double FeetToTheSixthTolerance { get { return 1e-5; } }
-        protected virtual double InchesToTheSixthTolerance { get { return 1e-5; } }
-        protected virtual double MetersToTheSixthTolerance { get { return 1e-5; } }
-        protected virtual double MillimetersToTheSixthTolerance { get { return 1e-5; } }
+        protected virtual decimal CentimetersToTheSixthTolerance { get { return 1e-5; } }
+        protected virtual decimal DecimetersToTheSixthTolerance { get { return 1e-5; } }
+        protected virtual decimal FeetToTheSixthTolerance { get { return 1e-5; } }
+        protected virtual decimal InchesToTheSixthTolerance { get { return 1e-5; } }
+        protected virtual decimal MetersToTheSixthTolerance { get { return 1e-5; } }
+        protected virtual decimal MillimetersToTheSixthTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new WarpingMomentOfInertia((double)0.0, WarpingMomentOfInertiaUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new WarpingMomentOfInertia((decimal)0.0, WarpingMomentOfInertiaUnit.Undefined));
         }
 
         [Fact]
@@ -67,19 +67,6 @@ namespace UnitsNet.Tests
             Assert.Equal(WarpingMomentOfInertiaUnit.MeterToTheSixth, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new WarpingMomentOfInertia(double.PositiveInfinity, WarpingMomentOfInertiaUnit.MeterToTheSixth));
-            Assert.Throws<ArgumentException>(() => new WarpingMomentOfInertia(double.NegativeInfinity, WarpingMomentOfInertiaUnit.MeterToTheSixth));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new WarpingMomentOfInertia(double.NaN, WarpingMomentOfInertiaUnit.MeterToTheSixth));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -165,19 +152,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromMetersToTheSixth_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => WarpingMomentOfInertia.FromMetersToTheSixth(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => WarpingMomentOfInertia.FromMetersToTheSixth(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromMetersToTheSixth_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => WarpingMomentOfInertia.FromMetersToTheSixth(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var metertothesixth = WarpingMomentOfInertia.FromMetersToTheSixth(1);
@@ -197,7 +171,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -212,27 +186,27 @@ namespace UnitsNet.Tests
             var metertothesixth = WarpingMomentOfInertia.FromMetersToTheSixth(1);
 
             var centimetertothesixthQuantity = metertothesixth.ToUnit(WarpingMomentOfInertiaUnit.CentimeterToTheSixth);
-            AssertEx.EqualTolerance(CentimetersToTheSixthInOneMeterToTheSixth, (double)centimetertothesixthQuantity.Value, CentimetersToTheSixthTolerance);
+            AssertEx.EqualTolerance(CentimetersToTheSixthInOneMeterToTheSixth, (decimal)centimetertothesixthQuantity.Value, CentimetersToTheSixthTolerance);
             Assert.Equal(WarpingMomentOfInertiaUnit.CentimeterToTheSixth, centimetertothesixthQuantity.Unit);
 
             var decimetertothesixthQuantity = metertothesixth.ToUnit(WarpingMomentOfInertiaUnit.DecimeterToTheSixth);
-            AssertEx.EqualTolerance(DecimetersToTheSixthInOneMeterToTheSixth, (double)decimetertothesixthQuantity.Value, DecimetersToTheSixthTolerance);
+            AssertEx.EqualTolerance(DecimetersToTheSixthInOneMeterToTheSixth, (decimal)decimetertothesixthQuantity.Value, DecimetersToTheSixthTolerance);
             Assert.Equal(WarpingMomentOfInertiaUnit.DecimeterToTheSixth, decimetertothesixthQuantity.Unit);
 
             var foottothesixthQuantity = metertothesixth.ToUnit(WarpingMomentOfInertiaUnit.FootToTheSixth);
-            AssertEx.EqualTolerance(FeetToTheSixthInOneMeterToTheSixth, (double)foottothesixthQuantity.Value, FeetToTheSixthTolerance);
+            AssertEx.EqualTolerance(FeetToTheSixthInOneMeterToTheSixth, (decimal)foottothesixthQuantity.Value, FeetToTheSixthTolerance);
             Assert.Equal(WarpingMomentOfInertiaUnit.FootToTheSixth, foottothesixthQuantity.Unit);
 
             var inchtothesixthQuantity = metertothesixth.ToUnit(WarpingMomentOfInertiaUnit.InchToTheSixth);
-            AssertEx.EqualTolerance(InchesToTheSixthInOneMeterToTheSixth, (double)inchtothesixthQuantity.Value, InchesToTheSixthTolerance);
+            AssertEx.EqualTolerance(InchesToTheSixthInOneMeterToTheSixth, (decimal)inchtothesixthQuantity.Value, InchesToTheSixthTolerance);
             Assert.Equal(WarpingMomentOfInertiaUnit.InchToTheSixth, inchtothesixthQuantity.Unit);
 
             var metertothesixthQuantity = metertothesixth.ToUnit(WarpingMomentOfInertiaUnit.MeterToTheSixth);
-            AssertEx.EqualTolerance(MetersToTheSixthInOneMeterToTheSixth, (double)metertothesixthQuantity.Value, MetersToTheSixthTolerance);
+            AssertEx.EqualTolerance(MetersToTheSixthInOneMeterToTheSixth, (decimal)metertothesixthQuantity.Value, MetersToTheSixthTolerance);
             Assert.Equal(WarpingMomentOfInertiaUnit.MeterToTheSixth, metertothesixthQuantity.Unit);
 
             var millimetertothesixthQuantity = metertothesixth.ToUnit(WarpingMomentOfInertiaUnit.MillimeterToTheSixth);
-            AssertEx.EqualTolerance(MillimetersToTheSixthInOneMeterToTheSixth, (double)millimetertothesixthQuantity.Value, MillimetersToTheSixthTolerance);
+            AssertEx.EqualTolerance(MillimetersToTheSixthInOneMeterToTheSixth, (decimal)millimetertothesixthQuantity.Value, MillimetersToTheSixthTolerance);
             Assert.Equal(WarpingMomentOfInertiaUnit.MillimeterToTheSixth, millimetertothesixthQuantity.Unit);
         }
 
@@ -443,10 +417,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 m⁶", new WarpingMomentOfInertia(0.123456, WarpingMomentOfInertiaUnit.MeterToTheSixth).ToString("s1"));
-                Assert.Equal("0.12 m⁶", new WarpingMomentOfInertia(0.123456, WarpingMomentOfInertiaUnit.MeterToTheSixth).ToString("s2"));
-                Assert.Equal("0.123 m⁶", new WarpingMomentOfInertia(0.123456, WarpingMomentOfInertiaUnit.MeterToTheSixth).ToString("s3"));
-                Assert.Equal("0.1235 m⁶", new WarpingMomentOfInertia(0.123456, WarpingMomentOfInertiaUnit.MeterToTheSixth).ToString("s4"));
+                Assert.Equal("0.1 m⁶", new WarpingMomentOfInertia(0.123456m, WarpingMomentOfInertiaUnit.MeterToTheSixth).ToString("s1"));
+                Assert.Equal("0.12 m⁶", new WarpingMomentOfInertia(0.123456m, WarpingMomentOfInertiaUnit.MeterToTheSixth).ToString("s2"));
+                Assert.Equal("0.123 m⁶", new WarpingMomentOfInertia(0.123456m, WarpingMomentOfInertiaUnit.MeterToTheSixth).ToString("s3"));
+                Assert.Equal("0.1235 m⁶", new WarpingMomentOfInertia(0.123456m, WarpingMomentOfInertiaUnit.MeterToTheSixth).ToString("s4"));
             }
             finally
             {
@@ -458,10 +432,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 m⁶", new WarpingMomentOfInertia(0.123456, WarpingMomentOfInertiaUnit.MeterToTheSixth).ToString("s1", culture));
-            Assert.Equal("0.12 m⁶", new WarpingMomentOfInertia(0.123456, WarpingMomentOfInertiaUnit.MeterToTheSixth).ToString("s2", culture));
-            Assert.Equal("0.123 m⁶", new WarpingMomentOfInertia(0.123456, WarpingMomentOfInertiaUnit.MeterToTheSixth).ToString("s3", culture));
-            Assert.Equal("0.1235 m⁶", new WarpingMomentOfInertia(0.123456, WarpingMomentOfInertiaUnit.MeterToTheSixth).ToString("s4", culture));
+            Assert.Equal("0.1 m⁶", new WarpingMomentOfInertia(0.123456m, WarpingMomentOfInertiaUnit.MeterToTheSixth).ToString("s1", culture));
+            Assert.Equal("0.12 m⁶", new WarpingMomentOfInertia(0.123456m, WarpingMomentOfInertiaUnit.MeterToTheSixth).ToString("s2", culture));
+            Assert.Equal("0.123 m⁶", new WarpingMomentOfInertia(0.123456m, WarpingMomentOfInertiaUnit.MeterToTheSixth).ToString("s3", culture));
+            Assert.Equal("0.1235 m⁶", new WarpingMomentOfInertia(0.123456m, WarpingMomentOfInertiaUnit.MeterToTheSixth).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -639,7 +613,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = WarpingMomentOfInertia.FromMetersToTheSixth(value);
             Assert.Equal(WarpingMomentOfInertia.FromMetersToTheSixth(-value), -quantity);

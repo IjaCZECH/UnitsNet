@@ -30,15 +30,15 @@ namespace UnitsNet.NumberExtensions.NumberToMolarEnergy
     {
         /// <inheritdoc cref="MolarEnergy.FromJoulesPerMole(UnitsNet.QuantityValue)" />
         public static MolarEnergy JoulesPerMole<T>(this T value) =>
-            MolarEnergy.FromJoulesPerMole(Convert.ToDouble(value));
+            MolarEnergy.FromJoulesPerMole(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="MolarEnergy.FromKilojoulesPerMole(UnitsNet.QuantityValue)" />
         public static MolarEnergy KilojoulesPerMole<T>(this T value) =>
-            MolarEnergy.FromKilojoulesPerMole(Convert.ToDouble(value));
+            MolarEnergy.FromKilojoulesPerMole(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="MolarEnergy.FromMegajoulesPerMole(UnitsNet.QuantityValue)" />
         public static MolarEnergy MegajoulesPerMole<T>(this T value) =>
-            MolarEnergy.FromMegajoulesPerMole(Convert.ToDouble(value));
+            MolarEnergy.FromMegajoulesPerMole(Convert.ToDecimal(value));
 
     }
 }

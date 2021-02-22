@@ -42,7 +42,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -74,12 +74,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private FuelEfficiency(double value, FuelEfficiencyUnit unit)
+        private FuelEfficiency(decimal value, FuelEfficiencyUnit unit)
         {
             if(unit == FuelEfficiencyUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -103,12 +103,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of FuelEfficiency
         /// </summary>
-        public static FuelEfficiency MaxValue { get; } = new FuelEfficiency(double.MaxValue, BaseUnit);
+        public static FuelEfficiency MaxValue { get; } = new FuelEfficiency(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of FuelEfficiency
         /// </summary>
-        public static FuelEfficiency MinValue { get; } = new FuelEfficiency(double.MinValue, BaseUnit);
+        public static FuelEfficiency MinValue { get; } = new FuelEfficiency(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -132,7 +132,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -161,22 +161,22 @@ namespace UnitsNet
         /// <summary>
         ///     Get FuelEfficiency in KilometersPerLiters.
         /// </summary>
-        public double KilometersPerLiters => As(FuelEfficiencyUnit.KilometerPerLiter);
+        public decimal KilometersPerLiters => As(FuelEfficiencyUnit.KilometerPerLiter);
 
         /// <summary>
         ///     Get FuelEfficiency in LitersPer100Kilometers.
         /// </summary>
-        public double LitersPer100Kilometers => As(FuelEfficiencyUnit.LiterPer100Kilometers);
+        public decimal LitersPer100Kilometers => As(FuelEfficiencyUnit.LiterPer100Kilometers);
 
         /// <summary>
         ///     Get FuelEfficiency in MilesPerUkGallon.
         /// </summary>
-        public double MilesPerUkGallon => As(FuelEfficiencyUnit.MilePerUkGallon);
+        public decimal MilesPerUkGallon => As(FuelEfficiencyUnit.MilePerUkGallon);
 
         /// <summary>
         ///     Get FuelEfficiency in MilesPerUsGallon.
         /// </summary>
-        public double MilesPerUsGallon => As(FuelEfficiencyUnit.MilePerUsGallon);
+        public decimal MilesPerUsGallon => As(FuelEfficiencyUnit.MilePerUsGallon);
 
         #endregion
 
@@ -213,9 +213,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static FuelEfficiency FromKilometersPerLiters(double kilometersperliters)
+        public static FuelEfficiency FromKilometersPerLiters(decimal kilometersperliters)
         {
-            double value = (double) kilometersperliters;
+            decimal value = (decimal) kilometersperliters;
             return new FuelEfficiency(value, FuelEfficiencyUnit.KilometerPerLiter);
         }
         /// <summary>
@@ -223,9 +223,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static FuelEfficiency FromLitersPer100Kilometers(double litersper100kilometers)
+        public static FuelEfficiency FromLitersPer100Kilometers(decimal litersper100kilometers)
         {
-            double value = (double) litersper100kilometers;
+            decimal value = (decimal) litersper100kilometers;
             return new FuelEfficiency(value, FuelEfficiencyUnit.LiterPer100Kilometers);
         }
         /// <summary>
@@ -233,9 +233,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static FuelEfficiency FromMilesPerUkGallon(double milesperukgallon)
+        public static FuelEfficiency FromMilesPerUkGallon(decimal milesperukgallon)
         {
-            double value = (double) milesperukgallon;
+            decimal value = (decimal) milesperukgallon;
             return new FuelEfficiency(value, FuelEfficiencyUnit.MilePerUkGallon);
         }
         /// <summary>
@@ -243,9 +243,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static FuelEfficiency FromMilesPerUsGallon(double milesperusgallon)
+        public static FuelEfficiency FromMilesPerUsGallon(decimal milesperusgallon)
         {
-            double value = (double) milesperusgallon;
+            decimal value = (decimal) milesperusgallon;
             return new FuelEfficiency(value, FuelEfficiencyUnit.MilePerUsGallon);
         }
 
@@ -257,9 +257,9 @@ namespace UnitsNet
         /// <returns>FuelEfficiency unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static FuelEfficiency From(double value, FuelEfficiencyUnit fromUnit)
+        public static FuelEfficiency From(decimal value, FuelEfficiencyUnit fromUnit)
         {
-            return new FuelEfficiency((double)value, fromUnit);
+            return new FuelEfficiency((decimal)value, fromUnit);
         }
 
         #endregion
@@ -481,13 +481,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(FuelEfficiency other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(FuelEfficiency other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -505,19 +505,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((FuelEfficiencyUnit)unit);
+        decimal IQuantity.As(object unit) => As((FuelEfficiencyUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(FuelEfficiencyUnit unit)
+        public decimal As(FuelEfficiencyUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -535,20 +535,20 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
-                case FuelEfficiencyUnit.KilometerPerLiter: return 100/_value;
+                case FuelEfficiencyUnit.KilometerPerLiter: return 100m/_value;
                 case FuelEfficiencyUnit.LiterPer100Kilometers: return _value;
-                case FuelEfficiencyUnit.MilePerUkGallon: return (100*4.54609188)/(1.609344*_value);
-                case FuelEfficiencyUnit.MilePerUsGallon: return (100*3.785411784)/(1.609344*_value);
+                case FuelEfficiencyUnit.MilePerUkGallon: return (100m*4.54609188)/(1.609344m*_value);
+                case FuelEfficiencyUnit.MilePerUsGallon: return (100m*3.785411784)/(1.609344m*_value);
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(FuelEfficiencyUnit unit)
+        private decimal AsBaseNumericType(FuelEfficiencyUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -557,10 +557,10 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case FuelEfficiencyUnit.KilometerPerLiter: return 100/baseUnitValue;
+                case FuelEfficiencyUnit.KilometerPerLiter: return 100m/baseUnitValue;
                 case FuelEfficiencyUnit.LiterPer100Kilometers: return baseUnitValue;
-                case FuelEfficiencyUnit.MilePerUkGallon: return (100*4.54609188)/(1.609344*baseUnitValue);
-                case FuelEfficiencyUnit.MilePerUsGallon: return (100*3.785411784)/(1.609344*baseUnitValue);
+                case FuelEfficiencyUnit.MilePerUkGallon: return (100m*4.54609188)/(1.609344m*baseUnitValue);
+                case FuelEfficiencyUnit.MilePerUsGallon: return (100m*3.785411784)/(1.609344m*baseUnitValue);
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -599,7 +599,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -619,7 +619,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

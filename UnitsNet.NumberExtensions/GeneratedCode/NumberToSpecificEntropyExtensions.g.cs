@@ -30,39 +30,39 @@ namespace UnitsNet.NumberExtensions.NumberToSpecificEntropy
     {
         /// <inheritdoc cref="SpecificEntropy.FromBtusPerPoundFahrenheit(UnitsNet.QuantityValue)" />
         public static SpecificEntropy BtusPerPoundFahrenheit<T>(this T value) =>
-            SpecificEntropy.FromBtusPerPoundFahrenheit(Convert.ToDouble(value));
+            SpecificEntropy.FromBtusPerPoundFahrenheit(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="SpecificEntropy.FromCaloriesPerGramKelvin(UnitsNet.QuantityValue)" />
         public static SpecificEntropy CaloriesPerGramKelvin<T>(this T value) =>
-            SpecificEntropy.FromCaloriesPerGramKelvin(Convert.ToDouble(value));
+            SpecificEntropy.FromCaloriesPerGramKelvin(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="SpecificEntropy.FromJoulesPerKilogramDegreeCelsius(UnitsNet.QuantityValue)" />
         public static SpecificEntropy JoulesPerKilogramDegreeCelsius<T>(this T value) =>
-            SpecificEntropy.FromJoulesPerKilogramDegreeCelsius(Convert.ToDouble(value));
+            SpecificEntropy.FromJoulesPerKilogramDegreeCelsius(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="SpecificEntropy.FromJoulesPerKilogramKelvin(UnitsNet.QuantityValue)" />
         public static SpecificEntropy JoulesPerKilogramKelvin<T>(this T value) =>
-            SpecificEntropy.FromJoulesPerKilogramKelvin(Convert.ToDouble(value));
+            SpecificEntropy.FromJoulesPerKilogramKelvin(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="SpecificEntropy.FromKilocaloriesPerGramKelvin(UnitsNet.QuantityValue)" />
         public static SpecificEntropy KilocaloriesPerGramKelvin<T>(this T value) =>
-            SpecificEntropy.FromKilocaloriesPerGramKelvin(Convert.ToDouble(value));
+            SpecificEntropy.FromKilocaloriesPerGramKelvin(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="SpecificEntropy.FromKilojoulesPerKilogramDegreeCelsius(UnitsNet.QuantityValue)" />
         public static SpecificEntropy KilojoulesPerKilogramDegreeCelsius<T>(this T value) =>
-            SpecificEntropy.FromKilojoulesPerKilogramDegreeCelsius(Convert.ToDouble(value));
+            SpecificEntropy.FromKilojoulesPerKilogramDegreeCelsius(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="SpecificEntropy.FromKilojoulesPerKilogramKelvin(UnitsNet.QuantityValue)" />
         public static SpecificEntropy KilojoulesPerKilogramKelvin<T>(this T value) =>
-            SpecificEntropy.FromKilojoulesPerKilogramKelvin(Convert.ToDouble(value));
+            SpecificEntropy.FromKilojoulesPerKilogramKelvin(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="SpecificEntropy.FromMegajoulesPerKilogramDegreeCelsius(UnitsNet.QuantityValue)" />
         public static SpecificEntropy MegajoulesPerKilogramDegreeCelsius<T>(this T value) =>
-            SpecificEntropy.FromMegajoulesPerKilogramDegreeCelsius(Convert.ToDouble(value));
+            SpecificEntropy.FromMegajoulesPerKilogramDegreeCelsius(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="SpecificEntropy.FromMegajoulesPerKilogramKelvin(UnitsNet.QuantityValue)" />
         public static SpecificEntropy MegajoulesPerKilogramKelvin<T>(this T value) =>
-            SpecificEntropy.FromMegajoulesPerKilogramKelvin(Convert.ToDouble(value));
+            SpecificEntropy.FromMegajoulesPerKilogramKelvin(Convert.ToDecimal(value));
 
     }
 }

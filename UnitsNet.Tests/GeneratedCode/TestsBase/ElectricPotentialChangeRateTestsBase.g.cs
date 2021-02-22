@@ -37,54 +37,54 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class ElectricPotentialChangeRateTestsBase : QuantityTestsBase
     {
-        protected abstract double KilovoltsPerHoursInOneVoltPerSecond { get; }
-        protected abstract double KilovoltsPerMicrosecondsInOneVoltPerSecond { get; }
-        protected abstract double KilovoltsPerMinutesInOneVoltPerSecond { get; }
-        protected abstract double KilovoltsPerSecondsInOneVoltPerSecond { get; }
-        protected abstract double MegavoltsPerHoursInOneVoltPerSecond { get; }
-        protected abstract double MegavoltsPerMicrosecondsInOneVoltPerSecond { get; }
-        protected abstract double MegavoltsPerMinutesInOneVoltPerSecond { get; }
-        protected abstract double MegavoltsPerSecondsInOneVoltPerSecond { get; }
-        protected abstract double MicrovoltsPerHoursInOneVoltPerSecond { get; }
-        protected abstract double MicrovoltsPerMicrosecondsInOneVoltPerSecond { get; }
-        protected abstract double MicrovoltsPerMinutesInOneVoltPerSecond { get; }
-        protected abstract double MicrovoltsPerSecondsInOneVoltPerSecond { get; }
-        protected abstract double MillivoltsPerHoursInOneVoltPerSecond { get; }
-        protected abstract double MillivoltsPerMicrosecondsInOneVoltPerSecond { get; }
-        protected abstract double MillivoltsPerMinutesInOneVoltPerSecond { get; }
-        protected abstract double MillivoltsPerSecondsInOneVoltPerSecond { get; }
-        protected abstract double VoltsPerHoursInOneVoltPerSecond { get; }
-        protected abstract double VoltsPerMicrosecondsInOneVoltPerSecond { get; }
-        protected abstract double VoltsPerMinutesInOneVoltPerSecond { get; }
-        protected abstract double VoltsPerSecondsInOneVoltPerSecond { get; }
+        protected abstract decimal KilovoltsPerHoursInOneVoltPerSecond { get; }
+        protected abstract decimal KilovoltsPerMicrosecondsInOneVoltPerSecond { get; }
+        protected abstract decimal KilovoltsPerMinutesInOneVoltPerSecond { get; }
+        protected abstract decimal KilovoltsPerSecondsInOneVoltPerSecond { get; }
+        protected abstract decimal MegavoltsPerHoursInOneVoltPerSecond { get; }
+        protected abstract decimal MegavoltsPerMicrosecondsInOneVoltPerSecond { get; }
+        protected abstract decimal MegavoltsPerMinutesInOneVoltPerSecond { get; }
+        protected abstract decimal MegavoltsPerSecondsInOneVoltPerSecond { get; }
+        protected abstract decimal MicrovoltsPerHoursInOneVoltPerSecond { get; }
+        protected abstract decimal MicrovoltsPerMicrosecondsInOneVoltPerSecond { get; }
+        protected abstract decimal MicrovoltsPerMinutesInOneVoltPerSecond { get; }
+        protected abstract decimal MicrovoltsPerSecondsInOneVoltPerSecond { get; }
+        protected abstract decimal MillivoltsPerHoursInOneVoltPerSecond { get; }
+        protected abstract decimal MillivoltsPerMicrosecondsInOneVoltPerSecond { get; }
+        protected abstract decimal MillivoltsPerMinutesInOneVoltPerSecond { get; }
+        protected abstract decimal MillivoltsPerSecondsInOneVoltPerSecond { get; }
+        protected abstract decimal VoltsPerHoursInOneVoltPerSecond { get; }
+        protected abstract decimal VoltsPerMicrosecondsInOneVoltPerSecond { get; }
+        protected abstract decimal VoltsPerMinutesInOneVoltPerSecond { get; }
+        protected abstract decimal VoltsPerSecondsInOneVoltPerSecond { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double KilovoltsPerHoursTolerance { get { return 1e-5; } }
-        protected virtual double KilovoltsPerMicrosecondsTolerance { get { return 1e-5; } }
-        protected virtual double KilovoltsPerMinutesTolerance { get { return 1e-5; } }
-        protected virtual double KilovoltsPerSecondsTolerance { get { return 1e-5; } }
-        protected virtual double MegavoltsPerHoursTolerance { get { return 1e-5; } }
-        protected virtual double MegavoltsPerMicrosecondsTolerance { get { return 1e-5; } }
-        protected virtual double MegavoltsPerMinutesTolerance { get { return 1e-5; } }
-        protected virtual double MegavoltsPerSecondsTolerance { get { return 1e-5; } }
-        protected virtual double MicrovoltsPerHoursTolerance { get { return 1e-5; } }
-        protected virtual double MicrovoltsPerMicrosecondsTolerance { get { return 1e-5; } }
-        protected virtual double MicrovoltsPerMinutesTolerance { get { return 1e-5; } }
-        protected virtual double MicrovoltsPerSecondsTolerance { get { return 1e-5; } }
-        protected virtual double MillivoltsPerHoursTolerance { get { return 1e-5; } }
-        protected virtual double MillivoltsPerMicrosecondsTolerance { get { return 1e-5; } }
-        protected virtual double MillivoltsPerMinutesTolerance { get { return 1e-5; } }
-        protected virtual double MillivoltsPerSecondsTolerance { get { return 1e-5; } }
-        protected virtual double VoltsPerHoursTolerance { get { return 1e-5; } }
-        protected virtual double VoltsPerMicrosecondsTolerance { get { return 1e-5; } }
-        protected virtual double VoltsPerMinutesTolerance { get { return 1e-5; } }
-        protected virtual double VoltsPerSecondsTolerance { get { return 1e-5; } }
+        protected virtual decimal KilovoltsPerHoursTolerance { get { return 1e-5; } }
+        protected virtual decimal KilovoltsPerMicrosecondsTolerance { get { return 1e-5; } }
+        protected virtual decimal KilovoltsPerMinutesTolerance { get { return 1e-5; } }
+        protected virtual decimal KilovoltsPerSecondsTolerance { get { return 1e-5; } }
+        protected virtual decimal MegavoltsPerHoursTolerance { get { return 1e-5; } }
+        protected virtual decimal MegavoltsPerMicrosecondsTolerance { get { return 1e-5; } }
+        protected virtual decimal MegavoltsPerMinutesTolerance { get { return 1e-5; } }
+        protected virtual decimal MegavoltsPerSecondsTolerance { get { return 1e-5; } }
+        protected virtual decimal MicrovoltsPerHoursTolerance { get { return 1e-5; } }
+        protected virtual decimal MicrovoltsPerMicrosecondsTolerance { get { return 1e-5; } }
+        protected virtual decimal MicrovoltsPerMinutesTolerance { get { return 1e-5; } }
+        protected virtual decimal MicrovoltsPerSecondsTolerance { get { return 1e-5; } }
+        protected virtual decimal MillivoltsPerHoursTolerance { get { return 1e-5; } }
+        protected virtual decimal MillivoltsPerMicrosecondsTolerance { get { return 1e-5; } }
+        protected virtual decimal MillivoltsPerMinutesTolerance { get { return 1e-5; } }
+        protected virtual decimal MillivoltsPerSecondsTolerance { get { return 1e-5; } }
+        protected virtual decimal VoltsPerHoursTolerance { get { return 1e-5; } }
+        protected virtual decimal VoltsPerMicrosecondsTolerance { get { return 1e-5; } }
+        protected virtual decimal VoltsPerMinutesTolerance { get { return 1e-5; } }
+        protected virtual decimal VoltsPerSecondsTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new ElectricPotentialChangeRate((double)0.0, ElectricPotentialChangeRateUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new ElectricPotentialChangeRate((decimal)0.0, ElectricPotentialChangeRateUnit.Undefined));
         }
 
         [Fact]
@@ -95,19 +95,6 @@ namespace UnitsNet.Tests
             Assert.Equal(ElectricPotentialChangeRateUnit.VoltPerSecond, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new ElectricPotentialChangeRate(double.PositiveInfinity, ElectricPotentialChangeRateUnit.VoltPerSecond));
-            Assert.Throws<ArgumentException>(() => new ElectricPotentialChangeRate(double.NegativeInfinity, ElectricPotentialChangeRateUnit.VoltPerSecond));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new ElectricPotentialChangeRate(double.NaN, ElectricPotentialChangeRateUnit.VoltPerSecond));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -263,19 +250,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromVoltsPerSeconds_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => ElectricPotentialChangeRate.FromVoltsPerSeconds(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => ElectricPotentialChangeRate.FromVoltsPerSeconds(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromVoltsPerSeconds_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => ElectricPotentialChangeRate.FromVoltsPerSeconds(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var voltpersecond = ElectricPotentialChangeRate.FromVoltsPerSeconds(1);
@@ -309,7 +283,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -324,83 +298,83 @@ namespace UnitsNet.Tests
             var voltpersecond = ElectricPotentialChangeRate.FromVoltsPerSeconds(1);
 
             var kilovoltperhourQuantity = voltpersecond.ToUnit(ElectricPotentialChangeRateUnit.KilovoltPerHour);
-            AssertEx.EqualTolerance(KilovoltsPerHoursInOneVoltPerSecond, (double)kilovoltperhourQuantity.Value, KilovoltsPerHoursTolerance);
+            AssertEx.EqualTolerance(KilovoltsPerHoursInOneVoltPerSecond, (decimal)kilovoltperhourQuantity.Value, KilovoltsPerHoursTolerance);
             Assert.Equal(ElectricPotentialChangeRateUnit.KilovoltPerHour, kilovoltperhourQuantity.Unit);
 
             var kilovoltpermicrosecondQuantity = voltpersecond.ToUnit(ElectricPotentialChangeRateUnit.KilovoltPerMicrosecond);
-            AssertEx.EqualTolerance(KilovoltsPerMicrosecondsInOneVoltPerSecond, (double)kilovoltpermicrosecondQuantity.Value, KilovoltsPerMicrosecondsTolerance);
+            AssertEx.EqualTolerance(KilovoltsPerMicrosecondsInOneVoltPerSecond, (decimal)kilovoltpermicrosecondQuantity.Value, KilovoltsPerMicrosecondsTolerance);
             Assert.Equal(ElectricPotentialChangeRateUnit.KilovoltPerMicrosecond, kilovoltpermicrosecondQuantity.Unit);
 
             var kilovoltperminuteQuantity = voltpersecond.ToUnit(ElectricPotentialChangeRateUnit.KilovoltPerMinute);
-            AssertEx.EqualTolerance(KilovoltsPerMinutesInOneVoltPerSecond, (double)kilovoltperminuteQuantity.Value, KilovoltsPerMinutesTolerance);
+            AssertEx.EqualTolerance(KilovoltsPerMinutesInOneVoltPerSecond, (decimal)kilovoltperminuteQuantity.Value, KilovoltsPerMinutesTolerance);
             Assert.Equal(ElectricPotentialChangeRateUnit.KilovoltPerMinute, kilovoltperminuteQuantity.Unit);
 
             var kilovoltpersecondQuantity = voltpersecond.ToUnit(ElectricPotentialChangeRateUnit.KilovoltPerSecond);
-            AssertEx.EqualTolerance(KilovoltsPerSecondsInOneVoltPerSecond, (double)kilovoltpersecondQuantity.Value, KilovoltsPerSecondsTolerance);
+            AssertEx.EqualTolerance(KilovoltsPerSecondsInOneVoltPerSecond, (decimal)kilovoltpersecondQuantity.Value, KilovoltsPerSecondsTolerance);
             Assert.Equal(ElectricPotentialChangeRateUnit.KilovoltPerSecond, kilovoltpersecondQuantity.Unit);
 
             var megavoltperhourQuantity = voltpersecond.ToUnit(ElectricPotentialChangeRateUnit.MegavoltPerHour);
-            AssertEx.EqualTolerance(MegavoltsPerHoursInOneVoltPerSecond, (double)megavoltperhourQuantity.Value, MegavoltsPerHoursTolerance);
+            AssertEx.EqualTolerance(MegavoltsPerHoursInOneVoltPerSecond, (decimal)megavoltperhourQuantity.Value, MegavoltsPerHoursTolerance);
             Assert.Equal(ElectricPotentialChangeRateUnit.MegavoltPerHour, megavoltperhourQuantity.Unit);
 
             var megavoltpermicrosecondQuantity = voltpersecond.ToUnit(ElectricPotentialChangeRateUnit.MegavoltPerMicrosecond);
-            AssertEx.EqualTolerance(MegavoltsPerMicrosecondsInOneVoltPerSecond, (double)megavoltpermicrosecondQuantity.Value, MegavoltsPerMicrosecondsTolerance);
+            AssertEx.EqualTolerance(MegavoltsPerMicrosecondsInOneVoltPerSecond, (decimal)megavoltpermicrosecondQuantity.Value, MegavoltsPerMicrosecondsTolerance);
             Assert.Equal(ElectricPotentialChangeRateUnit.MegavoltPerMicrosecond, megavoltpermicrosecondQuantity.Unit);
 
             var megavoltperminuteQuantity = voltpersecond.ToUnit(ElectricPotentialChangeRateUnit.MegavoltPerMinute);
-            AssertEx.EqualTolerance(MegavoltsPerMinutesInOneVoltPerSecond, (double)megavoltperminuteQuantity.Value, MegavoltsPerMinutesTolerance);
+            AssertEx.EqualTolerance(MegavoltsPerMinutesInOneVoltPerSecond, (decimal)megavoltperminuteQuantity.Value, MegavoltsPerMinutesTolerance);
             Assert.Equal(ElectricPotentialChangeRateUnit.MegavoltPerMinute, megavoltperminuteQuantity.Unit);
 
             var megavoltpersecondQuantity = voltpersecond.ToUnit(ElectricPotentialChangeRateUnit.MegavoltPerSecond);
-            AssertEx.EqualTolerance(MegavoltsPerSecondsInOneVoltPerSecond, (double)megavoltpersecondQuantity.Value, MegavoltsPerSecondsTolerance);
+            AssertEx.EqualTolerance(MegavoltsPerSecondsInOneVoltPerSecond, (decimal)megavoltpersecondQuantity.Value, MegavoltsPerSecondsTolerance);
             Assert.Equal(ElectricPotentialChangeRateUnit.MegavoltPerSecond, megavoltpersecondQuantity.Unit);
 
             var microvoltperhourQuantity = voltpersecond.ToUnit(ElectricPotentialChangeRateUnit.MicrovoltPerHour);
-            AssertEx.EqualTolerance(MicrovoltsPerHoursInOneVoltPerSecond, (double)microvoltperhourQuantity.Value, MicrovoltsPerHoursTolerance);
+            AssertEx.EqualTolerance(MicrovoltsPerHoursInOneVoltPerSecond, (decimal)microvoltperhourQuantity.Value, MicrovoltsPerHoursTolerance);
             Assert.Equal(ElectricPotentialChangeRateUnit.MicrovoltPerHour, microvoltperhourQuantity.Unit);
 
             var microvoltpermicrosecondQuantity = voltpersecond.ToUnit(ElectricPotentialChangeRateUnit.MicrovoltPerMicrosecond);
-            AssertEx.EqualTolerance(MicrovoltsPerMicrosecondsInOneVoltPerSecond, (double)microvoltpermicrosecondQuantity.Value, MicrovoltsPerMicrosecondsTolerance);
+            AssertEx.EqualTolerance(MicrovoltsPerMicrosecondsInOneVoltPerSecond, (decimal)microvoltpermicrosecondQuantity.Value, MicrovoltsPerMicrosecondsTolerance);
             Assert.Equal(ElectricPotentialChangeRateUnit.MicrovoltPerMicrosecond, microvoltpermicrosecondQuantity.Unit);
 
             var microvoltperminuteQuantity = voltpersecond.ToUnit(ElectricPotentialChangeRateUnit.MicrovoltPerMinute);
-            AssertEx.EqualTolerance(MicrovoltsPerMinutesInOneVoltPerSecond, (double)microvoltperminuteQuantity.Value, MicrovoltsPerMinutesTolerance);
+            AssertEx.EqualTolerance(MicrovoltsPerMinutesInOneVoltPerSecond, (decimal)microvoltperminuteQuantity.Value, MicrovoltsPerMinutesTolerance);
             Assert.Equal(ElectricPotentialChangeRateUnit.MicrovoltPerMinute, microvoltperminuteQuantity.Unit);
 
             var microvoltpersecondQuantity = voltpersecond.ToUnit(ElectricPotentialChangeRateUnit.MicrovoltPerSecond);
-            AssertEx.EqualTolerance(MicrovoltsPerSecondsInOneVoltPerSecond, (double)microvoltpersecondQuantity.Value, MicrovoltsPerSecondsTolerance);
+            AssertEx.EqualTolerance(MicrovoltsPerSecondsInOneVoltPerSecond, (decimal)microvoltpersecondQuantity.Value, MicrovoltsPerSecondsTolerance);
             Assert.Equal(ElectricPotentialChangeRateUnit.MicrovoltPerSecond, microvoltpersecondQuantity.Unit);
 
             var millivoltperhourQuantity = voltpersecond.ToUnit(ElectricPotentialChangeRateUnit.MillivoltPerHour);
-            AssertEx.EqualTolerance(MillivoltsPerHoursInOneVoltPerSecond, (double)millivoltperhourQuantity.Value, MillivoltsPerHoursTolerance);
+            AssertEx.EqualTolerance(MillivoltsPerHoursInOneVoltPerSecond, (decimal)millivoltperhourQuantity.Value, MillivoltsPerHoursTolerance);
             Assert.Equal(ElectricPotentialChangeRateUnit.MillivoltPerHour, millivoltperhourQuantity.Unit);
 
             var millivoltpermicrosecondQuantity = voltpersecond.ToUnit(ElectricPotentialChangeRateUnit.MillivoltPerMicrosecond);
-            AssertEx.EqualTolerance(MillivoltsPerMicrosecondsInOneVoltPerSecond, (double)millivoltpermicrosecondQuantity.Value, MillivoltsPerMicrosecondsTolerance);
+            AssertEx.EqualTolerance(MillivoltsPerMicrosecondsInOneVoltPerSecond, (decimal)millivoltpermicrosecondQuantity.Value, MillivoltsPerMicrosecondsTolerance);
             Assert.Equal(ElectricPotentialChangeRateUnit.MillivoltPerMicrosecond, millivoltpermicrosecondQuantity.Unit);
 
             var millivoltperminuteQuantity = voltpersecond.ToUnit(ElectricPotentialChangeRateUnit.MillivoltPerMinute);
-            AssertEx.EqualTolerance(MillivoltsPerMinutesInOneVoltPerSecond, (double)millivoltperminuteQuantity.Value, MillivoltsPerMinutesTolerance);
+            AssertEx.EqualTolerance(MillivoltsPerMinutesInOneVoltPerSecond, (decimal)millivoltperminuteQuantity.Value, MillivoltsPerMinutesTolerance);
             Assert.Equal(ElectricPotentialChangeRateUnit.MillivoltPerMinute, millivoltperminuteQuantity.Unit);
 
             var millivoltpersecondQuantity = voltpersecond.ToUnit(ElectricPotentialChangeRateUnit.MillivoltPerSecond);
-            AssertEx.EqualTolerance(MillivoltsPerSecondsInOneVoltPerSecond, (double)millivoltpersecondQuantity.Value, MillivoltsPerSecondsTolerance);
+            AssertEx.EqualTolerance(MillivoltsPerSecondsInOneVoltPerSecond, (decimal)millivoltpersecondQuantity.Value, MillivoltsPerSecondsTolerance);
             Assert.Equal(ElectricPotentialChangeRateUnit.MillivoltPerSecond, millivoltpersecondQuantity.Unit);
 
             var voltperhourQuantity = voltpersecond.ToUnit(ElectricPotentialChangeRateUnit.VoltPerHour);
-            AssertEx.EqualTolerance(VoltsPerHoursInOneVoltPerSecond, (double)voltperhourQuantity.Value, VoltsPerHoursTolerance);
+            AssertEx.EqualTolerance(VoltsPerHoursInOneVoltPerSecond, (decimal)voltperhourQuantity.Value, VoltsPerHoursTolerance);
             Assert.Equal(ElectricPotentialChangeRateUnit.VoltPerHour, voltperhourQuantity.Unit);
 
             var voltpermicrosecondQuantity = voltpersecond.ToUnit(ElectricPotentialChangeRateUnit.VoltPerMicrosecond);
-            AssertEx.EqualTolerance(VoltsPerMicrosecondsInOneVoltPerSecond, (double)voltpermicrosecondQuantity.Value, VoltsPerMicrosecondsTolerance);
+            AssertEx.EqualTolerance(VoltsPerMicrosecondsInOneVoltPerSecond, (decimal)voltpermicrosecondQuantity.Value, VoltsPerMicrosecondsTolerance);
             Assert.Equal(ElectricPotentialChangeRateUnit.VoltPerMicrosecond, voltpermicrosecondQuantity.Unit);
 
             var voltperminuteQuantity = voltpersecond.ToUnit(ElectricPotentialChangeRateUnit.VoltPerMinute);
-            AssertEx.EqualTolerance(VoltsPerMinutesInOneVoltPerSecond, (double)voltperminuteQuantity.Value, VoltsPerMinutesTolerance);
+            AssertEx.EqualTolerance(VoltsPerMinutesInOneVoltPerSecond, (decimal)voltperminuteQuantity.Value, VoltsPerMinutesTolerance);
             Assert.Equal(ElectricPotentialChangeRateUnit.VoltPerMinute, voltperminuteQuantity.Unit);
 
             var voltpersecondQuantity = voltpersecond.ToUnit(ElectricPotentialChangeRateUnit.VoltPerSecond);
-            AssertEx.EqualTolerance(VoltsPerSecondsInOneVoltPerSecond, (double)voltpersecondQuantity.Value, VoltsPerSecondsTolerance);
+            AssertEx.EqualTolerance(VoltsPerSecondsInOneVoltPerSecond, (decimal)voltpersecondQuantity.Value, VoltsPerSecondsTolerance);
             Assert.Equal(ElectricPotentialChangeRateUnit.VoltPerSecond, voltpersecondQuantity.Unit);
         }
 
@@ -653,10 +627,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 V/s", new ElectricPotentialChangeRate(0.123456, ElectricPotentialChangeRateUnit.VoltPerSecond).ToString("s1"));
-                Assert.Equal("0.12 V/s", new ElectricPotentialChangeRate(0.123456, ElectricPotentialChangeRateUnit.VoltPerSecond).ToString("s2"));
-                Assert.Equal("0.123 V/s", new ElectricPotentialChangeRate(0.123456, ElectricPotentialChangeRateUnit.VoltPerSecond).ToString("s3"));
-                Assert.Equal("0.1235 V/s", new ElectricPotentialChangeRate(0.123456, ElectricPotentialChangeRateUnit.VoltPerSecond).ToString("s4"));
+                Assert.Equal("0.1 V/s", new ElectricPotentialChangeRate(0.123456m, ElectricPotentialChangeRateUnit.VoltPerSecond).ToString("s1"));
+                Assert.Equal("0.12 V/s", new ElectricPotentialChangeRate(0.123456m, ElectricPotentialChangeRateUnit.VoltPerSecond).ToString("s2"));
+                Assert.Equal("0.123 V/s", new ElectricPotentialChangeRate(0.123456m, ElectricPotentialChangeRateUnit.VoltPerSecond).ToString("s3"));
+                Assert.Equal("0.1235 V/s", new ElectricPotentialChangeRate(0.123456m, ElectricPotentialChangeRateUnit.VoltPerSecond).ToString("s4"));
             }
             finally
             {
@@ -668,10 +642,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 V/s", new ElectricPotentialChangeRate(0.123456, ElectricPotentialChangeRateUnit.VoltPerSecond).ToString("s1", culture));
-            Assert.Equal("0.12 V/s", new ElectricPotentialChangeRate(0.123456, ElectricPotentialChangeRateUnit.VoltPerSecond).ToString("s2", culture));
-            Assert.Equal("0.123 V/s", new ElectricPotentialChangeRate(0.123456, ElectricPotentialChangeRateUnit.VoltPerSecond).ToString("s3", culture));
-            Assert.Equal("0.1235 V/s", new ElectricPotentialChangeRate(0.123456, ElectricPotentialChangeRateUnit.VoltPerSecond).ToString("s4", culture));
+            Assert.Equal("0.1 V/s", new ElectricPotentialChangeRate(0.123456m, ElectricPotentialChangeRateUnit.VoltPerSecond).ToString("s1", culture));
+            Assert.Equal("0.12 V/s", new ElectricPotentialChangeRate(0.123456m, ElectricPotentialChangeRateUnit.VoltPerSecond).ToString("s2", culture));
+            Assert.Equal("0.123 V/s", new ElectricPotentialChangeRate(0.123456m, ElectricPotentialChangeRateUnit.VoltPerSecond).ToString("s3", culture));
+            Assert.Equal("0.1235 V/s", new ElectricPotentialChangeRate(0.123456m, ElectricPotentialChangeRateUnit.VoltPerSecond).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -849,7 +823,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = ElectricPotentialChangeRate.FromVoltsPerSeconds(value);
             Assert.Equal(ElectricPotentialChangeRate.FromVoltsPerSeconds(-value), -quantity);

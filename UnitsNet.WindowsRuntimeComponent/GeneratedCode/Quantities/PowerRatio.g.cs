@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -71,12 +71,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private PowerRatio(double value, PowerRatioUnit unit)
+        private PowerRatio(decimal value, PowerRatioUnit unit)
         {
             if(unit == PowerRatioUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -100,12 +100,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of PowerRatio
         /// </summary>
-        public static PowerRatio MaxValue { get; } = new PowerRatio(double.MaxValue, BaseUnit);
+        public static PowerRatio MaxValue { get; } = new PowerRatio(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of PowerRatio
         /// </summary>
-        public static PowerRatio MinValue { get; } = new PowerRatio(double.MinValue, BaseUnit);
+        public static PowerRatio MinValue { get; } = new PowerRatio(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -129,7 +129,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -158,12 +158,12 @@ namespace UnitsNet
         /// <summary>
         ///     Get PowerRatio in DecibelMilliwatts.
         /// </summary>
-        public double DecibelMilliwatts => As(PowerRatioUnit.DecibelMilliwatt);
+        public decimal DecibelMilliwatts => As(PowerRatioUnit.DecibelMilliwatt);
 
         /// <summary>
         ///     Get PowerRatio in DecibelWatts.
         /// </summary>
-        public double DecibelWatts => As(PowerRatioUnit.DecibelWatt);
+        public decimal DecibelWatts => As(PowerRatioUnit.DecibelWatt);
 
         #endregion
 
@@ -200,9 +200,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static PowerRatio FromDecibelMilliwatts(double decibelmilliwatts)
+        public static PowerRatio FromDecibelMilliwatts(decimal decibelmilliwatts)
         {
-            double value = (double) decibelmilliwatts;
+            decimal value = (decimal) decibelmilliwatts;
             return new PowerRatio(value, PowerRatioUnit.DecibelMilliwatt);
         }
         /// <summary>
@@ -210,9 +210,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static PowerRatio FromDecibelWatts(double decibelwatts)
+        public static PowerRatio FromDecibelWatts(decimal decibelwatts)
         {
-            double value = (double) decibelwatts;
+            decimal value = (decimal) decibelwatts;
             return new PowerRatio(value, PowerRatioUnit.DecibelWatt);
         }
 
@@ -224,9 +224,9 @@ namespace UnitsNet
         /// <returns>PowerRatio unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static PowerRatio From(double value, PowerRatioUnit fromUnit)
+        public static PowerRatio From(decimal value, PowerRatioUnit fromUnit)
         {
-            return new PowerRatio((double)value, fromUnit);
+            return new PowerRatio((decimal)value, fromUnit);
         }
 
         #endregion
@@ -448,13 +448,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(PowerRatio other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(PowerRatio other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -472,19 +472,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((PowerRatioUnit)unit);
+        decimal IQuantity.As(object unit) => As((PowerRatioUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(PowerRatioUnit unit)
+        public decimal As(PowerRatioUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -502,7 +502,7 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
@@ -513,7 +513,7 @@ namespace UnitsNet
             }
         }
 
-        private double AsBaseNumericType(PowerRatioUnit unit)
+        private decimal AsBaseNumericType(PowerRatioUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -562,7 +562,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -582,7 +582,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

@@ -37,24 +37,24 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class ElectricPotentialDcTestsBase : QuantityTestsBase
     {
-        protected abstract double KilovoltsDcInOneVoltDc { get; }
-        protected abstract double MegavoltsDcInOneVoltDc { get; }
-        protected abstract double MicrovoltsDcInOneVoltDc { get; }
-        protected abstract double MillivoltsDcInOneVoltDc { get; }
-        protected abstract double VoltsDcInOneVoltDc { get; }
+        protected abstract decimal KilovoltsDcInOneVoltDc { get; }
+        protected abstract decimal MegavoltsDcInOneVoltDc { get; }
+        protected abstract decimal MicrovoltsDcInOneVoltDc { get; }
+        protected abstract decimal MillivoltsDcInOneVoltDc { get; }
+        protected abstract decimal VoltsDcInOneVoltDc { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double KilovoltsDcTolerance { get { return 1e-5; } }
-        protected virtual double MegavoltsDcTolerance { get { return 1e-5; } }
-        protected virtual double MicrovoltsDcTolerance { get { return 1e-5; } }
-        protected virtual double MillivoltsDcTolerance { get { return 1e-5; } }
-        protected virtual double VoltsDcTolerance { get { return 1e-5; } }
+        protected virtual decimal KilovoltsDcTolerance { get { return 1e-5; } }
+        protected virtual decimal MegavoltsDcTolerance { get { return 1e-5; } }
+        protected virtual decimal MicrovoltsDcTolerance { get { return 1e-5; } }
+        protected virtual decimal MillivoltsDcTolerance { get { return 1e-5; } }
+        protected virtual decimal VoltsDcTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new ElectricPotentialDc((double)0.0, ElectricPotentialDcUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new ElectricPotentialDc((decimal)0.0, ElectricPotentialDcUnit.Undefined));
         }
 
         [Fact]
@@ -65,19 +65,6 @@ namespace UnitsNet.Tests
             Assert.Equal(ElectricPotentialDcUnit.VoltDc, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new ElectricPotentialDc(double.PositiveInfinity, ElectricPotentialDcUnit.VoltDc));
-            Assert.Throws<ArgumentException>(() => new ElectricPotentialDc(double.NegativeInfinity, ElectricPotentialDcUnit.VoltDc));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new ElectricPotentialDc(double.NaN, ElectricPotentialDcUnit.VoltDc));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -158,19 +145,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromVoltsDc_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => ElectricPotentialDc.FromVoltsDc(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => ElectricPotentialDc.FromVoltsDc(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromVoltsDc_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => ElectricPotentialDc.FromVoltsDc(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var voltdc = ElectricPotentialDc.FromVoltsDc(1);
@@ -189,7 +163,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -204,23 +178,23 @@ namespace UnitsNet.Tests
             var voltdc = ElectricPotentialDc.FromVoltsDc(1);
 
             var kilovoltdcQuantity = voltdc.ToUnit(ElectricPotentialDcUnit.KilovoltDc);
-            AssertEx.EqualTolerance(KilovoltsDcInOneVoltDc, (double)kilovoltdcQuantity.Value, KilovoltsDcTolerance);
+            AssertEx.EqualTolerance(KilovoltsDcInOneVoltDc, (decimal)kilovoltdcQuantity.Value, KilovoltsDcTolerance);
             Assert.Equal(ElectricPotentialDcUnit.KilovoltDc, kilovoltdcQuantity.Unit);
 
             var megavoltdcQuantity = voltdc.ToUnit(ElectricPotentialDcUnit.MegavoltDc);
-            AssertEx.EqualTolerance(MegavoltsDcInOneVoltDc, (double)megavoltdcQuantity.Value, MegavoltsDcTolerance);
+            AssertEx.EqualTolerance(MegavoltsDcInOneVoltDc, (decimal)megavoltdcQuantity.Value, MegavoltsDcTolerance);
             Assert.Equal(ElectricPotentialDcUnit.MegavoltDc, megavoltdcQuantity.Unit);
 
             var microvoltdcQuantity = voltdc.ToUnit(ElectricPotentialDcUnit.MicrovoltDc);
-            AssertEx.EqualTolerance(MicrovoltsDcInOneVoltDc, (double)microvoltdcQuantity.Value, MicrovoltsDcTolerance);
+            AssertEx.EqualTolerance(MicrovoltsDcInOneVoltDc, (decimal)microvoltdcQuantity.Value, MicrovoltsDcTolerance);
             Assert.Equal(ElectricPotentialDcUnit.MicrovoltDc, microvoltdcQuantity.Unit);
 
             var millivoltdcQuantity = voltdc.ToUnit(ElectricPotentialDcUnit.MillivoltDc);
-            AssertEx.EqualTolerance(MillivoltsDcInOneVoltDc, (double)millivoltdcQuantity.Value, MillivoltsDcTolerance);
+            AssertEx.EqualTolerance(MillivoltsDcInOneVoltDc, (decimal)millivoltdcQuantity.Value, MillivoltsDcTolerance);
             Assert.Equal(ElectricPotentialDcUnit.MillivoltDc, millivoltdcQuantity.Unit);
 
             var voltdcQuantity = voltdc.ToUnit(ElectricPotentialDcUnit.VoltDc);
-            AssertEx.EqualTolerance(VoltsDcInOneVoltDc, (double)voltdcQuantity.Value, VoltsDcTolerance);
+            AssertEx.EqualTolerance(VoltsDcInOneVoltDc, (decimal)voltdcQuantity.Value, VoltsDcTolerance);
             Assert.Equal(ElectricPotentialDcUnit.VoltDc, voltdcQuantity.Unit);
         }
 
@@ -428,10 +402,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 Vdc", new ElectricPotentialDc(0.123456, ElectricPotentialDcUnit.VoltDc).ToString("s1"));
-                Assert.Equal("0.12 Vdc", new ElectricPotentialDc(0.123456, ElectricPotentialDcUnit.VoltDc).ToString("s2"));
-                Assert.Equal("0.123 Vdc", new ElectricPotentialDc(0.123456, ElectricPotentialDcUnit.VoltDc).ToString("s3"));
-                Assert.Equal("0.1235 Vdc", new ElectricPotentialDc(0.123456, ElectricPotentialDcUnit.VoltDc).ToString("s4"));
+                Assert.Equal("0.1 Vdc", new ElectricPotentialDc(0.123456m, ElectricPotentialDcUnit.VoltDc).ToString("s1"));
+                Assert.Equal("0.12 Vdc", new ElectricPotentialDc(0.123456m, ElectricPotentialDcUnit.VoltDc).ToString("s2"));
+                Assert.Equal("0.123 Vdc", new ElectricPotentialDc(0.123456m, ElectricPotentialDcUnit.VoltDc).ToString("s3"));
+                Assert.Equal("0.1235 Vdc", new ElectricPotentialDc(0.123456m, ElectricPotentialDcUnit.VoltDc).ToString("s4"));
             }
             finally
             {
@@ -443,10 +417,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 Vdc", new ElectricPotentialDc(0.123456, ElectricPotentialDcUnit.VoltDc).ToString("s1", culture));
-            Assert.Equal("0.12 Vdc", new ElectricPotentialDc(0.123456, ElectricPotentialDcUnit.VoltDc).ToString("s2", culture));
-            Assert.Equal("0.123 Vdc", new ElectricPotentialDc(0.123456, ElectricPotentialDcUnit.VoltDc).ToString("s3", culture));
-            Assert.Equal("0.1235 Vdc", new ElectricPotentialDc(0.123456, ElectricPotentialDcUnit.VoltDc).ToString("s4", culture));
+            Assert.Equal("0.1 Vdc", new ElectricPotentialDc(0.123456m, ElectricPotentialDcUnit.VoltDc).ToString("s1", culture));
+            Assert.Equal("0.12 Vdc", new ElectricPotentialDc(0.123456m, ElectricPotentialDcUnit.VoltDc).ToString("s2", culture));
+            Assert.Equal("0.123 Vdc", new ElectricPotentialDc(0.123456m, ElectricPotentialDcUnit.VoltDc).ToString("s3", culture));
+            Assert.Equal("0.1235 Vdc", new ElectricPotentialDc(0.123456m, ElectricPotentialDcUnit.VoltDc).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -624,7 +598,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = ElectricPotentialDc.FromVoltsDc(value);
             Assert.Equal(ElectricPotentialDc.FromVoltsDc(-value), -quantity);

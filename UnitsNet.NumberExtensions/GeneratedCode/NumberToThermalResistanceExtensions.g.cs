@@ -30,23 +30,23 @@ namespace UnitsNet.NumberExtensions.NumberToThermalResistance
     {
         /// <inheritdoc cref="ThermalResistance.FromHourSquareFeetDegreesFahrenheitPerBtu(UnitsNet.QuantityValue)" />
         public static ThermalResistance HourSquareFeetDegreesFahrenheitPerBtu<T>(this T value) =>
-            ThermalResistance.FromHourSquareFeetDegreesFahrenheitPerBtu(Convert.ToDouble(value));
+            ThermalResistance.FromHourSquareFeetDegreesFahrenheitPerBtu(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ThermalResistance.FromSquareCentimeterHourDegreesCelsiusPerKilocalorie(UnitsNet.QuantityValue)" />
         public static ThermalResistance SquareCentimeterHourDegreesCelsiusPerKilocalorie<T>(this T value) =>
-            ThermalResistance.FromSquareCentimeterHourDegreesCelsiusPerKilocalorie(Convert.ToDouble(value));
+            ThermalResistance.FromSquareCentimeterHourDegreesCelsiusPerKilocalorie(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ThermalResistance.FromSquareCentimeterKelvinsPerWatt(UnitsNet.QuantityValue)" />
         public static ThermalResistance SquareCentimeterKelvinsPerWatt<T>(this T value) =>
-            ThermalResistance.FromSquareCentimeterKelvinsPerWatt(Convert.ToDouble(value));
+            ThermalResistance.FromSquareCentimeterKelvinsPerWatt(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ThermalResistance.FromSquareMeterDegreesCelsiusPerWatt(UnitsNet.QuantityValue)" />
         public static ThermalResistance SquareMeterDegreesCelsiusPerWatt<T>(this T value) =>
-            ThermalResistance.FromSquareMeterDegreesCelsiusPerWatt(Convert.ToDouble(value));
+            ThermalResistance.FromSquareMeterDegreesCelsiusPerWatt(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ThermalResistance.FromSquareMeterKelvinsPerKilowatt(UnitsNet.QuantityValue)" />
         public static ThermalResistance SquareMeterKelvinsPerKilowatt<T>(this T value) =>
-            ThermalResistance.FromSquareMeterKelvinsPerKilowatt(Convert.ToDouble(value));
+            ThermalResistance.FromSquareMeterKelvinsPerKilowatt(Convert.ToDecimal(value));
 
     }
 }

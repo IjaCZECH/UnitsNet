@@ -30,19 +30,19 @@ namespace UnitsNet.NumberExtensions.NumberToElectricAdmittance
     {
         /// <inheritdoc cref="ElectricAdmittance.FromMicrosiemens(UnitsNet.QuantityValue)" />
         public static ElectricAdmittance Microsiemens<T>(this T value) =>
-            ElectricAdmittance.FromMicrosiemens(Convert.ToDouble(value));
+            ElectricAdmittance.FromMicrosiemens(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricAdmittance.FromMillisiemens(UnitsNet.QuantityValue)" />
         public static ElectricAdmittance Millisiemens<T>(this T value) =>
-            ElectricAdmittance.FromMillisiemens(Convert.ToDouble(value));
+            ElectricAdmittance.FromMillisiemens(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricAdmittance.FromNanosiemens(UnitsNet.QuantityValue)" />
         public static ElectricAdmittance Nanosiemens<T>(this T value) =>
-            ElectricAdmittance.FromNanosiemens(Convert.ToDouble(value));
+            ElectricAdmittance.FromNanosiemens(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricAdmittance.FromSiemens(UnitsNet.QuantityValue)" />
         public static ElectricAdmittance Siemens<T>(this T value) =>
-            ElectricAdmittance.FromSiemens(Convert.ToDouble(value));
+            ElectricAdmittance.FromSiemens(Convert.ToDecimal(value));
 
     }
 }

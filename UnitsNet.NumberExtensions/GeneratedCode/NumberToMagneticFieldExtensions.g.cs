@@ -30,23 +30,23 @@ namespace UnitsNet.NumberExtensions.NumberToMagneticField
     {
         /// <inheritdoc cref="MagneticField.FromGausses(UnitsNet.QuantityValue)" />
         public static MagneticField Gausses<T>(this T value) =>
-            MagneticField.FromGausses(Convert.ToDouble(value));
+            MagneticField.FromGausses(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="MagneticField.FromMicroteslas(UnitsNet.QuantityValue)" />
         public static MagneticField Microteslas<T>(this T value) =>
-            MagneticField.FromMicroteslas(Convert.ToDouble(value));
+            MagneticField.FromMicroteslas(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="MagneticField.FromMilliteslas(UnitsNet.QuantityValue)" />
         public static MagneticField Milliteslas<T>(this T value) =>
-            MagneticField.FromMilliteslas(Convert.ToDouble(value));
+            MagneticField.FromMilliteslas(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="MagneticField.FromNanoteslas(UnitsNet.QuantityValue)" />
         public static MagneticField Nanoteslas<T>(this T value) =>
-            MagneticField.FromNanoteslas(Convert.ToDouble(value));
+            MagneticField.FromNanoteslas(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="MagneticField.FromTeslas(UnitsNet.QuantityValue)" />
         public static MagneticField Teslas<T>(this T value) =>
-            MagneticField.FromTeslas(Convert.ToDouble(value));
+            MagneticField.FromTeslas(Convert.ToDecimal(value));
 
     }
 }

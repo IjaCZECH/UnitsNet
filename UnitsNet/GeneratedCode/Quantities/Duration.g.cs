@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -57,11 +57,11 @@ namespace UnitsNet
                     new UnitInfo<DurationUnit>(DurationUnit.Microsecond, BaseUnits.Undefined),
                     new UnitInfo<DurationUnit>(DurationUnit.Millisecond, BaseUnits.Undefined),
                     new UnitInfo<DurationUnit>(DurationUnit.Minute, new BaseUnits(time: DurationUnit.Minute)),
-                    new UnitInfo<DurationUnit>(DurationUnit.Month30, new BaseUnits(time: DurationUnit.Month30)),
+                    new UnitInfo<DurationUnit>(DurationUnit.Month30m, new BaseUnits(time: DurationUnit.Month30m)),
                     new UnitInfo<DurationUnit>(DurationUnit.Nanosecond, BaseUnits.Undefined),
                     new UnitInfo<DurationUnit>(DurationUnit.Second, new BaseUnits(time: DurationUnit.Second)),
                     new UnitInfo<DurationUnit>(DurationUnit.Week, new BaseUnits(time: DurationUnit.Week)),
-                    new UnitInfo<DurationUnit>(DurationUnit.Year365, new BaseUnits(time: DurationUnit.Year365)),
+                    new UnitInfo<DurationUnit>(DurationUnit.Year365m, new BaseUnits(time: DurationUnit.Year365m)),
                 },
                 BaseUnit, Zero, BaseDimensions);
         }
@@ -72,12 +72,12 @@ namespace UnitsNet
         /// <param name="value">The numeric value to construct this quantity with.</param>
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        public Duration(double value, DurationUnit unit)
+        public Duration(decimal value, DurationUnit unit)
         {
             if(unit == DurationUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -89,14 +89,14 @@ namespace UnitsNet
         /// <param name="unitSystem">The unit system to create the quantity with.</param>
         /// <exception cref="ArgumentNullException">The given <see cref="UnitSystem"/> is null.</exception>
         /// <exception cref="ArgumentException">No unit was found for the given <see cref="UnitSystem"/>.</exception>
-        public Duration(double value, UnitSystem unitSystem)
+        public Duration(decimal value, UnitSystem unitSystem)
         {
             if(unitSystem is null) throw new ArgumentNullException(nameof(unitSystem));
 
             var unitInfos = Info.GetUnitInfosFor(unitSystem.BaseUnits);
             var firstUnitInfo = unitInfos.FirstOrDefault();
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = firstUnitInfo?.Value ?? throw new ArgumentException("No units were found for the given UnitSystem.", nameof(unitSystem));
         }
 
@@ -118,12 +118,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of Duration
         /// </summary>
-        public static Duration MaxValue { get; } = new Duration(double.MaxValue, BaseUnit);
+        public static Duration MaxValue { get; } = new Duration(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of Duration
         /// </summary>
-        public static Duration MinValue { get; } = new Duration(double.MinValue, BaseUnit);
+        public static Duration MinValue { get; } = new Duration(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -147,7 +147,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => _value;
+        public decimal Value => _value;
 
         Enum IQuantity.Unit => Unit;
 
@@ -177,52 +177,52 @@ namespace UnitsNet
         /// <summary>
         ///     Get Duration in Days.
         /// </summary>
-        public double Days => As(DurationUnit.Day);
+        public decimal Days => As(DurationUnit.Day);
 
         /// <summary>
         ///     Get Duration in Hours.
         /// </summary>
-        public double Hours => As(DurationUnit.Hour);
+        public decimal Hours => As(DurationUnit.Hour);
 
         /// <summary>
         ///     Get Duration in Microseconds.
         /// </summary>
-        public double Microseconds => As(DurationUnit.Microsecond);
+        public decimal Microseconds => As(DurationUnit.Microsecond);
 
         /// <summary>
         ///     Get Duration in Milliseconds.
         /// </summary>
-        public double Milliseconds => As(DurationUnit.Millisecond);
+        public decimal Milliseconds => As(DurationUnit.Millisecond);
 
         /// <summary>
         ///     Get Duration in Minutes.
         /// </summary>
-        public double Minutes => As(DurationUnit.Minute);
+        public decimal Minutes => As(DurationUnit.Minute);
 
         /// <summary>
-        ///     Get Duration in Months30.
+        ///     Get Duration in Months30m.
         /// </summary>
-        public double Months30 => As(DurationUnit.Month30);
+        public decimal Months30m => As(DurationUnit.Month30m);
 
         /// <summary>
         ///     Get Duration in Nanoseconds.
         /// </summary>
-        public double Nanoseconds => As(DurationUnit.Nanosecond);
+        public decimal Nanoseconds => As(DurationUnit.Nanosecond);
 
         /// <summary>
         ///     Get Duration in Seconds.
         /// </summary>
-        public double Seconds => As(DurationUnit.Second);
+        public decimal Seconds => As(DurationUnit.Second);
 
         /// <summary>
         ///     Get Duration in Weeks.
         /// </summary>
-        public double Weeks => As(DurationUnit.Week);
+        public decimal Weeks => As(DurationUnit.Week);
 
         /// <summary>
-        ///     Get Duration in Years365.
+        ///     Get Duration in Years365m.
         /// </summary>
-        public double Years365 => As(DurationUnit.Year365);
+        public decimal Years365m => As(DurationUnit.Year365m);
 
         #endregion
 
@@ -259,7 +259,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static Duration FromDays(QuantityValue days)
         {
-            double value = (double) days;
+            decimal value = (decimal) days;
             return new Duration(value, DurationUnit.Day);
         }
         /// <summary>
@@ -268,7 +268,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static Duration FromHours(QuantityValue hours)
         {
-            double value = (double) hours;
+            decimal value = (decimal) hours;
             return new Duration(value, DurationUnit.Hour);
         }
         /// <summary>
@@ -277,7 +277,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static Duration FromMicroseconds(QuantityValue microseconds)
         {
-            double value = (double) microseconds;
+            decimal value = (decimal) microseconds;
             return new Duration(value, DurationUnit.Microsecond);
         }
         /// <summary>
@@ -286,7 +286,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static Duration FromMilliseconds(QuantityValue milliseconds)
         {
-            double value = (double) milliseconds;
+            decimal value = (decimal) milliseconds;
             return new Duration(value, DurationUnit.Millisecond);
         }
         /// <summary>
@@ -295,17 +295,17 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static Duration FromMinutes(QuantityValue minutes)
         {
-            double value = (double) minutes;
+            decimal value = (decimal) minutes;
             return new Duration(value, DurationUnit.Minute);
         }
         /// <summary>
-        ///     Get Duration from Months30.
+        ///     Get Duration from Months30m.
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        public static Duration FromMonths30(QuantityValue months30)
+        public static Duration FromMonths30m(QuantityValue months30m)
         {
-            double value = (double) months30;
-            return new Duration(value, DurationUnit.Month30);
+            decimal value = (decimal) months30m;
+            return new Duration(value, DurationUnit.Month30m);
         }
         /// <summary>
         ///     Get Duration from Nanoseconds.
@@ -313,7 +313,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static Duration FromNanoseconds(QuantityValue nanoseconds)
         {
-            double value = (double) nanoseconds;
+            decimal value = (decimal) nanoseconds;
             return new Duration(value, DurationUnit.Nanosecond);
         }
         /// <summary>
@@ -322,7 +322,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static Duration FromSeconds(QuantityValue seconds)
         {
-            double value = (double) seconds;
+            decimal value = (decimal) seconds;
             return new Duration(value, DurationUnit.Second);
         }
         /// <summary>
@@ -331,17 +331,17 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static Duration FromWeeks(QuantityValue weeks)
         {
-            double value = (double) weeks;
+            decimal value = (decimal) weeks;
             return new Duration(value, DurationUnit.Week);
         }
         /// <summary>
-        ///     Get Duration from Years365.
+        ///     Get Duration from Years365m.
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        public static Duration FromYears365(QuantityValue years365)
+        public static Duration FromYears365m(QuantityValue years365m)
         {
-            double value = (double) years365;
-            return new Duration(value, DurationUnit.Year365);
+            decimal value = (decimal) years365m;
+            return new Duration(value, DurationUnit.Year365m);
         }
 
         /// <summary>
@@ -352,7 +352,7 @@ namespace UnitsNet
         /// <returns>Duration unit value.</returns>
         public static Duration From(QuantityValue value, DurationUnit fromUnit)
         {
-            return new Duration((double)value, fromUnit);
+            return new Duration((decimal)value, fromUnit);
         }
 
         #endregion
@@ -522,25 +522,25 @@ namespace UnitsNet
         }
 
         /// <summary>Get <see cref="Duration"/> from multiplying value and <see cref="Duration"/>.</summary>
-        public static Duration operator *(double left, Duration right)
+        public static Duration operator *(decimal left, Duration right)
         {
             return new Duration(left * right.Value, right.Unit);
         }
 
         /// <summary>Get <see cref="Duration"/> from multiplying value and <see cref="Duration"/>.</summary>
-        public static Duration operator *(Duration left, double right)
+        public static Duration operator *(Duration left, decimal right)
         {
             return new Duration(left.Value * right, left.Unit);
         }
 
         /// <summary>Get <see cref="Duration"/> from dividing <see cref="Duration"/> by value.</summary>
-        public static Duration operator /(Duration left, double right)
+        public static Duration operator /(Duration left, decimal right)
         {
             return new Duration(left.Value / right, left.Unit);
         }
 
         /// <summary>Get ratio value from dividing <see cref="Duration"/> by <see cref="Duration"/>.</summary>
-        public static double operator /(Duration left, Duration right)
+        public static decimal operator /(Duration left, Duration right)
         {
             return left.Seconds / right.Seconds;
         }
@@ -574,14 +574,14 @@ namespace UnitsNet
         }
 
         /// <summary>Returns true if exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(Duration, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(Duration, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator ==(Duration left, Duration right)
         {
             return left.Equals(right);
         }
 
         /// <summary>Returns true if not exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(Duration, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(Duration, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator !=(Duration left, Duration right)
         {
             return !(left == right);
@@ -603,7 +603,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(Duration, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(Duration, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public override bool Equals(object obj)
         {
             if(obj is null || !(obj is Duration objDuration))
@@ -613,7 +613,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(Duration, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(Duration, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public bool Equals(Duration other)
         {
             return _value.Equals(other.GetValueAs(this.Unit));
@@ -659,13 +659,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(Duration other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(Duration other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -687,17 +687,17 @@ namespace UnitsNet
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(DurationUnit unit)
+        public decimal As(DurationUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = GetValueAs(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <inheritdoc cref="IQuantity.As(UnitSystem)"/>
-        public double As(UnitSystem unitSystem)
+        public decimal As(UnitSystem unitSystem)
         {
             if(unitSystem is null)
                 throw new ArgumentNullException(nameof(unitSystem));
@@ -712,7 +712,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        double IQuantity.As(Enum unit)
+        decimal IQuantity.As(Enum unit)
         {
             if(!(unit is DurationUnit unitAsDurationUnit))
                 throw new ArgumentException($"The given unit is of type {unit.GetType()}. Only {typeof(DurationUnit)} is supported.", nameof(unit));
@@ -768,20 +768,20 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double GetValueInBaseUnit()
+        private decimal GetValueInBaseUnit()
         {
             switch(Unit)
             {
-                case DurationUnit.Day: return _value*24*3600;
-                case DurationUnit.Hour: return _value*3600;
-                case DurationUnit.Microsecond: return (_value) * 1e-6d;
-                case DurationUnit.Millisecond: return (_value) * 1e-3d;
-                case DurationUnit.Minute: return _value*60;
-                case DurationUnit.Month30: return _value*30*24*3600;
-                case DurationUnit.Nanosecond: return (_value) * 1e-9d;
+                case DurationUnit.Day: return _value*24m*3600m;
+                case DurationUnit.Hour: return _value*3600m;
+                case DurationUnit.Microsecond: return (_value) * 1e-6m;
+                case DurationUnit.Millisecond: return (_value) * 1e-3m;
+                case DurationUnit.Minute: return _value*60m;
+                case DurationUnit.Month30m: return _value*30m*24m*3600m;
+                case DurationUnit.Nanosecond: return (_value) * 1e-9m;
                 case DurationUnit.Second: return _value;
-                case DurationUnit.Week: return _value*7*24*3600;
-                case DurationUnit.Year365: return _value*365*24*3600;
+                case DurationUnit.Week: return _value*7m*24m*3600m;
+                case DurationUnit.Year365m: return _value*365m*24m*3600m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
@@ -798,7 +798,7 @@ namespace UnitsNet
             return new Duration(baseUnitValue, BaseUnit);
         }
 
-        private double GetValueAs(DurationUnit unit)
+        private decimal GetValueAs(DurationUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -807,16 +807,16 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case DurationUnit.Day: return baseUnitValue/(24*3600);
-                case DurationUnit.Hour: return baseUnitValue/3600;
-                case DurationUnit.Microsecond: return (baseUnitValue) / 1e-6d;
-                case DurationUnit.Millisecond: return (baseUnitValue) / 1e-3d;
-                case DurationUnit.Minute: return baseUnitValue/60;
-                case DurationUnit.Month30: return baseUnitValue/(30*24*3600);
-                case DurationUnit.Nanosecond: return (baseUnitValue) / 1e-9d;
+                case DurationUnit.Day: return baseUnitValue/(24m*3600);
+                case DurationUnit.Hour: return baseUnitValue/3600m;
+                case DurationUnit.Microsecond: return (baseUnitValue) / 1e-6m;
+                case DurationUnit.Millisecond: return (baseUnitValue) / 1e-3m;
+                case DurationUnit.Minute: return baseUnitValue/60m;
+                case DurationUnit.Month30m: return baseUnitValue/(30m*24m*3600);
+                case DurationUnit.Nanosecond: return (baseUnitValue) / 1e-9m;
                 case DurationUnit.Second: return baseUnitValue;
-                case DurationUnit.Week: return baseUnitValue/(7*24*3600);
-                case DurationUnit.Year365: return baseUnitValue/(365*24*3600);
+                case DurationUnit.Week: return baseUnitValue/(7m*24m*3600);
+                case DurationUnit.Year365m: return baseUnitValue/(365m*24m*3600);
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -854,7 +854,7 @@ namespace UnitsNet
         [Obsolete(@"This method is deprecated and will be removed at a future release. Please use ToString(""s2"") or ToString(""s2"", provider) where 2 is an example of the number passed to significantDigitsAfterRadix.")]
         public string ToString(IFormatProvider? provider, int significantDigitsAfterRadix)
         {
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -874,7 +874,7 @@ namespace UnitsNet
 
             provider = provider ?? CultureInfo.CurrentUICulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

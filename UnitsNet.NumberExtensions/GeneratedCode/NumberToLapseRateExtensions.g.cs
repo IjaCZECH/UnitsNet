@@ -30,7 +30,7 @@ namespace UnitsNet.NumberExtensions.NumberToLapseRate
     {
         /// <inheritdoc cref="LapseRate.FromDegreesCelciusPerKilometer(UnitsNet.QuantityValue)" />
         public static LapseRate DegreesCelciusPerKilometer<T>(this T value) =>
-            LapseRate.FromDegreesCelciusPerKilometer(Convert.ToDouble(value));
+            LapseRate.FromDegreesCelciusPerKilometer(Convert.ToDecimal(value));
 
     }
 }

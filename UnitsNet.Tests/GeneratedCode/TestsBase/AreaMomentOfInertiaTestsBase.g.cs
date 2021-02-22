@@ -37,26 +37,26 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class AreaMomentOfInertiaTestsBase : QuantityTestsBase
     {
-        protected abstract double CentimetersToTheFourthInOneMeterToTheFourth { get; }
-        protected abstract double DecimetersToTheFourthInOneMeterToTheFourth { get; }
-        protected abstract double FeetToTheFourthInOneMeterToTheFourth { get; }
-        protected abstract double InchesToTheFourthInOneMeterToTheFourth { get; }
-        protected abstract double MetersToTheFourthInOneMeterToTheFourth { get; }
-        protected abstract double MillimetersToTheFourthInOneMeterToTheFourth { get; }
+        protected abstract decimal CentimetersToTheFourthInOneMeterToTheFourth { get; }
+        protected abstract decimal DecimetersToTheFourthInOneMeterToTheFourth { get; }
+        protected abstract decimal FeetToTheFourthInOneMeterToTheFourth { get; }
+        protected abstract decimal InchesToTheFourthInOneMeterToTheFourth { get; }
+        protected abstract decimal MetersToTheFourthInOneMeterToTheFourth { get; }
+        protected abstract decimal MillimetersToTheFourthInOneMeterToTheFourth { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double CentimetersToTheFourthTolerance { get { return 1e-5; } }
-        protected virtual double DecimetersToTheFourthTolerance { get { return 1e-5; } }
-        protected virtual double FeetToTheFourthTolerance { get { return 1e-5; } }
-        protected virtual double InchesToTheFourthTolerance { get { return 1e-5; } }
-        protected virtual double MetersToTheFourthTolerance { get { return 1e-5; } }
-        protected virtual double MillimetersToTheFourthTolerance { get { return 1e-5; } }
+        protected virtual decimal CentimetersToTheFourthTolerance { get { return 1e-5; } }
+        protected virtual decimal DecimetersToTheFourthTolerance { get { return 1e-5; } }
+        protected virtual decimal FeetToTheFourthTolerance { get { return 1e-5; } }
+        protected virtual decimal InchesToTheFourthTolerance { get { return 1e-5; } }
+        protected virtual decimal MetersToTheFourthTolerance { get { return 1e-5; } }
+        protected virtual decimal MillimetersToTheFourthTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new AreaMomentOfInertia((double)0.0, AreaMomentOfInertiaUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new AreaMomentOfInertia((decimal)0.0, AreaMomentOfInertiaUnit.Undefined));
         }
 
         [Fact]
@@ -67,19 +67,6 @@ namespace UnitsNet.Tests
             Assert.Equal(AreaMomentOfInertiaUnit.MeterToTheFourth, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new AreaMomentOfInertia(double.PositiveInfinity, AreaMomentOfInertiaUnit.MeterToTheFourth));
-            Assert.Throws<ArgumentException>(() => new AreaMomentOfInertia(double.NegativeInfinity, AreaMomentOfInertiaUnit.MeterToTheFourth));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new AreaMomentOfInertia(double.NaN, AreaMomentOfInertiaUnit.MeterToTheFourth));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -165,19 +152,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromMetersToTheFourth_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => AreaMomentOfInertia.FromMetersToTheFourth(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => AreaMomentOfInertia.FromMetersToTheFourth(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromMetersToTheFourth_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => AreaMomentOfInertia.FromMetersToTheFourth(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var metertothefourth = AreaMomentOfInertia.FromMetersToTheFourth(1);
@@ -197,7 +171,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -212,27 +186,27 @@ namespace UnitsNet.Tests
             var metertothefourth = AreaMomentOfInertia.FromMetersToTheFourth(1);
 
             var centimetertothefourthQuantity = metertothefourth.ToUnit(AreaMomentOfInertiaUnit.CentimeterToTheFourth);
-            AssertEx.EqualTolerance(CentimetersToTheFourthInOneMeterToTheFourth, (double)centimetertothefourthQuantity.Value, CentimetersToTheFourthTolerance);
+            AssertEx.EqualTolerance(CentimetersToTheFourthInOneMeterToTheFourth, (decimal)centimetertothefourthQuantity.Value, CentimetersToTheFourthTolerance);
             Assert.Equal(AreaMomentOfInertiaUnit.CentimeterToTheFourth, centimetertothefourthQuantity.Unit);
 
             var decimetertothefourthQuantity = metertothefourth.ToUnit(AreaMomentOfInertiaUnit.DecimeterToTheFourth);
-            AssertEx.EqualTolerance(DecimetersToTheFourthInOneMeterToTheFourth, (double)decimetertothefourthQuantity.Value, DecimetersToTheFourthTolerance);
+            AssertEx.EqualTolerance(DecimetersToTheFourthInOneMeterToTheFourth, (decimal)decimetertothefourthQuantity.Value, DecimetersToTheFourthTolerance);
             Assert.Equal(AreaMomentOfInertiaUnit.DecimeterToTheFourth, decimetertothefourthQuantity.Unit);
 
             var foottothefourthQuantity = metertothefourth.ToUnit(AreaMomentOfInertiaUnit.FootToTheFourth);
-            AssertEx.EqualTolerance(FeetToTheFourthInOneMeterToTheFourth, (double)foottothefourthQuantity.Value, FeetToTheFourthTolerance);
+            AssertEx.EqualTolerance(FeetToTheFourthInOneMeterToTheFourth, (decimal)foottothefourthQuantity.Value, FeetToTheFourthTolerance);
             Assert.Equal(AreaMomentOfInertiaUnit.FootToTheFourth, foottothefourthQuantity.Unit);
 
             var inchtothefourthQuantity = metertothefourth.ToUnit(AreaMomentOfInertiaUnit.InchToTheFourth);
-            AssertEx.EqualTolerance(InchesToTheFourthInOneMeterToTheFourth, (double)inchtothefourthQuantity.Value, InchesToTheFourthTolerance);
+            AssertEx.EqualTolerance(InchesToTheFourthInOneMeterToTheFourth, (decimal)inchtothefourthQuantity.Value, InchesToTheFourthTolerance);
             Assert.Equal(AreaMomentOfInertiaUnit.InchToTheFourth, inchtothefourthQuantity.Unit);
 
             var metertothefourthQuantity = metertothefourth.ToUnit(AreaMomentOfInertiaUnit.MeterToTheFourth);
-            AssertEx.EqualTolerance(MetersToTheFourthInOneMeterToTheFourth, (double)metertothefourthQuantity.Value, MetersToTheFourthTolerance);
+            AssertEx.EqualTolerance(MetersToTheFourthInOneMeterToTheFourth, (decimal)metertothefourthQuantity.Value, MetersToTheFourthTolerance);
             Assert.Equal(AreaMomentOfInertiaUnit.MeterToTheFourth, metertothefourthQuantity.Unit);
 
             var millimetertothefourthQuantity = metertothefourth.ToUnit(AreaMomentOfInertiaUnit.MillimeterToTheFourth);
-            AssertEx.EqualTolerance(MillimetersToTheFourthInOneMeterToTheFourth, (double)millimetertothefourthQuantity.Value, MillimetersToTheFourthTolerance);
+            AssertEx.EqualTolerance(MillimetersToTheFourthInOneMeterToTheFourth, (decimal)millimetertothefourthQuantity.Value, MillimetersToTheFourthTolerance);
             Assert.Equal(AreaMomentOfInertiaUnit.MillimeterToTheFourth, millimetertothefourthQuantity.Unit);
         }
 
@@ -443,10 +417,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 m⁴", new AreaMomentOfInertia(0.123456, AreaMomentOfInertiaUnit.MeterToTheFourth).ToString("s1"));
-                Assert.Equal("0.12 m⁴", new AreaMomentOfInertia(0.123456, AreaMomentOfInertiaUnit.MeterToTheFourth).ToString("s2"));
-                Assert.Equal("0.123 m⁴", new AreaMomentOfInertia(0.123456, AreaMomentOfInertiaUnit.MeterToTheFourth).ToString("s3"));
-                Assert.Equal("0.1235 m⁴", new AreaMomentOfInertia(0.123456, AreaMomentOfInertiaUnit.MeterToTheFourth).ToString("s4"));
+                Assert.Equal("0.1 m⁴", new AreaMomentOfInertia(0.123456m, AreaMomentOfInertiaUnit.MeterToTheFourth).ToString("s1"));
+                Assert.Equal("0.12 m⁴", new AreaMomentOfInertia(0.123456m, AreaMomentOfInertiaUnit.MeterToTheFourth).ToString("s2"));
+                Assert.Equal("0.123 m⁴", new AreaMomentOfInertia(0.123456m, AreaMomentOfInertiaUnit.MeterToTheFourth).ToString("s3"));
+                Assert.Equal("0.1235 m⁴", new AreaMomentOfInertia(0.123456m, AreaMomentOfInertiaUnit.MeterToTheFourth).ToString("s4"));
             }
             finally
             {
@@ -458,10 +432,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 m⁴", new AreaMomentOfInertia(0.123456, AreaMomentOfInertiaUnit.MeterToTheFourth).ToString("s1", culture));
-            Assert.Equal("0.12 m⁴", new AreaMomentOfInertia(0.123456, AreaMomentOfInertiaUnit.MeterToTheFourth).ToString("s2", culture));
-            Assert.Equal("0.123 m⁴", new AreaMomentOfInertia(0.123456, AreaMomentOfInertiaUnit.MeterToTheFourth).ToString("s3", culture));
-            Assert.Equal("0.1235 m⁴", new AreaMomentOfInertia(0.123456, AreaMomentOfInertiaUnit.MeterToTheFourth).ToString("s4", culture));
+            Assert.Equal("0.1 m⁴", new AreaMomentOfInertia(0.123456m, AreaMomentOfInertiaUnit.MeterToTheFourth).ToString("s1", culture));
+            Assert.Equal("0.12 m⁴", new AreaMomentOfInertia(0.123456m, AreaMomentOfInertiaUnit.MeterToTheFourth).ToString("s2", culture));
+            Assert.Equal("0.123 m⁴", new AreaMomentOfInertia(0.123456m, AreaMomentOfInertiaUnit.MeterToTheFourth).ToString("s3", culture));
+            Assert.Equal("0.1235 m⁴", new AreaMomentOfInertia(0.123456m, AreaMomentOfInertiaUnit.MeterToTheFourth).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -639,7 +613,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = AreaMomentOfInertia.FromMetersToTheFourth(value);
             Assert.Equal(AreaMomentOfInertia.FromMetersToTheFourth(-value), -quantity);

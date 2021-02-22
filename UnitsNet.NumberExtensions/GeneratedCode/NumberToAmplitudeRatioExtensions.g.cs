@@ -30,19 +30,19 @@ namespace UnitsNet.NumberExtensions.NumberToAmplitudeRatio
     {
         /// <inheritdoc cref="AmplitudeRatio.FromDecibelMicrovolts(UnitsNet.QuantityValue)" />
         public static AmplitudeRatio DecibelMicrovolts<T>(this T value) =>
-            AmplitudeRatio.FromDecibelMicrovolts(Convert.ToDouble(value));
+            AmplitudeRatio.FromDecibelMicrovolts(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="AmplitudeRatio.FromDecibelMillivolts(UnitsNet.QuantityValue)" />
         public static AmplitudeRatio DecibelMillivolts<T>(this T value) =>
-            AmplitudeRatio.FromDecibelMillivolts(Convert.ToDouble(value));
+            AmplitudeRatio.FromDecibelMillivolts(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="AmplitudeRatio.FromDecibelsUnloaded(UnitsNet.QuantityValue)" />
         public static AmplitudeRatio DecibelsUnloaded<T>(this T value) =>
-            AmplitudeRatio.FromDecibelsUnloaded(Convert.ToDouble(value));
+            AmplitudeRatio.FromDecibelsUnloaded(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="AmplitudeRatio.FromDecibelVolts(UnitsNet.QuantityValue)" />
         public static AmplitudeRatio DecibelVolts<T>(this T value) =>
-            AmplitudeRatio.FromDecibelVolts(Convert.ToDouble(value));
+            AmplitudeRatio.FromDecibelVolts(Convert.ToDecimal(value));
 
     }
 }

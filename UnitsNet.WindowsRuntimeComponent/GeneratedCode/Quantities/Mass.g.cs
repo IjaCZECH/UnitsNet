@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -71,12 +71,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private Mass(double value, MassUnit unit)
+        private Mass(decimal value, MassUnit unit)
         {
             if(unit == MassUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -100,12 +100,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of Mass
         /// </summary>
-        public static Mass MaxValue { get; } = new Mass(double.MaxValue, BaseUnit);
+        public static Mass MaxValue { get; } = new Mass(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of Mass
         /// </summary>
-        public static Mass MinValue { get; } = new Mass(double.MinValue, BaseUnit);
+        public static Mass MinValue { get; } = new Mass(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -129,7 +129,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -158,127 +158,127 @@ namespace UnitsNet
         /// <summary>
         ///     Get Mass in Centigrams.
         /// </summary>
-        public double Centigrams => As(MassUnit.Centigram);
+        public decimal Centigrams => As(MassUnit.Centigram);
 
         /// <summary>
         ///     Get Mass in Decagrams.
         /// </summary>
-        public double Decagrams => As(MassUnit.Decagram);
+        public decimal Decagrams => As(MassUnit.Decagram);
 
         /// <summary>
         ///     Get Mass in Decigrams.
         /// </summary>
-        public double Decigrams => As(MassUnit.Decigram);
+        public decimal Decigrams => As(MassUnit.Decigram);
 
         /// <summary>
         ///     Get Mass in EarthMasses.
         /// </summary>
-        public double EarthMasses => As(MassUnit.EarthMass);
+        public decimal EarthMasses => As(MassUnit.EarthMass);
 
         /// <summary>
         ///     Get Mass in Grains.
         /// </summary>
-        public double Grains => As(MassUnit.Grain);
+        public decimal Grains => As(MassUnit.Grain);
 
         /// <summary>
         ///     Get Mass in Grams.
         /// </summary>
-        public double Grams => As(MassUnit.Gram);
+        public decimal Grams => As(MassUnit.Gram);
 
         /// <summary>
         ///     Get Mass in Hectograms.
         /// </summary>
-        public double Hectograms => As(MassUnit.Hectogram);
+        public decimal Hectograms => As(MassUnit.Hectogram);
 
         /// <summary>
         ///     Get Mass in Kilograms.
         /// </summary>
-        public double Kilograms => As(MassUnit.Kilogram);
+        public decimal Kilograms => As(MassUnit.Kilogram);
 
         /// <summary>
         ///     Get Mass in Kilopounds.
         /// </summary>
-        public double Kilopounds => As(MassUnit.Kilopound);
+        public decimal Kilopounds => As(MassUnit.Kilopound);
 
         /// <summary>
         ///     Get Mass in Kilotonnes.
         /// </summary>
-        public double Kilotonnes => As(MassUnit.Kilotonne);
+        public decimal Kilotonnes => As(MassUnit.Kilotonne);
 
         /// <summary>
         ///     Get Mass in LongHundredweight.
         /// </summary>
-        public double LongHundredweight => As(MassUnit.LongHundredweight);
+        public decimal LongHundredweight => As(MassUnit.LongHundredweight);
 
         /// <summary>
         ///     Get Mass in LongTons.
         /// </summary>
-        public double LongTons => As(MassUnit.LongTon);
+        public decimal LongTons => As(MassUnit.LongTon);
 
         /// <summary>
         ///     Get Mass in Megapounds.
         /// </summary>
-        public double Megapounds => As(MassUnit.Megapound);
+        public decimal Megapounds => As(MassUnit.Megapound);
 
         /// <summary>
         ///     Get Mass in Megatonnes.
         /// </summary>
-        public double Megatonnes => As(MassUnit.Megatonne);
+        public decimal Megatonnes => As(MassUnit.Megatonne);
 
         /// <summary>
         ///     Get Mass in Micrograms.
         /// </summary>
-        public double Micrograms => As(MassUnit.Microgram);
+        public decimal Micrograms => As(MassUnit.Microgram);
 
         /// <summary>
         ///     Get Mass in Milligrams.
         /// </summary>
-        public double Milligrams => As(MassUnit.Milligram);
+        public decimal Milligrams => As(MassUnit.Milligram);
 
         /// <summary>
         ///     Get Mass in Nanograms.
         /// </summary>
-        public double Nanograms => As(MassUnit.Nanogram);
+        public decimal Nanograms => As(MassUnit.Nanogram);
 
         /// <summary>
         ///     Get Mass in Ounces.
         /// </summary>
-        public double Ounces => As(MassUnit.Ounce);
+        public decimal Ounces => As(MassUnit.Ounce);
 
         /// <summary>
         ///     Get Mass in Pounds.
         /// </summary>
-        public double Pounds => As(MassUnit.Pound);
+        public decimal Pounds => As(MassUnit.Pound);
 
         /// <summary>
         ///     Get Mass in ShortHundredweight.
         /// </summary>
-        public double ShortHundredweight => As(MassUnit.ShortHundredweight);
+        public decimal ShortHundredweight => As(MassUnit.ShortHundredweight);
 
         /// <summary>
         ///     Get Mass in ShortTons.
         /// </summary>
-        public double ShortTons => As(MassUnit.ShortTon);
+        public decimal ShortTons => As(MassUnit.ShortTon);
 
         /// <summary>
         ///     Get Mass in Slugs.
         /// </summary>
-        public double Slugs => As(MassUnit.Slug);
+        public decimal Slugs => As(MassUnit.Slug);
 
         /// <summary>
         ///     Get Mass in SolarMasses.
         /// </summary>
-        public double SolarMasses => As(MassUnit.SolarMass);
+        public decimal SolarMasses => As(MassUnit.SolarMass);
 
         /// <summary>
         ///     Get Mass in Stone.
         /// </summary>
-        public double Stone => As(MassUnit.Stone);
+        public decimal Stone => As(MassUnit.Stone);
 
         /// <summary>
         ///     Get Mass in Tonnes.
         /// </summary>
-        public double Tonnes => As(MassUnit.Tonne);
+        public decimal Tonnes => As(MassUnit.Tonne);
 
         #endregion
 
@@ -315,9 +315,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Mass FromCentigrams(double centigrams)
+        public static Mass FromCentigrams(decimal centigrams)
         {
-            double value = (double) centigrams;
+            decimal value = (decimal) centigrams;
             return new Mass(value, MassUnit.Centigram);
         }
         /// <summary>
@@ -325,9 +325,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Mass FromDecagrams(double decagrams)
+        public static Mass FromDecagrams(decimal decagrams)
         {
-            double value = (double) decagrams;
+            decimal value = (decimal) decagrams;
             return new Mass(value, MassUnit.Decagram);
         }
         /// <summary>
@@ -335,9 +335,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Mass FromDecigrams(double decigrams)
+        public static Mass FromDecigrams(decimal decigrams)
         {
-            double value = (double) decigrams;
+            decimal value = (decimal) decigrams;
             return new Mass(value, MassUnit.Decigram);
         }
         /// <summary>
@@ -345,9 +345,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Mass FromEarthMasses(double earthmasses)
+        public static Mass FromEarthMasses(decimal earthmasses)
         {
-            double value = (double) earthmasses;
+            decimal value = (decimal) earthmasses;
             return new Mass(value, MassUnit.EarthMass);
         }
         /// <summary>
@@ -355,9 +355,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Mass FromGrains(double grains)
+        public static Mass FromGrains(decimal grains)
         {
-            double value = (double) grains;
+            decimal value = (decimal) grains;
             return new Mass(value, MassUnit.Grain);
         }
         /// <summary>
@@ -365,9 +365,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Mass FromGrams(double grams)
+        public static Mass FromGrams(decimal grams)
         {
-            double value = (double) grams;
+            decimal value = (decimal) grams;
             return new Mass(value, MassUnit.Gram);
         }
         /// <summary>
@@ -375,9 +375,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Mass FromHectograms(double hectograms)
+        public static Mass FromHectograms(decimal hectograms)
         {
-            double value = (double) hectograms;
+            decimal value = (decimal) hectograms;
             return new Mass(value, MassUnit.Hectogram);
         }
         /// <summary>
@@ -385,9 +385,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Mass FromKilograms(double kilograms)
+        public static Mass FromKilograms(decimal kilograms)
         {
-            double value = (double) kilograms;
+            decimal value = (decimal) kilograms;
             return new Mass(value, MassUnit.Kilogram);
         }
         /// <summary>
@@ -395,9 +395,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Mass FromKilopounds(double kilopounds)
+        public static Mass FromKilopounds(decimal kilopounds)
         {
-            double value = (double) kilopounds;
+            decimal value = (decimal) kilopounds;
             return new Mass(value, MassUnit.Kilopound);
         }
         /// <summary>
@@ -405,9 +405,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Mass FromKilotonnes(double kilotonnes)
+        public static Mass FromKilotonnes(decimal kilotonnes)
         {
-            double value = (double) kilotonnes;
+            decimal value = (decimal) kilotonnes;
             return new Mass(value, MassUnit.Kilotonne);
         }
         /// <summary>
@@ -415,9 +415,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Mass FromLongHundredweight(double longhundredweight)
+        public static Mass FromLongHundredweight(decimal longhundredweight)
         {
-            double value = (double) longhundredweight;
+            decimal value = (decimal) longhundredweight;
             return new Mass(value, MassUnit.LongHundredweight);
         }
         /// <summary>
@@ -425,9 +425,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Mass FromLongTons(double longtons)
+        public static Mass FromLongTons(decimal longtons)
         {
-            double value = (double) longtons;
+            decimal value = (decimal) longtons;
             return new Mass(value, MassUnit.LongTon);
         }
         /// <summary>
@@ -435,9 +435,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Mass FromMegapounds(double megapounds)
+        public static Mass FromMegapounds(decimal megapounds)
         {
-            double value = (double) megapounds;
+            decimal value = (decimal) megapounds;
             return new Mass(value, MassUnit.Megapound);
         }
         /// <summary>
@@ -445,9 +445,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Mass FromMegatonnes(double megatonnes)
+        public static Mass FromMegatonnes(decimal megatonnes)
         {
-            double value = (double) megatonnes;
+            decimal value = (decimal) megatonnes;
             return new Mass(value, MassUnit.Megatonne);
         }
         /// <summary>
@@ -455,9 +455,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Mass FromMicrograms(double micrograms)
+        public static Mass FromMicrograms(decimal micrograms)
         {
-            double value = (double) micrograms;
+            decimal value = (decimal) micrograms;
             return new Mass(value, MassUnit.Microgram);
         }
         /// <summary>
@@ -465,9 +465,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Mass FromMilligrams(double milligrams)
+        public static Mass FromMilligrams(decimal milligrams)
         {
-            double value = (double) milligrams;
+            decimal value = (decimal) milligrams;
             return new Mass(value, MassUnit.Milligram);
         }
         /// <summary>
@@ -475,9 +475,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Mass FromNanograms(double nanograms)
+        public static Mass FromNanograms(decimal nanograms)
         {
-            double value = (double) nanograms;
+            decimal value = (decimal) nanograms;
             return new Mass(value, MassUnit.Nanogram);
         }
         /// <summary>
@@ -485,9 +485,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Mass FromOunces(double ounces)
+        public static Mass FromOunces(decimal ounces)
         {
-            double value = (double) ounces;
+            decimal value = (decimal) ounces;
             return new Mass(value, MassUnit.Ounce);
         }
         /// <summary>
@@ -495,9 +495,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Mass FromPounds(double pounds)
+        public static Mass FromPounds(decimal pounds)
         {
-            double value = (double) pounds;
+            decimal value = (decimal) pounds;
             return new Mass(value, MassUnit.Pound);
         }
         /// <summary>
@@ -505,9 +505,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Mass FromShortHundredweight(double shorthundredweight)
+        public static Mass FromShortHundredweight(decimal shorthundredweight)
         {
-            double value = (double) shorthundredweight;
+            decimal value = (decimal) shorthundredweight;
             return new Mass(value, MassUnit.ShortHundredweight);
         }
         /// <summary>
@@ -515,9 +515,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Mass FromShortTons(double shorttons)
+        public static Mass FromShortTons(decimal shorttons)
         {
-            double value = (double) shorttons;
+            decimal value = (decimal) shorttons;
             return new Mass(value, MassUnit.ShortTon);
         }
         /// <summary>
@@ -525,9 +525,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Mass FromSlugs(double slugs)
+        public static Mass FromSlugs(decimal slugs)
         {
-            double value = (double) slugs;
+            decimal value = (decimal) slugs;
             return new Mass(value, MassUnit.Slug);
         }
         /// <summary>
@@ -535,9 +535,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Mass FromSolarMasses(double solarmasses)
+        public static Mass FromSolarMasses(decimal solarmasses)
         {
-            double value = (double) solarmasses;
+            decimal value = (decimal) solarmasses;
             return new Mass(value, MassUnit.SolarMass);
         }
         /// <summary>
@@ -545,9 +545,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Mass FromStone(double stone)
+        public static Mass FromStone(decimal stone)
         {
-            double value = (double) stone;
+            decimal value = (decimal) stone;
             return new Mass(value, MassUnit.Stone);
         }
         /// <summary>
@@ -555,9 +555,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Mass FromTonnes(double tonnes)
+        public static Mass FromTonnes(decimal tonnes)
         {
-            double value = (double) tonnes;
+            decimal value = (decimal) tonnes;
             return new Mass(value, MassUnit.Tonne);
         }
 
@@ -569,9 +569,9 @@ namespace UnitsNet
         /// <returns>Mass unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static Mass From(double value, MassUnit fromUnit)
+        public static Mass From(decimal value, MassUnit fromUnit)
         {
-            return new Mass((double)value, fromUnit);
+            return new Mass((decimal)value, fromUnit);
         }
 
         #endregion
@@ -793,13 +793,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(Mass other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(Mass other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -817,19 +817,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((MassUnit)unit);
+        decimal IQuantity.As(object unit) => As((MassUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(MassUnit unit)
+        public decimal As(MassUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -847,41 +847,41 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
-                case MassUnit.Centigram: return (_value/1e3) * 1e-2d;
-                case MassUnit.Decagram: return (_value/1e3) * 1e1d;
-                case MassUnit.Decigram: return (_value/1e3) * 1e-1d;
-                case MassUnit.EarthMass: return _value * 5.9722E+24;
-                case MassUnit.Grain: return _value/15432.358352941431;
-                case MassUnit.Gram: return _value/1e3;
-                case MassUnit.Hectogram: return (_value/1e3) * 1e2d;
-                case MassUnit.Kilogram: return (_value/1e3) * 1e3d;
-                case MassUnit.Kilopound: return (_value*0.45359237) * 1e3d;
-                case MassUnit.Kilotonne: return (_value*1e3) * 1e3d;
-                case MassUnit.LongHundredweight: return _value/0.01968413055222121;
-                case MassUnit.LongTon: return _value*1.0160469088e3;
-                case MassUnit.Megapound: return (_value*0.45359237) * 1e6d;
-                case MassUnit.Megatonne: return (_value*1e3) * 1e6d;
-                case MassUnit.Microgram: return (_value/1e3) * 1e-6d;
-                case MassUnit.Milligram: return (_value/1e3) * 1e-3d;
-                case MassUnit.Nanogram: return (_value/1e3) * 1e-9d;
-                case MassUnit.Ounce: return _value/35.2739619;
-                case MassUnit.Pound: return _value*0.45359237;
-                case MassUnit.ShortHundredweight: return _value/0.022046226218487758;
-                case MassUnit.ShortTon: return _value*9.0718474e2;
-                case MassUnit.Slug: return _value/6.852176556196105e-2;
-                case MassUnit.SolarMass: return _value * 1.98947e30;
-                case MassUnit.Stone: return _value/0.1574731728702698;
-                case MassUnit.Tonne: return _value*1e3;
+                case MassUnit.Centigram: return (_value/1e3m) * 1e-2m;
+                case MassUnit.Decagram: return (_value/1e3m) * 1e1m;
+                case MassUnit.Decigram: return (_value/1e3m) * 1e-1m;
+                case MassUnit.EarthMass: return _value * 5.9722E+24m;
+                case MassUnit.Grain: return _value/15432.358352941431m;
+                case MassUnit.Gram: return _value/1e3m;
+                case MassUnit.Hectogram: return (_value/1e3m) * 1e2m;
+                case MassUnit.Kilogram: return (_value/1e3m) * 1e3m;
+                case MassUnit.Kilopound: return (_value*0.45359237m) * 1e3m;
+                case MassUnit.Kilotonne: return (_value*1e3m) * 1e3m;
+                case MassUnit.LongHundredweight: return _value/0.01968413055222121m;
+                case MassUnit.LongTon: return _value*1.0160469088e3m;
+                case MassUnit.Megapound: return (_value*0.45359237m) * 1e6m;
+                case MassUnit.Megatonne: return (_value*1e3m) * 1e6m;
+                case MassUnit.Microgram: return (_value/1e3m) * 1e-6m;
+                case MassUnit.Milligram: return (_value/1e3m) * 1e-3m;
+                case MassUnit.Nanogram: return (_value/1e3m) * 1e-9m;
+                case MassUnit.Ounce: return _value/35.2739619m;
+                case MassUnit.Pound: return _value*0.45359237m;
+                case MassUnit.ShortHundredweight: return _value/0.022046226218487758m;
+                case MassUnit.ShortTon: return _value*9.0718474e2m;
+                case MassUnit.Slug: return _value/6.852176556196105e-2m;
+                case MassUnit.SolarMass: return _value * 1.98947e30m;
+                case MassUnit.Stone: return _value/0.1574731728702698m;
+                case MassUnit.Tonne: return _value*1e3m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(MassUnit unit)
+        private decimal AsBaseNumericType(MassUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -890,31 +890,31 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case MassUnit.Centigram: return (baseUnitValue*1e3) / 1e-2d;
-                case MassUnit.Decagram: return (baseUnitValue*1e3) / 1e1d;
-                case MassUnit.Decigram: return (baseUnitValue*1e3) / 1e-1d;
-                case MassUnit.EarthMass: return baseUnitValue / 5.9722E+24;
-                case MassUnit.Grain: return baseUnitValue*15432.358352941431;
-                case MassUnit.Gram: return baseUnitValue*1e3;
-                case MassUnit.Hectogram: return (baseUnitValue*1e3) / 1e2d;
-                case MassUnit.Kilogram: return (baseUnitValue*1e3) / 1e3d;
-                case MassUnit.Kilopound: return (baseUnitValue/0.45359237) / 1e3d;
-                case MassUnit.Kilotonne: return (baseUnitValue/1e3) / 1e3d;
-                case MassUnit.LongHundredweight: return baseUnitValue*0.01968413055222121;
-                case MassUnit.LongTon: return baseUnitValue/1.0160469088e3;
-                case MassUnit.Megapound: return (baseUnitValue/0.45359237) / 1e6d;
-                case MassUnit.Megatonne: return (baseUnitValue/1e3) / 1e6d;
-                case MassUnit.Microgram: return (baseUnitValue*1e3) / 1e-6d;
-                case MassUnit.Milligram: return (baseUnitValue*1e3) / 1e-3d;
-                case MassUnit.Nanogram: return (baseUnitValue*1e3) / 1e-9d;
-                case MassUnit.Ounce: return baseUnitValue*35.2739619;
-                case MassUnit.Pound: return baseUnitValue/0.45359237;
-                case MassUnit.ShortHundredweight: return baseUnitValue*0.022046226218487758;
-                case MassUnit.ShortTon: return baseUnitValue/9.0718474e2;
-                case MassUnit.Slug: return baseUnitValue*6.852176556196105e-2;
-                case MassUnit.SolarMass: return baseUnitValue / 1.98947e30;
-                case MassUnit.Stone: return baseUnitValue*0.1574731728702698;
-                case MassUnit.Tonne: return baseUnitValue/1e3;
+                case MassUnit.Centigram: return (baseUnitValue*1e3m) / 1e-2m;
+                case MassUnit.Decagram: return (baseUnitValue*1e3m) / 1e1m;
+                case MassUnit.Decigram: return (baseUnitValue*1e3m) / 1e-1m;
+                case MassUnit.EarthMass: return baseUnitValue / 5.9722E+24m;
+                case MassUnit.Grain: return baseUnitValue*15432.358352941431m;
+                case MassUnit.Gram: return baseUnitValue*1e3m;
+                case MassUnit.Hectogram: return (baseUnitValue*1e3m) / 1e2m;
+                case MassUnit.Kilogram: return (baseUnitValue*1e3m) / 1e3m;
+                case MassUnit.Kilopound: return (baseUnitValue/0.45359237m) / 1e3m;
+                case MassUnit.Kilotonne: return (baseUnitValue/1e3m) / 1e3m;
+                case MassUnit.LongHundredweight: return baseUnitValue*0.01968413055222121m;
+                case MassUnit.LongTon: return baseUnitValue/1.0160469088e3m;
+                case MassUnit.Megapound: return (baseUnitValue/0.45359237m) / 1e6m;
+                case MassUnit.Megatonne: return (baseUnitValue/1e3m) / 1e6m;
+                case MassUnit.Microgram: return (baseUnitValue*1e3m) / 1e-6m;
+                case MassUnit.Milligram: return (baseUnitValue*1e3m) / 1e-3m;
+                case MassUnit.Nanogram: return (baseUnitValue*1e3m) / 1e-9m;
+                case MassUnit.Ounce: return baseUnitValue*35.2739619m;
+                case MassUnit.Pound: return baseUnitValue/0.45359237m;
+                case MassUnit.ShortHundredweight: return baseUnitValue*0.022046226218487758m;
+                case MassUnit.ShortTon: return baseUnitValue/9.0718474e2m;
+                case MassUnit.Slug: return baseUnitValue*6.852176556196105e-2m;
+                case MassUnit.SolarMass: return baseUnitValue / 1.98947e30m;
+                case MassUnit.Stone: return baseUnitValue*0.1574731728702698m;
+                case MassUnit.Tonne: return baseUnitValue/1e3m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -953,7 +953,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -973,7 +973,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

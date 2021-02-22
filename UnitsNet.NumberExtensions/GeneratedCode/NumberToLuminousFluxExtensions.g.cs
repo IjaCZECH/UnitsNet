@@ -30,7 +30,7 @@ namespace UnitsNet.NumberExtensions.NumberToLuminousFlux
     {
         /// <inheritdoc cref="LuminousFlux.FromLumens(UnitsNet.QuantityValue)" />
         public static LuminousFlux Lumens<T>(this T value) =>
-            LuminousFlux.FromLumens(Convert.ToDouble(value));
+            LuminousFlux.FromLumens(Convert.ToDecimal(value));
 
     }
 }

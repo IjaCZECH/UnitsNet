@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -71,12 +71,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private MolarEnergy(double value, MolarEnergyUnit unit)
+        private MolarEnergy(decimal value, MolarEnergyUnit unit)
         {
             if(unit == MolarEnergyUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -100,12 +100,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of MolarEnergy
         /// </summary>
-        public static MolarEnergy MaxValue { get; } = new MolarEnergy(double.MaxValue, BaseUnit);
+        public static MolarEnergy MaxValue { get; } = new MolarEnergy(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of MolarEnergy
         /// </summary>
-        public static MolarEnergy MinValue { get; } = new MolarEnergy(double.MinValue, BaseUnit);
+        public static MolarEnergy MinValue { get; } = new MolarEnergy(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -129,7 +129,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -158,17 +158,17 @@ namespace UnitsNet
         /// <summary>
         ///     Get MolarEnergy in JoulesPerMole.
         /// </summary>
-        public double JoulesPerMole => As(MolarEnergyUnit.JoulePerMole);
+        public decimal JoulesPerMole => As(MolarEnergyUnit.JoulePerMole);
 
         /// <summary>
         ///     Get MolarEnergy in KilojoulesPerMole.
         /// </summary>
-        public double KilojoulesPerMole => As(MolarEnergyUnit.KilojoulePerMole);
+        public decimal KilojoulesPerMole => As(MolarEnergyUnit.KilojoulePerMole);
 
         /// <summary>
         ///     Get MolarEnergy in MegajoulesPerMole.
         /// </summary>
-        public double MegajoulesPerMole => As(MolarEnergyUnit.MegajoulePerMole);
+        public decimal MegajoulesPerMole => As(MolarEnergyUnit.MegajoulePerMole);
 
         #endregion
 
@@ -205,9 +205,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MolarEnergy FromJoulesPerMole(double joulespermole)
+        public static MolarEnergy FromJoulesPerMole(decimal joulespermole)
         {
-            double value = (double) joulespermole;
+            decimal value = (decimal) joulespermole;
             return new MolarEnergy(value, MolarEnergyUnit.JoulePerMole);
         }
         /// <summary>
@@ -215,9 +215,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MolarEnergy FromKilojoulesPerMole(double kilojoulespermole)
+        public static MolarEnergy FromKilojoulesPerMole(decimal kilojoulespermole)
         {
-            double value = (double) kilojoulespermole;
+            decimal value = (decimal) kilojoulespermole;
             return new MolarEnergy(value, MolarEnergyUnit.KilojoulePerMole);
         }
         /// <summary>
@@ -225,9 +225,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MolarEnergy FromMegajoulesPerMole(double megajoulespermole)
+        public static MolarEnergy FromMegajoulesPerMole(decimal megajoulespermole)
         {
-            double value = (double) megajoulespermole;
+            decimal value = (decimal) megajoulespermole;
             return new MolarEnergy(value, MolarEnergyUnit.MegajoulePerMole);
         }
 
@@ -239,9 +239,9 @@ namespace UnitsNet
         /// <returns>MolarEnergy unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static MolarEnergy From(double value, MolarEnergyUnit fromUnit)
+        public static MolarEnergy From(decimal value, MolarEnergyUnit fromUnit)
         {
-            return new MolarEnergy((double)value, fromUnit);
+            return new MolarEnergy((decimal)value, fromUnit);
         }
 
         #endregion
@@ -463,13 +463,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(MolarEnergy other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(MolarEnergy other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -487,19 +487,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((MolarEnergyUnit)unit);
+        decimal IQuantity.As(object unit) => As((MolarEnergyUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(MolarEnergyUnit unit)
+        public decimal As(MolarEnergyUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -517,19 +517,19 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
                 case MolarEnergyUnit.JoulePerMole: return _value;
-                case MolarEnergyUnit.KilojoulePerMole: return (_value) * 1e3d;
-                case MolarEnergyUnit.MegajoulePerMole: return (_value) * 1e6d;
+                case MolarEnergyUnit.KilojoulePerMole: return (_value) * 1e3m;
+                case MolarEnergyUnit.MegajoulePerMole: return (_value) * 1e6m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(MolarEnergyUnit unit)
+        private decimal AsBaseNumericType(MolarEnergyUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -539,8 +539,8 @@ namespace UnitsNet
             switch(unit)
             {
                 case MolarEnergyUnit.JoulePerMole: return baseUnitValue;
-                case MolarEnergyUnit.KilojoulePerMole: return (baseUnitValue) / 1e3d;
-                case MolarEnergyUnit.MegajoulePerMole: return (baseUnitValue) / 1e6d;
+                case MolarEnergyUnit.KilojoulePerMole: return (baseUnitValue) / 1e3m;
+                case MolarEnergyUnit.MegajoulePerMole: return (baseUnitValue) / 1e6m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -579,7 +579,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -599,7 +599,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -67,12 +67,12 @@ namespace UnitsNet
         /// <param name="value">The numeric value to construct this quantity with.</param>
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        public ThermalResistance(double value, ThermalResistanceUnit unit)
+        public ThermalResistance(decimal value, ThermalResistanceUnit unit)
         {
             if(unit == ThermalResistanceUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -84,14 +84,14 @@ namespace UnitsNet
         /// <param name="unitSystem">The unit system to create the quantity with.</param>
         /// <exception cref="ArgumentNullException">The given <see cref="UnitSystem"/> is null.</exception>
         /// <exception cref="ArgumentException">No unit was found for the given <see cref="UnitSystem"/>.</exception>
-        public ThermalResistance(double value, UnitSystem unitSystem)
+        public ThermalResistance(decimal value, UnitSystem unitSystem)
         {
             if(unitSystem is null) throw new ArgumentNullException(nameof(unitSystem));
 
             var unitInfos = Info.GetUnitInfosFor(unitSystem.BaseUnits);
             var firstUnitInfo = unitInfos.FirstOrDefault();
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = firstUnitInfo?.Value ?? throw new ArgumentException("No units were found for the given UnitSystem.", nameof(unitSystem));
         }
 
@@ -113,12 +113,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of ThermalResistance
         /// </summary>
-        public static ThermalResistance MaxValue { get; } = new ThermalResistance(double.MaxValue, BaseUnit);
+        public static ThermalResistance MaxValue { get; } = new ThermalResistance(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of ThermalResistance
         /// </summary>
-        public static ThermalResistance MinValue { get; } = new ThermalResistance(double.MinValue, BaseUnit);
+        public static ThermalResistance MinValue { get; } = new ThermalResistance(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -142,7 +142,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => _value;
+        public decimal Value => _value;
 
         Enum IQuantity.Unit => Unit;
 
@@ -172,27 +172,27 @@ namespace UnitsNet
         /// <summary>
         ///     Get ThermalResistance in HourSquareFeetDegreesFahrenheitPerBtu.
         /// </summary>
-        public double HourSquareFeetDegreesFahrenheitPerBtu => As(ThermalResistanceUnit.HourSquareFeetDegreeFahrenheitPerBtu);
+        public decimal HourSquareFeetDegreesFahrenheitPerBtu => As(ThermalResistanceUnit.HourSquareFeetDegreeFahrenheitPerBtu);
 
         /// <summary>
         ///     Get ThermalResistance in SquareCentimeterHourDegreesCelsiusPerKilocalorie.
         /// </summary>
-        public double SquareCentimeterHourDegreesCelsiusPerKilocalorie => As(ThermalResistanceUnit.SquareCentimeterHourDegreeCelsiusPerKilocalorie);
+        public decimal SquareCentimeterHourDegreesCelsiusPerKilocalorie => As(ThermalResistanceUnit.SquareCentimeterHourDegreeCelsiusPerKilocalorie);
 
         /// <summary>
         ///     Get ThermalResistance in SquareCentimeterKelvinsPerWatt.
         /// </summary>
-        public double SquareCentimeterKelvinsPerWatt => As(ThermalResistanceUnit.SquareCentimeterKelvinPerWatt);
+        public decimal SquareCentimeterKelvinsPerWatt => As(ThermalResistanceUnit.SquareCentimeterKelvinPerWatt);
 
         /// <summary>
         ///     Get ThermalResistance in SquareMeterDegreesCelsiusPerWatt.
         /// </summary>
-        public double SquareMeterDegreesCelsiusPerWatt => As(ThermalResistanceUnit.SquareMeterDegreeCelsiusPerWatt);
+        public decimal SquareMeterDegreesCelsiusPerWatt => As(ThermalResistanceUnit.SquareMeterDegreeCelsiusPerWatt);
 
         /// <summary>
         ///     Get ThermalResistance in SquareMeterKelvinsPerKilowatt.
         /// </summary>
-        public double SquareMeterKelvinsPerKilowatt => As(ThermalResistanceUnit.SquareMeterKelvinPerKilowatt);
+        public decimal SquareMeterKelvinsPerKilowatt => As(ThermalResistanceUnit.SquareMeterKelvinPerKilowatt);
 
         #endregion
 
@@ -229,7 +229,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ThermalResistance FromHourSquareFeetDegreesFahrenheitPerBtu(QuantityValue hoursquarefeetdegreesfahrenheitperbtu)
         {
-            double value = (double) hoursquarefeetdegreesfahrenheitperbtu;
+            decimal value = (decimal) hoursquarefeetdegreesfahrenheitperbtu;
             return new ThermalResistance(value, ThermalResistanceUnit.HourSquareFeetDegreeFahrenheitPerBtu);
         }
         /// <summary>
@@ -238,7 +238,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ThermalResistance FromSquareCentimeterHourDegreesCelsiusPerKilocalorie(QuantityValue squarecentimeterhourdegreescelsiusperkilocalorie)
         {
-            double value = (double) squarecentimeterhourdegreescelsiusperkilocalorie;
+            decimal value = (decimal) squarecentimeterhourdegreescelsiusperkilocalorie;
             return new ThermalResistance(value, ThermalResistanceUnit.SquareCentimeterHourDegreeCelsiusPerKilocalorie);
         }
         /// <summary>
@@ -247,7 +247,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ThermalResistance FromSquareCentimeterKelvinsPerWatt(QuantityValue squarecentimeterkelvinsperwatt)
         {
-            double value = (double) squarecentimeterkelvinsperwatt;
+            decimal value = (decimal) squarecentimeterkelvinsperwatt;
             return new ThermalResistance(value, ThermalResistanceUnit.SquareCentimeterKelvinPerWatt);
         }
         /// <summary>
@@ -256,7 +256,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ThermalResistance FromSquareMeterDegreesCelsiusPerWatt(QuantityValue squaremeterdegreescelsiusperwatt)
         {
-            double value = (double) squaremeterdegreescelsiusperwatt;
+            decimal value = (decimal) squaremeterdegreescelsiusperwatt;
             return new ThermalResistance(value, ThermalResistanceUnit.SquareMeterDegreeCelsiusPerWatt);
         }
         /// <summary>
@@ -265,7 +265,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ThermalResistance FromSquareMeterKelvinsPerKilowatt(QuantityValue squaremeterkelvinsperkilowatt)
         {
-            double value = (double) squaremeterkelvinsperkilowatt;
+            decimal value = (decimal) squaremeterkelvinsperkilowatt;
             return new ThermalResistance(value, ThermalResistanceUnit.SquareMeterKelvinPerKilowatt);
         }
 
@@ -277,7 +277,7 @@ namespace UnitsNet
         /// <returns>ThermalResistance unit value.</returns>
         public static ThermalResistance From(QuantityValue value, ThermalResistanceUnit fromUnit)
         {
-            return new ThermalResistance((double)value, fromUnit);
+            return new ThermalResistance((decimal)value, fromUnit);
         }
 
         #endregion
@@ -447,25 +447,25 @@ namespace UnitsNet
         }
 
         /// <summary>Get <see cref="ThermalResistance"/> from multiplying value and <see cref="ThermalResistance"/>.</summary>
-        public static ThermalResistance operator *(double left, ThermalResistance right)
+        public static ThermalResistance operator *(decimal left, ThermalResistance right)
         {
             return new ThermalResistance(left * right.Value, right.Unit);
         }
 
         /// <summary>Get <see cref="ThermalResistance"/> from multiplying value and <see cref="ThermalResistance"/>.</summary>
-        public static ThermalResistance operator *(ThermalResistance left, double right)
+        public static ThermalResistance operator *(ThermalResistance left, decimal right)
         {
             return new ThermalResistance(left.Value * right, left.Unit);
         }
 
         /// <summary>Get <see cref="ThermalResistance"/> from dividing <see cref="ThermalResistance"/> by value.</summary>
-        public static ThermalResistance operator /(ThermalResistance left, double right)
+        public static ThermalResistance operator /(ThermalResistance left, decimal right)
         {
             return new ThermalResistance(left.Value / right, left.Unit);
         }
 
         /// <summary>Get ratio value from dividing <see cref="ThermalResistance"/> by <see cref="ThermalResistance"/>.</summary>
-        public static double operator /(ThermalResistance left, ThermalResistance right)
+        public static decimal operator /(ThermalResistance left, ThermalResistance right)
         {
             return left.SquareMeterKelvinsPerKilowatt / right.SquareMeterKelvinsPerKilowatt;
         }
@@ -499,14 +499,14 @@ namespace UnitsNet
         }
 
         /// <summary>Returns true if exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(ThermalResistance, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ThermalResistance, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator ==(ThermalResistance left, ThermalResistance right)
         {
             return left.Equals(right);
         }
 
         /// <summary>Returns true if not exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(ThermalResistance, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ThermalResistance, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator !=(ThermalResistance left, ThermalResistance right)
         {
             return !(left == right);
@@ -528,7 +528,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(ThermalResistance, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ThermalResistance, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public override bool Equals(object obj)
         {
             if(obj is null || !(obj is ThermalResistance objThermalResistance))
@@ -538,7 +538,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(ThermalResistance, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ThermalResistance, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public bool Equals(ThermalResistance other)
         {
             return _value.Equals(other.GetValueAs(this.Unit));
@@ -584,13 +584,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(ThermalResistance other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(ThermalResistance other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -612,17 +612,17 @@ namespace UnitsNet
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(ThermalResistanceUnit unit)
+        public decimal As(ThermalResistanceUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = GetValueAs(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <inheritdoc cref="IQuantity.As(UnitSystem)"/>
-        public double As(UnitSystem unitSystem)
+        public decimal As(UnitSystem unitSystem)
         {
             if(unitSystem is null)
                 throw new ArgumentNullException(nameof(unitSystem));
@@ -637,7 +637,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        double IQuantity.As(Enum unit)
+        decimal IQuantity.As(Enum unit)
         {
             if(!(unit is ThermalResistanceUnit unitAsThermalResistanceUnit))
                 throw new ArgumentException($"The given unit is of type {unit.GetType()}. Only {typeof(ThermalResistanceUnit)} is supported.", nameof(unit));
@@ -693,14 +693,14 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double GetValueInBaseUnit()
+        private decimal GetValueInBaseUnit()
         {
             switch(Unit)
             {
-                case ThermalResistanceUnit.HourSquareFeetDegreeFahrenheitPerBtu: return _value*176.1121482159839;
-                case ThermalResistanceUnit.SquareCentimeterHourDegreeCelsiusPerKilocalorie: return _value*0.0859779507590433;
-                case ThermalResistanceUnit.SquareCentimeterKelvinPerWatt: return _value*0.0999964777570357;
-                case ThermalResistanceUnit.SquareMeterDegreeCelsiusPerWatt: return _value*1000.088056074108;
+                case ThermalResistanceUnit.HourSquareFeetDegreeFahrenheitPerBtu: return _value*176.1121482159839m;
+                case ThermalResistanceUnit.SquareCentimeterHourDegreeCelsiusPerKilocalorie: return _value*0.0859779507590433m;
+                case ThermalResistanceUnit.SquareCentimeterKelvinPerWatt: return _value*0.0999964777570357m;
+                case ThermalResistanceUnit.SquareMeterDegreeCelsiusPerWatt: return _value*1000.088056074108m;
                 case ThermalResistanceUnit.SquareMeterKelvinPerKilowatt: return _value;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
@@ -718,7 +718,7 @@ namespace UnitsNet
             return new ThermalResistance(baseUnitValue, BaseUnit);
         }
 
-        private double GetValueAs(ThermalResistanceUnit unit)
+        private decimal GetValueAs(ThermalResistanceUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -727,10 +727,10 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case ThermalResistanceUnit.HourSquareFeetDegreeFahrenheitPerBtu: return baseUnitValue/176.1121482159839;
-                case ThermalResistanceUnit.SquareCentimeterHourDegreeCelsiusPerKilocalorie: return baseUnitValue/0.0859779507590433;
-                case ThermalResistanceUnit.SquareCentimeterKelvinPerWatt: return baseUnitValue/0.0999964777570357;
-                case ThermalResistanceUnit.SquareMeterDegreeCelsiusPerWatt: return baseUnitValue/1000.088056074108;
+                case ThermalResistanceUnit.HourSquareFeetDegreeFahrenheitPerBtu: return baseUnitValue/176.1121482159839m;
+                case ThermalResistanceUnit.SquareCentimeterHourDegreeCelsiusPerKilocalorie: return baseUnitValue/0.0859779507590433m;
+                case ThermalResistanceUnit.SquareCentimeterKelvinPerWatt: return baseUnitValue/0.0999964777570357m;
+                case ThermalResistanceUnit.SquareMeterDegreeCelsiusPerWatt: return baseUnitValue/1000.088056074108m;
                 case ThermalResistanceUnit.SquareMeterKelvinPerKilowatt: return baseUnitValue;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
@@ -769,7 +769,7 @@ namespace UnitsNet
         [Obsolete(@"This method is deprecated and will be removed at a future release. Please use ToString(""s2"") or ToString(""s2"", provider) where 2 is an example of the number passed to significantDigitsAfterRadix.")]
         public string ToString(IFormatProvider? provider, int significantDigitsAfterRadix)
         {
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -789,7 +789,7 @@ namespace UnitsNet
 
             provider = provider ?? CultureInfo.CurrentUICulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

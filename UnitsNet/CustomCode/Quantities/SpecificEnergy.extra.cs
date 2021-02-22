@@ -17,14 +17,14 @@ namespace UnitsNet
             return Energy.FromJoules(specificEnergy.JoulesPerKilogram * mass.Kilograms);
         }
 
-        /// <summary>Get <see cref="BrakeSpecificFuelConsumption"/> from <see cref="double"/> divided by <see cref="SpecificEnergy"/>.</summary>
-        public static BrakeSpecificFuelConsumption operator /(double value, SpecificEnergy specificEnergy)
+        /// <summary>Get <see cref="BrakeSpecificFuelConsumption"/> from <see cref="decimal"/> divided by <see cref="SpecificEnergy"/>.</summary>
+        public static BrakeSpecificFuelConsumption operator /(decimal value, SpecificEnergy specificEnergy)
         {
             return BrakeSpecificFuelConsumption.FromKilogramsPerJoule(value / specificEnergy.JoulesPerKilogram);
         }
 
-        /// <summary>Get <see cref="double"/> from <see cref="SpecificEnergy"/> times <see cref="BrakeSpecificFuelConsumption"/>.</summary>
-        public static double operator *(SpecificEnergy specificEnergy, BrakeSpecificFuelConsumption bsfc)
+        /// <summary>Get <see cref="decimal"/> from <see cref="SpecificEnergy"/> times <see cref="BrakeSpecificFuelConsumption"/>.</summary>
+        public static decimal operator *(SpecificEnergy specificEnergy, BrakeSpecificFuelConsumption bsfc)
         {
             return specificEnergy.JoulesPerKilogram * bsfc.KilogramsPerJoule;
         }

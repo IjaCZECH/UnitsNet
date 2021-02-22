@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -65,12 +65,12 @@ namespace UnitsNet
         /// <param name="value">The numeric value to construct this quantity with.</param>
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        public ReactiveEnergy(double value, ReactiveEnergyUnit unit)
+        public ReactiveEnergy(decimal value, ReactiveEnergyUnit unit)
         {
             if(unit == ReactiveEnergyUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -82,14 +82,14 @@ namespace UnitsNet
         /// <param name="unitSystem">The unit system to create the quantity with.</param>
         /// <exception cref="ArgumentNullException">The given <see cref="UnitSystem"/> is null.</exception>
         /// <exception cref="ArgumentException">No unit was found for the given <see cref="UnitSystem"/>.</exception>
-        public ReactiveEnergy(double value, UnitSystem unitSystem)
+        public ReactiveEnergy(decimal value, UnitSystem unitSystem)
         {
             if(unitSystem is null) throw new ArgumentNullException(nameof(unitSystem));
 
             var unitInfos = Info.GetUnitInfosFor(unitSystem.BaseUnits);
             var firstUnitInfo = unitInfos.FirstOrDefault();
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = firstUnitInfo?.Value ?? throw new ArgumentException("No units were found for the given UnitSystem.", nameof(unitSystem));
         }
 
@@ -111,12 +111,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of ReactiveEnergy
         /// </summary>
-        public static ReactiveEnergy MaxValue { get; } = new ReactiveEnergy(double.MaxValue, BaseUnit);
+        public static ReactiveEnergy MaxValue { get; } = new ReactiveEnergy(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of ReactiveEnergy
         /// </summary>
-        public static ReactiveEnergy MinValue { get; } = new ReactiveEnergy(double.MinValue, BaseUnit);
+        public static ReactiveEnergy MinValue { get; } = new ReactiveEnergy(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -140,7 +140,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => _value;
+        public decimal Value => _value;
 
         Enum IQuantity.Unit => Unit;
 
@@ -170,17 +170,17 @@ namespace UnitsNet
         /// <summary>
         ///     Get ReactiveEnergy in KilovoltampereReactiveHours.
         /// </summary>
-        public double KilovoltampereReactiveHours => As(ReactiveEnergyUnit.KilovoltampereReactiveHour);
+        public decimal KilovoltampereReactiveHours => As(ReactiveEnergyUnit.KilovoltampereReactiveHour);
 
         /// <summary>
         ///     Get ReactiveEnergy in MegavoltampereReactiveHours.
         /// </summary>
-        public double MegavoltampereReactiveHours => As(ReactiveEnergyUnit.MegavoltampereReactiveHour);
+        public decimal MegavoltampereReactiveHours => As(ReactiveEnergyUnit.MegavoltampereReactiveHour);
 
         /// <summary>
         ///     Get ReactiveEnergy in VoltampereReactiveHours.
         /// </summary>
-        public double VoltampereReactiveHours => As(ReactiveEnergyUnit.VoltampereReactiveHour);
+        public decimal VoltampereReactiveHours => As(ReactiveEnergyUnit.VoltampereReactiveHour);
 
         #endregion
 
@@ -217,7 +217,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ReactiveEnergy FromKilovoltampereReactiveHours(QuantityValue kilovoltamperereactivehours)
         {
-            double value = (double) kilovoltamperereactivehours;
+            decimal value = (decimal) kilovoltamperereactivehours;
             return new ReactiveEnergy(value, ReactiveEnergyUnit.KilovoltampereReactiveHour);
         }
         /// <summary>
@@ -226,7 +226,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ReactiveEnergy FromMegavoltampereReactiveHours(QuantityValue megavoltamperereactivehours)
         {
-            double value = (double) megavoltamperereactivehours;
+            decimal value = (decimal) megavoltamperereactivehours;
             return new ReactiveEnergy(value, ReactiveEnergyUnit.MegavoltampereReactiveHour);
         }
         /// <summary>
@@ -235,7 +235,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ReactiveEnergy FromVoltampereReactiveHours(QuantityValue voltamperereactivehours)
         {
-            double value = (double) voltamperereactivehours;
+            decimal value = (decimal) voltamperereactivehours;
             return new ReactiveEnergy(value, ReactiveEnergyUnit.VoltampereReactiveHour);
         }
 
@@ -247,7 +247,7 @@ namespace UnitsNet
         /// <returns>ReactiveEnergy unit value.</returns>
         public static ReactiveEnergy From(QuantityValue value, ReactiveEnergyUnit fromUnit)
         {
-            return new ReactiveEnergy((double)value, fromUnit);
+            return new ReactiveEnergy((decimal)value, fromUnit);
         }
 
         #endregion
@@ -417,25 +417,25 @@ namespace UnitsNet
         }
 
         /// <summary>Get <see cref="ReactiveEnergy"/> from multiplying value and <see cref="ReactiveEnergy"/>.</summary>
-        public static ReactiveEnergy operator *(double left, ReactiveEnergy right)
+        public static ReactiveEnergy operator *(decimal left, ReactiveEnergy right)
         {
             return new ReactiveEnergy(left * right.Value, right.Unit);
         }
 
         /// <summary>Get <see cref="ReactiveEnergy"/> from multiplying value and <see cref="ReactiveEnergy"/>.</summary>
-        public static ReactiveEnergy operator *(ReactiveEnergy left, double right)
+        public static ReactiveEnergy operator *(ReactiveEnergy left, decimal right)
         {
             return new ReactiveEnergy(left.Value * right, left.Unit);
         }
 
         /// <summary>Get <see cref="ReactiveEnergy"/> from dividing <see cref="ReactiveEnergy"/> by value.</summary>
-        public static ReactiveEnergy operator /(ReactiveEnergy left, double right)
+        public static ReactiveEnergy operator /(ReactiveEnergy left, decimal right)
         {
             return new ReactiveEnergy(left.Value / right, left.Unit);
         }
 
         /// <summary>Get ratio value from dividing <see cref="ReactiveEnergy"/> by <see cref="ReactiveEnergy"/>.</summary>
-        public static double operator /(ReactiveEnergy left, ReactiveEnergy right)
+        public static decimal operator /(ReactiveEnergy left, ReactiveEnergy right)
         {
             return left.VoltampereReactiveHours / right.VoltampereReactiveHours;
         }
@@ -469,14 +469,14 @@ namespace UnitsNet
         }
 
         /// <summary>Returns true if exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(ReactiveEnergy, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ReactiveEnergy, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator ==(ReactiveEnergy left, ReactiveEnergy right)
         {
             return left.Equals(right);
         }
 
         /// <summary>Returns true if not exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(ReactiveEnergy, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ReactiveEnergy, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator !=(ReactiveEnergy left, ReactiveEnergy right)
         {
             return !(left == right);
@@ -498,7 +498,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(ReactiveEnergy, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ReactiveEnergy, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public override bool Equals(object obj)
         {
             if(obj is null || !(obj is ReactiveEnergy objReactiveEnergy))
@@ -508,7 +508,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(ReactiveEnergy, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ReactiveEnergy, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public bool Equals(ReactiveEnergy other)
         {
             return _value.Equals(other.GetValueAs(this.Unit));
@@ -554,13 +554,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(ReactiveEnergy other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(ReactiveEnergy other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -582,17 +582,17 @@ namespace UnitsNet
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(ReactiveEnergyUnit unit)
+        public decimal As(ReactiveEnergyUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = GetValueAs(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <inheritdoc cref="IQuantity.As(UnitSystem)"/>
-        public double As(UnitSystem unitSystem)
+        public decimal As(UnitSystem unitSystem)
         {
             if(unitSystem is null)
                 throw new ArgumentNullException(nameof(unitSystem));
@@ -607,7 +607,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        double IQuantity.As(Enum unit)
+        decimal IQuantity.As(Enum unit)
         {
             if(!(unit is ReactiveEnergyUnit unitAsReactiveEnergyUnit))
                 throw new ArgumentException($"The given unit is of type {unit.GetType()}. Only {typeof(ReactiveEnergyUnit)} is supported.", nameof(unit));
@@ -663,12 +663,12 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double GetValueInBaseUnit()
+        private decimal GetValueInBaseUnit()
         {
             switch(Unit)
             {
-                case ReactiveEnergyUnit.KilovoltampereReactiveHour: return (_value) * 1e3d;
-                case ReactiveEnergyUnit.MegavoltampereReactiveHour: return (_value) * 1e6d;
+                case ReactiveEnergyUnit.KilovoltampereReactiveHour: return (_value) * 1e3m;
+                case ReactiveEnergyUnit.MegavoltampereReactiveHour: return (_value) * 1e6m;
                 case ReactiveEnergyUnit.VoltampereReactiveHour: return _value;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
@@ -686,7 +686,7 @@ namespace UnitsNet
             return new ReactiveEnergy(baseUnitValue, BaseUnit);
         }
 
-        private double GetValueAs(ReactiveEnergyUnit unit)
+        private decimal GetValueAs(ReactiveEnergyUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -695,8 +695,8 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case ReactiveEnergyUnit.KilovoltampereReactiveHour: return (baseUnitValue) / 1e3d;
-                case ReactiveEnergyUnit.MegavoltampereReactiveHour: return (baseUnitValue) / 1e6d;
+                case ReactiveEnergyUnit.KilovoltampereReactiveHour: return (baseUnitValue) / 1e3m;
+                case ReactiveEnergyUnit.MegavoltampereReactiveHour: return (baseUnitValue) / 1e6m;
                 case ReactiveEnergyUnit.VoltampereReactiveHour: return baseUnitValue;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
@@ -735,7 +735,7 @@ namespace UnitsNet
         [Obsolete(@"This method is deprecated and will be removed at a future release. Please use ToString(""s2"") or ToString(""s2"", provider) where 2 is an example of the number passed to significantDigitsAfterRadix.")]
         public string ToString(IFormatProvider? provider, int significantDigitsAfterRadix)
         {
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -755,7 +755,7 @@ namespace UnitsNet
 
             provider = provider ?? CultureInfo.CurrentUICulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

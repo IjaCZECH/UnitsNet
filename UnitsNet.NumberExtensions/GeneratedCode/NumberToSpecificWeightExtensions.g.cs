@@ -30,71 +30,71 @@ namespace UnitsNet.NumberExtensions.NumberToSpecificWeight
     {
         /// <inheritdoc cref="SpecificWeight.FromKilogramsForcePerCubicCentimeter(UnitsNet.QuantityValue)" />
         public static SpecificWeight KilogramsForcePerCubicCentimeter<T>(this T value) =>
-            SpecificWeight.FromKilogramsForcePerCubicCentimeter(Convert.ToDouble(value));
+            SpecificWeight.FromKilogramsForcePerCubicCentimeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="SpecificWeight.FromKilogramsForcePerCubicMeter(UnitsNet.QuantityValue)" />
         public static SpecificWeight KilogramsForcePerCubicMeter<T>(this T value) =>
-            SpecificWeight.FromKilogramsForcePerCubicMeter(Convert.ToDouble(value));
+            SpecificWeight.FromKilogramsForcePerCubicMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="SpecificWeight.FromKilogramsForcePerCubicMillimeter(UnitsNet.QuantityValue)" />
         public static SpecificWeight KilogramsForcePerCubicMillimeter<T>(this T value) =>
-            SpecificWeight.FromKilogramsForcePerCubicMillimeter(Convert.ToDouble(value));
+            SpecificWeight.FromKilogramsForcePerCubicMillimeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="SpecificWeight.FromKilonewtonsPerCubicCentimeter(UnitsNet.QuantityValue)" />
         public static SpecificWeight KilonewtonsPerCubicCentimeter<T>(this T value) =>
-            SpecificWeight.FromKilonewtonsPerCubicCentimeter(Convert.ToDouble(value));
+            SpecificWeight.FromKilonewtonsPerCubicCentimeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="SpecificWeight.FromKilonewtonsPerCubicMeter(UnitsNet.QuantityValue)" />
         public static SpecificWeight KilonewtonsPerCubicMeter<T>(this T value) =>
-            SpecificWeight.FromKilonewtonsPerCubicMeter(Convert.ToDouble(value));
+            SpecificWeight.FromKilonewtonsPerCubicMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="SpecificWeight.FromKilonewtonsPerCubicMillimeter(UnitsNet.QuantityValue)" />
         public static SpecificWeight KilonewtonsPerCubicMillimeter<T>(this T value) =>
-            SpecificWeight.FromKilonewtonsPerCubicMillimeter(Convert.ToDouble(value));
+            SpecificWeight.FromKilonewtonsPerCubicMillimeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="SpecificWeight.FromKilopoundsForcePerCubicFoot(UnitsNet.QuantityValue)" />
         public static SpecificWeight KilopoundsForcePerCubicFoot<T>(this T value) =>
-            SpecificWeight.FromKilopoundsForcePerCubicFoot(Convert.ToDouble(value));
+            SpecificWeight.FromKilopoundsForcePerCubicFoot(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="SpecificWeight.FromKilopoundsForcePerCubicInch(UnitsNet.QuantityValue)" />
         public static SpecificWeight KilopoundsForcePerCubicInch<T>(this T value) =>
-            SpecificWeight.FromKilopoundsForcePerCubicInch(Convert.ToDouble(value));
+            SpecificWeight.FromKilopoundsForcePerCubicInch(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="SpecificWeight.FromMeganewtonsPerCubicMeter(UnitsNet.QuantityValue)" />
         public static SpecificWeight MeganewtonsPerCubicMeter<T>(this T value) =>
-            SpecificWeight.FromMeganewtonsPerCubicMeter(Convert.ToDouble(value));
+            SpecificWeight.FromMeganewtonsPerCubicMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="SpecificWeight.FromNewtonsPerCubicCentimeter(UnitsNet.QuantityValue)" />
         public static SpecificWeight NewtonsPerCubicCentimeter<T>(this T value) =>
-            SpecificWeight.FromNewtonsPerCubicCentimeter(Convert.ToDouble(value));
+            SpecificWeight.FromNewtonsPerCubicCentimeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="SpecificWeight.FromNewtonsPerCubicMeter(UnitsNet.QuantityValue)" />
         public static SpecificWeight NewtonsPerCubicMeter<T>(this T value) =>
-            SpecificWeight.FromNewtonsPerCubicMeter(Convert.ToDouble(value));
+            SpecificWeight.FromNewtonsPerCubicMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="SpecificWeight.FromNewtonsPerCubicMillimeter(UnitsNet.QuantityValue)" />
         public static SpecificWeight NewtonsPerCubicMillimeter<T>(this T value) =>
-            SpecificWeight.FromNewtonsPerCubicMillimeter(Convert.ToDouble(value));
+            SpecificWeight.FromNewtonsPerCubicMillimeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="SpecificWeight.FromPoundsForcePerCubicFoot(UnitsNet.QuantityValue)" />
         public static SpecificWeight PoundsForcePerCubicFoot<T>(this T value) =>
-            SpecificWeight.FromPoundsForcePerCubicFoot(Convert.ToDouble(value));
+            SpecificWeight.FromPoundsForcePerCubicFoot(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="SpecificWeight.FromPoundsForcePerCubicInch(UnitsNet.QuantityValue)" />
         public static SpecificWeight PoundsForcePerCubicInch<T>(this T value) =>
-            SpecificWeight.FromPoundsForcePerCubicInch(Convert.ToDouble(value));
+            SpecificWeight.FromPoundsForcePerCubicInch(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="SpecificWeight.FromTonnesForcePerCubicCentimeter(UnitsNet.QuantityValue)" />
         public static SpecificWeight TonnesForcePerCubicCentimeter<T>(this T value) =>
-            SpecificWeight.FromTonnesForcePerCubicCentimeter(Convert.ToDouble(value));
+            SpecificWeight.FromTonnesForcePerCubicCentimeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="SpecificWeight.FromTonnesForcePerCubicMeter(UnitsNet.QuantityValue)" />
         public static SpecificWeight TonnesForcePerCubicMeter<T>(this T value) =>
-            SpecificWeight.FromTonnesForcePerCubicMeter(Convert.ToDouble(value));
+            SpecificWeight.FromTonnesForcePerCubicMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="SpecificWeight.FromTonnesForcePerCubicMillimeter(UnitsNet.QuantityValue)" />
         public static SpecificWeight TonnesForcePerCubicMillimeter<T>(this T value) =>
-            SpecificWeight.FromTonnesForcePerCubicMillimeter(Convert.ToDouble(value));
+            SpecificWeight.FromTonnesForcePerCubicMillimeter(Convert.ToDecimal(value));
 
     }
 }

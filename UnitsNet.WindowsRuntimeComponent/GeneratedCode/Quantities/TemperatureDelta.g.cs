@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -71,12 +71,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private TemperatureDelta(double value, TemperatureDeltaUnit unit)
+        private TemperatureDelta(decimal value, TemperatureDeltaUnit unit)
         {
             if(unit == TemperatureDeltaUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -100,12 +100,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of TemperatureDelta
         /// </summary>
-        public static TemperatureDelta MaxValue { get; } = new TemperatureDelta(double.MaxValue, BaseUnit);
+        public static TemperatureDelta MaxValue { get; } = new TemperatureDelta(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of TemperatureDelta
         /// </summary>
-        public static TemperatureDelta MinValue { get; } = new TemperatureDelta(double.MinValue, BaseUnit);
+        public static TemperatureDelta MinValue { get; } = new TemperatureDelta(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -129,7 +129,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -158,47 +158,47 @@ namespace UnitsNet
         /// <summary>
         ///     Get TemperatureDelta in DegreesCelsius.
         /// </summary>
-        public double DegreesCelsius => As(TemperatureDeltaUnit.DegreeCelsius);
+        public decimal DegreesCelsius => As(TemperatureDeltaUnit.DegreeCelsius);
 
         /// <summary>
         ///     Get TemperatureDelta in DegreesDelisle.
         /// </summary>
-        public double DegreesDelisle => As(TemperatureDeltaUnit.DegreeDelisle);
+        public decimal DegreesDelisle => As(TemperatureDeltaUnit.DegreeDelisle);
 
         /// <summary>
         ///     Get TemperatureDelta in DegreesFahrenheit.
         /// </summary>
-        public double DegreesFahrenheit => As(TemperatureDeltaUnit.DegreeFahrenheit);
+        public decimal DegreesFahrenheit => As(TemperatureDeltaUnit.DegreeFahrenheit);
 
         /// <summary>
         ///     Get TemperatureDelta in DegreesNewton.
         /// </summary>
-        public double DegreesNewton => As(TemperatureDeltaUnit.DegreeNewton);
+        public decimal DegreesNewton => As(TemperatureDeltaUnit.DegreeNewton);
 
         /// <summary>
         ///     Get TemperatureDelta in DegreesRankine.
         /// </summary>
-        public double DegreesRankine => As(TemperatureDeltaUnit.DegreeRankine);
+        public decimal DegreesRankine => As(TemperatureDeltaUnit.DegreeRankine);
 
         /// <summary>
         ///     Get TemperatureDelta in DegreesReaumur.
         /// </summary>
-        public double DegreesReaumur => As(TemperatureDeltaUnit.DegreeReaumur);
+        public decimal DegreesReaumur => As(TemperatureDeltaUnit.DegreeReaumur);
 
         /// <summary>
         ///     Get TemperatureDelta in DegreesRoemer.
         /// </summary>
-        public double DegreesRoemer => As(TemperatureDeltaUnit.DegreeRoemer);
+        public decimal DegreesRoemer => As(TemperatureDeltaUnit.DegreeRoemer);
 
         /// <summary>
         ///     Get TemperatureDelta in Kelvins.
         /// </summary>
-        public double Kelvins => As(TemperatureDeltaUnit.Kelvin);
+        public decimal Kelvins => As(TemperatureDeltaUnit.Kelvin);
 
         /// <summary>
         ///     Get TemperatureDelta in MillidegreesCelsius.
         /// </summary>
-        public double MillidegreesCelsius => As(TemperatureDeltaUnit.MillidegreeCelsius);
+        public decimal MillidegreesCelsius => As(TemperatureDeltaUnit.MillidegreeCelsius);
 
         #endregion
 
@@ -235,9 +235,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static TemperatureDelta FromDegreesCelsius(double degreescelsius)
+        public static TemperatureDelta FromDegreesCelsius(decimal degreescelsius)
         {
-            double value = (double) degreescelsius;
+            decimal value = (decimal) degreescelsius;
             return new TemperatureDelta(value, TemperatureDeltaUnit.DegreeCelsius);
         }
         /// <summary>
@@ -245,9 +245,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static TemperatureDelta FromDegreesDelisle(double degreesdelisle)
+        public static TemperatureDelta FromDegreesDelisle(decimal degreesdelisle)
         {
-            double value = (double) degreesdelisle;
+            decimal value = (decimal) degreesdelisle;
             return new TemperatureDelta(value, TemperatureDeltaUnit.DegreeDelisle);
         }
         /// <summary>
@@ -255,9 +255,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static TemperatureDelta FromDegreesFahrenheit(double degreesfahrenheit)
+        public static TemperatureDelta FromDegreesFahrenheit(decimal degreesfahrenheit)
         {
-            double value = (double) degreesfahrenheit;
+            decimal value = (decimal) degreesfahrenheit;
             return new TemperatureDelta(value, TemperatureDeltaUnit.DegreeFahrenheit);
         }
         /// <summary>
@@ -265,9 +265,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static TemperatureDelta FromDegreesNewton(double degreesnewton)
+        public static TemperatureDelta FromDegreesNewton(decimal degreesnewton)
         {
-            double value = (double) degreesnewton;
+            decimal value = (decimal) degreesnewton;
             return new TemperatureDelta(value, TemperatureDeltaUnit.DegreeNewton);
         }
         /// <summary>
@@ -275,9 +275,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static TemperatureDelta FromDegreesRankine(double degreesrankine)
+        public static TemperatureDelta FromDegreesRankine(decimal degreesrankine)
         {
-            double value = (double) degreesrankine;
+            decimal value = (decimal) degreesrankine;
             return new TemperatureDelta(value, TemperatureDeltaUnit.DegreeRankine);
         }
         /// <summary>
@@ -285,9 +285,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static TemperatureDelta FromDegreesReaumur(double degreesreaumur)
+        public static TemperatureDelta FromDegreesReaumur(decimal degreesreaumur)
         {
-            double value = (double) degreesreaumur;
+            decimal value = (decimal) degreesreaumur;
             return new TemperatureDelta(value, TemperatureDeltaUnit.DegreeReaumur);
         }
         /// <summary>
@@ -295,9 +295,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static TemperatureDelta FromDegreesRoemer(double degreesroemer)
+        public static TemperatureDelta FromDegreesRoemer(decimal degreesroemer)
         {
-            double value = (double) degreesroemer;
+            decimal value = (decimal) degreesroemer;
             return new TemperatureDelta(value, TemperatureDeltaUnit.DegreeRoemer);
         }
         /// <summary>
@@ -305,9 +305,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static TemperatureDelta FromKelvins(double kelvins)
+        public static TemperatureDelta FromKelvins(decimal kelvins)
         {
-            double value = (double) kelvins;
+            decimal value = (decimal) kelvins;
             return new TemperatureDelta(value, TemperatureDeltaUnit.Kelvin);
         }
         /// <summary>
@@ -315,9 +315,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static TemperatureDelta FromMillidegreesCelsius(double millidegreescelsius)
+        public static TemperatureDelta FromMillidegreesCelsius(decimal millidegreescelsius)
         {
-            double value = (double) millidegreescelsius;
+            decimal value = (decimal) millidegreescelsius;
             return new TemperatureDelta(value, TemperatureDeltaUnit.MillidegreeCelsius);
         }
 
@@ -329,9 +329,9 @@ namespace UnitsNet
         /// <returns>TemperatureDelta unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static TemperatureDelta From(double value, TemperatureDeltaUnit fromUnit)
+        public static TemperatureDelta From(decimal value, TemperatureDeltaUnit fromUnit)
         {
-            return new TemperatureDelta((double)value, fromUnit);
+            return new TemperatureDelta((decimal)value, fromUnit);
         }
 
         #endregion
@@ -553,13 +553,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(TemperatureDelta other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(TemperatureDelta other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -577,19 +577,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((TemperatureDeltaUnit)unit);
+        decimal IQuantity.As(object unit) => As((TemperatureDeltaUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(TemperatureDeltaUnit unit)
+        public decimal As(TemperatureDeltaUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -607,25 +607,25 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
                 case TemperatureDeltaUnit.DegreeCelsius: return _value;
-                case TemperatureDeltaUnit.DegreeDelisle: return _value*-2/3;
-                case TemperatureDeltaUnit.DegreeFahrenheit: return _value*5/9;
-                case TemperatureDeltaUnit.DegreeNewton: return _value*100/33;
-                case TemperatureDeltaUnit.DegreeRankine: return _value*5/9;
-                case TemperatureDeltaUnit.DegreeReaumur: return _value*5/4;
-                case TemperatureDeltaUnit.DegreeRoemer: return _value*40/21;
+                case TemperatureDeltaUnit.DegreeDelisle: return _value*-2m/3m;
+                case TemperatureDeltaUnit.DegreeFahrenheit: return _value*5m/9m;
+                case TemperatureDeltaUnit.DegreeNewton: return _value*100m/33m;
+                case TemperatureDeltaUnit.DegreeRankine: return _value*5m/9m;
+                case TemperatureDeltaUnit.DegreeReaumur: return _value*5m/4m;
+                case TemperatureDeltaUnit.DegreeRoemer: return _value*40m/21m;
                 case TemperatureDeltaUnit.Kelvin: return _value;
-                case TemperatureDeltaUnit.MillidegreeCelsius: return (_value) * 1e-3d;
+                case TemperatureDeltaUnit.MillidegreeCelsius: return (_value) * 1e-3m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(TemperatureDeltaUnit unit)
+        private decimal AsBaseNumericType(TemperatureDeltaUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -635,14 +635,14 @@ namespace UnitsNet
             switch(unit)
             {
                 case TemperatureDeltaUnit.DegreeCelsius: return baseUnitValue;
-                case TemperatureDeltaUnit.DegreeDelisle: return baseUnitValue*-3/2;
-                case TemperatureDeltaUnit.DegreeFahrenheit: return baseUnitValue*9/5;
-                case TemperatureDeltaUnit.DegreeNewton: return baseUnitValue*33/100;
-                case TemperatureDeltaUnit.DegreeRankine: return baseUnitValue*9/5;
-                case TemperatureDeltaUnit.DegreeReaumur: return baseUnitValue*4/5;
-                case TemperatureDeltaUnit.DegreeRoemer: return baseUnitValue*21/40;
+                case TemperatureDeltaUnit.DegreeDelisle: return baseUnitValue*-3m/2m;
+                case TemperatureDeltaUnit.DegreeFahrenheit: return baseUnitValue*9m/5m;
+                case TemperatureDeltaUnit.DegreeNewton: return baseUnitValue*33m/100m;
+                case TemperatureDeltaUnit.DegreeRankine: return baseUnitValue*9m/5m;
+                case TemperatureDeltaUnit.DegreeReaumur: return baseUnitValue*4m/5m;
+                case TemperatureDeltaUnit.DegreeRoemer: return baseUnitValue*21m/40m;
                 case TemperatureDeltaUnit.Kelvin: return baseUnitValue;
-                case TemperatureDeltaUnit.MillidegreeCelsius: return (baseUnitValue) / 1e-3d;
+                case TemperatureDeltaUnit.MillidegreeCelsius: return (baseUnitValue) / 1e-3m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -681,7 +681,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -701,7 +701,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

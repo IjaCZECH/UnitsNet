@@ -42,7 +42,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -74,12 +74,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private Capacitance(double value, CapacitanceUnit unit)
+        private Capacitance(decimal value, CapacitanceUnit unit)
         {
             if(unit == CapacitanceUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -103,12 +103,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of Capacitance
         /// </summary>
-        public static Capacitance MaxValue { get; } = new Capacitance(double.MaxValue, BaseUnit);
+        public static Capacitance MaxValue { get; } = new Capacitance(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of Capacitance
         /// </summary>
-        public static Capacitance MinValue { get; } = new Capacitance(double.MinValue, BaseUnit);
+        public static Capacitance MinValue { get; } = new Capacitance(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -132,7 +132,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -161,37 +161,37 @@ namespace UnitsNet
         /// <summary>
         ///     Get Capacitance in Farads.
         /// </summary>
-        public double Farads => As(CapacitanceUnit.Farad);
+        public decimal Farads => As(CapacitanceUnit.Farad);
 
         /// <summary>
         ///     Get Capacitance in Kilofarads.
         /// </summary>
-        public double Kilofarads => As(CapacitanceUnit.Kilofarad);
+        public decimal Kilofarads => As(CapacitanceUnit.Kilofarad);
 
         /// <summary>
         ///     Get Capacitance in Megafarads.
         /// </summary>
-        public double Megafarads => As(CapacitanceUnit.Megafarad);
+        public decimal Megafarads => As(CapacitanceUnit.Megafarad);
 
         /// <summary>
         ///     Get Capacitance in Microfarads.
         /// </summary>
-        public double Microfarads => As(CapacitanceUnit.Microfarad);
+        public decimal Microfarads => As(CapacitanceUnit.Microfarad);
 
         /// <summary>
         ///     Get Capacitance in Millifarads.
         /// </summary>
-        public double Millifarads => As(CapacitanceUnit.Millifarad);
+        public decimal Millifarads => As(CapacitanceUnit.Millifarad);
 
         /// <summary>
         ///     Get Capacitance in Nanofarads.
         /// </summary>
-        public double Nanofarads => As(CapacitanceUnit.Nanofarad);
+        public decimal Nanofarads => As(CapacitanceUnit.Nanofarad);
 
         /// <summary>
         ///     Get Capacitance in Picofarads.
         /// </summary>
-        public double Picofarads => As(CapacitanceUnit.Picofarad);
+        public decimal Picofarads => As(CapacitanceUnit.Picofarad);
 
         #endregion
 
@@ -228,9 +228,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Capacitance FromFarads(double farads)
+        public static Capacitance FromFarads(decimal farads)
         {
-            double value = (double) farads;
+            decimal value = (decimal) farads;
             return new Capacitance(value, CapacitanceUnit.Farad);
         }
         /// <summary>
@@ -238,9 +238,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Capacitance FromKilofarads(double kilofarads)
+        public static Capacitance FromKilofarads(decimal kilofarads)
         {
-            double value = (double) kilofarads;
+            decimal value = (decimal) kilofarads;
             return new Capacitance(value, CapacitanceUnit.Kilofarad);
         }
         /// <summary>
@@ -248,9 +248,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Capacitance FromMegafarads(double megafarads)
+        public static Capacitance FromMegafarads(decimal megafarads)
         {
-            double value = (double) megafarads;
+            decimal value = (decimal) megafarads;
             return new Capacitance(value, CapacitanceUnit.Megafarad);
         }
         /// <summary>
@@ -258,9 +258,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Capacitance FromMicrofarads(double microfarads)
+        public static Capacitance FromMicrofarads(decimal microfarads)
         {
-            double value = (double) microfarads;
+            decimal value = (decimal) microfarads;
             return new Capacitance(value, CapacitanceUnit.Microfarad);
         }
         /// <summary>
@@ -268,9 +268,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Capacitance FromMillifarads(double millifarads)
+        public static Capacitance FromMillifarads(decimal millifarads)
         {
-            double value = (double) millifarads;
+            decimal value = (decimal) millifarads;
             return new Capacitance(value, CapacitanceUnit.Millifarad);
         }
         /// <summary>
@@ -278,9 +278,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Capacitance FromNanofarads(double nanofarads)
+        public static Capacitance FromNanofarads(decimal nanofarads)
         {
-            double value = (double) nanofarads;
+            decimal value = (decimal) nanofarads;
             return new Capacitance(value, CapacitanceUnit.Nanofarad);
         }
         /// <summary>
@@ -288,9 +288,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Capacitance FromPicofarads(double picofarads)
+        public static Capacitance FromPicofarads(decimal picofarads)
         {
-            double value = (double) picofarads;
+            decimal value = (decimal) picofarads;
             return new Capacitance(value, CapacitanceUnit.Picofarad);
         }
 
@@ -302,9 +302,9 @@ namespace UnitsNet
         /// <returns>Capacitance unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static Capacitance From(double value, CapacitanceUnit fromUnit)
+        public static Capacitance From(decimal value, CapacitanceUnit fromUnit)
         {
-            return new Capacitance((double)value, fromUnit);
+            return new Capacitance((decimal)value, fromUnit);
         }
 
         #endregion
@@ -526,13 +526,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(Capacitance other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(Capacitance other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -550,19 +550,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((CapacitanceUnit)unit);
+        decimal IQuantity.As(object unit) => As((CapacitanceUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(CapacitanceUnit unit)
+        public decimal As(CapacitanceUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -580,23 +580,23 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
                 case CapacitanceUnit.Farad: return _value;
-                case CapacitanceUnit.Kilofarad: return (_value) * 1e3d;
-                case CapacitanceUnit.Megafarad: return (_value) * 1e6d;
-                case CapacitanceUnit.Microfarad: return (_value) * 1e-6d;
-                case CapacitanceUnit.Millifarad: return (_value) * 1e-3d;
-                case CapacitanceUnit.Nanofarad: return (_value) * 1e-9d;
-                case CapacitanceUnit.Picofarad: return (_value) * 1e-12d;
+                case CapacitanceUnit.Kilofarad: return (_value) * 1e3m;
+                case CapacitanceUnit.Megafarad: return (_value) * 1e6m;
+                case CapacitanceUnit.Microfarad: return (_value) * 1e-6m;
+                case CapacitanceUnit.Millifarad: return (_value) * 1e-3m;
+                case CapacitanceUnit.Nanofarad: return (_value) * 1e-9m;
+                case CapacitanceUnit.Picofarad: return (_value) * 1e-12m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(CapacitanceUnit unit)
+        private decimal AsBaseNumericType(CapacitanceUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -606,12 +606,12 @@ namespace UnitsNet
             switch(unit)
             {
                 case CapacitanceUnit.Farad: return baseUnitValue;
-                case CapacitanceUnit.Kilofarad: return (baseUnitValue) / 1e3d;
-                case CapacitanceUnit.Megafarad: return (baseUnitValue) / 1e6d;
-                case CapacitanceUnit.Microfarad: return (baseUnitValue) / 1e-6d;
-                case CapacitanceUnit.Millifarad: return (baseUnitValue) / 1e-3d;
-                case CapacitanceUnit.Nanofarad: return (baseUnitValue) / 1e-9d;
-                case CapacitanceUnit.Picofarad: return (baseUnitValue) / 1e-12d;
+                case CapacitanceUnit.Kilofarad: return (baseUnitValue) / 1e3m;
+                case CapacitanceUnit.Megafarad: return (baseUnitValue) / 1e6m;
+                case CapacitanceUnit.Microfarad: return (baseUnitValue) / 1e-6m;
+                case CapacitanceUnit.Millifarad: return (baseUnitValue) / 1e-3m;
+                case CapacitanceUnit.Nanofarad: return (baseUnitValue) / 1e-9m;
+                case CapacitanceUnit.Picofarad: return (baseUnitValue) / 1e-12m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -650,7 +650,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -670,7 +670,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

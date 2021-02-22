@@ -25,8 +25,8 @@
     {
       "SingularName": "WattPerCentimeter",
       "PluralName": "WattsPerCentimeter",
-      "FromUnitToBaseFunc": "x*1e2",
-      "FromBaseToUnitFunc": "x/1e2",
+      "FromUnitToBaseFunc": "x*1e2m",
+      "FromBaseToUnitFunc": "x/1e2m",
 	  "Prefixes": [ "Milli", "Kilo", "Mega", "Giga" ],
       "Localization": [
         {
@@ -38,8 +38,8 @@
 	{
       "SingularName": "WattPerMillimeter",
       "PluralName": "WattsPerMillimeter",
-      "FromUnitToBaseFunc": "x*1e3",
-      "FromBaseToUnitFunc": "x/1e3",
+      "FromUnitToBaseFunc": "x*1e3m",
+      "FromBaseToUnitFunc": "x/1e3m",
 	  "Prefixes": [ "Milli", "Kilo", "Mega", "Giga" ],
       "Localization": [
         {
@@ -51,8 +51,8 @@
     {
       "SingularName": "WattPerInch",
       "PluralName": "WattsPerInch",
-      "FromUnitToBaseFunc": "x*39.37007874",
-      "FromBaseToUnitFunc": "x/39.37007874",
+      "FromUnitToBaseFunc": "x*39.37007874m",
+      "FromBaseToUnitFunc": "x/39.37007874m",
 	  "Prefixes": [ "Milli", "Kilo", "Mega", "Giga" ],
       "Localization": [
         {
@@ -64,8 +64,8 @@
     {
       "SingularName": "WattPerFoot",
       "PluralName": "WattsPerFoot",
-      "FromUnitToBaseFunc": "x*3.280839895",
-      "FromBaseToUnitFunc": "x/3.280839895",
+      "FromUnitToBaseFunc": "x*3.280839895m",
+      "FromBaseToUnitFunc": "x/3.280839895m",
 	  "Prefixes": [ "Milli", "Kilo", "Mega", "Giga" ],
       "Localization": [
         {

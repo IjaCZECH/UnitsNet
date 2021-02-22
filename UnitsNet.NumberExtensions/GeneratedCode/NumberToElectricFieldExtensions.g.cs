@@ -30,7 +30,7 @@ namespace UnitsNet.NumberExtensions.NumberToElectricField
     {
         /// <inheritdoc cref="ElectricField.FromVoltsPerMeter(UnitsNet.QuantityValue)" />
         public static ElectricField VoltsPerMeter<T>(this T value) =>
-            ElectricField.FromVoltsPerMeter(Convert.ToDouble(value));
+            ElectricField.FromVoltsPerMeter(Convert.ToDecimal(value));
 
     }
 }

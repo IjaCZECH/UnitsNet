@@ -42,7 +42,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -67,12 +67,12 @@ namespace UnitsNet
         /// <param name="value">The numeric value to construct this quantity with.</param>
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        public ThermalConductivity(double value, ThermalConductivityUnit unit)
+        public ThermalConductivity(decimal value, ThermalConductivityUnit unit)
         {
             if(unit == ThermalConductivityUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -84,14 +84,14 @@ namespace UnitsNet
         /// <param name="unitSystem">The unit system to create the quantity with.</param>
         /// <exception cref="ArgumentNullException">The given <see cref="UnitSystem"/> is null.</exception>
         /// <exception cref="ArgumentException">No unit was found for the given <see cref="UnitSystem"/>.</exception>
-        public ThermalConductivity(double value, UnitSystem unitSystem)
+        public ThermalConductivity(decimal value, UnitSystem unitSystem)
         {
             if(unitSystem is null) throw new ArgumentNullException(nameof(unitSystem));
 
             var unitInfos = Info.GetUnitInfosFor(unitSystem.BaseUnits);
             var firstUnitInfo = unitInfos.FirstOrDefault();
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = firstUnitInfo?.Value ?? throw new ArgumentException("No units were found for the given UnitSystem.", nameof(unitSystem));
         }
 
@@ -113,12 +113,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of ThermalConductivity
         /// </summary>
-        public static ThermalConductivity MaxValue { get; } = new ThermalConductivity(double.MaxValue, BaseUnit);
+        public static ThermalConductivity MaxValue { get; } = new ThermalConductivity(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of ThermalConductivity
         /// </summary>
-        public static ThermalConductivity MinValue { get; } = new ThermalConductivity(double.MinValue, BaseUnit);
+        public static ThermalConductivity MinValue { get; } = new ThermalConductivity(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -142,7 +142,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => _value;
+        public decimal Value => _value;
 
         Enum IQuantity.Unit => Unit;
 
@@ -172,12 +172,12 @@ namespace UnitsNet
         /// <summary>
         ///     Get ThermalConductivity in BtusPerHourFootFahrenheit.
         /// </summary>
-        public double BtusPerHourFootFahrenheit => As(ThermalConductivityUnit.BtuPerHourFootFahrenheit);
+        public decimal BtusPerHourFootFahrenheit => As(ThermalConductivityUnit.BtuPerHourFootFahrenheit);
 
         /// <summary>
         ///     Get ThermalConductivity in WattsPerMeterKelvin.
         /// </summary>
-        public double WattsPerMeterKelvin => As(ThermalConductivityUnit.WattPerMeterKelvin);
+        public decimal WattsPerMeterKelvin => As(ThermalConductivityUnit.WattPerMeterKelvin);
 
         #endregion
 
@@ -214,7 +214,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ThermalConductivity FromBtusPerHourFootFahrenheit(QuantityValue btusperhourfootfahrenheit)
         {
-            double value = (double) btusperhourfootfahrenheit;
+            decimal value = (decimal) btusperhourfootfahrenheit;
             return new ThermalConductivity(value, ThermalConductivityUnit.BtuPerHourFootFahrenheit);
         }
         /// <summary>
@@ -223,7 +223,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ThermalConductivity FromWattsPerMeterKelvin(QuantityValue wattspermeterkelvin)
         {
-            double value = (double) wattspermeterkelvin;
+            decimal value = (decimal) wattspermeterkelvin;
             return new ThermalConductivity(value, ThermalConductivityUnit.WattPerMeterKelvin);
         }
 
@@ -235,7 +235,7 @@ namespace UnitsNet
         /// <returns>ThermalConductivity unit value.</returns>
         public static ThermalConductivity From(QuantityValue value, ThermalConductivityUnit fromUnit)
         {
-            return new ThermalConductivity((double)value, fromUnit);
+            return new ThermalConductivity((decimal)value, fromUnit);
         }
 
         #endregion
@@ -405,25 +405,25 @@ namespace UnitsNet
         }
 
         /// <summary>Get <see cref="ThermalConductivity"/> from multiplying value and <see cref="ThermalConductivity"/>.</summary>
-        public static ThermalConductivity operator *(double left, ThermalConductivity right)
+        public static ThermalConductivity operator *(decimal left, ThermalConductivity right)
         {
             return new ThermalConductivity(left * right.Value, right.Unit);
         }
 
         /// <summary>Get <see cref="ThermalConductivity"/> from multiplying value and <see cref="ThermalConductivity"/>.</summary>
-        public static ThermalConductivity operator *(ThermalConductivity left, double right)
+        public static ThermalConductivity operator *(ThermalConductivity left, decimal right)
         {
             return new ThermalConductivity(left.Value * right, left.Unit);
         }
 
         /// <summary>Get <see cref="ThermalConductivity"/> from dividing <see cref="ThermalConductivity"/> by value.</summary>
-        public static ThermalConductivity operator /(ThermalConductivity left, double right)
+        public static ThermalConductivity operator /(ThermalConductivity left, decimal right)
         {
             return new ThermalConductivity(left.Value / right, left.Unit);
         }
 
         /// <summary>Get ratio value from dividing <see cref="ThermalConductivity"/> by <see cref="ThermalConductivity"/>.</summary>
-        public static double operator /(ThermalConductivity left, ThermalConductivity right)
+        public static decimal operator /(ThermalConductivity left, ThermalConductivity right)
         {
             return left.WattsPerMeterKelvin / right.WattsPerMeterKelvin;
         }
@@ -457,14 +457,14 @@ namespace UnitsNet
         }
 
         /// <summary>Returns true if exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(ThermalConductivity, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ThermalConductivity, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator ==(ThermalConductivity left, ThermalConductivity right)
         {
             return left.Equals(right);
         }
 
         /// <summary>Returns true if not exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(ThermalConductivity, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ThermalConductivity, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator !=(ThermalConductivity left, ThermalConductivity right)
         {
             return !(left == right);
@@ -486,7 +486,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(ThermalConductivity, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ThermalConductivity, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public override bool Equals(object obj)
         {
             if(obj is null || !(obj is ThermalConductivity objThermalConductivity))
@@ -496,7 +496,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(ThermalConductivity, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ThermalConductivity, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public bool Equals(ThermalConductivity other)
         {
             return _value.Equals(other.GetValueAs(this.Unit));
@@ -542,13 +542,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(ThermalConductivity other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(ThermalConductivity other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -570,17 +570,17 @@ namespace UnitsNet
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(ThermalConductivityUnit unit)
+        public decimal As(ThermalConductivityUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = GetValueAs(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <inheritdoc cref="IQuantity.As(UnitSystem)"/>
-        public double As(UnitSystem unitSystem)
+        public decimal As(UnitSystem unitSystem)
         {
             if(unitSystem is null)
                 throw new ArgumentNullException(nameof(unitSystem));
@@ -595,7 +595,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        double IQuantity.As(Enum unit)
+        decimal IQuantity.As(Enum unit)
         {
             if(!(unit is ThermalConductivityUnit unitAsThermalConductivityUnit))
                 throw new ArgumentException($"The given unit is of type {unit.GetType()}. Only {typeof(ThermalConductivityUnit)} is supported.", nameof(unit));
@@ -651,11 +651,11 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double GetValueInBaseUnit()
+        private decimal GetValueInBaseUnit()
         {
             switch(Unit)
             {
-                case ThermalConductivityUnit.BtuPerHourFootFahrenheit: return _value*1.73073467;
+                case ThermalConductivityUnit.BtuPerHourFootFahrenheit: return _value*1.73073467m;
                 case ThermalConductivityUnit.WattPerMeterKelvin: return _value;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
@@ -673,7 +673,7 @@ namespace UnitsNet
             return new ThermalConductivity(baseUnitValue, BaseUnit);
         }
 
-        private double GetValueAs(ThermalConductivityUnit unit)
+        private decimal GetValueAs(ThermalConductivityUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -682,7 +682,7 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case ThermalConductivityUnit.BtuPerHourFootFahrenheit: return baseUnitValue/1.73073467;
+                case ThermalConductivityUnit.BtuPerHourFootFahrenheit: return baseUnitValue/1.73073467m;
                 case ThermalConductivityUnit.WattPerMeterKelvin: return baseUnitValue;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
@@ -721,7 +721,7 @@ namespace UnitsNet
         [Obsolete(@"This method is deprecated and will be removed at a future release. Please use ToString(""s2"") or ToString(""s2"", provider) where 2 is an example of the number passed to significantDigitsAfterRadix.")]
         public string ToString(IFormatProvider? provider, int significantDigitsAfterRadix)
         {
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -741,7 +741,7 @@ namespace UnitsNet
 
             provider = provider ?? CultureInfo.CurrentUICulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

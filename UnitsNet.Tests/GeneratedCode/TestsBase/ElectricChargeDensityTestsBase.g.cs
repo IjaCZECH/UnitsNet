@@ -37,16 +37,16 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class ElectricChargeDensityTestsBase : QuantityTestsBase
     {
-        protected abstract double CoulombsPerCubicMeterInOneCoulombPerCubicMeter { get; }
+        protected abstract decimal CoulombsPerCubicMeterInOneCoulombPerCubicMeter { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double CoulombsPerCubicMeterTolerance { get { return 1e-5; } }
+        protected virtual decimal CoulombsPerCubicMeterTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new ElectricChargeDensity((double)0.0, ElectricChargeDensityUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new ElectricChargeDensity((decimal)0.0, ElectricChargeDensityUnit.Undefined));
         }
 
         [Fact]
@@ -57,19 +57,6 @@ namespace UnitsNet.Tests
             Assert.Equal(ElectricChargeDensityUnit.CoulombPerCubicMeter, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new ElectricChargeDensity(double.PositiveInfinity, ElectricChargeDensityUnit.CoulombPerCubicMeter));
-            Assert.Throws<ArgumentException>(() => new ElectricChargeDensity(double.NegativeInfinity, ElectricChargeDensityUnit.CoulombPerCubicMeter));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new ElectricChargeDensity(double.NaN, ElectricChargeDensityUnit.CoulombPerCubicMeter));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -130,19 +117,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromCoulombsPerCubicMeter_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => ElectricChargeDensity.FromCoulombsPerCubicMeter(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => ElectricChargeDensity.FromCoulombsPerCubicMeter(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromCoulombsPerCubicMeter_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => ElectricChargeDensity.FromCoulombsPerCubicMeter(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var coulombpercubicmeter = ElectricChargeDensity.FromCoulombsPerCubicMeter(1);
@@ -157,7 +131,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -172,7 +146,7 @@ namespace UnitsNet.Tests
             var coulombpercubicmeter = ElectricChargeDensity.FromCoulombsPerCubicMeter(1);
 
             var coulombpercubicmeterQuantity = coulombpercubicmeter.ToUnit(ElectricChargeDensityUnit.CoulombPerCubicMeter);
-            AssertEx.EqualTolerance(CoulombsPerCubicMeterInOneCoulombPerCubicMeter, (double)coulombpercubicmeterQuantity.Value, CoulombsPerCubicMeterTolerance);
+            AssertEx.EqualTolerance(CoulombsPerCubicMeterInOneCoulombPerCubicMeter, (decimal)coulombpercubicmeterQuantity.Value, CoulombsPerCubicMeterTolerance);
             Assert.Equal(ElectricChargeDensityUnit.CoulombPerCubicMeter, coulombpercubicmeterQuantity.Unit);
         }
 
@@ -368,10 +342,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 C/m³", new ElectricChargeDensity(0.123456, ElectricChargeDensityUnit.CoulombPerCubicMeter).ToString("s1"));
-                Assert.Equal("0.12 C/m³", new ElectricChargeDensity(0.123456, ElectricChargeDensityUnit.CoulombPerCubicMeter).ToString("s2"));
-                Assert.Equal("0.123 C/m³", new ElectricChargeDensity(0.123456, ElectricChargeDensityUnit.CoulombPerCubicMeter).ToString("s3"));
-                Assert.Equal("0.1235 C/m³", new ElectricChargeDensity(0.123456, ElectricChargeDensityUnit.CoulombPerCubicMeter).ToString("s4"));
+                Assert.Equal("0.1 C/m³", new ElectricChargeDensity(0.123456m, ElectricChargeDensityUnit.CoulombPerCubicMeter).ToString("s1"));
+                Assert.Equal("0.12 C/m³", new ElectricChargeDensity(0.123456m, ElectricChargeDensityUnit.CoulombPerCubicMeter).ToString("s2"));
+                Assert.Equal("0.123 C/m³", new ElectricChargeDensity(0.123456m, ElectricChargeDensityUnit.CoulombPerCubicMeter).ToString("s3"));
+                Assert.Equal("0.1235 C/m³", new ElectricChargeDensity(0.123456m, ElectricChargeDensityUnit.CoulombPerCubicMeter).ToString("s4"));
             }
             finally
             {
@@ -383,10 +357,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 C/m³", new ElectricChargeDensity(0.123456, ElectricChargeDensityUnit.CoulombPerCubicMeter).ToString("s1", culture));
-            Assert.Equal("0.12 C/m³", new ElectricChargeDensity(0.123456, ElectricChargeDensityUnit.CoulombPerCubicMeter).ToString("s2", culture));
-            Assert.Equal("0.123 C/m³", new ElectricChargeDensity(0.123456, ElectricChargeDensityUnit.CoulombPerCubicMeter).ToString("s3", culture));
-            Assert.Equal("0.1235 C/m³", new ElectricChargeDensity(0.123456, ElectricChargeDensityUnit.CoulombPerCubicMeter).ToString("s4", culture));
+            Assert.Equal("0.1 C/m³", new ElectricChargeDensity(0.123456m, ElectricChargeDensityUnit.CoulombPerCubicMeter).ToString("s1", culture));
+            Assert.Equal("0.12 C/m³", new ElectricChargeDensity(0.123456m, ElectricChargeDensityUnit.CoulombPerCubicMeter).ToString("s2", culture));
+            Assert.Equal("0.123 C/m³", new ElectricChargeDensity(0.123456m, ElectricChargeDensityUnit.CoulombPerCubicMeter).ToString("s3", culture));
+            Assert.Equal("0.1235 C/m³", new ElectricChargeDensity(0.123456m, ElectricChargeDensityUnit.CoulombPerCubicMeter).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -564,7 +538,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = ElectricChargeDensity.FromCoulombsPerCubicMeter(value);
             Assert.Equal(ElectricChargeDensity.FromCoulombsPerCubicMeter(-value), -quantity);

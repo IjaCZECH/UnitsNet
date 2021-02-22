@@ -30,27 +30,27 @@ namespace UnitsNet.NumberExtensions.NumberToWarpingMomentOfInertia
     {
         /// <inheritdoc cref="WarpingMomentOfInertia.FromCentimetersToTheSixth(UnitsNet.QuantityValue)" />
         public static WarpingMomentOfInertia CentimetersToTheSixth<T>(this T value) =>
-            WarpingMomentOfInertia.FromCentimetersToTheSixth(Convert.ToDouble(value));
+            WarpingMomentOfInertia.FromCentimetersToTheSixth(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="WarpingMomentOfInertia.FromDecimetersToTheSixth(UnitsNet.QuantityValue)" />
         public static WarpingMomentOfInertia DecimetersToTheSixth<T>(this T value) =>
-            WarpingMomentOfInertia.FromDecimetersToTheSixth(Convert.ToDouble(value));
+            WarpingMomentOfInertia.FromDecimetersToTheSixth(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="WarpingMomentOfInertia.FromFeetToTheSixth(UnitsNet.QuantityValue)" />
         public static WarpingMomentOfInertia FeetToTheSixth<T>(this T value) =>
-            WarpingMomentOfInertia.FromFeetToTheSixth(Convert.ToDouble(value));
+            WarpingMomentOfInertia.FromFeetToTheSixth(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="WarpingMomentOfInertia.FromInchesToTheSixth(UnitsNet.QuantityValue)" />
         public static WarpingMomentOfInertia InchesToTheSixth<T>(this T value) =>
-            WarpingMomentOfInertia.FromInchesToTheSixth(Convert.ToDouble(value));
+            WarpingMomentOfInertia.FromInchesToTheSixth(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="WarpingMomentOfInertia.FromMetersToTheSixth(UnitsNet.QuantityValue)" />
         public static WarpingMomentOfInertia MetersToTheSixth<T>(this T value) =>
-            WarpingMomentOfInertia.FromMetersToTheSixth(Convert.ToDouble(value));
+            WarpingMomentOfInertia.FromMetersToTheSixth(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="WarpingMomentOfInertia.FromMillimetersToTheSixth(UnitsNet.QuantityValue)" />
         public static WarpingMomentOfInertia MillimetersToTheSixth<T>(this T value) =>
-            WarpingMomentOfInertia.FromMillimetersToTheSixth(Convert.ToDouble(value));
+            WarpingMomentOfInertia.FromMillimetersToTheSixth(Convert.ToDecimal(value));
 
     }
 }

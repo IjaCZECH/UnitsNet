@@ -30,15 +30,15 @@ namespace UnitsNet.NumberExtensions.NumberToElectricCurrentDensity
     {
         /// <inheritdoc cref="ElectricCurrentDensity.FromAmperesPerSquareFoot(UnitsNet.QuantityValue)" />
         public static ElectricCurrentDensity AmperesPerSquareFoot<T>(this T value) =>
-            ElectricCurrentDensity.FromAmperesPerSquareFoot(Convert.ToDouble(value));
+            ElectricCurrentDensity.FromAmperesPerSquareFoot(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricCurrentDensity.FromAmperesPerSquareInch(UnitsNet.QuantityValue)" />
         public static ElectricCurrentDensity AmperesPerSquareInch<T>(this T value) =>
-            ElectricCurrentDensity.FromAmperesPerSquareInch(Convert.ToDouble(value));
+            ElectricCurrentDensity.FromAmperesPerSquareInch(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricCurrentDensity.FromAmperesPerSquareMeter(UnitsNet.QuantityValue)" />
         public static ElectricCurrentDensity AmperesPerSquareMeter<T>(this T value) =>
-            ElectricCurrentDensity.FromAmperesPerSquareMeter(Convert.ToDouble(value));
+            ElectricCurrentDensity.FromAmperesPerSquareMeter(Convert.ToDecimal(value));
 
     }
 }

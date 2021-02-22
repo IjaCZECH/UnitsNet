@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -71,12 +71,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private RotationalStiffnessPerLength(double value, RotationalStiffnessPerLengthUnit unit)
+        private RotationalStiffnessPerLength(decimal value, RotationalStiffnessPerLengthUnit unit)
         {
             if(unit == RotationalStiffnessPerLengthUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -100,12 +100,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of RotationalStiffnessPerLength
         /// </summary>
-        public static RotationalStiffnessPerLength MaxValue { get; } = new RotationalStiffnessPerLength(double.MaxValue, BaseUnit);
+        public static RotationalStiffnessPerLength MaxValue { get; } = new RotationalStiffnessPerLength(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of RotationalStiffnessPerLength
         /// </summary>
-        public static RotationalStiffnessPerLength MinValue { get; } = new RotationalStiffnessPerLength(double.MinValue, BaseUnit);
+        public static RotationalStiffnessPerLength MinValue { get; } = new RotationalStiffnessPerLength(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -129,7 +129,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -158,27 +158,27 @@ namespace UnitsNet
         /// <summary>
         ///     Get RotationalStiffnessPerLength in KilonewtonMetersPerRadianPerMeter.
         /// </summary>
-        public double KilonewtonMetersPerRadianPerMeter => As(RotationalStiffnessPerLengthUnit.KilonewtonMeterPerRadianPerMeter);
+        public decimal KilonewtonMetersPerRadianPerMeter => As(RotationalStiffnessPerLengthUnit.KilonewtonMeterPerRadianPerMeter);
 
         /// <summary>
         ///     Get RotationalStiffnessPerLength in KilopoundForceFeetPerDegreesPerFeet.
         /// </summary>
-        public double KilopoundForceFeetPerDegreesPerFeet => As(RotationalStiffnessPerLengthUnit.KilopoundForceFootPerDegreesPerFoot);
+        public decimal KilopoundForceFeetPerDegreesPerFeet => As(RotationalStiffnessPerLengthUnit.KilopoundForceFootPerDegreesPerFoot);
 
         /// <summary>
         ///     Get RotationalStiffnessPerLength in MeganewtonMetersPerRadianPerMeter.
         /// </summary>
-        public double MeganewtonMetersPerRadianPerMeter => As(RotationalStiffnessPerLengthUnit.MeganewtonMeterPerRadianPerMeter);
+        public decimal MeganewtonMetersPerRadianPerMeter => As(RotationalStiffnessPerLengthUnit.MeganewtonMeterPerRadianPerMeter);
 
         /// <summary>
         ///     Get RotationalStiffnessPerLength in NewtonMetersPerRadianPerMeter.
         /// </summary>
-        public double NewtonMetersPerRadianPerMeter => As(RotationalStiffnessPerLengthUnit.NewtonMeterPerRadianPerMeter);
+        public decimal NewtonMetersPerRadianPerMeter => As(RotationalStiffnessPerLengthUnit.NewtonMeterPerRadianPerMeter);
 
         /// <summary>
         ///     Get RotationalStiffnessPerLength in PoundForceFeetPerDegreesPerFeet.
         /// </summary>
-        public double PoundForceFeetPerDegreesPerFeet => As(RotationalStiffnessPerLengthUnit.PoundForceFootPerDegreesPerFoot);
+        public decimal PoundForceFeetPerDegreesPerFeet => As(RotationalStiffnessPerLengthUnit.PoundForceFootPerDegreesPerFoot);
 
         #endregion
 
@@ -215,9 +215,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static RotationalStiffnessPerLength FromKilonewtonMetersPerRadianPerMeter(double kilonewtonmetersperradianpermeter)
+        public static RotationalStiffnessPerLength FromKilonewtonMetersPerRadianPerMeter(decimal kilonewtonmetersperradianpermeter)
         {
-            double value = (double) kilonewtonmetersperradianpermeter;
+            decimal value = (decimal) kilonewtonmetersperradianpermeter;
             return new RotationalStiffnessPerLength(value, RotationalStiffnessPerLengthUnit.KilonewtonMeterPerRadianPerMeter);
         }
         /// <summary>
@@ -225,9 +225,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static RotationalStiffnessPerLength FromKilopoundForceFeetPerDegreesPerFeet(double kilopoundforcefeetperdegreesperfeet)
+        public static RotationalStiffnessPerLength FromKilopoundForceFeetPerDegreesPerFeet(decimal kilopoundforcefeetperdegreesperfeet)
         {
-            double value = (double) kilopoundforcefeetperdegreesperfeet;
+            decimal value = (decimal) kilopoundforcefeetperdegreesperfeet;
             return new RotationalStiffnessPerLength(value, RotationalStiffnessPerLengthUnit.KilopoundForceFootPerDegreesPerFoot);
         }
         /// <summary>
@@ -235,9 +235,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static RotationalStiffnessPerLength FromMeganewtonMetersPerRadianPerMeter(double meganewtonmetersperradianpermeter)
+        public static RotationalStiffnessPerLength FromMeganewtonMetersPerRadianPerMeter(decimal meganewtonmetersperradianpermeter)
         {
-            double value = (double) meganewtonmetersperradianpermeter;
+            decimal value = (decimal) meganewtonmetersperradianpermeter;
             return new RotationalStiffnessPerLength(value, RotationalStiffnessPerLengthUnit.MeganewtonMeterPerRadianPerMeter);
         }
         /// <summary>
@@ -245,9 +245,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static RotationalStiffnessPerLength FromNewtonMetersPerRadianPerMeter(double newtonmetersperradianpermeter)
+        public static RotationalStiffnessPerLength FromNewtonMetersPerRadianPerMeter(decimal newtonmetersperradianpermeter)
         {
-            double value = (double) newtonmetersperradianpermeter;
+            decimal value = (decimal) newtonmetersperradianpermeter;
             return new RotationalStiffnessPerLength(value, RotationalStiffnessPerLengthUnit.NewtonMeterPerRadianPerMeter);
         }
         /// <summary>
@@ -255,9 +255,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static RotationalStiffnessPerLength FromPoundForceFeetPerDegreesPerFeet(double poundforcefeetperdegreesperfeet)
+        public static RotationalStiffnessPerLength FromPoundForceFeetPerDegreesPerFeet(decimal poundforcefeetperdegreesperfeet)
         {
-            double value = (double) poundforcefeetperdegreesperfeet;
+            decimal value = (decimal) poundforcefeetperdegreesperfeet;
             return new RotationalStiffnessPerLength(value, RotationalStiffnessPerLengthUnit.PoundForceFootPerDegreesPerFoot);
         }
 
@@ -269,9 +269,9 @@ namespace UnitsNet
         /// <returns>RotationalStiffnessPerLength unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static RotationalStiffnessPerLength From(double value, RotationalStiffnessPerLengthUnit fromUnit)
+        public static RotationalStiffnessPerLength From(decimal value, RotationalStiffnessPerLengthUnit fromUnit)
         {
-            return new RotationalStiffnessPerLength((double)value, fromUnit);
+            return new RotationalStiffnessPerLength((decimal)value, fromUnit);
         }
 
         #endregion
@@ -493,13 +493,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(RotationalStiffnessPerLength other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(RotationalStiffnessPerLength other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -517,19 +517,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((RotationalStiffnessPerLengthUnit)unit);
+        decimal IQuantity.As(object unit) => As((RotationalStiffnessPerLengthUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(RotationalStiffnessPerLengthUnit unit)
+        public decimal As(RotationalStiffnessPerLengthUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -547,21 +547,21 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
-                case RotationalStiffnessPerLengthUnit.KilonewtonMeterPerRadianPerMeter: return (_value) * 1e3d;
-                case RotationalStiffnessPerLengthUnit.KilopoundForceFootPerDegreesPerFoot: return _value*254864.324570;
-                case RotationalStiffnessPerLengthUnit.MeganewtonMeterPerRadianPerMeter: return (_value) * 1e6d;
+                case RotationalStiffnessPerLengthUnit.KilonewtonMeterPerRadianPerMeter: return (_value) * 1e3m;
+                case RotationalStiffnessPerLengthUnit.KilopoundForceFootPerDegreesPerFoot: return _value*254864.324570m;
+                case RotationalStiffnessPerLengthUnit.MeganewtonMeterPerRadianPerMeter: return (_value) * 1e6m;
                 case RotationalStiffnessPerLengthUnit.NewtonMeterPerRadianPerMeter: return _value;
-                case RotationalStiffnessPerLengthUnit.PoundForceFootPerDegreesPerFoot: return _value*254.864324570;
+                case RotationalStiffnessPerLengthUnit.PoundForceFootPerDegreesPerFoot: return _value*254.864324570m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(RotationalStiffnessPerLengthUnit unit)
+        private decimal AsBaseNumericType(RotationalStiffnessPerLengthUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -570,11 +570,11 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case RotationalStiffnessPerLengthUnit.KilonewtonMeterPerRadianPerMeter: return (baseUnitValue) / 1e3d;
-                case RotationalStiffnessPerLengthUnit.KilopoundForceFootPerDegreesPerFoot: return baseUnitValue/254864.324570;
-                case RotationalStiffnessPerLengthUnit.MeganewtonMeterPerRadianPerMeter: return (baseUnitValue) / 1e6d;
+                case RotationalStiffnessPerLengthUnit.KilonewtonMeterPerRadianPerMeter: return (baseUnitValue) / 1e3m;
+                case RotationalStiffnessPerLengthUnit.KilopoundForceFootPerDegreesPerFoot: return baseUnitValue/254864.324570m;
+                case RotationalStiffnessPerLengthUnit.MeganewtonMeterPerRadianPerMeter: return (baseUnitValue) / 1e6m;
                 case RotationalStiffnessPerLengthUnit.NewtonMeterPerRadianPerMeter: return baseUnitValue;
-                case RotationalStiffnessPerLengthUnit.PoundForceFootPerDegreesPerFoot: return baseUnitValue/254.864324570;
+                case RotationalStiffnessPerLengthUnit.PoundForceFootPerDegreesPerFoot: return baseUnitValue/254.864324570m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -613,7 +613,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -633,7 +633,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

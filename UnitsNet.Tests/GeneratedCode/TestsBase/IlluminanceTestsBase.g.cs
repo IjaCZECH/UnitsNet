@@ -37,22 +37,22 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class IlluminanceTestsBase : QuantityTestsBase
     {
-        protected abstract double KiloluxInOneLux { get; }
-        protected abstract double LuxInOneLux { get; }
-        protected abstract double MegaluxInOneLux { get; }
-        protected abstract double MilliluxInOneLux { get; }
+        protected abstract decimal KiloluxInOneLux { get; }
+        protected abstract decimal LuxInOneLux { get; }
+        protected abstract decimal MegaluxInOneLux { get; }
+        protected abstract decimal MilliluxInOneLux { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double KiloluxTolerance { get { return 1e-5; } }
-        protected virtual double LuxTolerance { get { return 1e-5; } }
-        protected virtual double MegaluxTolerance { get { return 1e-5; } }
-        protected virtual double MilliluxTolerance { get { return 1e-5; } }
+        protected virtual decimal KiloluxTolerance { get { return 1e-5; } }
+        protected virtual decimal LuxTolerance { get { return 1e-5; } }
+        protected virtual decimal MegaluxTolerance { get { return 1e-5; } }
+        protected virtual decimal MilliluxTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new Illuminance((double)0.0, IlluminanceUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new Illuminance((decimal)0.0, IlluminanceUnit.Undefined));
         }
 
         [Fact]
@@ -63,19 +63,6 @@ namespace UnitsNet.Tests
             Assert.Equal(IlluminanceUnit.Lux, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new Illuminance(double.PositiveInfinity, IlluminanceUnit.Lux));
-            Assert.Throws<ArgumentException>(() => new Illuminance(double.NegativeInfinity, IlluminanceUnit.Lux));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new Illuminance(double.NaN, IlluminanceUnit.Lux));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -151,19 +138,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromLux_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => Illuminance.FromLux(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => Illuminance.FromLux(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromLux_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => Illuminance.FromLux(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var lux = Illuminance.FromLux(1);
@@ -181,7 +155,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -196,19 +170,19 @@ namespace UnitsNet.Tests
             var lux = Illuminance.FromLux(1);
 
             var kiloluxQuantity = lux.ToUnit(IlluminanceUnit.Kilolux);
-            AssertEx.EqualTolerance(KiloluxInOneLux, (double)kiloluxQuantity.Value, KiloluxTolerance);
+            AssertEx.EqualTolerance(KiloluxInOneLux, (decimal)kiloluxQuantity.Value, KiloluxTolerance);
             Assert.Equal(IlluminanceUnit.Kilolux, kiloluxQuantity.Unit);
 
             var luxQuantity = lux.ToUnit(IlluminanceUnit.Lux);
-            AssertEx.EqualTolerance(LuxInOneLux, (double)luxQuantity.Value, LuxTolerance);
+            AssertEx.EqualTolerance(LuxInOneLux, (decimal)luxQuantity.Value, LuxTolerance);
             Assert.Equal(IlluminanceUnit.Lux, luxQuantity.Unit);
 
             var megaluxQuantity = lux.ToUnit(IlluminanceUnit.Megalux);
-            AssertEx.EqualTolerance(MegaluxInOneLux, (double)megaluxQuantity.Value, MegaluxTolerance);
+            AssertEx.EqualTolerance(MegaluxInOneLux, (decimal)megaluxQuantity.Value, MegaluxTolerance);
             Assert.Equal(IlluminanceUnit.Megalux, megaluxQuantity.Unit);
 
             var milliluxQuantity = lux.ToUnit(IlluminanceUnit.Millilux);
-            AssertEx.EqualTolerance(MilliluxInOneLux, (double)milliluxQuantity.Value, MilliluxTolerance);
+            AssertEx.EqualTolerance(MilliluxInOneLux, (decimal)milliluxQuantity.Value, MilliluxTolerance);
             Assert.Equal(IlluminanceUnit.Millilux, milliluxQuantity.Unit);
         }
 
@@ -413,10 +387,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 lx", new Illuminance(0.123456, IlluminanceUnit.Lux).ToString("s1"));
-                Assert.Equal("0.12 lx", new Illuminance(0.123456, IlluminanceUnit.Lux).ToString("s2"));
-                Assert.Equal("0.123 lx", new Illuminance(0.123456, IlluminanceUnit.Lux).ToString("s3"));
-                Assert.Equal("0.1235 lx", new Illuminance(0.123456, IlluminanceUnit.Lux).ToString("s4"));
+                Assert.Equal("0.1 lx", new Illuminance(0.123456m, IlluminanceUnit.Lux).ToString("s1"));
+                Assert.Equal("0.12 lx", new Illuminance(0.123456m, IlluminanceUnit.Lux).ToString("s2"));
+                Assert.Equal("0.123 lx", new Illuminance(0.123456m, IlluminanceUnit.Lux).ToString("s3"));
+                Assert.Equal("0.1235 lx", new Illuminance(0.123456m, IlluminanceUnit.Lux).ToString("s4"));
             }
             finally
             {
@@ -428,10 +402,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 lx", new Illuminance(0.123456, IlluminanceUnit.Lux).ToString("s1", culture));
-            Assert.Equal("0.12 lx", new Illuminance(0.123456, IlluminanceUnit.Lux).ToString("s2", culture));
-            Assert.Equal("0.123 lx", new Illuminance(0.123456, IlluminanceUnit.Lux).ToString("s3", culture));
-            Assert.Equal("0.1235 lx", new Illuminance(0.123456, IlluminanceUnit.Lux).ToString("s4", culture));
+            Assert.Equal("0.1 lx", new Illuminance(0.123456m, IlluminanceUnit.Lux).ToString("s1", culture));
+            Assert.Equal("0.12 lx", new Illuminance(0.123456m, IlluminanceUnit.Lux).ToString("s2", culture));
+            Assert.Equal("0.123 lx", new Illuminance(0.123456m, IlluminanceUnit.Lux).ToString("s3", culture));
+            Assert.Equal("0.1235 lx", new Illuminance(0.123456m, IlluminanceUnit.Lux).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -609,7 +583,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = Illuminance.FromLux(value);
             Assert.Equal(Illuminance.FromLux(-value), -quantity);

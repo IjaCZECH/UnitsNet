@@ -132,7 +132,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -161,132 +161,132 @@ namespace UnitsNet
         /// <summary>
         ///     Get BitRate in BitsPerSecond.
         /// </summary>
-        public double BitsPerSecond => As(BitRateUnit.BitPerSecond);
+        public decimal BitsPerSecond => As(BitRateUnit.BitPerSecond);
 
         /// <summary>
         ///     Get BitRate in BytesPerSecond.
         /// </summary>
-        public double BytesPerSecond => As(BitRateUnit.BytePerSecond);
+        public decimal BytesPerSecond => As(BitRateUnit.BytePerSecond);
 
         /// <summary>
         ///     Get BitRate in ExabitsPerSecond.
         /// </summary>
-        public double ExabitsPerSecond => As(BitRateUnit.ExabitPerSecond);
+        public decimal ExabitsPerSecond => As(BitRateUnit.ExabitPerSecond);
 
         /// <summary>
         ///     Get BitRate in ExabytesPerSecond.
         /// </summary>
-        public double ExabytesPerSecond => As(BitRateUnit.ExabytePerSecond);
+        public decimal ExabytesPerSecond => As(BitRateUnit.ExabytePerSecond);
 
         /// <summary>
         ///     Get BitRate in ExbibitsPerSecond.
         /// </summary>
-        public double ExbibitsPerSecond => As(BitRateUnit.ExbibitPerSecond);
+        public decimal ExbibitsPerSecond => As(BitRateUnit.ExbibitPerSecond);
 
         /// <summary>
         ///     Get BitRate in ExbibytesPerSecond.
         /// </summary>
-        public double ExbibytesPerSecond => As(BitRateUnit.ExbibytePerSecond);
+        public decimal ExbibytesPerSecond => As(BitRateUnit.ExbibytePerSecond);
 
         /// <summary>
         ///     Get BitRate in GibibitsPerSecond.
         /// </summary>
-        public double GibibitsPerSecond => As(BitRateUnit.GibibitPerSecond);
+        public decimal GibibitsPerSecond => As(BitRateUnit.GibibitPerSecond);
 
         /// <summary>
         ///     Get BitRate in GibibytesPerSecond.
         /// </summary>
-        public double GibibytesPerSecond => As(BitRateUnit.GibibytePerSecond);
+        public decimal GibibytesPerSecond => As(BitRateUnit.GibibytePerSecond);
 
         /// <summary>
         ///     Get BitRate in GigabitsPerSecond.
         /// </summary>
-        public double GigabitsPerSecond => As(BitRateUnit.GigabitPerSecond);
+        public decimal GigabitsPerSecond => As(BitRateUnit.GigabitPerSecond);
 
         /// <summary>
         ///     Get BitRate in GigabytesPerSecond.
         /// </summary>
-        public double GigabytesPerSecond => As(BitRateUnit.GigabytePerSecond);
+        public decimal GigabytesPerSecond => As(BitRateUnit.GigabytePerSecond);
 
         /// <summary>
         ///     Get BitRate in KibibitsPerSecond.
         /// </summary>
-        public double KibibitsPerSecond => As(BitRateUnit.KibibitPerSecond);
+        public decimal KibibitsPerSecond => As(BitRateUnit.KibibitPerSecond);
 
         /// <summary>
         ///     Get BitRate in KibibytesPerSecond.
         /// </summary>
-        public double KibibytesPerSecond => As(BitRateUnit.KibibytePerSecond);
+        public decimal KibibytesPerSecond => As(BitRateUnit.KibibytePerSecond);
 
         /// <summary>
         ///     Get BitRate in KilobitsPerSecond.
         /// </summary>
-        public double KilobitsPerSecond => As(BitRateUnit.KilobitPerSecond);
+        public decimal KilobitsPerSecond => As(BitRateUnit.KilobitPerSecond);
 
         /// <summary>
         ///     Get BitRate in KilobytesPerSecond.
         /// </summary>
-        public double KilobytesPerSecond => As(BitRateUnit.KilobytePerSecond);
+        public decimal KilobytesPerSecond => As(BitRateUnit.KilobytePerSecond);
 
         /// <summary>
         ///     Get BitRate in MebibitsPerSecond.
         /// </summary>
-        public double MebibitsPerSecond => As(BitRateUnit.MebibitPerSecond);
+        public decimal MebibitsPerSecond => As(BitRateUnit.MebibitPerSecond);
 
         /// <summary>
         ///     Get BitRate in MebibytesPerSecond.
         /// </summary>
-        public double MebibytesPerSecond => As(BitRateUnit.MebibytePerSecond);
+        public decimal MebibytesPerSecond => As(BitRateUnit.MebibytePerSecond);
 
         /// <summary>
         ///     Get BitRate in MegabitsPerSecond.
         /// </summary>
-        public double MegabitsPerSecond => As(BitRateUnit.MegabitPerSecond);
+        public decimal MegabitsPerSecond => As(BitRateUnit.MegabitPerSecond);
 
         /// <summary>
         ///     Get BitRate in MegabytesPerSecond.
         /// </summary>
-        public double MegabytesPerSecond => As(BitRateUnit.MegabytePerSecond);
+        public decimal MegabytesPerSecond => As(BitRateUnit.MegabytePerSecond);
 
         /// <summary>
         ///     Get BitRate in PebibitsPerSecond.
         /// </summary>
-        public double PebibitsPerSecond => As(BitRateUnit.PebibitPerSecond);
+        public decimal PebibitsPerSecond => As(BitRateUnit.PebibitPerSecond);
 
         /// <summary>
         ///     Get BitRate in PebibytesPerSecond.
         /// </summary>
-        public double PebibytesPerSecond => As(BitRateUnit.PebibytePerSecond);
+        public decimal PebibytesPerSecond => As(BitRateUnit.PebibytePerSecond);
 
         /// <summary>
         ///     Get BitRate in PetabitsPerSecond.
         /// </summary>
-        public double PetabitsPerSecond => As(BitRateUnit.PetabitPerSecond);
+        public decimal PetabitsPerSecond => As(BitRateUnit.PetabitPerSecond);
 
         /// <summary>
         ///     Get BitRate in PetabytesPerSecond.
         /// </summary>
-        public double PetabytesPerSecond => As(BitRateUnit.PetabytePerSecond);
+        public decimal PetabytesPerSecond => As(BitRateUnit.PetabytePerSecond);
 
         /// <summary>
         ///     Get BitRate in TebibitsPerSecond.
         /// </summary>
-        public double TebibitsPerSecond => As(BitRateUnit.TebibitPerSecond);
+        public decimal TebibitsPerSecond => As(BitRateUnit.TebibitPerSecond);
 
         /// <summary>
         ///     Get BitRate in TebibytesPerSecond.
         /// </summary>
-        public double TebibytesPerSecond => As(BitRateUnit.TebibytePerSecond);
+        public decimal TebibytesPerSecond => As(BitRateUnit.TebibytePerSecond);
 
         /// <summary>
         ///     Get BitRate in TerabitsPerSecond.
         /// </summary>
-        public double TerabitsPerSecond => As(BitRateUnit.TerabitPerSecond);
+        public decimal TerabitsPerSecond => As(BitRateUnit.TerabitPerSecond);
 
         /// <summary>
         ///     Get BitRate in TerabytesPerSecond.
         /// </summary>
-        public double TerabytesPerSecond => As(BitRateUnit.TerabytePerSecond);
+        public decimal TerabytesPerSecond => As(BitRateUnit.TerabytePerSecond);
 
         #endregion
 
@@ -323,7 +323,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BitRate FromBitsPerSecond(double bitspersecond)
+        public static BitRate FromBitsPerSecond(decimal bitspersecond)
         {
             decimal value = (decimal) bitspersecond;
             return new BitRate(value, BitRateUnit.BitPerSecond);
@@ -333,7 +333,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BitRate FromBytesPerSecond(double bytespersecond)
+        public static BitRate FromBytesPerSecond(decimal bytespersecond)
         {
             decimal value = (decimal) bytespersecond;
             return new BitRate(value, BitRateUnit.BytePerSecond);
@@ -343,7 +343,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BitRate FromExabitsPerSecond(double exabitspersecond)
+        public static BitRate FromExabitsPerSecond(decimal exabitspersecond)
         {
             decimal value = (decimal) exabitspersecond;
             return new BitRate(value, BitRateUnit.ExabitPerSecond);
@@ -353,7 +353,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BitRate FromExabytesPerSecond(double exabytespersecond)
+        public static BitRate FromExabytesPerSecond(decimal exabytespersecond)
         {
             decimal value = (decimal) exabytespersecond;
             return new BitRate(value, BitRateUnit.ExabytePerSecond);
@@ -363,7 +363,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BitRate FromExbibitsPerSecond(double exbibitspersecond)
+        public static BitRate FromExbibitsPerSecond(decimal exbibitspersecond)
         {
             decimal value = (decimal) exbibitspersecond;
             return new BitRate(value, BitRateUnit.ExbibitPerSecond);
@@ -373,7 +373,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BitRate FromExbibytesPerSecond(double exbibytespersecond)
+        public static BitRate FromExbibytesPerSecond(decimal exbibytespersecond)
         {
             decimal value = (decimal) exbibytespersecond;
             return new BitRate(value, BitRateUnit.ExbibytePerSecond);
@@ -383,7 +383,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BitRate FromGibibitsPerSecond(double gibibitspersecond)
+        public static BitRate FromGibibitsPerSecond(decimal gibibitspersecond)
         {
             decimal value = (decimal) gibibitspersecond;
             return new BitRate(value, BitRateUnit.GibibitPerSecond);
@@ -393,7 +393,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BitRate FromGibibytesPerSecond(double gibibytespersecond)
+        public static BitRate FromGibibytesPerSecond(decimal gibibytespersecond)
         {
             decimal value = (decimal) gibibytespersecond;
             return new BitRate(value, BitRateUnit.GibibytePerSecond);
@@ -403,7 +403,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BitRate FromGigabitsPerSecond(double gigabitspersecond)
+        public static BitRate FromGigabitsPerSecond(decimal gigabitspersecond)
         {
             decimal value = (decimal) gigabitspersecond;
             return new BitRate(value, BitRateUnit.GigabitPerSecond);
@@ -413,7 +413,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BitRate FromGigabytesPerSecond(double gigabytespersecond)
+        public static BitRate FromGigabytesPerSecond(decimal gigabytespersecond)
         {
             decimal value = (decimal) gigabytespersecond;
             return new BitRate(value, BitRateUnit.GigabytePerSecond);
@@ -423,7 +423,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BitRate FromKibibitsPerSecond(double kibibitspersecond)
+        public static BitRate FromKibibitsPerSecond(decimal kibibitspersecond)
         {
             decimal value = (decimal) kibibitspersecond;
             return new BitRate(value, BitRateUnit.KibibitPerSecond);
@@ -433,7 +433,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BitRate FromKibibytesPerSecond(double kibibytespersecond)
+        public static BitRate FromKibibytesPerSecond(decimal kibibytespersecond)
         {
             decimal value = (decimal) kibibytespersecond;
             return new BitRate(value, BitRateUnit.KibibytePerSecond);
@@ -443,7 +443,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BitRate FromKilobitsPerSecond(double kilobitspersecond)
+        public static BitRate FromKilobitsPerSecond(decimal kilobitspersecond)
         {
             decimal value = (decimal) kilobitspersecond;
             return new BitRate(value, BitRateUnit.KilobitPerSecond);
@@ -453,7 +453,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BitRate FromKilobytesPerSecond(double kilobytespersecond)
+        public static BitRate FromKilobytesPerSecond(decimal kilobytespersecond)
         {
             decimal value = (decimal) kilobytespersecond;
             return new BitRate(value, BitRateUnit.KilobytePerSecond);
@@ -463,7 +463,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BitRate FromMebibitsPerSecond(double mebibitspersecond)
+        public static BitRate FromMebibitsPerSecond(decimal mebibitspersecond)
         {
             decimal value = (decimal) mebibitspersecond;
             return new BitRate(value, BitRateUnit.MebibitPerSecond);
@@ -473,7 +473,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BitRate FromMebibytesPerSecond(double mebibytespersecond)
+        public static BitRate FromMebibytesPerSecond(decimal mebibytespersecond)
         {
             decimal value = (decimal) mebibytespersecond;
             return new BitRate(value, BitRateUnit.MebibytePerSecond);
@@ -483,7 +483,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BitRate FromMegabitsPerSecond(double megabitspersecond)
+        public static BitRate FromMegabitsPerSecond(decimal megabitspersecond)
         {
             decimal value = (decimal) megabitspersecond;
             return new BitRate(value, BitRateUnit.MegabitPerSecond);
@@ -493,7 +493,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BitRate FromMegabytesPerSecond(double megabytespersecond)
+        public static BitRate FromMegabytesPerSecond(decimal megabytespersecond)
         {
             decimal value = (decimal) megabytespersecond;
             return new BitRate(value, BitRateUnit.MegabytePerSecond);
@@ -503,7 +503,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BitRate FromPebibitsPerSecond(double pebibitspersecond)
+        public static BitRate FromPebibitsPerSecond(decimal pebibitspersecond)
         {
             decimal value = (decimal) pebibitspersecond;
             return new BitRate(value, BitRateUnit.PebibitPerSecond);
@@ -513,7 +513,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BitRate FromPebibytesPerSecond(double pebibytespersecond)
+        public static BitRate FromPebibytesPerSecond(decimal pebibytespersecond)
         {
             decimal value = (decimal) pebibytespersecond;
             return new BitRate(value, BitRateUnit.PebibytePerSecond);
@@ -523,7 +523,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BitRate FromPetabitsPerSecond(double petabitspersecond)
+        public static BitRate FromPetabitsPerSecond(decimal petabitspersecond)
         {
             decimal value = (decimal) petabitspersecond;
             return new BitRate(value, BitRateUnit.PetabitPerSecond);
@@ -533,7 +533,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BitRate FromPetabytesPerSecond(double petabytespersecond)
+        public static BitRate FromPetabytesPerSecond(decimal petabytespersecond)
         {
             decimal value = (decimal) petabytespersecond;
             return new BitRate(value, BitRateUnit.PetabytePerSecond);
@@ -543,7 +543,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BitRate FromTebibitsPerSecond(double tebibitspersecond)
+        public static BitRate FromTebibitsPerSecond(decimal tebibitspersecond)
         {
             decimal value = (decimal) tebibitspersecond;
             return new BitRate(value, BitRateUnit.TebibitPerSecond);
@@ -553,7 +553,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BitRate FromTebibytesPerSecond(double tebibytespersecond)
+        public static BitRate FromTebibytesPerSecond(decimal tebibytespersecond)
         {
             decimal value = (decimal) tebibytespersecond;
             return new BitRate(value, BitRateUnit.TebibytePerSecond);
@@ -563,7 +563,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BitRate FromTerabitsPerSecond(double terabitspersecond)
+        public static BitRate FromTerabitsPerSecond(decimal terabitspersecond)
         {
             decimal value = (decimal) terabitspersecond;
             return new BitRate(value, BitRateUnit.TerabitPerSecond);
@@ -573,7 +573,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static BitRate FromTerabytesPerSecond(double terabytespersecond)
+        public static BitRate FromTerabytesPerSecond(decimal terabytespersecond)
         {
             decimal value = (decimal) terabytespersecond;
             return new BitRate(value, BitRateUnit.TerabytePerSecond);
@@ -587,7 +587,7 @@ namespace UnitsNet
         /// <returns>BitRate unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static BitRate From(double value, BitRateUnit fromUnit)
+        public static BitRate From(decimal value, BitRateUnit fromUnit)
         {
             return new BitRate((decimal)value, fromUnit);
         }
@@ -811,13 +811,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(BitRate other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(BitRate other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -835,19 +835,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((BitRateUnit)unit);
+        decimal IQuantity.As(object unit) => As((BitRateUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(BitRateUnit unit)
+        public decimal As(BitRateUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -973,7 +973,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -993,7 +993,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

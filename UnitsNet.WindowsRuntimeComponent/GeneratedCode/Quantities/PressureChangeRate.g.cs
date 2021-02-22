@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -71,12 +71,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private PressureChangeRate(double value, PressureChangeRateUnit unit)
+        private PressureChangeRate(decimal value, PressureChangeRateUnit unit)
         {
             if(unit == PressureChangeRateUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -100,12 +100,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of PressureChangeRate
         /// </summary>
-        public static PressureChangeRate MaxValue { get; } = new PressureChangeRate(double.MaxValue, BaseUnit);
+        public static PressureChangeRate MaxValue { get; } = new PressureChangeRate(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of PressureChangeRate
         /// </summary>
-        public static PressureChangeRate MinValue { get; } = new PressureChangeRate(double.MinValue, BaseUnit);
+        public static PressureChangeRate MinValue { get; } = new PressureChangeRate(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -129,7 +129,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -158,37 +158,37 @@ namespace UnitsNet
         /// <summary>
         ///     Get PressureChangeRate in AtmospheresPerSecond.
         /// </summary>
-        public double AtmospheresPerSecond => As(PressureChangeRateUnit.AtmospherePerSecond);
+        public decimal AtmospheresPerSecond => As(PressureChangeRateUnit.AtmospherePerSecond);
 
         /// <summary>
         ///     Get PressureChangeRate in KilopascalsPerMinute.
         /// </summary>
-        public double KilopascalsPerMinute => As(PressureChangeRateUnit.KilopascalPerMinute);
+        public decimal KilopascalsPerMinute => As(PressureChangeRateUnit.KilopascalPerMinute);
 
         /// <summary>
         ///     Get PressureChangeRate in KilopascalsPerSecond.
         /// </summary>
-        public double KilopascalsPerSecond => As(PressureChangeRateUnit.KilopascalPerSecond);
+        public decimal KilopascalsPerSecond => As(PressureChangeRateUnit.KilopascalPerSecond);
 
         /// <summary>
         ///     Get PressureChangeRate in MegapascalsPerMinute.
         /// </summary>
-        public double MegapascalsPerMinute => As(PressureChangeRateUnit.MegapascalPerMinute);
+        public decimal MegapascalsPerMinute => As(PressureChangeRateUnit.MegapascalPerMinute);
 
         /// <summary>
         ///     Get PressureChangeRate in MegapascalsPerSecond.
         /// </summary>
-        public double MegapascalsPerSecond => As(PressureChangeRateUnit.MegapascalPerSecond);
+        public decimal MegapascalsPerSecond => As(PressureChangeRateUnit.MegapascalPerSecond);
 
         /// <summary>
         ///     Get PressureChangeRate in PascalsPerMinute.
         /// </summary>
-        public double PascalsPerMinute => As(PressureChangeRateUnit.PascalPerMinute);
+        public decimal PascalsPerMinute => As(PressureChangeRateUnit.PascalPerMinute);
 
         /// <summary>
         ///     Get PressureChangeRate in PascalsPerSecond.
         /// </summary>
-        public double PascalsPerSecond => As(PressureChangeRateUnit.PascalPerSecond);
+        public decimal PascalsPerSecond => As(PressureChangeRateUnit.PascalPerSecond);
 
         #endregion
 
@@ -225,9 +225,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static PressureChangeRate FromAtmospheresPerSecond(double atmospherespersecond)
+        public static PressureChangeRate FromAtmospheresPerSecond(decimal atmospherespersecond)
         {
-            double value = (double) atmospherespersecond;
+            decimal value = (decimal) atmospherespersecond;
             return new PressureChangeRate(value, PressureChangeRateUnit.AtmospherePerSecond);
         }
         /// <summary>
@@ -235,9 +235,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static PressureChangeRate FromKilopascalsPerMinute(double kilopascalsperminute)
+        public static PressureChangeRate FromKilopascalsPerMinute(decimal kilopascalsperminute)
         {
-            double value = (double) kilopascalsperminute;
+            decimal value = (decimal) kilopascalsperminute;
             return new PressureChangeRate(value, PressureChangeRateUnit.KilopascalPerMinute);
         }
         /// <summary>
@@ -245,9 +245,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static PressureChangeRate FromKilopascalsPerSecond(double kilopascalspersecond)
+        public static PressureChangeRate FromKilopascalsPerSecond(decimal kilopascalspersecond)
         {
-            double value = (double) kilopascalspersecond;
+            decimal value = (decimal) kilopascalspersecond;
             return new PressureChangeRate(value, PressureChangeRateUnit.KilopascalPerSecond);
         }
         /// <summary>
@@ -255,9 +255,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static PressureChangeRate FromMegapascalsPerMinute(double megapascalsperminute)
+        public static PressureChangeRate FromMegapascalsPerMinute(decimal megapascalsperminute)
         {
-            double value = (double) megapascalsperminute;
+            decimal value = (decimal) megapascalsperminute;
             return new PressureChangeRate(value, PressureChangeRateUnit.MegapascalPerMinute);
         }
         /// <summary>
@@ -265,9 +265,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static PressureChangeRate FromMegapascalsPerSecond(double megapascalspersecond)
+        public static PressureChangeRate FromMegapascalsPerSecond(decimal megapascalspersecond)
         {
-            double value = (double) megapascalspersecond;
+            decimal value = (decimal) megapascalspersecond;
             return new PressureChangeRate(value, PressureChangeRateUnit.MegapascalPerSecond);
         }
         /// <summary>
@@ -275,9 +275,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static PressureChangeRate FromPascalsPerMinute(double pascalsperminute)
+        public static PressureChangeRate FromPascalsPerMinute(decimal pascalsperminute)
         {
-            double value = (double) pascalsperminute;
+            decimal value = (decimal) pascalsperminute;
             return new PressureChangeRate(value, PressureChangeRateUnit.PascalPerMinute);
         }
         /// <summary>
@@ -285,9 +285,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static PressureChangeRate FromPascalsPerSecond(double pascalspersecond)
+        public static PressureChangeRate FromPascalsPerSecond(decimal pascalspersecond)
         {
-            double value = (double) pascalspersecond;
+            decimal value = (decimal) pascalspersecond;
             return new PressureChangeRate(value, PressureChangeRateUnit.PascalPerSecond);
         }
 
@@ -299,9 +299,9 @@ namespace UnitsNet
         /// <returns>PressureChangeRate unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static PressureChangeRate From(double value, PressureChangeRateUnit fromUnit)
+        public static PressureChangeRate From(decimal value, PressureChangeRateUnit fromUnit)
         {
-            return new PressureChangeRate((double)value, fromUnit);
+            return new PressureChangeRate((decimal)value, fromUnit);
         }
 
         #endregion
@@ -523,13 +523,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(PressureChangeRate other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(PressureChangeRate other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -547,19 +547,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((PressureChangeRateUnit)unit);
+        decimal IQuantity.As(object unit) => As((PressureChangeRateUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(PressureChangeRateUnit unit)
+        public decimal As(PressureChangeRateUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -577,23 +577,23 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
-                case PressureChangeRateUnit.AtmospherePerSecond: return _value * 1.01325*1e5;
-                case PressureChangeRateUnit.KilopascalPerMinute: return (_value/60) * 1e3d;
-                case PressureChangeRateUnit.KilopascalPerSecond: return (_value) * 1e3d;
-                case PressureChangeRateUnit.MegapascalPerMinute: return (_value/60) * 1e6d;
-                case PressureChangeRateUnit.MegapascalPerSecond: return (_value) * 1e6d;
-                case PressureChangeRateUnit.PascalPerMinute: return _value/60;
+                case PressureChangeRateUnit.AtmospherePerSecond: return _value * 1.01325m*1e5m;
+                case PressureChangeRateUnit.KilopascalPerMinute: return (_value/60m) * 1e3m;
+                case PressureChangeRateUnit.KilopascalPerSecond: return (_value) * 1e3m;
+                case PressureChangeRateUnit.MegapascalPerMinute: return (_value/60m) * 1e6m;
+                case PressureChangeRateUnit.MegapascalPerSecond: return (_value) * 1e6m;
+                case PressureChangeRateUnit.PascalPerMinute: return _value/60m;
                 case PressureChangeRateUnit.PascalPerSecond: return _value;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(PressureChangeRateUnit unit)
+        private decimal AsBaseNumericType(PressureChangeRateUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -602,12 +602,12 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case PressureChangeRateUnit.AtmospherePerSecond: return baseUnitValue / (1.01325*1e5);
-                case PressureChangeRateUnit.KilopascalPerMinute: return (baseUnitValue*60) / 1e3d;
-                case PressureChangeRateUnit.KilopascalPerSecond: return (baseUnitValue) / 1e3d;
-                case PressureChangeRateUnit.MegapascalPerMinute: return (baseUnitValue*60) / 1e6d;
-                case PressureChangeRateUnit.MegapascalPerSecond: return (baseUnitValue) / 1e6d;
-                case PressureChangeRateUnit.PascalPerMinute: return baseUnitValue*60;
+                case PressureChangeRateUnit.AtmospherePerSecond: return baseUnitValue / (1.01325m*1e5);
+                case PressureChangeRateUnit.KilopascalPerMinute: return (baseUnitValue*60m) / 1e3m;
+                case PressureChangeRateUnit.KilopascalPerSecond: return (baseUnitValue) / 1e3m;
+                case PressureChangeRateUnit.MegapascalPerMinute: return (baseUnitValue*60m) / 1e6m;
+                case PressureChangeRateUnit.MegapascalPerSecond: return (baseUnitValue) / 1e6m;
+                case PressureChangeRateUnit.PascalPerMinute: return baseUnitValue*60m;
                 case PressureChangeRateUnit.PascalPerSecond: return baseUnitValue;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
@@ -647,7 +647,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -667,7 +667,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

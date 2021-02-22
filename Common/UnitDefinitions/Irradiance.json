@@ -23,8 +23,8 @@
     {
       "SingularName": "WattPerSquareCentimeter",
       "PluralName": "WattsPerSquareCentimeter",
-      "FromUnitToBaseFunc": "x*10000",
-      "FromBaseToUnitFunc": "x*0.0001",
+      "FromUnitToBaseFunc": "x*10000m",
+      "FromBaseToUnitFunc": "x*0.0001m",
       "Prefixes": [ "Pico", "Nano", "Micro", "Milli", "Kilo", "Mega" ],
       "Localization": [
         {

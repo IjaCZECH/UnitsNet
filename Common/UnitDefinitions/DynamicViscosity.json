@@ -37,8 +37,8 @@
     {
       "SingularName": "Poise",
       "PluralName": "Poise",
-      "FromUnitToBaseFunc": "x/10",
-      "FromBaseToUnitFunc": "x*10",
+      "FromUnitToBaseFunc": "x/10m",
+      "FromBaseToUnitFunc": "x*10m",
       "Prefixes": [ "Centi" ],
       "Localization": [
         {
@@ -50,8 +50,8 @@
     {
       "SingularName": "Reyn",
       "PluralName": "Reyns",
-      "FromUnitToBaseFunc": "x * 6.8947572931683613e3",
-      "FromBaseToUnitFunc": "x / 6.8947572931683613e3",
+      "FromUnitToBaseFunc": "x * 6.8947572931683613e3m",
+      "FromBaseToUnitFunc": "x / 6.8947572931683613e3m",
       "Localization": [
         {
           "Culture": "en-US",
@@ -62,8 +62,8 @@
     {
       "SingularName": "PoundForceSecondPerSquareInch",
       "PluralName": "PoundsForceSecondPerSquareInch",
-      "FromUnitToBaseFunc": "x * 6.8947572931683613e3",
-      "FromBaseToUnitFunc": "x / 6.8947572931683613e3",
+      "FromUnitToBaseFunc": "x * 6.8947572931683613e3m",
+      "FromBaseToUnitFunc": "x / 6.8947572931683613e3m",
       "Localization": [
         {
           "Culture": "en-US",
@@ -74,8 +74,8 @@
     {
       "SingularName": "PoundForceSecondPerSquareFoot",
       "PluralName": "PoundsForceSecondPerSquareFoot",
-      "FromUnitToBaseFunc": "x * 4.7880258980335843e1",
-      "FromBaseToUnitFunc": "x / 4.7880258980335843e1",
+      "FromUnitToBaseFunc": "x * 4.7880258980335843e1m",
+      "FromBaseToUnitFunc": "x / 4.7880258980335843e1m",
       "Localization": [
         {
           "Culture": "en-US",
@@ -86,8 +86,8 @@
     {
       "SingularName": "PoundPerFootSecond",
       "PluralName": "PoundsPerFootSecond",
-      "FromUnitToBaseFunc": "x * 1.4881639",
-      "FromBaseToUnitFunc": "x / 1.4881639",
+      "FromUnitToBaseFunc": "x * 1.4881639m",
+      "FromBaseToUnitFunc": "x / 1.4881639m",
       "Localization": [
         {
           "Culture": "en-US",

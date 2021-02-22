@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -71,12 +71,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private VolumePerLength(double value, VolumePerLengthUnit unit)
+        private VolumePerLength(decimal value, VolumePerLengthUnit unit)
         {
             if(unit == VolumePerLengthUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -100,12 +100,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of VolumePerLength
         /// </summary>
-        public static VolumePerLength MaxValue { get; } = new VolumePerLength(double.MaxValue, BaseUnit);
+        public static VolumePerLength MaxValue { get; } = new VolumePerLength(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of VolumePerLength
         /// </summary>
-        public static VolumePerLength MinValue { get; } = new VolumePerLength(double.MinValue, BaseUnit);
+        public static VolumePerLength MinValue { get; } = new VolumePerLength(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -129,7 +129,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -158,37 +158,37 @@ namespace UnitsNet
         /// <summary>
         ///     Get VolumePerLength in CubicMetersPerMeter.
         /// </summary>
-        public double CubicMetersPerMeter => As(VolumePerLengthUnit.CubicMeterPerMeter);
+        public decimal CubicMetersPerMeter => As(VolumePerLengthUnit.CubicMeterPerMeter);
 
         /// <summary>
         ///     Get VolumePerLength in CubicYardsPerFoot.
         /// </summary>
-        public double CubicYardsPerFoot => As(VolumePerLengthUnit.CubicYardPerFoot);
+        public decimal CubicYardsPerFoot => As(VolumePerLengthUnit.CubicYardPerFoot);
 
         /// <summary>
         ///     Get VolumePerLength in CubicYardsPerUsSurveyFoot.
         /// </summary>
-        public double CubicYardsPerUsSurveyFoot => As(VolumePerLengthUnit.CubicYardPerUsSurveyFoot);
+        public decimal CubicYardsPerUsSurveyFoot => As(VolumePerLengthUnit.CubicYardPerUsSurveyFoot);
 
         /// <summary>
         ///     Get VolumePerLength in LitersPerKilometer.
         /// </summary>
-        public double LitersPerKilometer => As(VolumePerLengthUnit.LiterPerKilometer);
+        public decimal LitersPerKilometer => As(VolumePerLengthUnit.LiterPerKilometer);
 
         /// <summary>
         ///     Get VolumePerLength in LitersPerMeter.
         /// </summary>
-        public double LitersPerMeter => As(VolumePerLengthUnit.LiterPerMeter);
+        public decimal LitersPerMeter => As(VolumePerLengthUnit.LiterPerMeter);
 
         /// <summary>
         ///     Get VolumePerLength in LitersPerMillimeter.
         /// </summary>
-        public double LitersPerMillimeter => As(VolumePerLengthUnit.LiterPerMillimeter);
+        public decimal LitersPerMillimeter => As(VolumePerLengthUnit.LiterPerMillimeter);
 
         /// <summary>
         ///     Get VolumePerLength in OilBarrelsPerFoot.
         /// </summary>
-        public double OilBarrelsPerFoot => As(VolumePerLengthUnit.OilBarrelPerFoot);
+        public decimal OilBarrelsPerFoot => As(VolumePerLengthUnit.OilBarrelPerFoot);
 
         #endregion
 
@@ -225,9 +225,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumePerLength FromCubicMetersPerMeter(double cubicmeterspermeter)
+        public static VolumePerLength FromCubicMetersPerMeter(decimal cubicmeterspermeter)
         {
-            double value = (double) cubicmeterspermeter;
+            decimal value = (decimal) cubicmeterspermeter;
             return new VolumePerLength(value, VolumePerLengthUnit.CubicMeterPerMeter);
         }
         /// <summary>
@@ -235,9 +235,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumePerLength FromCubicYardsPerFoot(double cubicyardsperfoot)
+        public static VolumePerLength FromCubicYardsPerFoot(decimal cubicyardsperfoot)
         {
-            double value = (double) cubicyardsperfoot;
+            decimal value = (decimal) cubicyardsperfoot;
             return new VolumePerLength(value, VolumePerLengthUnit.CubicYardPerFoot);
         }
         /// <summary>
@@ -245,9 +245,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumePerLength FromCubicYardsPerUsSurveyFoot(double cubicyardsperussurveyfoot)
+        public static VolumePerLength FromCubicYardsPerUsSurveyFoot(decimal cubicyardsperussurveyfoot)
         {
-            double value = (double) cubicyardsperussurveyfoot;
+            decimal value = (decimal) cubicyardsperussurveyfoot;
             return new VolumePerLength(value, VolumePerLengthUnit.CubicYardPerUsSurveyFoot);
         }
         /// <summary>
@@ -255,9 +255,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumePerLength FromLitersPerKilometer(double litersperkilometer)
+        public static VolumePerLength FromLitersPerKilometer(decimal litersperkilometer)
         {
-            double value = (double) litersperkilometer;
+            decimal value = (decimal) litersperkilometer;
             return new VolumePerLength(value, VolumePerLengthUnit.LiterPerKilometer);
         }
         /// <summary>
@@ -265,9 +265,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumePerLength FromLitersPerMeter(double literspermeter)
+        public static VolumePerLength FromLitersPerMeter(decimal literspermeter)
         {
-            double value = (double) literspermeter;
+            decimal value = (decimal) literspermeter;
             return new VolumePerLength(value, VolumePerLengthUnit.LiterPerMeter);
         }
         /// <summary>
@@ -275,9 +275,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumePerLength FromLitersPerMillimeter(double literspermillimeter)
+        public static VolumePerLength FromLitersPerMillimeter(decimal literspermillimeter)
         {
-            double value = (double) literspermillimeter;
+            decimal value = (decimal) literspermillimeter;
             return new VolumePerLength(value, VolumePerLengthUnit.LiterPerMillimeter);
         }
         /// <summary>
@@ -285,9 +285,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumePerLength FromOilBarrelsPerFoot(double oilbarrelsperfoot)
+        public static VolumePerLength FromOilBarrelsPerFoot(decimal oilbarrelsperfoot)
         {
-            double value = (double) oilbarrelsperfoot;
+            decimal value = (decimal) oilbarrelsperfoot;
             return new VolumePerLength(value, VolumePerLengthUnit.OilBarrelPerFoot);
         }
 
@@ -299,9 +299,9 @@ namespace UnitsNet
         /// <returns>VolumePerLength unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static VolumePerLength From(double value, VolumePerLengthUnit fromUnit)
+        public static VolumePerLength From(decimal value, VolumePerLengthUnit fromUnit)
         {
-            return new VolumePerLength((double)value, fromUnit);
+            return new VolumePerLength((decimal)value, fromUnit);
         }
 
         #endregion
@@ -523,13 +523,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(VolumePerLength other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(VolumePerLength other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -547,19 +547,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((VolumePerLengthUnit)unit);
+        decimal IQuantity.As(object unit) => As((VolumePerLengthUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(VolumePerLengthUnit unit)
+        public decimal As(VolumePerLengthUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -577,23 +577,23 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
                 case VolumePerLengthUnit.CubicMeterPerMeter: return _value;
-                case VolumePerLengthUnit.CubicYardPerFoot: return _value*2.50838208;
-                case VolumePerLengthUnit.CubicYardPerUsSurveyFoot: return _value*2.50837706323584;
-                case VolumePerLengthUnit.LiterPerKilometer: return _value/1e6;
-                case VolumePerLengthUnit.LiterPerMeter: return _value/1000;
+                case VolumePerLengthUnit.CubicYardPerFoot: return _value*2.50838208m;
+                case VolumePerLengthUnit.CubicYardPerUsSurveyFoot: return _value*2.50837706323584m;
+                case VolumePerLengthUnit.LiterPerKilometer: return _value/1e6m;
+                case VolumePerLengthUnit.LiterPerMeter: return _value/1000m;
                 case VolumePerLengthUnit.LiterPerMillimeter: return _value;
-                case VolumePerLengthUnit.OilBarrelPerFoot: return _value/1.91713408;
+                case VolumePerLengthUnit.OilBarrelPerFoot: return _value/1.91713408m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(VolumePerLengthUnit unit)
+        private decimal AsBaseNumericType(VolumePerLengthUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -603,12 +603,12 @@ namespace UnitsNet
             switch(unit)
             {
                 case VolumePerLengthUnit.CubicMeterPerMeter: return baseUnitValue;
-                case VolumePerLengthUnit.CubicYardPerFoot: return baseUnitValue/2.50838208;
-                case VolumePerLengthUnit.CubicYardPerUsSurveyFoot: return baseUnitValue/2.50837706323584;
-                case VolumePerLengthUnit.LiterPerKilometer: return baseUnitValue*1e6;
-                case VolumePerLengthUnit.LiterPerMeter: return baseUnitValue*1000;
+                case VolumePerLengthUnit.CubicYardPerFoot: return baseUnitValue/2.50838208m;
+                case VolumePerLengthUnit.CubicYardPerUsSurveyFoot: return baseUnitValue/2.50837706323584m;
+                case VolumePerLengthUnit.LiterPerKilometer: return baseUnitValue*1e6m;
+                case VolumePerLengthUnit.LiterPerMeter: return baseUnitValue*1000m;
                 case VolumePerLengthUnit.LiterPerMillimeter: return baseUnitValue;
-                case VolumePerLengthUnit.OilBarrelPerFoot: return baseUnitValue*1.91713408;
+                case VolumePerLengthUnit.OilBarrelPerFoot: return baseUnitValue*1.91713408m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -647,7 +647,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -667,7 +667,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

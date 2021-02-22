@@ -37,20 +37,20 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class ApparentEnergyTestsBase : QuantityTestsBase
     {
-        protected abstract double KilovoltampereHoursInOneVoltampereHour { get; }
-        protected abstract double MegavoltampereHoursInOneVoltampereHour { get; }
-        protected abstract double VoltampereHoursInOneVoltampereHour { get; }
+        protected abstract decimal KilovoltampereHoursInOneVoltampereHour { get; }
+        protected abstract decimal MegavoltampereHoursInOneVoltampereHour { get; }
+        protected abstract decimal VoltampereHoursInOneVoltampereHour { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double KilovoltampereHoursTolerance { get { return 1e-5; } }
-        protected virtual double MegavoltampereHoursTolerance { get { return 1e-5; } }
-        protected virtual double VoltampereHoursTolerance { get { return 1e-5; } }
+        protected virtual decimal KilovoltampereHoursTolerance { get { return 1e-5; } }
+        protected virtual decimal MegavoltampereHoursTolerance { get { return 1e-5; } }
+        protected virtual decimal VoltampereHoursTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new ApparentEnergy((double)0.0, ApparentEnergyUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new ApparentEnergy((decimal)0.0, ApparentEnergyUnit.Undefined));
         }
 
         [Fact]
@@ -61,19 +61,6 @@ namespace UnitsNet.Tests
             Assert.Equal(ApparentEnergyUnit.VoltampereHour, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new ApparentEnergy(double.PositiveInfinity, ApparentEnergyUnit.VoltampereHour));
-            Assert.Throws<ArgumentException>(() => new ApparentEnergy(double.NegativeInfinity, ApparentEnergyUnit.VoltampereHour));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new ApparentEnergy(double.NaN, ApparentEnergyUnit.VoltampereHour));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -144,19 +131,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromVoltampereHours_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => ApparentEnergy.FromVoltampereHours(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => ApparentEnergy.FromVoltampereHours(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromVoltampereHours_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => ApparentEnergy.FromVoltampereHours(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var voltamperehour = ApparentEnergy.FromVoltampereHours(1);
@@ -173,7 +147,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -188,15 +162,15 @@ namespace UnitsNet.Tests
             var voltamperehour = ApparentEnergy.FromVoltampereHours(1);
 
             var kilovoltamperehourQuantity = voltamperehour.ToUnit(ApparentEnergyUnit.KilovoltampereHour);
-            AssertEx.EqualTolerance(KilovoltampereHoursInOneVoltampereHour, (double)kilovoltamperehourQuantity.Value, KilovoltampereHoursTolerance);
+            AssertEx.EqualTolerance(KilovoltampereHoursInOneVoltampereHour, (decimal)kilovoltamperehourQuantity.Value, KilovoltampereHoursTolerance);
             Assert.Equal(ApparentEnergyUnit.KilovoltampereHour, kilovoltamperehourQuantity.Unit);
 
             var megavoltamperehourQuantity = voltamperehour.ToUnit(ApparentEnergyUnit.MegavoltampereHour);
-            AssertEx.EqualTolerance(MegavoltampereHoursInOneVoltampereHour, (double)megavoltamperehourQuantity.Value, MegavoltampereHoursTolerance);
+            AssertEx.EqualTolerance(MegavoltampereHoursInOneVoltampereHour, (decimal)megavoltamperehourQuantity.Value, MegavoltampereHoursTolerance);
             Assert.Equal(ApparentEnergyUnit.MegavoltampereHour, megavoltamperehourQuantity.Unit);
 
             var voltamperehourQuantity = voltamperehour.ToUnit(ApparentEnergyUnit.VoltampereHour);
-            AssertEx.EqualTolerance(VoltampereHoursInOneVoltampereHour, (double)voltamperehourQuantity.Value, VoltampereHoursTolerance);
+            AssertEx.EqualTolerance(VoltampereHoursInOneVoltampereHour, (decimal)voltamperehourQuantity.Value, VoltampereHoursTolerance);
             Assert.Equal(ApparentEnergyUnit.VoltampereHour, voltamperehourQuantity.Unit);
         }
 
@@ -398,10 +372,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 VAh", new ApparentEnergy(0.123456, ApparentEnergyUnit.VoltampereHour).ToString("s1"));
-                Assert.Equal("0.12 VAh", new ApparentEnergy(0.123456, ApparentEnergyUnit.VoltampereHour).ToString("s2"));
-                Assert.Equal("0.123 VAh", new ApparentEnergy(0.123456, ApparentEnergyUnit.VoltampereHour).ToString("s3"));
-                Assert.Equal("0.1235 VAh", new ApparentEnergy(0.123456, ApparentEnergyUnit.VoltampereHour).ToString("s4"));
+                Assert.Equal("0.1 VAh", new ApparentEnergy(0.123456m, ApparentEnergyUnit.VoltampereHour).ToString("s1"));
+                Assert.Equal("0.12 VAh", new ApparentEnergy(0.123456m, ApparentEnergyUnit.VoltampereHour).ToString("s2"));
+                Assert.Equal("0.123 VAh", new ApparentEnergy(0.123456m, ApparentEnergyUnit.VoltampereHour).ToString("s3"));
+                Assert.Equal("0.1235 VAh", new ApparentEnergy(0.123456m, ApparentEnergyUnit.VoltampereHour).ToString("s4"));
             }
             finally
             {
@@ -413,10 +387,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 VAh", new ApparentEnergy(0.123456, ApparentEnergyUnit.VoltampereHour).ToString("s1", culture));
-            Assert.Equal("0.12 VAh", new ApparentEnergy(0.123456, ApparentEnergyUnit.VoltampereHour).ToString("s2", culture));
-            Assert.Equal("0.123 VAh", new ApparentEnergy(0.123456, ApparentEnergyUnit.VoltampereHour).ToString("s3", culture));
-            Assert.Equal("0.1235 VAh", new ApparentEnergy(0.123456, ApparentEnergyUnit.VoltampereHour).ToString("s4", culture));
+            Assert.Equal("0.1 VAh", new ApparentEnergy(0.123456m, ApparentEnergyUnit.VoltampereHour).ToString("s1", culture));
+            Assert.Equal("0.12 VAh", new ApparentEnergy(0.123456m, ApparentEnergyUnit.VoltampereHour).ToString("s2", culture));
+            Assert.Equal("0.123 VAh", new ApparentEnergy(0.123456m, ApparentEnergyUnit.VoltampereHour).ToString("s3", culture));
+            Assert.Equal("0.1235 VAh", new ApparentEnergy(0.123456m, ApparentEnergyUnit.VoltampereHour).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -594,7 +568,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = ApparentEnergy.FromVoltampereHours(value);
             Assert.Equal(ApparentEnergy.FromVoltampereHours(-value), -quantity);

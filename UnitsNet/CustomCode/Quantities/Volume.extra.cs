@@ -28,13 +28,13 @@ namespace UnitsNet
         /// <summary>Get <see cref="VolumeFlow"/> from <see cref="Volume"/> divided by <see cref="TimeSpan"/>.</summary>
         public static VolumeFlow operator /(Volume volume, TimeSpan timeSpan)
         {
-            return VolumeFlow.FromCubicMetersPerSecond(volume.CubicMeters / timeSpan.TotalSeconds);
+            return VolumeFlow.FromCubicMetersPerSecond(volume.CubicMeters / (decimal)timeSpan.TotalSeconds);
         }
 
         /// <summary>Get <see cref="TimeSpan"/> from <see cref="Volume"/> divided by <see cref="VolumeFlow"/>.</summary>
         public static TimeSpan operator /(Volume volume, VolumeFlow volumeFlow)
         {
-            return TimeSpan.FromSeconds(volume.CubicMeters / volumeFlow.CubicMetersPerSecond);
+            return TimeSpan.FromSeconds((double)(volume.CubicMeters / volumeFlow.CubicMetersPerSecond));
         }
     }
 }

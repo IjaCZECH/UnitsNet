@@ -30,7 +30,7 @@ namespace UnitsNet.NumberExtensions.NumberToMagneticFlux
     {
         /// <inheritdoc cref="MagneticFlux.FromWebers(UnitsNet.QuantityValue)" />
         public static MagneticFlux Webers<T>(this T value) =>
-            MagneticFlux.FromWebers(Convert.ToDouble(value));
+            MagneticFlux.FromWebers(Convert.ToDecimal(value));
 
     }
 }

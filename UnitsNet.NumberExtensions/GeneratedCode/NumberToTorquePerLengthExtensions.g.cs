@@ -30,87 +30,87 @@ namespace UnitsNet.NumberExtensions.NumberToTorquePerLength
     {
         /// <inheritdoc cref="TorquePerLength.FromKilogramForceCentimetersPerMeter(UnitsNet.QuantityValue)" />
         public static TorquePerLength KilogramForceCentimetersPerMeter<T>(this T value) =>
-            TorquePerLength.FromKilogramForceCentimetersPerMeter(Convert.ToDouble(value));
+            TorquePerLength.FromKilogramForceCentimetersPerMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TorquePerLength.FromKilogramForceMetersPerMeter(UnitsNet.QuantityValue)" />
         public static TorquePerLength KilogramForceMetersPerMeter<T>(this T value) =>
-            TorquePerLength.FromKilogramForceMetersPerMeter(Convert.ToDouble(value));
+            TorquePerLength.FromKilogramForceMetersPerMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TorquePerLength.FromKilogramForceMillimetersPerMeter(UnitsNet.QuantityValue)" />
         public static TorquePerLength KilogramForceMillimetersPerMeter<T>(this T value) =>
-            TorquePerLength.FromKilogramForceMillimetersPerMeter(Convert.ToDouble(value));
+            TorquePerLength.FromKilogramForceMillimetersPerMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TorquePerLength.FromKilonewtonCentimetersPerMeter(UnitsNet.QuantityValue)" />
         public static TorquePerLength KilonewtonCentimetersPerMeter<T>(this T value) =>
-            TorquePerLength.FromKilonewtonCentimetersPerMeter(Convert.ToDouble(value));
+            TorquePerLength.FromKilonewtonCentimetersPerMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TorquePerLength.FromKilonewtonMetersPerMeter(UnitsNet.QuantityValue)" />
         public static TorquePerLength KilonewtonMetersPerMeter<T>(this T value) =>
-            TorquePerLength.FromKilonewtonMetersPerMeter(Convert.ToDouble(value));
+            TorquePerLength.FromKilonewtonMetersPerMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TorquePerLength.FromKilonewtonMillimetersPerMeter(UnitsNet.QuantityValue)" />
         public static TorquePerLength KilonewtonMillimetersPerMeter<T>(this T value) =>
-            TorquePerLength.FromKilonewtonMillimetersPerMeter(Convert.ToDouble(value));
+            TorquePerLength.FromKilonewtonMillimetersPerMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TorquePerLength.FromKilopoundForceFeetPerFoot(UnitsNet.QuantityValue)" />
         public static TorquePerLength KilopoundForceFeetPerFoot<T>(this T value) =>
-            TorquePerLength.FromKilopoundForceFeetPerFoot(Convert.ToDouble(value));
+            TorquePerLength.FromKilopoundForceFeetPerFoot(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TorquePerLength.FromKilopoundForceInchesPerFoot(UnitsNet.QuantityValue)" />
         public static TorquePerLength KilopoundForceInchesPerFoot<T>(this T value) =>
-            TorquePerLength.FromKilopoundForceInchesPerFoot(Convert.ToDouble(value));
+            TorquePerLength.FromKilopoundForceInchesPerFoot(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TorquePerLength.FromMeganewtonCentimetersPerMeter(UnitsNet.QuantityValue)" />
         public static TorquePerLength MeganewtonCentimetersPerMeter<T>(this T value) =>
-            TorquePerLength.FromMeganewtonCentimetersPerMeter(Convert.ToDouble(value));
+            TorquePerLength.FromMeganewtonCentimetersPerMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TorquePerLength.FromMeganewtonMetersPerMeter(UnitsNet.QuantityValue)" />
         public static TorquePerLength MeganewtonMetersPerMeter<T>(this T value) =>
-            TorquePerLength.FromMeganewtonMetersPerMeter(Convert.ToDouble(value));
+            TorquePerLength.FromMeganewtonMetersPerMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TorquePerLength.FromMeganewtonMillimetersPerMeter(UnitsNet.QuantityValue)" />
         public static TorquePerLength MeganewtonMillimetersPerMeter<T>(this T value) =>
-            TorquePerLength.FromMeganewtonMillimetersPerMeter(Convert.ToDouble(value));
+            TorquePerLength.FromMeganewtonMillimetersPerMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TorquePerLength.FromMegapoundForceFeetPerFoot(UnitsNet.QuantityValue)" />
         public static TorquePerLength MegapoundForceFeetPerFoot<T>(this T value) =>
-            TorquePerLength.FromMegapoundForceFeetPerFoot(Convert.ToDouble(value));
+            TorquePerLength.FromMegapoundForceFeetPerFoot(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TorquePerLength.FromMegapoundForceInchesPerFoot(UnitsNet.QuantityValue)" />
         public static TorquePerLength MegapoundForceInchesPerFoot<T>(this T value) =>
-            TorquePerLength.FromMegapoundForceInchesPerFoot(Convert.ToDouble(value));
+            TorquePerLength.FromMegapoundForceInchesPerFoot(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TorquePerLength.FromNewtonCentimetersPerMeter(UnitsNet.QuantityValue)" />
         public static TorquePerLength NewtonCentimetersPerMeter<T>(this T value) =>
-            TorquePerLength.FromNewtonCentimetersPerMeter(Convert.ToDouble(value));
+            TorquePerLength.FromNewtonCentimetersPerMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TorquePerLength.FromNewtonMetersPerMeter(UnitsNet.QuantityValue)" />
         public static TorquePerLength NewtonMetersPerMeter<T>(this T value) =>
-            TorquePerLength.FromNewtonMetersPerMeter(Convert.ToDouble(value));
+            TorquePerLength.FromNewtonMetersPerMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TorquePerLength.FromNewtonMillimetersPerMeter(UnitsNet.QuantityValue)" />
         public static TorquePerLength NewtonMillimetersPerMeter<T>(this T value) =>
-            TorquePerLength.FromNewtonMillimetersPerMeter(Convert.ToDouble(value));
+            TorquePerLength.FromNewtonMillimetersPerMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TorquePerLength.FromPoundForceFeetPerFoot(UnitsNet.QuantityValue)" />
         public static TorquePerLength PoundForceFeetPerFoot<T>(this T value) =>
-            TorquePerLength.FromPoundForceFeetPerFoot(Convert.ToDouble(value));
+            TorquePerLength.FromPoundForceFeetPerFoot(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TorquePerLength.FromPoundForceInchesPerFoot(UnitsNet.QuantityValue)" />
         public static TorquePerLength PoundForceInchesPerFoot<T>(this T value) =>
-            TorquePerLength.FromPoundForceInchesPerFoot(Convert.ToDouble(value));
+            TorquePerLength.FromPoundForceInchesPerFoot(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TorquePerLength.FromTonneForceCentimetersPerMeter(UnitsNet.QuantityValue)" />
         public static TorquePerLength TonneForceCentimetersPerMeter<T>(this T value) =>
-            TorquePerLength.FromTonneForceCentimetersPerMeter(Convert.ToDouble(value));
+            TorquePerLength.FromTonneForceCentimetersPerMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TorquePerLength.FromTonneForceMetersPerMeter(UnitsNet.QuantityValue)" />
         public static TorquePerLength TonneForceMetersPerMeter<T>(this T value) =>
-            TorquePerLength.FromTonneForceMetersPerMeter(Convert.ToDouble(value));
+            TorquePerLength.FromTonneForceMetersPerMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TorquePerLength.FromTonneForceMillimetersPerMeter(UnitsNet.QuantityValue)" />
         public static TorquePerLength TonneForceMillimetersPerMeter<T>(this T value) =>
-            TorquePerLength.FromTonneForceMillimetersPerMeter(Convert.ToDouble(value));
+            TorquePerLength.FromTonneForceMillimetersPerMeter(Convert.ToDecimal(value));
 
     }
 }

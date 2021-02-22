@@ -18,8 +18,8 @@
     {
       "SingularName": "DecimalFractionPerSecond",
       "PluralName": "DecimalFractionsPerSecond",
-      "FromUnitToBaseFunc": "x*1e2",
-      "FromBaseToUnitFunc": "x/1e2",
+      "FromUnitToBaseFunc": "x*1e2m",
+      "FromBaseToUnitFunc": "x/1e2m",
       "Localization": [
         {
           "Culture": "en-US",

@@ -30,103 +30,103 @@ namespace UnitsNet.NumberExtensions.NumberToPower
     {
         /// <inheritdoc cref="Power.FromBoilerHorsepower(UnitsNet.QuantityValue)" />
         public static Power BoilerHorsepower<T>(this T value) =>
-            Power.FromBoilerHorsepower(Convert.ToDouble(value));
+            Power.FromBoilerHorsepower(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Power.FromBritishThermalUnitsPerHour(UnitsNet.QuantityValue)" />
         public static Power BritishThermalUnitsPerHour<T>(this T value) =>
-            Power.FromBritishThermalUnitsPerHour(Convert.ToDouble(value));
+            Power.FromBritishThermalUnitsPerHour(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Power.FromDecawatts(UnitsNet.QuantityValue)" />
         public static Power Decawatts<T>(this T value) =>
-            Power.FromDecawatts(Convert.ToDouble(value));
+            Power.FromDecawatts(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Power.FromDeciwatts(UnitsNet.QuantityValue)" />
         public static Power Deciwatts<T>(this T value) =>
-            Power.FromDeciwatts(Convert.ToDouble(value));
+            Power.FromDeciwatts(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Power.FromElectricalHorsepower(UnitsNet.QuantityValue)" />
         public static Power ElectricalHorsepower<T>(this T value) =>
-            Power.FromElectricalHorsepower(Convert.ToDouble(value));
+            Power.FromElectricalHorsepower(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Power.FromFemtowatts(UnitsNet.QuantityValue)" />
         public static Power Femtowatts<T>(this T value) =>
-            Power.FromFemtowatts(Convert.ToDouble(value));
+            Power.FromFemtowatts(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Power.FromGigajoulesPerHour(UnitsNet.QuantityValue)" />
         public static Power GigajoulesPerHour<T>(this T value) =>
-            Power.FromGigajoulesPerHour(Convert.ToDouble(value));
+            Power.FromGigajoulesPerHour(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Power.FromGigawatts(UnitsNet.QuantityValue)" />
         public static Power Gigawatts<T>(this T value) =>
-            Power.FromGigawatts(Convert.ToDouble(value));
+            Power.FromGigawatts(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Power.FromHydraulicHorsepower(UnitsNet.QuantityValue)" />
         public static Power HydraulicHorsepower<T>(this T value) =>
-            Power.FromHydraulicHorsepower(Convert.ToDouble(value));
+            Power.FromHydraulicHorsepower(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Power.FromJoulesPerHour(UnitsNet.QuantityValue)" />
         public static Power JoulesPerHour<T>(this T value) =>
-            Power.FromJoulesPerHour(Convert.ToDouble(value));
+            Power.FromJoulesPerHour(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Power.FromKilobritishThermalUnitsPerHour(UnitsNet.QuantityValue)" />
         public static Power KilobritishThermalUnitsPerHour<T>(this T value) =>
-            Power.FromKilobritishThermalUnitsPerHour(Convert.ToDouble(value));
+            Power.FromKilobritishThermalUnitsPerHour(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Power.FromKilojoulesPerHour(UnitsNet.QuantityValue)" />
         public static Power KilojoulesPerHour<T>(this T value) =>
-            Power.FromKilojoulesPerHour(Convert.ToDouble(value));
+            Power.FromKilojoulesPerHour(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Power.FromKilowatts(UnitsNet.QuantityValue)" />
         public static Power Kilowatts<T>(this T value) =>
-            Power.FromKilowatts(Convert.ToDouble(value));
-
-        /// <inheritdoc cref="Power.FromMechanicalHorsepower(UnitsNet.QuantityValue)" />
-        public static Power MechanicalHorsepower<T>(this T value) =>
-            Power.FromMechanicalHorsepower(Convert.ToDouble(value));
+            Power.FromKilowatts(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Power.FromMegajoulesPerHour(UnitsNet.QuantityValue)" />
         public static Power MegajoulesPerHour<T>(this T value) =>
-            Power.FromMegajoulesPerHour(Convert.ToDouble(value));
+            Power.FromMegajoulesPerHour(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Power.FromMegawatts(UnitsNet.QuantityValue)" />
         public static Power Megawatts<T>(this T value) =>
-            Power.FromMegawatts(Convert.ToDouble(value));
+            Power.FromMegawatts(Convert.ToDecimal(value));
+
+        /// <inheritdoc cref="Power.FromMechanicalHorsepower(UnitsNet.QuantityValue)" />
+        public static Power MechanicalHorsepower<T>(this T value) =>
+            Power.FromMechanicalHorsepower(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Power.FromMetricHorsepower(UnitsNet.QuantityValue)" />
         public static Power MetricHorsepower<T>(this T value) =>
-            Power.FromMetricHorsepower(Convert.ToDouble(value));
+            Power.FromMetricHorsepower(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Power.FromMicrowatts(UnitsNet.QuantityValue)" />
         public static Power Microwatts<T>(this T value) =>
-            Power.FromMicrowatts(Convert.ToDouble(value));
+            Power.FromMicrowatts(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Power.FromMillijoulesPerHour(UnitsNet.QuantityValue)" />
         public static Power MillijoulesPerHour<T>(this T value) =>
-            Power.FromMillijoulesPerHour(Convert.ToDouble(value));
+            Power.FromMillijoulesPerHour(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Power.FromMilliwatts(UnitsNet.QuantityValue)" />
         public static Power Milliwatts<T>(this T value) =>
-            Power.FromMilliwatts(Convert.ToDouble(value));
+            Power.FromMilliwatts(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Power.FromNanowatts(UnitsNet.QuantityValue)" />
         public static Power Nanowatts<T>(this T value) =>
-            Power.FromNanowatts(Convert.ToDouble(value));
+            Power.FromNanowatts(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Power.FromPetawatts(UnitsNet.QuantityValue)" />
         public static Power Petawatts<T>(this T value) =>
-            Power.FromPetawatts(Convert.ToDouble(value));
+            Power.FromPetawatts(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Power.FromPicowatts(UnitsNet.QuantityValue)" />
         public static Power Picowatts<T>(this T value) =>
-            Power.FromPicowatts(Convert.ToDouble(value));
+            Power.FromPicowatts(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Power.FromTerawatts(UnitsNet.QuantityValue)" />
         public static Power Terawatts<T>(this T value) =>
-            Power.FromTerawatts(Convert.ToDouble(value));
+            Power.FromTerawatts(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Power.FromWatts(UnitsNet.QuantityValue)" />
         public static Power Watts<T>(this T value) =>
-            Power.FromWatts(Convert.ToDouble(value));
+            Power.FromWatts(Convert.ToDecimal(value));
 
     }
 }

@@ -42,7 +42,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -68,12 +68,12 @@ namespace UnitsNet
         /// <param name="value">The numeric value to construct this quantity with.</param>
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        public ElectricConductivity(double value, ElectricConductivityUnit unit)
+        public ElectricConductivity(decimal value, ElectricConductivityUnit unit)
         {
             if(unit == ElectricConductivityUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -85,14 +85,14 @@ namespace UnitsNet
         /// <param name="unitSystem">The unit system to create the quantity with.</param>
         /// <exception cref="ArgumentNullException">The given <see cref="UnitSystem"/> is null.</exception>
         /// <exception cref="ArgumentException">No unit was found for the given <see cref="UnitSystem"/>.</exception>
-        public ElectricConductivity(double value, UnitSystem unitSystem)
+        public ElectricConductivity(decimal value, UnitSystem unitSystem)
         {
             if(unitSystem is null) throw new ArgumentNullException(nameof(unitSystem));
 
             var unitInfos = Info.GetUnitInfosFor(unitSystem.BaseUnits);
             var firstUnitInfo = unitInfos.FirstOrDefault();
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = firstUnitInfo?.Value ?? throw new ArgumentException("No units were found for the given UnitSystem.", nameof(unitSystem));
         }
 
@@ -114,12 +114,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of ElectricConductivity
         /// </summary>
-        public static ElectricConductivity MaxValue { get; } = new ElectricConductivity(double.MaxValue, BaseUnit);
+        public static ElectricConductivity MaxValue { get; } = new ElectricConductivity(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of ElectricConductivity
         /// </summary>
-        public static ElectricConductivity MinValue { get; } = new ElectricConductivity(double.MinValue, BaseUnit);
+        public static ElectricConductivity MinValue { get; } = new ElectricConductivity(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -143,7 +143,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => _value;
+        public decimal Value => _value;
 
         Enum IQuantity.Unit => Unit;
 
@@ -173,17 +173,17 @@ namespace UnitsNet
         /// <summary>
         ///     Get ElectricConductivity in SiemensPerFoot.
         /// </summary>
-        public double SiemensPerFoot => As(ElectricConductivityUnit.SiemensPerFoot);
+        public decimal SiemensPerFoot => As(ElectricConductivityUnit.SiemensPerFoot);
 
         /// <summary>
         ///     Get ElectricConductivity in SiemensPerInch.
         /// </summary>
-        public double SiemensPerInch => As(ElectricConductivityUnit.SiemensPerInch);
+        public decimal SiemensPerInch => As(ElectricConductivityUnit.SiemensPerInch);
 
         /// <summary>
         ///     Get ElectricConductivity in SiemensPerMeter.
         /// </summary>
-        public double SiemensPerMeter => As(ElectricConductivityUnit.SiemensPerMeter);
+        public decimal SiemensPerMeter => As(ElectricConductivityUnit.SiemensPerMeter);
 
         #endregion
 
@@ -220,7 +220,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ElectricConductivity FromSiemensPerFoot(QuantityValue siemensperfoot)
         {
-            double value = (double) siemensperfoot;
+            decimal value = (decimal) siemensperfoot;
             return new ElectricConductivity(value, ElectricConductivityUnit.SiemensPerFoot);
         }
         /// <summary>
@@ -229,7 +229,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ElectricConductivity FromSiemensPerInch(QuantityValue siemensperinch)
         {
-            double value = (double) siemensperinch;
+            decimal value = (decimal) siemensperinch;
             return new ElectricConductivity(value, ElectricConductivityUnit.SiemensPerInch);
         }
         /// <summary>
@@ -238,7 +238,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ElectricConductivity FromSiemensPerMeter(QuantityValue siemenspermeter)
         {
-            double value = (double) siemenspermeter;
+            decimal value = (decimal) siemenspermeter;
             return new ElectricConductivity(value, ElectricConductivityUnit.SiemensPerMeter);
         }
 
@@ -250,7 +250,7 @@ namespace UnitsNet
         /// <returns>ElectricConductivity unit value.</returns>
         public static ElectricConductivity From(QuantityValue value, ElectricConductivityUnit fromUnit)
         {
-            return new ElectricConductivity((double)value, fromUnit);
+            return new ElectricConductivity((decimal)value, fromUnit);
         }
 
         #endregion
@@ -420,25 +420,25 @@ namespace UnitsNet
         }
 
         /// <summary>Get <see cref="ElectricConductivity"/> from multiplying value and <see cref="ElectricConductivity"/>.</summary>
-        public static ElectricConductivity operator *(double left, ElectricConductivity right)
+        public static ElectricConductivity operator *(decimal left, ElectricConductivity right)
         {
             return new ElectricConductivity(left * right.Value, right.Unit);
         }
 
         /// <summary>Get <see cref="ElectricConductivity"/> from multiplying value and <see cref="ElectricConductivity"/>.</summary>
-        public static ElectricConductivity operator *(ElectricConductivity left, double right)
+        public static ElectricConductivity operator *(ElectricConductivity left, decimal right)
         {
             return new ElectricConductivity(left.Value * right, left.Unit);
         }
 
         /// <summary>Get <see cref="ElectricConductivity"/> from dividing <see cref="ElectricConductivity"/> by value.</summary>
-        public static ElectricConductivity operator /(ElectricConductivity left, double right)
+        public static ElectricConductivity operator /(ElectricConductivity left, decimal right)
         {
             return new ElectricConductivity(left.Value / right, left.Unit);
         }
 
         /// <summary>Get ratio value from dividing <see cref="ElectricConductivity"/> by <see cref="ElectricConductivity"/>.</summary>
-        public static double operator /(ElectricConductivity left, ElectricConductivity right)
+        public static decimal operator /(ElectricConductivity left, ElectricConductivity right)
         {
             return left.SiemensPerMeter / right.SiemensPerMeter;
         }
@@ -472,14 +472,14 @@ namespace UnitsNet
         }
 
         /// <summary>Returns true if exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(ElectricConductivity, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ElectricConductivity, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator ==(ElectricConductivity left, ElectricConductivity right)
         {
             return left.Equals(right);
         }
 
         /// <summary>Returns true if not exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(ElectricConductivity, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ElectricConductivity, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator !=(ElectricConductivity left, ElectricConductivity right)
         {
             return !(left == right);
@@ -501,7 +501,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(ElectricConductivity, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ElectricConductivity, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public override bool Equals(object obj)
         {
             if(obj is null || !(obj is ElectricConductivity objElectricConductivity))
@@ -511,7 +511,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(ElectricConductivity, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ElectricConductivity, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public bool Equals(ElectricConductivity other)
         {
             return _value.Equals(other.GetValueAs(this.Unit));
@@ -557,13 +557,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(ElectricConductivity other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(ElectricConductivity other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -585,17 +585,17 @@ namespace UnitsNet
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(ElectricConductivityUnit unit)
+        public decimal As(ElectricConductivityUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = GetValueAs(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <inheritdoc cref="IQuantity.As(UnitSystem)"/>
-        public double As(UnitSystem unitSystem)
+        public decimal As(UnitSystem unitSystem)
         {
             if(unitSystem is null)
                 throw new ArgumentNullException(nameof(unitSystem));
@@ -610,7 +610,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        double IQuantity.As(Enum unit)
+        decimal IQuantity.As(Enum unit)
         {
             if(!(unit is ElectricConductivityUnit unitAsElectricConductivityUnit))
                 throw new ArgumentException($"The given unit is of type {unit.GetType()}. Only {typeof(ElectricConductivityUnit)} is supported.", nameof(unit));
@@ -666,12 +666,12 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double GetValueInBaseUnit()
+        private decimal GetValueInBaseUnit()
         {
             switch(Unit)
             {
-                case ElectricConductivityUnit.SiemensPerFoot: return _value * 3.2808398950131234;
-                case ElectricConductivityUnit.SiemensPerInch: return _value * 3.937007874015748e1;
+                case ElectricConductivityUnit.SiemensPerFoot: return _value * 3.2808398950131234m;
+                case ElectricConductivityUnit.SiemensPerInch: return _value * 3.937007874015748e1m;
                 case ElectricConductivityUnit.SiemensPerMeter: return _value;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
@@ -689,7 +689,7 @@ namespace UnitsNet
             return new ElectricConductivity(baseUnitValue, BaseUnit);
         }
 
-        private double GetValueAs(ElectricConductivityUnit unit)
+        private decimal GetValueAs(ElectricConductivityUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -698,8 +698,8 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case ElectricConductivityUnit.SiemensPerFoot: return baseUnitValue / 3.2808398950131234;
-                case ElectricConductivityUnit.SiemensPerInch: return baseUnitValue / 3.937007874015748e1;
+                case ElectricConductivityUnit.SiemensPerFoot: return baseUnitValue / 3.2808398950131234m;
+                case ElectricConductivityUnit.SiemensPerInch: return baseUnitValue / 3.937007874015748e1m;
                 case ElectricConductivityUnit.SiemensPerMeter: return baseUnitValue;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
@@ -738,7 +738,7 @@ namespace UnitsNet
         [Obsolete(@"This method is deprecated and will be removed at a future release. Please use ToString(""s2"") or ToString(""s2"", provider) where 2 is an example of the number passed to significantDigitsAfterRadix.")]
         public string ToString(IFormatProvider? provider, int significantDigitsAfterRadix)
         {
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -758,7 +758,7 @@ namespace UnitsNet
 
             provider = provider ?? CultureInfo.CurrentUICulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

@@ -30,15 +30,15 @@ namespace UnitsNet.NumberExtensions.NumberToElectricConductance
     {
         /// <inheritdoc cref="ElectricConductance.FromMicrosiemens(UnitsNet.QuantityValue)" />
         public static ElectricConductance Microsiemens<T>(this T value) =>
-            ElectricConductance.FromMicrosiemens(Convert.ToDouble(value));
+            ElectricConductance.FromMicrosiemens(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricConductance.FromMillisiemens(UnitsNet.QuantityValue)" />
         public static ElectricConductance Millisiemens<T>(this T value) =>
-            ElectricConductance.FromMillisiemens(Convert.ToDouble(value));
+            ElectricConductance.FromMillisiemens(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricConductance.FromSiemens(UnitsNet.QuantityValue)" />
         public static ElectricConductance Siemens<T>(this T value) =>
-            ElectricConductance.FromSiemens(Convert.ToDouble(value));
+            ElectricConductance.FromSiemens(Convert.ToDecimal(value));
 
     }
 }

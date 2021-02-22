@@ -42,7 +42,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -69,12 +69,12 @@ namespace UnitsNet
         /// <param name="value">The numeric value to construct this quantity with.</param>
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        public ElectricInductance(double value, ElectricInductanceUnit unit)
+        public ElectricInductance(decimal value, ElectricInductanceUnit unit)
         {
             if(unit == ElectricInductanceUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -86,14 +86,14 @@ namespace UnitsNet
         /// <param name="unitSystem">The unit system to create the quantity with.</param>
         /// <exception cref="ArgumentNullException">The given <see cref="UnitSystem"/> is null.</exception>
         /// <exception cref="ArgumentException">No unit was found for the given <see cref="UnitSystem"/>.</exception>
-        public ElectricInductance(double value, UnitSystem unitSystem)
+        public ElectricInductance(decimal value, UnitSystem unitSystem)
         {
             if(unitSystem is null) throw new ArgumentNullException(nameof(unitSystem));
 
             var unitInfos = Info.GetUnitInfosFor(unitSystem.BaseUnits);
             var firstUnitInfo = unitInfos.FirstOrDefault();
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = firstUnitInfo?.Value ?? throw new ArgumentException("No units were found for the given UnitSystem.", nameof(unitSystem));
         }
 
@@ -115,12 +115,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of ElectricInductance
         /// </summary>
-        public static ElectricInductance MaxValue { get; } = new ElectricInductance(double.MaxValue, BaseUnit);
+        public static ElectricInductance MaxValue { get; } = new ElectricInductance(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of ElectricInductance
         /// </summary>
-        public static ElectricInductance MinValue { get; } = new ElectricInductance(double.MinValue, BaseUnit);
+        public static ElectricInductance MinValue { get; } = new ElectricInductance(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -144,7 +144,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => _value;
+        public decimal Value => _value;
 
         Enum IQuantity.Unit => Unit;
 
@@ -174,22 +174,22 @@ namespace UnitsNet
         /// <summary>
         ///     Get ElectricInductance in Henries.
         /// </summary>
-        public double Henries => As(ElectricInductanceUnit.Henry);
+        public decimal Henries => As(ElectricInductanceUnit.Henry);
 
         /// <summary>
         ///     Get ElectricInductance in Microhenries.
         /// </summary>
-        public double Microhenries => As(ElectricInductanceUnit.Microhenry);
+        public decimal Microhenries => As(ElectricInductanceUnit.Microhenry);
 
         /// <summary>
         ///     Get ElectricInductance in Millihenries.
         /// </summary>
-        public double Millihenries => As(ElectricInductanceUnit.Millihenry);
+        public decimal Millihenries => As(ElectricInductanceUnit.Millihenry);
 
         /// <summary>
         ///     Get ElectricInductance in Nanohenries.
         /// </summary>
-        public double Nanohenries => As(ElectricInductanceUnit.Nanohenry);
+        public decimal Nanohenries => As(ElectricInductanceUnit.Nanohenry);
 
         #endregion
 
@@ -226,7 +226,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ElectricInductance FromHenries(QuantityValue henries)
         {
-            double value = (double) henries;
+            decimal value = (decimal) henries;
             return new ElectricInductance(value, ElectricInductanceUnit.Henry);
         }
         /// <summary>
@@ -235,7 +235,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ElectricInductance FromMicrohenries(QuantityValue microhenries)
         {
-            double value = (double) microhenries;
+            decimal value = (decimal) microhenries;
             return new ElectricInductance(value, ElectricInductanceUnit.Microhenry);
         }
         /// <summary>
@@ -244,7 +244,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ElectricInductance FromMillihenries(QuantityValue millihenries)
         {
-            double value = (double) millihenries;
+            decimal value = (decimal) millihenries;
             return new ElectricInductance(value, ElectricInductanceUnit.Millihenry);
         }
         /// <summary>
@@ -253,7 +253,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ElectricInductance FromNanohenries(QuantityValue nanohenries)
         {
-            double value = (double) nanohenries;
+            decimal value = (decimal) nanohenries;
             return new ElectricInductance(value, ElectricInductanceUnit.Nanohenry);
         }
 
@@ -265,7 +265,7 @@ namespace UnitsNet
         /// <returns>ElectricInductance unit value.</returns>
         public static ElectricInductance From(QuantityValue value, ElectricInductanceUnit fromUnit)
         {
-            return new ElectricInductance((double)value, fromUnit);
+            return new ElectricInductance((decimal)value, fromUnit);
         }
 
         #endregion
@@ -435,25 +435,25 @@ namespace UnitsNet
         }
 
         /// <summary>Get <see cref="ElectricInductance"/> from multiplying value and <see cref="ElectricInductance"/>.</summary>
-        public static ElectricInductance operator *(double left, ElectricInductance right)
+        public static ElectricInductance operator *(decimal left, ElectricInductance right)
         {
             return new ElectricInductance(left * right.Value, right.Unit);
         }
 
         /// <summary>Get <see cref="ElectricInductance"/> from multiplying value and <see cref="ElectricInductance"/>.</summary>
-        public static ElectricInductance operator *(ElectricInductance left, double right)
+        public static ElectricInductance operator *(ElectricInductance left, decimal right)
         {
             return new ElectricInductance(left.Value * right, left.Unit);
         }
 
         /// <summary>Get <see cref="ElectricInductance"/> from dividing <see cref="ElectricInductance"/> by value.</summary>
-        public static ElectricInductance operator /(ElectricInductance left, double right)
+        public static ElectricInductance operator /(ElectricInductance left, decimal right)
         {
             return new ElectricInductance(left.Value / right, left.Unit);
         }
 
         /// <summary>Get ratio value from dividing <see cref="ElectricInductance"/> by <see cref="ElectricInductance"/>.</summary>
-        public static double operator /(ElectricInductance left, ElectricInductance right)
+        public static decimal operator /(ElectricInductance left, ElectricInductance right)
         {
             return left.Henries / right.Henries;
         }
@@ -487,14 +487,14 @@ namespace UnitsNet
         }
 
         /// <summary>Returns true if exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(ElectricInductance, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ElectricInductance, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator ==(ElectricInductance left, ElectricInductance right)
         {
             return left.Equals(right);
         }
 
         /// <summary>Returns true if not exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(ElectricInductance, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ElectricInductance, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator !=(ElectricInductance left, ElectricInductance right)
         {
             return !(left == right);
@@ -516,7 +516,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(ElectricInductance, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ElectricInductance, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public override bool Equals(object obj)
         {
             if(obj is null || !(obj is ElectricInductance objElectricInductance))
@@ -526,7 +526,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(ElectricInductance, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ElectricInductance, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public bool Equals(ElectricInductance other)
         {
             return _value.Equals(other.GetValueAs(this.Unit));
@@ -572,13 +572,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(ElectricInductance other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(ElectricInductance other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -600,17 +600,17 @@ namespace UnitsNet
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(ElectricInductanceUnit unit)
+        public decimal As(ElectricInductanceUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = GetValueAs(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <inheritdoc cref="IQuantity.As(UnitSystem)"/>
-        public double As(UnitSystem unitSystem)
+        public decimal As(UnitSystem unitSystem)
         {
             if(unitSystem is null)
                 throw new ArgumentNullException(nameof(unitSystem));
@@ -625,7 +625,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        double IQuantity.As(Enum unit)
+        decimal IQuantity.As(Enum unit)
         {
             if(!(unit is ElectricInductanceUnit unitAsElectricInductanceUnit))
                 throw new ArgumentException($"The given unit is of type {unit.GetType()}. Only {typeof(ElectricInductanceUnit)} is supported.", nameof(unit));
@@ -681,14 +681,14 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double GetValueInBaseUnit()
+        private decimal GetValueInBaseUnit()
         {
             switch(Unit)
             {
                 case ElectricInductanceUnit.Henry: return _value;
-                case ElectricInductanceUnit.Microhenry: return (_value) * 1e-6d;
-                case ElectricInductanceUnit.Millihenry: return (_value) * 1e-3d;
-                case ElectricInductanceUnit.Nanohenry: return (_value) * 1e-9d;
+                case ElectricInductanceUnit.Microhenry: return (_value) * 1e-6m;
+                case ElectricInductanceUnit.Millihenry: return (_value) * 1e-3m;
+                case ElectricInductanceUnit.Nanohenry: return (_value) * 1e-9m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
@@ -705,7 +705,7 @@ namespace UnitsNet
             return new ElectricInductance(baseUnitValue, BaseUnit);
         }
 
-        private double GetValueAs(ElectricInductanceUnit unit)
+        private decimal GetValueAs(ElectricInductanceUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -715,9 +715,9 @@ namespace UnitsNet
             switch(unit)
             {
                 case ElectricInductanceUnit.Henry: return baseUnitValue;
-                case ElectricInductanceUnit.Microhenry: return (baseUnitValue) / 1e-6d;
-                case ElectricInductanceUnit.Millihenry: return (baseUnitValue) / 1e-3d;
-                case ElectricInductanceUnit.Nanohenry: return (baseUnitValue) / 1e-9d;
+                case ElectricInductanceUnit.Microhenry: return (baseUnitValue) / 1e-6m;
+                case ElectricInductanceUnit.Millihenry: return (baseUnitValue) / 1e-3m;
+                case ElectricInductanceUnit.Nanohenry: return (baseUnitValue) / 1e-9m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -755,7 +755,7 @@ namespace UnitsNet
         [Obsolete(@"This method is deprecated and will be removed at a future release. Please use ToString(""s2"") or ToString(""s2"", provider) where 2 is an example of the number passed to significantDigitsAfterRadix.")]
         public string ToString(IFormatProvider? provider, int significantDigitsAfterRadix)
         {
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -775,7 +775,7 @@ namespace UnitsNet
 
             provider = provider ?? CultureInfo.CurrentUICulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

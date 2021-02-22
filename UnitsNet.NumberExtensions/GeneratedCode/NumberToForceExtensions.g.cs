@@ -30,63 +30,63 @@ namespace UnitsNet.NumberExtensions.NumberToForce
     {
         /// <inheritdoc cref="Force.FromDecanewtons(UnitsNet.QuantityValue)" />
         public static Force Decanewtons<T>(this T value) =>
-            Force.FromDecanewtons(Convert.ToDouble(value));
+            Force.FromDecanewtons(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Force.FromDyne(UnitsNet.QuantityValue)" />
         public static Force Dyne<T>(this T value) =>
-            Force.FromDyne(Convert.ToDouble(value));
+            Force.FromDyne(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Force.FromKilogramsForce(UnitsNet.QuantityValue)" />
         public static Force KilogramsForce<T>(this T value) =>
-            Force.FromKilogramsForce(Convert.ToDouble(value));
+            Force.FromKilogramsForce(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Force.FromKilonewtons(UnitsNet.QuantityValue)" />
         public static Force Kilonewtons<T>(this T value) =>
-            Force.FromKilonewtons(Convert.ToDouble(value));
+            Force.FromKilonewtons(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Force.FromKiloPonds(UnitsNet.QuantityValue)" />
         public static Force KiloPonds<T>(this T value) =>
-            Force.FromKiloPonds(Convert.ToDouble(value));
+            Force.FromKiloPonds(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Force.FromKilopoundsForce(UnitsNet.QuantityValue)" />
         public static Force KilopoundsForce<T>(this T value) =>
-            Force.FromKilopoundsForce(Convert.ToDouble(value));
+            Force.FromKilopoundsForce(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Force.FromMeganewtons(UnitsNet.QuantityValue)" />
         public static Force Meganewtons<T>(this T value) =>
-            Force.FromMeganewtons(Convert.ToDouble(value));
+            Force.FromMeganewtons(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Force.FromMicronewtons(UnitsNet.QuantityValue)" />
         public static Force Micronewtons<T>(this T value) =>
-            Force.FromMicronewtons(Convert.ToDouble(value));
+            Force.FromMicronewtons(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Force.FromMillinewtons(UnitsNet.QuantityValue)" />
         public static Force Millinewtons<T>(this T value) =>
-            Force.FromMillinewtons(Convert.ToDouble(value));
+            Force.FromMillinewtons(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Force.FromNewtons(UnitsNet.QuantityValue)" />
         public static Force Newtons<T>(this T value) =>
-            Force.FromNewtons(Convert.ToDouble(value));
+            Force.FromNewtons(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Force.FromOunceForce(UnitsNet.QuantityValue)" />
         public static Force OunceForce<T>(this T value) =>
-            Force.FromOunceForce(Convert.ToDouble(value));
+            Force.FromOunceForce(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Force.FromPoundals(UnitsNet.QuantityValue)" />
         public static Force Poundals<T>(this T value) =>
-            Force.FromPoundals(Convert.ToDouble(value));
+            Force.FromPoundals(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Force.FromPoundsForce(UnitsNet.QuantityValue)" />
         public static Force PoundsForce<T>(this T value) =>
-            Force.FromPoundsForce(Convert.ToDouble(value));
+            Force.FromPoundsForce(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Force.FromShortTonsForce(UnitsNet.QuantityValue)" />
         public static Force ShortTonsForce<T>(this T value) =>
-            Force.FromShortTonsForce(Convert.ToDouble(value));
+            Force.FromShortTonsForce(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Force.FromTonnesForce(UnitsNet.QuantityValue)" />
         public static Force TonnesForce<T>(this T value) =>
-            Force.FromTonnesForce(Convert.ToDouble(value));
+            Force.FromTonnesForce(Convert.ToDecimal(value));
 
     }
 }

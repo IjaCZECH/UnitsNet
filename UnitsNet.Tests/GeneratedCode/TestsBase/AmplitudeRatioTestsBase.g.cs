@@ -37,22 +37,22 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class AmplitudeRatioTestsBase : QuantityTestsBase
     {
-        protected abstract double DecibelMicrovoltsInOneDecibelVolt { get; }
-        protected abstract double DecibelMillivoltsInOneDecibelVolt { get; }
-        protected abstract double DecibelsUnloadedInOneDecibelVolt { get; }
-        protected abstract double DecibelVoltsInOneDecibelVolt { get; }
+        protected abstract decimal DecibelMicrovoltsInOneDecibelVolt { get; }
+        protected abstract decimal DecibelMillivoltsInOneDecibelVolt { get; }
+        protected abstract decimal DecibelsUnloadedInOneDecibelVolt { get; }
+        protected abstract decimal DecibelVoltsInOneDecibelVolt { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double DecibelMicrovoltsTolerance { get { return 1e-5; } }
-        protected virtual double DecibelMillivoltsTolerance { get { return 1e-5; } }
-        protected virtual double DecibelsUnloadedTolerance { get { return 1e-5; } }
-        protected virtual double DecibelVoltsTolerance { get { return 1e-5; } }
+        protected virtual decimal DecibelMicrovoltsTolerance { get { return 1e-5; } }
+        protected virtual decimal DecibelMillivoltsTolerance { get { return 1e-5; } }
+        protected virtual decimal DecibelsUnloadedTolerance { get { return 1e-5; } }
+        protected virtual decimal DecibelVoltsTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new AmplitudeRatio((double)0.0, AmplitudeRatioUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new AmplitudeRatio((decimal)0.0, AmplitudeRatioUnit.Undefined));
         }
 
         [Fact]
@@ -63,19 +63,6 @@ namespace UnitsNet.Tests
             Assert.Equal(AmplitudeRatioUnit.DecibelVolt, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new AmplitudeRatio(double.PositiveInfinity, AmplitudeRatioUnit.DecibelVolt));
-            Assert.Throws<ArgumentException>(() => new AmplitudeRatio(double.NegativeInfinity, AmplitudeRatioUnit.DecibelVolt));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new AmplitudeRatio(double.NaN, AmplitudeRatioUnit.DecibelVolt));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -151,19 +138,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromDecibelVolts_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => AmplitudeRatio.FromDecibelVolts(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => AmplitudeRatio.FromDecibelVolts(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromDecibelVolts_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => AmplitudeRatio.FromDecibelVolts(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var decibelvolt = AmplitudeRatio.FromDecibelVolts(1);
@@ -181,7 +155,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -196,19 +170,19 @@ namespace UnitsNet.Tests
             var decibelvolt = AmplitudeRatio.FromDecibelVolts(1);
 
             var decibelmicrovoltQuantity = decibelvolt.ToUnit(AmplitudeRatioUnit.DecibelMicrovolt);
-            AssertEx.EqualTolerance(DecibelMicrovoltsInOneDecibelVolt, (double)decibelmicrovoltQuantity.Value, DecibelMicrovoltsTolerance);
+            AssertEx.EqualTolerance(DecibelMicrovoltsInOneDecibelVolt, (decimal)decibelmicrovoltQuantity.Value, DecibelMicrovoltsTolerance);
             Assert.Equal(AmplitudeRatioUnit.DecibelMicrovolt, decibelmicrovoltQuantity.Unit);
 
             var decibelmillivoltQuantity = decibelvolt.ToUnit(AmplitudeRatioUnit.DecibelMillivolt);
-            AssertEx.EqualTolerance(DecibelMillivoltsInOneDecibelVolt, (double)decibelmillivoltQuantity.Value, DecibelMillivoltsTolerance);
+            AssertEx.EqualTolerance(DecibelMillivoltsInOneDecibelVolt, (decimal)decibelmillivoltQuantity.Value, DecibelMillivoltsTolerance);
             Assert.Equal(AmplitudeRatioUnit.DecibelMillivolt, decibelmillivoltQuantity.Unit);
 
             var decibelunloadedQuantity = decibelvolt.ToUnit(AmplitudeRatioUnit.DecibelUnloaded);
-            AssertEx.EqualTolerance(DecibelsUnloadedInOneDecibelVolt, (double)decibelunloadedQuantity.Value, DecibelsUnloadedTolerance);
+            AssertEx.EqualTolerance(DecibelsUnloadedInOneDecibelVolt, (decimal)decibelunloadedQuantity.Value, DecibelsUnloadedTolerance);
             Assert.Equal(AmplitudeRatioUnit.DecibelUnloaded, decibelunloadedQuantity.Unit);
 
             var decibelvoltQuantity = decibelvolt.ToUnit(AmplitudeRatioUnit.DecibelVolt);
-            AssertEx.EqualTolerance(DecibelVoltsInOneDecibelVolt, (double)decibelvoltQuantity.Value, DecibelVoltsTolerance);
+            AssertEx.EqualTolerance(DecibelVoltsInOneDecibelVolt, (decimal)decibelvoltQuantity.Value, DecibelVoltsTolerance);
             Assert.Equal(AmplitudeRatioUnit.DecibelVolt, decibelvoltQuantity.Unit);
         }
 
@@ -417,10 +391,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 dBV", new AmplitudeRatio(0.123456, AmplitudeRatioUnit.DecibelVolt).ToString("s1"));
-                Assert.Equal("0.12 dBV", new AmplitudeRatio(0.123456, AmplitudeRatioUnit.DecibelVolt).ToString("s2"));
-                Assert.Equal("0.123 dBV", new AmplitudeRatio(0.123456, AmplitudeRatioUnit.DecibelVolt).ToString("s3"));
-                Assert.Equal("0.1235 dBV", new AmplitudeRatio(0.123456, AmplitudeRatioUnit.DecibelVolt).ToString("s4"));
+                Assert.Equal("0.1 dBV", new AmplitudeRatio(0.123456m, AmplitudeRatioUnit.DecibelVolt).ToString("s1"));
+                Assert.Equal("0.12 dBV", new AmplitudeRatio(0.123456m, AmplitudeRatioUnit.DecibelVolt).ToString("s2"));
+                Assert.Equal("0.123 dBV", new AmplitudeRatio(0.123456m, AmplitudeRatioUnit.DecibelVolt).ToString("s3"));
+                Assert.Equal("0.1235 dBV", new AmplitudeRatio(0.123456m, AmplitudeRatioUnit.DecibelVolt).ToString("s4"));
             }
             finally
             {
@@ -432,10 +406,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 dBV", new AmplitudeRatio(0.123456, AmplitudeRatioUnit.DecibelVolt).ToString("s1", culture));
-            Assert.Equal("0.12 dBV", new AmplitudeRatio(0.123456, AmplitudeRatioUnit.DecibelVolt).ToString("s2", culture));
-            Assert.Equal("0.123 dBV", new AmplitudeRatio(0.123456, AmplitudeRatioUnit.DecibelVolt).ToString("s3", culture));
-            Assert.Equal("0.1235 dBV", new AmplitudeRatio(0.123456, AmplitudeRatioUnit.DecibelVolt).ToString("s4", culture));
+            Assert.Equal("0.1 dBV", new AmplitudeRatio(0.123456m, AmplitudeRatioUnit.DecibelVolt).ToString("s1", culture));
+            Assert.Equal("0.12 dBV", new AmplitudeRatio(0.123456m, AmplitudeRatioUnit.DecibelVolt).ToString("s2", culture));
+            Assert.Equal("0.123 dBV", new AmplitudeRatio(0.123456m, AmplitudeRatioUnit.DecibelVolt).ToString("s3", culture));
+            Assert.Equal("0.1235 dBV", new AmplitudeRatio(0.123456m, AmplitudeRatioUnit.DecibelVolt).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -613,7 +587,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = AmplitudeRatio.FromDecibelVolts(value);
             Assert.Equal(AmplitudeRatio.FromDecibelVolts(-value), -quantity);

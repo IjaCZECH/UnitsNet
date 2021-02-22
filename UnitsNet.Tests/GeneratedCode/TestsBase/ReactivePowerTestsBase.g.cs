@@ -37,22 +37,22 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class ReactivePowerTestsBase : QuantityTestsBase
     {
-        protected abstract double GigavoltamperesReactiveInOneVoltampereReactive { get; }
-        protected abstract double KilovoltamperesReactiveInOneVoltampereReactive { get; }
-        protected abstract double MegavoltamperesReactiveInOneVoltampereReactive { get; }
-        protected abstract double VoltamperesReactiveInOneVoltampereReactive { get; }
+        protected abstract decimal GigavoltamperesReactiveInOneVoltampereReactive { get; }
+        protected abstract decimal KilovoltamperesReactiveInOneVoltampereReactive { get; }
+        protected abstract decimal MegavoltamperesReactiveInOneVoltampereReactive { get; }
+        protected abstract decimal VoltamperesReactiveInOneVoltampereReactive { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double GigavoltamperesReactiveTolerance { get { return 1e-5; } }
-        protected virtual double KilovoltamperesReactiveTolerance { get { return 1e-5; } }
-        protected virtual double MegavoltamperesReactiveTolerance { get { return 1e-5; } }
-        protected virtual double VoltamperesReactiveTolerance { get { return 1e-5; } }
+        protected virtual decimal GigavoltamperesReactiveTolerance { get { return 1e-5; } }
+        protected virtual decimal KilovoltamperesReactiveTolerance { get { return 1e-5; } }
+        protected virtual decimal MegavoltamperesReactiveTolerance { get { return 1e-5; } }
+        protected virtual decimal VoltamperesReactiveTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new ReactivePower((double)0.0, ReactivePowerUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new ReactivePower((decimal)0.0, ReactivePowerUnit.Undefined));
         }
 
         [Fact]
@@ -63,19 +63,6 @@ namespace UnitsNet.Tests
             Assert.Equal(ReactivePowerUnit.VoltampereReactive, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new ReactivePower(double.PositiveInfinity, ReactivePowerUnit.VoltampereReactive));
-            Assert.Throws<ArgumentException>(() => new ReactivePower(double.NegativeInfinity, ReactivePowerUnit.VoltampereReactive));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new ReactivePower(double.NaN, ReactivePowerUnit.VoltampereReactive));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -151,19 +138,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromVoltamperesReactive_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => ReactivePower.FromVoltamperesReactive(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => ReactivePower.FromVoltamperesReactive(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromVoltamperesReactive_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => ReactivePower.FromVoltamperesReactive(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var voltamperereactive = ReactivePower.FromVoltamperesReactive(1);
@@ -181,7 +155,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -196,19 +170,19 @@ namespace UnitsNet.Tests
             var voltamperereactive = ReactivePower.FromVoltamperesReactive(1);
 
             var gigavoltamperereactiveQuantity = voltamperereactive.ToUnit(ReactivePowerUnit.GigavoltampereReactive);
-            AssertEx.EqualTolerance(GigavoltamperesReactiveInOneVoltampereReactive, (double)gigavoltamperereactiveQuantity.Value, GigavoltamperesReactiveTolerance);
+            AssertEx.EqualTolerance(GigavoltamperesReactiveInOneVoltampereReactive, (decimal)gigavoltamperereactiveQuantity.Value, GigavoltamperesReactiveTolerance);
             Assert.Equal(ReactivePowerUnit.GigavoltampereReactive, gigavoltamperereactiveQuantity.Unit);
 
             var kilovoltamperereactiveQuantity = voltamperereactive.ToUnit(ReactivePowerUnit.KilovoltampereReactive);
-            AssertEx.EqualTolerance(KilovoltamperesReactiveInOneVoltampereReactive, (double)kilovoltamperereactiveQuantity.Value, KilovoltamperesReactiveTolerance);
+            AssertEx.EqualTolerance(KilovoltamperesReactiveInOneVoltampereReactive, (decimal)kilovoltamperereactiveQuantity.Value, KilovoltamperesReactiveTolerance);
             Assert.Equal(ReactivePowerUnit.KilovoltampereReactive, kilovoltamperereactiveQuantity.Unit);
 
             var megavoltamperereactiveQuantity = voltamperereactive.ToUnit(ReactivePowerUnit.MegavoltampereReactive);
-            AssertEx.EqualTolerance(MegavoltamperesReactiveInOneVoltampereReactive, (double)megavoltamperereactiveQuantity.Value, MegavoltamperesReactiveTolerance);
+            AssertEx.EqualTolerance(MegavoltamperesReactiveInOneVoltampereReactive, (decimal)megavoltamperereactiveQuantity.Value, MegavoltamperesReactiveTolerance);
             Assert.Equal(ReactivePowerUnit.MegavoltampereReactive, megavoltamperereactiveQuantity.Unit);
 
             var voltamperereactiveQuantity = voltamperereactive.ToUnit(ReactivePowerUnit.VoltampereReactive);
-            AssertEx.EqualTolerance(VoltamperesReactiveInOneVoltampereReactive, (double)voltamperereactiveQuantity.Value, VoltamperesReactiveTolerance);
+            AssertEx.EqualTolerance(VoltamperesReactiveInOneVoltampereReactive, (decimal)voltamperereactiveQuantity.Value, VoltamperesReactiveTolerance);
             Assert.Equal(ReactivePowerUnit.VoltampereReactive, voltamperereactiveQuantity.Unit);
         }
 
@@ -413,10 +387,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 var", new ReactivePower(0.123456, ReactivePowerUnit.VoltampereReactive).ToString("s1"));
-                Assert.Equal("0.12 var", new ReactivePower(0.123456, ReactivePowerUnit.VoltampereReactive).ToString("s2"));
-                Assert.Equal("0.123 var", new ReactivePower(0.123456, ReactivePowerUnit.VoltampereReactive).ToString("s3"));
-                Assert.Equal("0.1235 var", new ReactivePower(0.123456, ReactivePowerUnit.VoltampereReactive).ToString("s4"));
+                Assert.Equal("0.1 var", new ReactivePower(0.123456m, ReactivePowerUnit.VoltampereReactive).ToString("s1"));
+                Assert.Equal("0.12 var", new ReactivePower(0.123456m, ReactivePowerUnit.VoltampereReactive).ToString("s2"));
+                Assert.Equal("0.123 var", new ReactivePower(0.123456m, ReactivePowerUnit.VoltampereReactive).ToString("s3"));
+                Assert.Equal("0.1235 var", new ReactivePower(0.123456m, ReactivePowerUnit.VoltampereReactive).ToString("s4"));
             }
             finally
             {
@@ -428,10 +402,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 var", new ReactivePower(0.123456, ReactivePowerUnit.VoltampereReactive).ToString("s1", culture));
-            Assert.Equal("0.12 var", new ReactivePower(0.123456, ReactivePowerUnit.VoltampereReactive).ToString("s2", culture));
-            Assert.Equal("0.123 var", new ReactivePower(0.123456, ReactivePowerUnit.VoltampereReactive).ToString("s3", culture));
-            Assert.Equal("0.1235 var", new ReactivePower(0.123456, ReactivePowerUnit.VoltampereReactive).ToString("s4", culture));
+            Assert.Equal("0.1 var", new ReactivePower(0.123456m, ReactivePowerUnit.VoltampereReactive).ToString("s1", culture));
+            Assert.Equal("0.12 var", new ReactivePower(0.123456m, ReactivePowerUnit.VoltampereReactive).ToString("s2", culture));
+            Assert.Equal("0.123 var", new ReactivePower(0.123456m, ReactivePowerUnit.VoltampereReactive).ToString("s3", culture));
+            Assert.Equal("0.1235 var", new ReactivePower(0.123456m, ReactivePowerUnit.VoltampereReactive).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -609,7 +583,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = ReactivePower.FromVoltamperesReactive(value);
             Assert.Equal(ReactivePower.FromVoltamperesReactive(-value), -quantity);

@@ -42,7 +42,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -112,12 +112,12 @@ namespace UnitsNet
         /// <param name="value">The numeric value to construct this quantity with.</param>
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        public MassConcentration(double value, MassConcentrationUnit unit)
+        public MassConcentration(decimal value, MassConcentrationUnit unit)
         {
             if(unit == MassConcentrationUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -129,14 +129,14 @@ namespace UnitsNet
         /// <param name="unitSystem">The unit system to create the quantity with.</param>
         /// <exception cref="ArgumentNullException">The given <see cref="UnitSystem"/> is null.</exception>
         /// <exception cref="ArgumentException">No unit was found for the given <see cref="UnitSystem"/>.</exception>
-        public MassConcentration(double value, UnitSystem unitSystem)
+        public MassConcentration(decimal value, UnitSystem unitSystem)
         {
             if(unitSystem is null) throw new ArgumentNullException(nameof(unitSystem));
 
             var unitInfos = Info.GetUnitInfosFor(unitSystem.BaseUnits);
             var firstUnitInfo = unitInfos.FirstOrDefault();
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = firstUnitInfo?.Value ?? throw new ArgumentException("No units were found for the given UnitSystem.", nameof(unitSystem));
         }
 
@@ -158,12 +158,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of MassConcentration
         /// </summary>
-        public static MassConcentration MaxValue { get; } = new MassConcentration(double.MaxValue, BaseUnit);
+        public static MassConcentration MaxValue { get; } = new MassConcentration(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of MassConcentration
         /// </summary>
-        public static MassConcentration MinValue { get; } = new MassConcentration(double.MinValue, BaseUnit);
+        public static MassConcentration MinValue { get; } = new MassConcentration(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -187,7 +187,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => _value;
+        public decimal Value => _value;
 
         Enum IQuantity.Unit => Unit;
 
@@ -217,237 +217,237 @@ namespace UnitsNet
         /// <summary>
         ///     Get MassConcentration in CentigramsPerDeciliter.
         /// </summary>
-        public double CentigramsPerDeciliter => As(MassConcentrationUnit.CentigramPerDeciliter);
+        public decimal CentigramsPerDeciliter => As(MassConcentrationUnit.CentigramPerDeciliter);
 
         /// <summary>
         ///     Get MassConcentration in CentigramsPerLiter.
         /// </summary>
-        public double CentigramsPerLiter => As(MassConcentrationUnit.CentigramPerLiter);
+        public decimal CentigramsPerLiter => As(MassConcentrationUnit.CentigramPerLiter);
 
         /// <summary>
         ///     Get MassConcentration in CentigramsPerMicroliter.
         /// </summary>
-        public double CentigramsPerMicroliter => As(MassConcentrationUnit.CentigramPerMicroliter);
+        public decimal CentigramsPerMicroliter => As(MassConcentrationUnit.CentigramPerMicroliter);
 
         /// <summary>
         ///     Get MassConcentration in CentigramsPerMilliliter.
         /// </summary>
-        public double CentigramsPerMilliliter => As(MassConcentrationUnit.CentigramPerMilliliter);
+        public decimal CentigramsPerMilliliter => As(MassConcentrationUnit.CentigramPerMilliliter);
 
         /// <summary>
         ///     Get MassConcentration in DecigramsPerDeciliter.
         /// </summary>
-        public double DecigramsPerDeciliter => As(MassConcentrationUnit.DecigramPerDeciliter);
+        public decimal DecigramsPerDeciliter => As(MassConcentrationUnit.DecigramPerDeciliter);
 
         /// <summary>
         ///     Get MassConcentration in DecigramsPerLiter.
         /// </summary>
-        public double DecigramsPerLiter => As(MassConcentrationUnit.DecigramPerLiter);
+        public decimal DecigramsPerLiter => As(MassConcentrationUnit.DecigramPerLiter);
 
         /// <summary>
         ///     Get MassConcentration in DecigramsPerMicroliter.
         /// </summary>
-        public double DecigramsPerMicroliter => As(MassConcentrationUnit.DecigramPerMicroliter);
+        public decimal DecigramsPerMicroliter => As(MassConcentrationUnit.DecigramPerMicroliter);
 
         /// <summary>
         ///     Get MassConcentration in DecigramsPerMilliliter.
         /// </summary>
-        public double DecigramsPerMilliliter => As(MassConcentrationUnit.DecigramPerMilliliter);
+        public decimal DecigramsPerMilliliter => As(MassConcentrationUnit.DecigramPerMilliliter);
 
         /// <summary>
         ///     Get MassConcentration in GramsPerCubicCentimeter.
         /// </summary>
-        public double GramsPerCubicCentimeter => As(MassConcentrationUnit.GramPerCubicCentimeter);
+        public decimal GramsPerCubicCentimeter => As(MassConcentrationUnit.GramPerCubicCentimeter);
 
         /// <summary>
         ///     Get MassConcentration in GramsPerCubicMeter.
         /// </summary>
-        public double GramsPerCubicMeter => As(MassConcentrationUnit.GramPerCubicMeter);
+        public decimal GramsPerCubicMeter => As(MassConcentrationUnit.GramPerCubicMeter);
 
         /// <summary>
         ///     Get MassConcentration in GramsPerCubicMillimeter.
         /// </summary>
-        public double GramsPerCubicMillimeter => As(MassConcentrationUnit.GramPerCubicMillimeter);
+        public decimal GramsPerCubicMillimeter => As(MassConcentrationUnit.GramPerCubicMillimeter);
 
         /// <summary>
         ///     Get MassConcentration in GramsPerDeciliter.
         /// </summary>
-        public double GramsPerDeciliter => As(MassConcentrationUnit.GramPerDeciliter);
+        public decimal GramsPerDeciliter => As(MassConcentrationUnit.GramPerDeciliter);
 
         /// <summary>
         ///     Get MassConcentration in GramsPerLiter.
         /// </summary>
-        public double GramsPerLiter => As(MassConcentrationUnit.GramPerLiter);
+        public decimal GramsPerLiter => As(MassConcentrationUnit.GramPerLiter);
 
         /// <summary>
         ///     Get MassConcentration in GramsPerMicroliter.
         /// </summary>
-        public double GramsPerMicroliter => As(MassConcentrationUnit.GramPerMicroliter);
+        public decimal GramsPerMicroliter => As(MassConcentrationUnit.GramPerMicroliter);
 
         /// <summary>
         ///     Get MassConcentration in GramsPerMilliliter.
         /// </summary>
-        public double GramsPerMilliliter => As(MassConcentrationUnit.GramPerMilliliter);
+        public decimal GramsPerMilliliter => As(MassConcentrationUnit.GramPerMilliliter);
 
         /// <summary>
         ///     Get MassConcentration in KilogramsPerCubicCentimeter.
         /// </summary>
-        public double KilogramsPerCubicCentimeter => As(MassConcentrationUnit.KilogramPerCubicCentimeter);
+        public decimal KilogramsPerCubicCentimeter => As(MassConcentrationUnit.KilogramPerCubicCentimeter);
 
         /// <summary>
         ///     Get MassConcentration in KilogramsPerCubicMeter.
         /// </summary>
-        public double KilogramsPerCubicMeter => As(MassConcentrationUnit.KilogramPerCubicMeter);
+        public decimal KilogramsPerCubicMeter => As(MassConcentrationUnit.KilogramPerCubicMeter);
 
         /// <summary>
         ///     Get MassConcentration in KilogramsPerCubicMillimeter.
         /// </summary>
-        public double KilogramsPerCubicMillimeter => As(MassConcentrationUnit.KilogramPerCubicMillimeter);
+        public decimal KilogramsPerCubicMillimeter => As(MassConcentrationUnit.KilogramPerCubicMillimeter);
 
         /// <summary>
         ///     Get MassConcentration in KilogramsPerLiter.
         /// </summary>
-        public double KilogramsPerLiter => As(MassConcentrationUnit.KilogramPerLiter);
+        public decimal KilogramsPerLiter => As(MassConcentrationUnit.KilogramPerLiter);
 
         /// <summary>
         ///     Get MassConcentration in KilopoundsPerCubicFoot.
         /// </summary>
-        public double KilopoundsPerCubicFoot => As(MassConcentrationUnit.KilopoundPerCubicFoot);
+        public decimal KilopoundsPerCubicFoot => As(MassConcentrationUnit.KilopoundPerCubicFoot);
 
         /// <summary>
         ///     Get MassConcentration in KilopoundsPerCubicInch.
         /// </summary>
-        public double KilopoundsPerCubicInch => As(MassConcentrationUnit.KilopoundPerCubicInch);
+        public decimal KilopoundsPerCubicInch => As(MassConcentrationUnit.KilopoundPerCubicInch);
 
         /// <summary>
         ///     Get MassConcentration in MicrogramsPerCubicMeter.
         /// </summary>
-        public double MicrogramsPerCubicMeter => As(MassConcentrationUnit.MicrogramPerCubicMeter);
+        public decimal MicrogramsPerCubicMeter => As(MassConcentrationUnit.MicrogramPerCubicMeter);
 
         /// <summary>
         ///     Get MassConcentration in MicrogramsPerDeciliter.
         /// </summary>
-        public double MicrogramsPerDeciliter => As(MassConcentrationUnit.MicrogramPerDeciliter);
+        public decimal MicrogramsPerDeciliter => As(MassConcentrationUnit.MicrogramPerDeciliter);
 
         /// <summary>
         ///     Get MassConcentration in MicrogramsPerLiter.
         /// </summary>
-        public double MicrogramsPerLiter => As(MassConcentrationUnit.MicrogramPerLiter);
+        public decimal MicrogramsPerLiter => As(MassConcentrationUnit.MicrogramPerLiter);
 
         /// <summary>
         ///     Get MassConcentration in MicrogramsPerMicroliter.
         /// </summary>
-        public double MicrogramsPerMicroliter => As(MassConcentrationUnit.MicrogramPerMicroliter);
+        public decimal MicrogramsPerMicroliter => As(MassConcentrationUnit.MicrogramPerMicroliter);
 
         /// <summary>
         ///     Get MassConcentration in MicrogramsPerMilliliter.
         /// </summary>
-        public double MicrogramsPerMilliliter => As(MassConcentrationUnit.MicrogramPerMilliliter);
+        public decimal MicrogramsPerMilliliter => As(MassConcentrationUnit.MicrogramPerMilliliter);
 
         /// <summary>
         ///     Get MassConcentration in MilligramsPerCubicMeter.
         /// </summary>
-        public double MilligramsPerCubicMeter => As(MassConcentrationUnit.MilligramPerCubicMeter);
+        public decimal MilligramsPerCubicMeter => As(MassConcentrationUnit.MilligramPerCubicMeter);
 
         /// <summary>
         ///     Get MassConcentration in MilligramsPerDeciliter.
         /// </summary>
-        public double MilligramsPerDeciliter => As(MassConcentrationUnit.MilligramPerDeciliter);
+        public decimal MilligramsPerDeciliter => As(MassConcentrationUnit.MilligramPerDeciliter);
 
         /// <summary>
         ///     Get MassConcentration in MilligramsPerLiter.
         /// </summary>
-        public double MilligramsPerLiter => As(MassConcentrationUnit.MilligramPerLiter);
+        public decimal MilligramsPerLiter => As(MassConcentrationUnit.MilligramPerLiter);
 
         /// <summary>
         ///     Get MassConcentration in MilligramsPerMicroliter.
         /// </summary>
-        public double MilligramsPerMicroliter => As(MassConcentrationUnit.MilligramPerMicroliter);
+        public decimal MilligramsPerMicroliter => As(MassConcentrationUnit.MilligramPerMicroliter);
 
         /// <summary>
         ///     Get MassConcentration in MilligramsPerMilliliter.
         /// </summary>
-        public double MilligramsPerMilliliter => As(MassConcentrationUnit.MilligramPerMilliliter);
+        public decimal MilligramsPerMilliliter => As(MassConcentrationUnit.MilligramPerMilliliter);
 
         /// <summary>
         ///     Get MassConcentration in NanogramsPerDeciliter.
         /// </summary>
-        public double NanogramsPerDeciliter => As(MassConcentrationUnit.NanogramPerDeciliter);
+        public decimal NanogramsPerDeciliter => As(MassConcentrationUnit.NanogramPerDeciliter);
 
         /// <summary>
         ///     Get MassConcentration in NanogramsPerLiter.
         /// </summary>
-        public double NanogramsPerLiter => As(MassConcentrationUnit.NanogramPerLiter);
+        public decimal NanogramsPerLiter => As(MassConcentrationUnit.NanogramPerLiter);
 
         /// <summary>
         ///     Get MassConcentration in NanogramsPerMicroliter.
         /// </summary>
-        public double NanogramsPerMicroliter => As(MassConcentrationUnit.NanogramPerMicroliter);
+        public decimal NanogramsPerMicroliter => As(MassConcentrationUnit.NanogramPerMicroliter);
 
         /// <summary>
         ///     Get MassConcentration in NanogramsPerMilliliter.
         /// </summary>
-        public double NanogramsPerMilliliter => As(MassConcentrationUnit.NanogramPerMilliliter);
+        public decimal NanogramsPerMilliliter => As(MassConcentrationUnit.NanogramPerMilliliter);
 
         /// <summary>
         ///     Get MassConcentration in PicogramsPerDeciliter.
         /// </summary>
-        public double PicogramsPerDeciliter => As(MassConcentrationUnit.PicogramPerDeciliter);
+        public decimal PicogramsPerDeciliter => As(MassConcentrationUnit.PicogramPerDeciliter);
 
         /// <summary>
         ///     Get MassConcentration in PicogramsPerLiter.
         /// </summary>
-        public double PicogramsPerLiter => As(MassConcentrationUnit.PicogramPerLiter);
+        public decimal PicogramsPerLiter => As(MassConcentrationUnit.PicogramPerLiter);
 
         /// <summary>
         ///     Get MassConcentration in PicogramsPerMicroliter.
         /// </summary>
-        public double PicogramsPerMicroliter => As(MassConcentrationUnit.PicogramPerMicroliter);
+        public decimal PicogramsPerMicroliter => As(MassConcentrationUnit.PicogramPerMicroliter);
 
         /// <summary>
         ///     Get MassConcentration in PicogramsPerMilliliter.
         /// </summary>
-        public double PicogramsPerMilliliter => As(MassConcentrationUnit.PicogramPerMilliliter);
+        public decimal PicogramsPerMilliliter => As(MassConcentrationUnit.PicogramPerMilliliter);
 
         /// <summary>
         ///     Get MassConcentration in PoundsPerCubicFoot.
         /// </summary>
-        public double PoundsPerCubicFoot => As(MassConcentrationUnit.PoundPerCubicFoot);
+        public decimal PoundsPerCubicFoot => As(MassConcentrationUnit.PoundPerCubicFoot);
 
         /// <summary>
         ///     Get MassConcentration in PoundsPerCubicInch.
         /// </summary>
-        public double PoundsPerCubicInch => As(MassConcentrationUnit.PoundPerCubicInch);
+        public decimal PoundsPerCubicInch => As(MassConcentrationUnit.PoundPerCubicInch);
 
         /// <summary>
         ///     Get MassConcentration in PoundsPerImperialGallon.
         /// </summary>
-        public double PoundsPerImperialGallon => As(MassConcentrationUnit.PoundPerImperialGallon);
+        public decimal PoundsPerImperialGallon => As(MassConcentrationUnit.PoundPerImperialGallon);
 
         /// <summary>
         ///     Get MassConcentration in PoundsPerUSGallon.
         /// </summary>
-        public double PoundsPerUSGallon => As(MassConcentrationUnit.PoundPerUSGallon);
+        public decimal PoundsPerUSGallon => As(MassConcentrationUnit.PoundPerUSGallon);
 
         /// <summary>
         ///     Get MassConcentration in SlugsPerCubicFoot.
         /// </summary>
-        public double SlugsPerCubicFoot => As(MassConcentrationUnit.SlugPerCubicFoot);
+        public decimal SlugsPerCubicFoot => As(MassConcentrationUnit.SlugPerCubicFoot);
 
         /// <summary>
         ///     Get MassConcentration in TonnesPerCubicCentimeter.
         /// </summary>
-        public double TonnesPerCubicCentimeter => As(MassConcentrationUnit.TonnePerCubicCentimeter);
+        public decimal TonnesPerCubicCentimeter => As(MassConcentrationUnit.TonnePerCubicCentimeter);
 
         /// <summary>
         ///     Get MassConcentration in TonnesPerCubicMeter.
         /// </summary>
-        public double TonnesPerCubicMeter => As(MassConcentrationUnit.TonnePerCubicMeter);
+        public decimal TonnesPerCubicMeter => As(MassConcentrationUnit.TonnePerCubicMeter);
 
         /// <summary>
         ///     Get MassConcentration in TonnesPerCubicMillimeter.
         /// </summary>
-        public double TonnesPerCubicMillimeter => As(MassConcentrationUnit.TonnePerCubicMillimeter);
+        public decimal TonnesPerCubicMillimeter => As(MassConcentrationUnit.TonnePerCubicMillimeter);
 
         #endregion
 
@@ -484,7 +484,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromCentigramsPerDeciliter(QuantityValue centigramsperdeciliter)
         {
-            double value = (double) centigramsperdeciliter;
+            decimal value = (decimal) centigramsperdeciliter;
             return new MassConcentration(value, MassConcentrationUnit.CentigramPerDeciliter);
         }
         /// <summary>
@@ -493,7 +493,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromCentigramsPerLiter(QuantityValue centigramsperliter)
         {
-            double value = (double) centigramsperliter;
+            decimal value = (decimal) centigramsperliter;
             return new MassConcentration(value, MassConcentrationUnit.CentigramPerLiter);
         }
         /// <summary>
@@ -502,7 +502,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromCentigramsPerMicroliter(QuantityValue centigramspermicroliter)
         {
-            double value = (double) centigramspermicroliter;
+            decimal value = (decimal) centigramspermicroliter;
             return new MassConcentration(value, MassConcentrationUnit.CentigramPerMicroliter);
         }
         /// <summary>
@@ -511,7 +511,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromCentigramsPerMilliliter(QuantityValue centigramspermilliliter)
         {
-            double value = (double) centigramspermilliliter;
+            decimal value = (decimal) centigramspermilliliter;
             return new MassConcentration(value, MassConcentrationUnit.CentigramPerMilliliter);
         }
         /// <summary>
@@ -520,7 +520,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromDecigramsPerDeciliter(QuantityValue decigramsperdeciliter)
         {
-            double value = (double) decigramsperdeciliter;
+            decimal value = (decimal) decigramsperdeciliter;
             return new MassConcentration(value, MassConcentrationUnit.DecigramPerDeciliter);
         }
         /// <summary>
@@ -529,7 +529,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromDecigramsPerLiter(QuantityValue decigramsperliter)
         {
-            double value = (double) decigramsperliter;
+            decimal value = (decimal) decigramsperliter;
             return new MassConcentration(value, MassConcentrationUnit.DecigramPerLiter);
         }
         /// <summary>
@@ -538,7 +538,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromDecigramsPerMicroliter(QuantityValue decigramspermicroliter)
         {
-            double value = (double) decigramspermicroliter;
+            decimal value = (decimal) decigramspermicroliter;
             return new MassConcentration(value, MassConcentrationUnit.DecigramPerMicroliter);
         }
         /// <summary>
@@ -547,7 +547,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromDecigramsPerMilliliter(QuantityValue decigramspermilliliter)
         {
-            double value = (double) decigramspermilliliter;
+            decimal value = (decimal) decigramspermilliliter;
             return new MassConcentration(value, MassConcentrationUnit.DecigramPerMilliliter);
         }
         /// <summary>
@@ -556,7 +556,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromGramsPerCubicCentimeter(QuantityValue gramspercubiccentimeter)
         {
-            double value = (double) gramspercubiccentimeter;
+            decimal value = (decimal) gramspercubiccentimeter;
             return new MassConcentration(value, MassConcentrationUnit.GramPerCubicCentimeter);
         }
         /// <summary>
@@ -565,7 +565,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromGramsPerCubicMeter(QuantityValue gramspercubicmeter)
         {
-            double value = (double) gramspercubicmeter;
+            decimal value = (decimal) gramspercubicmeter;
             return new MassConcentration(value, MassConcentrationUnit.GramPerCubicMeter);
         }
         /// <summary>
@@ -574,7 +574,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromGramsPerCubicMillimeter(QuantityValue gramspercubicmillimeter)
         {
-            double value = (double) gramspercubicmillimeter;
+            decimal value = (decimal) gramspercubicmillimeter;
             return new MassConcentration(value, MassConcentrationUnit.GramPerCubicMillimeter);
         }
         /// <summary>
@@ -583,7 +583,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromGramsPerDeciliter(QuantityValue gramsperdeciliter)
         {
-            double value = (double) gramsperdeciliter;
+            decimal value = (decimal) gramsperdeciliter;
             return new MassConcentration(value, MassConcentrationUnit.GramPerDeciliter);
         }
         /// <summary>
@@ -592,7 +592,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromGramsPerLiter(QuantityValue gramsperliter)
         {
-            double value = (double) gramsperliter;
+            decimal value = (decimal) gramsperliter;
             return new MassConcentration(value, MassConcentrationUnit.GramPerLiter);
         }
         /// <summary>
@@ -601,7 +601,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromGramsPerMicroliter(QuantityValue gramspermicroliter)
         {
-            double value = (double) gramspermicroliter;
+            decimal value = (decimal) gramspermicroliter;
             return new MassConcentration(value, MassConcentrationUnit.GramPerMicroliter);
         }
         /// <summary>
@@ -610,7 +610,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromGramsPerMilliliter(QuantityValue gramspermilliliter)
         {
-            double value = (double) gramspermilliliter;
+            decimal value = (decimal) gramspermilliliter;
             return new MassConcentration(value, MassConcentrationUnit.GramPerMilliliter);
         }
         /// <summary>
@@ -619,7 +619,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromKilogramsPerCubicCentimeter(QuantityValue kilogramspercubiccentimeter)
         {
-            double value = (double) kilogramspercubiccentimeter;
+            decimal value = (decimal) kilogramspercubiccentimeter;
             return new MassConcentration(value, MassConcentrationUnit.KilogramPerCubicCentimeter);
         }
         /// <summary>
@@ -628,7 +628,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromKilogramsPerCubicMeter(QuantityValue kilogramspercubicmeter)
         {
-            double value = (double) kilogramspercubicmeter;
+            decimal value = (decimal) kilogramspercubicmeter;
             return new MassConcentration(value, MassConcentrationUnit.KilogramPerCubicMeter);
         }
         /// <summary>
@@ -637,7 +637,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromKilogramsPerCubicMillimeter(QuantityValue kilogramspercubicmillimeter)
         {
-            double value = (double) kilogramspercubicmillimeter;
+            decimal value = (decimal) kilogramspercubicmillimeter;
             return new MassConcentration(value, MassConcentrationUnit.KilogramPerCubicMillimeter);
         }
         /// <summary>
@@ -646,7 +646,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromKilogramsPerLiter(QuantityValue kilogramsperliter)
         {
-            double value = (double) kilogramsperliter;
+            decimal value = (decimal) kilogramsperliter;
             return new MassConcentration(value, MassConcentrationUnit.KilogramPerLiter);
         }
         /// <summary>
@@ -655,7 +655,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromKilopoundsPerCubicFoot(QuantityValue kilopoundspercubicfoot)
         {
-            double value = (double) kilopoundspercubicfoot;
+            decimal value = (decimal) kilopoundspercubicfoot;
             return new MassConcentration(value, MassConcentrationUnit.KilopoundPerCubicFoot);
         }
         /// <summary>
@@ -664,7 +664,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromKilopoundsPerCubicInch(QuantityValue kilopoundspercubicinch)
         {
-            double value = (double) kilopoundspercubicinch;
+            decimal value = (decimal) kilopoundspercubicinch;
             return new MassConcentration(value, MassConcentrationUnit.KilopoundPerCubicInch);
         }
         /// <summary>
@@ -673,7 +673,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromMicrogramsPerCubicMeter(QuantityValue microgramspercubicmeter)
         {
-            double value = (double) microgramspercubicmeter;
+            decimal value = (decimal) microgramspercubicmeter;
             return new MassConcentration(value, MassConcentrationUnit.MicrogramPerCubicMeter);
         }
         /// <summary>
@@ -682,7 +682,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromMicrogramsPerDeciliter(QuantityValue microgramsperdeciliter)
         {
-            double value = (double) microgramsperdeciliter;
+            decimal value = (decimal) microgramsperdeciliter;
             return new MassConcentration(value, MassConcentrationUnit.MicrogramPerDeciliter);
         }
         /// <summary>
@@ -691,7 +691,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromMicrogramsPerLiter(QuantityValue microgramsperliter)
         {
-            double value = (double) microgramsperliter;
+            decimal value = (decimal) microgramsperliter;
             return new MassConcentration(value, MassConcentrationUnit.MicrogramPerLiter);
         }
         /// <summary>
@@ -700,7 +700,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromMicrogramsPerMicroliter(QuantityValue microgramspermicroliter)
         {
-            double value = (double) microgramspermicroliter;
+            decimal value = (decimal) microgramspermicroliter;
             return new MassConcentration(value, MassConcentrationUnit.MicrogramPerMicroliter);
         }
         /// <summary>
@@ -709,7 +709,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromMicrogramsPerMilliliter(QuantityValue microgramspermilliliter)
         {
-            double value = (double) microgramspermilliliter;
+            decimal value = (decimal) microgramspermilliliter;
             return new MassConcentration(value, MassConcentrationUnit.MicrogramPerMilliliter);
         }
         /// <summary>
@@ -718,7 +718,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromMilligramsPerCubicMeter(QuantityValue milligramspercubicmeter)
         {
-            double value = (double) milligramspercubicmeter;
+            decimal value = (decimal) milligramspercubicmeter;
             return new MassConcentration(value, MassConcentrationUnit.MilligramPerCubicMeter);
         }
         /// <summary>
@@ -727,7 +727,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromMilligramsPerDeciliter(QuantityValue milligramsperdeciliter)
         {
-            double value = (double) milligramsperdeciliter;
+            decimal value = (decimal) milligramsperdeciliter;
             return new MassConcentration(value, MassConcentrationUnit.MilligramPerDeciliter);
         }
         /// <summary>
@@ -736,7 +736,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromMilligramsPerLiter(QuantityValue milligramsperliter)
         {
-            double value = (double) milligramsperliter;
+            decimal value = (decimal) milligramsperliter;
             return new MassConcentration(value, MassConcentrationUnit.MilligramPerLiter);
         }
         /// <summary>
@@ -745,7 +745,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromMilligramsPerMicroliter(QuantityValue milligramspermicroliter)
         {
-            double value = (double) milligramspermicroliter;
+            decimal value = (decimal) milligramspermicroliter;
             return new MassConcentration(value, MassConcentrationUnit.MilligramPerMicroliter);
         }
         /// <summary>
@@ -754,7 +754,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromMilligramsPerMilliliter(QuantityValue milligramspermilliliter)
         {
-            double value = (double) milligramspermilliliter;
+            decimal value = (decimal) milligramspermilliliter;
             return new MassConcentration(value, MassConcentrationUnit.MilligramPerMilliliter);
         }
         /// <summary>
@@ -763,7 +763,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromNanogramsPerDeciliter(QuantityValue nanogramsperdeciliter)
         {
-            double value = (double) nanogramsperdeciliter;
+            decimal value = (decimal) nanogramsperdeciliter;
             return new MassConcentration(value, MassConcentrationUnit.NanogramPerDeciliter);
         }
         /// <summary>
@@ -772,7 +772,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromNanogramsPerLiter(QuantityValue nanogramsperliter)
         {
-            double value = (double) nanogramsperliter;
+            decimal value = (decimal) nanogramsperliter;
             return new MassConcentration(value, MassConcentrationUnit.NanogramPerLiter);
         }
         /// <summary>
@@ -781,7 +781,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromNanogramsPerMicroliter(QuantityValue nanogramspermicroliter)
         {
-            double value = (double) nanogramspermicroliter;
+            decimal value = (decimal) nanogramspermicroliter;
             return new MassConcentration(value, MassConcentrationUnit.NanogramPerMicroliter);
         }
         /// <summary>
@@ -790,7 +790,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromNanogramsPerMilliliter(QuantityValue nanogramspermilliliter)
         {
-            double value = (double) nanogramspermilliliter;
+            decimal value = (decimal) nanogramspermilliliter;
             return new MassConcentration(value, MassConcentrationUnit.NanogramPerMilliliter);
         }
         /// <summary>
@@ -799,7 +799,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromPicogramsPerDeciliter(QuantityValue picogramsperdeciliter)
         {
-            double value = (double) picogramsperdeciliter;
+            decimal value = (decimal) picogramsperdeciliter;
             return new MassConcentration(value, MassConcentrationUnit.PicogramPerDeciliter);
         }
         /// <summary>
@@ -808,7 +808,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromPicogramsPerLiter(QuantityValue picogramsperliter)
         {
-            double value = (double) picogramsperliter;
+            decimal value = (decimal) picogramsperliter;
             return new MassConcentration(value, MassConcentrationUnit.PicogramPerLiter);
         }
         /// <summary>
@@ -817,7 +817,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromPicogramsPerMicroliter(QuantityValue picogramspermicroliter)
         {
-            double value = (double) picogramspermicroliter;
+            decimal value = (decimal) picogramspermicroliter;
             return new MassConcentration(value, MassConcentrationUnit.PicogramPerMicroliter);
         }
         /// <summary>
@@ -826,7 +826,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromPicogramsPerMilliliter(QuantityValue picogramspermilliliter)
         {
-            double value = (double) picogramspermilliliter;
+            decimal value = (decimal) picogramspermilliliter;
             return new MassConcentration(value, MassConcentrationUnit.PicogramPerMilliliter);
         }
         /// <summary>
@@ -835,7 +835,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromPoundsPerCubicFoot(QuantityValue poundspercubicfoot)
         {
-            double value = (double) poundspercubicfoot;
+            decimal value = (decimal) poundspercubicfoot;
             return new MassConcentration(value, MassConcentrationUnit.PoundPerCubicFoot);
         }
         /// <summary>
@@ -844,7 +844,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromPoundsPerCubicInch(QuantityValue poundspercubicinch)
         {
-            double value = (double) poundspercubicinch;
+            decimal value = (decimal) poundspercubicinch;
             return new MassConcentration(value, MassConcentrationUnit.PoundPerCubicInch);
         }
         /// <summary>
@@ -853,7 +853,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromPoundsPerImperialGallon(QuantityValue poundsperimperialgallon)
         {
-            double value = (double) poundsperimperialgallon;
+            decimal value = (decimal) poundsperimperialgallon;
             return new MassConcentration(value, MassConcentrationUnit.PoundPerImperialGallon);
         }
         /// <summary>
@@ -862,7 +862,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromPoundsPerUSGallon(QuantityValue poundsperusgallon)
         {
-            double value = (double) poundsperusgallon;
+            decimal value = (decimal) poundsperusgallon;
             return new MassConcentration(value, MassConcentrationUnit.PoundPerUSGallon);
         }
         /// <summary>
@@ -871,7 +871,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromSlugsPerCubicFoot(QuantityValue slugspercubicfoot)
         {
-            double value = (double) slugspercubicfoot;
+            decimal value = (decimal) slugspercubicfoot;
             return new MassConcentration(value, MassConcentrationUnit.SlugPerCubicFoot);
         }
         /// <summary>
@@ -880,7 +880,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromTonnesPerCubicCentimeter(QuantityValue tonnespercubiccentimeter)
         {
-            double value = (double) tonnespercubiccentimeter;
+            decimal value = (decimal) tonnespercubiccentimeter;
             return new MassConcentration(value, MassConcentrationUnit.TonnePerCubicCentimeter);
         }
         /// <summary>
@@ -889,7 +889,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromTonnesPerCubicMeter(QuantityValue tonnespercubicmeter)
         {
-            double value = (double) tonnespercubicmeter;
+            decimal value = (decimal) tonnespercubicmeter;
             return new MassConcentration(value, MassConcentrationUnit.TonnePerCubicMeter);
         }
         /// <summary>
@@ -898,7 +898,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static MassConcentration FromTonnesPerCubicMillimeter(QuantityValue tonnespercubicmillimeter)
         {
-            double value = (double) tonnespercubicmillimeter;
+            decimal value = (decimal) tonnespercubicmillimeter;
             return new MassConcentration(value, MassConcentrationUnit.TonnePerCubicMillimeter);
         }
 
@@ -910,7 +910,7 @@ namespace UnitsNet
         /// <returns>MassConcentration unit value.</returns>
         public static MassConcentration From(QuantityValue value, MassConcentrationUnit fromUnit)
         {
-            return new MassConcentration((double)value, fromUnit);
+            return new MassConcentration((decimal)value, fromUnit);
         }
 
         #endregion
@@ -1080,25 +1080,25 @@ namespace UnitsNet
         }
 
         /// <summary>Get <see cref="MassConcentration"/> from multiplying value and <see cref="MassConcentration"/>.</summary>
-        public static MassConcentration operator *(double left, MassConcentration right)
+        public static MassConcentration operator *(decimal left, MassConcentration right)
         {
             return new MassConcentration(left * right.Value, right.Unit);
         }
 
         /// <summary>Get <see cref="MassConcentration"/> from multiplying value and <see cref="MassConcentration"/>.</summary>
-        public static MassConcentration operator *(MassConcentration left, double right)
+        public static MassConcentration operator *(MassConcentration left, decimal right)
         {
             return new MassConcentration(left.Value * right, left.Unit);
         }
 
         /// <summary>Get <see cref="MassConcentration"/> from dividing <see cref="MassConcentration"/> by value.</summary>
-        public static MassConcentration operator /(MassConcentration left, double right)
+        public static MassConcentration operator /(MassConcentration left, decimal right)
         {
             return new MassConcentration(left.Value / right, left.Unit);
         }
 
         /// <summary>Get ratio value from dividing <see cref="MassConcentration"/> by <see cref="MassConcentration"/>.</summary>
-        public static double operator /(MassConcentration left, MassConcentration right)
+        public static decimal operator /(MassConcentration left, MassConcentration right)
         {
             return left.KilogramsPerCubicMeter / right.KilogramsPerCubicMeter;
         }
@@ -1132,14 +1132,14 @@ namespace UnitsNet
         }
 
         /// <summary>Returns true if exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(MassConcentration, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(MassConcentration, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator ==(MassConcentration left, MassConcentration right)
         {
             return left.Equals(right);
         }
 
         /// <summary>Returns true if not exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(MassConcentration, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(MassConcentration, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator !=(MassConcentration left, MassConcentration right)
         {
             return !(left == right);
@@ -1161,7 +1161,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(MassConcentration, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(MassConcentration, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public override bool Equals(object obj)
         {
             if(obj is null || !(obj is MassConcentration objMassConcentration))
@@ -1171,7 +1171,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(MassConcentration, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(MassConcentration, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public bool Equals(MassConcentration other)
         {
             return _value.Equals(other.GetValueAs(this.Unit));
@@ -1217,13 +1217,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(MassConcentration other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(MassConcentration other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -1245,17 +1245,17 @@ namespace UnitsNet
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(MassConcentrationUnit unit)
+        public decimal As(MassConcentrationUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = GetValueAs(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <inheritdoc cref="IQuantity.As(UnitSystem)"/>
-        public double As(UnitSystem unitSystem)
+        public decimal As(UnitSystem unitSystem)
         {
             if(unitSystem is null)
                 throw new ArgumentNullException(nameof(unitSystem));
@@ -1270,7 +1270,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        double IQuantity.As(Enum unit)
+        decimal IQuantity.As(Enum unit)
         {
             if(!(unit is MassConcentrationUnit unitAsMassConcentrationUnit))
                 throw new ArgumentException($"The given unit is of type {unit.GetType()}. Only {typeof(MassConcentrationUnit)} is supported.", nameof(unit));
@@ -1326,57 +1326,57 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double GetValueInBaseUnit()
+        private decimal GetValueInBaseUnit()
         {
             switch(Unit)
             {
-                case MassConcentrationUnit.CentigramPerDeciliter: return (_value/1e-1) * 1e-2d;
-                case MassConcentrationUnit.CentigramPerLiter: return (_value) * 1e-2d;
-                case MassConcentrationUnit.CentigramPerMicroliter: return (_value/1e-6) * 1e-2d;
-                case MassConcentrationUnit.CentigramPerMilliliter: return (_value/1e-3) * 1e-2d;
-                case MassConcentrationUnit.DecigramPerDeciliter: return (_value/1e-1) * 1e-1d;
-                case MassConcentrationUnit.DecigramPerLiter: return (_value) * 1e-1d;
-                case MassConcentrationUnit.DecigramPerMicroliter: return (_value/1e-6) * 1e-1d;
-                case MassConcentrationUnit.DecigramPerMilliliter: return (_value/1e-3) * 1e-1d;
-                case MassConcentrationUnit.GramPerCubicCentimeter: return _value/1e-3;
-                case MassConcentrationUnit.GramPerCubicMeter: return _value/1e3;
-                case MassConcentrationUnit.GramPerCubicMillimeter: return _value/1e-6;
-                case MassConcentrationUnit.GramPerDeciliter: return _value/1e-1;
+                case MassConcentrationUnit.CentigramPerDeciliter: return (_value/1e-1m) * 1e-2m;
+                case MassConcentrationUnit.CentigramPerLiter: return (_value) * 1e-2m;
+                case MassConcentrationUnit.CentigramPerMicroliter: return (_value/1e-6m) * 1e-2m;
+                case MassConcentrationUnit.CentigramPerMilliliter: return (_value/1e-3m) * 1e-2m;
+                case MassConcentrationUnit.DecigramPerDeciliter: return (_value/1e-1m) * 1e-1m;
+                case MassConcentrationUnit.DecigramPerLiter: return (_value) * 1e-1m;
+                case MassConcentrationUnit.DecigramPerMicroliter: return (_value/1e-6m) * 1e-1m;
+                case MassConcentrationUnit.DecigramPerMilliliter: return (_value/1e-3m) * 1e-1m;
+                case MassConcentrationUnit.GramPerCubicCentimeter: return _value/1e-3m;
+                case MassConcentrationUnit.GramPerCubicMeter: return _value/1e3m;
+                case MassConcentrationUnit.GramPerCubicMillimeter: return _value/1e-6m;
+                case MassConcentrationUnit.GramPerDeciliter: return _value/1e-1m;
                 case MassConcentrationUnit.GramPerLiter: return _value;
-                case MassConcentrationUnit.GramPerMicroliter: return _value/1e-6;
-                case MassConcentrationUnit.GramPerMilliliter: return _value/1e-3;
-                case MassConcentrationUnit.KilogramPerCubicCentimeter: return (_value/1e-3) * 1e3d;
-                case MassConcentrationUnit.KilogramPerCubicMeter: return (_value/1e3) * 1e3d;
-                case MassConcentrationUnit.KilogramPerCubicMillimeter: return (_value/1e-6) * 1e3d;
-                case MassConcentrationUnit.KilogramPerLiter: return (_value) * 1e3d;
-                case MassConcentrationUnit.KilopoundPerCubicFoot: return (_value/0.062427961) * 1e3d;
-                case MassConcentrationUnit.KilopoundPerCubicInch: return (_value/3.6127298147753e-5) * 1e3d;
-                case MassConcentrationUnit.MicrogramPerCubicMeter: return (_value/1e3) * 1e-6d;
-                case MassConcentrationUnit.MicrogramPerDeciliter: return (_value/1e-1) * 1e-6d;
-                case MassConcentrationUnit.MicrogramPerLiter: return (_value) * 1e-6d;
-                case MassConcentrationUnit.MicrogramPerMicroliter: return (_value/1e-6) * 1e-6d;
-                case MassConcentrationUnit.MicrogramPerMilliliter: return (_value/1e-3) * 1e-6d;
-                case MassConcentrationUnit.MilligramPerCubicMeter: return (_value/1e3) * 1e-3d;
-                case MassConcentrationUnit.MilligramPerDeciliter: return (_value/1e-1) * 1e-3d;
-                case MassConcentrationUnit.MilligramPerLiter: return (_value) * 1e-3d;
-                case MassConcentrationUnit.MilligramPerMicroliter: return (_value/1e-6) * 1e-3d;
-                case MassConcentrationUnit.MilligramPerMilliliter: return (_value/1e-3) * 1e-3d;
-                case MassConcentrationUnit.NanogramPerDeciliter: return (_value/1e-1) * 1e-9d;
-                case MassConcentrationUnit.NanogramPerLiter: return (_value) * 1e-9d;
-                case MassConcentrationUnit.NanogramPerMicroliter: return (_value/1e-6) * 1e-9d;
-                case MassConcentrationUnit.NanogramPerMilliliter: return (_value/1e-3) * 1e-9d;
-                case MassConcentrationUnit.PicogramPerDeciliter: return (_value/1e-1) * 1e-12d;
-                case MassConcentrationUnit.PicogramPerLiter: return (_value) * 1e-12d;
-                case MassConcentrationUnit.PicogramPerMicroliter: return (_value/1e-6) * 1e-12d;
-                case MassConcentrationUnit.PicogramPerMilliliter: return (_value/1e-3) * 1e-12d;
-                case MassConcentrationUnit.PoundPerCubicFoot: return _value/0.062427961;
-                case MassConcentrationUnit.PoundPerCubicInch: return _value/3.6127298147753e-5;
-                case MassConcentrationUnit.PoundPerImperialGallon: return _value*9.9776398e1;
-                case MassConcentrationUnit.PoundPerUSGallon: return _value*1.19826427e2;
-                case MassConcentrationUnit.SlugPerCubicFoot: return _value*515.378818;
-                case MassConcentrationUnit.TonnePerCubicCentimeter: return _value/1e-9;
-                case MassConcentrationUnit.TonnePerCubicMeter: return _value/0.001;
-                case MassConcentrationUnit.TonnePerCubicMillimeter: return _value/1e-12;
+                case MassConcentrationUnit.GramPerMicroliter: return _value/1e-6m;
+                case MassConcentrationUnit.GramPerMilliliter: return _value/1e-3m;
+                case MassConcentrationUnit.KilogramPerCubicCentimeter: return (_value/1e-3m) * 1e3m;
+                case MassConcentrationUnit.KilogramPerCubicMeter: return (_value/1e3m) * 1e3m;
+                case MassConcentrationUnit.KilogramPerCubicMillimeter: return (_value/1e-6m) * 1e3m;
+                case MassConcentrationUnit.KilogramPerLiter: return (_value) * 1e3m;
+                case MassConcentrationUnit.KilopoundPerCubicFoot: return (_value/0.062427961m) * 1e3m;
+                case MassConcentrationUnit.KilopoundPerCubicInch: return (_value/3.6127298147753e-5m) * 1e3m;
+                case MassConcentrationUnit.MicrogramPerCubicMeter: return (_value/1e3m) * 1e-6m;
+                case MassConcentrationUnit.MicrogramPerDeciliter: return (_value/1e-1m) * 1e-6m;
+                case MassConcentrationUnit.MicrogramPerLiter: return (_value) * 1e-6m;
+                case MassConcentrationUnit.MicrogramPerMicroliter: return (_value/1e-6m) * 1e-6m;
+                case MassConcentrationUnit.MicrogramPerMilliliter: return (_value/1e-3m) * 1e-6m;
+                case MassConcentrationUnit.MilligramPerCubicMeter: return (_value/1e3m) * 1e-3m;
+                case MassConcentrationUnit.MilligramPerDeciliter: return (_value/1e-1m) * 1e-3m;
+                case MassConcentrationUnit.MilligramPerLiter: return (_value) * 1e-3m;
+                case MassConcentrationUnit.MilligramPerMicroliter: return (_value/1e-6m) * 1e-3m;
+                case MassConcentrationUnit.MilligramPerMilliliter: return (_value/1e-3m) * 1e-3m;
+                case MassConcentrationUnit.NanogramPerDeciliter: return (_value/1e-1m) * 1e-9m;
+                case MassConcentrationUnit.NanogramPerLiter: return (_value) * 1e-9m;
+                case MassConcentrationUnit.NanogramPerMicroliter: return (_value/1e-6m) * 1e-9m;
+                case MassConcentrationUnit.NanogramPerMilliliter: return (_value/1e-3m) * 1e-9m;
+                case MassConcentrationUnit.PicogramPerDeciliter: return (_value/1e-1m) * 1e-12m;
+                case MassConcentrationUnit.PicogramPerLiter: return (_value) * 1e-12m;
+                case MassConcentrationUnit.PicogramPerMicroliter: return (_value/1e-6m) * 1e-12m;
+                case MassConcentrationUnit.PicogramPerMilliliter: return (_value/1e-3m) * 1e-12m;
+                case MassConcentrationUnit.PoundPerCubicFoot: return _value/0.062427961m;
+                case MassConcentrationUnit.PoundPerCubicInch: return _value/3.6127298147753e-5m;
+                case MassConcentrationUnit.PoundPerImperialGallon: return _value*9.9776398e1m;
+                case MassConcentrationUnit.PoundPerUSGallon: return _value*1.19826427e2m;
+                case MassConcentrationUnit.SlugPerCubicFoot: return _value*515.378818m;
+                case MassConcentrationUnit.TonnePerCubicCentimeter: return _value/1e-9m;
+                case MassConcentrationUnit.TonnePerCubicMeter: return _value/0.001m;
+                case MassConcentrationUnit.TonnePerCubicMillimeter: return _value/1e-12m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
@@ -1393,7 +1393,7 @@ namespace UnitsNet
             return new MassConcentration(baseUnitValue, BaseUnit);
         }
 
-        private double GetValueAs(MassConcentrationUnit unit)
+        private decimal GetValueAs(MassConcentrationUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -1402,53 +1402,53 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case MassConcentrationUnit.CentigramPerDeciliter: return (baseUnitValue*1e-1) / 1e-2d;
-                case MassConcentrationUnit.CentigramPerLiter: return (baseUnitValue) / 1e-2d;
-                case MassConcentrationUnit.CentigramPerMicroliter: return (baseUnitValue*1e-6) / 1e-2d;
-                case MassConcentrationUnit.CentigramPerMilliliter: return (baseUnitValue*1e-3) / 1e-2d;
-                case MassConcentrationUnit.DecigramPerDeciliter: return (baseUnitValue*1e-1) / 1e-1d;
-                case MassConcentrationUnit.DecigramPerLiter: return (baseUnitValue) / 1e-1d;
-                case MassConcentrationUnit.DecigramPerMicroliter: return (baseUnitValue*1e-6) / 1e-1d;
-                case MassConcentrationUnit.DecigramPerMilliliter: return (baseUnitValue*1e-3) / 1e-1d;
-                case MassConcentrationUnit.GramPerCubicCentimeter: return baseUnitValue*1e-3;
-                case MassConcentrationUnit.GramPerCubicMeter: return baseUnitValue*1e3;
-                case MassConcentrationUnit.GramPerCubicMillimeter: return baseUnitValue*1e-6;
-                case MassConcentrationUnit.GramPerDeciliter: return baseUnitValue*1e-1;
+                case MassConcentrationUnit.CentigramPerDeciliter: return (baseUnitValue*1e-1m) / 1e-2m;
+                case MassConcentrationUnit.CentigramPerLiter: return (baseUnitValue) / 1e-2m;
+                case MassConcentrationUnit.CentigramPerMicroliter: return (baseUnitValue*1e-6m) / 1e-2m;
+                case MassConcentrationUnit.CentigramPerMilliliter: return (baseUnitValue*1e-3m) / 1e-2m;
+                case MassConcentrationUnit.DecigramPerDeciliter: return (baseUnitValue*1e-1m) / 1e-1m;
+                case MassConcentrationUnit.DecigramPerLiter: return (baseUnitValue) / 1e-1m;
+                case MassConcentrationUnit.DecigramPerMicroliter: return (baseUnitValue*1e-6m) / 1e-1m;
+                case MassConcentrationUnit.DecigramPerMilliliter: return (baseUnitValue*1e-3m) / 1e-1m;
+                case MassConcentrationUnit.GramPerCubicCentimeter: return baseUnitValue*1e-3m;
+                case MassConcentrationUnit.GramPerCubicMeter: return baseUnitValue*1e3m;
+                case MassConcentrationUnit.GramPerCubicMillimeter: return baseUnitValue*1e-6m;
+                case MassConcentrationUnit.GramPerDeciliter: return baseUnitValue*1e-1m;
                 case MassConcentrationUnit.GramPerLiter: return baseUnitValue;
-                case MassConcentrationUnit.GramPerMicroliter: return baseUnitValue*1e-6;
-                case MassConcentrationUnit.GramPerMilliliter: return baseUnitValue*1e-3;
-                case MassConcentrationUnit.KilogramPerCubicCentimeter: return (baseUnitValue*1e-3) / 1e3d;
-                case MassConcentrationUnit.KilogramPerCubicMeter: return (baseUnitValue*1e3) / 1e3d;
-                case MassConcentrationUnit.KilogramPerCubicMillimeter: return (baseUnitValue*1e-6) / 1e3d;
-                case MassConcentrationUnit.KilogramPerLiter: return (baseUnitValue) / 1e3d;
-                case MassConcentrationUnit.KilopoundPerCubicFoot: return (baseUnitValue*0.062427961) / 1e3d;
-                case MassConcentrationUnit.KilopoundPerCubicInch: return (baseUnitValue*3.6127298147753e-5) / 1e3d;
-                case MassConcentrationUnit.MicrogramPerCubicMeter: return (baseUnitValue*1e3) / 1e-6d;
-                case MassConcentrationUnit.MicrogramPerDeciliter: return (baseUnitValue*1e-1) / 1e-6d;
-                case MassConcentrationUnit.MicrogramPerLiter: return (baseUnitValue) / 1e-6d;
-                case MassConcentrationUnit.MicrogramPerMicroliter: return (baseUnitValue*1e-6) / 1e-6d;
-                case MassConcentrationUnit.MicrogramPerMilliliter: return (baseUnitValue*1e-3) / 1e-6d;
-                case MassConcentrationUnit.MilligramPerCubicMeter: return (baseUnitValue*1e3) / 1e-3d;
-                case MassConcentrationUnit.MilligramPerDeciliter: return (baseUnitValue*1e-1) / 1e-3d;
-                case MassConcentrationUnit.MilligramPerLiter: return (baseUnitValue) / 1e-3d;
-                case MassConcentrationUnit.MilligramPerMicroliter: return (baseUnitValue*1e-6) / 1e-3d;
-                case MassConcentrationUnit.MilligramPerMilliliter: return (baseUnitValue*1e-3) / 1e-3d;
-                case MassConcentrationUnit.NanogramPerDeciliter: return (baseUnitValue*1e-1) / 1e-9d;
-                case MassConcentrationUnit.NanogramPerLiter: return (baseUnitValue) / 1e-9d;
-                case MassConcentrationUnit.NanogramPerMicroliter: return (baseUnitValue*1e-6) / 1e-9d;
-                case MassConcentrationUnit.NanogramPerMilliliter: return (baseUnitValue*1e-3) / 1e-9d;
-                case MassConcentrationUnit.PicogramPerDeciliter: return (baseUnitValue*1e-1) / 1e-12d;
-                case MassConcentrationUnit.PicogramPerLiter: return (baseUnitValue) / 1e-12d;
-                case MassConcentrationUnit.PicogramPerMicroliter: return (baseUnitValue*1e-6) / 1e-12d;
-                case MassConcentrationUnit.PicogramPerMilliliter: return (baseUnitValue*1e-3) / 1e-12d;
-                case MassConcentrationUnit.PoundPerCubicFoot: return baseUnitValue*0.062427961;
-                case MassConcentrationUnit.PoundPerCubicInch: return baseUnitValue*3.6127298147753e-5;
-                case MassConcentrationUnit.PoundPerImperialGallon: return baseUnitValue/9.9776398e1;
-                case MassConcentrationUnit.PoundPerUSGallon: return baseUnitValue/1.19826427e2;
-                case MassConcentrationUnit.SlugPerCubicFoot: return baseUnitValue*0.00194032033;
-                case MassConcentrationUnit.TonnePerCubicCentimeter: return baseUnitValue*1e-9;
-                case MassConcentrationUnit.TonnePerCubicMeter: return baseUnitValue*0.001;
-                case MassConcentrationUnit.TonnePerCubicMillimeter: return baseUnitValue*1e-12;
+                case MassConcentrationUnit.GramPerMicroliter: return baseUnitValue*1e-6m;
+                case MassConcentrationUnit.GramPerMilliliter: return baseUnitValue*1e-3m;
+                case MassConcentrationUnit.KilogramPerCubicCentimeter: return (baseUnitValue*1e-3m) / 1e3m;
+                case MassConcentrationUnit.KilogramPerCubicMeter: return (baseUnitValue*1e3m) / 1e3m;
+                case MassConcentrationUnit.KilogramPerCubicMillimeter: return (baseUnitValue*1e-6m) / 1e3m;
+                case MassConcentrationUnit.KilogramPerLiter: return (baseUnitValue) / 1e3m;
+                case MassConcentrationUnit.KilopoundPerCubicFoot: return (baseUnitValue*0.062427961m) / 1e3m;
+                case MassConcentrationUnit.KilopoundPerCubicInch: return (baseUnitValue*3.6127298147753e-5m) / 1e3m;
+                case MassConcentrationUnit.MicrogramPerCubicMeter: return (baseUnitValue*1e3m) / 1e-6m;
+                case MassConcentrationUnit.MicrogramPerDeciliter: return (baseUnitValue*1e-1m) / 1e-6m;
+                case MassConcentrationUnit.MicrogramPerLiter: return (baseUnitValue) / 1e-6m;
+                case MassConcentrationUnit.MicrogramPerMicroliter: return (baseUnitValue*1e-6m) / 1e-6m;
+                case MassConcentrationUnit.MicrogramPerMilliliter: return (baseUnitValue*1e-3m) / 1e-6m;
+                case MassConcentrationUnit.MilligramPerCubicMeter: return (baseUnitValue*1e3m) / 1e-3m;
+                case MassConcentrationUnit.MilligramPerDeciliter: return (baseUnitValue*1e-1m) / 1e-3m;
+                case MassConcentrationUnit.MilligramPerLiter: return (baseUnitValue) / 1e-3m;
+                case MassConcentrationUnit.MilligramPerMicroliter: return (baseUnitValue*1e-6m) / 1e-3m;
+                case MassConcentrationUnit.MilligramPerMilliliter: return (baseUnitValue*1e-3m) / 1e-3m;
+                case MassConcentrationUnit.NanogramPerDeciliter: return (baseUnitValue*1e-1m) / 1e-9m;
+                case MassConcentrationUnit.NanogramPerLiter: return (baseUnitValue) / 1e-9m;
+                case MassConcentrationUnit.NanogramPerMicroliter: return (baseUnitValue*1e-6m) / 1e-9m;
+                case MassConcentrationUnit.NanogramPerMilliliter: return (baseUnitValue*1e-3m) / 1e-9m;
+                case MassConcentrationUnit.PicogramPerDeciliter: return (baseUnitValue*1e-1m) / 1e-12m;
+                case MassConcentrationUnit.PicogramPerLiter: return (baseUnitValue) / 1e-12m;
+                case MassConcentrationUnit.PicogramPerMicroliter: return (baseUnitValue*1e-6m) / 1e-12m;
+                case MassConcentrationUnit.PicogramPerMilliliter: return (baseUnitValue*1e-3m) / 1e-12m;
+                case MassConcentrationUnit.PoundPerCubicFoot: return baseUnitValue*0.062427961m;
+                case MassConcentrationUnit.PoundPerCubicInch: return baseUnitValue*3.6127298147753e-5m;
+                case MassConcentrationUnit.PoundPerImperialGallon: return baseUnitValue/9.9776398e1m;
+                case MassConcentrationUnit.PoundPerUSGallon: return baseUnitValue/1.19826427e2m;
+                case MassConcentrationUnit.SlugPerCubicFoot: return baseUnitValue*0.00194032033m;
+                case MassConcentrationUnit.TonnePerCubicCentimeter: return baseUnitValue*1e-9m;
+                case MassConcentrationUnit.TonnePerCubicMeter: return baseUnitValue*0.001m;
+                case MassConcentrationUnit.TonnePerCubicMillimeter: return baseUnitValue*1e-12m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -1486,7 +1486,7 @@ namespace UnitsNet
         [Obsolete(@"This method is deprecated and will be removed at a future release. Please use ToString(""s2"") or ToString(""s2"", provider) where 2 is an example of the number passed to significantDigitsAfterRadix.")]
         public string ToString(IFormatProvider? provider, int significantDigitsAfterRadix)
         {
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -1506,7 +1506,7 @@ namespace UnitsNet
 
             provider = provider ?? CultureInfo.CurrentUICulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

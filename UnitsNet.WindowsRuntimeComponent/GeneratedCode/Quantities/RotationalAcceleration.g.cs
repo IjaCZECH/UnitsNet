@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -71,12 +71,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private RotationalAcceleration(double value, RotationalAccelerationUnit unit)
+        private RotationalAcceleration(decimal value, RotationalAccelerationUnit unit)
         {
             if(unit == RotationalAccelerationUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -100,12 +100,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of RotationalAcceleration
         /// </summary>
-        public static RotationalAcceleration MaxValue { get; } = new RotationalAcceleration(double.MaxValue, BaseUnit);
+        public static RotationalAcceleration MaxValue { get; } = new RotationalAcceleration(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of RotationalAcceleration
         /// </summary>
-        public static RotationalAcceleration MinValue { get; } = new RotationalAcceleration(double.MinValue, BaseUnit);
+        public static RotationalAcceleration MinValue { get; } = new RotationalAcceleration(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -129,7 +129,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -158,22 +158,22 @@ namespace UnitsNet
         /// <summary>
         ///     Get RotationalAcceleration in DegreesPerSecondSquared.
         /// </summary>
-        public double DegreesPerSecondSquared => As(RotationalAccelerationUnit.DegreePerSecondSquared);
+        public decimal DegreesPerSecondSquared => As(RotationalAccelerationUnit.DegreePerSecondSquared);
 
         /// <summary>
         ///     Get RotationalAcceleration in RadiansPerSecondSquared.
         /// </summary>
-        public double RadiansPerSecondSquared => As(RotationalAccelerationUnit.RadianPerSecondSquared);
+        public decimal RadiansPerSecondSquared => As(RotationalAccelerationUnit.RadianPerSecondSquared);
 
         /// <summary>
         ///     Get RotationalAcceleration in RevolutionsPerMinutePerSecond.
         /// </summary>
-        public double RevolutionsPerMinutePerSecond => As(RotationalAccelerationUnit.RevolutionPerMinutePerSecond);
+        public decimal RevolutionsPerMinutePerSecond => As(RotationalAccelerationUnit.RevolutionPerMinutePerSecond);
 
         /// <summary>
         ///     Get RotationalAcceleration in RevolutionsPerSecondSquared.
         /// </summary>
-        public double RevolutionsPerSecondSquared => As(RotationalAccelerationUnit.RevolutionPerSecondSquared);
+        public decimal RevolutionsPerSecondSquared => As(RotationalAccelerationUnit.RevolutionPerSecondSquared);
 
         #endregion
 
@@ -210,9 +210,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static RotationalAcceleration FromDegreesPerSecondSquared(double degreespersecondsquared)
+        public static RotationalAcceleration FromDegreesPerSecondSquared(decimal degreespersecondsquared)
         {
-            double value = (double) degreespersecondsquared;
+            decimal value = (decimal) degreespersecondsquared;
             return new RotationalAcceleration(value, RotationalAccelerationUnit.DegreePerSecondSquared);
         }
         /// <summary>
@@ -220,9 +220,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static RotationalAcceleration FromRadiansPerSecondSquared(double radianspersecondsquared)
+        public static RotationalAcceleration FromRadiansPerSecondSquared(decimal radianspersecondsquared)
         {
-            double value = (double) radianspersecondsquared;
+            decimal value = (decimal) radianspersecondsquared;
             return new RotationalAcceleration(value, RotationalAccelerationUnit.RadianPerSecondSquared);
         }
         /// <summary>
@@ -230,9 +230,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static RotationalAcceleration FromRevolutionsPerMinutePerSecond(double revolutionsperminutepersecond)
+        public static RotationalAcceleration FromRevolutionsPerMinutePerSecond(decimal revolutionsperminutepersecond)
         {
-            double value = (double) revolutionsperminutepersecond;
+            decimal value = (decimal) revolutionsperminutepersecond;
             return new RotationalAcceleration(value, RotationalAccelerationUnit.RevolutionPerMinutePerSecond);
         }
         /// <summary>
@@ -240,9 +240,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static RotationalAcceleration FromRevolutionsPerSecondSquared(double revolutionspersecondsquared)
+        public static RotationalAcceleration FromRevolutionsPerSecondSquared(decimal revolutionspersecondsquared)
         {
-            double value = (double) revolutionspersecondsquared;
+            decimal value = (decimal) revolutionspersecondsquared;
             return new RotationalAcceleration(value, RotationalAccelerationUnit.RevolutionPerSecondSquared);
         }
 
@@ -254,9 +254,9 @@ namespace UnitsNet
         /// <returns>RotationalAcceleration unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static RotationalAcceleration From(double value, RotationalAccelerationUnit fromUnit)
+        public static RotationalAcceleration From(decimal value, RotationalAccelerationUnit fromUnit)
         {
-            return new RotationalAcceleration((double)value, fromUnit);
+            return new RotationalAcceleration((decimal)value, fromUnit);
         }
 
         #endregion
@@ -478,13 +478,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(RotationalAcceleration other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(RotationalAcceleration other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -502,19 +502,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((RotationalAccelerationUnit)unit);
+        decimal IQuantity.As(object unit) => As((RotationalAccelerationUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(RotationalAccelerationUnit unit)
+        public decimal As(RotationalAccelerationUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -532,20 +532,20 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
-                case RotationalAccelerationUnit.DegreePerSecondSquared: return (Math.PI/180)*_value;
+                case RotationalAccelerationUnit.DegreePerSecondSquared: return (UnitsNet.CustomCome.CustomMath.PI/180)*_value;
                 case RotationalAccelerationUnit.RadianPerSecondSquared: return _value;
-                case RotationalAccelerationUnit.RevolutionPerMinutePerSecond: return ((2*Math.PI)/60)*_value;
-                case RotationalAccelerationUnit.RevolutionPerSecondSquared: return (2*Math.PI)*_value;
+                case RotationalAccelerationUnit.RevolutionPerMinutePerSecond: return ((2m*UnitsNet.CustomCome.CustomMath.PI)/60)*_value;
+                case RotationalAccelerationUnit.RevolutionPerSecondSquared: return (2m*UnitsNet.CustomCome.CustomMath.PI)*_value;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(RotationalAccelerationUnit unit)
+        private decimal AsBaseNumericType(RotationalAccelerationUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -554,10 +554,10 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case RotationalAccelerationUnit.DegreePerSecondSquared: return (180/Math.PI)*baseUnitValue;
+                case RotationalAccelerationUnit.DegreePerSecondSquared: return (180m/UnitsNet.CustomCome.CustomMath.PI)*baseUnitValue;
                 case RotationalAccelerationUnit.RadianPerSecondSquared: return baseUnitValue;
-                case RotationalAccelerationUnit.RevolutionPerMinutePerSecond: return (60/(2*Math.PI))*baseUnitValue;
-                case RotationalAccelerationUnit.RevolutionPerSecondSquared: return (1/(2*Math.PI))*baseUnitValue;
+                case RotationalAccelerationUnit.RevolutionPerMinutePerSecond: return (60m/(2m*UnitsNet.CustomCome.CustomMath.PI))*baseUnitValue;
+                case RotationalAccelerationUnit.RevolutionPerSecondSquared: return (1m/(2m*UnitsNet.CustomCome.CustomMath.PI))*baseUnitValue;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -596,7 +596,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -616,7 +616,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

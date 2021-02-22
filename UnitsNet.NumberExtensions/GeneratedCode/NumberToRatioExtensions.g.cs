@@ -30,27 +30,27 @@ namespace UnitsNet.NumberExtensions.NumberToRatio
     {
         /// <inheritdoc cref="Ratio.FromDecimalFractions(UnitsNet.QuantityValue)" />
         public static Ratio DecimalFractions<T>(this T value) =>
-            Ratio.FromDecimalFractions(Convert.ToDouble(value));
+            Ratio.FromDecimalFractions(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Ratio.FromPartsPerBillion(UnitsNet.QuantityValue)" />
         public static Ratio PartsPerBillion<T>(this T value) =>
-            Ratio.FromPartsPerBillion(Convert.ToDouble(value));
+            Ratio.FromPartsPerBillion(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Ratio.FromPartsPerMillion(UnitsNet.QuantityValue)" />
         public static Ratio PartsPerMillion<T>(this T value) =>
-            Ratio.FromPartsPerMillion(Convert.ToDouble(value));
+            Ratio.FromPartsPerMillion(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Ratio.FromPartsPerThousand(UnitsNet.QuantityValue)" />
         public static Ratio PartsPerThousand<T>(this T value) =>
-            Ratio.FromPartsPerThousand(Convert.ToDouble(value));
+            Ratio.FromPartsPerThousand(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Ratio.FromPartsPerTrillion(UnitsNet.QuantityValue)" />
         public static Ratio PartsPerTrillion<T>(this T value) =>
-            Ratio.FromPartsPerTrillion(Convert.ToDouble(value));
+            Ratio.FromPartsPerTrillion(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Ratio.FromPercent(UnitsNet.QuantityValue)" />
         public static Ratio Percent<T>(this T value) =>
-            Ratio.FromPercent(Convert.ToDouble(value));
+            Ratio.FromPercent(Convert.ToDecimal(value));
 
     }
 }

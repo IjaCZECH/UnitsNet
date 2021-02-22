@@ -30,11 +30,11 @@ namespace UnitsNet.NumberExtensions.NumberToPowerRatio
     {
         /// <inheritdoc cref="PowerRatio.FromDecibelMilliwatts(UnitsNet.QuantityValue)" />
         public static PowerRatio DecibelMilliwatts<T>(this T value) =>
-            PowerRatio.FromDecibelMilliwatts(Convert.ToDouble(value));
+            PowerRatio.FromDecibelMilliwatts(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="PowerRatio.FromDecibelWatts(UnitsNet.QuantityValue)" />
         public static PowerRatio DecibelWatts<T>(this T value) =>
-            PowerRatio.FromDecibelWatts(Convert.ToDouble(value));
+            PowerRatio.FromDecibelWatts(Convert.ToDecimal(value));
 
     }
 }

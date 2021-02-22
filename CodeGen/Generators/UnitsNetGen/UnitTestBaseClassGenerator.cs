@@ -91,13 +91,13 @@ namespace UnitsNet.Tests
     public abstract partial class {_quantity.Name}TestsBase : QuantityTestsBase
     {{");
             foreach (var unit in _quantity.Units) Writer.WL($@"
-        protected abstract double {unit.PluralName}InOne{_baseUnit.SingularName} {{ get; }}");
+        protected abstract decimal {unit.PluralName}InOne{_baseUnit.SingularName} {{ get; }}");
 
             Writer.WL("");
             Writer.WL($@"
 // ReSharper disable VirtualMemberNeverOverriden.Global");
             foreach (var unit in _quantity.Units) Writer.WL($@"
-        protected virtual double {unit.PluralName}Tolerance {{ get {{ return 1e-5; }} }}"); Writer.WL($@"
+        protected virtual decimal {unit.PluralName}Tolerance {{ get {{ return 1e-5; }} }}"); Writer.WL($@"
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
@@ -231,7 +231,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {{
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }}
             else
@@ -251,7 +251,7 @@ namespace UnitsNet.Tests
                 Writer.WL("");
                 Writer.WL($@"
             var {asQuantityVariableName} = {baseUnitVariableName}.ToUnit({GetUnitFullName(unit)});
-            AssertEx.EqualTolerance({unit.PluralName}InOne{_baseUnit.SingularName}, (double){asQuantityVariableName}.Value, {unit.PluralName}Tolerance);
+            AssertEx.EqualTolerance({unit.PluralName}InOne{_baseUnit.SingularName}, (decimal){asQuantityVariableName}.Value, {unit.PluralName}Tolerance);
             Assert.Equal({GetUnitFullName(unit)}, {asQuantityVariableName}.Unit);");
             }
             Writer.WL($@"
@@ -694,7 +694,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {{
             var quantity = {_quantity.Name}.From{_baseUnit.PluralName}(value);
             Assert.Equal({_quantity.Name}.From{_baseUnit.PluralName}(-value), -quantity);

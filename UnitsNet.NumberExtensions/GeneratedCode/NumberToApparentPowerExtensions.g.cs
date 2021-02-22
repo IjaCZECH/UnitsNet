@@ -30,19 +30,19 @@ namespace UnitsNet.NumberExtensions.NumberToApparentPower
     {
         /// <inheritdoc cref="ApparentPower.FromGigavoltamperes(UnitsNet.QuantityValue)" />
         public static ApparentPower Gigavoltamperes<T>(this T value) =>
-            ApparentPower.FromGigavoltamperes(Convert.ToDouble(value));
+            ApparentPower.FromGigavoltamperes(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ApparentPower.FromKilovoltamperes(UnitsNet.QuantityValue)" />
         public static ApparentPower Kilovoltamperes<T>(this T value) =>
-            ApparentPower.FromKilovoltamperes(Convert.ToDouble(value));
+            ApparentPower.FromKilovoltamperes(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ApparentPower.FromMegavoltamperes(UnitsNet.QuantityValue)" />
         public static ApparentPower Megavoltamperes<T>(this T value) =>
-            ApparentPower.FromMegavoltamperes(Convert.ToDouble(value));
+            ApparentPower.FromMegavoltamperes(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ApparentPower.FromVoltamperes(UnitsNet.QuantityValue)" />
         public static ApparentPower Voltamperes<T>(this T value) =>
-            ApparentPower.FromVoltamperes(Convert.ToDouble(value));
+            ApparentPower.FromVoltamperes(Convert.ToDecimal(value));
 
     }
 }

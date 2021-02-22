@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -71,12 +71,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private MassMomentOfInertia(double value, MassMomentOfInertiaUnit unit)
+        private MassMomentOfInertia(decimal value, MassMomentOfInertiaUnit unit)
         {
             if(unit == MassMomentOfInertiaUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -100,12 +100,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of MassMomentOfInertia
         /// </summary>
-        public static MassMomentOfInertia MaxValue { get; } = new MassMomentOfInertia(double.MaxValue, BaseUnit);
+        public static MassMomentOfInertia MaxValue { get; } = new MassMomentOfInertia(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of MassMomentOfInertia
         /// </summary>
-        public static MassMomentOfInertia MinValue { get; } = new MassMomentOfInertia(double.MinValue, BaseUnit);
+        public static MassMomentOfInertia MinValue { get; } = new MassMomentOfInertia(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -129,7 +129,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -158,142 +158,142 @@ namespace UnitsNet
         /// <summary>
         ///     Get MassMomentOfInertia in GramSquareCentimeters.
         /// </summary>
-        public double GramSquareCentimeters => As(MassMomentOfInertiaUnit.GramSquareCentimeter);
+        public decimal GramSquareCentimeters => As(MassMomentOfInertiaUnit.GramSquareCentimeter);
 
         /// <summary>
         ///     Get MassMomentOfInertia in GramSquareDecimeters.
         /// </summary>
-        public double GramSquareDecimeters => As(MassMomentOfInertiaUnit.GramSquareDecimeter);
+        public decimal GramSquareDecimeters => As(MassMomentOfInertiaUnit.GramSquareDecimeter);
 
         /// <summary>
         ///     Get MassMomentOfInertia in GramSquareMeters.
         /// </summary>
-        public double GramSquareMeters => As(MassMomentOfInertiaUnit.GramSquareMeter);
+        public decimal GramSquareMeters => As(MassMomentOfInertiaUnit.GramSquareMeter);
 
         /// <summary>
         ///     Get MassMomentOfInertia in GramSquareMillimeters.
         /// </summary>
-        public double GramSquareMillimeters => As(MassMomentOfInertiaUnit.GramSquareMillimeter);
+        public decimal GramSquareMillimeters => As(MassMomentOfInertiaUnit.GramSquareMillimeter);
 
         /// <summary>
         ///     Get MassMomentOfInertia in KilogramSquareCentimeters.
         /// </summary>
-        public double KilogramSquareCentimeters => As(MassMomentOfInertiaUnit.KilogramSquareCentimeter);
+        public decimal KilogramSquareCentimeters => As(MassMomentOfInertiaUnit.KilogramSquareCentimeter);
 
         /// <summary>
         ///     Get MassMomentOfInertia in KilogramSquareDecimeters.
         /// </summary>
-        public double KilogramSquareDecimeters => As(MassMomentOfInertiaUnit.KilogramSquareDecimeter);
+        public decimal KilogramSquareDecimeters => As(MassMomentOfInertiaUnit.KilogramSquareDecimeter);
 
         /// <summary>
         ///     Get MassMomentOfInertia in KilogramSquareMeters.
         /// </summary>
-        public double KilogramSquareMeters => As(MassMomentOfInertiaUnit.KilogramSquareMeter);
+        public decimal KilogramSquareMeters => As(MassMomentOfInertiaUnit.KilogramSquareMeter);
 
         /// <summary>
         ///     Get MassMomentOfInertia in KilogramSquareMillimeters.
         /// </summary>
-        public double KilogramSquareMillimeters => As(MassMomentOfInertiaUnit.KilogramSquareMillimeter);
+        public decimal KilogramSquareMillimeters => As(MassMomentOfInertiaUnit.KilogramSquareMillimeter);
 
         /// <summary>
         ///     Get MassMomentOfInertia in KilotonneSquareCentimeters.
         /// </summary>
-        public double KilotonneSquareCentimeters => As(MassMomentOfInertiaUnit.KilotonneSquareCentimeter);
+        public decimal KilotonneSquareCentimeters => As(MassMomentOfInertiaUnit.KilotonneSquareCentimeter);
 
         /// <summary>
         ///     Get MassMomentOfInertia in KilotonneSquareDecimeters.
         /// </summary>
-        public double KilotonneSquareDecimeters => As(MassMomentOfInertiaUnit.KilotonneSquareDecimeter);
+        public decimal KilotonneSquareDecimeters => As(MassMomentOfInertiaUnit.KilotonneSquareDecimeter);
 
         /// <summary>
         ///     Get MassMomentOfInertia in KilotonneSquareMeters.
         /// </summary>
-        public double KilotonneSquareMeters => As(MassMomentOfInertiaUnit.KilotonneSquareMeter);
+        public decimal KilotonneSquareMeters => As(MassMomentOfInertiaUnit.KilotonneSquareMeter);
 
         /// <summary>
         ///     Get MassMomentOfInertia in KilotonneSquareMilimeters.
         /// </summary>
-        public double KilotonneSquareMilimeters => As(MassMomentOfInertiaUnit.KilotonneSquareMilimeter);
+        public decimal KilotonneSquareMilimeters => As(MassMomentOfInertiaUnit.KilotonneSquareMilimeter);
 
         /// <summary>
         ///     Get MassMomentOfInertia in MegatonneSquareCentimeters.
         /// </summary>
-        public double MegatonneSquareCentimeters => As(MassMomentOfInertiaUnit.MegatonneSquareCentimeter);
+        public decimal MegatonneSquareCentimeters => As(MassMomentOfInertiaUnit.MegatonneSquareCentimeter);
 
         /// <summary>
         ///     Get MassMomentOfInertia in MegatonneSquareDecimeters.
         /// </summary>
-        public double MegatonneSquareDecimeters => As(MassMomentOfInertiaUnit.MegatonneSquareDecimeter);
+        public decimal MegatonneSquareDecimeters => As(MassMomentOfInertiaUnit.MegatonneSquareDecimeter);
 
         /// <summary>
         ///     Get MassMomentOfInertia in MegatonneSquareMeters.
         /// </summary>
-        public double MegatonneSquareMeters => As(MassMomentOfInertiaUnit.MegatonneSquareMeter);
+        public decimal MegatonneSquareMeters => As(MassMomentOfInertiaUnit.MegatonneSquareMeter);
 
         /// <summary>
         ///     Get MassMomentOfInertia in MegatonneSquareMilimeters.
         /// </summary>
-        public double MegatonneSquareMilimeters => As(MassMomentOfInertiaUnit.MegatonneSquareMilimeter);
+        public decimal MegatonneSquareMilimeters => As(MassMomentOfInertiaUnit.MegatonneSquareMilimeter);
 
         /// <summary>
         ///     Get MassMomentOfInertia in MilligramSquareCentimeters.
         /// </summary>
-        public double MilligramSquareCentimeters => As(MassMomentOfInertiaUnit.MilligramSquareCentimeter);
+        public decimal MilligramSquareCentimeters => As(MassMomentOfInertiaUnit.MilligramSquareCentimeter);
 
         /// <summary>
         ///     Get MassMomentOfInertia in MilligramSquareDecimeters.
         /// </summary>
-        public double MilligramSquareDecimeters => As(MassMomentOfInertiaUnit.MilligramSquareDecimeter);
+        public decimal MilligramSquareDecimeters => As(MassMomentOfInertiaUnit.MilligramSquareDecimeter);
 
         /// <summary>
         ///     Get MassMomentOfInertia in MilligramSquareMeters.
         /// </summary>
-        public double MilligramSquareMeters => As(MassMomentOfInertiaUnit.MilligramSquareMeter);
+        public decimal MilligramSquareMeters => As(MassMomentOfInertiaUnit.MilligramSquareMeter);
 
         /// <summary>
         ///     Get MassMomentOfInertia in MilligramSquareMillimeters.
         /// </summary>
-        public double MilligramSquareMillimeters => As(MassMomentOfInertiaUnit.MilligramSquareMillimeter);
+        public decimal MilligramSquareMillimeters => As(MassMomentOfInertiaUnit.MilligramSquareMillimeter);
 
         /// <summary>
         ///     Get MassMomentOfInertia in PoundSquareFeet.
         /// </summary>
-        public double PoundSquareFeet => As(MassMomentOfInertiaUnit.PoundSquareFoot);
+        public decimal PoundSquareFeet => As(MassMomentOfInertiaUnit.PoundSquareFoot);
 
         /// <summary>
         ///     Get MassMomentOfInertia in PoundSquareInches.
         /// </summary>
-        public double PoundSquareInches => As(MassMomentOfInertiaUnit.PoundSquareInch);
+        public decimal PoundSquareInches => As(MassMomentOfInertiaUnit.PoundSquareInch);
 
         /// <summary>
         ///     Get MassMomentOfInertia in SlugSquareFeet.
         /// </summary>
-        public double SlugSquareFeet => As(MassMomentOfInertiaUnit.SlugSquareFoot);
+        public decimal SlugSquareFeet => As(MassMomentOfInertiaUnit.SlugSquareFoot);
 
         /// <summary>
         ///     Get MassMomentOfInertia in SlugSquareInches.
         /// </summary>
-        public double SlugSquareInches => As(MassMomentOfInertiaUnit.SlugSquareInch);
+        public decimal SlugSquareInches => As(MassMomentOfInertiaUnit.SlugSquareInch);
 
         /// <summary>
         ///     Get MassMomentOfInertia in TonneSquareCentimeters.
         /// </summary>
-        public double TonneSquareCentimeters => As(MassMomentOfInertiaUnit.TonneSquareCentimeter);
+        public decimal TonneSquareCentimeters => As(MassMomentOfInertiaUnit.TonneSquareCentimeter);
 
         /// <summary>
         ///     Get MassMomentOfInertia in TonneSquareDecimeters.
         /// </summary>
-        public double TonneSquareDecimeters => As(MassMomentOfInertiaUnit.TonneSquareDecimeter);
+        public decimal TonneSquareDecimeters => As(MassMomentOfInertiaUnit.TonneSquareDecimeter);
 
         /// <summary>
         ///     Get MassMomentOfInertia in TonneSquareMeters.
         /// </summary>
-        public double TonneSquareMeters => As(MassMomentOfInertiaUnit.TonneSquareMeter);
+        public decimal TonneSquareMeters => As(MassMomentOfInertiaUnit.TonneSquareMeter);
 
         /// <summary>
         ///     Get MassMomentOfInertia in TonneSquareMilimeters.
         /// </summary>
-        public double TonneSquareMilimeters => As(MassMomentOfInertiaUnit.TonneSquareMilimeter);
+        public decimal TonneSquareMilimeters => As(MassMomentOfInertiaUnit.TonneSquareMilimeter);
 
         #endregion
 
@@ -330,9 +330,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromGramSquareCentimeters(double gramsquarecentimeters)
+        public static MassMomentOfInertia FromGramSquareCentimeters(decimal gramsquarecentimeters)
         {
-            double value = (double) gramsquarecentimeters;
+            decimal value = (decimal) gramsquarecentimeters;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.GramSquareCentimeter);
         }
         /// <summary>
@@ -340,9 +340,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromGramSquareDecimeters(double gramsquaredecimeters)
+        public static MassMomentOfInertia FromGramSquareDecimeters(decimal gramsquaredecimeters)
         {
-            double value = (double) gramsquaredecimeters;
+            decimal value = (decimal) gramsquaredecimeters;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.GramSquareDecimeter);
         }
         /// <summary>
@@ -350,9 +350,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromGramSquareMeters(double gramsquaremeters)
+        public static MassMomentOfInertia FromGramSquareMeters(decimal gramsquaremeters)
         {
-            double value = (double) gramsquaremeters;
+            decimal value = (decimal) gramsquaremeters;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.GramSquareMeter);
         }
         /// <summary>
@@ -360,9 +360,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromGramSquareMillimeters(double gramsquaremillimeters)
+        public static MassMomentOfInertia FromGramSquareMillimeters(decimal gramsquaremillimeters)
         {
-            double value = (double) gramsquaremillimeters;
+            decimal value = (decimal) gramsquaremillimeters;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.GramSquareMillimeter);
         }
         /// <summary>
@@ -370,9 +370,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromKilogramSquareCentimeters(double kilogramsquarecentimeters)
+        public static MassMomentOfInertia FromKilogramSquareCentimeters(decimal kilogramsquarecentimeters)
         {
-            double value = (double) kilogramsquarecentimeters;
+            decimal value = (decimal) kilogramsquarecentimeters;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.KilogramSquareCentimeter);
         }
         /// <summary>
@@ -380,9 +380,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromKilogramSquareDecimeters(double kilogramsquaredecimeters)
+        public static MassMomentOfInertia FromKilogramSquareDecimeters(decimal kilogramsquaredecimeters)
         {
-            double value = (double) kilogramsquaredecimeters;
+            decimal value = (decimal) kilogramsquaredecimeters;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.KilogramSquareDecimeter);
         }
         /// <summary>
@@ -390,9 +390,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromKilogramSquareMeters(double kilogramsquaremeters)
+        public static MassMomentOfInertia FromKilogramSquareMeters(decimal kilogramsquaremeters)
         {
-            double value = (double) kilogramsquaremeters;
+            decimal value = (decimal) kilogramsquaremeters;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.KilogramSquareMeter);
         }
         /// <summary>
@@ -400,9 +400,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromKilogramSquareMillimeters(double kilogramsquaremillimeters)
+        public static MassMomentOfInertia FromKilogramSquareMillimeters(decimal kilogramsquaremillimeters)
         {
-            double value = (double) kilogramsquaremillimeters;
+            decimal value = (decimal) kilogramsquaremillimeters;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.KilogramSquareMillimeter);
         }
         /// <summary>
@@ -410,9 +410,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromKilotonneSquareCentimeters(double kilotonnesquarecentimeters)
+        public static MassMomentOfInertia FromKilotonneSquareCentimeters(decimal kilotonnesquarecentimeters)
         {
-            double value = (double) kilotonnesquarecentimeters;
+            decimal value = (decimal) kilotonnesquarecentimeters;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.KilotonneSquareCentimeter);
         }
         /// <summary>
@@ -420,9 +420,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromKilotonneSquareDecimeters(double kilotonnesquaredecimeters)
+        public static MassMomentOfInertia FromKilotonneSquareDecimeters(decimal kilotonnesquaredecimeters)
         {
-            double value = (double) kilotonnesquaredecimeters;
+            decimal value = (decimal) kilotonnesquaredecimeters;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.KilotonneSquareDecimeter);
         }
         /// <summary>
@@ -430,9 +430,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromKilotonneSquareMeters(double kilotonnesquaremeters)
+        public static MassMomentOfInertia FromKilotonneSquareMeters(decimal kilotonnesquaremeters)
         {
-            double value = (double) kilotonnesquaremeters;
+            decimal value = (decimal) kilotonnesquaremeters;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.KilotonneSquareMeter);
         }
         /// <summary>
@@ -440,9 +440,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromKilotonneSquareMilimeters(double kilotonnesquaremilimeters)
+        public static MassMomentOfInertia FromKilotonneSquareMilimeters(decimal kilotonnesquaremilimeters)
         {
-            double value = (double) kilotonnesquaremilimeters;
+            decimal value = (decimal) kilotonnesquaremilimeters;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.KilotonneSquareMilimeter);
         }
         /// <summary>
@@ -450,9 +450,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromMegatonneSquareCentimeters(double megatonnesquarecentimeters)
+        public static MassMomentOfInertia FromMegatonneSquareCentimeters(decimal megatonnesquarecentimeters)
         {
-            double value = (double) megatonnesquarecentimeters;
+            decimal value = (decimal) megatonnesquarecentimeters;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.MegatonneSquareCentimeter);
         }
         /// <summary>
@@ -460,9 +460,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromMegatonneSquareDecimeters(double megatonnesquaredecimeters)
+        public static MassMomentOfInertia FromMegatonneSquareDecimeters(decimal megatonnesquaredecimeters)
         {
-            double value = (double) megatonnesquaredecimeters;
+            decimal value = (decimal) megatonnesquaredecimeters;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.MegatonneSquareDecimeter);
         }
         /// <summary>
@@ -470,9 +470,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromMegatonneSquareMeters(double megatonnesquaremeters)
+        public static MassMomentOfInertia FromMegatonneSquareMeters(decimal megatonnesquaremeters)
         {
-            double value = (double) megatonnesquaremeters;
+            decimal value = (decimal) megatonnesquaremeters;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.MegatonneSquareMeter);
         }
         /// <summary>
@@ -480,9 +480,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromMegatonneSquareMilimeters(double megatonnesquaremilimeters)
+        public static MassMomentOfInertia FromMegatonneSquareMilimeters(decimal megatonnesquaremilimeters)
         {
-            double value = (double) megatonnesquaremilimeters;
+            decimal value = (decimal) megatonnesquaremilimeters;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.MegatonneSquareMilimeter);
         }
         /// <summary>
@@ -490,9 +490,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromMilligramSquareCentimeters(double milligramsquarecentimeters)
+        public static MassMomentOfInertia FromMilligramSquareCentimeters(decimal milligramsquarecentimeters)
         {
-            double value = (double) milligramsquarecentimeters;
+            decimal value = (decimal) milligramsquarecentimeters;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.MilligramSquareCentimeter);
         }
         /// <summary>
@@ -500,9 +500,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromMilligramSquareDecimeters(double milligramsquaredecimeters)
+        public static MassMomentOfInertia FromMilligramSquareDecimeters(decimal milligramsquaredecimeters)
         {
-            double value = (double) milligramsquaredecimeters;
+            decimal value = (decimal) milligramsquaredecimeters;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.MilligramSquareDecimeter);
         }
         /// <summary>
@@ -510,9 +510,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromMilligramSquareMeters(double milligramsquaremeters)
+        public static MassMomentOfInertia FromMilligramSquareMeters(decimal milligramsquaremeters)
         {
-            double value = (double) milligramsquaremeters;
+            decimal value = (decimal) milligramsquaremeters;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.MilligramSquareMeter);
         }
         /// <summary>
@@ -520,9 +520,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromMilligramSquareMillimeters(double milligramsquaremillimeters)
+        public static MassMomentOfInertia FromMilligramSquareMillimeters(decimal milligramsquaremillimeters)
         {
-            double value = (double) milligramsquaremillimeters;
+            decimal value = (decimal) milligramsquaremillimeters;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.MilligramSquareMillimeter);
         }
         /// <summary>
@@ -530,9 +530,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromPoundSquareFeet(double poundsquarefeet)
+        public static MassMomentOfInertia FromPoundSquareFeet(decimal poundsquarefeet)
         {
-            double value = (double) poundsquarefeet;
+            decimal value = (decimal) poundsquarefeet;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.PoundSquareFoot);
         }
         /// <summary>
@@ -540,9 +540,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromPoundSquareInches(double poundsquareinches)
+        public static MassMomentOfInertia FromPoundSquareInches(decimal poundsquareinches)
         {
-            double value = (double) poundsquareinches;
+            decimal value = (decimal) poundsquareinches;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.PoundSquareInch);
         }
         /// <summary>
@@ -550,9 +550,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromSlugSquareFeet(double slugsquarefeet)
+        public static MassMomentOfInertia FromSlugSquareFeet(decimal slugsquarefeet)
         {
-            double value = (double) slugsquarefeet;
+            decimal value = (decimal) slugsquarefeet;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.SlugSquareFoot);
         }
         /// <summary>
@@ -560,9 +560,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromSlugSquareInches(double slugsquareinches)
+        public static MassMomentOfInertia FromSlugSquareInches(decimal slugsquareinches)
         {
-            double value = (double) slugsquareinches;
+            decimal value = (decimal) slugsquareinches;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.SlugSquareInch);
         }
         /// <summary>
@@ -570,9 +570,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromTonneSquareCentimeters(double tonnesquarecentimeters)
+        public static MassMomentOfInertia FromTonneSquareCentimeters(decimal tonnesquarecentimeters)
         {
-            double value = (double) tonnesquarecentimeters;
+            decimal value = (decimal) tonnesquarecentimeters;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.TonneSquareCentimeter);
         }
         /// <summary>
@@ -580,9 +580,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromTonneSquareDecimeters(double tonnesquaredecimeters)
+        public static MassMomentOfInertia FromTonneSquareDecimeters(decimal tonnesquaredecimeters)
         {
-            double value = (double) tonnesquaredecimeters;
+            decimal value = (decimal) tonnesquaredecimeters;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.TonneSquareDecimeter);
         }
         /// <summary>
@@ -590,9 +590,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromTonneSquareMeters(double tonnesquaremeters)
+        public static MassMomentOfInertia FromTonneSquareMeters(decimal tonnesquaremeters)
         {
-            double value = (double) tonnesquaremeters;
+            decimal value = (decimal) tonnesquaremeters;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.TonneSquareMeter);
         }
         /// <summary>
@@ -600,9 +600,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MassMomentOfInertia FromTonneSquareMilimeters(double tonnesquaremilimeters)
+        public static MassMomentOfInertia FromTonneSquareMilimeters(decimal tonnesquaremilimeters)
         {
-            double value = (double) tonnesquaremilimeters;
+            decimal value = (decimal) tonnesquaremilimeters;
             return new MassMomentOfInertia(value, MassMomentOfInertiaUnit.TonneSquareMilimeter);
         }
 
@@ -614,9 +614,9 @@ namespace UnitsNet
         /// <returns>MassMomentOfInertia unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static MassMomentOfInertia From(double value, MassMomentOfInertiaUnit fromUnit)
+        public static MassMomentOfInertia From(decimal value, MassMomentOfInertiaUnit fromUnit)
         {
-            return new MassMomentOfInertia((double)value, fromUnit);
+            return new MassMomentOfInertia((decimal)value, fromUnit);
         }
 
         #endregion
@@ -838,13 +838,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(MassMomentOfInertia other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(MassMomentOfInertia other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -862,19 +862,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((MassMomentOfInertiaUnit)unit);
+        decimal IQuantity.As(object unit) => As((MassMomentOfInertiaUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(MassMomentOfInertiaUnit unit)
+        public decimal As(MassMomentOfInertiaUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -892,44 +892,44 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
-                case MassMomentOfInertiaUnit.GramSquareCentimeter: return _value/1e7;
-                case MassMomentOfInertiaUnit.GramSquareDecimeter: return _value/1e5;
-                case MassMomentOfInertiaUnit.GramSquareMeter: return _value/1e3;
-                case MassMomentOfInertiaUnit.GramSquareMillimeter: return _value/1e9;
-                case MassMomentOfInertiaUnit.KilogramSquareCentimeter: return (_value/1e7) * 1e3d;
-                case MassMomentOfInertiaUnit.KilogramSquareDecimeter: return (_value/1e5) * 1e3d;
-                case MassMomentOfInertiaUnit.KilogramSquareMeter: return (_value/1e3) * 1e3d;
-                case MassMomentOfInertiaUnit.KilogramSquareMillimeter: return (_value/1e9) * 1e3d;
-                case MassMomentOfInertiaUnit.KilotonneSquareCentimeter: return (_value/1e1) * 1e3d;
-                case MassMomentOfInertiaUnit.KilotonneSquareDecimeter: return (_value/1e-1) * 1e3d;
-                case MassMomentOfInertiaUnit.KilotonneSquareMeter: return (_value/1e-3) * 1e3d;
-                case MassMomentOfInertiaUnit.KilotonneSquareMilimeter: return (_value/1e3) * 1e3d;
-                case MassMomentOfInertiaUnit.MegatonneSquareCentimeter: return (_value/1e1) * 1e6d;
-                case MassMomentOfInertiaUnit.MegatonneSquareDecimeter: return (_value/1e-1) * 1e6d;
-                case MassMomentOfInertiaUnit.MegatonneSquareMeter: return (_value/1e-3) * 1e6d;
-                case MassMomentOfInertiaUnit.MegatonneSquareMilimeter: return (_value/1e3) * 1e6d;
-                case MassMomentOfInertiaUnit.MilligramSquareCentimeter: return (_value/1e7) * 1e-3d;
-                case MassMomentOfInertiaUnit.MilligramSquareDecimeter: return (_value/1e5) * 1e-3d;
-                case MassMomentOfInertiaUnit.MilligramSquareMeter: return (_value/1e3) * 1e-3d;
-                case MassMomentOfInertiaUnit.MilligramSquareMillimeter: return (_value/1e9) * 1e-3d;
-                case MassMomentOfInertiaUnit.PoundSquareFoot: return _value*4.21401101e-2;
-                case MassMomentOfInertiaUnit.PoundSquareInch: return _value*2.9263965e-4;
-                case MassMomentOfInertiaUnit.SlugSquareFoot: return _value*1.3558179619;
-                case MassMomentOfInertiaUnit.SlugSquareInch: return _value*9.41540242e-3;
-                case MassMomentOfInertiaUnit.TonneSquareCentimeter: return _value/1e1;
-                case MassMomentOfInertiaUnit.TonneSquareDecimeter: return _value/1e-1;
-                case MassMomentOfInertiaUnit.TonneSquareMeter: return _value/1e-3;
-                case MassMomentOfInertiaUnit.TonneSquareMilimeter: return _value/1e3;
+                case MassMomentOfInertiaUnit.GramSquareCentimeter: return _value/1e7m;
+                case MassMomentOfInertiaUnit.GramSquareDecimeter: return _value/1e5m;
+                case MassMomentOfInertiaUnit.GramSquareMeter: return _value/1e3m;
+                case MassMomentOfInertiaUnit.GramSquareMillimeter: return _value/1e9m;
+                case MassMomentOfInertiaUnit.KilogramSquareCentimeter: return (_value/1e7m) * 1e3m;
+                case MassMomentOfInertiaUnit.KilogramSquareDecimeter: return (_value/1e5m) * 1e3m;
+                case MassMomentOfInertiaUnit.KilogramSquareMeter: return (_value/1e3m) * 1e3m;
+                case MassMomentOfInertiaUnit.KilogramSquareMillimeter: return (_value/1e9m) * 1e3m;
+                case MassMomentOfInertiaUnit.KilotonneSquareCentimeter: return (_value/1e1m) * 1e3m;
+                case MassMomentOfInertiaUnit.KilotonneSquareDecimeter: return (_value/1e-1m) * 1e3m;
+                case MassMomentOfInertiaUnit.KilotonneSquareMeter: return (_value/1e-3m) * 1e3m;
+                case MassMomentOfInertiaUnit.KilotonneSquareMilimeter: return (_value/1e3m) * 1e3m;
+                case MassMomentOfInertiaUnit.MegatonneSquareCentimeter: return (_value/1e1m) * 1e6m;
+                case MassMomentOfInertiaUnit.MegatonneSquareDecimeter: return (_value/1e-1m) * 1e6m;
+                case MassMomentOfInertiaUnit.MegatonneSquareMeter: return (_value/1e-3m) * 1e6m;
+                case MassMomentOfInertiaUnit.MegatonneSquareMilimeter: return (_value/1e3m) * 1e6m;
+                case MassMomentOfInertiaUnit.MilligramSquareCentimeter: return (_value/1e7m) * 1e-3m;
+                case MassMomentOfInertiaUnit.MilligramSquareDecimeter: return (_value/1e5m) * 1e-3m;
+                case MassMomentOfInertiaUnit.MilligramSquareMeter: return (_value/1e3m) * 1e-3m;
+                case MassMomentOfInertiaUnit.MilligramSquareMillimeter: return (_value/1e9m) * 1e-3m;
+                case MassMomentOfInertiaUnit.PoundSquareFoot: return _value*4.21401101e-2m;
+                case MassMomentOfInertiaUnit.PoundSquareInch: return _value*2.9263965e-4m;
+                case MassMomentOfInertiaUnit.SlugSquareFoot: return _value*1.3558179619m;
+                case MassMomentOfInertiaUnit.SlugSquareInch: return _value*9.41540242e-3m;
+                case MassMomentOfInertiaUnit.TonneSquareCentimeter: return _value/1e1m;
+                case MassMomentOfInertiaUnit.TonneSquareDecimeter: return _value/1e-1m;
+                case MassMomentOfInertiaUnit.TonneSquareMeter: return _value/1e-3m;
+                case MassMomentOfInertiaUnit.TonneSquareMilimeter: return _value/1e3m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(MassMomentOfInertiaUnit unit)
+        private decimal AsBaseNumericType(MassMomentOfInertiaUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -938,34 +938,34 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case MassMomentOfInertiaUnit.GramSquareCentimeter: return baseUnitValue*1e7;
-                case MassMomentOfInertiaUnit.GramSquareDecimeter: return baseUnitValue*1e5;
-                case MassMomentOfInertiaUnit.GramSquareMeter: return baseUnitValue*1e3;
-                case MassMomentOfInertiaUnit.GramSquareMillimeter: return baseUnitValue*1e9;
-                case MassMomentOfInertiaUnit.KilogramSquareCentimeter: return (baseUnitValue*1e7) / 1e3d;
-                case MassMomentOfInertiaUnit.KilogramSquareDecimeter: return (baseUnitValue*1e5) / 1e3d;
-                case MassMomentOfInertiaUnit.KilogramSquareMeter: return (baseUnitValue*1e3) / 1e3d;
-                case MassMomentOfInertiaUnit.KilogramSquareMillimeter: return (baseUnitValue*1e9) / 1e3d;
-                case MassMomentOfInertiaUnit.KilotonneSquareCentimeter: return (baseUnitValue*1e1) / 1e3d;
-                case MassMomentOfInertiaUnit.KilotonneSquareDecimeter: return (baseUnitValue*1e-1) / 1e3d;
-                case MassMomentOfInertiaUnit.KilotonneSquareMeter: return (baseUnitValue*1e-3) / 1e3d;
-                case MassMomentOfInertiaUnit.KilotonneSquareMilimeter: return (baseUnitValue*1e3) / 1e3d;
-                case MassMomentOfInertiaUnit.MegatonneSquareCentimeter: return (baseUnitValue*1e1) / 1e6d;
-                case MassMomentOfInertiaUnit.MegatonneSquareDecimeter: return (baseUnitValue*1e-1) / 1e6d;
-                case MassMomentOfInertiaUnit.MegatonneSquareMeter: return (baseUnitValue*1e-3) / 1e6d;
-                case MassMomentOfInertiaUnit.MegatonneSquareMilimeter: return (baseUnitValue*1e3) / 1e6d;
-                case MassMomentOfInertiaUnit.MilligramSquareCentimeter: return (baseUnitValue*1e7) / 1e-3d;
-                case MassMomentOfInertiaUnit.MilligramSquareDecimeter: return (baseUnitValue*1e5) / 1e-3d;
-                case MassMomentOfInertiaUnit.MilligramSquareMeter: return (baseUnitValue*1e3) / 1e-3d;
-                case MassMomentOfInertiaUnit.MilligramSquareMillimeter: return (baseUnitValue*1e9) / 1e-3d;
-                case MassMomentOfInertiaUnit.PoundSquareFoot: return baseUnitValue/4.21401101e-2;
-                case MassMomentOfInertiaUnit.PoundSquareInch: return baseUnitValue/2.9263965e-4;
-                case MassMomentOfInertiaUnit.SlugSquareFoot: return baseUnitValue/1.3558179619;
-                case MassMomentOfInertiaUnit.SlugSquareInch: return baseUnitValue/9.41540242e-3;
-                case MassMomentOfInertiaUnit.TonneSquareCentimeter: return baseUnitValue*1e1;
-                case MassMomentOfInertiaUnit.TonneSquareDecimeter: return baseUnitValue*1e-1;
-                case MassMomentOfInertiaUnit.TonneSquareMeter: return baseUnitValue*1e-3;
-                case MassMomentOfInertiaUnit.TonneSquareMilimeter: return baseUnitValue*1e3;
+                case MassMomentOfInertiaUnit.GramSquareCentimeter: return baseUnitValue*1e7m;
+                case MassMomentOfInertiaUnit.GramSquareDecimeter: return baseUnitValue*1e5m;
+                case MassMomentOfInertiaUnit.GramSquareMeter: return baseUnitValue*1e3m;
+                case MassMomentOfInertiaUnit.GramSquareMillimeter: return baseUnitValue*1e9m;
+                case MassMomentOfInertiaUnit.KilogramSquareCentimeter: return (baseUnitValue*1e7m) / 1e3m;
+                case MassMomentOfInertiaUnit.KilogramSquareDecimeter: return (baseUnitValue*1e5m) / 1e3m;
+                case MassMomentOfInertiaUnit.KilogramSquareMeter: return (baseUnitValue*1e3m) / 1e3m;
+                case MassMomentOfInertiaUnit.KilogramSquareMillimeter: return (baseUnitValue*1e9m) / 1e3m;
+                case MassMomentOfInertiaUnit.KilotonneSquareCentimeter: return (baseUnitValue*1e1m) / 1e3m;
+                case MassMomentOfInertiaUnit.KilotonneSquareDecimeter: return (baseUnitValue*1e-1m) / 1e3m;
+                case MassMomentOfInertiaUnit.KilotonneSquareMeter: return (baseUnitValue*1e-3m) / 1e3m;
+                case MassMomentOfInertiaUnit.KilotonneSquareMilimeter: return (baseUnitValue*1e3m) / 1e3m;
+                case MassMomentOfInertiaUnit.MegatonneSquareCentimeter: return (baseUnitValue*1e1m) / 1e6m;
+                case MassMomentOfInertiaUnit.MegatonneSquareDecimeter: return (baseUnitValue*1e-1m) / 1e6m;
+                case MassMomentOfInertiaUnit.MegatonneSquareMeter: return (baseUnitValue*1e-3m) / 1e6m;
+                case MassMomentOfInertiaUnit.MegatonneSquareMilimeter: return (baseUnitValue*1e3m) / 1e6m;
+                case MassMomentOfInertiaUnit.MilligramSquareCentimeter: return (baseUnitValue*1e7m) / 1e-3m;
+                case MassMomentOfInertiaUnit.MilligramSquareDecimeter: return (baseUnitValue*1e5m) / 1e-3m;
+                case MassMomentOfInertiaUnit.MilligramSquareMeter: return (baseUnitValue*1e3m) / 1e-3m;
+                case MassMomentOfInertiaUnit.MilligramSquareMillimeter: return (baseUnitValue*1e9m) / 1e-3m;
+                case MassMomentOfInertiaUnit.PoundSquareFoot: return baseUnitValue/4.21401101e-2m;
+                case MassMomentOfInertiaUnit.PoundSquareInch: return baseUnitValue/2.9263965e-4m;
+                case MassMomentOfInertiaUnit.SlugSquareFoot: return baseUnitValue/1.3558179619m;
+                case MassMomentOfInertiaUnit.SlugSquareInch: return baseUnitValue/9.41540242e-3m;
+                case MassMomentOfInertiaUnit.TonneSquareCentimeter: return baseUnitValue*1e1m;
+                case MassMomentOfInertiaUnit.TonneSquareDecimeter: return baseUnitValue*1e-1m;
+                case MassMomentOfInertiaUnit.TonneSquareMeter: return baseUnitValue*1e-3m;
+                case MassMomentOfInertiaUnit.TonneSquareMilimeter: return baseUnitValue*1e3m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -1004,7 +1004,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -1024,7 +1024,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

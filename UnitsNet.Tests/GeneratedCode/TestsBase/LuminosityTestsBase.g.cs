@@ -37,42 +37,42 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class LuminosityTestsBase : QuantityTestsBase
     {
-        protected abstract double DecawattsInOneWatt { get; }
-        protected abstract double DeciwattsInOneWatt { get; }
-        protected abstract double FemtowattsInOneWatt { get; }
-        protected abstract double GigawattsInOneWatt { get; }
-        protected abstract double KilowattsInOneWatt { get; }
-        protected abstract double MegawattsInOneWatt { get; }
-        protected abstract double MicrowattsInOneWatt { get; }
-        protected abstract double MilliwattsInOneWatt { get; }
-        protected abstract double NanowattsInOneWatt { get; }
-        protected abstract double PetawattsInOneWatt { get; }
-        protected abstract double PicowattsInOneWatt { get; }
-        protected abstract double SolarLuminositiesInOneWatt { get; }
-        protected abstract double TerawattsInOneWatt { get; }
-        protected abstract double WattsInOneWatt { get; }
+        protected abstract decimal DecawattsInOneWatt { get; }
+        protected abstract decimal DeciwattsInOneWatt { get; }
+        protected abstract decimal FemtowattsInOneWatt { get; }
+        protected abstract decimal GigawattsInOneWatt { get; }
+        protected abstract decimal KilowattsInOneWatt { get; }
+        protected abstract decimal MegawattsInOneWatt { get; }
+        protected abstract decimal MicrowattsInOneWatt { get; }
+        protected abstract decimal MilliwattsInOneWatt { get; }
+        protected abstract decimal NanowattsInOneWatt { get; }
+        protected abstract decimal PetawattsInOneWatt { get; }
+        protected abstract decimal PicowattsInOneWatt { get; }
+        protected abstract decimal SolarLuminositiesInOneWatt { get; }
+        protected abstract decimal TerawattsInOneWatt { get; }
+        protected abstract decimal WattsInOneWatt { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double DecawattsTolerance { get { return 1e-5; } }
-        protected virtual double DeciwattsTolerance { get { return 1e-5; } }
-        protected virtual double FemtowattsTolerance { get { return 1e-5; } }
-        protected virtual double GigawattsTolerance { get { return 1e-5; } }
-        protected virtual double KilowattsTolerance { get { return 1e-5; } }
-        protected virtual double MegawattsTolerance { get { return 1e-5; } }
-        protected virtual double MicrowattsTolerance { get { return 1e-5; } }
-        protected virtual double MilliwattsTolerance { get { return 1e-5; } }
-        protected virtual double NanowattsTolerance { get { return 1e-5; } }
-        protected virtual double PetawattsTolerance { get { return 1e-5; } }
-        protected virtual double PicowattsTolerance { get { return 1e-5; } }
-        protected virtual double SolarLuminositiesTolerance { get { return 1e-5; } }
-        protected virtual double TerawattsTolerance { get { return 1e-5; } }
-        protected virtual double WattsTolerance { get { return 1e-5; } }
+        protected virtual decimal DecawattsTolerance { get { return 1e-5; } }
+        protected virtual decimal DeciwattsTolerance { get { return 1e-5; } }
+        protected virtual decimal FemtowattsTolerance { get { return 1e-5; } }
+        protected virtual decimal GigawattsTolerance { get { return 1e-5; } }
+        protected virtual decimal KilowattsTolerance { get { return 1e-5; } }
+        protected virtual decimal MegawattsTolerance { get { return 1e-5; } }
+        protected virtual decimal MicrowattsTolerance { get { return 1e-5; } }
+        protected virtual decimal MilliwattsTolerance { get { return 1e-5; } }
+        protected virtual decimal NanowattsTolerance { get { return 1e-5; } }
+        protected virtual decimal PetawattsTolerance { get { return 1e-5; } }
+        protected virtual decimal PicowattsTolerance { get { return 1e-5; } }
+        protected virtual decimal SolarLuminositiesTolerance { get { return 1e-5; } }
+        protected virtual decimal TerawattsTolerance { get { return 1e-5; } }
+        protected virtual decimal WattsTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new Luminosity((double)0.0, LuminosityUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new Luminosity((decimal)0.0, LuminosityUnit.Undefined));
         }
 
         [Fact]
@@ -83,19 +83,6 @@ namespace UnitsNet.Tests
             Assert.Equal(LuminosityUnit.Watt, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new Luminosity(double.PositiveInfinity, LuminosityUnit.Watt));
-            Assert.Throws<ArgumentException>(() => new Luminosity(double.NegativeInfinity, LuminosityUnit.Watt));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new Luminosity(double.NaN, LuminosityUnit.Watt));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -221,19 +208,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromWatts_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => Luminosity.FromWatts(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => Luminosity.FromWatts(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromWatts_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => Luminosity.FromWatts(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var watt = Luminosity.FromWatts(1);
@@ -261,7 +235,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -276,59 +250,59 @@ namespace UnitsNet.Tests
             var watt = Luminosity.FromWatts(1);
 
             var decawattQuantity = watt.ToUnit(LuminosityUnit.Decawatt);
-            AssertEx.EqualTolerance(DecawattsInOneWatt, (double)decawattQuantity.Value, DecawattsTolerance);
+            AssertEx.EqualTolerance(DecawattsInOneWatt, (decimal)decawattQuantity.Value, DecawattsTolerance);
             Assert.Equal(LuminosityUnit.Decawatt, decawattQuantity.Unit);
 
             var deciwattQuantity = watt.ToUnit(LuminosityUnit.Deciwatt);
-            AssertEx.EqualTolerance(DeciwattsInOneWatt, (double)deciwattQuantity.Value, DeciwattsTolerance);
+            AssertEx.EqualTolerance(DeciwattsInOneWatt, (decimal)deciwattQuantity.Value, DeciwattsTolerance);
             Assert.Equal(LuminosityUnit.Deciwatt, deciwattQuantity.Unit);
 
             var femtowattQuantity = watt.ToUnit(LuminosityUnit.Femtowatt);
-            AssertEx.EqualTolerance(FemtowattsInOneWatt, (double)femtowattQuantity.Value, FemtowattsTolerance);
+            AssertEx.EqualTolerance(FemtowattsInOneWatt, (decimal)femtowattQuantity.Value, FemtowattsTolerance);
             Assert.Equal(LuminosityUnit.Femtowatt, femtowattQuantity.Unit);
 
             var gigawattQuantity = watt.ToUnit(LuminosityUnit.Gigawatt);
-            AssertEx.EqualTolerance(GigawattsInOneWatt, (double)gigawattQuantity.Value, GigawattsTolerance);
+            AssertEx.EqualTolerance(GigawattsInOneWatt, (decimal)gigawattQuantity.Value, GigawattsTolerance);
             Assert.Equal(LuminosityUnit.Gigawatt, gigawattQuantity.Unit);
 
             var kilowattQuantity = watt.ToUnit(LuminosityUnit.Kilowatt);
-            AssertEx.EqualTolerance(KilowattsInOneWatt, (double)kilowattQuantity.Value, KilowattsTolerance);
+            AssertEx.EqualTolerance(KilowattsInOneWatt, (decimal)kilowattQuantity.Value, KilowattsTolerance);
             Assert.Equal(LuminosityUnit.Kilowatt, kilowattQuantity.Unit);
 
             var megawattQuantity = watt.ToUnit(LuminosityUnit.Megawatt);
-            AssertEx.EqualTolerance(MegawattsInOneWatt, (double)megawattQuantity.Value, MegawattsTolerance);
+            AssertEx.EqualTolerance(MegawattsInOneWatt, (decimal)megawattQuantity.Value, MegawattsTolerance);
             Assert.Equal(LuminosityUnit.Megawatt, megawattQuantity.Unit);
 
             var microwattQuantity = watt.ToUnit(LuminosityUnit.Microwatt);
-            AssertEx.EqualTolerance(MicrowattsInOneWatt, (double)microwattQuantity.Value, MicrowattsTolerance);
+            AssertEx.EqualTolerance(MicrowattsInOneWatt, (decimal)microwattQuantity.Value, MicrowattsTolerance);
             Assert.Equal(LuminosityUnit.Microwatt, microwattQuantity.Unit);
 
             var milliwattQuantity = watt.ToUnit(LuminosityUnit.Milliwatt);
-            AssertEx.EqualTolerance(MilliwattsInOneWatt, (double)milliwattQuantity.Value, MilliwattsTolerance);
+            AssertEx.EqualTolerance(MilliwattsInOneWatt, (decimal)milliwattQuantity.Value, MilliwattsTolerance);
             Assert.Equal(LuminosityUnit.Milliwatt, milliwattQuantity.Unit);
 
             var nanowattQuantity = watt.ToUnit(LuminosityUnit.Nanowatt);
-            AssertEx.EqualTolerance(NanowattsInOneWatt, (double)nanowattQuantity.Value, NanowattsTolerance);
+            AssertEx.EqualTolerance(NanowattsInOneWatt, (decimal)nanowattQuantity.Value, NanowattsTolerance);
             Assert.Equal(LuminosityUnit.Nanowatt, nanowattQuantity.Unit);
 
             var petawattQuantity = watt.ToUnit(LuminosityUnit.Petawatt);
-            AssertEx.EqualTolerance(PetawattsInOneWatt, (double)petawattQuantity.Value, PetawattsTolerance);
+            AssertEx.EqualTolerance(PetawattsInOneWatt, (decimal)petawattQuantity.Value, PetawattsTolerance);
             Assert.Equal(LuminosityUnit.Petawatt, petawattQuantity.Unit);
 
             var picowattQuantity = watt.ToUnit(LuminosityUnit.Picowatt);
-            AssertEx.EqualTolerance(PicowattsInOneWatt, (double)picowattQuantity.Value, PicowattsTolerance);
+            AssertEx.EqualTolerance(PicowattsInOneWatt, (decimal)picowattQuantity.Value, PicowattsTolerance);
             Assert.Equal(LuminosityUnit.Picowatt, picowattQuantity.Unit);
 
             var solarluminosityQuantity = watt.ToUnit(LuminosityUnit.SolarLuminosity);
-            AssertEx.EqualTolerance(SolarLuminositiesInOneWatt, (double)solarluminosityQuantity.Value, SolarLuminositiesTolerance);
+            AssertEx.EqualTolerance(SolarLuminositiesInOneWatt, (decimal)solarluminosityQuantity.Value, SolarLuminositiesTolerance);
             Assert.Equal(LuminosityUnit.SolarLuminosity, solarluminosityQuantity.Unit);
 
             var terawattQuantity = watt.ToUnit(LuminosityUnit.Terawatt);
-            AssertEx.EqualTolerance(TerawattsInOneWatt, (double)terawattQuantity.Value, TerawattsTolerance);
+            AssertEx.EqualTolerance(TerawattsInOneWatt, (decimal)terawattQuantity.Value, TerawattsTolerance);
             Assert.Equal(LuminosityUnit.Terawatt, terawattQuantity.Unit);
 
             var wattQuantity = watt.ToUnit(LuminosityUnit.Watt);
-            AssertEx.EqualTolerance(WattsInOneWatt, (double)wattQuantity.Value, WattsTolerance);
+            AssertEx.EqualTolerance(WattsInOneWatt, (decimal)wattQuantity.Value, WattsTolerance);
             Assert.Equal(LuminosityUnit.Watt, wattQuantity.Unit);
         }
 
@@ -563,10 +537,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 W", new Luminosity(0.123456, LuminosityUnit.Watt).ToString("s1"));
-                Assert.Equal("0.12 W", new Luminosity(0.123456, LuminosityUnit.Watt).ToString("s2"));
-                Assert.Equal("0.123 W", new Luminosity(0.123456, LuminosityUnit.Watt).ToString("s3"));
-                Assert.Equal("0.1235 W", new Luminosity(0.123456, LuminosityUnit.Watt).ToString("s4"));
+                Assert.Equal("0.1 W", new Luminosity(0.123456m, LuminosityUnit.Watt).ToString("s1"));
+                Assert.Equal("0.12 W", new Luminosity(0.123456m, LuminosityUnit.Watt).ToString("s2"));
+                Assert.Equal("0.123 W", new Luminosity(0.123456m, LuminosityUnit.Watt).ToString("s3"));
+                Assert.Equal("0.1235 W", new Luminosity(0.123456m, LuminosityUnit.Watt).ToString("s4"));
             }
             finally
             {
@@ -578,10 +552,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 W", new Luminosity(0.123456, LuminosityUnit.Watt).ToString("s1", culture));
-            Assert.Equal("0.12 W", new Luminosity(0.123456, LuminosityUnit.Watt).ToString("s2", culture));
-            Assert.Equal("0.123 W", new Luminosity(0.123456, LuminosityUnit.Watt).ToString("s3", culture));
-            Assert.Equal("0.1235 W", new Luminosity(0.123456, LuminosityUnit.Watt).ToString("s4", culture));
+            Assert.Equal("0.1 W", new Luminosity(0.123456m, LuminosityUnit.Watt).ToString("s1", culture));
+            Assert.Equal("0.12 W", new Luminosity(0.123456m, LuminosityUnit.Watt).ToString("s2", culture));
+            Assert.Equal("0.123 W", new Luminosity(0.123456m, LuminosityUnit.Watt).ToString("s3", culture));
+            Assert.Equal("0.1235 W", new Luminosity(0.123456m, LuminosityUnit.Watt).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -759,7 +733,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = Luminosity.FromWatts(value);
             Assert.Equal(Luminosity.FromWatts(-value), -quantity);

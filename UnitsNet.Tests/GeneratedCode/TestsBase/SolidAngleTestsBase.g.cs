@@ -37,16 +37,16 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class SolidAngleTestsBase : QuantityTestsBase
     {
-        protected abstract double SteradiansInOneSteradian { get; }
+        protected abstract decimal SteradiansInOneSteradian { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double SteradiansTolerance { get { return 1e-5; } }
+        protected virtual decimal SteradiansTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new SolidAngle((double)0.0, SolidAngleUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new SolidAngle((decimal)0.0, SolidAngleUnit.Undefined));
         }
 
         [Fact]
@@ -57,19 +57,6 @@ namespace UnitsNet.Tests
             Assert.Equal(SolidAngleUnit.Steradian, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new SolidAngle(double.PositiveInfinity, SolidAngleUnit.Steradian));
-            Assert.Throws<ArgumentException>(() => new SolidAngle(double.NegativeInfinity, SolidAngleUnit.Steradian));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new SolidAngle(double.NaN, SolidAngleUnit.Steradian));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -130,19 +117,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromSteradians_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => SolidAngle.FromSteradians(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => SolidAngle.FromSteradians(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromSteradians_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => SolidAngle.FromSteradians(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var steradian = SolidAngle.FromSteradians(1);
@@ -157,7 +131,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -172,7 +146,7 @@ namespace UnitsNet.Tests
             var steradian = SolidAngle.FromSteradians(1);
 
             var steradianQuantity = steradian.ToUnit(SolidAngleUnit.Steradian);
-            AssertEx.EqualTolerance(SteradiansInOneSteradian, (double)steradianQuantity.Value, SteradiansTolerance);
+            AssertEx.EqualTolerance(SteradiansInOneSteradian, (decimal)steradianQuantity.Value, SteradiansTolerance);
             Assert.Equal(SolidAngleUnit.Steradian, steradianQuantity.Unit);
         }
 
@@ -368,10 +342,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 sr", new SolidAngle(0.123456, SolidAngleUnit.Steradian).ToString("s1"));
-                Assert.Equal("0.12 sr", new SolidAngle(0.123456, SolidAngleUnit.Steradian).ToString("s2"));
-                Assert.Equal("0.123 sr", new SolidAngle(0.123456, SolidAngleUnit.Steradian).ToString("s3"));
-                Assert.Equal("0.1235 sr", new SolidAngle(0.123456, SolidAngleUnit.Steradian).ToString("s4"));
+                Assert.Equal("0.1 sr", new SolidAngle(0.123456m, SolidAngleUnit.Steradian).ToString("s1"));
+                Assert.Equal("0.12 sr", new SolidAngle(0.123456m, SolidAngleUnit.Steradian).ToString("s2"));
+                Assert.Equal("0.123 sr", new SolidAngle(0.123456m, SolidAngleUnit.Steradian).ToString("s3"));
+                Assert.Equal("0.1235 sr", new SolidAngle(0.123456m, SolidAngleUnit.Steradian).ToString("s4"));
             }
             finally
             {
@@ -383,10 +357,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 sr", new SolidAngle(0.123456, SolidAngleUnit.Steradian).ToString("s1", culture));
-            Assert.Equal("0.12 sr", new SolidAngle(0.123456, SolidAngleUnit.Steradian).ToString("s2", culture));
-            Assert.Equal("0.123 sr", new SolidAngle(0.123456, SolidAngleUnit.Steradian).ToString("s3", culture));
-            Assert.Equal("0.1235 sr", new SolidAngle(0.123456, SolidAngleUnit.Steradian).ToString("s4", culture));
+            Assert.Equal("0.1 sr", new SolidAngle(0.123456m, SolidAngleUnit.Steradian).ToString("s1", culture));
+            Assert.Equal("0.12 sr", new SolidAngle(0.123456m, SolidAngleUnit.Steradian).ToString("s2", culture));
+            Assert.Equal("0.123 sr", new SolidAngle(0.123456m, SolidAngleUnit.Steradian).ToString("s3", culture));
+            Assert.Equal("0.1235 sr", new SolidAngle(0.123456m, SolidAngleUnit.Steradian).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -564,7 +538,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = SolidAngle.FromSteradians(value);
             Assert.Equal(SolidAngle.FromSteradians(-value), -quantity);

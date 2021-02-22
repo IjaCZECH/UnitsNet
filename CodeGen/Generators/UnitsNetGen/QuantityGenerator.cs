@@ -264,9 +264,9 @@ namespace UnitsNet
 ");
 
             // Need to provide explicit interface implementation for decimal quantities like Information
-            if (_quantity.BaseType != "double")
+            if (_quantity.BaseType != "decimal")
                 Writer.WL(@"
-        double IQuantity.Value => (double) _value;
+        decimal IQuantity.Value => (decimal) _value;
 ");
 
             Writer.WL($@"
@@ -308,7 +308,7 @@ namespace UnitsNet
         /// </summary>");
                 Writer.WLIfText(2, GetObsoleteAttributeOrNull(unit));
                 Writer.WL($@"
-        public double {unit.PluralName} => As({_unitEnumName}.{unit.SingularName});
+        public decimal {unit.PluralName} => As({_unitEnumName}.{unit.SingularName});
 ");
             }
 
@@ -589,7 +589,7 @@ namespace UnitsNet
         }}
 
         /// <summary>Get ratio value from dividing <see cref=""{_quantity.Name}""/> by <see cref=""{_quantity.Name}""/>.</summary>
-        public static double operator /({_quantity.Name} left, {_quantity.Name} right)
+        public static decimal operator /({_quantity.Name} left, {_quantity.Name} right)
         {{
             return left.{_baseUnit.PluralName} / right.{_baseUnit.PluralName};
         }}
@@ -636,24 +636,24 @@ namespace UnitsNet
         }}
 
         /// <summary>Get <see cref=""{_quantity.Name}""/> from logarithmic multiplication of value and <see cref=""{_quantity.Name}""/>.</summary>
-        public static {_quantity.Name} operator *({_quantity.Name} left, double right)
+        public static {_quantity.Name} operator *({_quantity.Name} left, decimal right)
         {{
             // Logarithmic multiplication = addition
             return new {_quantity.Name}(left.Value + ({_valueType})right, left.Unit);
         }}
 
         /// <summary>Get <see cref=""{_quantity.Name}""/> from logarithmic division of <see cref=""{_quantity.Name}""/> by value.</summary>
-        public static {_quantity.Name} operator /({_quantity.Name} left, double right)
+        public static {_quantity.Name} operator /({_quantity.Name} left, decimal right)
         {{
             // Logarithmic division = subtraction
             return new {_quantity.Name}(left.Value - ({_valueType})right, left.Unit);
         }}
 
         /// <summary>Get ratio value from logarithmic division of <see cref=""{_quantity.Name}""/> by <see cref=""{_quantity.Name}""/>.</summary>
-        public static double operator /({_quantity.Name} left, {_quantity.Name} right)
+        public static decimal operator /({_quantity.Name} left, {_quantity.Name} right)
         {{
             // Logarithmic division = subtraction
-            return Convert.ToDouble(left.Value - right.GetValueAs(left.Unit));
+            return Convert.ToDecimal(left.Value - right.GetValueAs(left.Unit));
         }}
 
         #endregion
@@ -690,14 +690,14 @@ namespace UnitsNet
         }}
 
         /// <summary>Returns true if exactly equal.</summary>
-        /// <remarks>Consider using <see cref=""Equals({_quantity.Name}, double, ComparisonType)""/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref=""Equals({_quantity.Name}, decimal, ComparisonType)""/> for safely comparing floating point values.</remarks>
         public static bool operator ==({_quantity.Name} left, {_quantity.Name} right)
         {{
             return left.Equals(right);
         }}
 
         /// <summary>Returns true if not exactly equal.</summary>
-        /// <remarks>Consider using <see cref=""Equals({_quantity.Name}, double, ComparisonType)""/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref=""Equals({_quantity.Name}, decimal, ComparisonType)""/> for safely comparing floating point values.</remarks>
         public static bool operator !=({_quantity.Name} left, {_quantity.Name} right)
         {{
             return !(left == right);
@@ -719,7 +719,7 @@ namespace UnitsNet
         }}
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref=""Equals({_quantity.Name}, double, ComparisonType)""/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref=""Equals({_quantity.Name}, decimal, ComparisonType)""/> for safely comparing floating point values.</remarks>
         public override bool Equals(object obj)
         {{
             if(obj is null || !(obj is {_quantity.Name} obj{_quantity.Name}))
@@ -729,7 +729,7 @@ namespace UnitsNet
         }}
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref=""Equals({_quantity.Name}, double, ComparisonType)""/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref=""Equals({_quantity.Name}, decimal, ComparisonType)""/> for safely comparing floating point values.</remarks>
         public bool Equals({_quantity.Name} other)
         {{
             return _value.Equals(other.GetValueAs(this.Unit));
@@ -775,13 +775,13 @@ namespace UnitsNet
         /// <param name=""tolerance"">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name=""comparisonType"">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals({_quantity.Name} other, double tolerance, ComparisonType comparisonType)
+        public bool Equals({_quantity.Name} other, decimal tolerance, ComparisonType comparisonType)
         {{
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException(""tolerance"", ""Tolerance must be greater than or equal to 0."");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }}
@@ -808,17 +808,17 @@ namespace UnitsNet
         ///     Convert to the unit representation <paramref name=""unit"" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As({_unitEnumName} unit)
+        public decimal As({_unitEnumName} unit)
         {{
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = GetValueAs(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }}
 
         /// <inheritdoc cref=""IQuantity.As(UnitSystem)""/>
-        public double As(UnitSystem unitSystem)
+        public decimal As(UnitSystem unitSystem)
         {{
             if(unitSystem is null)
                 throw new ArgumentNullException(nameof(unitSystem));
@@ -833,7 +833,7 @@ namespace UnitsNet
         }}
 
         /// <inheritdoc />
-        double IQuantity.As(Enum unit)
+        decimal IQuantity.As(Enum unit)
         {{
             if(!(unit is {_unitEnumName} unitAs{_unitEnumName}))
                 throw new ArgumentException($""The given unit is of type {{unit.GetType()}}. Only {{typeof({_unitEnumName})}} is supported."", nameof(unit));
@@ -976,7 +976,7 @@ namespace UnitsNet
         [Obsolete(@""This method is deprecated and will be removed at a future release. Please use ToString(""""s2"""") or ToString(""""s2"""", provider) where 2 is an example of the number passed to significantDigitsAfterRadix."")]
         public string ToString(IFormatProvider? provider, int significantDigitsAfterRadix)
         {{
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }}
@@ -996,7 +996,7 @@ namespace UnitsNet
 
             provider = provider ?? CultureInfo.CurrentUICulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }}

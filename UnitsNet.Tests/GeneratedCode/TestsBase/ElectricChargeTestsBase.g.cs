@@ -37,24 +37,24 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class ElectricChargeTestsBase : QuantityTestsBase
     {
-        protected abstract double AmpereHoursInOneCoulomb { get; }
-        protected abstract double CoulombsInOneCoulomb { get; }
-        protected abstract double KiloampereHoursInOneCoulomb { get; }
-        protected abstract double MegaampereHoursInOneCoulomb { get; }
-        protected abstract double MilliampereHoursInOneCoulomb { get; }
+        protected abstract decimal AmpereHoursInOneCoulomb { get; }
+        protected abstract decimal CoulombsInOneCoulomb { get; }
+        protected abstract decimal KiloampereHoursInOneCoulomb { get; }
+        protected abstract decimal MegaampereHoursInOneCoulomb { get; }
+        protected abstract decimal MilliampereHoursInOneCoulomb { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double AmpereHoursTolerance { get { return 1e-5; } }
-        protected virtual double CoulombsTolerance { get { return 1e-5; } }
-        protected virtual double KiloampereHoursTolerance { get { return 1e-5; } }
-        protected virtual double MegaampereHoursTolerance { get { return 1e-5; } }
-        protected virtual double MilliampereHoursTolerance { get { return 1e-5; } }
+        protected virtual decimal AmpereHoursTolerance { get { return 1e-5; } }
+        protected virtual decimal CoulombsTolerance { get { return 1e-5; } }
+        protected virtual decimal KiloampereHoursTolerance { get { return 1e-5; } }
+        protected virtual decimal MegaampereHoursTolerance { get { return 1e-5; } }
+        protected virtual decimal MilliampereHoursTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new ElectricCharge((double)0.0, ElectricChargeUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new ElectricCharge((decimal)0.0, ElectricChargeUnit.Undefined));
         }
 
         [Fact]
@@ -65,19 +65,6 @@ namespace UnitsNet.Tests
             Assert.Equal(ElectricChargeUnit.Coulomb, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new ElectricCharge(double.PositiveInfinity, ElectricChargeUnit.Coulomb));
-            Assert.Throws<ArgumentException>(() => new ElectricCharge(double.NegativeInfinity, ElectricChargeUnit.Coulomb));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new ElectricCharge(double.NaN, ElectricChargeUnit.Coulomb));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -158,19 +145,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromCoulombs_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => ElectricCharge.FromCoulombs(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => ElectricCharge.FromCoulombs(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromCoulombs_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => ElectricCharge.FromCoulombs(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var coulomb = ElectricCharge.FromCoulombs(1);
@@ -189,7 +163,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -204,23 +178,23 @@ namespace UnitsNet.Tests
             var coulomb = ElectricCharge.FromCoulombs(1);
 
             var amperehourQuantity = coulomb.ToUnit(ElectricChargeUnit.AmpereHour);
-            AssertEx.EqualTolerance(AmpereHoursInOneCoulomb, (double)amperehourQuantity.Value, AmpereHoursTolerance);
+            AssertEx.EqualTolerance(AmpereHoursInOneCoulomb, (decimal)amperehourQuantity.Value, AmpereHoursTolerance);
             Assert.Equal(ElectricChargeUnit.AmpereHour, amperehourQuantity.Unit);
 
             var coulombQuantity = coulomb.ToUnit(ElectricChargeUnit.Coulomb);
-            AssertEx.EqualTolerance(CoulombsInOneCoulomb, (double)coulombQuantity.Value, CoulombsTolerance);
+            AssertEx.EqualTolerance(CoulombsInOneCoulomb, (decimal)coulombQuantity.Value, CoulombsTolerance);
             Assert.Equal(ElectricChargeUnit.Coulomb, coulombQuantity.Unit);
 
             var kiloamperehourQuantity = coulomb.ToUnit(ElectricChargeUnit.KiloampereHour);
-            AssertEx.EqualTolerance(KiloampereHoursInOneCoulomb, (double)kiloamperehourQuantity.Value, KiloampereHoursTolerance);
+            AssertEx.EqualTolerance(KiloampereHoursInOneCoulomb, (decimal)kiloamperehourQuantity.Value, KiloampereHoursTolerance);
             Assert.Equal(ElectricChargeUnit.KiloampereHour, kiloamperehourQuantity.Unit);
 
             var megaamperehourQuantity = coulomb.ToUnit(ElectricChargeUnit.MegaampereHour);
-            AssertEx.EqualTolerance(MegaampereHoursInOneCoulomb, (double)megaamperehourQuantity.Value, MegaampereHoursTolerance);
+            AssertEx.EqualTolerance(MegaampereHoursInOneCoulomb, (decimal)megaamperehourQuantity.Value, MegaampereHoursTolerance);
             Assert.Equal(ElectricChargeUnit.MegaampereHour, megaamperehourQuantity.Unit);
 
             var milliamperehourQuantity = coulomb.ToUnit(ElectricChargeUnit.MilliampereHour);
-            AssertEx.EqualTolerance(MilliampereHoursInOneCoulomb, (double)milliamperehourQuantity.Value, MilliampereHoursTolerance);
+            AssertEx.EqualTolerance(MilliampereHoursInOneCoulomb, (decimal)milliamperehourQuantity.Value, MilliampereHoursTolerance);
             Assert.Equal(ElectricChargeUnit.MilliampereHour, milliamperehourQuantity.Unit);
         }
 
@@ -428,10 +402,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 C", new ElectricCharge(0.123456, ElectricChargeUnit.Coulomb).ToString("s1"));
-                Assert.Equal("0.12 C", new ElectricCharge(0.123456, ElectricChargeUnit.Coulomb).ToString("s2"));
-                Assert.Equal("0.123 C", new ElectricCharge(0.123456, ElectricChargeUnit.Coulomb).ToString("s3"));
-                Assert.Equal("0.1235 C", new ElectricCharge(0.123456, ElectricChargeUnit.Coulomb).ToString("s4"));
+                Assert.Equal("0.1 C", new ElectricCharge(0.123456m, ElectricChargeUnit.Coulomb).ToString("s1"));
+                Assert.Equal("0.12 C", new ElectricCharge(0.123456m, ElectricChargeUnit.Coulomb).ToString("s2"));
+                Assert.Equal("0.123 C", new ElectricCharge(0.123456m, ElectricChargeUnit.Coulomb).ToString("s3"));
+                Assert.Equal("0.1235 C", new ElectricCharge(0.123456m, ElectricChargeUnit.Coulomb).ToString("s4"));
             }
             finally
             {
@@ -443,10 +417,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 C", new ElectricCharge(0.123456, ElectricChargeUnit.Coulomb).ToString("s1", culture));
-            Assert.Equal("0.12 C", new ElectricCharge(0.123456, ElectricChargeUnit.Coulomb).ToString("s2", culture));
-            Assert.Equal("0.123 C", new ElectricCharge(0.123456, ElectricChargeUnit.Coulomb).ToString("s3", culture));
-            Assert.Equal("0.1235 C", new ElectricCharge(0.123456, ElectricChargeUnit.Coulomb).ToString("s4", culture));
+            Assert.Equal("0.1 C", new ElectricCharge(0.123456m, ElectricChargeUnit.Coulomb).ToString("s1", culture));
+            Assert.Equal("0.12 C", new ElectricCharge(0.123456m, ElectricChargeUnit.Coulomb).ToString("s2", culture));
+            Assert.Equal("0.123 C", new ElectricCharge(0.123456m, ElectricChargeUnit.Coulomb).ToString("s3", culture));
+            Assert.Equal("0.1235 C", new ElectricCharge(0.123456m, ElectricChargeUnit.Coulomb).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -624,7 +598,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = ElectricCharge.FromCoulombs(value);
             Assert.Equal(ElectricCharge.FromCoulombs(-value), -quantity);

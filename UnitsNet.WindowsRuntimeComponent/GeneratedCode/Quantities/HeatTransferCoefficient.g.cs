@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -71,12 +71,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private HeatTransferCoefficient(double value, HeatTransferCoefficientUnit unit)
+        private HeatTransferCoefficient(decimal value, HeatTransferCoefficientUnit unit)
         {
             if(unit == HeatTransferCoefficientUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -100,12 +100,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of HeatTransferCoefficient
         /// </summary>
-        public static HeatTransferCoefficient MaxValue { get; } = new HeatTransferCoefficient(double.MaxValue, BaseUnit);
+        public static HeatTransferCoefficient MaxValue { get; } = new HeatTransferCoefficient(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of HeatTransferCoefficient
         /// </summary>
-        public static HeatTransferCoefficient MinValue { get; } = new HeatTransferCoefficient(double.MinValue, BaseUnit);
+        public static HeatTransferCoefficient MinValue { get; } = new HeatTransferCoefficient(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -129,7 +129,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -158,17 +158,17 @@ namespace UnitsNet
         /// <summary>
         ///     Get HeatTransferCoefficient in BtusPerSquareFootDegreeFahrenheit.
         /// </summary>
-        public double BtusPerSquareFootDegreeFahrenheit => As(HeatTransferCoefficientUnit.BtuPerSquareFootDegreeFahrenheit);
+        public decimal BtusPerSquareFootDegreeFahrenheit => As(HeatTransferCoefficientUnit.BtuPerSquareFootDegreeFahrenheit);
 
         /// <summary>
         ///     Get HeatTransferCoefficient in WattsPerSquareMeterCelsius.
         /// </summary>
-        public double WattsPerSquareMeterCelsius => As(HeatTransferCoefficientUnit.WattPerSquareMeterCelsius);
+        public decimal WattsPerSquareMeterCelsius => As(HeatTransferCoefficientUnit.WattPerSquareMeterCelsius);
 
         /// <summary>
         ///     Get HeatTransferCoefficient in WattsPerSquareMeterKelvin.
         /// </summary>
-        public double WattsPerSquareMeterKelvin => As(HeatTransferCoefficientUnit.WattPerSquareMeterKelvin);
+        public decimal WattsPerSquareMeterKelvin => As(HeatTransferCoefficientUnit.WattPerSquareMeterKelvin);
 
         #endregion
 
@@ -205,9 +205,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static HeatTransferCoefficient FromBtusPerSquareFootDegreeFahrenheit(double btuspersquarefootdegreefahrenheit)
+        public static HeatTransferCoefficient FromBtusPerSquareFootDegreeFahrenheit(decimal btuspersquarefootdegreefahrenheit)
         {
-            double value = (double) btuspersquarefootdegreefahrenheit;
+            decimal value = (decimal) btuspersquarefootdegreefahrenheit;
             return new HeatTransferCoefficient(value, HeatTransferCoefficientUnit.BtuPerSquareFootDegreeFahrenheit);
         }
         /// <summary>
@@ -215,9 +215,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static HeatTransferCoefficient FromWattsPerSquareMeterCelsius(double wattspersquaremetercelsius)
+        public static HeatTransferCoefficient FromWattsPerSquareMeterCelsius(decimal wattspersquaremetercelsius)
         {
-            double value = (double) wattspersquaremetercelsius;
+            decimal value = (decimal) wattspersquaremetercelsius;
             return new HeatTransferCoefficient(value, HeatTransferCoefficientUnit.WattPerSquareMeterCelsius);
         }
         /// <summary>
@@ -225,9 +225,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static HeatTransferCoefficient FromWattsPerSquareMeterKelvin(double wattspersquaremeterkelvin)
+        public static HeatTransferCoefficient FromWattsPerSquareMeterKelvin(decimal wattspersquaremeterkelvin)
         {
-            double value = (double) wattspersquaremeterkelvin;
+            decimal value = (decimal) wattspersquaremeterkelvin;
             return new HeatTransferCoefficient(value, HeatTransferCoefficientUnit.WattPerSquareMeterKelvin);
         }
 
@@ -239,9 +239,9 @@ namespace UnitsNet
         /// <returns>HeatTransferCoefficient unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static HeatTransferCoefficient From(double value, HeatTransferCoefficientUnit fromUnit)
+        public static HeatTransferCoefficient From(decimal value, HeatTransferCoefficientUnit fromUnit)
         {
-            return new HeatTransferCoefficient((double)value, fromUnit);
+            return new HeatTransferCoefficient((decimal)value, fromUnit);
         }
 
         #endregion
@@ -463,13 +463,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(HeatTransferCoefficient other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(HeatTransferCoefficient other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -487,19 +487,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((HeatTransferCoefficientUnit)unit);
+        decimal IQuantity.As(object unit) => As((HeatTransferCoefficientUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(HeatTransferCoefficientUnit unit)
+        public decimal As(HeatTransferCoefficientUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -517,11 +517,11 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
-                case HeatTransferCoefficientUnit.BtuPerSquareFootDegreeFahrenheit: return _value * 5.6782633411134878;
+                case HeatTransferCoefficientUnit.BtuPerSquareFootDegreeFahrenheit: return _value * 5.6782633411134878m;
                 case HeatTransferCoefficientUnit.WattPerSquareMeterCelsius: return _value;
                 case HeatTransferCoefficientUnit.WattPerSquareMeterKelvin: return _value;
                 default:
@@ -529,7 +529,7 @@ namespace UnitsNet
             }
         }
 
-        private double AsBaseNumericType(HeatTransferCoefficientUnit unit)
+        private decimal AsBaseNumericType(HeatTransferCoefficientUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -538,7 +538,7 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case HeatTransferCoefficientUnit.BtuPerSquareFootDegreeFahrenheit: return baseUnitValue / 5.6782633411134878;
+                case HeatTransferCoefficientUnit.BtuPerSquareFootDegreeFahrenheit: return baseUnitValue / 5.6782633411134878m;
                 case HeatTransferCoefficientUnit.WattPerSquareMeterCelsius: return baseUnitValue;
                 case HeatTransferCoefficientUnit.WattPerSquareMeterKelvin: return baseUnitValue;
                 default:
@@ -579,7 +579,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -599,7 +599,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

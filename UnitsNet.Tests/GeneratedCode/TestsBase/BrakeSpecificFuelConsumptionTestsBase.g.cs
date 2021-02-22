@@ -37,20 +37,20 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class BrakeSpecificFuelConsumptionTestsBase : QuantityTestsBase
     {
-        protected abstract double GramsPerKiloWattHourInOneKilogramPerJoule { get; }
-        protected abstract double KilogramsPerJouleInOneKilogramPerJoule { get; }
-        protected abstract double PoundsPerMechanicalHorsepowerHourInOneKilogramPerJoule { get; }
+        protected abstract decimal GramsPerKiloWattHourInOneKilogramPerJoule { get; }
+        protected abstract decimal KilogramsPerJouleInOneKilogramPerJoule { get; }
+        protected abstract decimal PoundsPerMechanicalHorsepowerHourInOneKilogramPerJoule { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double GramsPerKiloWattHourTolerance { get { return 1e-5; } }
-        protected virtual double KilogramsPerJouleTolerance { get { return 1e-5; } }
-        protected virtual double PoundsPerMechanicalHorsepowerHourTolerance { get { return 1e-5; } }
+        protected virtual decimal GramsPerKiloWattHourTolerance { get { return 1e-5; } }
+        protected virtual decimal KilogramsPerJouleTolerance { get { return 1e-5; } }
+        protected virtual decimal PoundsPerMechanicalHorsepowerHourTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new BrakeSpecificFuelConsumption((double)0.0, BrakeSpecificFuelConsumptionUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new BrakeSpecificFuelConsumption((decimal)0.0, BrakeSpecificFuelConsumptionUnit.Undefined));
         }
 
         [Fact]
@@ -61,19 +61,6 @@ namespace UnitsNet.Tests
             Assert.Equal(BrakeSpecificFuelConsumptionUnit.KilogramPerJoule, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new BrakeSpecificFuelConsumption(double.PositiveInfinity, BrakeSpecificFuelConsumptionUnit.KilogramPerJoule));
-            Assert.Throws<ArgumentException>(() => new BrakeSpecificFuelConsumption(double.NegativeInfinity, BrakeSpecificFuelConsumptionUnit.KilogramPerJoule));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new BrakeSpecificFuelConsumption(double.NaN, BrakeSpecificFuelConsumptionUnit.KilogramPerJoule));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -144,19 +131,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromKilogramsPerJoule_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => BrakeSpecificFuelConsumption.FromKilogramsPerJoule(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => BrakeSpecificFuelConsumption.FromKilogramsPerJoule(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromKilogramsPerJoule_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => BrakeSpecificFuelConsumption.FromKilogramsPerJoule(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var kilogramperjoule = BrakeSpecificFuelConsumption.FromKilogramsPerJoule(1);
@@ -173,7 +147,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -188,15 +162,15 @@ namespace UnitsNet.Tests
             var kilogramperjoule = BrakeSpecificFuelConsumption.FromKilogramsPerJoule(1);
 
             var gramperkilowatthourQuantity = kilogramperjoule.ToUnit(BrakeSpecificFuelConsumptionUnit.GramPerKiloWattHour);
-            AssertEx.EqualTolerance(GramsPerKiloWattHourInOneKilogramPerJoule, (double)gramperkilowatthourQuantity.Value, GramsPerKiloWattHourTolerance);
+            AssertEx.EqualTolerance(GramsPerKiloWattHourInOneKilogramPerJoule, (decimal)gramperkilowatthourQuantity.Value, GramsPerKiloWattHourTolerance);
             Assert.Equal(BrakeSpecificFuelConsumptionUnit.GramPerKiloWattHour, gramperkilowatthourQuantity.Unit);
 
             var kilogramperjouleQuantity = kilogramperjoule.ToUnit(BrakeSpecificFuelConsumptionUnit.KilogramPerJoule);
-            AssertEx.EqualTolerance(KilogramsPerJouleInOneKilogramPerJoule, (double)kilogramperjouleQuantity.Value, KilogramsPerJouleTolerance);
+            AssertEx.EqualTolerance(KilogramsPerJouleInOneKilogramPerJoule, (decimal)kilogramperjouleQuantity.Value, KilogramsPerJouleTolerance);
             Assert.Equal(BrakeSpecificFuelConsumptionUnit.KilogramPerJoule, kilogramperjouleQuantity.Unit);
 
             var poundpermechanicalhorsepowerhourQuantity = kilogramperjoule.ToUnit(BrakeSpecificFuelConsumptionUnit.PoundPerMechanicalHorsepowerHour);
-            AssertEx.EqualTolerance(PoundsPerMechanicalHorsepowerHourInOneKilogramPerJoule, (double)poundpermechanicalhorsepowerhourQuantity.Value, PoundsPerMechanicalHorsepowerHourTolerance);
+            AssertEx.EqualTolerance(PoundsPerMechanicalHorsepowerHourInOneKilogramPerJoule, (decimal)poundpermechanicalhorsepowerhourQuantity.Value, PoundsPerMechanicalHorsepowerHourTolerance);
             Assert.Equal(BrakeSpecificFuelConsumptionUnit.PoundPerMechanicalHorsepowerHour, poundpermechanicalhorsepowerhourQuantity.Unit);
         }
 
@@ -398,10 +372,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 kg/J", new BrakeSpecificFuelConsumption(0.123456, BrakeSpecificFuelConsumptionUnit.KilogramPerJoule).ToString("s1"));
-                Assert.Equal("0.12 kg/J", new BrakeSpecificFuelConsumption(0.123456, BrakeSpecificFuelConsumptionUnit.KilogramPerJoule).ToString("s2"));
-                Assert.Equal("0.123 kg/J", new BrakeSpecificFuelConsumption(0.123456, BrakeSpecificFuelConsumptionUnit.KilogramPerJoule).ToString("s3"));
-                Assert.Equal("0.1235 kg/J", new BrakeSpecificFuelConsumption(0.123456, BrakeSpecificFuelConsumptionUnit.KilogramPerJoule).ToString("s4"));
+                Assert.Equal("0.1 kg/J", new BrakeSpecificFuelConsumption(0.123456m, BrakeSpecificFuelConsumptionUnit.KilogramPerJoule).ToString("s1"));
+                Assert.Equal("0.12 kg/J", new BrakeSpecificFuelConsumption(0.123456m, BrakeSpecificFuelConsumptionUnit.KilogramPerJoule).ToString("s2"));
+                Assert.Equal("0.123 kg/J", new BrakeSpecificFuelConsumption(0.123456m, BrakeSpecificFuelConsumptionUnit.KilogramPerJoule).ToString("s3"));
+                Assert.Equal("0.1235 kg/J", new BrakeSpecificFuelConsumption(0.123456m, BrakeSpecificFuelConsumptionUnit.KilogramPerJoule).ToString("s4"));
             }
             finally
             {
@@ -413,10 +387,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 kg/J", new BrakeSpecificFuelConsumption(0.123456, BrakeSpecificFuelConsumptionUnit.KilogramPerJoule).ToString("s1", culture));
-            Assert.Equal("0.12 kg/J", new BrakeSpecificFuelConsumption(0.123456, BrakeSpecificFuelConsumptionUnit.KilogramPerJoule).ToString("s2", culture));
-            Assert.Equal("0.123 kg/J", new BrakeSpecificFuelConsumption(0.123456, BrakeSpecificFuelConsumptionUnit.KilogramPerJoule).ToString("s3", culture));
-            Assert.Equal("0.1235 kg/J", new BrakeSpecificFuelConsumption(0.123456, BrakeSpecificFuelConsumptionUnit.KilogramPerJoule).ToString("s4", culture));
+            Assert.Equal("0.1 kg/J", new BrakeSpecificFuelConsumption(0.123456m, BrakeSpecificFuelConsumptionUnit.KilogramPerJoule).ToString("s1", culture));
+            Assert.Equal("0.12 kg/J", new BrakeSpecificFuelConsumption(0.123456m, BrakeSpecificFuelConsumptionUnit.KilogramPerJoule).ToString("s2", culture));
+            Assert.Equal("0.123 kg/J", new BrakeSpecificFuelConsumption(0.123456m, BrakeSpecificFuelConsumptionUnit.KilogramPerJoule).ToString("s3", culture));
+            Assert.Equal("0.1235 kg/J", new BrakeSpecificFuelConsumption(0.123456m, BrakeSpecificFuelConsumptionUnit.KilogramPerJoule).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -594,7 +568,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = BrakeSpecificFuelConsumption.FromKilogramsPerJoule(value);
             Assert.Equal(BrakeSpecificFuelConsumption.FromKilogramsPerJoule(-value), -quantity);

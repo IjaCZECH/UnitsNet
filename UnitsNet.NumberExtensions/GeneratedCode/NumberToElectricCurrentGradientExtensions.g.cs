@@ -30,7 +30,7 @@ namespace UnitsNet.NumberExtensions.NumberToElectricCurrentGradient
     {
         /// <inheritdoc cref="ElectricCurrentGradient.FromAmperesPerSecond(UnitsNet.QuantityValue)" />
         public static ElectricCurrentGradient AmperesPerSecond<T>(this T value) =>
-            ElectricCurrentGradient.FromAmperesPerSecond(Convert.ToDouble(value));
+            ElectricCurrentGradient.FromAmperesPerSecond(Convert.ToDecimal(value));
 
     }
 }

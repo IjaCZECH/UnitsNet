@@ -14,7 +14,7 @@ namespace UnitsNet
         /// </summary>
         /// <param name="quantity">The quantity.</param>
         /// <param name="reference">The reference value that <paramref name="quantity" /> is compared to.</param>
-        public Level(double quantity, double reference)
+        public Level(decimal quantity, decimal reference)
             : this()
         {
             string errorMessage =
@@ -27,7 +27,7 @@ namespace UnitsNet
                 throw new ArgumentOutOfRangeException(nameof(reference), errorMessage);
             // ReSharper restore CompareOfFloatsByEqualityOperator
 
-            _value = 10*Math.Log10(quantity/reference);
+            _value = 10 * DecimalMath.DecimalEx.Log10(quantity / reference);
             _unit = LevelUnit.Decibel;
         }
     }

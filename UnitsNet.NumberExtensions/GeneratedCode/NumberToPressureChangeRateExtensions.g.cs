@@ -30,31 +30,31 @@ namespace UnitsNet.NumberExtensions.NumberToPressureChangeRate
     {
         /// <inheritdoc cref="PressureChangeRate.FromAtmospheresPerSecond(UnitsNet.QuantityValue)" />
         public static PressureChangeRate AtmospheresPerSecond<T>(this T value) =>
-            PressureChangeRate.FromAtmospheresPerSecond(Convert.ToDouble(value));
+            PressureChangeRate.FromAtmospheresPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="PressureChangeRate.FromKilopascalsPerMinute(UnitsNet.QuantityValue)" />
         public static PressureChangeRate KilopascalsPerMinute<T>(this T value) =>
-            PressureChangeRate.FromKilopascalsPerMinute(Convert.ToDouble(value));
+            PressureChangeRate.FromKilopascalsPerMinute(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="PressureChangeRate.FromKilopascalsPerSecond(UnitsNet.QuantityValue)" />
         public static PressureChangeRate KilopascalsPerSecond<T>(this T value) =>
-            PressureChangeRate.FromKilopascalsPerSecond(Convert.ToDouble(value));
+            PressureChangeRate.FromKilopascalsPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="PressureChangeRate.FromMegapascalsPerMinute(UnitsNet.QuantityValue)" />
         public static PressureChangeRate MegapascalsPerMinute<T>(this T value) =>
-            PressureChangeRate.FromMegapascalsPerMinute(Convert.ToDouble(value));
+            PressureChangeRate.FromMegapascalsPerMinute(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="PressureChangeRate.FromMegapascalsPerSecond(UnitsNet.QuantityValue)" />
         public static PressureChangeRate MegapascalsPerSecond<T>(this T value) =>
-            PressureChangeRate.FromMegapascalsPerSecond(Convert.ToDouble(value));
+            PressureChangeRate.FromMegapascalsPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="PressureChangeRate.FromPascalsPerMinute(UnitsNet.QuantityValue)" />
         public static PressureChangeRate PascalsPerMinute<T>(this T value) =>
-            PressureChangeRate.FromPascalsPerMinute(Convert.ToDouble(value));
+            PressureChangeRate.FromPascalsPerMinute(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="PressureChangeRate.FromPascalsPerSecond(UnitsNet.QuantityValue)" />
         public static PressureChangeRate PascalsPerSecond<T>(this T value) =>
-            PressureChangeRate.FromPascalsPerSecond(Convert.ToDouble(value));
+            PressureChangeRate.FromPascalsPerSecond(Convert.ToDecimal(value));
 
     }
 }

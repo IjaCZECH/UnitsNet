@@ -30,11 +30,11 @@ namespace UnitsNet.NumberExtensions.NumberToLevel
     {
         /// <inheritdoc cref="Level.FromDecibels(UnitsNet.QuantityValue)" />
         public static Level Decibels<T>(this T value) =>
-            Level.FromDecibels(Convert.ToDouble(value));
+            Level.FromDecibels(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Level.FromNepers(UnitsNet.QuantityValue)" />
         public static Level Nepers<T>(this T value) =>
-            Level.FromNepers(Convert.ToDouble(value));
+            Level.FromNepers(Convert.ToDecimal(value));
 
     }
 }

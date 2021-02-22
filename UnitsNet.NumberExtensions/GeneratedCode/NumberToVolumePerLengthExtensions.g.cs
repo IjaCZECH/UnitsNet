@@ -30,31 +30,31 @@ namespace UnitsNet.NumberExtensions.NumberToVolumePerLength
     {
         /// <inheritdoc cref="VolumePerLength.FromCubicMetersPerMeter(UnitsNet.QuantityValue)" />
         public static VolumePerLength CubicMetersPerMeter<T>(this T value) =>
-            VolumePerLength.FromCubicMetersPerMeter(Convert.ToDouble(value));
+            VolumePerLength.FromCubicMetersPerMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="VolumePerLength.FromCubicYardsPerFoot(UnitsNet.QuantityValue)" />
         public static VolumePerLength CubicYardsPerFoot<T>(this T value) =>
-            VolumePerLength.FromCubicYardsPerFoot(Convert.ToDouble(value));
+            VolumePerLength.FromCubicYardsPerFoot(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="VolumePerLength.FromCubicYardsPerUsSurveyFoot(UnitsNet.QuantityValue)" />
         public static VolumePerLength CubicYardsPerUsSurveyFoot<T>(this T value) =>
-            VolumePerLength.FromCubicYardsPerUsSurveyFoot(Convert.ToDouble(value));
+            VolumePerLength.FromCubicYardsPerUsSurveyFoot(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="VolumePerLength.FromLitersPerKilometer(UnitsNet.QuantityValue)" />
         public static VolumePerLength LitersPerKilometer<T>(this T value) =>
-            VolumePerLength.FromLitersPerKilometer(Convert.ToDouble(value));
+            VolumePerLength.FromLitersPerKilometer(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="VolumePerLength.FromLitersPerMeter(UnitsNet.QuantityValue)" />
         public static VolumePerLength LitersPerMeter<T>(this T value) =>
-            VolumePerLength.FromLitersPerMeter(Convert.ToDouble(value));
+            VolumePerLength.FromLitersPerMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="VolumePerLength.FromLitersPerMillimeter(UnitsNet.QuantityValue)" />
         public static VolumePerLength LitersPerMillimeter<T>(this T value) =>
-            VolumePerLength.FromLitersPerMillimeter(Convert.ToDouble(value));
+            VolumePerLength.FromLitersPerMillimeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="VolumePerLength.FromOilBarrelsPerFoot(UnitsNet.QuantityValue)" />
         public static VolumePerLength OilBarrelsPerFoot<T>(this T value) =>
-            VolumePerLength.FromOilBarrelsPerFoot(Convert.ToDouble(value));
+            VolumePerLength.FromOilBarrelsPerFoot(Convert.ToDecimal(value));
 
     }
 }

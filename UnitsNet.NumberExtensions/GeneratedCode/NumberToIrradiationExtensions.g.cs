@@ -30,31 +30,31 @@ namespace UnitsNet.NumberExtensions.NumberToIrradiation
     {
         /// <inheritdoc cref="Irradiation.FromJoulesPerSquareCentimeter(UnitsNet.QuantityValue)" />
         public static Irradiation JoulesPerSquareCentimeter<T>(this T value) =>
-            Irradiation.FromJoulesPerSquareCentimeter(Convert.ToDouble(value));
+            Irradiation.FromJoulesPerSquareCentimeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Irradiation.FromJoulesPerSquareMeter(UnitsNet.QuantityValue)" />
         public static Irradiation JoulesPerSquareMeter<T>(this T value) =>
-            Irradiation.FromJoulesPerSquareMeter(Convert.ToDouble(value));
+            Irradiation.FromJoulesPerSquareMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Irradiation.FromJoulesPerSquareMillimeter(UnitsNet.QuantityValue)" />
         public static Irradiation JoulesPerSquareMillimeter<T>(this T value) =>
-            Irradiation.FromJoulesPerSquareMillimeter(Convert.ToDouble(value));
+            Irradiation.FromJoulesPerSquareMillimeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Irradiation.FromKilojoulesPerSquareMeter(UnitsNet.QuantityValue)" />
         public static Irradiation KilojoulesPerSquareMeter<T>(this T value) =>
-            Irradiation.FromKilojoulesPerSquareMeter(Convert.ToDouble(value));
+            Irradiation.FromKilojoulesPerSquareMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Irradiation.FromKilowattHoursPerSquareMeter(UnitsNet.QuantityValue)" />
         public static Irradiation KilowattHoursPerSquareMeter<T>(this T value) =>
-            Irradiation.FromKilowattHoursPerSquareMeter(Convert.ToDouble(value));
+            Irradiation.FromKilowattHoursPerSquareMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Irradiation.FromMillijoulesPerSquareCentimeter(UnitsNet.QuantityValue)" />
         public static Irradiation MillijoulesPerSquareCentimeter<T>(this T value) =>
-            Irradiation.FromMillijoulesPerSquareCentimeter(Convert.ToDouble(value));
+            Irradiation.FromMillijoulesPerSquareCentimeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Irradiation.FromWattHoursPerSquareMeter(UnitsNet.QuantityValue)" />
         public static Irradiation WattHoursPerSquareMeter<T>(this T value) =>
-            Irradiation.FromWattHoursPerSquareMeter(Convert.ToDouble(value));
+            Irradiation.FromWattHoursPerSquareMeter(Convert.ToDecimal(value));
 
     }
 }

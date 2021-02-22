@@ -37,16 +37,16 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class ElectricFieldTestsBase : QuantityTestsBase
     {
-        protected abstract double VoltsPerMeterInOneVoltPerMeter { get; }
+        protected abstract decimal VoltsPerMeterInOneVoltPerMeter { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double VoltsPerMeterTolerance { get { return 1e-5; } }
+        protected virtual decimal VoltsPerMeterTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new ElectricField((double)0.0, ElectricFieldUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new ElectricField((decimal)0.0, ElectricFieldUnit.Undefined));
         }
 
         [Fact]
@@ -57,19 +57,6 @@ namespace UnitsNet.Tests
             Assert.Equal(ElectricFieldUnit.VoltPerMeter, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new ElectricField(double.PositiveInfinity, ElectricFieldUnit.VoltPerMeter));
-            Assert.Throws<ArgumentException>(() => new ElectricField(double.NegativeInfinity, ElectricFieldUnit.VoltPerMeter));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new ElectricField(double.NaN, ElectricFieldUnit.VoltPerMeter));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -130,19 +117,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromVoltsPerMeter_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => ElectricField.FromVoltsPerMeter(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => ElectricField.FromVoltsPerMeter(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromVoltsPerMeter_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => ElectricField.FromVoltsPerMeter(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var voltpermeter = ElectricField.FromVoltsPerMeter(1);
@@ -157,7 +131,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -172,7 +146,7 @@ namespace UnitsNet.Tests
             var voltpermeter = ElectricField.FromVoltsPerMeter(1);
 
             var voltpermeterQuantity = voltpermeter.ToUnit(ElectricFieldUnit.VoltPerMeter);
-            AssertEx.EqualTolerance(VoltsPerMeterInOneVoltPerMeter, (double)voltpermeterQuantity.Value, VoltsPerMeterTolerance);
+            AssertEx.EqualTolerance(VoltsPerMeterInOneVoltPerMeter, (decimal)voltpermeterQuantity.Value, VoltsPerMeterTolerance);
             Assert.Equal(ElectricFieldUnit.VoltPerMeter, voltpermeterQuantity.Unit);
         }
 
@@ -368,10 +342,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 V/m", new ElectricField(0.123456, ElectricFieldUnit.VoltPerMeter).ToString("s1"));
-                Assert.Equal("0.12 V/m", new ElectricField(0.123456, ElectricFieldUnit.VoltPerMeter).ToString("s2"));
-                Assert.Equal("0.123 V/m", new ElectricField(0.123456, ElectricFieldUnit.VoltPerMeter).ToString("s3"));
-                Assert.Equal("0.1235 V/m", new ElectricField(0.123456, ElectricFieldUnit.VoltPerMeter).ToString("s4"));
+                Assert.Equal("0.1 V/m", new ElectricField(0.123456m, ElectricFieldUnit.VoltPerMeter).ToString("s1"));
+                Assert.Equal("0.12 V/m", new ElectricField(0.123456m, ElectricFieldUnit.VoltPerMeter).ToString("s2"));
+                Assert.Equal("0.123 V/m", new ElectricField(0.123456m, ElectricFieldUnit.VoltPerMeter).ToString("s3"));
+                Assert.Equal("0.1235 V/m", new ElectricField(0.123456m, ElectricFieldUnit.VoltPerMeter).ToString("s4"));
             }
             finally
             {
@@ -383,10 +357,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 V/m", new ElectricField(0.123456, ElectricFieldUnit.VoltPerMeter).ToString("s1", culture));
-            Assert.Equal("0.12 V/m", new ElectricField(0.123456, ElectricFieldUnit.VoltPerMeter).ToString("s2", culture));
-            Assert.Equal("0.123 V/m", new ElectricField(0.123456, ElectricFieldUnit.VoltPerMeter).ToString("s3", culture));
-            Assert.Equal("0.1235 V/m", new ElectricField(0.123456, ElectricFieldUnit.VoltPerMeter).ToString("s4", culture));
+            Assert.Equal("0.1 V/m", new ElectricField(0.123456m, ElectricFieldUnit.VoltPerMeter).ToString("s1", culture));
+            Assert.Equal("0.12 V/m", new ElectricField(0.123456m, ElectricFieldUnit.VoltPerMeter).ToString("s2", culture));
+            Assert.Equal("0.123 V/m", new ElectricField(0.123456m, ElectricFieldUnit.VoltPerMeter).ToString("s3", culture));
+            Assert.Equal("0.1235 V/m", new ElectricField(0.123456m, ElectricFieldUnit.VoltPerMeter).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -564,7 +538,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = ElectricField.FromVoltsPerMeter(value);
             Assert.Equal(ElectricField.FromVoltsPerMeter(-value), -quantity);

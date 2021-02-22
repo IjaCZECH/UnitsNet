@@ -37,22 +37,22 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class ElectricAdmittanceTestsBase : QuantityTestsBase
     {
-        protected abstract double MicrosiemensInOneSiemens { get; }
-        protected abstract double MillisiemensInOneSiemens { get; }
-        protected abstract double NanosiemensInOneSiemens { get; }
-        protected abstract double SiemensInOneSiemens { get; }
+        protected abstract decimal MicrosiemensInOneSiemens { get; }
+        protected abstract decimal MillisiemensInOneSiemens { get; }
+        protected abstract decimal NanosiemensInOneSiemens { get; }
+        protected abstract decimal SiemensInOneSiemens { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double MicrosiemensTolerance { get { return 1e-5; } }
-        protected virtual double MillisiemensTolerance { get { return 1e-5; } }
-        protected virtual double NanosiemensTolerance { get { return 1e-5; } }
-        protected virtual double SiemensTolerance { get { return 1e-5; } }
+        protected virtual decimal MicrosiemensTolerance { get { return 1e-5; } }
+        protected virtual decimal MillisiemensTolerance { get { return 1e-5; } }
+        protected virtual decimal NanosiemensTolerance { get { return 1e-5; } }
+        protected virtual decimal SiemensTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new ElectricAdmittance((double)0.0, ElectricAdmittanceUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new ElectricAdmittance((decimal)0.0, ElectricAdmittanceUnit.Undefined));
         }
 
         [Fact]
@@ -63,19 +63,6 @@ namespace UnitsNet.Tests
             Assert.Equal(ElectricAdmittanceUnit.Siemens, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new ElectricAdmittance(double.PositiveInfinity, ElectricAdmittanceUnit.Siemens));
-            Assert.Throws<ArgumentException>(() => new ElectricAdmittance(double.NegativeInfinity, ElectricAdmittanceUnit.Siemens));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new ElectricAdmittance(double.NaN, ElectricAdmittanceUnit.Siemens));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -151,19 +138,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromSiemens_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => ElectricAdmittance.FromSiemens(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => ElectricAdmittance.FromSiemens(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromSiemens_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => ElectricAdmittance.FromSiemens(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var siemens = ElectricAdmittance.FromSiemens(1);
@@ -181,7 +155,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -196,19 +170,19 @@ namespace UnitsNet.Tests
             var siemens = ElectricAdmittance.FromSiemens(1);
 
             var microsiemensQuantity = siemens.ToUnit(ElectricAdmittanceUnit.Microsiemens);
-            AssertEx.EqualTolerance(MicrosiemensInOneSiemens, (double)microsiemensQuantity.Value, MicrosiemensTolerance);
+            AssertEx.EqualTolerance(MicrosiemensInOneSiemens, (decimal)microsiemensQuantity.Value, MicrosiemensTolerance);
             Assert.Equal(ElectricAdmittanceUnit.Microsiemens, microsiemensQuantity.Unit);
 
             var millisiemensQuantity = siemens.ToUnit(ElectricAdmittanceUnit.Millisiemens);
-            AssertEx.EqualTolerance(MillisiemensInOneSiemens, (double)millisiemensQuantity.Value, MillisiemensTolerance);
+            AssertEx.EqualTolerance(MillisiemensInOneSiemens, (decimal)millisiemensQuantity.Value, MillisiemensTolerance);
             Assert.Equal(ElectricAdmittanceUnit.Millisiemens, millisiemensQuantity.Unit);
 
             var nanosiemensQuantity = siemens.ToUnit(ElectricAdmittanceUnit.Nanosiemens);
-            AssertEx.EqualTolerance(NanosiemensInOneSiemens, (double)nanosiemensQuantity.Value, NanosiemensTolerance);
+            AssertEx.EqualTolerance(NanosiemensInOneSiemens, (decimal)nanosiemensQuantity.Value, NanosiemensTolerance);
             Assert.Equal(ElectricAdmittanceUnit.Nanosiemens, nanosiemensQuantity.Unit);
 
             var siemensQuantity = siemens.ToUnit(ElectricAdmittanceUnit.Siemens);
-            AssertEx.EqualTolerance(SiemensInOneSiemens, (double)siemensQuantity.Value, SiemensTolerance);
+            AssertEx.EqualTolerance(SiemensInOneSiemens, (decimal)siemensQuantity.Value, SiemensTolerance);
             Assert.Equal(ElectricAdmittanceUnit.Siemens, siemensQuantity.Unit);
         }
 
@@ -413,10 +387,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 S", new ElectricAdmittance(0.123456, ElectricAdmittanceUnit.Siemens).ToString("s1"));
-                Assert.Equal("0.12 S", new ElectricAdmittance(0.123456, ElectricAdmittanceUnit.Siemens).ToString("s2"));
-                Assert.Equal("0.123 S", new ElectricAdmittance(0.123456, ElectricAdmittanceUnit.Siemens).ToString("s3"));
-                Assert.Equal("0.1235 S", new ElectricAdmittance(0.123456, ElectricAdmittanceUnit.Siemens).ToString("s4"));
+                Assert.Equal("0.1 S", new ElectricAdmittance(0.123456m, ElectricAdmittanceUnit.Siemens).ToString("s1"));
+                Assert.Equal("0.12 S", new ElectricAdmittance(0.123456m, ElectricAdmittanceUnit.Siemens).ToString("s2"));
+                Assert.Equal("0.123 S", new ElectricAdmittance(0.123456m, ElectricAdmittanceUnit.Siemens).ToString("s3"));
+                Assert.Equal("0.1235 S", new ElectricAdmittance(0.123456m, ElectricAdmittanceUnit.Siemens).ToString("s4"));
             }
             finally
             {
@@ -428,10 +402,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 S", new ElectricAdmittance(0.123456, ElectricAdmittanceUnit.Siemens).ToString("s1", culture));
-            Assert.Equal("0.12 S", new ElectricAdmittance(0.123456, ElectricAdmittanceUnit.Siemens).ToString("s2", culture));
-            Assert.Equal("0.123 S", new ElectricAdmittance(0.123456, ElectricAdmittanceUnit.Siemens).ToString("s3", culture));
-            Assert.Equal("0.1235 S", new ElectricAdmittance(0.123456, ElectricAdmittanceUnit.Siemens).ToString("s4", culture));
+            Assert.Equal("0.1 S", new ElectricAdmittance(0.123456m, ElectricAdmittanceUnit.Siemens).ToString("s1", culture));
+            Assert.Equal("0.12 S", new ElectricAdmittance(0.123456m, ElectricAdmittanceUnit.Siemens).ToString("s2", culture));
+            Assert.Equal("0.123 S", new ElectricAdmittance(0.123456m, ElectricAdmittanceUnit.Siemens).ToString("s3", culture));
+            Assert.Equal("0.1235 S", new ElectricAdmittance(0.123456m, ElectricAdmittanceUnit.Siemens).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -609,7 +583,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = ElectricAdmittance.FromSiemens(value);
             Assert.Equal(ElectricAdmittance.FromSiemens(-value), -quantity);

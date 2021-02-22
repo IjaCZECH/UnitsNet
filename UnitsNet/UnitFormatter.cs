@@ -22,9 +22,9 @@ namespace UnitsNet
         ///     string.
         /// </param>
         /// <returns>A ToString format for the specified value.</returns>
-        public static string GetFormat(double value, int significantDigitsAfterRadix)
+        public static string GetFormat(decimal value, int significantDigitsAfterRadix)
         {
-            double v = Math.Abs(value);
+            decimal v = Math.Abs(value);
             var sigDigitsAfterRadixStr = new string('#', significantDigitsAfterRadix);
             string format;
 
@@ -33,17 +33,17 @@ namespace UnitsNet
                 format = "{0} {1}";
             }
             // Values below 1e-3 are displayed in scientific notation.
-            else if (v < 1e-3)
+            else if (v < 1e-3m)
             {
                 format = "{0:0." + sigDigitsAfterRadixStr + "e-00} {1}";
             }
             // Values from 1e-3 to 1 use fixed point notation.
-            else if ((v > 1e-4) && (v < 1))
+            else if ((v > 1e-4m) && (v < 1))
             {
                 format = "{0:g" + significantDigitsAfterRadix + "} {1}";
             }
             // Values between 1 and 1e5 use fixed point notation with digit grouping.
-            else if ((v >= 1) && (v < 1e6))
+            else if ((v >= 1) && (v < 1e6m))
             {
                 // The comma will be automatically replaced with the correct digit separator if a different culture is used.
                 format = "{0:#,0." + sigDigitsAfterRadixStr + "} {1}";
@@ -57,9 +57,9 @@ namespace UnitsNet
             return format;
         }
 
-        private static bool NearlyEqual(double a, double b)
+        private static bool NearlyEqual(decimal a, decimal b)
         {
-            return Math.Abs(a - b) < 1e-150;
+            return Math.Abs(a - b) < 1e-150m;
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace UnitsNet
         /// <param name="culture">The current culture.</param>
         /// <param name="args">The list of format arguments.</param>
         /// <returns>An array of ToString format arguments.</returns>
-        public static object[] GetFormatArgs<TUnitType>(TUnitType unit, double value, IFormatProvider? culture, IEnumerable<object> args)
+        public static object[] GetFormatArgs<TUnitType>(TUnitType unit, decimal value, IFormatProvider? culture, IEnumerable<object> args)
             where TUnitType : Enum
         {
             string abbreviation = UnitAbbreviationsCache.Default.GetDefaultAbbreviation(typeof(TUnitType), Convert.ToInt32(unit), culture);

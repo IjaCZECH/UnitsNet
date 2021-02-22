@@ -30,15 +30,15 @@ namespace UnitsNet.NumberExtensions.NumberToElectricSurfaceChargeDensity
     {
         /// <inheritdoc cref="ElectricSurfaceChargeDensity.FromCoulombsPerSquareCentimeter(UnitsNet.QuantityValue)" />
         public static ElectricSurfaceChargeDensity CoulombsPerSquareCentimeter<T>(this T value) =>
-            ElectricSurfaceChargeDensity.FromCoulombsPerSquareCentimeter(Convert.ToDouble(value));
+            ElectricSurfaceChargeDensity.FromCoulombsPerSquareCentimeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricSurfaceChargeDensity.FromCoulombsPerSquareInch(UnitsNet.QuantityValue)" />
         public static ElectricSurfaceChargeDensity CoulombsPerSquareInch<T>(this T value) =>
-            ElectricSurfaceChargeDensity.FromCoulombsPerSquareInch(Convert.ToDouble(value));
+            ElectricSurfaceChargeDensity.FromCoulombsPerSquareInch(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricSurfaceChargeDensity.FromCoulombsPerSquareMeter(UnitsNet.QuantityValue)" />
         public static ElectricSurfaceChargeDensity CoulombsPerSquareMeter<T>(this T value) =>
-            ElectricSurfaceChargeDensity.FromCoulombsPerSquareMeter(Convert.ToDouble(value));
+            ElectricSurfaceChargeDensity.FromCoulombsPerSquareMeter(Convert.ToDecimal(value));
 
     }
 }

@@ -42,7 +42,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -74,12 +74,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private MagneticField(double value, MagneticFieldUnit unit)
+        private MagneticField(decimal value, MagneticFieldUnit unit)
         {
             if(unit == MagneticFieldUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -103,12 +103,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of MagneticField
         /// </summary>
-        public static MagneticField MaxValue { get; } = new MagneticField(double.MaxValue, BaseUnit);
+        public static MagneticField MaxValue { get; } = new MagneticField(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of MagneticField
         /// </summary>
-        public static MagneticField MinValue { get; } = new MagneticField(double.MinValue, BaseUnit);
+        public static MagneticField MinValue { get; } = new MagneticField(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -132,7 +132,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -161,27 +161,27 @@ namespace UnitsNet
         /// <summary>
         ///     Get MagneticField in Gausses.
         /// </summary>
-        public double Gausses => As(MagneticFieldUnit.Gauss);
+        public decimal Gausses => As(MagneticFieldUnit.Gauss);
 
         /// <summary>
         ///     Get MagneticField in Microteslas.
         /// </summary>
-        public double Microteslas => As(MagneticFieldUnit.Microtesla);
+        public decimal Microteslas => As(MagneticFieldUnit.Microtesla);
 
         /// <summary>
         ///     Get MagneticField in Milliteslas.
         /// </summary>
-        public double Milliteslas => As(MagneticFieldUnit.Millitesla);
+        public decimal Milliteslas => As(MagneticFieldUnit.Millitesla);
 
         /// <summary>
         ///     Get MagneticField in Nanoteslas.
         /// </summary>
-        public double Nanoteslas => As(MagneticFieldUnit.Nanotesla);
+        public decimal Nanoteslas => As(MagneticFieldUnit.Nanotesla);
 
         /// <summary>
         ///     Get MagneticField in Teslas.
         /// </summary>
-        public double Teslas => As(MagneticFieldUnit.Tesla);
+        public decimal Teslas => As(MagneticFieldUnit.Tesla);
 
         #endregion
 
@@ -218,9 +218,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MagneticField FromGausses(double gausses)
+        public static MagneticField FromGausses(decimal gausses)
         {
-            double value = (double) gausses;
+            decimal value = (decimal) gausses;
             return new MagneticField(value, MagneticFieldUnit.Gauss);
         }
         /// <summary>
@@ -228,9 +228,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MagneticField FromMicroteslas(double microteslas)
+        public static MagneticField FromMicroteslas(decimal microteslas)
         {
-            double value = (double) microteslas;
+            decimal value = (decimal) microteslas;
             return new MagneticField(value, MagneticFieldUnit.Microtesla);
         }
         /// <summary>
@@ -238,9 +238,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MagneticField FromMilliteslas(double milliteslas)
+        public static MagneticField FromMilliteslas(decimal milliteslas)
         {
-            double value = (double) milliteslas;
+            decimal value = (decimal) milliteslas;
             return new MagneticField(value, MagneticFieldUnit.Millitesla);
         }
         /// <summary>
@@ -248,9 +248,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MagneticField FromNanoteslas(double nanoteslas)
+        public static MagneticField FromNanoteslas(decimal nanoteslas)
         {
-            double value = (double) nanoteslas;
+            decimal value = (decimal) nanoteslas;
             return new MagneticField(value, MagneticFieldUnit.Nanotesla);
         }
         /// <summary>
@@ -258,9 +258,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static MagneticField FromTeslas(double teslas)
+        public static MagneticField FromTeslas(decimal teslas)
         {
-            double value = (double) teslas;
+            decimal value = (decimal) teslas;
             return new MagneticField(value, MagneticFieldUnit.Tesla);
         }
 
@@ -272,9 +272,9 @@ namespace UnitsNet
         /// <returns>MagneticField unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static MagneticField From(double value, MagneticFieldUnit fromUnit)
+        public static MagneticField From(decimal value, MagneticFieldUnit fromUnit)
         {
-            return new MagneticField((double)value, fromUnit);
+            return new MagneticField((decimal)value, fromUnit);
         }
 
         #endregion
@@ -496,13 +496,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(MagneticField other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(MagneticField other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -520,19 +520,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((MagneticFieldUnit)unit);
+        decimal IQuantity.As(object unit) => As((MagneticFieldUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(MagneticFieldUnit unit)
+        public decimal As(MagneticFieldUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -550,21 +550,21 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
-                case MagneticFieldUnit.Gauss: return _value/1e4;
-                case MagneticFieldUnit.Microtesla: return (_value) * 1e-6d;
-                case MagneticFieldUnit.Millitesla: return (_value) * 1e-3d;
-                case MagneticFieldUnit.Nanotesla: return (_value) * 1e-9d;
+                case MagneticFieldUnit.Gauss: return _value/1e4m;
+                case MagneticFieldUnit.Microtesla: return (_value) * 1e-6m;
+                case MagneticFieldUnit.Millitesla: return (_value) * 1e-3m;
+                case MagneticFieldUnit.Nanotesla: return (_value) * 1e-9m;
                 case MagneticFieldUnit.Tesla: return _value;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(MagneticFieldUnit unit)
+        private decimal AsBaseNumericType(MagneticFieldUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -573,10 +573,10 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case MagneticFieldUnit.Gauss: return baseUnitValue*1e4;
-                case MagneticFieldUnit.Microtesla: return (baseUnitValue) / 1e-6d;
-                case MagneticFieldUnit.Millitesla: return (baseUnitValue) / 1e-3d;
-                case MagneticFieldUnit.Nanotesla: return (baseUnitValue) / 1e-9d;
+                case MagneticFieldUnit.Gauss: return baseUnitValue*1e4m;
+                case MagneticFieldUnit.Microtesla: return (baseUnitValue) / 1e-6m;
+                case MagneticFieldUnit.Millitesla: return (baseUnitValue) / 1e-3m;
+                case MagneticFieldUnit.Nanotesla: return (baseUnitValue) / 1e-9m;
                 case MagneticFieldUnit.Tesla: return baseUnitValue;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
@@ -616,7 +616,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -636,7 +636,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

@@ -37,60 +37,60 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class BitRateTestsBase : QuantityTestsBase
     {
-        protected abstract double BitsPerSecondInOneBitPerSecond { get; }
-        protected abstract double BytesPerSecondInOneBitPerSecond { get; }
-        protected abstract double ExabitsPerSecondInOneBitPerSecond { get; }
-        protected abstract double ExabytesPerSecondInOneBitPerSecond { get; }
-        protected abstract double ExbibitsPerSecondInOneBitPerSecond { get; }
-        protected abstract double ExbibytesPerSecondInOneBitPerSecond { get; }
-        protected abstract double GibibitsPerSecondInOneBitPerSecond { get; }
-        protected abstract double GibibytesPerSecondInOneBitPerSecond { get; }
-        protected abstract double GigabitsPerSecondInOneBitPerSecond { get; }
-        protected abstract double GigabytesPerSecondInOneBitPerSecond { get; }
-        protected abstract double KibibitsPerSecondInOneBitPerSecond { get; }
-        protected abstract double KibibytesPerSecondInOneBitPerSecond { get; }
-        protected abstract double KilobitsPerSecondInOneBitPerSecond { get; }
-        protected abstract double KilobytesPerSecondInOneBitPerSecond { get; }
-        protected abstract double MebibitsPerSecondInOneBitPerSecond { get; }
-        protected abstract double MebibytesPerSecondInOneBitPerSecond { get; }
-        protected abstract double MegabitsPerSecondInOneBitPerSecond { get; }
-        protected abstract double MegabytesPerSecondInOneBitPerSecond { get; }
-        protected abstract double PebibitsPerSecondInOneBitPerSecond { get; }
-        protected abstract double PebibytesPerSecondInOneBitPerSecond { get; }
-        protected abstract double PetabitsPerSecondInOneBitPerSecond { get; }
-        protected abstract double PetabytesPerSecondInOneBitPerSecond { get; }
-        protected abstract double TebibitsPerSecondInOneBitPerSecond { get; }
-        protected abstract double TebibytesPerSecondInOneBitPerSecond { get; }
-        protected abstract double TerabitsPerSecondInOneBitPerSecond { get; }
-        protected abstract double TerabytesPerSecondInOneBitPerSecond { get; }
+        protected abstract decimal BitsPerSecondInOneBitPerSecond { get; }
+        protected abstract decimal BytesPerSecondInOneBitPerSecond { get; }
+        protected abstract decimal ExabitsPerSecondInOneBitPerSecond { get; }
+        protected abstract decimal ExabytesPerSecondInOneBitPerSecond { get; }
+        protected abstract decimal ExbibitsPerSecondInOneBitPerSecond { get; }
+        protected abstract decimal ExbibytesPerSecondInOneBitPerSecond { get; }
+        protected abstract decimal GibibitsPerSecondInOneBitPerSecond { get; }
+        protected abstract decimal GibibytesPerSecondInOneBitPerSecond { get; }
+        protected abstract decimal GigabitsPerSecondInOneBitPerSecond { get; }
+        protected abstract decimal GigabytesPerSecondInOneBitPerSecond { get; }
+        protected abstract decimal KibibitsPerSecondInOneBitPerSecond { get; }
+        protected abstract decimal KibibytesPerSecondInOneBitPerSecond { get; }
+        protected abstract decimal KilobitsPerSecondInOneBitPerSecond { get; }
+        protected abstract decimal KilobytesPerSecondInOneBitPerSecond { get; }
+        protected abstract decimal MebibitsPerSecondInOneBitPerSecond { get; }
+        protected abstract decimal MebibytesPerSecondInOneBitPerSecond { get; }
+        protected abstract decimal MegabitsPerSecondInOneBitPerSecond { get; }
+        protected abstract decimal MegabytesPerSecondInOneBitPerSecond { get; }
+        protected abstract decimal PebibitsPerSecondInOneBitPerSecond { get; }
+        protected abstract decimal PebibytesPerSecondInOneBitPerSecond { get; }
+        protected abstract decimal PetabitsPerSecondInOneBitPerSecond { get; }
+        protected abstract decimal PetabytesPerSecondInOneBitPerSecond { get; }
+        protected abstract decimal TebibitsPerSecondInOneBitPerSecond { get; }
+        protected abstract decimal TebibytesPerSecondInOneBitPerSecond { get; }
+        protected abstract decimal TerabitsPerSecondInOneBitPerSecond { get; }
+        protected abstract decimal TerabytesPerSecondInOneBitPerSecond { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double BitsPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double BytesPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double ExabitsPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double ExabytesPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double ExbibitsPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double ExbibytesPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double GibibitsPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double GibibytesPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double GigabitsPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double GigabytesPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double KibibitsPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double KibibytesPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double KilobitsPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double KilobytesPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double MebibitsPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double MebibytesPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double MegabitsPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double MegabytesPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double PebibitsPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double PebibytesPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double PetabitsPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double PetabytesPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double TebibitsPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double TebibytesPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double TerabitsPerSecondTolerance { get { return 1e-5; } }
-        protected virtual double TerabytesPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal BitsPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal BytesPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal ExabitsPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal ExabytesPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal ExbibitsPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal ExbibytesPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal GibibitsPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal GibibytesPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal GigabitsPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal GigabytesPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal KibibitsPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal KibibytesPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal KilobitsPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal KilobytesPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal MebibitsPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal MebibytesPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal MegabitsPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal MegabytesPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal PebibitsPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal PebibytesPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal PetabitsPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal PetabytesPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal TebibitsPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal TebibytesPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal TerabitsPerSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal TerabytesPerSecondTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
@@ -331,7 +331,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -346,107 +346,107 @@ namespace UnitsNet.Tests
             var bitpersecond = BitRate.FromBitsPerSecond(1);
 
             var bitpersecondQuantity = bitpersecond.ToUnit(BitRateUnit.BitPerSecond);
-            AssertEx.EqualTolerance(BitsPerSecondInOneBitPerSecond, (double)bitpersecondQuantity.Value, BitsPerSecondTolerance);
+            AssertEx.EqualTolerance(BitsPerSecondInOneBitPerSecond, (decimal)bitpersecondQuantity.Value, BitsPerSecondTolerance);
             Assert.Equal(BitRateUnit.BitPerSecond, bitpersecondQuantity.Unit);
 
             var bytepersecondQuantity = bitpersecond.ToUnit(BitRateUnit.BytePerSecond);
-            AssertEx.EqualTolerance(BytesPerSecondInOneBitPerSecond, (double)bytepersecondQuantity.Value, BytesPerSecondTolerance);
+            AssertEx.EqualTolerance(BytesPerSecondInOneBitPerSecond, (decimal)bytepersecondQuantity.Value, BytesPerSecondTolerance);
             Assert.Equal(BitRateUnit.BytePerSecond, bytepersecondQuantity.Unit);
 
             var exabitpersecondQuantity = bitpersecond.ToUnit(BitRateUnit.ExabitPerSecond);
-            AssertEx.EqualTolerance(ExabitsPerSecondInOneBitPerSecond, (double)exabitpersecondQuantity.Value, ExabitsPerSecondTolerance);
+            AssertEx.EqualTolerance(ExabitsPerSecondInOneBitPerSecond, (decimal)exabitpersecondQuantity.Value, ExabitsPerSecondTolerance);
             Assert.Equal(BitRateUnit.ExabitPerSecond, exabitpersecondQuantity.Unit);
 
             var exabytepersecondQuantity = bitpersecond.ToUnit(BitRateUnit.ExabytePerSecond);
-            AssertEx.EqualTolerance(ExabytesPerSecondInOneBitPerSecond, (double)exabytepersecondQuantity.Value, ExabytesPerSecondTolerance);
+            AssertEx.EqualTolerance(ExabytesPerSecondInOneBitPerSecond, (decimal)exabytepersecondQuantity.Value, ExabytesPerSecondTolerance);
             Assert.Equal(BitRateUnit.ExabytePerSecond, exabytepersecondQuantity.Unit);
 
             var exbibitpersecondQuantity = bitpersecond.ToUnit(BitRateUnit.ExbibitPerSecond);
-            AssertEx.EqualTolerance(ExbibitsPerSecondInOneBitPerSecond, (double)exbibitpersecondQuantity.Value, ExbibitsPerSecondTolerance);
+            AssertEx.EqualTolerance(ExbibitsPerSecondInOneBitPerSecond, (decimal)exbibitpersecondQuantity.Value, ExbibitsPerSecondTolerance);
             Assert.Equal(BitRateUnit.ExbibitPerSecond, exbibitpersecondQuantity.Unit);
 
             var exbibytepersecondQuantity = bitpersecond.ToUnit(BitRateUnit.ExbibytePerSecond);
-            AssertEx.EqualTolerance(ExbibytesPerSecondInOneBitPerSecond, (double)exbibytepersecondQuantity.Value, ExbibytesPerSecondTolerance);
+            AssertEx.EqualTolerance(ExbibytesPerSecondInOneBitPerSecond, (decimal)exbibytepersecondQuantity.Value, ExbibytesPerSecondTolerance);
             Assert.Equal(BitRateUnit.ExbibytePerSecond, exbibytepersecondQuantity.Unit);
 
             var gibibitpersecondQuantity = bitpersecond.ToUnit(BitRateUnit.GibibitPerSecond);
-            AssertEx.EqualTolerance(GibibitsPerSecondInOneBitPerSecond, (double)gibibitpersecondQuantity.Value, GibibitsPerSecondTolerance);
+            AssertEx.EqualTolerance(GibibitsPerSecondInOneBitPerSecond, (decimal)gibibitpersecondQuantity.Value, GibibitsPerSecondTolerance);
             Assert.Equal(BitRateUnit.GibibitPerSecond, gibibitpersecondQuantity.Unit);
 
             var gibibytepersecondQuantity = bitpersecond.ToUnit(BitRateUnit.GibibytePerSecond);
-            AssertEx.EqualTolerance(GibibytesPerSecondInOneBitPerSecond, (double)gibibytepersecondQuantity.Value, GibibytesPerSecondTolerance);
+            AssertEx.EqualTolerance(GibibytesPerSecondInOneBitPerSecond, (decimal)gibibytepersecondQuantity.Value, GibibytesPerSecondTolerance);
             Assert.Equal(BitRateUnit.GibibytePerSecond, gibibytepersecondQuantity.Unit);
 
             var gigabitpersecondQuantity = bitpersecond.ToUnit(BitRateUnit.GigabitPerSecond);
-            AssertEx.EqualTolerance(GigabitsPerSecondInOneBitPerSecond, (double)gigabitpersecondQuantity.Value, GigabitsPerSecondTolerance);
+            AssertEx.EqualTolerance(GigabitsPerSecondInOneBitPerSecond, (decimal)gigabitpersecondQuantity.Value, GigabitsPerSecondTolerance);
             Assert.Equal(BitRateUnit.GigabitPerSecond, gigabitpersecondQuantity.Unit);
 
             var gigabytepersecondQuantity = bitpersecond.ToUnit(BitRateUnit.GigabytePerSecond);
-            AssertEx.EqualTolerance(GigabytesPerSecondInOneBitPerSecond, (double)gigabytepersecondQuantity.Value, GigabytesPerSecondTolerance);
+            AssertEx.EqualTolerance(GigabytesPerSecondInOneBitPerSecond, (decimal)gigabytepersecondQuantity.Value, GigabytesPerSecondTolerance);
             Assert.Equal(BitRateUnit.GigabytePerSecond, gigabytepersecondQuantity.Unit);
 
             var kibibitpersecondQuantity = bitpersecond.ToUnit(BitRateUnit.KibibitPerSecond);
-            AssertEx.EqualTolerance(KibibitsPerSecondInOneBitPerSecond, (double)kibibitpersecondQuantity.Value, KibibitsPerSecondTolerance);
+            AssertEx.EqualTolerance(KibibitsPerSecondInOneBitPerSecond, (decimal)kibibitpersecondQuantity.Value, KibibitsPerSecondTolerance);
             Assert.Equal(BitRateUnit.KibibitPerSecond, kibibitpersecondQuantity.Unit);
 
             var kibibytepersecondQuantity = bitpersecond.ToUnit(BitRateUnit.KibibytePerSecond);
-            AssertEx.EqualTolerance(KibibytesPerSecondInOneBitPerSecond, (double)kibibytepersecondQuantity.Value, KibibytesPerSecondTolerance);
+            AssertEx.EqualTolerance(KibibytesPerSecondInOneBitPerSecond, (decimal)kibibytepersecondQuantity.Value, KibibytesPerSecondTolerance);
             Assert.Equal(BitRateUnit.KibibytePerSecond, kibibytepersecondQuantity.Unit);
 
             var kilobitpersecondQuantity = bitpersecond.ToUnit(BitRateUnit.KilobitPerSecond);
-            AssertEx.EqualTolerance(KilobitsPerSecondInOneBitPerSecond, (double)kilobitpersecondQuantity.Value, KilobitsPerSecondTolerance);
+            AssertEx.EqualTolerance(KilobitsPerSecondInOneBitPerSecond, (decimal)kilobitpersecondQuantity.Value, KilobitsPerSecondTolerance);
             Assert.Equal(BitRateUnit.KilobitPerSecond, kilobitpersecondQuantity.Unit);
 
             var kilobytepersecondQuantity = bitpersecond.ToUnit(BitRateUnit.KilobytePerSecond);
-            AssertEx.EqualTolerance(KilobytesPerSecondInOneBitPerSecond, (double)kilobytepersecondQuantity.Value, KilobytesPerSecondTolerance);
+            AssertEx.EqualTolerance(KilobytesPerSecondInOneBitPerSecond, (decimal)kilobytepersecondQuantity.Value, KilobytesPerSecondTolerance);
             Assert.Equal(BitRateUnit.KilobytePerSecond, kilobytepersecondQuantity.Unit);
 
             var mebibitpersecondQuantity = bitpersecond.ToUnit(BitRateUnit.MebibitPerSecond);
-            AssertEx.EqualTolerance(MebibitsPerSecondInOneBitPerSecond, (double)mebibitpersecondQuantity.Value, MebibitsPerSecondTolerance);
+            AssertEx.EqualTolerance(MebibitsPerSecondInOneBitPerSecond, (decimal)mebibitpersecondQuantity.Value, MebibitsPerSecondTolerance);
             Assert.Equal(BitRateUnit.MebibitPerSecond, mebibitpersecondQuantity.Unit);
 
             var mebibytepersecondQuantity = bitpersecond.ToUnit(BitRateUnit.MebibytePerSecond);
-            AssertEx.EqualTolerance(MebibytesPerSecondInOneBitPerSecond, (double)mebibytepersecondQuantity.Value, MebibytesPerSecondTolerance);
+            AssertEx.EqualTolerance(MebibytesPerSecondInOneBitPerSecond, (decimal)mebibytepersecondQuantity.Value, MebibytesPerSecondTolerance);
             Assert.Equal(BitRateUnit.MebibytePerSecond, mebibytepersecondQuantity.Unit);
 
             var megabitpersecondQuantity = bitpersecond.ToUnit(BitRateUnit.MegabitPerSecond);
-            AssertEx.EqualTolerance(MegabitsPerSecondInOneBitPerSecond, (double)megabitpersecondQuantity.Value, MegabitsPerSecondTolerance);
+            AssertEx.EqualTolerance(MegabitsPerSecondInOneBitPerSecond, (decimal)megabitpersecondQuantity.Value, MegabitsPerSecondTolerance);
             Assert.Equal(BitRateUnit.MegabitPerSecond, megabitpersecondQuantity.Unit);
 
             var megabytepersecondQuantity = bitpersecond.ToUnit(BitRateUnit.MegabytePerSecond);
-            AssertEx.EqualTolerance(MegabytesPerSecondInOneBitPerSecond, (double)megabytepersecondQuantity.Value, MegabytesPerSecondTolerance);
+            AssertEx.EqualTolerance(MegabytesPerSecondInOneBitPerSecond, (decimal)megabytepersecondQuantity.Value, MegabytesPerSecondTolerance);
             Assert.Equal(BitRateUnit.MegabytePerSecond, megabytepersecondQuantity.Unit);
 
             var pebibitpersecondQuantity = bitpersecond.ToUnit(BitRateUnit.PebibitPerSecond);
-            AssertEx.EqualTolerance(PebibitsPerSecondInOneBitPerSecond, (double)pebibitpersecondQuantity.Value, PebibitsPerSecondTolerance);
+            AssertEx.EqualTolerance(PebibitsPerSecondInOneBitPerSecond, (decimal)pebibitpersecondQuantity.Value, PebibitsPerSecondTolerance);
             Assert.Equal(BitRateUnit.PebibitPerSecond, pebibitpersecondQuantity.Unit);
 
             var pebibytepersecondQuantity = bitpersecond.ToUnit(BitRateUnit.PebibytePerSecond);
-            AssertEx.EqualTolerance(PebibytesPerSecondInOneBitPerSecond, (double)pebibytepersecondQuantity.Value, PebibytesPerSecondTolerance);
+            AssertEx.EqualTolerance(PebibytesPerSecondInOneBitPerSecond, (decimal)pebibytepersecondQuantity.Value, PebibytesPerSecondTolerance);
             Assert.Equal(BitRateUnit.PebibytePerSecond, pebibytepersecondQuantity.Unit);
 
             var petabitpersecondQuantity = bitpersecond.ToUnit(BitRateUnit.PetabitPerSecond);
-            AssertEx.EqualTolerance(PetabitsPerSecondInOneBitPerSecond, (double)petabitpersecondQuantity.Value, PetabitsPerSecondTolerance);
+            AssertEx.EqualTolerance(PetabitsPerSecondInOneBitPerSecond, (decimal)petabitpersecondQuantity.Value, PetabitsPerSecondTolerance);
             Assert.Equal(BitRateUnit.PetabitPerSecond, petabitpersecondQuantity.Unit);
 
             var petabytepersecondQuantity = bitpersecond.ToUnit(BitRateUnit.PetabytePerSecond);
-            AssertEx.EqualTolerance(PetabytesPerSecondInOneBitPerSecond, (double)petabytepersecondQuantity.Value, PetabytesPerSecondTolerance);
+            AssertEx.EqualTolerance(PetabytesPerSecondInOneBitPerSecond, (decimal)petabytepersecondQuantity.Value, PetabytesPerSecondTolerance);
             Assert.Equal(BitRateUnit.PetabytePerSecond, petabytepersecondQuantity.Unit);
 
             var tebibitpersecondQuantity = bitpersecond.ToUnit(BitRateUnit.TebibitPerSecond);
-            AssertEx.EqualTolerance(TebibitsPerSecondInOneBitPerSecond, (double)tebibitpersecondQuantity.Value, TebibitsPerSecondTolerance);
+            AssertEx.EqualTolerance(TebibitsPerSecondInOneBitPerSecond, (decimal)tebibitpersecondQuantity.Value, TebibitsPerSecondTolerance);
             Assert.Equal(BitRateUnit.TebibitPerSecond, tebibitpersecondQuantity.Unit);
 
             var tebibytepersecondQuantity = bitpersecond.ToUnit(BitRateUnit.TebibytePerSecond);
-            AssertEx.EqualTolerance(TebibytesPerSecondInOneBitPerSecond, (double)tebibytepersecondQuantity.Value, TebibytesPerSecondTolerance);
+            AssertEx.EqualTolerance(TebibytesPerSecondInOneBitPerSecond, (decimal)tebibytepersecondQuantity.Value, TebibytesPerSecondTolerance);
             Assert.Equal(BitRateUnit.TebibytePerSecond, tebibytepersecondQuantity.Unit);
 
             var terabitpersecondQuantity = bitpersecond.ToUnit(BitRateUnit.TerabitPerSecond);
-            AssertEx.EqualTolerance(TerabitsPerSecondInOneBitPerSecond, (double)terabitpersecondQuantity.Value, TerabitsPerSecondTolerance);
+            AssertEx.EqualTolerance(TerabitsPerSecondInOneBitPerSecond, (decimal)terabitpersecondQuantity.Value, TerabitsPerSecondTolerance);
             Assert.Equal(BitRateUnit.TerabitPerSecond, terabitpersecondQuantity.Unit);
 
             var terabytepersecondQuantity = bitpersecond.ToUnit(BitRateUnit.TerabytePerSecond);
-            AssertEx.EqualTolerance(TerabytesPerSecondInOneBitPerSecond, (double)terabytepersecondQuantity.Value, TerabytesPerSecondTolerance);
+            AssertEx.EqualTolerance(TerabytesPerSecondInOneBitPerSecond, (decimal)terabytepersecondQuantity.Value, TerabytesPerSecondTolerance);
             Assert.Equal(BitRateUnit.TerabytePerSecond, terabytepersecondQuantity.Unit);
         }
 
@@ -913,7 +913,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = BitRate.FromBitsPerSecond(value);
             Assert.Equal(BitRate.FromBitsPerSecond(-value), -quantity);

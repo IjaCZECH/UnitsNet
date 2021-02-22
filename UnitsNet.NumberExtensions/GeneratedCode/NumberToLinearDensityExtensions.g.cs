@@ -30,59 +30,59 @@ namespace UnitsNet.NumberExtensions.NumberToLinearDensity
     {
         /// <inheritdoc cref="LinearDensity.FromGramsPerCentimeter(UnitsNet.QuantityValue)" />
         public static LinearDensity GramsPerCentimeter<T>(this T value) =>
-            LinearDensity.FromGramsPerCentimeter(Convert.ToDouble(value));
+            LinearDensity.FromGramsPerCentimeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="LinearDensity.FromGramsPerMeter(UnitsNet.QuantityValue)" />
         public static LinearDensity GramsPerMeter<T>(this T value) =>
-            LinearDensity.FromGramsPerMeter(Convert.ToDouble(value));
+            LinearDensity.FromGramsPerMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="LinearDensity.FromGramsPerMillimeter(UnitsNet.QuantityValue)" />
         public static LinearDensity GramsPerMillimeter<T>(this T value) =>
-            LinearDensity.FromGramsPerMillimeter(Convert.ToDouble(value));
+            LinearDensity.FromGramsPerMillimeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="LinearDensity.FromKilogramsPerCentimeter(UnitsNet.QuantityValue)" />
         public static LinearDensity KilogramsPerCentimeter<T>(this T value) =>
-            LinearDensity.FromKilogramsPerCentimeter(Convert.ToDouble(value));
+            LinearDensity.FromKilogramsPerCentimeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="LinearDensity.FromKilogramsPerMeter(UnitsNet.QuantityValue)" />
         public static LinearDensity KilogramsPerMeter<T>(this T value) =>
-            LinearDensity.FromKilogramsPerMeter(Convert.ToDouble(value));
+            LinearDensity.FromKilogramsPerMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="LinearDensity.FromKilogramsPerMillimeter(UnitsNet.QuantityValue)" />
         public static LinearDensity KilogramsPerMillimeter<T>(this T value) =>
-            LinearDensity.FromKilogramsPerMillimeter(Convert.ToDouble(value));
+            LinearDensity.FromKilogramsPerMillimeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="LinearDensity.FromMicrogramsPerCentimeter(UnitsNet.QuantityValue)" />
         public static LinearDensity MicrogramsPerCentimeter<T>(this T value) =>
-            LinearDensity.FromMicrogramsPerCentimeter(Convert.ToDouble(value));
+            LinearDensity.FromMicrogramsPerCentimeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="LinearDensity.FromMicrogramsPerMeter(UnitsNet.QuantityValue)" />
         public static LinearDensity MicrogramsPerMeter<T>(this T value) =>
-            LinearDensity.FromMicrogramsPerMeter(Convert.ToDouble(value));
+            LinearDensity.FromMicrogramsPerMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="LinearDensity.FromMicrogramsPerMillimeter(UnitsNet.QuantityValue)" />
         public static LinearDensity MicrogramsPerMillimeter<T>(this T value) =>
-            LinearDensity.FromMicrogramsPerMillimeter(Convert.ToDouble(value));
+            LinearDensity.FromMicrogramsPerMillimeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="LinearDensity.FromMilligramsPerCentimeter(UnitsNet.QuantityValue)" />
         public static LinearDensity MilligramsPerCentimeter<T>(this T value) =>
-            LinearDensity.FromMilligramsPerCentimeter(Convert.ToDouble(value));
+            LinearDensity.FromMilligramsPerCentimeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="LinearDensity.FromMilligramsPerMeter(UnitsNet.QuantityValue)" />
         public static LinearDensity MilligramsPerMeter<T>(this T value) =>
-            LinearDensity.FromMilligramsPerMeter(Convert.ToDouble(value));
+            LinearDensity.FromMilligramsPerMeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="LinearDensity.FromMilligramsPerMillimeter(UnitsNet.QuantityValue)" />
         public static LinearDensity MilligramsPerMillimeter<T>(this T value) =>
-            LinearDensity.FromMilligramsPerMillimeter(Convert.ToDouble(value));
+            LinearDensity.FromMilligramsPerMillimeter(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="LinearDensity.FromPoundsPerFoot(UnitsNet.QuantityValue)" />
         public static LinearDensity PoundsPerFoot<T>(this T value) =>
-            LinearDensity.FromPoundsPerFoot(Convert.ToDouble(value));
+            LinearDensity.FromPoundsPerFoot(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="LinearDensity.FromPoundsPerInch(UnitsNet.QuantityValue)" />
         public static LinearDensity PoundsPerInch<T>(this T value) =>
-            LinearDensity.FromPoundsPerInch(Convert.ToDouble(value));
+            LinearDensity.FromPoundsPerInch(Convert.ToDecimal(value));
 
     }
 }

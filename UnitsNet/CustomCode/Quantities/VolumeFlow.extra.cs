@@ -10,7 +10,7 @@ namespace UnitsNet
         /// <summary>Get <see cref="Volume"/> from <see cref="VolumeFlow"/> times <see cref="TimeSpan"/>.</summary>
         public static Volume operator *(VolumeFlow volumeFlow, TimeSpan timeSpan)
         {
-            return Volume.FromCubicMeters(volumeFlow.CubicMetersPerSecond * timeSpan.TotalSeconds);
+            return Volume.FromCubicMeters(volumeFlow.CubicMetersPerSecond * (decimal)timeSpan.TotalSeconds);
         }
 
         /// <summary>Get <see cref="Volume"/> from <see cref="VolumeFlow"/> times <see cref="Duration"/>.</summary>

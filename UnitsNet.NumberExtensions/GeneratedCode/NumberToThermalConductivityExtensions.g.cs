@@ -30,11 +30,11 @@ namespace UnitsNet.NumberExtensions.NumberToThermalConductivity
     {
         /// <inheritdoc cref="ThermalConductivity.FromBtusPerHourFootFahrenheit(UnitsNet.QuantityValue)" />
         public static ThermalConductivity BtusPerHourFootFahrenheit<T>(this T value) =>
-            ThermalConductivity.FromBtusPerHourFootFahrenheit(Convert.ToDouble(value));
+            ThermalConductivity.FromBtusPerHourFootFahrenheit(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ThermalConductivity.FromWattsPerMeterKelvin(UnitsNet.QuantityValue)" />
         public static ThermalConductivity WattsPerMeterKelvin<T>(this T value) =>
-            ThermalConductivity.FromWattsPerMeterKelvin(Convert.ToDouble(value));
+            ThermalConductivity.FromWattsPerMeterKelvin(Convert.ToDecimal(value));
 
     }
 }

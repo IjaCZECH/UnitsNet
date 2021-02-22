@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -68,12 +68,12 @@ namespace UnitsNet
         /// <param name="value">The numeric value to construct this quantity with.</param>
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        public ElectricResistance(double value, ElectricResistanceUnit unit)
+        public ElectricResistance(decimal value, ElectricResistanceUnit unit)
         {
             if(unit == ElectricResistanceUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -85,14 +85,14 @@ namespace UnitsNet
         /// <param name="unitSystem">The unit system to create the quantity with.</param>
         /// <exception cref="ArgumentNullException">The given <see cref="UnitSystem"/> is null.</exception>
         /// <exception cref="ArgumentException">No unit was found for the given <see cref="UnitSystem"/>.</exception>
-        public ElectricResistance(double value, UnitSystem unitSystem)
+        public ElectricResistance(decimal value, UnitSystem unitSystem)
         {
             if(unitSystem is null) throw new ArgumentNullException(nameof(unitSystem));
 
             var unitInfos = Info.GetUnitInfosFor(unitSystem.BaseUnits);
             var firstUnitInfo = unitInfos.FirstOrDefault();
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = firstUnitInfo?.Value ?? throw new ArgumentException("No units were found for the given UnitSystem.", nameof(unitSystem));
         }
 
@@ -114,12 +114,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of ElectricResistance
         /// </summary>
-        public static ElectricResistance MaxValue { get; } = new ElectricResistance(double.MaxValue, BaseUnit);
+        public static ElectricResistance MaxValue { get; } = new ElectricResistance(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of ElectricResistance
         /// </summary>
-        public static ElectricResistance MinValue { get; } = new ElectricResistance(double.MinValue, BaseUnit);
+        public static ElectricResistance MinValue { get; } = new ElectricResistance(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -143,7 +143,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => _value;
+        public decimal Value => _value;
 
         Enum IQuantity.Unit => Unit;
 
@@ -173,32 +173,32 @@ namespace UnitsNet
         /// <summary>
         ///     Get ElectricResistance in Gigaohms.
         /// </summary>
-        public double Gigaohms => As(ElectricResistanceUnit.Gigaohm);
+        public decimal Gigaohms => As(ElectricResistanceUnit.Gigaohm);
 
         /// <summary>
         ///     Get ElectricResistance in Kiloohms.
         /// </summary>
-        public double Kiloohms => As(ElectricResistanceUnit.Kiloohm);
+        public decimal Kiloohms => As(ElectricResistanceUnit.Kiloohm);
 
         /// <summary>
         ///     Get ElectricResistance in Megaohms.
         /// </summary>
-        public double Megaohms => As(ElectricResistanceUnit.Megaohm);
+        public decimal Megaohms => As(ElectricResistanceUnit.Megaohm);
 
         /// <summary>
         ///     Get ElectricResistance in Microohms.
         /// </summary>
-        public double Microohms => As(ElectricResistanceUnit.Microohm);
+        public decimal Microohms => As(ElectricResistanceUnit.Microohm);
 
         /// <summary>
         ///     Get ElectricResistance in Milliohms.
         /// </summary>
-        public double Milliohms => As(ElectricResistanceUnit.Milliohm);
+        public decimal Milliohms => As(ElectricResistanceUnit.Milliohm);
 
         /// <summary>
         ///     Get ElectricResistance in Ohms.
         /// </summary>
-        public double Ohms => As(ElectricResistanceUnit.Ohm);
+        public decimal Ohms => As(ElectricResistanceUnit.Ohm);
 
         #endregion
 
@@ -235,7 +235,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ElectricResistance FromGigaohms(QuantityValue gigaohms)
         {
-            double value = (double) gigaohms;
+            decimal value = (decimal) gigaohms;
             return new ElectricResistance(value, ElectricResistanceUnit.Gigaohm);
         }
         /// <summary>
@@ -244,7 +244,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ElectricResistance FromKiloohms(QuantityValue kiloohms)
         {
-            double value = (double) kiloohms;
+            decimal value = (decimal) kiloohms;
             return new ElectricResistance(value, ElectricResistanceUnit.Kiloohm);
         }
         /// <summary>
@@ -253,7 +253,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ElectricResistance FromMegaohms(QuantityValue megaohms)
         {
-            double value = (double) megaohms;
+            decimal value = (decimal) megaohms;
             return new ElectricResistance(value, ElectricResistanceUnit.Megaohm);
         }
         /// <summary>
@@ -262,7 +262,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ElectricResistance FromMicroohms(QuantityValue microohms)
         {
-            double value = (double) microohms;
+            decimal value = (decimal) microohms;
             return new ElectricResistance(value, ElectricResistanceUnit.Microohm);
         }
         /// <summary>
@@ -271,7 +271,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ElectricResistance FromMilliohms(QuantityValue milliohms)
         {
-            double value = (double) milliohms;
+            decimal value = (decimal) milliohms;
             return new ElectricResistance(value, ElectricResistanceUnit.Milliohm);
         }
         /// <summary>
@@ -280,7 +280,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ElectricResistance FromOhms(QuantityValue ohms)
         {
-            double value = (double) ohms;
+            decimal value = (decimal) ohms;
             return new ElectricResistance(value, ElectricResistanceUnit.Ohm);
         }
 
@@ -292,7 +292,7 @@ namespace UnitsNet
         /// <returns>ElectricResistance unit value.</returns>
         public static ElectricResistance From(QuantityValue value, ElectricResistanceUnit fromUnit)
         {
-            return new ElectricResistance((double)value, fromUnit);
+            return new ElectricResistance((decimal)value, fromUnit);
         }
 
         #endregion
@@ -462,25 +462,25 @@ namespace UnitsNet
         }
 
         /// <summary>Get <see cref="ElectricResistance"/> from multiplying value and <see cref="ElectricResistance"/>.</summary>
-        public static ElectricResistance operator *(double left, ElectricResistance right)
+        public static ElectricResistance operator *(decimal left, ElectricResistance right)
         {
             return new ElectricResistance(left * right.Value, right.Unit);
         }
 
         /// <summary>Get <see cref="ElectricResistance"/> from multiplying value and <see cref="ElectricResistance"/>.</summary>
-        public static ElectricResistance operator *(ElectricResistance left, double right)
+        public static ElectricResistance operator *(ElectricResistance left, decimal right)
         {
             return new ElectricResistance(left.Value * right, left.Unit);
         }
 
         /// <summary>Get <see cref="ElectricResistance"/> from dividing <see cref="ElectricResistance"/> by value.</summary>
-        public static ElectricResistance operator /(ElectricResistance left, double right)
+        public static ElectricResistance operator /(ElectricResistance left, decimal right)
         {
             return new ElectricResistance(left.Value / right, left.Unit);
         }
 
         /// <summary>Get ratio value from dividing <see cref="ElectricResistance"/> by <see cref="ElectricResistance"/>.</summary>
-        public static double operator /(ElectricResistance left, ElectricResistance right)
+        public static decimal operator /(ElectricResistance left, ElectricResistance right)
         {
             return left.Ohms / right.Ohms;
         }
@@ -514,14 +514,14 @@ namespace UnitsNet
         }
 
         /// <summary>Returns true if exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(ElectricResistance, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ElectricResistance, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator ==(ElectricResistance left, ElectricResistance right)
         {
             return left.Equals(right);
         }
 
         /// <summary>Returns true if not exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(ElectricResistance, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ElectricResistance, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator !=(ElectricResistance left, ElectricResistance right)
         {
             return !(left == right);
@@ -543,7 +543,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(ElectricResistance, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ElectricResistance, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public override bool Equals(object obj)
         {
             if(obj is null || !(obj is ElectricResistance objElectricResistance))
@@ -553,7 +553,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(ElectricResistance, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ElectricResistance, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public bool Equals(ElectricResistance other)
         {
             return _value.Equals(other.GetValueAs(this.Unit));
@@ -599,13 +599,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(ElectricResistance other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(ElectricResistance other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -627,17 +627,17 @@ namespace UnitsNet
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(ElectricResistanceUnit unit)
+        public decimal As(ElectricResistanceUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = GetValueAs(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <inheritdoc cref="IQuantity.As(UnitSystem)"/>
-        public double As(UnitSystem unitSystem)
+        public decimal As(UnitSystem unitSystem)
         {
             if(unitSystem is null)
                 throw new ArgumentNullException(nameof(unitSystem));
@@ -652,7 +652,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        double IQuantity.As(Enum unit)
+        decimal IQuantity.As(Enum unit)
         {
             if(!(unit is ElectricResistanceUnit unitAsElectricResistanceUnit))
                 throw new ArgumentException($"The given unit is of type {unit.GetType()}. Only {typeof(ElectricResistanceUnit)} is supported.", nameof(unit));
@@ -708,15 +708,15 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double GetValueInBaseUnit()
+        private decimal GetValueInBaseUnit()
         {
             switch(Unit)
             {
-                case ElectricResistanceUnit.Gigaohm: return (_value) * 1e9d;
-                case ElectricResistanceUnit.Kiloohm: return (_value) * 1e3d;
-                case ElectricResistanceUnit.Megaohm: return (_value) * 1e6d;
-                case ElectricResistanceUnit.Microohm: return (_value) * 1e-6d;
-                case ElectricResistanceUnit.Milliohm: return (_value) * 1e-3d;
+                case ElectricResistanceUnit.Gigaohm: return (_value) * 1e9m;
+                case ElectricResistanceUnit.Kiloohm: return (_value) * 1e3m;
+                case ElectricResistanceUnit.Megaohm: return (_value) * 1e6m;
+                case ElectricResistanceUnit.Microohm: return (_value) * 1e-6m;
+                case ElectricResistanceUnit.Milliohm: return (_value) * 1e-3m;
                 case ElectricResistanceUnit.Ohm: return _value;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
@@ -734,7 +734,7 @@ namespace UnitsNet
             return new ElectricResistance(baseUnitValue, BaseUnit);
         }
 
-        private double GetValueAs(ElectricResistanceUnit unit)
+        private decimal GetValueAs(ElectricResistanceUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -743,11 +743,11 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case ElectricResistanceUnit.Gigaohm: return (baseUnitValue) / 1e9d;
-                case ElectricResistanceUnit.Kiloohm: return (baseUnitValue) / 1e3d;
-                case ElectricResistanceUnit.Megaohm: return (baseUnitValue) / 1e6d;
-                case ElectricResistanceUnit.Microohm: return (baseUnitValue) / 1e-6d;
-                case ElectricResistanceUnit.Milliohm: return (baseUnitValue) / 1e-3d;
+                case ElectricResistanceUnit.Gigaohm: return (baseUnitValue) / 1e9m;
+                case ElectricResistanceUnit.Kiloohm: return (baseUnitValue) / 1e3m;
+                case ElectricResistanceUnit.Megaohm: return (baseUnitValue) / 1e6m;
+                case ElectricResistanceUnit.Microohm: return (baseUnitValue) / 1e-6m;
+                case ElectricResistanceUnit.Milliohm: return (baseUnitValue) / 1e-3m;
                 case ElectricResistanceUnit.Ohm: return baseUnitValue;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
@@ -786,7 +786,7 @@ namespace UnitsNet
         [Obsolete(@"This method is deprecated and will be removed at a future release. Please use ToString(""s2"") or ToString(""s2"", provider) where 2 is an example of the number passed to significantDigitsAfterRadix.")]
         public string ToString(IFormatProvider? provider, int significantDigitsAfterRadix)
         {
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -806,7 +806,7 @@ namespace UnitsNet
 
             provider = provider ?? CultureInfo.CurrentUICulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

@@ -129,7 +129,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -158,132 +158,132 @@ namespace UnitsNet
         /// <summary>
         ///     Get Information in Bits.
         /// </summary>
-        public double Bits => As(InformationUnit.Bit);
+        public decimal Bits => As(InformationUnit.Bit);
 
         /// <summary>
         ///     Get Information in Bytes.
         /// </summary>
-        public double Bytes => As(InformationUnit.Byte);
+        public decimal Bytes => As(InformationUnit.Byte);
 
         /// <summary>
         ///     Get Information in Exabits.
         /// </summary>
-        public double Exabits => As(InformationUnit.Exabit);
+        public decimal Exabits => As(InformationUnit.Exabit);
 
         /// <summary>
         ///     Get Information in Exabytes.
         /// </summary>
-        public double Exabytes => As(InformationUnit.Exabyte);
+        public decimal Exabytes => As(InformationUnit.Exabyte);
 
         /// <summary>
         ///     Get Information in Exbibits.
         /// </summary>
-        public double Exbibits => As(InformationUnit.Exbibit);
+        public decimal Exbibits => As(InformationUnit.Exbibit);
 
         /// <summary>
         ///     Get Information in Exbibytes.
         /// </summary>
-        public double Exbibytes => As(InformationUnit.Exbibyte);
+        public decimal Exbibytes => As(InformationUnit.Exbibyte);
 
         /// <summary>
         ///     Get Information in Gibibits.
         /// </summary>
-        public double Gibibits => As(InformationUnit.Gibibit);
+        public decimal Gibibits => As(InformationUnit.Gibibit);
 
         /// <summary>
         ///     Get Information in Gibibytes.
         /// </summary>
-        public double Gibibytes => As(InformationUnit.Gibibyte);
+        public decimal Gibibytes => As(InformationUnit.Gibibyte);
 
         /// <summary>
         ///     Get Information in Gigabits.
         /// </summary>
-        public double Gigabits => As(InformationUnit.Gigabit);
+        public decimal Gigabits => As(InformationUnit.Gigabit);
 
         /// <summary>
         ///     Get Information in Gigabytes.
         /// </summary>
-        public double Gigabytes => As(InformationUnit.Gigabyte);
+        public decimal Gigabytes => As(InformationUnit.Gigabyte);
 
         /// <summary>
         ///     Get Information in Kibibits.
         /// </summary>
-        public double Kibibits => As(InformationUnit.Kibibit);
+        public decimal Kibibits => As(InformationUnit.Kibibit);
 
         /// <summary>
         ///     Get Information in Kibibytes.
         /// </summary>
-        public double Kibibytes => As(InformationUnit.Kibibyte);
+        public decimal Kibibytes => As(InformationUnit.Kibibyte);
 
         /// <summary>
         ///     Get Information in Kilobits.
         /// </summary>
-        public double Kilobits => As(InformationUnit.Kilobit);
+        public decimal Kilobits => As(InformationUnit.Kilobit);
 
         /// <summary>
         ///     Get Information in Kilobytes.
         /// </summary>
-        public double Kilobytes => As(InformationUnit.Kilobyte);
+        public decimal Kilobytes => As(InformationUnit.Kilobyte);
 
         /// <summary>
         ///     Get Information in Mebibits.
         /// </summary>
-        public double Mebibits => As(InformationUnit.Mebibit);
+        public decimal Mebibits => As(InformationUnit.Mebibit);
 
         /// <summary>
         ///     Get Information in Mebibytes.
         /// </summary>
-        public double Mebibytes => As(InformationUnit.Mebibyte);
+        public decimal Mebibytes => As(InformationUnit.Mebibyte);
 
         /// <summary>
         ///     Get Information in Megabits.
         /// </summary>
-        public double Megabits => As(InformationUnit.Megabit);
+        public decimal Megabits => As(InformationUnit.Megabit);
 
         /// <summary>
         ///     Get Information in Megabytes.
         /// </summary>
-        public double Megabytes => As(InformationUnit.Megabyte);
+        public decimal Megabytes => As(InformationUnit.Megabyte);
 
         /// <summary>
         ///     Get Information in Pebibits.
         /// </summary>
-        public double Pebibits => As(InformationUnit.Pebibit);
+        public decimal Pebibits => As(InformationUnit.Pebibit);
 
         /// <summary>
         ///     Get Information in Pebibytes.
         /// </summary>
-        public double Pebibytes => As(InformationUnit.Pebibyte);
+        public decimal Pebibytes => As(InformationUnit.Pebibyte);
 
         /// <summary>
         ///     Get Information in Petabits.
         /// </summary>
-        public double Petabits => As(InformationUnit.Petabit);
+        public decimal Petabits => As(InformationUnit.Petabit);
 
         /// <summary>
         ///     Get Information in Petabytes.
         /// </summary>
-        public double Petabytes => As(InformationUnit.Petabyte);
+        public decimal Petabytes => As(InformationUnit.Petabyte);
 
         /// <summary>
         ///     Get Information in Tebibits.
         /// </summary>
-        public double Tebibits => As(InformationUnit.Tebibit);
+        public decimal Tebibits => As(InformationUnit.Tebibit);
 
         /// <summary>
         ///     Get Information in Tebibytes.
         /// </summary>
-        public double Tebibytes => As(InformationUnit.Tebibyte);
+        public decimal Tebibytes => As(InformationUnit.Tebibyte);
 
         /// <summary>
         ///     Get Information in Terabits.
         /// </summary>
-        public double Terabits => As(InformationUnit.Terabit);
+        public decimal Terabits => As(InformationUnit.Terabit);
 
         /// <summary>
         ///     Get Information in Terabytes.
         /// </summary>
-        public double Terabytes => As(InformationUnit.Terabyte);
+        public decimal Terabytes => As(InformationUnit.Terabyte);
 
         #endregion
 
@@ -320,7 +320,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Information FromBits(double bits)
+        public static Information FromBits(decimal bits)
         {
             decimal value = (decimal) bits;
             return new Information(value, InformationUnit.Bit);
@@ -330,7 +330,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Information FromBytes(double bytes)
+        public static Information FromBytes(decimal bytes)
         {
             decimal value = (decimal) bytes;
             return new Information(value, InformationUnit.Byte);
@@ -340,7 +340,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Information FromExabits(double exabits)
+        public static Information FromExabits(decimal exabits)
         {
             decimal value = (decimal) exabits;
             return new Information(value, InformationUnit.Exabit);
@@ -350,7 +350,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Information FromExabytes(double exabytes)
+        public static Information FromExabytes(decimal exabytes)
         {
             decimal value = (decimal) exabytes;
             return new Information(value, InformationUnit.Exabyte);
@@ -360,7 +360,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Information FromExbibits(double exbibits)
+        public static Information FromExbibits(decimal exbibits)
         {
             decimal value = (decimal) exbibits;
             return new Information(value, InformationUnit.Exbibit);
@@ -370,7 +370,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Information FromExbibytes(double exbibytes)
+        public static Information FromExbibytes(decimal exbibytes)
         {
             decimal value = (decimal) exbibytes;
             return new Information(value, InformationUnit.Exbibyte);
@@ -380,7 +380,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Information FromGibibits(double gibibits)
+        public static Information FromGibibits(decimal gibibits)
         {
             decimal value = (decimal) gibibits;
             return new Information(value, InformationUnit.Gibibit);
@@ -390,7 +390,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Information FromGibibytes(double gibibytes)
+        public static Information FromGibibytes(decimal gibibytes)
         {
             decimal value = (decimal) gibibytes;
             return new Information(value, InformationUnit.Gibibyte);
@@ -400,7 +400,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Information FromGigabits(double gigabits)
+        public static Information FromGigabits(decimal gigabits)
         {
             decimal value = (decimal) gigabits;
             return new Information(value, InformationUnit.Gigabit);
@@ -410,7 +410,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Information FromGigabytes(double gigabytes)
+        public static Information FromGigabytes(decimal gigabytes)
         {
             decimal value = (decimal) gigabytes;
             return new Information(value, InformationUnit.Gigabyte);
@@ -420,7 +420,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Information FromKibibits(double kibibits)
+        public static Information FromKibibits(decimal kibibits)
         {
             decimal value = (decimal) kibibits;
             return new Information(value, InformationUnit.Kibibit);
@@ -430,7 +430,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Information FromKibibytes(double kibibytes)
+        public static Information FromKibibytes(decimal kibibytes)
         {
             decimal value = (decimal) kibibytes;
             return new Information(value, InformationUnit.Kibibyte);
@@ -440,7 +440,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Information FromKilobits(double kilobits)
+        public static Information FromKilobits(decimal kilobits)
         {
             decimal value = (decimal) kilobits;
             return new Information(value, InformationUnit.Kilobit);
@@ -450,7 +450,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Information FromKilobytes(double kilobytes)
+        public static Information FromKilobytes(decimal kilobytes)
         {
             decimal value = (decimal) kilobytes;
             return new Information(value, InformationUnit.Kilobyte);
@@ -460,7 +460,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Information FromMebibits(double mebibits)
+        public static Information FromMebibits(decimal mebibits)
         {
             decimal value = (decimal) mebibits;
             return new Information(value, InformationUnit.Mebibit);
@@ -470,7 +470,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Information FromMebibytes(double mebibytes)
+        public static Information FromMebibytes(decimal mebibytes)
         {
             decimal value = (decimal) mebibytes;
             return new Information(value, InformationUnit.Mebibyte);
@@ -480,7 +480,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Information FromMegabits(double megabits)
+        public static Information FromMegabits(decimal megabits)
         {
             decimal value = (decimal) megabits;
             return new Information(value, InformationUnit.Megabit);
@@ -490,7 +490,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Information FromMegabytes(double megabytes)
+        public static Information FromMegabytes(decimal megabytes)
         {
             decimal value = (decimal) megabytes;
             return new Information(value, InformationUnit.Megabyte);
@@ -500,7 +500,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Information FromPebibits(double pebibits)
+        public static Information FromPebibits(decimal pebibits)
         {
             decimal value = (decimal) pebibits;
             return new Information(value, InformationUnit.Pebibit);
@@ -510,7 +510,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Information FromPebibytes(double pebibytes)
+        public static Information FromPebibytes(decimal pebibytes)
         {
             decimal value = (decimal) pebibytes;
             return new Information(value, InformationUnit.Pebibyte);
@@ -520,7 +520,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Information FromPetabits(double petabits)
+        public static Information FromPetabits(decimal petabits)
         {
             decimal value = (decimal) petabits;
             return new Information(value, InformationUnit.Petabit);
@@ -530,7 +530,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Information FromPetabytes(double petabytes)
+        public static Information FromPetabytes(decimal petabytes)
         {
             decimal value = (decimal) petabytes;
             return new Information(value, InformationUnit.Petabyte);
@@ -540,7 +540,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Information FromTebibits(double tebibits)
+        public static Information FromTebibits(decimal tebibits)
         {
             decimal value = (decimal) tebibits;
             return new Information(value, InformationUnit.Tebibit);
@@ -550,7 +550,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Information FromTebibytes(double tebibytes)
+        public static Information FromTebibytes(decimal tebibytes)
         {
             decimal value = (decimal) tebibytes;
             return new Information(value, InformationUnit.Tebibyte);
@@ -560,7 +560,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Information FromTerabits(double terabits)
+        public static Information FromTerabits(decimal terabits)
         {
             decimal value = (decimal) terabits;
             return new Information(value, InformationUnit.Terabit);
@@ -570,7 +570,7 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Information FromTerabytes(double terabytes)
+        public static Information FromTerabytes(decimal terabytes)
         {
             decimal value = (decimal) terabytes;
             return new Information(value, InformationUnit.Terabyte);
@@ -584,7 +584,7 @@ namespace UnitsNet
         /// <returns>Information unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static Information From(double value, InformationUnit fromUnit)
+        public static Information From(decimal value, InformationUnit fromUnit)
         {
             return new Information((decimal)value, fromUnit);
         }
@@ -808,13 +808,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(Information other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(Information other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -832,19 +832,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((InformationUnit)unit);
+        decimal IQuantity.As(object unit) => As((InformationUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(InformationUnit unit)
+        public decimal As(InformationUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -970,7 +970,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -990,7 +990,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

@@ -30,15 +30,15 @@ namespace UnitsNet.NumberExtensions.NumberToSpecificVolume
     {
         /// <inheritdoc cref="SpecificVolume.FromCubicFeetPerPound(UnitsNet.QuantityValue)" />
         public static SpecificVolume CubicFeetPerPound<T>(this T value) =>
-            SpecificVolume.FromCubicFeetPerPound(Convert.ToDouble(value));
+            SpecificVolume.FromCubicFeetPerPound(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="SpecificVolume.FromCubicMetersPerKilogram(UnitsNet.QuantityValue)" />
         public static SpecificVolume CubicMetersPerKilogram<T>(this T value) =>
-            SpecificVolume.FromCubicMetersPerKilogram(Convert.ToDouble(value));
+            SpecificVolume.FromCubicMetersPerKilogram(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="SpecificVolume.FromMillicubicMetersPerKilogram(UnitsNet.QuantityValue)" />
         public static SpecificVolume MillicubicMetersPerKilogram<T>(this T value) =>
-            SpecificVolume.FromMillicubicMetersPerKilogram(Convert.ToDouble(value));
+            SpecificVolume.FromMillicubicMetersPerKilogram(Convert.ToDecimal(value));
 
     }
 }

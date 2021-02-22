@@ -30,7 +30,7 @@ namespace UnitsNet.NumberExtensions.NumberToVitaminA
     {
         /// <inheritdoc cref="VitaminA.FromInternationalUnits(UnitsNet.QuantityValue)" />
         public static VitaminA InternationalUnits<T>(this T value) =>
-            VitaminA.FromInternationalUnits(Convert.ToDouble(value));
+            VitaminA.FromInternationalUnits(Convert.ToDecimal(value));
 
     }
 }

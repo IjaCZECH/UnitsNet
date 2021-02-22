@@ -28,8 +28,8 @@
     {
       "SingularName": "PascalPerMinute",
       "PluralName": "PascalsPerMinute",
-      "FromUnitToBaseFunc": "x/60",
-      "FromBaseToUnitFunc": "x*60",
+      "FromUnitToBaseFunc": "x/60m",
+      "FromBaseToUnitFunc": "x*60m",
       "Prefixes": [ "Kilo", "Mega" ],
       "Localization": [
         {
@@ -45,8 +45,8 @@
     {
       "SingularName": "AtmospherePerSecond",
       "PluralName": "AtmospheresPerSecond",
-      "FromUnitToBaseFunc": "x * 1.01325*1e5",
-      "FromBaseToUnitFunc": "x / (1.01325*1e5)",
+      "FromUnitToBaseFunc": "x * 1.01325m*1e5m",
+      "FromBaseToUnitFunc": "x / (1.01325m*1e5)",
       "Localization": [
         {
           "Culture": "en-US",

@@ -30,7 +30,7 @@ namespace UnitsNet.NumberExtensions.NumberToSolidAngle
     {
         /// <inheritdoc cref="SolidAngle.FromSteradians(UnitsNet.QuantityValue)" />
         public static SolidAngle Steradians<T>(this T value) =>
-            SolidAngle.FromSteradians(Convert.ToDouble(value));
+            SolidAngle.FromSteradians(Convert.ToDecimal(value));
 
     }
 }

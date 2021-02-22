@@ -37,64 +37,64 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class MassTestsBase : QuantityTestsBase
     {
-        protected abstract double CentigramsInOneKilogram { get; }
-        protected abstract double DecagramsInOneKilogram { get; }
-        protected abstract double DecigramsInOneKilogram { get; }
-        protected abstract double EarthMassesInOneKilogram { get; }
-        protected abstract double GrainsInOneKilogram { get; }
-        protected abstract double GramsInOneKilogram { get; }
-        protected abstract double HectogramsInOneKilogram { get; }
-        protected abstract double KilogramsInOneKilogram { get; }
-        protected abstract double KilopoundsInOneKilogram { get; }
-        protected abstract double KilotonnesInOneKilogram { get; }
-        protected abstract double LongHundredweightInOneKilogram { get; }
-        protected abstract double LongTonsInOneKilogram { get; }
-        protected abstract double MegapoundsInOneKilogram { get; }
-        protected abstract double MegatonnesInOneKilogram { get; }
-        protected abstract double MicrogramsInOneKilogram { get; }
-        protected abstract double MilligramsInOneKilogram { get; }
-        protected abstract double NanogramsInOneKilogram { get; }
-        protected abstract double OuncesInOneKilogram { get; }
-        protected abstract double PoundsInOneKilogram { get; }
-        protected abstract double ShortHundredweightInOneKilogram { get; }
-        protected abstract double ShortTonsInOneKilogram { get; }
-        protected abstract double SlugsInOneKilogram { get; }
-        protected abstract double SolarMassesInOneKilogram { get; }
-        protected abstract double StoneInOneKilogram { get; }
-        protected abstract double TonnesInOneKilogram { get; }
+        protected abstract decimal CentigramsInOneKilogram { get; }
+        protected abstract decimal DecagramsInOneKilogram { get; }
+        protected abstract decimal DecigramsInOneKilogram { get; }
+        protected abstract decimal EarthMassesInOneKilogram { get; }
+        protected abstract decimal GrainsInOneKilogram { get; }
+        protected abstract decimal GramsInOneKilogram { get; }
+        protected abstract decimal HectogramsInOneKilogram { get; }
+        protected abstract decimal KilogramsInOneKilogram { get; }
+        protected abstract decimal KilopoundsInOneKilogram { get; }
+        protected abstract decimal KilotonnesInOneKilogram { get; }
+        protected abstract decimal LongHundredweightInOneKilogram { get; }
+        protected abstract decimal LongTonsInOneKilogram { get; }
+        protected abstract decimal MegapoundsInOneKilogram { get; }
+        protected abstract decimal MegatonnesInOneKilogram { get; }
+        protected abstract decimal MicrogramsInOneKilogram { get; }
+        protected abstract decimal MilligramsInOneKilogram { get; }
+        protected abstract decimal NanogramsInOneKilogram { get; }
+        protected abstract decimal OuncesInOneKilogram { get; }
+        protected abstract decimal PoundsInOneKilogram { get; }
+        protected abstract decimal ShortHundredweightInOneKilogram { get; }
+        protected abstract decimal ShortTonsInOneKilogram { get; }
+        protected abstract decimal SlugsInOneKilogram { get; }
+        protected abstract decimal SolarMassesInOneKilogram { get; }
+        protected abstract decimal StoneInOneKilogram { get; }
+        protected abstract decimal TonnesInOneKilogram { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double CentigramsTolerance { get { return 1e-5; } }
-        protected virtual double DecagramsTolerance { get { return 1e-5; } }
-        protected virtual double DecigramsTolerance { get { return 1e-5; } }
-        protected virtual double EarthMassesTolerance { get { return 1e-5; } }
-        protected virtual double GrainsTolerance { get { return 1e-5; } }
-        protected virtual double GramsTolerance { get { return 1e-5; } }
-        protected virtual double HectogramsTolerance { get { return 1e-5; } }
-        protected virtual double KilogramsTolerance { get { return 1e-5; } }
-        protected virtual double KilopoundsTolerance { get { return 1e-5; } }
-        protected virtual double KilotonnesTolerance { get { return 1e-5; } }
-        protected virtual double LongHundredweightTolerance { get { return 1e-5; } }
-        protected virtual double LongTonsTolerance { get { return 1e-5; } }
-        protected virtual double MegapoundsTolerance { get { return 1e-5; } }
-        protected virtual double MegatonnesTolerance { get { return 1e-5; } }
-        protected virtual double MicrogramsTolerance { get { return 1e-5; } }
-        protected virtual double MilligramsTolerance { get { return 1e-5; } }
-        protected virtual double NanogramsTolerance { get { return 1e-5; } }
-        protected virtual double OuncesTolerance { get { return 1e-5; } }
-        protected virtual double PoundsTolerance { get { return 1e-5; } }
-        protected virtual double ShortHundredweightTolerance { get { return 1e-5; } }
-        protected virtual double ShortTonsTolerance { get { return 1e-5; } }
-        protected virtual double SlugsTolerance { get { return 1e-5; } }
-        protected virtual double SolarMassesTolerance { get { return 1e-5; } }
-        protected virtual double StoneTolerance { get { return 1e-5; } }
-        protected virtual double TonnesTolerance { get { return 1e-5; } }
+        protected virtual decimal CentigramsTolerance { get { return 1e-5; } }
+        protected virtual decimal DecagramsTolerance { get { return 1e-5; } }
+        protected virtual decimal DecigramsTolerance { get { return 1e-5; } }
+        protected virtual decimal EarthMassesTolerance { get { return 1e-5; } }
+        protected virtual decimal GrainsTolerance { get { return 1e-5; } }
+        protected virtual decimal GramsTolerance { get { return 1e-5; } }
+        protected virtual decimal HectogramsTolerance { get { return 1e-5; } }
+        protected virtual decimal KilogramsTolerance { get { return 1e-5; } }
+        protected virtual decimal KilopoundsTolerance { get { return 1e-5; } }
+        protected virtual decimal KilotonnesTolerance { get { return 1e-5; } }
+        protected virtual decimal LongHundredweightTolerance { get { return 1e-5; } }
+        protected virtual decimal LongTonsTolerance { get { return 1e-5; } }
+        protected virtual decimal MegapoundsTolerance { get { return 1e-5; } }
+        protected virtual decimal MegatonnesTolerance { get { return 1e-5; } }
+        protected virtual decimal MicrogramsTolerance { get { return 1e-5; } }
+        protected virtual decimal MilligramsTolerance { get { return 1e-5; } }
+        protected virtual decimal NanogramsTolerance { get { return 1e-5; } }
+        protected virtual decimal OuncesTolerance { get { return 1e-5; } }
+        protected virtual decimal PoundsTolerance { get { return 1e-5; } }
+        protected virtual decimal ShortHundredweightTolerance { get { return 1e-5; } }
+        protected virtual decimal ShortTonsTolerance { get { return 1e-5; } }
+        protected virtual decimal SlugsTolerance { get { return 1e-5; } }
+        protected virtual decimal SolarMassesTolerance { get { return 1e-5; } }
+        protected virtual decimal StoneTolerance { get { return 1e-5; } }
+        protected virtual decimal TonnesTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new Mass((double)0.0, MassUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new Mass((decimal)0.0, MassUnit.Undefined));
         }
 
         [Fact]
@@ -105,19 +105,6 @@ namespace UnitsNet.Tests
             Assert.Equal(MassUnit.Kilogram, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new Mass(double.PositiveInfinity, MassUnit.Kilogram));
-            Assert.Throws<ArgumentException>(() => new Mass(double.NegativeInfinity, MassUnit.Kilogram));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new Mass(double.NaN, MassUnit.Kilogram));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -298,19 +285,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromKilograms_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => Mass.FromKilograms(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => Mass.FromKilograms(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromKilograms_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => Mass.FromKilograms(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var kilogram = Mass.FromKilograms(1);
@@ -349,7 +323,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -364,103 +338,103 @@ namespace UnitsNet.Tests
             var kilogram = Mass.FromKilograms(1);
 
             var centigramQuantity = kilogram.ToUnit(MassUnit.Centigram);
-            AssertEx.EqualTolerance(CentigramsInOneKilogram, (double)centigramQuantity.Value, CentigramsTolerance);
+            AssertEx.EqualTolerance(CentigramsInOneKilogram, (decimal)centigramQuantity.Value, CentigramsTolerance);
             Assert.Equal(MassUnit.Centigram, centigramQuantity.Unit);
 
             var decagramQuantity = kilogram.ToUnit(MassUnit.Decagram);
-            AssertEx.EqualTolerance(DecagramsInOneKilogram, (double)decagramQuantity.Value, DecagramsTolerance);
+            AssertEx.EqualTolerance(DecagramsInOneKilogram, (decimal)decagramQuantity.Value, DecagramsTolerance);
             Assert.Equal(MassUnit.Decagram, decagramQuantity.Unit);
 
             var decigramQuantity = kilogram.ToUnit(MassUnit.Decigram);
-            AssertEx.EqualTolerance(DecigramsInOneKilogram, (double)decigramQuantity.Value, DecigramsTolerance);
+            AssertEx.EqualTolerance(DecigramsInOneKilogram, (decimal)decigramQuantity.Value, DecigramsTolerance);
             Assert.Equal(MassUnit.Decigram, decigramQuantity.Unit);
 
             var earthmassQuantity = kilogram.ToUnit(MassUnit.EarthMass);
-            AssertEx.EqualTolerance(EarthMassesInOneKilogram, (double)earthmassQuantity.Value, EarthMassesTolerance);
+            AssertEx.EqualTolerance(EarthMassesInOneKilogram, (decimal)earthmassQuantity.Value, EarthMassesTolerance);
             Assert.Equal(MassUnit.EarthMass, earthmassQuantity.Unit);
 
             var grainQuantity = kilogram.ToUnit(MassUnit.Grain);
-            AssertEx.EqualTolerance(GrainsInOneKilogram, (double)grainQuantity.Value, GrainsTolerance);
+            AssertEx.EqualTolerance(GrainsInOneKilogram, (decimal)grainQuantity.Value, GrainsTolerance);
             Assert.Equal(MassUnit.Grain, grainQuantity.Unit);
 
             var gramQuantity = kilogram.ToUnit(MassUnit.Gram);
-            AssertEx.EqualTolerance(GramsInOneKilogram, (double)gramQuantity.Value, GramsTolerance);
+            AssertEx.EqualTolerance(GramsInOneKilogram, (decimal)gramQuantity.Value, GramsTolerance);
             Assert.Equal(MassUnit.Gram, gramQuantity.Unit);
 
             var hectogramQuantity = kilogram.ToUnit(MassUnit.Hectogram);
-            AssertEx.EqualTolerance(HectogramsInOneKilogram, (double)hectogramQuantity.Value, HectogramsTolerance);
+            AssertEx.EqualTolerance(HectogramsInOneKilogram, (decimal)hectogramQuantity.Value, HectogramsTolerance);
             Assert.Equal(MassUnit.Hectogram, hectogramQuantity.Unit);
 
             var kilogramQuantity = kilogram.ToUnit(MassUnit.Kilogram);
-            AssertEx.EqualTolerance(KilogramsInOneKilogram, (double)kilogramQuantity.Value, KilogramsTolerance);
+            AssertEx.EqualTolerance(KilogramsInOneKilogram, (decimal)kilogramQuantity.Value, KilogramsTolerance);
             Assert.Equal(MassUnit.Kilogram, kilogramQuantity.Unit);
 
             var kilopoundQuantity = kilogram.ToUnit(MassUnit.Kilopound);
-            AssertEx.EqualTolerance(KilopoundsInOneKilogram, (double)kilopoundQuantity.Value, KilopoundsTolerance);
+            AssertEx.EqualTolerance(KilopoundsInOneKilogram, (decimal)kilopoundQuantity.Value, KilopoundsTolerance);
             Assert.Equal(MassUnit.Kilopound, kilopoundQuantity.Unit);
 
             var kilotonneQuantity = kilogram.ToUnit(MassUnit.Kilotonne);
-            AssertEx.EqualTolerance(KilotonnesInOneKilogram, (double)kilotonneQuantity.Value, KilotonnesTolerance);
+            AssertEx.EqualTolerance(KilotonnesInOneKilogram, (decimal)kilotonneQuantity.Value, KilotonnesTolerance);
             Assert.Equal(MassUnit.Kilotonne, kilotonneQuantity.Unit);
 
             var longhundredweightQuantity = kilogram.ToUnit(MassUnit.LongHundredweight);
-            AssertEx.EqualTolerance(LongHundredweightInOneKilogram, (double)longhundredweightQuantity.Value, LongHundredweightTolerance);
+            AssertEx.EqualTolerance(LongHundredweightInOneKilogram, (decimal)longhundredweightQuantity.Value, LongHundredweightTolerance);
             Assert.Equal(MassUnit.LongHundredweight, longhundredweightQuantity.Unit);
 
             var longtonQuantity = kilogram.ToUnit(MassUnit.LongTon);
-            AssertEx.EqualTolerance(LongTonsInOneKilogram, (double)longtonQuantity.Value, LongTonsTolerance);
+            AssertEx.EqualTolerance(LongTonsInOneKilogram, (decimal)longtonQuantity.Value, LongTonsTolerance);
             Assert.Equal(MassUnit.LongTon, longtonQuantity.Unit);
 
             var megapoundQuantity = kilogram.ToUnit(MassUnit.Megapound);
-            AssertEx.EqualTolerance(MegapoundsInOneKilogram, (double)megapoundQuantity.Value, MegapoundsTolerance);
+            AssertEx.EqualTolerance(MegapoundsInOneKilogram, (decimal)megapoundQuantity.Value, MegapoundsTolerance);
             Assert.Equal(MassUnit.Megapound, megapoundQuantity.Unit);
 
             var megatonneQuantity = kilogram.ToUnit(MassUnit.Megatonne);
-            AssertEx.EqualTolerance(MegatonnesInOneKilogram, (double)megatonneQuantity.Value, MegatonnesTolerance);
+            AssertEx.EqualTolerance(MegatonnesInOneKilogram, (decimal)megatonneQuantity.Value, MegatonnesTolerance);
             Assert.Equal(MassUnit.Megatonne, megatonneQuantity.Unit);
 
             var microgramQuantity = kilogram.ToUnit(MassUnit.Microgram);
-            AssertEx.EqualTolerance(MicrogramsInOneKilogram, (double)microgramQuantity.Value, MicrogramsTolerance);
+            AssertEx.EqualTolerance(MicrogramsInOneKilogram, (decimal)microgramQuantity.Value, MicrogramsTolerance);
             Assert.Equal(MassUnit.Microgram, microgramQuantity.Unit);
 
             var milligramQuantity = kilogram.ToUnit(MassUnit.Milligram);
-            AssertEx.EqualTolerance(MilligramsInOneKilogram, (double)milligramQuantity.Value, MilligramsTolerance);
+            AssertEx.EqualTolerance(MilligramsInOneKilogram, (decimal)milligramQuantity.Value, MilligramsTolerance);
             Assert.Equal(MassUnit.Milligram, milligramQuantity.Unit);
 
             var nanogramQuantity = kilogram.ToUnit(MassUnit.Nanogram);
-            AssertEx.EqualTolerance(NanogramsInOneKilogram, (double)nanogramQuantity.Value, NanogramsTolerance);
+            AssertEx.EqualTolerance(NanogramsInOneKilogram, (decimal)nanogramQuantity.Value, NanogramsTolerance);
             Assert.Equal(MassUnit.Nanogram, nanogramQuantity.Unit);
 
             var ounceQuantity = kilogram.ToUnit(MassUnit.Ounce);
-            AssertEx.EqualTolerance(OuncesInOneKilogram, (double)ounceQuantity.Value, OuncesTolerance);
+            AssertEx.EqualTolerance(OuncesInOneKilogram, (decimal)ounceQuantity.Value, OuncesTolerance);
             Assert.Equal(MassUnit.Ounce, ounceQuantity.Unit);
 
             var poundQuantity = kilogram.ToUnit(MassUnit.Pound);
-            AssertEx.EqualTolerance(PoundsInOneKilogram, (double)poundQuantity.Value, PoundsTolerance);
+            AssertEx.EqualTolerance(PoundsInOneKilogram, (decimal)poundQuantity.Value, PoundsTolerance);
             Assert.Equal(MassUnit.Pound, poundQuantity.Unit);
 
             var shorthundredweightQuantity = kilogram.ToUnit(MassUnit.ShortHundredweight);
-            AssertEx.EqualTolerance(ShortHundredweightInOneKilogram, (double)shorthundredweightQuantity.Value, ShortHundredweightTolerance);
+            AssertEx.EqualTolerance(ShortHundredweightInOneKilogram, (decimal)shorthundredweightQuantity.Value, ShortHundredweightTolerance);
             Assert.Equal(MassUnit.ShortHundredweight, shorthundredweightQuantity.Unit);
 
             var shorttonQuantity = kilogram.ToUnit(MassUnit.ShortTon);
-            AssertEx.EqualTolerance(ShortTonsInOneKilogram, (double)shorttonQuantity.Value, ShortTonsTolerance);
+            AssertEx.EqualTolerance(ShortTonsInOneKilogram, (decimal)shorttonQuantity.Value, ShortTonsTolerance);
             Assert.Equal(MassUnit.ShortTon, shorttonQuantity.Unit);
 
             var slugQuantity = kilogram.ToUnit(MassUnit.Slug);
-            AssertEx.EqualTolerance(SlugsInOneKilogram, (double)slugQuantity.Value, SlugsTolerance);
+            AssertEx.EqualTolerance(SlugsInOneKilogram, (decimal)slugQuantity.Value, SlugsTolerance);
             Assert.Equal(MassUnit.Slug, slugQuantity.Unit);
 
             var solarmassQuantity = kilogram.ToUnit(MassUnit.SolarMass);
-            AssertEx.EqualTolerance(SolarMassesInOneKilogram, (double)solarmassQuantity.Value, SolarMassesTolerance);
+            AssertEx.EqualTolerance(SolarMassesInOneKilogram, (decimal)solarmassQuantity.Value, SolarMassesTolerance);
             Assert.Equal(MassUnit.SolarMass, solarmassQuantity.Unit);
 
             var stoneQuantity = kilogram.ToUnit(MassUnit.Stone);
-            AssertEx.EqualTolerance(StoneInOneKilogram, (double)stoneQuantity.Value, StoneTolerance);
+            AssertEx.EqualTolerance(StoneInOneKilogram, (decimal)stoneQuantity.Value, StoneTolerance);
             Assert.Equal(MassUnit.Stone, stoneQuantity.Unit);
 
             var tonneQuantity = kilogram.ToUnit(MassUnit.Tonne);
-            AssertEx.EqualTolerance(TonnesInOneKilogram, (double)tonneQuantity.Value, TonnesTolerance);
+            AssertEx.EqualTolerance(TonnesInOneKilogram, (decimal)tonneQuantity.Value, TonnesTolerance);
             Assert.Equal(MassUnit.Tonne, tonneQuantity.Unit);
         }
 
@@ -728,10 +702,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 kg", new Mass(0.123456, MassUnit.Kilogram).ToString("s1"));
-                Assert.Equal("0.12 kg", new Mass(0.123456, MassUnit.Kilogram).ToString("s2"));
-                Assert.Equal("0.123 kg", new Mass(0.123456, MassUnit.Kilogram).ToString("s3"));
-                Assert.Equal("0.1235 kg", new Mass(0.123456, MassUnit.Kilogram).ToString("s4"));
+                Assert.Equal("0.1 kg", new Mass(0.123456m, MassUnit.Kilogram).ToString("s1"));
+                Assert.Equal("0.12 kg", new Mass(0.123456m, MassUnit.Kilogram).ToString("s2"));
+                Assert.Equal("0.123 kg", new Mass(0.123456m, MassUnit.Kilogram).ToString("s3"));
+                Assert.Equal("0.1235 kg", new Mass(0.123456m, MassUnit.Kilogram).ToString("s4"));
             }
             finally
             {
@@ -743,10 +717,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 kg", new Mass(0.123456, MassUnit.Kilogram).ToString("s1", culture));
-            Assert.Equal("0.12 kg", new Mass(0.123456, MassUnit.Kilogram).ToString("s2", culture));
-            Assert.Equal("0.123 kg", new Mass(0.123456, MassUnit.Kilogram).ToString("s3", culture));
-            Assert.Equal("0.1235 kg", new Mass(0.123456, MassUnit.Kilogram).ToString("s4", culture));
+            Assert.Equal("0.1 kg", new Mass(0.123456m, MassUnit.Kilogram).ToString("s1", culture));
+            Assert.Equal("0.12 kg", new Mass(0.123456m, MassUnit.Kilogram).ToString("s2", culture));
+            Assert.Equal("0.123 kg", new Mass(0.123456m, MassUnit.Kilogram).ToString("s3", culture));
+            Assert.Equal("0.1235 kg", new Mass(0.123456m, MassUnit.Kilogram).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -924,7 +898,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = Mass.FromKilograms(value);
             Assert.Equal(Mass.FromKilograms(-value), -quantity);

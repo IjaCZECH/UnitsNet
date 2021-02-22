@@ -30,59 +30,59 @@ namespace UnitsNet.NumberExtensions.NumberToAcceleration
     {
         /// <inheritdoc cref="Acceleration.FromCentimetersPerSecondSquared(UnitsNet.QuantityValue)" />
         public static Acceleration CentimetersPerSecondSquared<T>(this T value) =>
-            Acceleration.FromCentimetersPerSecondSquared(Convert.ToDouble(value));
+            Acceleration.FromCentimetersPerSecondSquared(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Acceleration.FromDecimetersPerSecondSquared(UnitsNet.QuantityValue)" />
         public static Acceleration DecimetersPerSecondSquared<T>(this T value) =>
-            Acceleration.FromDecimetersPerSecondSquared(Convert.ToDouble(value));
+            Acceleration.FromDecimetersPerSecondSquared(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Acceleration.FromFeetPerSecondSquared(UnitsNet.QuantityValue)" />
         public static Acceleration FeetPerSecondSquared<T>(this T value) =>
-            Acceleration.FromFeetPerSecondSquared(Convert.ToDouble(value));
+            Acceleration.FromFeetPerSecondSquared(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Acceleration.FromInchesPerSecondSquared(UnitsNet.QuantityValue)" />
         public static Acceleration InchesPerSecondSquared<T>(this T value) =>
-            Acceleration.FromInchesPerSecondSquared(Convert.ToDouble(value));
+            Acceleration.FromInchesPerSecondSquared(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Acceleration.FromKilometersPerSecondSquared(UnitsNet.QuantityValue)" />
         public static Acceleration KilometersPerSecondSquared<T>(this T value) =>
-            Acceleration.FromKilometersPerSecondSquared(Convert.ToDouble(value));
+            Acceleration.FromKilometersPerSecondSquared(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Acceleration.FromKnotsPerHour(UnitsNet.QuantityValue)" />
         public static Acceleration KnotsPerHour<T>(this T value) =>
-            Acceleration.FromKnotsPerHour(Convert.ToDouble(value));
+            Acceleration.FromKnotsPerHour(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Acceleration.FromKnotsPerMinute(UnitsNet.QuantityValue)" />
         public static Acceleration KnotsPerMinute<T>(this T value) =>
-            Acceleration.FromKnotsPerMinute(Convert.ToDouble(value));
+            Acceleration.FromKnotsPerMinute(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Acceleration.FromKnotsPerSecond(UnitsNet.QuantityValue)" />
         public static Acceleration KnotsPerSecond<T>(this T value) =>
-            Acceleration.FromKnotsPerSecond(Convert.ToDouble(value));
+            Acceleration.FromKnotsPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Acceleration.FromMetersPerSecondSquared(UnitsNet.QuantityValue)" />
         public static Acceleration MetersPerSecondSquared<T>(this T value) =>
-            Acceleration.FromMetersPerSecondSquared(Convert.ToDouble(value));
+            Acceleration.FromMetersPerSecondSquared(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Acceleration.FromMicrometersPerSecondSquared(UnitsNet.QuantityValue)" />
         public static Acceleration MicrometersPerSecondSquared<T>(this T value) =>
-            Acceleration.FromMicrometersPerSecondSquared(Convert.ToDouble(value));
+            Acceleration.FromMicrometersPerSecondSquared(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Acceleration.FromMillimetersPerSecondSquared(UnitsNet.QuantityValue)" />
         public static Acceleration MillimetersPerSecondSquared<T>(this T value) =>
-            Acceleration.FromMillimetersPerSecondSquared(Convert.ToDouble(value));
+            Acceleration.FromMillimetersPerSecondSquared(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Acceleration.FromMillistandardGravity(UnitsNet.QuantityValue)" />
         public static Acceleration MillistandardGravity<T>(this T value) =>
-            Acceleration.FromMillistandardGravity(Convert.ToDouble(value));
+            Acceleration.FromMillistandardGravity(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Acceleration.FromNanometersPerSecondSquared(UnitsNet.QuantityValue)" />
         public static Acceleration NanometersPerSecondSquared<T>(this T value) =>
-            Acceleration.FromNanometersPerSecondSquared(Convert.ToDouble(value));
+            Acceleration.FromNanometersPerSecondSquared(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Acceleration.FromStandardGravity(UnitsNet.QuantityValue)" />
         public static Acceleration StandardGravity<T>(this T value) =>
-            Acceleration.FromStandardGravity(Convert.ToDouble(value));
+            Acceleration.FromStandardGravity(Convert.ToDecimal(value));
 
     }
 }

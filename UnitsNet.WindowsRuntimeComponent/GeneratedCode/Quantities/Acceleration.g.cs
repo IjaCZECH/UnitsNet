@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -71,12 +71,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private Acceleration(double value, AccelerationUnit unit)
+        private Acceleration(decimal value, AccelerationUnit unit)
         {
             if(unit == AccelerationUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -100,12 +100,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of Acceleration
         /// </summary>
-        public static Acceleration MaxValue { get; } = new Acceleration(double.MaxValue, BaseUnit);
+        public static Acceleration MaxValue { get; } = new Acceleration(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of Acceleration
         /// </summary>
-        public static Acceleration MinValue { get; } = new Acceleration(double.MinValue, BaseUnit);
+        public static Acceleration MinValue { get; } = new Acceleration(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -129,7 +129,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -158,72 +158,72 @@ namespace UnitsNet
         /// <summary>
         ///     Get Acceleration in CentimetersPerSecondSquared.
         /// </summary>
-        public double CentimetersPerSecondSquared => As(AccelerationUnit.CentimeterPerSecondSquared);
+        public decimal CentimetersPerSecondSquared => As(AccelerationUnit.CentimeterPerSecondSquared);
 
         /// <summary>
         ///     Get Acceleration in DecimetersPerSecondSquared.
         /// </summary>
-        public double DecimetersPerSecondSquared => As(AccelerationUnit.DecimeterPerSecondSquared);
+        public decimal DecimetersPerSecondSquared => As(AccelerationUnit.DecimeterPerSecondSquared);
 
         /// <summary>
         ///     Get Acceleration in FeetPerSecondSquared.
         /// </summary>
-        public double FeetPerSecondSquared => As(AccelerationUnit.FootPerSecondSquared);
+        public decimal FeetPerSecondSquared => As(AccelerationUnit.FootPerSecondSquared);
 
         /// <summary>
         ///     Get Acceleration in InchesPerSecondSquared.
         /// </summary>
-        public double InchesPerSecondSquared => As(AccelerationUnit.InchPerSecondSquared);
+        public decimal InchesPerSecondSquared => As(AccelerationUnit.InchPerSecondSquared);
 
         /// <summary>
         ///     Get Acceleration in KilometersPerSecondSquared.
         /// </summary>
-        public double KilometersPerSecondSquared => As(AccelerationUnit.KilometerPerSecondSquared);
+        public decimal KilometersPerSecondSquared => As(AccelerationUnit.KilometerPerSecondSquared);
 
         /// <summary>
         ///     Get Acceleration in KnotsPerHour.
         /// </summary>
-        public double KnotsPerHour => As(AccelerationUnit.KnotPerHour);
+        public decimal KnotsPerHour => As(AccelerationUnit.KnotPerHour);
 
         /// <summary>
         ///     Get Acceleration in KnotsPerMinute.
         /// </summary>
-        public double KnotsPerMinute => As(AccelerationUnit.KnotPerMinute);
+        public decimal KnotsPerMinute => As(AccelerationUnit.KnotPerMinute);
 
         /// <summary>
         ///     Get Acceleration in KnotsPerSecond.
         /// </summary>
-        public double KnotsPerSecond => As(AccelerationUnit.KnotPerSecond);
+        public decimal KnotsPerSecond => As(AccelerationUnit.KnotPerSecond);
 
         /// <summary>
         ///     Get Acceleration in MetersPerSecondSquared.
         /// </summary>
-        public double MetersPerSecondSquared => As(AccelerationUnit.MeterPerSecondSquared);
+        public decimal MetersPerSecondSquared => As(AccelerationUnit.MeterPerSecondSquared);
 
         /// <summary>
         ///     Get Acceleration in MicrometersPerSecondSquared.
         /// </summary>
-        public double MicrometersPerSecondSquared => As(AccelerationUnit.MicrometerPerSecondSquared);
+        public decimal MicrometersPerSecondSquared => As(AccelerationUnit.MicrometerPerSecondSquared);
 
         /// <summary>
         ///     Get Acceleration in MillimetersPerSecondSquared.
         /// </summary>
-        public double MillimetersPerSecondSquared => As(AccelerationUnit.MillimeterPerSecondSquared);
+        public decimal MillimetersPerSecondSquared => As(AccelerationUnit.MillimeterPerSecondSquared);
 
         /// <summary>
         ///     Get Acceleration in MillistandardGravity.
         /// </summary>
-        public double MillistandardGravity => As(AccelerationUnit.MillistandardGravity);
+        public decimal MillistandardGravity => As(AccelerationUnit.MillistandardGravity);
 
         /// <summary>
         ///     Get Acceleration in NanometersPerSecondSquared.
         /// </summary>
-        public double NanometersPerSecondSquared => As(AccelerationUnit.NanometerPerSecondSquared);
+        public decimal NanometersPerSecondSquared => As(AccelerationUnit.NanometerPerSecondSquared);
 
         /// <summary>
         ///     Get Acceleration in StandardGravity.
         /// </summary>
-        public double StandardGravity => As(AccelerationUnit.StandardGravity);
+        public decimal StandardGravity => As(AccelerationUnit.StandardGravity);
 
         #endregion
 
@@ -260,9 +260,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Acceleration FromCentimetersPerSecondSquared(double centimeterspersecondsquared)
+        public static Acceleration FromCentimetersPerSecondSquared(decimal centimeterspersecondsquared)
         {
-            double value = (double) centimeterspersecondsquared;
+            decimal value = (decimal) centimeterspersecondsquared;
             return new Acceleration(value, AccelerationUnit.CentimeterPerSecondSquared);
         }
         /// <summary>
@@ -270,9 +270,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Acceleration FromDecimetersPerSecondSquared(double decimeterspersecondsquared)
+        public static Acceleration FromDecimetersPerSecondSquared(decimal decimeterspersecondsquared)
         {
-            double value = (double) decimeterspersecondsquared;
+            decimal value = (decimal) decimeterspersecondsquared;
             return new Acceleration(value, AccelerationUnit.DecimeterPerSecondSquared);
         }
         /// <summary>
@@ -280,9 +280,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Acceleration FromFeetPerSecondSquared(double feetpersecondsquared)
+        public static Acceleration FromFeetPerSecondSquared(decimal feetpersecondsquared)
         {
-            double value = (double) feetpersecondsquared;
+            decimal value = (decimal) feetpersecondsquared;
             return new Acceleration(value, AccelerationUnit.FootPerSecondSquared);
         }
         /// <summary>
@@ -290,9 +290,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Acceleration FromInchesPerSecondSquared(double inchespersecondsquared)
+        public static Acceleration FromInchesPerSecondSquared(decimal inchespersecondsquared)
         {
-            double value = (double) inchespersecondsquared;
+            decimal value = (decimal) inchespersecondsquared;
             return new Acceleration(value, AccelerationUnit.InchPerSecondSquared);
         }
         /// <summary>
@@ -300,9 +300,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Acceleration FromKilometersPerSecondSquared(double kilometerspersecondsquared)
+        public static Acceleration FromKilometersPerSecondSquared(decimal kilometerspersecondsquared)
         {
-            double value = (double) kilometerspersecondsquared;
+            decimal value = (decimal) kilometerspersecondsquared;
             return new Acceleration(value, AccelerationUnit.KilometerPerSecondSquared);
         }
         /// <summary>
@@ -310,9 +310,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Acceleration FromKnotsPerHour(double knotsperhour)
+        public static Acceleration FromKnotsPerHour(decimal knotsperhour)
         {
-            double value = (double) knotsperhour;
+            decimal value = (decimal) knotsperhour;
             return new Acceleration(value, AccelerationUnit.KnotPerHour);
         }
         /// <summary>
@@ -320,9 +320,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Acceleration FromKnotsPerMinute(double knotsperminute)
+        public static Acceleration FromKnotsPerMinute(decimal knotsperminute)
         {
-            double value = (double) knotsperminute;
+            decimal value = (decimal) knotsperminute;
             return new Acceleration(value, AccelerationUnit.KnotPerMinute);
         }
         /// <summary>
@@ -330,9 +330,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Acceleration FromKnotsPerSecond(double knotspersecond)
+        public static Acceleration FromKnotsPerSecond(decimal knotspersecond)
         {
-            double value = (double) knotspersecond;
+            decimal value = (decimal) knotspersecond;
             return new Acceleration(value, AccelerationUnit.KnotPerSecond);
         }
         /// <summary>
@@ -340,9 +340,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Acceleration FromMetersPerSecondSquared(double meterspersecondsquared)
+        public static Acceleration FromMetersPerSecondSquared(decimal meterspersecondsquared)
         {
-            double value = (double) meterspersecondsquared;
+            decimal value = (decimal) meterspersecondsquared;
             return new Acceleration(value, AccelerationUnit.MeterPerSecondSquared);
         }
         /// <summary>
@@ -350,9 +350,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Acceleration FromMicrometersPerSecondSquared(double micrometerspersecondsquared)
+        public static Acceleration FromMicrometersPerSecondSquared(decimal micrometerspersecondsquared)
         {
-            double value = (double) micrometerspersecondsquared;
+            decimal value = (decimal) micrometerspersecondsquared;
             return new Acceleration(value, AccelerationUnit.MicrometerPerSecondSquared);
         }
         /// <summary>
@@ -360,9 +360,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Acceleration FromMillimetersPerSecondSquared(double millimeterspersecondsquared)
+        public static Acceleration FromMillimetersPerSecondSquared(decimal millimeterspersecondsquared)
         {
-            double value = (double) millimeterspersecondsquared;
+            decimal value = (decimal) millimeterspersecondsquared;
             return new Acceleration(value, AccelerationUnit.MillimeterPerSecondSquared);
         }
         /// <summary>
@@ -370,9 +370,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Acceleration FromMillistandardGravity(double millistandardgravity)
+        public static Acceleration FromMillistandardGravity(decimal millistandardgravity)
         {
-            double value = (double) millistandardgravity;
+            decimal value = (decimal) millistandardgravity;
             return new Acceleration(value, AccelerationUnit.MillistandardGravity);
         }
         /// <summary>
@@ -380,9 +380,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Acceleration FromNanometersPerSecondSquared(double nanometerspersecondsquared)
+        public static Acceleration FromNanometersPerSecondSquared(decimal nanometerspersecondsquared)
         {
-            double value = (double) nanometerspersecondsquared;
+            decimal value = (decimal) nanometerspersecondsquared;
             return new Acceleration(value, AccelerationUnit.NanometerPerSecondSquared);
         }
         /// <summary>
@@ -390,9 +390,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static Acceleration FromStandardGravity(double standardgravity)
+        public static Acceleration FromStandardGravity(decimal standardgravity)
         {
-            double value = (double) standardgravity;
+            decimal value = (decimal) standardgravity;
             return new Acceleration(value, AccelerationUnit.StandardGravity);
         }
 
@@ -404,9 +404,9 @@ namespace UnitsNet
         /// <returns>Acceleration unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static Acceleration From(double value, AccelerationUnit fromUnit)
+        public static Acceleration From(decimal value, AccelerationUnit fromUnit)
         {
-            return new Acceleration((double)value, fromUnit);
+            return new Acceleration((decimal)value, fromUnit);
         }
 
         #endregion
@@ -628,13 +628,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(Acceleration other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(Acceleration other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -652,19 +652,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((AccelerationUnit)unit);
+        decimal IQuantity.As(object unit) => As((AccelerationUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(AccelerationUnit unit)
+        public decimal As(AccelerationUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -682,30 +682,30 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
-                case AccelerationUnit.CentimeterPerSecondSquared: return (_value) * 1e-2d;
-                case AccelerationUnit.DecimeterPerSecondSquared: return (_value) * 1e-1d;
-                case AccelerationUnit.FootPerSecondSquared: return _value*0.304800;
-                case AccelerationUnit.InchPerSecondSquared: return _value*0.0254;
-                case AccelerationUnit.KilometerPerSecondSquared: return (_value) * 1e3d;
-                case AccelerationUnit.KnotPerHour: return _value*0.5144444444444/3600;
-                case AccelerationUnit.KnotPerMinute: return _value*0.5144444444444/60;
-                case AccelerationUnit.KnotPerSecond: return _value*0.5144444444444;
+                case AccelerationUnit.CentimeterPerSecondSquared: return (_value) * 1e-2m;
+                case AccelerationUnit.DecimeterPerSecondSquared: return (_value) * 1e-1m;
+                case AccelerationUnit.FootPerSecondSquared: return _value*0.304800m;
+                case AccelerationUnit.InchPerSecondSquared: return _value*0.0254m;
+                case AccelerationUnit.KilometerPerSecondSquared: return (_value) * 1e3m;
+                case AccelerationUnit.KnotPerHour: return _value*0.5144444444444m/3600m;
+                case AccelerationUnit.KnotPerMinute: return _value*0.5144444444444m/60m;
+                case AccelerationUnit.KnotPerSecond: return _value*0.5144444444444m;
                 case AccelerationUnit.MeterPerSecondSquared: return _value;
-                case AccelerationUnit.MicrometerPerSecondSquared: return (_value) * 1e-6d;
-                case AccelerationUnit.MillimeterPerSecondSquared: return (_value) * 1e-3d;
-                case AccelerationUnit.MillistandardGravity: return (_value*9.80665) * 1e-3d;
-                case AccelerationUnit.NanometerPerSecondSquared: return (_value) * 1e-9d;
-                case AccelerationUnit.StandardGravity: return _value*9.80665;
+                case AccelerationUnit.MicrometerPerSecondSquared: return (_value) * 1e-6m;
+                case AccelerationUnit.MillimeterPerSecondSquared: return (_value) * 1e-3m;
+                case AccelerationUnit.MillistandardGravity: return (_value*9.80665m) * 1e-3m;
+                case AccelerationUnit.NanometerPerSecondSquared: return (_value) * 1e-9m;
+                case AccelerationUnit.StandardGravity: return _value*9.80665m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(AccelerationUnit unit)
+        private decimal AsBaseNumericType(AccelerationUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -714,20 +714,20 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case AccelerationUnit.CentimeterPerSecondSquared: return (baseUnitValue) / 1e-2d;
-                case AccelerationUnit.DecimeterPerSecondSquared: return (baseUnitValue) / 1e-1d;
-                case AccelerationUnit.FootPerSecondSquared: return baseUnitValue/0.304800;
-                case AccelerationUnit.InchPerSecondSquared: return baseUnitValue/0.0254;
-                case AccelerationUnit.KilometerPerSecondSquared: return (baseUnitValue) / 1e3d;
-                case AccelerationUnit.KnotPerHour: return baseUnitValue/0.5144444444444*3600;
-                case AccelerationUnit.KnotPerMinute: return baseUnitValue/0.5144444444444*60;
-                case AccelerationUnit.KnotPerSecond: return baseUnitValue/0.5144444444444;
+                case AccelerationUnit.CentimeterPerSecondSquared: return (baseUnitValue) / 1e-2m;
+                case AccelerationUnit.DecimeterPerSecondSquared: return (baseUnitValue) / 1e-1m;
+                case AccelerationUnit.FootPerSecondSquared: return baseUnitValue/0.304800m;
+                case AccelerationUnit.InchPerSecondSquared: return baseUnitValue/0.0254m;
+                case AccelerationUnit.KilometerPerSecondSquared: return (baseUnitValue) / 1e3m;
+                case AccelerationUnit.KnotPerHour: return baseUnitValue/0.5144444444444m*3600m;
+                case AccelerationUnit.KnotPerMinute: return baseUnitValue/0.5144444444444m*60m;
+                case AccelerationUnit.KnotPerSecond: return baseUnitValue/0.5144444444444m;
                 case AccelerationUnit.MeterPerSecondSquared: return baseUnitValue;
-                case AccelerationUnit.MicrometerPerSecondSquared: return (baseUnitValue) / 1e-6d;
-                case AccelerationUnit.MillimeterPerSecondSquared: return (baseUnitValue) / 1e-3d;
-                case AccelerationUnit.MillistandardGravity: return (baseUnitValue/9.80665) / 1e-3d;
-                case AccelerationUnit.NanometerPerSecondSquared: return (baseUnitValue) / 1e-9d;
-                case AccelerationUnit.StandardGravity: return baseUnitValue/9.80665;
+                case AccelerationUnit.MicrometerPerSecondSquared: return (baseUnitValue) / 1e-6m;
+                case AccelerationUnit.MillimeterPerSecondSquared: return (baseUnitValue) / 1e-3m;
+                case AccelerationUnit.MillistandardGravity: return (baseUnitValue/9.80665m) / 1e-3m;
+                case AccelerationUnit.NanometerPerSecondSquared: return (baseUnitValue) / 1e-9m;
+                case AccelerationUnit.StandardGravity: return baseUnitValue/9.80665m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -766,7 +766,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -786,7 +786,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

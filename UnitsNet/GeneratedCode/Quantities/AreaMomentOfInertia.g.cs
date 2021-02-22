@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -68,12 +68,12 @@ namespace UnitsNet
         /// <param name="value">The numeric value to construct this quantity with.</param>
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        public AreaMomentOfInertia(double value, AreaMomentOfInertiaUnit unit)
+        public AreaMomentOfInertia(decimal value, AreaMomentOfInertiaUnit unit)
         {
-            if(unit == AreaMomentOfInertiaUnit.Undefined)
-              throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
+            if (unit == AreaMomentOfInertiaUnit.Undefined)
+                throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -85,14 +85,14 @@ namespace UnitsNet
         /// <param name="unitSystem">The unit system to create the quantity with.</param>
         /// <exception cref="ArgumentNullException">The given <see cref="UnitSystem"/> is null.</exception>
         /// <exception cref="ArgumentException">No unit was found for the given <see cref="UnitSystem"/>.</exception>
-        public AreaMomentOfInertia(double value, UnitSystem unitSystem)
+        public AreaMomentOfInertia(decimal value, UnitSystem unitSystem)
         {
-            if(unitSystem is null) throw new ArgumentNullException(nameof(unitSystem));
+            if (unitSystem is null) throw new ArgumentNullException(nameof(unitSystem));
 
             var unitInfos = Info.GetUnitInfosFor(unitSystem.BaseUnits);
             var firstUnitInfo = unitInfos.FirstOrDefault();
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = firstUnitInfo?.Value ?? throw new ArgumentException("No units were found for the given UnitSystem.", nameof(unitSystem));
         }
 
@@ -114,12 +114,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of AreaMomentOfInertia
         /// </summary>
-        public static AreaMomentOfInertia MaxValue { get; } = new AreaMomentOfInertia(double.MaxValue, BaseUnit);
+        public static AreaMomentOfInertia MaxValue { get; } = new AreaMomentOfInertia(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of AreaMomentOfInertia
         /// </summary>
-        public static AreaMomentOfInertia MinValue { get; } = new AreaMomentOfInertia(double.MinValue, BaseUnit);
+        public static AreaMomentOfInertia MinValue { get; } = new AreaMomentOfInertia(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -129,7 +129,7 @@ namespace UnitsNet
         /// <summary>
         ///     All units of measurement for the AreaMomentOfInertia quantity.
         /// </summary>
-        public static AreaMomentOfInertiaUnit[] Units { get; } = Enum.GetValues(typeof(AreaMomentOfInertiaUnit)).Cast<AreaMomentOfInertiaUnit>().Except(new AreaMomentOfInertiaUnit[]{ AreaMomentOfInertiaUnit.Undefined }).ToArray();
+        public static AreaMomentOfInertiaUnit[] Units { get; } = Enum.GetValues(typeof(AreaMomentOfInertiaUnit)).Cast<AreaMomentOfInertiaUnit>().Except(new AreaMomentOfInertiaUnit[] { AreaMomentOfInertiaUnit.Undefined }).ToArray();
 
         /// <summary>
         ///     Gets an instance of this quantity with a value of 0 in the base unit MeterToTheFourth.
@@ -143,7 +143,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => _value;
+        public decimal Value => _value;
 
         Enum IQuantity.Unit => Unit;
 
@@ -173,32 +173,32 @@ namespace UnitsNet
         /// <summary>
         ///     Get AreaMomentOfInertia in CentimetersToTheFourth.
         /// </summary>
-        public double CentimetersToTheFourth => As(AreaMomentOfInertiaUnit.CentimeterToTheFourth);
+        public decimal CentimetersToTheFourth => As(AreaMomentOfInertiaUnit.CentimeterToTheFourth);
 
         /// <summary>
         ///     Get AreaMomentOfInertia in DecimetersToTheFourth.
         /// </summary>
-        public double DecimetersToTheFourth => As(AreaMomentOfInertiaUnit.DecimeterToTheFourth);
+        public decimal DecimetersToTheFourth => As(AreaMomentOfInertiaUnit.DecimeterToTheFourth);
 
         /// <summary>
         ///     Get AreaMomentOfInertia in FeetToTheFourth.
         /// </summary>
-        public double FeetToTheFourth => As(AreaMomentOfInertiaUnit.FootToTheFourth);
+        public decimal FeetToTheFourth => As(AreaMomentOfInertiaUnit.FootToTheFourth);
 
         /// <summary>
         ///     Get AreaMomentOfInertia in InchesToTheFourth.
         /// </summary>
-        public double InchesToTheFourth => As(AreaMomentOfInertiaUnit.InchToTheFourth);
+        public decimal InchesToTheFourth => As(AreaMomentOfInertiaUnit.InchToTheFourth);
 
         /// <summary>
         ///     Get AreaMomentOfInertia in MetersToTheFourth.
         /// </summary>
-        public double MetersToTheFourth => As(AreaMomentOfInertiaUnit.MeterToTheFourth);
+        public decimal MetersToTheFourth => As(AreaMomentOfInertiaUnit.MeterToTheFourth);
 
         /// <summary>
         ///     Get AreaMomentOfInertia in MillimetersToTheFourth.
         /// </summary>
-        public double MillimetersToTheFourth => As(AreaMomentOfInertiaUnit.MillimeterToTheFourth);
+        public decimal MillimetersToTheFourth => As(AreaMomentOfInertiaUnit.MillimeterToTheFourth);
 
         #endregion
 
@@ -235,7 +235,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static AreaMomentOfInertia FromCentimetersToTheFourth(QuantityValue centimeterstothefourth)
         {
-            double value = (double) centimeterstothefourth;
+            decimal value = (decimal)centimeterstothefourth;
             return new AreaMomentOfInertia(value, AreaMomentOfInertiaUnit.CentimeterToTheFourth);
         }
         /// <summary>
@@ -244,7 +244,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static AreaMomentOfInertia FromDecimetersToTheFourth(QuantityValue decimeterstothefourth)
         {
-            double value = (double) decimeterstothefourth;
+            decimal value = (decimal)decimeterstothefourth;
             return new AreaMomentOfInertia(value, AreaMomentOfInertiaUnit.DecimeterToTheFourth);
         }
         /// <summary>
@@ -253,7 +253,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static AreaMomentOfInertia FromFeetToTheFourth(QuantityValue feettothefourth)
         {
-            double value = (double) feettothefourth;
+            decimal value = (decimal)feettothefourth;
             return new AreaMomentOfInertia(value, AreaMomentOfInertiaUnit.FootToTheFourth);
         }
         /// <summary>
@@ -262,7 +262,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static AreaMomentOfInertia FromInchesToTheFourth(QuantityValue inchestothefourth)
         {
-            double value = (double) inchestothefourth;
+            decimal value = (decimal)inchestothefourth;
             return new AreaMomentOfInertia(value, AreaMomentOfInertiaUnit.InchToTheFourth);
         }
         /// <summary>
@@ -271,7 +271,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static AreaMomentOfInertia FromMetersToTheFourth(QuantityValue meterstothefourth)
         {
-            double value = (double) meterstothefourth;
+            decimal value = (decimal)meterstothefourth;
             return new AreaMomentOfInertia(value, AreaMomentOfInertiaUnit.MeterToTheFourth);
         }
         /// <summary>
@@ -280,7 +280,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static AreaMomentOfInertia FromMillimetersToTheFourth(QuantityValue millimeterstothefourth)
         {
-            double value = (double) millimeterstothefourth;
+            decimal value = (decimal)millimeterstothefourth;
             return new AreaMomentOfInertia(value, AreaMomentOfInertiaUnit.MillimeterToTheFourth);
         }
 
@@ -292,7 +292,7 @@ namespace UnitsNet
         /// <returns>AreaMomentOfInertia unit value.</returns>
         public static AreaMomentOfInertia From(QuantityValue value, AreaMomentOfInertiaUnit fromUnit)
         {
-            return new AreaMomentOfInertia((double)value, fromUnit);
+            return new AreaMomentOfInertia((decimal)value, fromUnit);
         }
 
         #endregion
@@ -462,25 +462,25 @@ namespace UnitsNet
         }
 
         /// <summary>Get <see cref="AreaMomentOfInertia"/> from multiplying value and <see cref="AreaMomentOfInertia"/>.</summary>
-        public static AreaMomentOfInertia operator *(double left, AreaMomentOfInertia right)
+        public static AreaMomentOfInertia operator *(decimal left, AreaMomentOfInertia right)
         {
             return new AreaMomentOfInertia(left * right.Value, right.Unit);
         }
 
         /// <summary>Get <see cref="AreaMomentOfInertia"/> from multiplying value and <see cref="AreaMomentOfInertia"/>.</summary>
-        public static AreaMomentOfInertia operator *(AreaMomentOfInertia left, double right)
+        public static AreaMomentOfInertia operator *(AreaMomentOfInertia left, decimal right)
         {
             return new AreaMomentOfInertia(left.Value * right, left.Unit);
         }
 
         /// <summary>Get <see cref="AreaMomentOfInertia"/> from dividing <see cref="AreaMomentOfInertia"/> by value.</summary>
-        public static AreaMomentOfInertia operator /(AreaMomentOfInertia left, double right)
+        public static AreaMomentOfInertia operator /(AreaMomentOfInertia left, decimal right)
         {
             return new AreaMomentOfInertia(left.Value / right, left.Unit);
         }
 
         /// <summary>Get ratio value from dividing <see cref="AreaMomentOfInertia"/> by <see cref="AreaMomentOfInertia"/>.</summary>
-        public static double operator /(AreaMomentOfInertia left, AreaMomentOfInertia right)
+        public static decimal operator /(AreaMomentOfInertia left, AreaMomentOfInertia right)
         {
             return left.MetersToTheFourth / right.MetersToTheFourth;
         }
@@ -514,14 +514,14 @@ namespace UnitsNet
         }
 
         /// <summary>Returns true if exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(AreaMomentOfInertia, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(AreaMomentOfInertia, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator ==(AreaMomentOfInertia left, AreaMomentOfInertia right)
         {
             return left.Equals(right);
         }
 
         /// <summary>Returns true if not exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(AreaMomentOfInertia, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(AreaMomentOfInertia, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator !=(AreaMomentOfInertia left, AreaMomentOfInertia right)
         {
             return !(left == right);
@@ -530,8 +530,8 @@ namespace UnitsNet
         /// <inheritdoc />
         public int CompareTo(object obj)
         {
-            if(obj is null) throw new ArgumentNullException(nameof(obj));
-            if(!(obj is AreaMomentOfInertia objAreaMomentOfInertia)) throw new ArgumentException("Expected type AreaMomentOfInertia.", nameof(obj));
+            if (obj is null) throw new ArgumentNullException(nameof(obj));
+            if (!(obj is AreaMomentOfInertia objAreaMomentOfInertia)) throw new ArgumentException("Expected type AreaMomentOfInertia.", nameof(obj));
 
             return CompareTo(objAreaMomentOfInertia);
         }
@@ -543,17 +543,17 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(AreaMomentOfInertia, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(AreaMomentOfInertia, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public override bool Equals(object obj)
         {
-            if(obj is null || !(obj is AreaMomentOfInertia objAreaMomentOfInertia))
+            if (obj is null || !(obj is AreaMomentOfInertia objAreaMomentOfInertia))
                 return false;
 
             return Equals(objAreaMomentOfInertia);
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(AreaMomentOfInertia, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(AreaMomentOfInertia, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public bool Equals(AreaMomentOfInertia other)
         {
             return _value.Equals(other.GetValueAs(this.Unit));
@@ -599,13 +599,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(AreaMomentOfInertia other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(AreaMomentOfInertia other, decimal tolerance, ComparisonType comparisonType)
         {
-            if(tolerance < 0)
+            if (tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -627,34 +627,34 @@ namespace UnitsNet
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(AreaMomentOfInertiaUnit unit)
+        public decimal As(AreaMomentOfInertiaUnit unit)
         {
-            if(Unit == unit)
-                return Convert.ToDouble(Value);
+            if (Unit == unit)
+                return Convert.ToDecimal(Value);
 
             var converted = GetValueAs(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <inheritdoc cref="IQuantity.As(UnitSystem)"/>
-        public double As(UnitSystem unitSystem)
+        public decimal As(UnitSystem unitSystem)
         {
-            if(unitSystem is null)
+            if (unitSystem is null)
                 throw new ArgumentNullException(nameof(unitSystem));
 
             var unitInfos = Info.GetUnitInfosFor(unitSystem.BaseUnits);
 
             var firstUnitInfo = unitInfos.FirstOrDefault();
-            if(firstUnitInfo == null)
+            if (firstUnitInfo == null)
                 throw new ArgumentException("No units were found for the given UnitSystem.", nameof(unitSystem));
 
             return As(firstUnitInfo.Value);
         }
 
         /// <inheritdoc />
-        double IQuantity.As(Enum unit)
+        decimal IQuantity.As(Enum unit)
         {
-            if(!(unit is AreaMomentOfInertiaUnit unitAsAreaMomentOfInertiaUnit))
+            if (!(unit is AreaMomentOfInertiaUnit unitAsAreaMomentOfInertiaUnit))
                 throw new ArgumentException($"The given unit is of type {unit.GetType()}. Only {typeof(AreaMomentOfInertiaUnit)} is supported.", nameof(unit));
 
             return As(unitAsAreaMomentOfInertiaUnit);
@@ -673,7 +673,7 @@ namespace UnitsNet
         /// <inheritdoc />
         IQuantity IQuantity.ToUnit(Enum unit)
         {
-            if(!(unit is AreaMomentOfInertiaUnit unitAsAreaMomentOfInertiaUnit))
+            if (!(unit is AreaMomentOfInertiaUnit unitAsAreaMomentOfInertiaUnit))
                 throw new ArgumentException($"The given unit is of type {unit.GetType()}. Only {typeof(AreaMomentOfInertiaUnit)} is supported.", nameof(unit));
 
             return ToUnit(unitAsAreaMomentOfInertiaUnit);
@@ -682,13 +682,13 @@ namespace UnitsNet
         /// <inheritdoc cref="IQuantity.ToUnit(UnitSystem)"/>
         public AreaMomentOfInertia ToUnit(UnitSystem unitSystem)
         {
-            if(unitSystem is null)
+            if (unitSystem is null)
                 throw new ArgumentNullException(nameof(unitSystem));
 
             var unitInfos = Info.GetUnitInfosFor(unitSystem.BaseUnits);
 
             var firstUnitInfo = unitInfos.FirstOrDefault();
-            if(firstUnitInfo == null)
+            if (firstUnitInfo == null)
                 throw new ArgumentException("No units were found for the given UnitSystem.", nameof(unitSystem));
 
             return ToUnit(firstUnitInfo.Value);
@@ -708,16 +708,16 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double GetValueInBaseUnit()
+        private decimal GetValueInBaseUnit()
         {
-            switch(Unit)
+            switch (Unit)
             {
-                case AreaMomentOfInertiaUnit.CentimeterToTheFourth: return _value/1e8;
-                case AreaMomentOfInertiaUnit.DecimeterToTheFourth: return _value/1e4;
-                case AreaMomentOfInertiaUnit.FootToTheFourth: return _value*Math.Pow(0.3048, 4);
-                case AreaMomentOfInertiaUnit.InchToTheFourth: return _value*Math.Pow(2.54e-2, 4);
+                case AreaMomentOfInertiaUnit.CentimeterToTheFourth: return _value / 1e8m;
+                case AreaMomentOfInertiaUnit.DecimeterToTheFourth: return _value / 1e4m;
+                case AreaMomentOfInertiaUnit.FootToTheFourth: return _value * DecimalMath.DecimalEx.Pow(0.3048m, 4);
+                case AreaMomentOfInertiaUnit.InchToTheFourth: return _value * DecimalMath.DecimalEx.Pow(2.54e-2m, 4);
                 case AreaMomentOfInertiaUnit.MeterToTheFourth: return _value;
-                case AreaMomentOfInertiaUnit.MillimeterToTheFourth: return _value/1e12;
+                case AreaMomentOfInertiaUnit.MillimeterToTheFourth: return _value / 1e12m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
@@ -734,21 +734,21 @@ namespace UnitsNet
             return new AreaMomentOfInertia(baseUnitValue, BaseUnit);
         }
 
-        private double GetValueAs(AreaMomentOfInertiaUnit unit)
+        private decimal GetValueAs(AreaMomentOfInertiaUnit unit)
         {
-            if(Unit == unit)
+            if (Unit == unit)
                 return _value;
 
             var baseUnitValue = GetValueInBaseUnit();
 
-            switch(unit)
+            switch (unit)
             {
-                case AreaMomentOfInertiaUnit.CentimeterToTheFourth: return baseUnitValue*1e8;
-                case AreaMomentOfInertiaUnit.DecimeterToTheFourth: return baseUnitValue*1e4;
-                case AreaMomentOfInertiaUnit.FootToTheFourth: return baseUnitValue/Math.Pow(0.3048, 4);
-                case AreaMomentOfInertiaUnit.InchToTheFourth: return baseUnitValue/Math.Pow(2.54e-2, 4);
+                case AreaMomentOfInertiaUnit.CentimeterToTheFourth: return baseUnitValue * 1e8m;
+                case AreaMomentOfInertiaUnit.DecimeterToTheFourth: return baseUnitValue * 1e4m;
+                case AreaMomentOfInertiaUnit.FootToTheFourth: return baseUnitValue / DecimalMath.DecimalEx.Pow(0.3048m, 4);
+                case AreaMomentOfInertiaUnit.InchToTheFourth: return baseUnitValue / DecimalMath.DecimalEx.Pow(2.54e-2m, 4);
                 case AreaMomentOfInertiaUnit.MeterToTheFourth: return baseUnitValue;
-                case AreaMomentOfInertiaUnit.MillimeterToTheFourth: return baseUnitValue*1e12;
+                case AreaMomentOfInertiaUnit.MillimeterToTheFourth: return baseUnitValue * 1e12m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -786,7 +786,7 @@ namespace UnitsNet
         [Obsolete(@"This method is deprecated and will be removed at a future release. Please use ToString(""s2"") or ToString(""s2"", provider) where 2 is an example of the number passed to significantDigitsAfterRadix.")]
         public string ToString(IFormatProvider? provider, int significantDigitsAfterRadix)
         {
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -806,7 +806,7 @@ namespace UnitsNet
 
             provider = provider ?? CultureInfo.CurrentUICulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }
@@ -905,13 +905,13 @@ namespace UnitsNet
 
         object IConvertible.ToType(Type conversionType, IFormatProvider provider)
         {
-            if(conversionType == typeof(AreaMomentOfInertia))
+            if (conversionType == typeof(AreaMomentOfInertia))
                 return this;
-            else if(conversionType == typeof(AreaMomentOfInertiaUnit))
+            else if (conversionType == typeof(AreaMomentOfInertiaUnit))
                 return Unit;
-            else if(conversionType == typeof(QuantityType))
+            else if (conversionType == typeof(QuantityType))
                 return AreaMomentOfInertia.QuantityType;
-            else if(conversionType == typeof(BaseDimensions))
+            else if (conversionType == typeof(BaseDimensions))
                 return AreaMomentOfInertia.BaseDimensions;
             else
                 throw new InvalidCastException($"Converting {typeof(AreaMomentOfInertia)} to {conversionType} is not supported.");

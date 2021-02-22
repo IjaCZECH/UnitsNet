@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -71,12 +71,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private HeatFlux(double value, HeatFluxUnit unit)
+        private HeatFlux(decimal value, HeatFluxUnit unit)
         {
             if(unit == HeatFluxUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -100,12 +100,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of HeatFlux
         /// </summary>
-        public static HeatFlux MaxValue { get; } = new HeatFlux(double.MaxValue, BaseUnit);
+        public static HeatFlux MaxValue { get; } = new HeatFlux(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of HeatFlux
         /// </summary>
-        public static HeatFlux MinValue { get; } = new HeatFlux(double.MinValue, BaseUnit);
+        public static HeatFlux MinValue { get; } = new HeatFlux(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -129,7 +129,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -158,92 +158,92 @@ namespace UnitsNet
         /// <summary>
         ///     Get HeatFlux in BtusPerHourSquareFoot.
         /// </summary>
-        public double BtusPerHourSquareFoot => As(HeatFluxUnit.BtuPerHourSquareFoot);
+        public decimal BtusPerHourSquareFoot => As(HeatFluxUnit.BtuPerHourSquareFoot);
 
         /// <summary>
         ///     Get HeatFlux in BtusPerMinuteSquareFoot.
         /// </summary>
-        public double BtusPerMinuteSquareFoot => As(HeatFluxUnit.BtuPerMinuteSquareFoot);
+        public decimal BtusPerMinuteSquareFoot => As(HeatFluxUnit.BtuPerMinuteSquareFoot);
 
         /// <summary>
         ///     Get HeatFlux in BtusPerSecondSquareFoot.
         /// </summary>
-        public double BtusPerSecondSquareFoot => As(HeatFluxUnit.BtuPerSecondSquareFoot);
+        public decimal BtusPerSecondSquareFoot => As(HeatFluxUnit.BtuPerSecondSquareFoot);
 
         /// <summary>
         ///     Get HeatFlux in BtusPerSecondSquareInch.
         /// </summary>
-        public double BtusPerSecondSquareInch => As(HeatFluxUnit.BtuPerSecondSquareInch);
+        public decimal BtusPerSecondSquareInch => As(HeatFluxUnit.BtuPerSecondSquareInch);
 
         /// <summary>
         ///     Get HeatFlux in CaloriesPerSecondSquareCentimeter.
         /// </summary>
-        public double CaloriesPerSecondSquareCentimeter => As(HeatFluxUnit.CaloriePerSecondSquareCentimeter);
+        public decimal CaloriesPerSecondSquareCentimeter => As(HeatFluxUnit.CaloriePerSecondSquareCentimeter);
 
         /// <summary>
         ///     Get HeatFlux in CentiwattsPerSquareMeter.
         /// </summary>
-        public double CentiwattsPerSquareMeter => As(HeatFluxUnit.CentiwattPerSquareMeter);
+        public decimal CentiwattsPerSquareMeter => As(HeatFluxUnit.CentiwattPerSquareMeter);
 
         /// <summary>
         ///     Get HeatFlux in DeciwattsPerSquareMeter.
         /// </summary>
-        public double DeciwattsPerSquareMeter => As(HeatFluxUnit.DeciwattPerSquareMeter);
+        public decimal DeciwattsPerSquareMeter => As(HeatFluxUnit.DeciwattPerSquareMeter);
 
         /// <summary>
         ///     Get HeatFlux in KilocaloriesPerHourSquareMeter.
         /// </summary>
-        public double KilocaloriesPerHourSquareMeter => As(HeatFluxUnit.KilocaloriePerHourSquareMeter);
+        public decimal KilocaloriesPerHourSquareMeter => As(HeatFluxUnit.KilocaloriePerHourSquareMeter);
 
         /// <summary>
         ///     Get HeatFlux in KilocaloriesPerSecondSquareCentimeter.
         /// </summary>
-        public double KilocaloriesPerSecondSquareCentimeter => As(HeatFluxUnit.KilocaloriePerSecondSquareCentimeter);
+        public decimal KilocaloriesPerSecondSquareCentimeter => As(HeatFluxUnit.KilocaloriePerSecondSquareCentimeter);
 
         /// <summary>
         ///     Get HeatFlux in KilowattsPerSquareMeter.
         /// </summary>
-        public double KilowattsPerSquareMeter => As(HeatFluxUnit.KilowattPerSquareMeter);
+        public decimal KilowattsPerSquareMeter => As(HeatFluxUnit.KilowattPerSquareMeter);
 
         /// <summary>
         ///     Get HeatFlux in MicrowattsPerSquareMeter.
         /// </summary>
-        public double MicrowattsPerSquareMeter => As(HeatFluxUnit.MicrowattPerSquareMeter);
+        public decimal MicrowattsPerSquareMeter => As(HeatFluxUnit.MicrowattPerSquareMeter);
 
         /// <summary>
         ///     Get HeatFlux in MilliwattsPerSquareMeter.
         /// </summary>
-        public double MilliwattsPerSquareMeter => As(HeatFluxUnit.MilliwattPerSquareMeter);
+        public decimal MilliwattsPerSquareMeter => As(HeatFluxUnit.MilliwattPerSquareMeter);
 
         /// <summary>
         ///     Get HeatFlux in NanowattsPerSquareMeter.
         /// </summary>
-        public double NanowattsPerSquareMeter => As(HeatFluxUnit.NanowattPerSquareMeter);
+        public decimal NanowattsPerSquareMeter => As(HeatFluxUnit.NanowattPerSquareMeter);
 
         /// <summary>
         ///     Get HeatFlux in PoundsForcePerFootSecond.
         /// </summary>
-        public double PoundsForcePerFootSecond => As(HeatFluxUnit.PoundForcePerFootSecond);
+        public decimal PoundsForcePerFootSecond => As(HeatFluxUnit.PoundForcePerFootSecond);
 
         /// <summary>
         ///     Get HeatFlux in PoundsPerSecondCubed.
         /// </summary>
-        public double PoundsPerSecondCubed => As(HeatFluxUnit.PoundPerSecondCubed);
+        public decimal PoundsPerSecondCubed => As(HeatFluxUnit.PoundPerSecondCubed);
 
         /// <summary>
         ///     Get HeatFlux in WattsPerSquareFoot.
         /// </summary>
-        public double WattsPerSquareFoot => As(HeatFluxUnit.WattPerSquareFoot);
+        public decimal WattsPerSquareFoot => As(HeatFluxUnit.WattPerSquareFoot);
 
         /// <summary>
         ///     Get HeatFlux in WattsPerSquareInch.
         /// </summary>
-        public double WattsPerSquareInch => As(HeatFluxUnit.WattPerSquareInch);
+        public decimal WattsPerSquareInch => As(HeatFluxUnit.WattPerSquareInch);
 
         /// <summary>
         ///     Get HeatFlux in WattsPerSquareMeter.
         /// </summary>
-        public double WattsPerSquareMeter => As(HeatFluxUnit.WattPerSquareMeter);
+        public decimal WattsPerSquareMeter => As(HeatFluxUnit.WattPerSquareMeter);
 
         #endregion
 
@@ -280,9 +280,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static HeatFlux FromBtusPerHourSquareFoot(double btusperhoursquarefoot)
+        public static HeatFlux FromBtusPerHourSquareFoot(decimal btusperhoursquarefoot)
         {
-            double value = (double) btusperhoursquarefoot;
+            decimal value = (decimal) btusperhoursquarefoot;
             return new HeatFlux(value, HeatFluxUnit.BtuPerHourSquareFoot);
         }
         /// <summary>
@@ -290,9 +290,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static HeatFlux FromBtusPerMinuteSquareFoot(double btusperminutesquarefoot)
+        public static HeatFlux FromBtusPerMinuteSquareFoot(decimal btusperminutesquarefoot)
         {
-            double value = (double) btusperminutesquarefoot;
+            decimal value = (decimal) btusperminutesquarefoot;
             return new HeatFlux(value, HeatFluxUnit.BtuPerMinuteSquareFoot);
         }
         /// <summary>
@@ -300,9 +300,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static HeatFlux FromBtusPerSecondSquareFoot(double btuspersecondsquarefoot)
+        public static HeatFlux FromBtusPerSecondSquareFoot(decimal btuspersecondsquarefoot)
         {
-            double value = (double) btuspersecondsquarefoot;
+            decimal value = (decimal) btuspersecondsquarefoot;
             return new HeatFlux(value, HeatFluxUnit.BtuPerSecondSquareFoot);
         }
         /// <summary>
@@ -310,9 +310,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static HeatFlux FromBtusPerSecondSquareInch(double btuspersecondsquareinch)
+        public static HeatFlux FromBtusPerSecondSquareInch(decimal btuspersecondsquareinch)
         {
-            double value = (double) btuspersecondsquareinch;
+            decimal value = (decimal) btuspersecondsquareinch;
             return new HeatFlux(value, HeatFluxUnit.BtuPerSecondSquareInch);
         }
         /// <summary>
@@ -320,9 +320,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static HeatFlux FromCaloriesPerSecondSquareCentimeter(double caloriespersecondsquarecentimeter)
+        public static HeatFlux FromCaloriesPerSecondSquareCentimeter(decimal caloriespersecondsquarecentimeter)
         {
-            double value = (double) caloriespersecondsquarecentimeter;
+            decimal value = (decimal) caloriespersecondsquarecentimeter;
             return new HeatFlux(value, HeatFluxUnit.CaloriePerSecondSquareCentimeter);
         }
         /// <summary>
@@ -330,9 +330,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static HeatFlux FromCentiwattsPerSquareMeter(double centiwattspersquaremeter)
+        public static HeatFlux FromCentiwattsPerSquareMeter(decimal centiwattspersquaremeter)
         {
-            double value = (double) centiwattspersquaremeter;
+            decimal value = (decimal) centiwattspersquaremeter;
             return new HeatFlux(value, HeatFluxUnit.CentiwattPerSquareMeter);
         }
         /// <summary>
@@ -340,9 +340,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static HeatFlux FromDeciwattsPerSquareMeter(double deciwattspersquaremeter)
+        public static HeatFlux FromDeciwattsPerSquareMeter(decimal deciwattspersquaremeter)
         {
-            double value = (double) deciwattspersquaremeter;
+            decimal value = (decimal) deciwattspersquaremeter;
             return new HeatFlux(value, HeatFluxUnit.DeciwattPerSquareMeter);
         }
         /// <summary>
@@ -350,9 +350,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static HeatFlux FromKilocaloriesPerHourSquareMeter(double kilocaloriesperhoursquaremeter)
+        public static HeatFlux FromKilocaloriesPerHourSquareMeter(decimal kilocaloriesperhoursquaremeter)
         {
-            double value = (double) kilocaloriesperhoursquaremeter;
+            decimal value = (decimal) kilocaloriesperhoursquaremeter;
             return new HeatFlux(value, HeatFluxUnit.KilocaloriePerHourSquareMeter);
         }
         /// <summary>
@@ -360,9 +360,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static HeatFlux FromKilocaloriesPerSecondSquareCentimeter(double kilocaloriespersecondsquarecentimeter)
+        public static HeatFlux FromKilocaloriesPerSecondSquareCentimeter(decimal kilocaloriespersecondsquarecentimeter)
         {
-            double value = (double) kilocaloriespersecondsquarecentimeter;
+            decimal value = (decimal) kilocaloriespersecondsquarecentimeter;
             return new HeatFlux(value, HeatFluxUnit.KilocaloriePerSecondSquareCentimeter);
         }
         /// <summary>
@@ -370,9 +370,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static HeatFlux FromKilowattsPerSquareMeter(double kilowattspersquaremeter)
+        public static HeatFlux FromKilowattsPerSquareMeter(decimal kilowattspersquaremeter)
         {
-            double value = (double) kilowattspersquaremeter;
+            decimal value = (decimal) kilowattspersquaremeter;
             return new HeatFlux(value, HeatFluxUnit.KilowattPerSquareMeter);
         }
         /// <summary>
@@ -380,9 +380,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static HeatFlux FromMicrowattsPerSquareMeter(double microwattspersquaremeter)
+        public static HeatFlux FromMicrowattsPerSquareMeter(decimal microwattspersquaremeter)
         {
-            double value = (double) microwattspersquaremeter;
+            decimal value = (decimal) microwattspersquaremeter;
             return new HeatFlux(value, HeatFluxUnit.MicrowattPerSquareMeter);
         }
         /// <summary>
@@ -390,9 +390,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static HeatFlux FromMilliwattsPerSquareMeter(double milliwattspersquaremeter)
+        public static HeatFlux FromMilliwattsPerSquareMeter(decimal milliwattspersquaremeter)
         {
-            double value = (double) milliwattspersquaremeter;
+            decimal value = (decimal) milliwattspersquaremeter;
             return new HeatFlux(value, HeatFluxUnit.MilliwattPerSquareMeter);
         }
         /// <summary>
@@ -400,9 +400,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static HeatFlux FromNanowattsPerSquareMeter(double nanowattspersquaremeter)
+        public static HeatFlux FromNanowattsPerSquareMeter(decimal nanowattspersquaremeter)
         {
-            double value = (double) nanowattspersquaremeter;
+            decimal value = (decimal) nanowattspersquaremeter;
             return new HeatFlux(value, HeatFluxUnit.NanowattPerSquareMeter);
         }
         /// <summary>
@@ -410,9 +410,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static HeatFlux FromPoundsForcePerFootSecond(double poundsforceperfootsecond)
+        public static HeatFlux FromPoundsForcePerFootSecond(decimal poundsforceperfootsecond)
         {
-            double value = (double) poundsforceperfootsecond;
+            decimal value = (decimal) poundsforceperfootsecond;
             return new HeatFlux(value, HeatFluxUnit.PoundForcePerFootSecond);
         }
         /// <summary>
@@ -420,9 +420,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static HeatFlux FromPoundsPerSecondCubed(double poundspersecondcubed)
+        public static HeatFlux FromPoundsPerSecondCubed(decimal poundspersecondcubed)
         {
-            double value = (double) poundspersecondcubed;
+            decimal value = (decimal) poundspersecondcubed;
             return new HeatFlux(value, HeatFluxUnit.PoundPerSecondCubed);
         }
         /// <summary>
@@ -430,9 +430,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static HeatFlux FromWattsPerSquareFoot(double wattspersquarefoot)
+        public static HeatFlux FromWattsPerSquareFoot(decimal wattspersquarefoot)
         {
-            double value = (double) wattspersquarefoot;
+            decimal value = (decimal) wattspersquarefoot;
             return new HeatFlux(value, HeatFluxUnit.WattPerSquareFoot);
         }
         /// <summary>
@@ -440,9 +440,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static HeatFlux FromWattsPerSquareInch(double wattspersquareinch)
+        public static HeatFlux FromWattsPerSquareInch(decimal wattspersquareinch)
         {
-            double value = (double) wattspersquareinch;
+            decimal value = (decimal) wattspersquareinch;
             return new HeatFlux(value, HeatFluxUnit.WattPerSquareInch);
         }
         /// <summary>
@@ -450,9 +450,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static HeatFlux FromWattsPerSquareMeter(double wattspersquaremeter)
+        public static HeatFlux FromWattsPerSquareMeter(decimal wattspersquaremeter)
         {
-            double value = (double) wattspersquaremeter;
+            decimal value = (decimal) wattspersquaremeter;
             return new HeatFlux(value, HeatFluxUnit.WattPerSquareMeter);
         }
 
@@ -464,9 +464,9 @@ namespace UnitsNet
         /// <returns>HeatFlux unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static HeatFlux From(double value, HeatFluxUnit fromUnit)
+        public static HeatFlux From(decimal value, HeatFluxUnit fromUnit)
         {
-            return new HeatFlux((double)value, fromUnit);
+            return new HeatFlux((decimal)value, fromUnit);
         }
 
         #endregion
@@ -688,13 +688,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(HeatFlux other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(HeatFlux other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -712,19 +712,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((HeatFluxUnit)unit);
+        decimal IQuantity.As(object unit) => As((HeatFluxUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(HeatFluxUnit unit)
+        public decimal As(HeatFluxUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -742,34 +742,34 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
-                case HeatFluxUnit.BtuPerHourSquareFoot: return _value*3.15459075;
-                case HeatFluxUnit.BtuPerMinuteSquareFoot: return _value*1.89275445e2;
-                case HeatFluxUnit.BtuPerSecondSquareFoot: return _value*1.13565267e4;
-                case HeatFluxUnit.BtuPerSecondSquareInch: return _value*1.63533984e6;
-                case HeatFluxUnit.CaloriePerSecondSquareCentimeter: return _value*4.1868e4;
-                case HeatFluxUnit.CentiwattPerSquareMeter: return (_value) * 1e-2d;
-                case HeatFluxUnit.DeciwattPerSquareMeter: return (_value) * 1e-1d;
-                case HeatFluxUnit.KilocaloriePerHourSquareMeter: return _value*1.163;
-                case HeatFluxUnit.KilocaloriePerSecondSquareCentimeter: return (_value*4.1868e4) * 1e3d;
-                case HeatFluxUnit.KilowattPerSquareMeter: return (_value) * 1e3d;
-                case HeatFluxUnit.MicrowattPerSquareMeter: return (_value) * 1e-6d;
-                case HeatFluxUnit.MilliwattPerSquareMeter: return (_value) * 1e-3d;
-                case HeatFluxUnit.NanowattPerSquareMeter: return (_value) * 1e-9d;
-                case HeatFluxUnit.PoundForcePerFootSecond: return _value*1.459390293720636e1;
-                case HeatFluxUnit.PoundPerSecondCubed: return _value*4.5359237e-1;
-                case HeatFluxUnit.WattPerSquareFoot: return _value*1.07639e1;
-                case HeatFluxUnit.WattPerSquareInch: return _value*1.5500031e3;
+                case HeatFluxUnit.BtuPerHourSquareFoot: return _value*3.15459075m;
+                case HeatFluxUnit.BtuPerMinuteSquareFoot: return _value*1.89275445e2m;
+                case HeatFluxUnit.BtuPerSecondSquareFoot: return _value*1.13565267e4m;
+                case HeatFluxUnit.BtuPerSecondSquareInch: return _value*1.63533984e6m;
+                case HeatFluxUnit.CaloriePerSecondSquareCentimeter: return _value*4.1868e4m;
+                case HeatFluxUnit.CentiwattPerSquareMeter: return (_value) * 1e-2m;
+                case HeatFluxUnit.DeciwattPerSquareMeter: return (_value) * 1e-1m;
+                case HeatFluxUnit.KilocaloriePerHourSquareMeter: return _value*1.163m;
+                case HeatFluxUnit.KilocaloriePerSecondSquareCentimeter: return (_value*4.1868e4m) * 1e3m;
+                case HeatFluxUnit.KilowattPerSquareMeter: return (_value) * 1e3m;
+                case HeatFluxUnit.MicrowattPerSquareMeter: return (_value) * 1e-6m;
+                case HeatFluxUnit.MilliwattPerSquareMeter: return (_value) * 1e-3m;
+                case HeatFluxUnit.NanowattPerSquareMeter: return (_value) * 1e-9m;
+                case HeatFluxUnit.PoundForcePerFootSecond: return _value*1.459390293720636e1m;
+                case HeatFluxUnit.PoundPerSecondCubed: return _value*4.5359237e-1m;
+                case HeatFluxUnit.WattPerSquareFoot: return _value*1.07639e1m;
+                case HeatFluxUnit.WattPerSquareInch: return _value*1.5500031e3m;
                 case HeatFluxUnit.WattPerSquareMeter: return _value;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(HeatFluxUnit unit)
+        private decimal AsBaseNumericType(HeatFluxUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -778,23 +778,23 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case HeatFluxUnit.BtuPerHourSquareFoot: return baseUnitValue/3.15459075;
-                case HeatFluxUnit.BtuPerMinuteSquareFoot: return baseUnitValue/1.89275445e2;
-                case HeatFluxUnit.BtuPerSecondSquareFoot: return baseUnitValue/1.13565267e4;
-                case HeatFluxUnit.BtuPerSecondSquareInch: return baseUnitValue/1.63533984e6;
-                case HeatFluxUnit.CaloriePerSecondSquareCentimeter: return baseUnitValue/4.1868e4;
-                case HeatFluxUnit.CentiwattPerSquareMeter: return (baseUnitValue) / 1e-2d;
-                case HeatFluxUnit.DeciwattPerSquareMeter: return (baseUnitValue) / 1e-1d;
-                case HeatFluxUnit.KilocaloriePerHourSquareMeter: return baseUnitValue/1.163;
-                case HeatFluxUnit.KilocaloriePerSecondSquareCentimeter: return (baseUnitValue/4.1868e4) / 1e3d;
-                case HeatFluxUnit.KilowattPerSquareMeter: return (baseUnitValue) / 1e3d;
-                case HeatFluxUnit.MicrowattPerSquareMeter: return (baseUnitValue) / 1e-6d;
-                case HeatFluxUnit.MilliwattPerSquareMeter: return (baseUnitValue) / 1e-3d;
-                case HeatFluxUnit.NanowattPerSquareMeter: return (baseUnitValue) / 1e-9d;
-                case HeatFluxUnit.PoundForcePerFootSecond: return baseUnitValue/1.459390293720636e1;
-                case HeatFluxUnit.PoundPerSecondCubed: return baseUnitValue/4.5359237e-1;
-                case HeatFluxUnit.WattPerSquareFoot: return baseUnitValue/1.07639e1;
-                case HeatFluxUnit.WattPerSquareInch: return baseUnitValue/1.5500031e3;
+                case HeatFluxUnit.BtuPerHourSquareFoot: return baseUnitValue/3.15459075m;
+                case HeatFluxUnit.BtuPerMinuteSquareFoot: return baseUnitValue/1.89275445e2m;
+                case HeatFluxUnit.BtuPerSecondSquareFoot: return baseUnitValue/1.13565267e4m;
+                case HeatFluxUnit.BtuPerSecondSquareInch: return baseUnitValue/1.63533984e6m;
+                case HeatFluxUnit.CaloriePerSecondSquareCentimeter: return baseUnitValue/4.1868e4m;
+                case HeatFluxUnit.CentiwattPerSquareMeter: return (baseUnitValue) / 1e-2m;
+                case HeatFluxUnit.DeciwattPerSquareMeter: return (baseUnitValue) / 1e-1m;
+                case HeatFluxUnit.KilocaloriePerHourSquareMeter: return baseUnitValue/1.163m;
+                case HeatFluxUnit.KilocaloriePerSecondSquareCentimeter: return (baseUnitValue/4.1868e4m) / 1e3m;
+                case HeatFluxUnit.KilowattPerSquareMeter: return (baseUnitValue) / 1e3m;
+                case HeatFluxUnit.MicrowattPerSquareMeter: return (baseUnitValue) / 1e-6m;
+                case HeatFluxUnit.MilliwattPerSquareMeter: return (baseUnitValue) / 1e-3m;
+                case HeatFluxUnit.NanowattPerSquareMeter: return (baseUnitValue) / 1e-9m;
+                case HeatFluxUnit.PoundForcePerFootSecond: return baseUnitValue/1.459390293720636e1m;
+                case HeatFluxUnit.PoundPerSecondCubed: return baseUnitValue/4.5359237e-1m;
+                case HeatFluxUnit.WattPerSquareFoot: return baseUnitValue/1.07639e1m;
+                case HeatFluxUnit.WattPerSquareInch: return baseUnitValue/1.5500031e3m;
                 case HeatFluxUnit.WattPerSquareMeter: return baseUnitValue;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
@@ -834,7 +834,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -854,7 +854,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

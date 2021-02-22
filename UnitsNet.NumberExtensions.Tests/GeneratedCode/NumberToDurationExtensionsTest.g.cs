@@ -45,8 +45,8 @@ namespace UnitsNet.Tests
             Assert.Equal(Duration.FromMinutes(2), 2.Minutes());
 
         [Fact]
-        public void NumberToMonths30Test() =>
-            Assert.Equal(Duration.FromMonths30(2), 2.Months30());
+        public void NumberToMonths30mTest() =>
+            Assert.Equal(Duration.FromMonths30m(2), 2.Months30m());
 
         [Fact]
         public void NumberToNanosecondsTest() =>
@@ -61,8 +61,8 @@ namespace UnitsNet.Tests
             Assert.Equal(Duration.FromWeeks(2), 2.Weeks());
 
         [Fact]
-        public void NumberToYears365Test() =>
-            Assert.Equal(Duration.FromYears365(2), 2.Years365());
+        public void NumberToYears365mTest() =>
+            Assert.Equal(Duration.FromYears365m(2), 2.Years365m());
 
     }
 }

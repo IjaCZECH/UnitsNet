@@ -30,7 +30,7 @@ namespace UnitsNet.NumberExtensions.NumberToPermittivity
     {
         /// <inheritdoc cref="Permittivity.FromFaradsPerMeter(UnitsNet.QuantityValue)" />
         public static Permittivity FaradsPerMeter<T>(this T value) =>
-            Permittivity.FromFaradsPerMeter(Convert.ToDouble(value));
+            Permittivity.FromFaradsPerMeter(Convert.ToDecimal(value));
 
     }
 }

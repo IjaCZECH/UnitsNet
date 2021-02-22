@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -71,12 +71,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private CoefficientOfThermalExpansion(double value, CoefficientOfThermalExpansionUnit unit)
+        private CoefficientOfThermalExpansion(decimal value, CoefficientOfThermalExpansionUnit unit)
         {
             if(unit == CoefficientOfThermalExpansionUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -100,12 +100,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of CoefficientOfThermalExpansion
         /// </summary>
-        public static CoefficientOfThermalExpansion MaxValue { get; } = new CoefficientOfThermalExpansion(double.MaxValue, BaseUnit);
+        public static CoefficientOfThermalExpansion MaxValue { get; } = new CoefficientOfThermalExpansion(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of CoefficientOfThermalExpansion
         /// </summary>
-        public static CoefficientOfThermalExpansion MinValue { get; } = new CoefficientOfThermalExpansion(double.MinValue, BaseUnit);
+        public static CoefficientOfThermalExpansion MinValue { get; } = new CoefficientOfThermalExpansion(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -129,7 +129,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -158,17 +158,17 @@ namespace UnitsNet
         /// <summary>
         ///     Get CoefficientOfThermalExpansion in InverseDegreeCelsius.
         /// </summary>
-        public double InverseDegreeCelsius => As(CoefficientOfThermalExpansionUnit.InverseDegreeCelsius);
+        public decimal InverseDegreeCelsius => As(CoefficientOfThermalExpansionUnit.InverseDegreeCelsius);
 
         /// <summary>
         ///     Get CoefficientOfThermalExpansion in InverseDegreeFahrenheit.
         /// </summary>
-        public double InverseDegreeFahrenheit => As(CoefficientOfThermalExpansionUnit.InverseDegreeFahrenheit);
+        public decimal InverseDegreeFahrenheit => As(CoefficientOfThermalExpansionUnit.InverseDegreeFahrenheit);
 
         /// <summary>
         ///     Get CoefficientOfThermalExpansion in InverseKelvin.
         /// </summary>
-        public double InverseKelvin => As(CoefficientOfThermalExpansionUnit.InverseKelvin);
+        public decimal InverseKelvin => As(CoefficientOfThermalExpansionUnit.InverseKelvin);
 
         #endregion
 
@@ -205,9 +205,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static CoefficientOfThermalExpansion FromInverseDegreeCelsius(double inversedegreecelsius)
+        public static CoefficientOfThermalExpansion FromInverseDegreeCelsius(decimal inversedegreecelsius)
         {
-            double value = (double) inversedegreecelsius;
+            decimal value = (decimal) inversedegreecelsius;
             return new CoefficientOfThermalExpansion(value, CoefficientOfThermalExpansionUnit.InverseDegreeCelsius);
         }
         /// <summary>
@@ -215,9 +215,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static CoefficientOfThermalExpansion FromInverseDegreeFahrenheit(double inversedegreefahrenheit)
+        public static CoefficientOfThermalExpansion FromInverseDegreeFahrenheit(decimal inversedegreefahrenheit)
         {
-            double value = (double) inversedegreefahrenheit;
+            decimal value = (decimal) inversedegreefahrenheit;
             return new CoefficientOfThermalExpansion(value, CoefficientOfThermalExpansionUnit.InverseDegreeFahrenheit);
         }
         /// <summary>
@@ -225,9 +225,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static CoefficientOfThermalExpansion FromInverseKelvin(double inversekelvin)
+        public static CoefficientOfThermalExpansion FromInverseKelvin(decimal inversekelvin)
         {
-            double value = (double) inversekelvin;
+            decimal value = (decimal) inversekelvin;
             return new CoefficientOfThermalExpansion(value, CoefficientOfThermalExpansionUnit.InverseKelvin);
         }
 
@@ -239,9 +239,9 @@ namespace UnitsNet
         /// <returns>CoefficientOfThermalExpansion unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static CoefficientOfThermalExpansion From(double value, CoefficientOfThermalExpansionUnit fromUnit)
+        public static CoefficientOfThermalExpansion From(decimal value, CoefficientOfThermalExpansionUnit fromUnit)
         {
-            return new CoefficientOfThermalExpansion((double)value, fromUnit);
+            return new CoefficientOfThermalExpansion((decimal)value, fromUnit);
         }
 
         #endregion
@@ -463,13 +463,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(CoefficientOfThermalExpansion other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(CoefficientOfThermalExpansion other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -487,19 +487,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((CoefficientOfThermalExpansionUnit)unit);
+        decimal IQuantity.As(object unit) => As((CoefficientOfThermalExpansionUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(CoefficientOfThermalExpansionUnit unit)
+        public decimal As(CoefficientOfThermalExpansionUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -517,19 +517,19 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
                 case CoefficientOfThermalExpansionUnit.InverseDegreeCelsius: return _value;
-                case CoefficientOfThermalExpansionUnit.InverseDegreeFahrenheit: return _value*9/5;
+                case CoefficientOfThermalExpansionUnit.InverseDegreeFahrenheit: return _value*9m/5m;
                 case CoefficientOfThermalExpansionUnit.InverseKelvin: return _value;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(CoefficientOfThermalExpansionUnit unit)
+        private decimal AsBaseNumericType(CoefficientOfThermalExpansionUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -539,7 +539,7 @@ namespace UnitsNet
             switch(unit)
             {
                 case CoefficientOfThermalExpansionUnit.InverseDegreeCelsius: return baseUnitValue;
-                case CoefficientOfThermalExpansionUnit.InverseDegreeFahrenheit: return baseUnitValue*5/9;
+                case CoefficientOfThermalExpansionUnit.InverseDegreeFahrenheit: return baseUnitValue*5m/9m;
                 case CoefficientOfThermalExpansionUnit.InverseKelvin: return baseUnitValue;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
@@ -579,7 +579,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -599,7 +599,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

@@ -37,16 +37,16 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class TurbidityTestsBase : QuantityTestsBase
     {
-        protected abstract double NTUInOneNTU { get; }
+        protected abstract decimal NTUInOneNTU { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double NTUTolerance { get { return 1e-5; } }
+        protected virtual decimal NTUTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new Turbidity((double)0.0, TurbidityUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new Turbidity((decimal)0.0, TurbidityUnit.Undefined));
         }
 
         [Fact]
@@ -57,19 +57,6 @@ namespace UnitsNet.Tests
             Assert.Equal(TurbidityUnit.NTU, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new Turbidity(double.PositiveInfinity, TurbidityUnit.NTU));
-            Assert.Throws<ArgumentException>(() => new Turbidity(double.NegativeInfinity, TurbidityUnit.NTU));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new Turbidity(double.NaN, TurbidityUnit.NTU));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -130,19 +117,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromNTU_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => Turbidity.FromNTU(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => Turbidity.FromNTU(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromNTU_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => Turbidity.FromNTU(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var ntu = Turbidity.FromNTU(1);
@@ -157,7 +131,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -172,7 +146,7 @@ namespace UnitsNet.Tests
             var ntu = Turbidity.FromNTU(1);
 
             var ntuQuantity = ntu.ToUnit(TurbidityUnit.NTU);
-            AssertEx.EqualTolerance(NTUInOneNTU, (double)ntuQuantity.Value, NTUTolerance);
+            AssertEx.EqualTolerance(NTUInOneNTU, (decimal)ntuQuantity.Value, NTUTolerance);
             Assert.Equal(TurbidityUnit.NTU, ntuQuantity.Unit);
         }
 
@@ -368,10 +342,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 NTU", new Turbidity(0.123456, TurbidityUnit.NTU).ToString("s1"));
-                Assert.Equal("0.12 NTU", new Turbidity(0.123456, TurbidityUnit.NTU).ToString("s2"));
-                Assert.Equal("0.123 NTU", new Turbidity(0.123456, TurbidityUnit.NTU).ToString("s3"));
-                Assert.Equal("0.1235 NTU", new Turbidity(0.123456, TurbidityUnit.NTU).ToString("s4"));
+                Assert.Equal("0.1 NTU", new Turbidity(0.123456m, TurbidityUnit.NTU).ToString("s1"));
+                Assert.Equal("0.12 NTU", new Turbidity(0.123456m, TurbidityUnit.NTU).ToString("s2"));
+                Assert.Equal("0.123 NTU", new Turbidity(0.123456m, TurbidityUnit.NTU).ToString("s3"));
+                Assert.Equal("0.1235 NTU", new Turbidity(0.123456m, TurbidityUnit.NTU).ToString("s4"));
             }
             finally
             {
@@ -383,10 +357,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 NTU", new Turbidity(0.123456, TurbidityUnit.NTU).ToString("s1", culture));
-            Assert.Equal("0.12 NTU", new Turbidity(0.123456, TurbidityUnit.NTU).ToString("s2", culture));
-            Assert.Equal("0.123 NTU", new Turbidity(0.123456, TurbidityUnit.NTU).ToString("s3", culture));
-            Assert.Equal("0.1235 NTU", new Turbidity(0.123456, TurbidityUnit.NTU).ToString("s4", culture));
+            Assert.Equal("0.1 NTU", new Turbidity(0.123456m, TurbidityUnit.NTU).ToString("s1", culture));
+            Assert.Equal("0.12 NTU", new Turbidity(0.123456m, TurbidityUnit.NTU).ToString("s2", culture));
+            Assert.Equal("0.123 NTU", new Turbidity(0.123456m, TurbidityUnit.NTU).ToString("s3", culture));
+            Assert.Equal("0.1235 NTU", new Turbidity(0.123456m, TurbidityUnit.NTU).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -564,7 +538,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = Turbidity.FromNTU(value);
             Assert.Equal(Turbidity.FromNTU(-value), -quantity);

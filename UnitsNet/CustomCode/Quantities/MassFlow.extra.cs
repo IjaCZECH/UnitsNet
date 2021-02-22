@@ -10,13 +10,13 @@ namespace UnitsNet
         /// <summary>Get <see cref="Mass"/> from <see cref="MassFlow"/> times <see cref="TimeSpan"/>.</summary>
         public static Mass operator *(MassFlow massFlow, TimeSpan time)
         {
-            return Mass.FromKilograms(massFlow.KilogramsPerSecond * time.TotalSeconds);
+            return Mass.FromKilograms(massFlow.KilogramsPerSecond * (decimal)time.TotalSeconds);
         }
 
         /// <summary>Get <see cref="Mass"/> from <see cref="TimeSpan"/> times <see cref="MassFlow"/>.</summary>
         public static Mass operator *(TimeSpan time, MassFlow massFlow)
         {
-            return Mass.FromKilograms(massFlow.KilogramsPerSecond * time.TotalSeconds);
+            return Mass.FromKilograms(massFlow.KilogramsPerSecond * (decimal)time.TotalSeconds);
         }
 
         /// <summary>Get <see cref="Mass"/> from <see cref="MassFlow"/> times <see cref="Duration"/>.</summary>

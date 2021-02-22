@@ -30,7 +30,7 @@ namespace UnitsNet.NumberExtensions.NumberToTurbidity
     {
         /// <inheritdoc cref="Turbidity.FromNTU(UnitsNet.QuantityValue)" />
         public static Turbidity NTU<T>(this T value) =>
-            Turbidity.FromNTU(Convert.ToDouble(value));
+            Turbidity.FromNTU(Convert.ToDecimal(value));
 
     }
 }

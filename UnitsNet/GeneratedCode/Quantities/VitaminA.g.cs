@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -63,12 +63,12 @@ namespace UnitsNet
         /// <param name="value">The numeric value to construct this quantity with.</param>
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        public VitaminA(double value, VitaminAUnit unit)
+        public VitaminA(decimal value, VitaminAUnit unit)
         {
             if(unit == VitaminAUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -80,14 +80,14 @@ namespace UnitsNet
         /// <param name="unitSystem">The unit system to create the quantity with.</param>
         /// <exception cref="ArgumentNullException">The given <see cref="UnitSystem"/> is null.</exception>
         /// <exception cref="ArgumentException">No unit was found for the given <see cref="UnitSystem"/>.</exception>
-        public VitaminA(double value, UnitSystem unitSystem)
+        public VitaminA(decimal value, UnitSystem unitSystem)
         {
             if(unitSystem is null) throw new ArgumentNullException(nameof(unitSystem));
 
             var unitInfos = Info.GetUnitInfosFor(unitSystem.BaseUnits);
             var firstUnitInfo = unitInfos.FirstOrDefault();
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = firstUnitInfo?.Value ?? throw new ArgumentException("No units were found for the given UnitSystem.", nameof(unitSystem));
         }
 
@@ -109,12 +109,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of VitaminA
         /// </summary>
-        public static VitaminA MaxValue { get; } = new VitaminA(double.MaxValue, BaseUnit);
+        public static VitaminA MaxValue { get; } = new VitaminA(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of VitaminA
         /// </summary>
-        public static VitaminA MinValue { get; } = new VitaminA(double.MinValue, BaseUnit);
+        public static VitaminA MinValue { get; } = new VitaminA(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -138,7 +138,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => _value;
+        public decimal Value => _value;
 
         Enum IQuantity.Unit => Unit;
 
@@ -168,7 +168,7 @@ namespace UnitsNet
         /// <summary>
         ///     Get VitaminA in InternationalUnits.
         /// </summary>
-        public double InternationalUnits => As(VitaminAUnit.InternationalUnit);
+        public decimal InternationalUnits => As(VitaminAUnit.InternationalUnit);
 
         #endregion
 
@@ -205,7 +205,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static VitaminA FromInternationalUnits(QuantityValue internationalunits)
         {
-            double value = (double) internationalunits;
+            decimal value = (decimal) internationalunits;
             return new VitaminA(value, VitaminAUnit.InternationalUnit);
         }
 
@@ -217,7 +217,7 @@ namespace UnitsNet
         /// <returns>VitaminA unit value.</returns>
         public static VitaminA From(QuantityValue value, VitaminAUnit fromUnit)
         {
-            return new VitaminA((double)value, fromUnit);
+            return new VitaminA((decimal)value, fromUnit);
         }
 
         #endregion
@@ -387,25 +387,25 @@ namespace UnitsNet
         }
 
         /// <summary>Get <see cref="VitaminA"/> from multiplying value and <see cref="VitaminA"/>.</summary>
-        public static VitaminA operator *(double left, VitaminA right)
+        public static VitaminA operator *(decimal left, VitaminA right)
         {
             return new VitaminA(left * right.Value, right.Unit);
         }
 
         /// <summary>Get <see cref="VitaminA"/> from multiplying value and <see cref="VitaminA"/>.</summary>
-        public static VitaminA operator *(VitaminA left, double right)
+        public static VitaminA operator *(VitaminA left, decimal right)
         {
             return new VitaminA(left.Value * right, left.Unit);
         }
 
         /// <summary>Get <see cref="VitaminA"/> from dividing <see cref="VitaminA"/> by value.</summary>
-        public static VitaminA operator /(VitaminA left, double right)
+        public static VitaminA operator /(VitaminA left, decimal right)
         {
             return new VitaminA(left.Value / right, left.Unit);
         }
 
         /// <summary>Get ratio value from dividing <see cref="VitaminA"/> by <see cref="VitaminA"/>.</summary>
-        public static double operator /(VitaminA left, VitaminA right)
+        public static decimal operator /(VitaminA left, VitaminA right)
         {
             return left.InternationalUnits / right.InternationalUnits;
         }
@@ -439,14 +439,14 @@ namespace UnitsNet
         }
 
         /// <summary>Returns true if exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(VitaminA, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(VitaminA, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator ==(VitaminA left, VitaminA right)
         {
             return left.Equals(right);
         }
 
         /// <summary>Returns true if not exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(VitaminA, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(VitaminA, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator !=(VitaminA left, VitaminA right)
         {
             return !(left == right);
@@ -468,7 +468,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(VitaminA, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(VitaminA, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public override bool Equals(object obj)
         {
             if(obj is null || !(obj is VitaminA objVitaminA))
@@ -478,7 +478,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(VitaminA, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(VitaminA, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public bool Equals(VitaminA other)
         {
             return _value.Equals(other.GetValueAs(this.Unit));
@@ -524,13 +524,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(VitaminA other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(VitaminA other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -552,17 +552,17 @@ namespace UnitsNet
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(VitaminAUnit unit)
+        public decimal As(VitaminAUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = GetValueAs(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <inheritdoc cref="IQuantity.As(UnitSystem)"/>
-        public double As(UnitSystem unitSystem)
+        public decimal As(UnitSystem unitSystem)
         {
             if(unitSystem is null)
                 throw new ArgumentNullException(nameof(unitSystem));
@@ -577,7 +577,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        double IQuantity.As(Enum unit)
+        decimal IQuantity.As(Enum unit)
         {
             if(!(unit is VitaminAUnit unitAsVitaminAUnit))
                 throw new ArgumentException($"The given unit is of type {unit.GetType()}. Only {typeof(VitaminAUnit)} is supported.", nameof(unit));
@@ -633,7 +633,7 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double GetValueInBaseUnit()
+        private decimal GetValueInBaseUnit()
         {
             switch(Unit)
             {
@@ -654,7 +654,7 @@ namespace UnitsNet
             return new VitaminA(baseUnitValue, BaseUnit);
         }
 
-        private double GetValueAs(VitaminAUnit unit)
+        private decimal GetValueAs(VitaminAUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -701,7 +701,7 @@ namespace UnitsNet
         [Obsolete(@"This method is deprecated and will be removed at a future release. Please use ToString(""s2"") or ToString(""s2"", provider) where 2 is an example of the number passed to significantDigitsAfterRadix.")]
         public string ToString(IFormatProvider? provider, int significantDigitsAfterRadix)
         {
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -721,7 +721,7 @@ namespace UnitsNet
 
             provider = provider ?? CultureInfo.CurrentUICulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

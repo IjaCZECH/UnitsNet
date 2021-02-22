@@ -37,20 +37,20 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class MolarEnergyTestsBase : QuantityTestsBase
     {
-        protected abstract double JoulesPerMoleInOneJoulePerMole { get; }
-        protected abstract double KilojoulesPerMoleInOneJoulePerMole { get; }
-        protected abstract double MegajoulesPerMoleInOneJoulePerMole { get; }
+        protected abstract decimal JoulesPerMoleInOneJoulePerMole { get; }
+        protected abstract decimal KilojoulesPerMoleInOneJoulePerMole { get; }
+        protected abstract decimal MegajoulesPerMoleInOneJoulePerMole { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double JoulesPerMoleTolerance { get { return 1e-5; } }
-        protected virtual double KilojoulesPerMoleTolerance { get { return 1e-5; } }
-        protected virtual double MegajoulesPerMoleTolerance { get { return 1e-5; } }
+        protected virtual decimal JoulesPerMoleTolerance { get { return 1e-5; } }
+        protected virtual decimal KilojoulesPerMoleTolerance { get { return 1e-5; } }
+        protected virtual decimal MegajoulesPerMoleTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new MolarEnergy((double)0.0, MolarEnergyUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new MolarEnergy((decimal)0.0, MolarEnergyUnit.Undefined));
         }
 
         [Fact]
@@ -61,19 +61,6 @@ namespace UnitsNet.Tests
             Assert.Equal(MolarEnergyUnit.JoulePerMole, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new MolarEnergy(double.PositiveInfinity, MolarEnergyUnit.JoulePerMole));
-            Assert.Throws<ArgumentException>(() => new MolarEnergy(double.NegativeInfinity, MolarEnergyUnit.JoulePerMole));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new MolarEnergy(double.NaN, MolarEnergyUnit.JoulePerMole));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -144,19 +131,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromJoulesPerMole_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => MolarEnergy.FromJoulesPerMole(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => MolarEnergy.FromJoulesPerMole(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromJoulesPerMole_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => MolarEnergy.FromJoulesPerMole(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var joulepermole = MolarEnergy.FromJoulesPerMole(1);
@@ -173,7 +147,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -188,15 +162,15 @@ namespace UnitsNet.Tests
             var joulepermole = MolarEnergy.FromJoulesPerMole(1);
 
             var joulepermoleQuantity = joulepermole.ToUnit(MolarEnergyUnit.JoulePerMole);
-            AssertEx.EqualTolerance(JoulesPerMoleInOneJoulePerMole, (double)joulepermoleQuantity.Value, JoulesPerMoleTolerance);
+            AssertEx.EqualTolerance(JoulesPerMoleInOneJoulePerMole, (decimal)joulepermoleQuantity.Value, JoulesPerMoleTolerance);
             Assert.Equal(MolarEnergyUnit.JoulePerMole, joulepermoleQuantity.Unit);
 
             var kilojoulepermoleQuantity = joulepermole.ToUnit(MolarEnergyUnit.KilojoulePerMole);
-            AssertEx.EqualTolerance(KilojoulesPerMoleInOneJoulePerMole, (double)kilojoulepermoleQuantity.Value, KilojoulesPerMoleTolerance);
+            AssertEx.EqualTolerance(KilojoulesPerMoleInOneJoulePerMole, (decimal)kilojoulepermoleQuantity.Value, KilojoulesPerMoleTolerance);
             Assert.Equal(MolarEnergyUnit.KilojoulePerMole, kilojoulepermoleQuantity.Unit);
 
             var megajoulepermoleQuantity = joulepermole.ToUnit(MolarEnergyUnit.MegajoulePerMole);
-            AssertEx.EqualTolerance(MegajoulesPerMoleInOneJoulePerMole, (double)megajoulepermoleQuantity.Value, MegajoulesPerMoleTolerance);
+            AssertEx.EqualTolerance(MegajoulesPerMoleInOneJoulePerMole, (decimal)megajoulepermoleQuantity.Value, MegajoulesPerMoleTolerance);
             Assert.Equal(MolarEnergyUnit.MegajoulePerMole, megajoulepermoleQuantity.Unit);
         }
 
@@ -398,10 +372,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 J/mol", new MolarEnergy(0.123456, MolarEnergyUnit.JoulePerMole).ToString("s1"));
-                Assert.Equal("0.12 J/mol", new MolarEnergy(0.123456, MolarEnergyUnit.JoulePerMole).ToString("s2"));
-                Assert.Equal("0.123 J/mol", new MolarEnergy(0.123456, MolarEnergyUnit.JoulePerMole).ToString("s3"));
-                Assert.Equal("0.1235 J/mol", new MolarEnergy(0.123456, MolarEnergyUnit.JoulePerMole).ToString("s4"));
+                Assert.Equal("0.1 J/mol", new MolarEnergy(0.123456m, MolarEnergyUnit.JoulePerMole).ToString("s1"));
+                Assert.Equal("0.12 J/mol", new MolarEnergy(0.123456m, MolarEnergyUnit.JoulePerMole).ToString("s2"));
+                Assert.Equal("0.123 J/mol", new MolarEnergy(0.123456m, MolarEnergyUnit.JoulePerMole).ToString("s3"));
+                Assert.Equal("0.1235 J/mol", new MolarEnergy(0.123456m, MolarEnergyUnit.JoulePerMole).ToString("s4"));
             }
             finally
             {
@@ -413,10 +387,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 J/mol", new MolarEnergy(0.123456, MolarEnergyUnit.JoulePerMole).ToString("s1", culture));
-            Assert.Equal("0.12 J/mol", new MolarEnergy(0.123456, MolarEnergyUnit.JoulePerMole).ToString("s2", culture));
-            Assert.Equal("0.123 J/mol", new MolarEnergy(0.123456, MolarEnergyUnit.JoulePerMole).ToString("s3", culture));
-            Assert.Equal("0.1235 J/mol", new MolarEnergy(0.123456, MolarEnergyUnit.JoulePerMole).ToString("s4", culture));
+            Assert.Equal("0.1 J/mol", new MolarEnergy(0.123456m, MolarEnergyUnit.JoulePerMole).ToString("s1", culture));
+            Assert.Equal("0.12 J/mol", new MolarEnergy(0.123456m, MolarEnergyUnit.JoulePerMole).ToString("s2", culture));
+            Assert.Equal("0.123 J/mol", new MolarEnergy(0.123456m, MolarEnergyUnit.JoulePerMole).ToString("s3", culture));
+            Assert.Equal("0.1235 J/mol", new MolarEnergy(0.123456m, MolarEnergyUnit.JoulePerMole).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -594,7 +568,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = MolarEnergy.FromJoulesPerMole(value);
             Assert.Equal(MolarEnergy.FromJoulesPerMole(-value), -quantity);

@@ -42,7 +42,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -74,12 +74,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private ElectricResistivity(double value, ElectricResistivityUnit unit)
+        private ElectricResistivity(decimal value, ElectricResistivityUnit unit)
         {
             if(unit == ElectricResistivityUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -103,12 +103,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of ElectricResistivity
         /// </summary>
-        public static ElectricResistivity MaxValue { get; } = new ElectricResistivity(double.MaxValue, BaseUnit);
+        public static ElectricResistivity MaxValue { get; } = new ElectricResistivity(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of ElectricResistivity
         /// </summary>
-        public static ElectricResistivity MinValue { get; } = new ElectricResistivity(double.MinValue, BaseUnit);
+        public static ElectricResistivity MinValue { get; } = new ElectricResistivity(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -132,7 +132,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -161,72 +161,72 @@ namespace UnitsNet
         /// <summary>
         ///     Get ElectricResistivity in KiloohmsCentimeter.
         /// </summary>
-        public double KiloohmsCentimeter => As(ElectricResistivityUnit.KiloohmCentimeter);
+        public decimal KiloohmsCentimeter => As(ElectricResistivityUnit.KiloohmCentimeter);
 
         /// <summary>
         ///     Get ElectricResistivity in KiloohmMeters.
         /// </summary>
-        public double KiloohmMeters => As(ElectricResistivityUnit.KiloohmMeter);
+        public decimal KiloohmMeters => As(ElectricResistivityUnit.KiloohmMeter);
 
         /// <summary>
         ///     Get ElectricResistivity in MegaohmsCentimeter.
         /// </summary>
-        public double MegaohmsCentimeter => As(ElectricResistivityUnit.MegaohmCentimeter);
+        public decimal MegaohmsCentimeter => As(ElectricResistivityUnit.MegaohmCentimeter);
 
         /// <summary>
         ///     Get ElectricResistivity in MegaohmMeters.
         /// </summary>
-        public double MegaohmMeters => As(ElectricResistivityUnit.MegaohmMeter);
+        public decimal MegaohmMeters => As(ElectricResistivityUnit.MegaohmMeter);
 
         /// <summary>
         ///     Get ElectricResistivity in MicroohmsCentimeter.
         /// </summary>
-        public double MicroohmsCentimeter => As(ElectricResistivityUnit.MicroohmCentimeter);
+        public decimal MicroohmsCentimeter => As(ElectricResistivityUnit.MicroohmCentimeter);
 
         /// <summary>
         ///     Get ElectricResistivity in MicroohmMeters.
         /// </summary>
-        public double MicroohmMeters => As(ElectricResistivityUnit.MicroohmMeter);
+        public decimal MicroohmMeters => As(ElectricResistivityUnit.MicroohmMeter);
 
         /// <summary>
         ///     Get ElectricResistivity in MilliohmsCentimeter.
         /// </summary>
-        public double MilliohmsCentimeter => As(ElectricResistivityUnit.MilliohmCentimeter);
+        public decimal MilliohmsCentimeter => As(ElectricResistivityUnit.MilliohmCentimeter);
 
         /// <summary>
         ///     Get ElectricResistivity in MilliohmMeters.
         /// </summary>
-        public double MilliohmMeters => As(ElectricResistivityUnit.MilliohmMeter);
+        public decimal MilliohmMeters => As(ElectricResistivityUnit.MilliohmMeter);
 
         /// <summary>
         ///     Get ElectricResistivity in NanoohmsCentimeter.
         /// </summary>
-        public double NanoohmsCentimeter => As(ElectricResistivityUnit.NanoohmCentimeter);
+        public decimal NanoohmsCentimeter => As(ElectricResistivityUnit.NanoohmCentimeter);
 
         /// <summary>
         ///     Get ElectricResistivity in NanoohmMeters.
         /// </summary>
-        public double NanoohmMeters => As(ElectricResistivityUnit.NanoohmMeter);
+        public decimal NanoohmMeters => As(ElectricResistivityUnit.NanoohmMeter);
 
         /// <summary>
         ///     Get ElectricResistivity in OhmsCentimeter.
         /// </summary>
-        public double OhmsCentimeter => As(ElectricResistivityUnit.OhmCentimeter);
+        public decimal OhmsCentimeter => As(ElectricResistivityUnit.OhmCentimeter);
 
         /// <summary>
         ///     Get ElectricResistivity in OhmMeters.
         /// </summary>
-        public double OhmMeters => As(ElectricResistivityUnit.OhmMeter);
+        public decimal OhmMeters => As(ElectricResistivityUnit.OhmMeter);
 
         /// <summary>
         ///     Get ElectricResistivity in PicoohmsCentimeter.
         /// </summary>
-        public double PicoohmsCentimeter => As(ElectricResistivityUnit.PicoohmCentimeter);
+        public decimal PicoohmsCentimeter => As(ElectricResistivityUnit.PicoohmCentimeter);
 
         /// <summary>
         ///     Get ElectricResistivity in PicoohmMeters.
         /// </summary>
-        public double PicoohmMeters => As(ElectricResistivityUnit.PicoohmMeter);
+        public decimal PicoohmMeters => As(ElectricResistivityUnit.PicoohmMeter);
 
         #endregion
 
@@ -263,9 +263,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ElectricResistivity FromKiloohmsCentimeter(double kiloohmscentimeter)
+        public static ElectricResistivity FromKiloohmsCentimeter(decimal kiloohmscentimeter)
         {
-            double value = (double) kiloohmscentimeter;
+            decimal value = (decimal) kiloohmscentimeter;
             return new ElectricResistivity(value, ElectricResistivityUnit.KiloohmCentimeter);
         }
         /// <summary>
@@ -273,9 +273,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ElectricResistivity FromKiloohmMeters(double kiloohmmeters)
+        public static ElectricResistivity FromKiloohmMeters(decimal kiloohmmeters)
         {
-            double value = (double) kiloohmmeters;
+            decimal value = (decimal) kiloohmmeters;
             return new ElectricResistivity(value, ElectricResistivityUnit.KiloohmMeter);
         }
         /// <summary>
@@ -283,9 +283,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ElectricResistivity FromMegaohmsCentimeter(double megaohmscentimeter)
+        public static ElectricResistivity FromMegaohmsCentimeter(decimal megaohmscentimeter)
         {
-            double value = (double) megaohmscentimeter;
+            decimal value = (decimal) megaohmscentimeter;
             return new ElectricResistivity(value, ElectricResistivityUnit.MegaohmCentimeter);
         }
         /// <summary>
@@ -293,9 +293,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ElectricResistivity FromMegaohmMeters(double megaohmmeters)
+        public static ElectricResistivity FromMegaohmMeters(decimal megaohmmeters)
         {
-            double value = (double) megaohmmeters;
+            decimal value = (decimal) megaohmmeters;
             return new ElectricResistivity(value, ElectricResistivityUnit.MegaohmMeter);
         }
         /// <summary>
@@ -303,9 +303,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ElectricResistivity FromMicroohmsCentimeter(double microohmscentimeter)
+        public static ElectricResistivity FromMicroohmsCentimeter(decimal microohmscentimeter)
         {
-            double value = (double) microohmscentimeter;
+            decimal value = (decimal) microohmscentimeter;
             return new ElectricResistivity(value, ElectricResistivityUnit.MicroohmCentimeter);
         }
         /// <summary>
@@ -313,9 +313,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ElectricResistivity FromMicroohmMeters(double microohmmeters)
+        public static ElectricResistivity FromMicroohmMeters(decimal microohmmeters)
         {
-            double value = (double) microohmmeters;
+            decimal value = (decimal) microohmmeters;
             return new ElectricResistivity(value, ElectricResistivityUnit.MicroohmMeter);
         }
         /// <summary>
@@ -323,9 +323,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ElectricResistivity FromMilliohmsCentimeter(double milliohmscentimeter)
+        public static ElectricResistivity FromMilliohmsCentimeter(decimal milliohmscentimeter)
         {
-            double value = (double) milliohmscentimeter;
+            decimal value = (decimal) milliohmscentimeter;
             return new ElectricResistivity(value, ElectricResistivityUnit.MilliohmCentimeter);
         }
         /// <summary>
@@ -333,9 +333,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ElectricResistivity FromMilliohmMeters(double milliohmmeters)
+        public static ElectricResistivity FromMilliohmMeters(decimal milliohmmeters)
         {
-            double value = (double) milliohmmeters;
+            decimal value = (decimal) milliohmmeters;
             return new ElectricResistivity(value, ElectricResistivityUnit.MilliohmMeter);
         }
         /// <summary>
@@ -343,9 +343,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ElectricResistivity FromNanoohmsCentimeter(double nanoohmscentimeter)
+        public static ElectricResistivity FromNanoohmsCentimeter(decimal nanoohmscentimeter)
         {
-            double value = (double) nanoohmscentimeter;
+            decimal value = (decimal) nanoohmscentimeter;
             return new ElectricResistivity(value, ElectricResistivityUnit.NanoohmCentimeter);
         }
         /// <summary>
@@ -353,9 +353,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ElectricResistivity FromNanoohmMeters(double nanoohmmeters)
+        public static ElectricResistivity FromNanoohmMeters(decimal nanoohmmeters)
         {
-            double value = (double) nanoohmmeters;
+            decimal value = (decimal) nanoohmmeters;
             return new ElectricResistivity(value, ElectricResistivityUnit.NanoohmMeter);
         }
         /// <summary>
@@ -363,9 +363,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ElectricResistivity FromOhmsCentimeter(double ohmscentimeter)
+        public static ElectricResistivity FromOhmsCentimeter(decimal ohmscentimeter)
         {
-            double value = (double) ohmscentimeter;
+            decimal value = (decimal) ohmscentimeter;
             return new ElectricResistivity(value, ElectricResistivityUnit.OhmCentimeter);
         }
         /// <summary>
@@ -373,9 +373,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ElectricResistivity FromOhmMeters(double ohmmeters)
+        public static ElectricResistivity FromOhmMeters(decimal ohmmeters)
         {
-            double value = (double) ohmmeters;
+            decimal value = (decimal) ohmmeters;
             return new ElectricResistivity(value, ElectricResistivityUnit.OhmMeter);
         }
         /// <summary>
@@ -383,9 +383,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ElectricResistivity FromPicoohmsCentimeter(double picoohmscentimeter)
+        public static ElectricResistivity FromPicoohmsCentimeter(decimal picoohmscentimeter)
         {
-            double value = (double) picoohmscentimeter;
+            decimal value = (decimal) picoohmscentimeter;
             return new ElectricResistivity(value, ElectricResistivityUnit.PicoohmCentimeter);
         }
         /// <summary>
@@ -393,9 +393,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ElectricResistivity FromPicoohmMeters(double picoohmmeters)
+        public static ElectricResistivity FromPicoohmMeters(decimal picoohmmeters)
         {
-            double value = (double) picoohmmeters;
+            decimal value = (decimal) picoohmmeters;
             return new ElectricResistivity(value, ElectricResistivityUnit.PicoohmMeter);
         }
 
@@ -407,9 +407,9 @@ namespace UnitsNet
         /// <returns>ElectricResistivity unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static ElectricResistivity From(double value, ElectricResistivityUnit fromUnit)
+        public static ElectricResistivity From(decimal value, ElectricResistivityUnit fromUnit)
         {
-            return new ElectricResistivity((double)value, fromUnit);
+            return new ElectricResistivity((decimal)value, fromUnit);
         }
 
         #endregion
@@ -631,13 +631,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(ElectricResistivity other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(ElectricResistivity other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -655,19 +655,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((ElectricResistivityUnit)unit);
+        decimal IQuantity.As(object unit) => As((ElectricResistivityUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(ElectricResistivityUnit unit)
+        public decimal As(ElectricResistivityUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -685,30 +685,30 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
-                case ElectricResistivityUnit.KiloohmCentimeter: return (_value/100) * 1e3d;
-                case ElectricResistivityUnit.KiloohmMeter: return (_value) * 1e3d;
-                case ElectricResistivityUnit.MegaohmCentimeter: return (_value/100) * 1e6d;
-                case ElectricResistivityUnit.MegaohmMeter: return (_value) * 1e6d;
-                case ElectricResistivityUnit.MicroohmCentimeter: return (_value/100) * 1e-6d;
-                case ElectricResistivityUnit.MicroohmMeter: return (_value) * 1e-6d;
-                case ElectricResistivityUnit.MilliohmCentimeter: return (_value/100) * 1e-3d;
-                case ElectricResistivityUnit.MilliohmMeter: return (_value) * 1e-3d;
-                case ElectricResistivityUnit.NanoohmCentimeter: return (_value/100) * 1e-9d;
-                case ElectricResistivityUnit.NanoohmMeter: return (_value) * 1e-9d;
-                case ElectricResistivityUnit.OhmCentimeter: return _value/100;
+                case ElectricResistivityUnit.KiloohmCentimeter: return (_value/100m) * 1e3m;
+                case ElectricResistivityUnit.KiloohmMeter: return (_value) * 1e3m;
+                case ElectricResistivityUnit.MegaohmCentimeter: return (_value/100m) * 1e6m;
+                case ElectricResistivityUnit.MegaohmMeter: return (_value) * 1e6m;
+                case ElectricResistivityUnit.MicroohmCentimeter: return (_value/100m) * 1e-6m;
+                case ElectricResistivityUnit.MicroohmMeter: return (_value) * 1e-6m;
+                case ElectricResistivityUnit.MilliohmCentimeter: return (_value/100m) * 1e-3m;
+                case ElectricResistivityUnit.MilliohmMeter: return (_value) * 1e-3m;
+                case ElectricResistivityUnit.NanoohmCentimeter: return (_value/100m) * 1e-9m;
+                case ElectricResistivityUnit.NanoohmMeter: return (_value) * 1e-9m;
+                case ElectricResistivityUnit.OhmCentimeter: return _value/100m;
                 case ElectricResistivityUnit.OhmMeter: return _value;
-                case ElectricResistivityUnit.PicoohmCentimeter: return (_value/100) * 1e-12d;
-                case ElectricResistivityUnit.PicoohmMeter: return (_value) * 1e-12d;
+                case ElectricResistivityUnit.PicoohmCentimeter: return (_value/100m) * 1e-12m;
+                case ElectricResistivityUnit.PicoohmMeter: return (_value) * 1e-12m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(ElectricResistivityUnit unit)
+        private decimal AsBaseNumericType(ElectricResistivityUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -717,20 +717,20 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case ElectricResistivityUnit.KiloohmCentimeter: return (baseUnitValue*100) / 1e3d;
-                case ElectricResistivityUnit.KiloohmMeter: return (baseUnitValue) / 1e3d;
-                case ElectricResistivityUnit.MegaohmCentimeter: return (baseUnitValue*100) / 1e6d;
-                case ElectricResistivityUnit.MegaohmMeter: return (baseUnitValue) / 1e6d;
-                case ElectricResistivityUnit.MicroohmCentimeter: return (baseUnitValue*100) / 1e-6d;
-                case ElectricResistivityUnit.MicroohmMeter: return (baseUnitValue) / 1e-6d;
-                case ElectricResistivityUnit.MilliohmCentimeter: return (baseUnitValue*100) / 1e-3d;
-                case ElectricResistivityUnit.MilliohmMeter: return (baseUnitValue) / 1e-3d;
-                case ElectricResistivityUnit.NanoohmCentimeter: return (baseUnitValue*100) / 1e-9d;
-                case ElectricResistivityUnit.NanoohmMeter: return (baseUnitValue) / 1e-9d;
-                case ElectricResistivityUnit.OhmCentimeter: return baseUnitValue*100;
+                case ElectricResistivityUnit.KiloohmCentimeter: return (baseUnitValue*100m) / 1e3m;
+                case ElectricResistivityUnit.KiloohmMeter: return (baseUnitValue) / 1e3m;
+                case ElectricResistivityUnit.MegaohmCentimeter: return (baseUnitValue*100m) / 1e6m;
+                case ElectricResistivityUnit.MegaohmMeter: return (baseUnitValue) / 1e6m;
+                case ElectricResistivityUnit.MicroohmCentimeter: return (baseUnitValue*100m) / 1e-6m;
+                case ElectricResistivityUnit.MicroohmMeter: return (baseUnitValue) / 1e-6m;
+                case ElectricResistivityUnit.MilliohmCentimeter: return (baseUnitValue*100m) / 1e-3m;
+                case ElectricResistivityUnit.MilliohmMeter: return (baseUnitValue) / 1e-3m;
+                case ElectricResistivityUnit.NanoohmCentimeter: return (baseUnitValue*100m) / 1e-9m;
+                case ElectricResistivityUnit.NanoohmMeter: return (baseUnitValue) / 1e-9m;
+                case ElectricResistivityUnit.OhmCentimeter: return baseUnitValue*100m;
                 case ElectricResistivityUnit.OhmMeter: return baseUnitValue;
-                case ElectricResistivityUnit.PicoohmCentimeter: return (baseUnitValue*100) / 1e-12d;
-                case ElectricResistivityUnit.PicoohmMeter: return (baseUnitValue) / 1e-12d;
+                case ElectricResistivityUnit.PicoohmCentimeter: return (baseUnitValue*100m) / 1e-12m;
+                case ElectricResistivityUnit.PicoohmMeter: return (baseUnitValue) / 1e-12m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -769,7 +769,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -789,7 +789,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

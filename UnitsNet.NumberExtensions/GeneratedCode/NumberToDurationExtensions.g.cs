@@ -30,43 +30,43 @@ namespace UnitsNet.NumberExtensions.NumberToDuration
     {
         /// <inheritdoc cref="Duration.FromDays(UnitsNet.QuantityValue)" />
         public static Duration Days<T>(this T value) =>
-            Duration.FromDays(Convert.ToDouble(value));
+            Duration.FromDays(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Duration.FromHours(UnitsNet.QuantityValue)" />
         public static Duration Hours<T>(this T value) =>
-            Duration.FromHours(Convert.ToDouble(value));
+            Duration.FromHours(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Duration.FromMicroseconds(UnitsNet.QuantityValue)" />
         public static Duration Microseconds<T>(this T value) =>
-            Duration.FromMicroseconds(Convert.ToDouble(value));
+            Duration.FromMicroseconds(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Duration.FromMilliseconds(UnitsNet.QuantityValue)" />
         public static Duration Milliseconds<T>(this T value) =>
-            Duration.FromMilliseconds(Convert.ToDouble(value));
+            Duration.FromMilliseconds(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Duration.FromMinutes(UnitsNet.QuantityValue)" />
         public static Duration Minutes<T>(this T value) =>
-            Duration.FromMinutes(Convert.ToDouble(value));
+            Duration.FromMinutes(Convert.ToDecimal(value));
 
-        /// <inheritdoc cref="Duration.FromMonths30(UnitsNet.QuantityValue)" />
-        public static Duration Months30<T>(this T value) =>
-            Duration.FromMonths30(Convert.ToDouble(value));
+        /// <inheritdoc cref="Duration.FromMonths30m(UnitsNet.QuantityValue)" />
+        public static Duration Months30m<T>(this T value) =>
+            Duration.FromMonths30m(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Duration.FromNanoseconds(UnitsNet.QuantityValue)" />
         public static Duration Nanoseconds<T>(this T value) =>
-            Duration.FromNanoseconds(Convert.ToDouble(value));
+            Duration.FromNanoseconds(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Duration.FromSeconds(UnitsNet.QuantityValue)" />
         public static Duration Seconds<T>(this T value) =>
-            Duration.FromSeconds(Convert.ToDouble(value));
+            Duration.FromSeconds(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Duration.FromWeeks(UnitsNet.QuantityValue)" />
         public static Duration Weeks<T>(this T value) =>
-            Duration.FromWeeks(Convert.ToDouble(value));
+            Duration.FromWeeks(Convert.ToDecimal(value));
 
-        /// <inheritdoc cref="Duration.FromYears365(UnitsNet.QuantityValue)" />
-        public static Duration Years365<T>(this T value) =>
-            Duration.FromYears365(Convert.ToDouble(value));
+        /// <inheritdoc cref="Duration.FromYears365m(UnitsNet.QuantityValue)" />
+        public static Duration Years365m<T>(this T value) =>
+            Duration.FromYears365m(Convert.ToDecimal(value));
 
     }
 }

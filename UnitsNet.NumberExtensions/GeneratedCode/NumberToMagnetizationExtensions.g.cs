@@ -30,7 +30,7 @@ namespace UnitsNet.NumberExtensions.NumberToMagnetization
     {
         /// <inheritdoc cref="Magnetization.FromAmperesPerMeter(UnitsNet.QuantityValue)" />
         public static Magnetization AmperesPerMeter<T>(this T value) =>
-            Magnetization.FromAmperesPerMeter(Convert.ToDouble(value));
+            Magnetization.FromAmperesPerMeter(Convert.ToDecimal(value));
 
     }
 }

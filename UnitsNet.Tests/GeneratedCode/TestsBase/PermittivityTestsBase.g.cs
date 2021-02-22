@@ -37,16 +37,16 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class PermittivityTestsBase : QuantityTestsBase
     {
-        protected abstract double FaradsPerMeterInOneFaradPerMeter { get; }
+        protected abstract decimal FaradsPerMeterInOneFaradPerMeter { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double FaradsPerMeterTolerance { get { return 1e-5; } }
+        protected virtual decimal FaradsPerMeterTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new Permittivity((double)0.0, PermittivityUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new Permittivity((decimal)0.0, PermittivityUnit.Undefined));
         }
 
         [Fact]
@@ -57,19 +57,6 @@ namespace UnitsNet.Tests
             Assert.Equal(PermittivityUnit.FaradPerMeter, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new Permittivity(double.PositiveInfinity, PermittivityUnit.FaradPerMeter));
-            Assert.Throws<ArgumentException>(() => new Permittivity(double.NegativeInfinity, PermittivityUnit.FaradPerMeter));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new Permittivity(double.NaN, PermittivityUnit.FaradPerMeter));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -130,19 +117,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromFaradsPerMeter_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => Permittivity.FromFaradsPerMeter(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => Permittivity.FromFaradsPerMeter(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromFaradsPerMeter_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => Permittivity.FromFaradsPerMeter(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var faradpermeter = Permittivity.FromFaradsPerMeter(1);
@@ -157,7 +131,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -172,7 +146,7 @@ namespace UnitsNet.Tests
             var faradpermeter = Permittivity.FromFaradsPerMeter(1);
 
             var faradpermeterQuantity = faradpermeter.ToUnit(PermittivityUnit.FaradPerMeter);
-            AssertEx.EqualTolerance(FaradsPerMeterInOneFaradPerMeter, (double)faradpermeterQuantity.Value, FaradsPerMeterTolerance);
+            AssertEx.EqualTolerance(FaradsPerMeterInOneFaradPerMeter, (decimal)faradpermeterQuantity.Value, FaradsPerMeterTolerance);
             Assert.Equal(PermittivityUnit.FaradPerMeter, faradpermeterQuantity.Unit);
         }
 
@@ -368,10 +342,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 F/m", new Permittivity(0.123456, PermittivityUnit.FaradPerMeter).ToString("s1"));
-                Assert.Equal("0.12 F/m", new Permittivity(0.123456, PermittivityUnit.FaradPerMeter).ToString("s2"));
-                Assert.Equal("0.123 F/m", new Permittivity(0.123456, PermittivityUnit.FaradPerMeter).ToString("s3"));
-                Assert.Equal("0.1235 F/m", new Permittivity(0.123456, PermittivityUnit.FaradPerMeter).ToString("s4"));
+                Assert.Equal("0.1 F/m", new Permittivity(0.123456m, PermittivityUnit.FaradPerMeter).ToString("s1"));
+                Assert.Equal("0.12 F/m", new Permittivity(0.123456m, PermittivityUnit.FaradPerMeter).ToString("s2"));
+                Assert.Equal("0.123 F/m", new Permittivity(0.123456m, PermittivityUnit.FaradPerMeter).ToString("s3"));
+                Assert.Equal("0.1235 F/m", new Permittivity(0.123456m, PermittivityUnit.FaradPerMeter).ToString("s4"));
             }
             finally
             {
@@ -383,10 +357,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 F/m", new Permittivity(0.123456, PermittivityUnit.FaradPerMeter).ToString("s1", culture));
-            Assert.Equal("0.12 F/m", new Permittivity(0.123456, PermittivityUnit.FaradPerMeter).ToString("s2", culture));
-            Assert.Equal("0.123 F/m", new Permittivity(0.123456, PermittivityUnit.FaradPerMeter).ToString("s3", culture));
-            Assert.Equal("0.1235 F/m", new Permittivity(0.123456, PermittivityUnit.FaradPerMeter).ToString("s4", culture));
+            Assert.Equal("0.1 F/m", new Permittivity(0.123456m, PermittivityUnit.FaradPerMeter).ToString("s1", culture));
+            Assert.Equal("0.12 F/m", new Permittivity(0.123456m, PermittivityUnit.FaradPerMeter).ToString("s2", culture));
+            Assert.Equal("0.123 F/m", new Permittivity(0.123456m, PermittivityUnit.FaradPerMeter).ToString("s3", culture));
+            Assert.Equal("0.1235 F/m", new Permittivity(0.123456m, PermittivityUnit.FaradPerMeter).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -564,7 +538,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = Permittivity.FromFaradsPerMeter(value);
             Assert.Equal(Permittivity.FromFaradsPerMeter(-value), -quantity);

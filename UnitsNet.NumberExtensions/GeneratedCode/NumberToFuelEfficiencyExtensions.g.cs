@@ -30,19 +30,19 @@ namespace UnitsNet.NumberExtensions.NumberToFuelEfficiency
     {
         /// <inheritdoc cref="FuelEfficiency.FromKilometersPerLiters(UnitsNet.QuantityValue)" />
         public static FuelEfficiency KilometersPerLiters<T>(this T value) =>
-            FuelEfficiency.FromKilometersPerLiters(Convert.ToDouble(value));
+            FuelEfficiency.FromKilometersPerLiters(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="FuelEfficiency.FromLitersPer100Kilometers(UnitsNet.QuantityValue)" />
         public static FuelEfficiency LitersPer100Kilometers<T>(this T value) =>
-            FuelEfficiency.FromLitersPer100Kilometers(Convert.ToDouble(value));
+            FuelEfficiency.FromLitersPer100Kilometers(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="FuelEfficiency.FromMilesPerUkGallon(UnitsNet.QuantityValue)" />
         public static FuelEfficiency MilesPerUkGallon<T>(this T value) =>
-            FuelEfficiency.FromMilesPerUkGallon(Convert.ToDouble(value));
+            FuelEfficiency.FromMilesPerUkGallon(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="FuelEfficiency.FromMilesPerUsGallon(UnitsNet.QuantityValue)" />
         public static FuelEfficiency MilesPerUsGallon<T>(this T value) =>
-            FuelEfficiency.FromMilesPerUsGallon(Convert.ToDouble(value));
+            FuelEfficiency.FromMilesPerUsGallon(Convert.ToDecimal(value));
 
     }
 }

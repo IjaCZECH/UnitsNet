@@ -37,20 +37,20 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class MolarEntropyTestsBase : QuantityTestsBase
     {
-        protected abstract double JoulesPerMoleKelvinInOneJoulePerMoleKelvin { get; }
-        protected abstract double KilojoulesPerMoleKelvinInOneJoulePerMoleKelvin { get; }
-        protected abstract double MegajoulesPerMoleKelvinInOneJoulePerMoleKelvin { get; }
+        protected abstract decimal JoulesPerMoleKelvinInOneJoulePerMoleKelvin { get; }
+        protected abstract decimal KilojoulesPerMoleKelvinInOneJoulePerMoleKelvin { get; }
+        protected abstract decimal MegajoulesPerMoleKelvinInOneJoulePerMoleKelvin { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double JoulesPerMoleKelvinTolerance { get { return 1e-5; } }
-        protected virtual double KilojoulesPerMoleKelvinTolerance { get { return 1e-5; } }
-        protected virtual double MegajoulesPerMoleKelvinTolerance { get { return 1e-5; } }
+        protected virtual decimal JoulesPerMoleKelvinTolerance { get { return 1e-5; } }
+        protected virtual decimal KilojoulesPerMoleKelvinTolerance { get { return 1e-5; } }
+        protected virtual decimal MegajoulesPerMoleKelvinTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new MolarEntropy((double)0.0, MolarEntropyUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new MolarEntropy((decimal)0.0, MolarEntropyUnit.Undefined));
         }
 
         [Fact]
@@ -61,19 +61,6 @@ namespace UnitsNet.Tests
             Assert.Equal(MolarEntropyUnit.JoulePerMoleKelvin, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new MolarEntropy(double.PositiveInfinity, MolarEntropyUnit.JoulePerMoleKelvin));
-            Assert.Throws<ArgumentException>(() => new MolarEntropy(double.NegativeInfinity, MolarEntropyUnit.JoulePerMoleKelvin));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new MolarEntropy(double.NaN, MolarEntropyUnit.JoulePerMoleKelvin));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -144,19 +131,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromJoulesPerMoleKelvin_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => MolarEntropy.FromJoulesPerMoleKelvin(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => MolarEntropy.FromJoulesPerMoleKelvin(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromJoulesPerMoleKelvin_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => MolarEntropy.FromJoulesPerMoleKelvin(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var joulepermolekelvin = MolarEntropy.FromJoulesPerMoleKelvin(1);
@@ -173,7 +147,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -188,15 +162,15 @@ namespace UnitsNet.Tests
             var joulepermolekelvin = MolarEntropy.FromJoulesPerMoleKelvin(1);
 
             var joulepermolekelvinQuantity = joulepermolekelvin.ToUnit(MolarEntropyUnit.JoulePerMoleKelvin);
-            AssertEx.EqualTolerance(JoulesPerMoleKelvinInOneJoulePerMoleKelvin, (double)joulepermolekelvinQuantity.Value, JoulesPerMoleKelvinTolerance);
+            AssertEx.EqualTolerance(JoulesPerMoleKelvinInOneJoulePerMoleKelvin, (decimal)joulepermolekelvinQuantity.Value, JoulesPerMoleKelvinTolerance);
             Assert.Equal(MolarEntropyUnit.JoulePerMoleKelvin, joulepermolekelvinQuantity.Unit);
 
             var kilojoulepermolekelvinQuantity = joulepermolekelvin.ToUnit(MolarEntropyUnit.KilojoulePerMoleKelvin);
-            AssertEx.EqualTolerance(KilojoulesPerMoleKelvinInOneJoulePerMoleKelvin, (double)kilojoulepermolekelvinQuantity.Value, KilojoulesPerMoleKelvinTolerance);
+            AssertEx.EqualTolerance(KilojoulesPerMoleKelvinInOneJoulePerMoleKelvin, (decimal)kilojoulepermolekelvinQuantity.Value, KilojoulesPerMoleKelvinTolerance);
             Assert.Equal(MolarEntropyUnit.KilojoulePerMoleKelvin, kilojoulepermolekelvinQuantity.Unit);
 
             var megajoulepermolekelvinQuantity = joulepermolekelvin.ToUnit(MolarEntropyUnit.MegajoulePerMoleKelvin);
-            AssertEx.EqualTolerance(MegajoulesPerMoleKelvinInOneJoulePerMoleKelvin, (double)megajoulepermolekelvinQuantity.Value, MegajoulesPerMoleKelvinTolerance);
+            AssertEx.EqualTolerance(MegajoulesPerMoleKelvinInOneJoulePerMoleKelvin, (decimal)megajoulepermolekelvinQuantity.Value, MegajoulesPerMoleKelvinTolerance);
             Assert.Equal(MolarEntropyUnit.MegajoulePerMoleKelvin, megajoulepermolekelvinQuantity.Unit);
         }
 
@@ -398,10 +372,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 J/(mol*K)", new MolarEntropy(0.123456, MolarEntropyUnit.JoulePerMoleKelvin).ToString("s1"));
-                Assert.Equal("0.12 J/(mol*K)", new MolarEntropy(0.123456, MolarEntropyUnit.JoulePerMoleKelvin).ToString("s2"));
-                Assert.Equal("0.123 J/(mol*K)", new MolarEntropy(0.123456, MolarEntropyUnit.JoulePerMoleKelvin).ToString("s3"));
-                Assert.Equal("0.1235 J/(mol*K)", new MolarEntropy(0.123456, MolarEntropyUnit.JoulePerMoleKelvin).ToString("s4"));
+                Assert.Equal("0.1 J/(mol*K)", new MolarEntropy(0.123456m, MolarEntropyUnit.JoulePerMoleKelvin).ToString("s1"));
+                Assert.Equal("0.12 J/(mol*K)", new MolarEntropy(0.123456m, MolarEntropyUnit.JoulePerMoleKelvin).ToString("s2"));
+                Assert.Equal("0.123 J/(mol*K)", new MolarEntropy(0.123456m, MolarEntropyUnit.JoulePerMoleKelvin).ToString("s3"));
+                Assert.Equal("0.1235 J/(mol*K)", new MolarEntropy(0.123456m, MolarEntropyUnit.JoulePerMoleKelvin).ToString("s4"));
             }
             finally
             {
@@ -413,10 +387,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 J/(mol*K)", new MolarEntropy(0.123456, MolarEntropyUnit.JoulePerMoleKelvin).ToString("s1", culture));
-            Assert.Equal("0.12 J/(mol*K)", new MolarEntropy(0.123456, MolarEntropyUnit.JoulePerMoleKelvin).ToString("s2", culture));
-            Assert.Equal("0.123 J/(mol*K)", new MolarEntropy(0.123456, MolarEntropyUnit.JoulePerMoleKelvin).ToString("s3", culture));
-            Assert.Equal("0.1235 J/(mol*K)", new MolarEntropy(0.123456, MolarEntropyUnit.JoulePerMoleKelvin).ToString("s4", culture));
+            Assert.Equal("0.1 J/(mol*K)", new MolarEntropy(0.123456m, MolarEntropyUnit.JoulePerMoleKelvin).ToString("s1", culture));
+            Assert.Equal("0.12 J/(mol*K)", new MolarEntropy(0.123456m, MolarEntropyUnit.JoulePerMoleKelvin).ToString("s2", culture));
+            Assert.Equal("0.123 J/(mol*K)", new MolarEntropy(0.123456m, MolarEntropyUnit.JoulePerMoleKelvin).ToString("s3", culture));
+            Assert.Equal("0.1235 J/(mol*K)", new MolarEntropy(0.123456m, MolarEntropyUnit.JoulePerMoleKelvin).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -594,7 +568,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = MolarEntropy.FromJoulesPerMoleKelvin(value);
             Assert.Equal(MolarEntropy.FromJoulesPerMoleKelvin(-value), -quantity);

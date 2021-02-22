@@ -42,7 +42,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -74,12 +74,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private ElectricCharge(double value, ElectricChargeUnit unit)
+        private ElectricCharge(decimal value, ElectricChargeUnit unit)
         {
             if(unit == ElectricChargeUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -103,12 +103,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of ElectricCharge
         /// </summary>
-        public static ElectricCharge MaxValue { get; } = new ElectricCharge(double.MaxValue, BaseUnit);
+        public static ElectricCharge MaxValue { get; } = new ElectricCharge(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of ElectricCharge
         /// </summary>
-        public static ElectricCharge MinValue { get; } = new ElectricCharge(double.MinValue, BaseUnit);
+        public static ElectricCharge MinValue { get; } = new ElectricCharge(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -132,7 +132,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -161,27 +161,27 @@ namespace UnitsNet
         /// <summary>
         ///     Get ElectricCharge in AmpereHours.
         /// </summary>
-        public double AmpereHours => As(ElectricChargeUnit.AmpereHour);
+        public decimal AmpereHours => As(ElectricChargeUnit.AmpereHour);
 
         /// <summary>
         ///     Get ElectricCharge in Coulombs.
         /// </summary>
-        public double Coulombs => As(ElectricChargeUnit.Coulomb);
+        public decimal Coulombs => As(ElectricChargeUnit.Coulomb);
 
         /// <summary>
         ///     Get ElectricCharge in KiloampereHours.
         /// </summary>
-        public double KiloampereHours => As(ElectricChargeUnit.KiloampereHour);
+        public decimal KiloampereHours => As(ElectricChargeUnit.KiloampereHour);
 
         /// <summary>
         ///     Get ElectricCharge in MegaampereHours.
         /// </summary>
-        public double MegaampereHours => As(ElectricChargeUnit.MegaampereHour);
+        public decimal MegaampereHours => As(ElectricChargeUnit.MegaampereHour);
 
         /// <summary>
         ///     Get ElectricCharge in MilliampereHours.
         /// </summary>
-        public double MilliampereHours => As(ElectricChargeUnit.MilliampereHour);
+        public decimal MilliampereHours => As(ElectricChargeUnit.MilliampereHour);
 
         #endregion
 
@@ -218,9 +218,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ElectricCharge FromAmpereHours(double amperehours)
+        public static ElectricCharge FromAmpereHours(decimal amperehours)
         {
-            double value = (double) amperehours;
+            decimal value = (decimal) amperehours;
             return new ElectricCharge(value, ElectricChargeUnit.AmpereHour);
         }
         /// <summary>
@@ -228,9 +228,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ElectricCharge FromCoulombs(double coulombs)
+        public static ElectricCharge FromCoulombs(decimal coulombs)
         {
-            double value = (double) coulombs;
+            decimal value = (decimal) coulombs;
             return new ElectricCharge(value, ElectricChargeUnit.Coulomb);
         }
         /// <summary>
@@ -238,9 +238,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ElectricCharge FromKiloampereHours(double kiloamperehours)
+        public static ElectricCharge FromKiloampereHours(decimal kiloamperehours)
         {
-            double value = (double) kiloamperehours;
+            decimal value = (decimal) kiloamperehours;
             return new ElectricCharge(value, ElectricChargeUnit.KiloampereHour);
         }
         /// <summary>
@@ -248,9 +248,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ElectricCharge FromMegaampereHours(double megaamperehours)
+        public static ElectricCharge FromMegaampereHours(decimal megaamperehours)
         {
-            double value = (double) megaamperehours;
+            decimal value = (decimal) megaamperehours;
             return new ElectricCharge(value, ElectricChargeUnit.MegaampereHour);
         }
         /// <summary>
@@ -258,9 +258,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ElectricCharge FromMilliampereHours(double milliamperehours)
+        public static ElectricCharge FromMilliampereHours(decimal milliamperehours)
         {
-            double value = (double) milliamperehours;
+            decimal value = (decimal) milliamperehours;
             return new ElectricCharge(value, ElectricChargeUnit.MilliampereHour);
         }
 
@@ -272,9 +272,9 @@ namespace UnitsNet
         /// <returns>ElectricCharge unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static ElectricCharge From(double value, ElectricChargeUnit fromUnit)
+        public static ElectricCharge From(decimal value, ElectricChargeUnit fromUnit)
         {
-            return new ElectricCharge((double)value, fromUnit);
+            return new ElectricCharge((decimal)value, fromUnit);
         }
 
         #endregion
@@ -496,13 +496,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(ElectricCharge other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(ElectricCharge other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -520,19 +520,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((ElectricChargeUnit)unit);
+        decimal IQuantity.As(object unit) => As((ElectricChargeUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(ElectricChargeUnit unit)
+        public decimal As(ElectricChargeUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -550,21 +550,21 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
-                case ElectricChargeUnit.AmpereHour: return _value/2.77777777777e-4;
+                case ElectricChargeUnit.AmpereHour: return _value/2.77777777777e-4m;
                 case ElectricChargeUnit.Coulomb: return _value;
-                case ElectricChargeUnit.KiloampereHour: return (_value/2.77777777777e-4) * 1e3d;
-                case ElectricChargeUnit.MegaampereHour: return (_value/2.77777777777e-4) * 1e6d;
-                case ElectricChargeUnit.MilliampereHour: return (_value/2.77777777777e-4) * 1e-3d;
+                case ElectricChargeUnit.KiloampereHour: return (_value/2.77777777777e-4m) * 1e3m;
+                case ElectricChargeUnit.MegaampereHour: return (_value/2.77777777777e-4m) * 1e6m;
+                case ElectricChargeUnit.MilliampereHour: return (_value/2.77777777777e-4m) * 1e-3m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(ElectricChargeUnit unit)
+        private decimal AsBaseNumericType(ElectricChargeUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -573,11 +573,11 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case ElectricChargeUnit.AmpereHour: return baseUnitValue*2.77777777777e-4;
+                case ElectricChargeUnit.AmpereHour: return baseUnitValue*2.77777777777e-4m;
                 case ElectricChargeUnit.Coulomb: return baseUnitValue;
-                case ElectricChargeUnit.KiloampereHour: return (baseUnitValue*2.77777777777e-4) / 1e3d;
-                case ElectricChargeUnit.MegaampereHour: return (baseUnitValue*2.77777777777e-4) / 1e6d;
-                case ElectricChargeUnit.MilliampereHour: return (baseUnitValue*2.77777777777e-4) / 1e-3d;
+                case ElectricChargeUnit.KiloampereHour: return (baseUnitValue*2.77777777777e-4m) / 1e3m;
+                case ElectricChargeUnit.MegaampereHour: return (baseUnitValue*2.77777777777e-4m) / 1e6m;
+                case ElectricChargeUnit.MilliampereHour: return (baseUnitValue*2.77777777777e-4m) / 1e-3m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -616,7 +616,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -636,7 +636,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

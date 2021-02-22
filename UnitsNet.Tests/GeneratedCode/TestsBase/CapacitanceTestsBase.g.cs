@@ -37,28 +37,28 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class CapacitanceTestsBase : QuantityTestsBase
     {
-        protected abstract double FaradsInOneFarad { get; }
-        protected abstract double KilofaradsInOneFarad { get; }
-        protected abstract double MegafaradsInOneFarad { get; }
-        protected abstract double MicrofaradsInOneFarad { get; }
-        protected abstract double MillifaradsInOneFarad { get; }
-        protected abstract double NanofaradsInOneFarad { get; }
-        protected abstract double PicofaradsInOneFarad { get; }
+        protected abstract decimal FaradsInOneFarad { get; }
+        protected abstract decimal KilofaradsInOneFarad { get; }
+        protected abstract decimal MegafaradsInOneFarad { get; }
+        protected abstract decimal MicrofaradsInOneFarad { get; }
+        protected abstract decimal MillifaradsInOneFarad { get; }
+        protected abstract decimal NanofaradsInOneFarad { get; }
+        protected abstract decimal PicofaradsInOneFarad { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double FaradsTolerance { get { return 1e-5; } }
-        protected virtual double KilofaradsTolerance { get { return 1e-5; } }
-        protected virtual double MegafaradsTolerance { get { return 1e-5; } }
-        protected virtual double MicrofaradsTolerance { get { return 1e-5; } }
-        protected virtual double MillifaradsTolerance { get { return 1e-5; } }
-        protected virtual double NanofaradsTolerance { get { return 1e-5; } }
-        protected virtual double PicofaradsTolerance { get { return 1e-5; } }
+        protected virtual decimal FaradsTolerance { get { return 1e-5; } }
+        protected virtual decimal KilofaradsTolerance { get { return 1e-5; } }
+        protected virtual decimal MegafaradsTolerance { get { return 1e-5; } }
+        protected virtual decimal MicrofaradsTolerance { get { return 1e-5; } }
+        protected virtual decimal MillifaradsTolerance { get { return 1e-5; } }
+        protected virtual decimal NanofaradsTolerance { get { return 1e-5; } }
+        protected virtual decimal PicofaradsTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new Capacitance((double)0.0, CapacitanceUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new Capacitance((decimal)0.0, CapacitanceUnit.Undefined));
         }
 
         [Fact]
@@ -69,19 +69,6 @@ namespace UnitsNet.Tests
             Assert.Equal(CapacitanceUnit.Farad, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new Capacitance(double.PositiveInfinity, CapacitanceUnit.Farad));
-            Assert.Throws<ArgumentException>(() => new Capacitance(double.NegativeInfinity, CapacitanceUnit.Farad));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new Capacitance(double.NaN, CapacitanceUnit.Farad));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -172,19 +159,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromFarads_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => Capacitance.FromFarads(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => Capacitance.FromFarads(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromFarads_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => Capacitance.FromFarads(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var farad = Capacitance.FromFarads(1);
@@ -205,7 +179,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -220,31 +194,31 @@ namespace UnitsNet.Tests
             var farad = Capacitance.FromFarads(1);
 
             var faradQuantity = farad.ToUnit(CapacitanceUnit.Farad);
-            AssertEx.EqualTolerance(FaradsInOneFarad, (double)faradQuantity.Value, FaradsTolerance);
+            AssertEx.EqualTolerance(FaradsInOneFarad, (decimal)faradQuantity.Value, FaradsTolerance);
             Assert.Equal(CapacitanceUnit.Farad, faradQuantity.Unit);
 
             var kilofaradQuantity = farad.ToUnit(CapacitanceUnit.Kilofarad);
-            AssertEx.EqualTolerance(KilofaradsInOneFarad, (double)kilofaradQuantity.Value, KilofaradsTolerance);
+            AssertEx.EqualTolerance(KilofaradsInOneFarad, (decimal)kilofaradQuantity.Value, KilofaradsTolerance);
             Assert.Equal(CapacitanceUnit.Kilofarad, kilofaradQuantity.Unit);
 
             var megafaradQuantity = farad.ToUnit(CapacitanceUnit.Megafarad);
-            AssertEx.EqualTolerance(MegafaradsInOneFarad, (double)megafaradQuantity.Value, MegafaradsTolerance);
+            AssertEx.EqualTolerance(MegafaradsInOneFarad, (decimal)megafaradQuantity.Value, MegafaradsTolerance);
             Assert.Equal(CapacitanceUnit.Megafarad, megafaradQuantity.Unit);
 
             var microfaradQuantity = farad.ToUnit(CapacitanceUnit.Microfarad);
-            AssertEx.EqualTolerance(MicrofaradsInOneFarad, (double)microfaradQuantity.Value, MicrofaradsTolerance);
+            AssertEx.EqualTolerance(MicrofaradsInOneFarad, (decimal)microfaradQuantity.Value, MicrofaradsTolerance);
             Assert.Equal(CapacitanceUnit.Microfarad, microfaradQuantity.Unit);
 
             var millifaradQuantity = farad.ToUnit(CapacitanceUnit.Millifarad);
-            AssertEx.EqualTolerance(MillifaradsInOneFarad, (double)millifaradQuantity.Value, MillifaradsTolerance);
+            AssertEx.EqualTolerance(MillifaradsInOneFarad, (decimal)millifaradQuantity.Value, MillifaradsTolerance);
             Assert.Equal(CapacitanceUnit.Millifarad, millifaradQuantity.Unit);
 
             var nanofaradQuantity = farad.ToUnit(CapacitanceUnit.Nanofarad);
-            AssertEx.EqualTolerance(NanofaradsInOneFarad, (double)nanofaradQuantity.Value, NanofaradsTolerance);
+            AssertEx.EqualTolerance(NanofaradsInOneFarad, (decimal)nanofaradQuantity.Value, NanofaradsTolerance);
             Assert.Equal(CapacitanceUnit.Nanofarad, nanofaradQuantity.Unit);
 
             var picofaradQuantity = farad.ToUnit(CapacitanceUnit.Picofarad);
-            AssertEx.EqualTolerance(PicofaradsInOneFarad, (double)picofaradQuantity.Value, PicofaradsTolerance);
+            AssertEx.EqualTolerance(PicofaradsInOneFarad, (decimal)picofaradQuantity.Value, PicofaradsTolerance);
             Assert.Equal(CapacitanceUnit.Picofarad, picofaradQuantity.Unit);
         }
 
@@ -458,10 +432,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 F", new Capacitance(0.123456, CapacitanceUnit.Farad).ToString("s1"));
-                Assert.Equal("0.12 F", new Capacitance(0.123456, CapacitanceUnit.Farad).ToString("s2"));
-                Assert.Equal("0.123 F", new Capacitance(0.123456, CapacitanceUnit.Farad).ToString("s3"));
-                Assert.Equal("0.1235 F", new Capacitance(0.123456, CapacitanceUnit.Farad).ToString("s4"));
+                Assert.Equal("0.1 F", new Capacitance(0.123456m, CapacitanceUnit.Farad).ToString("s1"));
+                Assert.Equal("0.12 F", new Capacitance(0.123456m, CapacitanceUnit.Farad).ToString("s2"));
+                Assert.Equal("0.123 F", new Capacitance(0.123456m, CapacitanceUnit.Farad).ToString("s3"));
+                Assert.Equal("0.1235 F", new Capacitance(0.123456m, CapacitanceUnit.Farad).ToString("s4"));
             }
             finally
             {
@@ -473,10 +447,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 F", new Capacitance(0.123456, CapacitanceUnit.Farad).ToString("s1", culture));
-            Assert.Equal("0.12 F", new Capacitance(0.123456, CapacitanceUnit.Farad).ToString("s2", culture));
-            Assert.Equal("0.123 F", new Capacitance(0.123456, CapacitanceUnit.Farad).ToString("s3", culture));
-            Assert.Equal("0.1235 F", new Capacitance(0.123456, CapacitanceUnit.Farad).ToString("s4", culture));
+            Assert.Equal("0.1 F", new Capacitance(0.123456m, CapacitanceUnit.Farad).ToString("s1", culture));
+            Assert.Equal("0.12 F", new Capacitance(0.123456m, CapacitanceUnit.Farad).ToString("s2", culture));
+            Assert.Equal("0.123 F", new Capacitance(0.123456m, CapacitanceUnit.Farad).ToString("s3", culture));
+            Assert.Equal("0.1235 F", new Capacitance(0.123456m, CapacitanceUnit.Farad).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -654,7 +628,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = Capacitance.FromFarads(value);
             Assert.Equal(Capacitance.FromFarads(-value), -quantity);

@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -71,12 +71,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private VolumeFlow(double value, VolumeFlowUnit unit)
+        private VolumeFlow(decimal value, VolumeFlowUnit unit)
         {
             if(unit == VolumeFlowUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -100,12 +100,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of VolumeFlow
         /// </summary>
-        public static VolumeFlow MaxValue { get; } = new VolumeFlow(double.MaxValue, BaseUnit);
+        public static VolumeFlow MaxValue { get; } = new VolumeFlow(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of VolumeFlow
         /// </summary>
-        public static VolumeFlow MinValue { get; } = new VolumeFlow(double.MinValue, BaseUnit);
+        public static VolumeFlow MinValue { get; } = new VolumeFlow(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -129,7 +129,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -158,277 +158,277 @@ namespace UnitsNet
         /// <summary>
         ///     Get VolumeFlow in AcreFeetPerDay.
         /// </summary>
-        public double AcreFeetPerDay => As(VolumeFlowUnit.AcreFootPerDay);
+        public decimal AcreFeetPerDay => As(VolumeFlowUnit.AcreFootPerDay);
 
         /// <summary>
         ///     Get VolumeFlow in AcreFeetPerHour.
         /// </summary>
-        public double AcreFeetPerHour => As(VolumeFlowUnit.AcreFootPerHour);
+        public decimal AcreFeetPerHour => As(VolumeFlowUnit.AcreFootPerHour);
 
         /// <summary>
         ///     Get VolumeFlow in AcreFeetPerMinute.
         /// </summary>
-        public double AcreFeetPerMinute => As(VolumeFlowUnit.AcreFootPerMinute);
+        public decimal AcreFeetPerMinute => As(VolumeFlowUnit.AcreFootPerMinute);
 
         /// <summary>
         ///     Get VolumeFlow in AcreFeetPerSecond.
         /// </summary>
-        public double AcreFeetPerSecond => As(VolumeFlowUnit.AcreFootPerSecond);
+        public decimal AcreFeetPerSecond => As(VolumeFlowUnit.AcreFootPerSecond);
 
         /// <summary>
         ///     Get VolumeFlow in CentilitersPerDay.
         /// </summary>
-        public double CentilitersPerDay => As(VolumeFlowUnit.CentiliterPerDay);
+        public decimal CentilitersPerDay => As(VolumeFlowUnit.CentiliterPerDay);
 
         /// <summary>
         ///     Get VolumeFlow in CentilitersPerMinute.
         /// </summary>
-        public double CentilitersPerMinute => As(VolumeFlowUnit.CentiliterPerMinute);
+        public decimal CentilitersPerMinute => As(VolumeFlowUnit.CentiliterPerMinute);
 
         /// <summary>
         ///     Get VolumeFlow in CentilitersPerSecond.
         /// </summary>
-        public double CentilitersPerSecond => As(VolumeFlowUnit.CentiliterPerSecond);
+        public decimal CentilitersPerSecond => As(VolumeFlowUnit.CentiliterPerSecond);
 
         /// <summary>
         ///     Get VolumeFlow in CubicDecimetersPerMinute.
         /// </summary>
-        public double CubicDecimetersPerMinute => As(VolumeFlowUnit.CubicDecimeterPerMinute);
+        public decimal CubicDecimetersPerMinute => As(VolumeFlowUnit.CubicDecimeterPerMinute);
 
         /// <summary>
         ///     Get VolumeFlow in CubicFeetPerHour.
         /// </summary>
-        public double CubicFeetPerHour => As(VolumeFlowUnit.CubicFootPerHour);
+        public decimal CubicFeetPerHour => As(VolumeFlowUnit.CubicFootPerHour);
 
         /// <summary>
         ///     Get VolumeFlow in CubicFeetPerMinute.
         /// </summary>
-        public double CubicFeetPerMinute => As(VolumeFlowUnit.CubicFootPerMinute);
+        public decimal CubicFeetPerMinute => As(VolumeFlowUnit.CubicFootPerMinute);
 
         /// <summary>
         ///     Get VolumeFlow in CubicFeetPerSecond.
         /// </summary>
-        public double CubicFeetPerSecond => As(VolumeFlowUnit.CubicFootPerSecond);
+        public decimal CubicFeetPerSecond => As(VolumeFlowUnit.CubicFootPerSecond);
 
         /// <summary>
         ///     Get VolumeFlow in CubicMetersPerDay.
         /// </summary>
-        public double CubicMetersPerDay => As(VolumeFlowUnit.CubicMeterPerDay);
+        public decimal CubicMetersPerDay => As(VolumeFlowUnit.CubicMeterPerDay);
 
         /// <summary>
         ///     Get VolumeFlow in CubicMetersPerHour.
         /// </summary>
-        public double CubicMetersPerHour => As(VolumeFlowUnit.CubicMeterPerHour);
+        public decimal CubicMetersPerHour => As(VolumeFlowUnit.CubicMeterPerHour);
 
         /// <summary>
         ///     Get VolumeFlow in CubicMetersPerMinute.
         /// </summary>
-        public double CubicMetersPerMinute => As(VolumeFlowUnit.CubicMeterPerMinute);
+        public decimal CubicMetersPerMinute => As(VolumeFlowUnit.CubicMeterPerMinute);
 
         /// <summary>
         ///     Get VolumeFlow in CubicMetersPerSecond.
         /// </summary>
-        public double CubicMetersPerSecond => As(VolumeFlowUnit.CubicMeterPerSecond);
+        public decimal CubicMetersPerSecond => As(VolumeFlowUnit.CubicMeterPerSecond);
 
         /// <summary>
         ///     Get VolumeFlow in CubicMillimetersPerSecond.
         /// </summary>
-        public double CubicMillimetersPerSecond => As(VolumeFlowUnit.CubicMillimeterPerSecond);
+        public decimal CubicMillimetersPerSecond => As(VolumeFlowUnit.CubicMillimeterPerSecond);
 
         /// <summary>
         ///     Get VolumeFlow in CubicYardsPerDay.
         /// </summary>
-        public double CubicYardsPerDay => As(VolumeFlowUnit.CubicYardPerDay);
+        public decimal CubicYardsPerDay => As(VolumeFlowUnit.CubicYardPerDay);
 
         /// <summary>
         ///     Get VolumeFlow in CubicYardsPerHour.
         /// </summary>
-        public double CubicYardsPerHour => As(VolumeFlowUnit.CubicYardPerHour);
+        public decimal CubicYardsPerHour => As(VolumeFlowUnit.CubicYardPerHour);
 
         /// <summary>
         ///     Get VolumeFlow in CubicYardsPerMinute.
         /// </summary>
-        public double CubicYardsPerMinute => As(VolumeFlowUnit.CubicYardPerMinute);
+        public decimal CubicYardsPerMinute => As(VolumeFlowUnit.CubicYardPerMinute);
 
         /// <summary>
         ///     Get VolumeFlow in CubicYardsPerSecond.
         /// </summary>
-        public double CubicYardsPerSecond => As(VolumeFlowUnit.CubicYardPerSecond);
+        public decimal CubicYardsPerSecond => As(VolumeFlowUnit.CubicYardPerSecond);
 
         /// <summary>
         ///     Get VolumeFlow in DecilitersPerDay.
         /// </summary>
-        public double DecilitersPerDay => As(VolumeFlowUnit.DeciliterPerDay);
+        public decimal DecilitersPerDay => As(VolumeFlowUnit.DeciliterPerDay);
 
         /// <summary>
         ///     Get VolumeFlow in DecilitersPerMinute.
         /// </summary>
-        public double DecilitersPerMinute => As(VolumeFlowUnit.DeciliterPerMinute);
+        public decimal DecilitersPerMinute => As(VolumeFlowUnit.DeciliterPerMinute);
 
         /// <summary>
         ///     Get VolumeFlow in DecilitersPerSecond.
         /// </summary>
-        public double DecilitersPerSecond => As(VolumeFlowUnit.DeciliterPerSecond);
+        public decimal DecilitersPerSecond => As(VolumeFlowUnit.DeciliterPerSecond);
 
         /// <summary>
         ///     Get VolumeFlow in KilolitersPerDay.
         /// </summary>
-        public double KilolitersPerDay => As(VolumeFlowUnit.KiloliterPerDay);
+        public decimal KilolitersPerDay => As(VolumeFlowUnit.KiloliterPerDay);
 
         /// <summary>
         ///     Get VolumeFlow in KilolitersPerMinute.
         /// </summary>
-        public double KilolitersPerMinute => As(VolumeFlowUnit.KiloliterPerMinute);
+        public decimal KilolitersPerMinute => As(VolumeFlowUnit.KiloliterPerMinute);
 
         /// <summary>
         ///     Get VolumeFlow in KilolitersPerSecond.
         /// </summary>
-        public double KilolitersPerSecond => As(VolumeFlowUnit.KiloliterPerSecond);
+        public decimal KilolitersPerSecond => As(VolumeFlowUnit.KiloliterPerSecond);
 
         /// <summary>
         ///     Get VolumeFlow in KilousGallonsPerMinute.
         /// </summary>
-        public double KilousGallonsPerMinute => As(VolumeFlowUnit.KilousGallonPerMinute);
+        public decimal KilousGallonsPerMinute => As(VolumeFlowUnit.KilousGallonPerMinute);
 
         /// <summary>
         ///     Get VolumeFlow in LitersPerDay.
         /// </summary>
-        public double LitersPerDay => As(VolumeFlowUnit.LiterPerDay);
+        public decimal LitersPerDay => As(VolumeFlowUnit.LiterPerDay);
 
         /// <summary>
         ///     Get VolumeFlow in LitersPerHour.
         /// </summary>
-        public double LitersPerHour => As(VolumeFlowUnit.LiterPerHour);
+        public decimal LitersPerHour => As(VolumeFlowUnit.LiterPerHour);
 
         /// <summary>
         ///     Get VolumeFlow in LitersPerMinute.
         /// </summary>
-        public double LitersPerMinute => As(VolumeFlowUnit.LiterPerMinute);
+        public decimal LitersPerMinute => As(VolumeFlowUnit.LiterPerMinute);
 
         /// <summary>
         ///     Get VolumeFlow in LitersPerSecond.
         /// </summary>
-        public double LitersPerSecond => As(VolumeFlowUnit.LiterPerSecond);
+        public decimal LitersPerSecond => As(VolumeFlowUnit.LiterPerSecond);
 
         /// <summary>
         ///     Get VolumeFlow in MegalitersPerDay.
         /// </summary>
-        public double MegalitersPerDay => As(VolumeFlowUnit.MegaliterPerDay);
+        public decimal MegalitersPerDay => As(VolumeFlowUnit.MegaliterPerDay);
 
         /// <summary>
         ///     Get VolumeFlow in MegaukGallonsPerSecond.
         /// </summary>
-        public double MegaukGallonsPerSecond => As(VolumeFlowUnit.MegaukGallonPerSecond);
+        public decimal MegaukGallonsPerSecond => As(VolumeFlowUnit.MegaukGallonPerSecond);
 
         /// <summary>
         ///     Get VolumeFlow in MicrolitersPerDay.
         /// </summary>
-        public double MicrolitersPerDay => As(VolumeFlowUnit.MicroliterPerDay);
+        public decimal MicrolitersPerDay => As(VolumeFlowUnit.MicroliterPerDay);
 
         /// <summary>
         ///     Get VolumeFlow in MicrolitersPerMinute.
         /// </summary>
-        public double MicrolitersPerMinute => As(VolumeFlowUnit.MicroliterPerMinute);
+        public decimal MicrolitersPerMinute => As(VolumeFlowUnit.MicroliterPerMinute);
 
         /// <summary>
         ///     Get VolumeFlow in MicrolitersPerSecond.
         /// </summary>
-        public double MicrolitersPerSecond => As(VolumeFlowUnit.MicroliterPerSecond);
+        public decimal MicrolitersPerSecond => As(VolumeFlowUnit.MicroliterPerSecond);
 
         /// <summary>
         ///     Get VolumeFlow in MillilitersPerDay.
         /// </summary>
-        public double MillilitersPerDay => As(VolumeFlowUnit.MilliliterPerDay);
+        public decimal MillilitersPerDay => As(VolumeFlowUnit.MilliliterPerDay);
 
         /// <summary>
         ///     Get VolumeFlow in MillilitersPerMinute.
         /// </summary>
-        public double MillilitersPerMinute => As(VolumeFlowUnit.MilliliterPerMinute);
+        public decimal MillilitersPerMinute => As(VolumeFlowUnit.MilliliterPerMinute);
 
         /// <summary>
         ///     Get VolumeFlow in MillilitersPerSecond.
         /// </summary>
-        public double MillilitersPerSecond => As(VolumeFlowUnit.MilliliterPerSecond);
+        public decimal MillilitersPerSecond => As(VolumeFlowUnit.MilliliterPerSecond);
 
         /// <summary>
         ///     Get VolumeFlow in MillionUsGallonsPerDay.
         /// </summary>
-        public double MillionUsGallonsPerDay => As(VolumeFlowUnit.MillionUsGallonsPerDay);
+        public decimal MillionUsGallonsPerDay => As(VolumeFlowUnit.MillionUsGallonsPerDay);
 
         /// <summary>
         ///     Get VolumeFlow in NanolitersPerDay.
         /// </summary>
-        public double NanolitersPerDay => As(VolumeFlowUnit.NanoliterPerDay);
+        public decimal NanolitersPerDay => As(VolumeFlowUnit.NanoliterPerDay);
 
         /// <summary>
         ///     Get VolumeFlow in NanolitersPerMinute.
         /// </summary>
-        public double NanolitersPerMinute => As(VolumeFlowUnit.NanoliterPerMinute);
+        public decimal NanolitersPerMinute => As(VolumeFlowUnit.NanoliterPerMinute);
 
         /// <summary>
         ///     Get VolumeFlow in NanolitersPerSecond.
         /// </summary>
-        public double NanolitersPerSecond => As(VolumeFlowUnit.NanoliterPerSecond);
+        public decimal NanolitersPerSecond => As(VolumeFlowUnit.NanoliterPerSecond);
 
         /// <summary>
         ///     Get VolumeFlow in OilBarrelsPerDay.
         /// </summary>
-        public double OilBarrelsPerDay => As(VolumeFlowUnit.OilBarrelPerDay);
+        public decimal OilBarrelsPerDay => As(VolumeFlowUnit.OilBarrelPerDay);
 
         /// <summary>
         ///     Get VolumeFlow in OilBarrelsPerHour.
         /// </summary>
-        public double OilBarrelsPerHour => As(VolumeFlowUnit.OilBarrelPerHour);
+        public decimal OilBarrelsPerHour => As(VolumeFlowUnit.OilBarrelPerHour);
 
         /// <summary>
         ///     Get VolumeFlow in OilBarrelsPerMinute.
         /// </summary>
-        public double OilBarrelsPerMinute => As(VolumeFlowUnit.OilBarrelPerMinute);
+        public decimal OilBarrelsPerMinute => As(VolumeFlowUnit.OilBarrelPerMinute);
 
         /// <summary>
         ///     Get VolumeFlow in OilBarrelsPerSecond.
         /// </summary>
-        public double OilBarrelsPerSecond => As(VolumeFlowUnit.OilBarrelPerSecond);
+        public decimal OilBarrelsPerSecond => As(VolumeFlowUnit.OilBarrelPerSecond);
 
         /// <summary>
         ///     Get VolumeFlow in UkGallonsPerDay.
         /// </summary>
-        public double UkGallonsPerDay => As(VolumeFlowUnit.UkGallonPerDay);
+        public decimal UkGallonsPerDay => As(VolumeFlowUnit.UkGallonPerDay);
 
         /// <summary>
         ///     Get VolumeFlow in UkGallonsPerHour.
         /// </summary>
-        public double UkGallonsPerHour => As(VolumeFlowUnit.UkGallonPerHour);
+        public decimal UkGallonsPerHour => As(VolumeFlowUnit.UkGallonPerHour);
 
         /// <summary>
         ///     Get VolumeFlow in UkGallonsPerMinute.
         /// </summary>
-        public double UkGallonsPerMinute => As(VolumeFlowUnit.UkGallonPerMinute);
+        public decimal UkGallonsPerMinute => As(VolumeFlowUnit.UkGallonPerMinute);
 
         /// <summary>
         ///     Get VolumeFlow in UkGallonsPerSecond.
         /// </summary>
-        public double UkGallonsPerSecond => As(VolumeFlowUnit.UkGallonPerSecond);
+        public decimal UkGallonsPerSecond => As(VolumeFlowUnit.UkGallonPerSecond);
 
         /// <summary>
         ///     Get VolumeFlow in UsGallonsPerDay.
         /// </summary>
-        public double UsGallonsPerDay => As(VolumeFlowUnit.UsGallonPerDay);
+        public decimal UsGallonsPerDay => As(VolumeFlowUnit.UsGallonPerDay);
 
         /// <summary>
         ///     Get VolumeFlow in UsGallonsPerHour.
         /// </summary>
-        public double UsGallonsPerHour => As(VolumeFlowUnit.UsGallonPerHour);
+        public decimal UsGallonsPerHour => As(VolumeFlowUnit.UsGallonPerHour);
 
         /// <summary>
         ///     Get VolumeFlow in UsGallonsPerMinute.
         /// </summary>
-        public double UsGallonsPerMinute => As(VolumeFlowUnit.UsGallonPerMinute);
+        public decimal UsGallonsPerMinute => As(VolumeFlowUnit.UsGallonPerMinute);
 
         /// <summary>
         ///     Get VolumeFlow in UsGallonsPerSecond.
         /// </summary>
-        public double UsGallonsPerSecond => As(VolumeFlowUnit.UsGallonPerSecond);
+        public decimal UsGallonsPerSecond => As(VolumeFlowUnit.UsGallonPerSecond);
 
         #endregion
 
@@ -465,9 +465,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromAcreFeetPerDay(double acrefeetperday)
+        public static VolumeFlow FromAcreFeetPerDay(decimal acrefeetperday)
         {
-            double value = (double) acrefeetperday;
+            decimal value = (decimal) acrefeetperday;
             return new VolumeFlow(value, VolumeFlowUnit.AcreFootPerDay);
         }
         /// <summary>
@@ -475,9 +475,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromAcreFeetPerHour(double acrefeetperhour)
+        public static VolumeFlow FromAcreFeetPerHour(decimal acrefeetperhour)
         {
-            double value = (double) acrefeetperhour;
+            decimal value = (decimal) acrefeetperhour;
             return new VolumeFlow(value, VolumeFlowUnit.AcreFootPerHour);
         }
         /// <summary>
@@ -485,9 +485,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromAcreFeetPerMinute(double acrefeetperminute)
+        public static VolumeFlow FromAcreFeetPerMinute(decimal acrefeetperminute)
         {
-            double value = (double) acrefeetperminute;
+            decimal value = (decimal) acrefeetperminute;
             return new VolumeFlow(value, VolumeFlowUnit.AcreFootPerMinute);
         }
         /// <summary>
@@ -495,9 +495,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromAcreFeetPerSecond(double acrefeetpersecond)
+        public static VolumeFlow FromAcreFeetPerSecond(decimal acrefeetpersecond)
         {
-            double value = (double) acrefeetpersecond;
+            decimal value = (decimal) acrefeetpersecond;
             return new VolumeFlow(value, VolumeFlowUnit.AcreFootPerSecond);
         }
         /// <summary>
@@ -505,9 +505,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromCentilitersPerDay(double centilitersperday)
+        public static VolumeFlow FromCentilitersPerDay(decimal centilitersperday)
         {
-            double value = (double) centilitersperday;
+            decimal value = (decimal) centilitersperday;
             return new VolumeFlow(value, VolumeFlowUnit.CentiliterPerDay);
         }
         /// <summary>
@@ -515,9 +515,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromCentilitersPerMinute(double centilitersperminute)
+        public static VolumeFlow FromCentilitersPerMinute(decimal centilitersperminute)
         {
-            double value = (double) centilitersperminute;
+            decimal value = (decimal) centilitersperminute;
             return new VolumeFlow(value, VolumeFlowUnit.CentiliterPerMinute);
         }
         /// <summary>
@@ -525,9 +525,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromCentilitersPerSecond(double centiliterspersecond)
+        public static VolumeFlow FromCentilitersPerSecond(decimal centiliterspersecond)
         {
-            double value = (double) centiliterspersecond;
+            decimal value = (decimal) centiliterspersecond;
             return new VolumeFlow(value, VolumeFlowUnit.CentiliterPerSecond);
         }
         /// <summary>
@@ -535,9 +535,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromCubicDecimetersPerMinute(double cubicdecimetersperminute)
+        public static VolumeFlow FromCubicDecimetersPerMinute(decimal cubicdecimetersperminute)
         {
-            double value = (double) cubicdecimetersperminute;
+            decimal value = (decimal) cubicdecimetersperminute;
             return new VolumeFlow(value, VolumeFlowUnit.CubicDecimeterPerMinute);
         }
         /// <summary>
@@ -545,9 +545,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromCubicFeetPerHour(double cubicfeetperhour)
+        public static VolumeFlow FromCubicFeetPerHour(decimal cubicfeetperhour)
         {
-            double value = (double) cubicfeetperhour;
+            decimal value = (decimal) cubicfeetperhour;
             return new VolumeFlow(value, VolumeFlowUnit.CubicFootPerHour);
         }
         /// <summary>
@@ -555,9 +555,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromCubicFeetPerMinute(double cubicfeetperminute)
+        public static VolumeFlow FromCubicFeetPerMinute(decimal cubicfeetperminute)
         {
-            double value = (double) cubicfeetperminute;
+            decimal value = (decimal) cubicfeetperminute;
             return new VolumeFlow(value, VolumeFlowUnit.CubicFootPerMinute);
         }
         /// <summary>
@@ -565,9 +565,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromCubicFeetPerSecond(double cubicfeetpersecond)
+        public static VolumeFlow FromCubicFeetPerSecond(decimal cubicfeetpersecond)
         {
-            double value = (double) cubicfeetpersecond;
+            decimal value = (decimal) cubicfeetpersecond;
             return new VolumeFlow(value, VolumeFlowUnit.CubicFootPerSecond);
         }
         /// <summary>
@@ -575,9 +575,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromCubicMetersPerDay(double cubicmetersperday)
+        public static VolumeFlow FromCubicMetersPerDay(decimal cubicmetersperday)
         {
-            double value = (double) cubicmetersperday;
+            decimal value = (decimal) cubicmetersperday;
             return new VolumeFlow(value, VolumeFlowUnit.CubicMeterPerDay);
         }
         /// <summary>
@@ -585,9 +585,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromCubicMetersPerHour(double cubicmetersperhour)
+        public static VolumeFlow FromCubicMetersPerHour(decimal cubicmetersperhour)
         {
-            double value = (double) cubicmetersperhour;
+            decimal value = (decimal) cubicmetersperhour;
             return new VolumeFlow(value, VolumeFlowUnit.CubicMeterPerHour);
         }
         /// <summary>
@@ -595,9 +595,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromCubicMetersPerMinute(double cubicmetersperminute)
+        public static VolumeFlow FromCubicMetersPerMinute(decimal cubicmetersperminute)
         {
-            double value = (double) cubicmetersperminute;
+            decimal value = (decimal) cubicmetersperminute;
             return new VolumeFlow(value, VolumeFlowUnit.CubicMeterPerMinute);
         }
         /// <summary>
@@ -605,9 +605,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromCubicMetersPerSecond(double cubicmeterspersecond)
+        public static VolumeFlow FromCubicMetersPerSecond(decimal cubicmeterspersecond)
         {
-            double value = (double) cubicmeterspersecond;
+            decimal value = (decimal) cubicmeterspersecond;
             return new VolumeFlow(value, VolumeFlowUnit.CubicMeterPerSecond);
         }
         /// <summary>
@@ -615,9 +615,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromCubicMillimetersPerSecond(double cubicmillimeterspersecond)
+        public static VolumeFlow FromCubicMillimetersPerSecond(decimal cubicmillimeterspersecond)
         {
-            double value = (double) cubicmillimeterspersecond;
+            decimal value = (decimal) cubicmillimeterspersecond;
             return new VolumeFlow(value, VolumeFlowUnit.CubicMillimeterPerSecond);
         }
         /// <summary>
@@ -625,9 +625,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromCubicYardsPerDay(double cubicyardsperday)
+        public static VolumeFlow FromCubicYardsPerDay(decimal cubicyardsperday)
         {
-            double value = (double) cubicyardsperday;
+            decimal value = (decimal) cubicyardsperday;
             return new VolumeFlow(value, VolumeFlowUnit.CubicYardPerDay);
         }
         /// <summary>
@@ -635,9 +635,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromCubicYardsPerHour(double cubicyardsperhour)
+        public static VolumeFlow FromCubicYardsPerHour(decimal cubicyardsperhour)
         {
-            double value = (double) cubicyardsperhour;
+            decimal value = (decimal) cubicyardsperhour;
             return new VolumeFlow(value, VolumeFlowUnit.CubicYardPerHour);
         }
         /// <summary>
@@ -645,9 +645,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromCubicYardsPerMinute(double cubicyardsperminute)
+        public static VolumeFlow FromCubicYardsPerMinute(decimal cubicyardsperminute)
         {
-            double value = (double) cubicyardsperminute;
+            decimal value = (decimal) cubicyardsperminute;
             return new VolumeFlow(value, VolumeFlowUnit.CubicYardPerMinute);
         }
         /// <summary>
@@ -655,9 +655,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromCubicYardsPerSecond(double cubicyardspersecond)
+        public static VolumeFlow FromCubicYardsPerSecond(decimal cubicyardspersecond)
         {
-            double value = (double) cubicyardspersecond;
+            decimal value = (decimal) cubicyardspersecond;
             return new VolumeFlow(value, VolumeFlowUnit.CubicYardPerSecond);
         }
         /// <summary>
@@ -665,9 +665,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromDecilitersPerDay(double decilitersperday)
+        public static VolumeFlow FromDecilitersPerDay(decimal decilitersperday)
         {
-            double value = (double) decilitersperday;
+            decimal value = (decimal) decilitersperday;
             return new VolumeFlow(value, VolumeFlowUnit.DeciliterPerDay);
         }
         /// <summary>
@@ -675,9 +675,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromDecilitersPerMinute(double decilitersperminute)
+        public static VolumeFlow FromDecilitersPerMinute(decimal decilitersperminute)
         {
-            double value = (double) decilitersperminute;
+            decimal value = (decimal) decilitersperminute;
             return new VolumeFlow(value, VolumeFlowUnit.DeciliterPerMinute);
         }
         /// <summary>
@@ -685,9 +685,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromDecilitersPerSecond(double deciliterspersecond)
+        public static VolumeFlow FromDecilitersPerSecond(decimal deciliterspersecond)
         {
-            double value = (double) deciliterspersecond;
+            decimal value = (decimal) deciliterspersecond;
             return new VolumeFlow(value, VolumeFlowUnit.DeciliterPerSecond);
         }
         /// <summary>
@@ -695,9 +695,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromKilolitersPerDay(double kilolitersperday)
+        public static VolumeFlow FromKilolitersPerDay(decimal kilolitersperday)
         {
-            double value = (double) kilolitersperday;
+            decimal value = (decimal) kilolitersperday;
             return new VolumeFlow(value, VolumeFlowUnit.KiloliterPerDay);
         }
         /// <summary>
@@ -705,9 +705,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromKilolitersPerMinute(double kilolitersperminute)
+        public static VolumeFlow FromKilolitersPerMinute(decimal kilolitersperminute)
         {
-            double value = (double) kilolitersperminute;
+            decimal value = (decimal) kilolitersperminute;
             return new VolumeFlow(value, VolumeFlowUnit.KiloliterPerMinute);
         }
         /// <summary>
@@ -715,9 +715,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromKilolitersPerSecond(double kiloliterspersecond)
+        public static VolumeFlow FromKilolitersPerSecond(decimal kiloliterspersecond)
         {
-            double value = (double) kiloliterspersecond;
+            decimal value = (decimal) kiloliterspersecond;
             return new VolumeFlow(value, VolumeFlowUnit.KiloliterPerSecond);
         }
         /// <summary>
@@ -725,9 +725,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromKilousGallonsPerMinute(double kilousgallonsperminute)
+        public static VolumeFlow FromKilousGallonsPerMinute(decimal kilousgallonsperminute)
         {
-            double value = (double) kilousgallonsperminute;
+            decimal value = (decimal) kilousgallonsperminute;
             return new VolumeFlow(value, VolumeFlowUnit.KilousGallonPerMinute);
         }
         /// <summary>
@@ -735,9 +735,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromLitersPerDay(double litersperday)
+        public static VolumeFlow FromLitersPerDay(decimal litersperday)
         {
-            double value = (double) litersperday;
+            decimal value = (decimal) litersperday;
             return new VolumeFlow(value, VolumeFlowUnit.LiterPerDay);
         }
         /// <summary>
@@ -745,9 +745,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromLitersPerHour(double litersperhour)
+        public static VolumeFlow FromLitersPerHour(decimal litersperhour)
         {
-            double value = (double) litersperhour;
+            decimal value = (decimal) litersperhour;
             return new VolumeFlow(value, VolumeFlowUnit.LiterPerHour);
         }
         /// <summary>
@@ -755,9 +755,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromLitersPerMinute(double litersperminute)
+        public static VolumeFlow FromLitersPerMinute(decimal litersperminute)
         {
-            double value = (double) litersperminute;
+            decimal value = (decimal) litersperminute;
             return new VolumeFlow(value, VolumeFlowUnit.LiterPerMinute);
         }
         /// <summary>
@@ -765,9 +765,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromLitersPerSecond(double literspersecond)
+        public static VolumeFlow FromLitersPerSecond(decimal literspersecond)
         {
-            double value = (double) literspersecond;
+            decimal value = (decimal) literspersecond;
             return new VolumeFlow(value, VolumeFlowUnit.LiterPerSecond);
         }
         /// <summary>
@@ -775,9 +775,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromMegalitersPerDay(double megalitersperday)
+        public static VolumeFlow FromMegalitersPerDay(decimal megalitersperday)
         {
-            double value = (double) megalitersperday;
+            decimal value = (decimal) megalitersperday;
             return new VolumeFlow(value, VolumeFlowUnit.MegaliterPerDay);
         }
         /// <summary>
@@ -785,9 +785,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromMegaukGallonsPerSecond(double megaukgallonspersecond)
+        public static VolumeFlow FromMegaukGallonsPerSecond(decimal megaukgallonspersecond)
         {
-            double value = (double) megaukgallonspersecond;
+            decimal value = (decimal) megaukgallonspersecond;
             return new VolumeFlow(value, VolumeFlowUnit.MegaukGallonPerSecond);
         }
         /// <summary>
@@ -795,9 +795,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromMicrolitersPerDay(double microlitersperday)
+        public static VolumeFlow FromMicrolitersPerDay(decimal microlitersperday)
         {
-            double value = (double) microlitersperday;
+            decimal value = (decimal) microlitersperday;
             return new VolumeFlow(value, VolumeFlowUnit.MicroliterPerDay);
         }
         /// <summary>
@@ -805,9 +805,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromMicrolitersPerMinute(double microlitersperminute)
+        public static VolumeFlow FromMicrolitersPerMinute(decimal microlitersperminute)
         {
-            double value = (double) microlitersperminute;
+            decimal value = (decimal) microlitersperminute;
             return new VolumeFlow(value, VolumeFlowUnit.MicroliterPerMinute);
         }
         /// <summary>
@@ -815,9 +815,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromMicrolitersPerSecond(double microliterspersecond)
+        public static VolumeFlow FromMicrolitersPerSecond(decimal microliterspersecond)
         {
-            double value = (double) microliterspersecond;
+            decimal value = (decimal) microliterspersecond;
             return new VolumeFlow(value, VolumeFlowUnit.MicroliterPerSecond);
         }
         /// <summary>
@@ -825,9 +825,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromMillilitersPerDay(double millilitersperday)
+        public static VolumeFlow FromMillilitersPerDay(decimal millilitersperday)
         {
-            double value = (double) millilitersperday;
+            decimal value = (decimal) millilitersperday;
             return new VolumeFlow(value, VolumeFlowUnit.MilliliterPerDay);
         }
         /// <summary>
@@ -835,9 +835,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromMillilitersPerMinute(double millilitersperminute)
+        public static VolumeFlow FromMillilitersPerMinute(decimal millilitersperminute)
         {
-            double value = (double) millilitersperminute;
+            decimal value = (decimal) millilitersperminute;
             return new VolumeFlow(value, VolumeFlowUnit.MilliliterPerMinute);
         }
         /// <summary>
@@ -845,9 +845,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromMillilitersPerSecond(double milliliterspersecond)
+        public static VolumeFlow FromMillilitersPerSecond(decimal milliliterspersecond)
         {
-            double value = (double) milliliterspersecond;
+            decimal value = (decimal) milliliterspersecond;
             return new VolumeFlow(value, VolumeFlowUnit.MilliliterPerSecond);
         }
         /// <summary>
@@ -855,9 +855,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromMillionUsGallonsPerDay(double millionusgallonsperday)
+        public static VolumeFlow FromMillionUsGallonsPerDay(decimal millionusgallonsperday)
         {
-            double value = (double) millionusgallonsperday;
+            decimal value = (decimal) millionusgallonsperday;
             return new VolumeFlow(value, VolumeFlowUnit.MillionUsGallonsPerDay);
         }
         /// <summary>
@@ -865,9 +865,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromNanolitersPerDay(double nanolitersperday)
+        public static VolumeFlow FromNanolitersPerDay(decimal nanolitersperday)
         {
-            double value = (double) nanolitersperday;
+            decimal value = (decimal) nanolitersperday;
             return new VolumeFlow(value, VolumeFlowUnit.NanoliterPerDay);
         }
         /// <summary>
@@ -875,9 +875,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromNanolitersPerMinute(double nanolitersperminute)
+        public static VolumeFlow FromNanolitersPerMinute(decimal nanolitersperminute)
         {
-            double value = (double) nanolitersperminute;
+            decimal value = (decimal) nanolitersperminute;
             return new VolumeFlow(value, VolumeFlowUnit.NanoliterPerMinute);
         }
         /// <summary>
@@ -885,9 +885,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromNanolitersPerSecond(double nanoliterspersecond)
+        public static VolumeFlow FromNanolitersPerSecond(decimal nanoliterspersecond)
         {
-            double value = (double) nanoliterspersecond;
+            decimal value = (decimal) nanoliterspersecond;
             return new VolumeFlow(value, VolumeFlowUnit.NanoliterPerSecond);
         }
         /// <summary>
@@ -895,9 +895,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromOilBarrelsPerDay(double oilbarrelsperday)
+        public static VolumeFlow FromOilBarrelsPerDay(decimal oilbarrelsperday)
         {
-            double value = (double) oilbarrelsperday;
+            decimal value = (decimal) oilbarrelsperday;
             return new VolumeFlow(value, VolumeFlowUnit.OilBarrelPerDay);
         }
         /// <summary>
@@ -905,9 +905,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromOilBarrelsPerHour(double oilbarrelsperhour)
+        public static VolumeFlow FromOilBarrelsPerHour(decimal oilbarrelsperhour)
         {
-            double value = (double) oilbarrelsperhour;
+            decimal value = (decimal) oilbarrelsperhour;
             return new VolumeFlow(value, VolumeFlowUnit.OilBarrelPerHour);
         }
         /// <summary>
@@ -915,9 +915,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromOilBarrelsPerMinute(double oilbarrelsperminute)
+        public static VolumeFlow FromOilBarrelsPerMinute(decimal oilbarrelsperminute)
         {
-            double value = (double) oilbarrelsperminute;
+            decimal value = (decimal) oilbarrelsperminute;
             return new VolumeFlow(value, VolumeFlowUnit.OilBarrelPerMinute);
         }
         /// <summary>
@@ -925,9 +925,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromOilBarrelsPerSecond(double oilbarrelspersecond)
+        public static VolumeFlow FromOilBarrelsPerSecond(decimal oilbarrelspersecond)
         {
-            double value = (double) oilbarrelspersecond;
+            decimal value = (decimal) oilbarrelspersecond;
             return new VolumeFlow(value, VolumeFlowUnit.OilBarrelPerSecond);
         }
         /// <summary>
@@ -935,9 +935,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromUkGallonsPerDay(double ukgallonsperday)
+        public static VolumeFlow FromUkGallonsPerDay(decimal ukgallonsperday)
         {
-            double value = (double) ukgallonsperday;
+            decimal value = (decimal) ukgallonsperday;
             return new VolumeFlow(value, VolumeFlowUnit.UkGallonPerDay);
         }
         /// <summary>
@@ -945,9 +945,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromUkGallonsPerHour(double ukgallonsperhour)
+        public static VolumeFlow FromUkGallonsPerHour(decimal ukgallonsperhour)
         {
-            double value = (double) ukgallonsperhour;
+            decimal value = (decimal) ukgallonsperhour;
             return new VolumeFlow(value, VolumeFlowUnit.UkGallonPerHour);
         }
         /// <summary>
@@ -955,9 +955,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromUkGallonsPerMinute(double ukgallonsperminute)
+        public static VolumeFlow FromUkGallonsPerMinute(decimal ukgallonsperminute)
         {
-            double value = (double) ukgallonsperminute;
+            decimal value = (decimal) ukgallonsperminute;
             return new VolumeFlow(value, VolumeFlowUnit.UkGallonPerMinute);
         }
         /// <summary>
@@ -965,9 +965,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromUkGallonsPerSecond(double ukgallonspersecond)
+        public static VolumeFlow FromUkGallonsPerSecond(decimal ukgallonspersecond)
         {
-            double value = (double) ukgallonspersecond;
+            decimal value = (decimal) ukgallonspersecond;
             return new VolumeFlow(value, VolumeFlowUnit.UkGallonPerSecond);
         }
         /// <summary>
@@ -975,9 +975,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromUsGallonsPerDay(double usgallonsperday)
+        public static VolumeFlow FromUsGallonsPerDay(decimal usgallonsperday)
         {
-            double value = (double) usgallonsperday;
+            decimal value = (decimal) usgallonsperday;
             return new VolumeFlow(value, VolumeFlowUnit.UsGallonPerDay);
         }
         /// <summary>
@@ -985,9 +985,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromUsGallonsPerHour(double usgallonsperhour)
+        public static VolumeFlow FromUsGallonsPerHour(decimal usgallonsperhour)
         {
-            double value = (double) usgallonsperhour;
+            decimal value = (decimal) usgallonsperhour;
             return new VolumeFlow(value, VolumeFlowUnit.UsGallonPerHour);
         }
         /// <summary>
@@ -995,9 +995,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromUsGallonsPerMinute(double usgallonsperminute)
+        public static VolumeFlow FromUsGallonsPerMinute(decimal usgallonsperminute)
         {
-            double value = (double) usgallonsperminute;
+            decimal value = (decimal) usgallonsperminute;
             return new VolumeFlow(value, VolumeFlowUnit.UsGallonPerMinute);
         }
         /// <summary>
@@ -1005,9 +1005,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static VolumeFlow FromUsGallonsPerSecond(double usgallonspersecond)
+        public static VolumeFlow FromUsGallonsPerSecond(decimal usgallonspersecond)
         {
-            double value = (double) usgallonspersecond;
+            decimal value = (decimal) usgallonspersecond;
             return new VolumeFlow(value, VolumeFlowUnit.UsGallonPerSecond);
         }
 
@@ -1019,9 +1019,9 @@ namespace UnitsNet
         /// <returns>VolumeFlow unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static VolumeFlow From(double value, VolumeFlowUnit fromUnit)
+        public static VolumeFlow From(decimal value, VolumeFlowUnit fromUnit)
         {
-            return new VolumeFlow((double)value, fromUnit);
+            return new VolumeFlow((decimal)value, fromUnit);
         }
 
         #endregion
@@ -1243,13 +1243,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(VolumeFlow other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(VolumeFlow other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -1267,19 +1267,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((VolumeFlowUnit)unit);
+        decimal IQuantity.As(object unit) => As((VolumeFlowUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(VolumeFlowUnit unit)
+        public decimal As(VolumeFlowUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -1297,71 +1297,71 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
-                case VolumeFlowUnit.AcreFootPerDay: return _value/70.0457;
-                case VolumeFlowUnit.AcreFootPerHour: return _value/2.91857;
-                case VolumeFlowUnit.AcreFootPerMinute: return _value/0.0486427916;
-                case VolumeFlowUnit.AcreFootPerSecond: return _value/0.000810713194;
-                case VolumeFlowUnit.CentiliterPerDay: return (_value/86400000) * 1e-2d;
-                case VolumeFlowUnit.CentiliterPerMinute: return (_value/60000.00000) * 1e-2d;
-                case VolumeFlowUnit.CentiliterPerSecond: return (_value/1000) * 1e-2d;
-                case VolumeFlowUnit.CubicDecimeterPerMinute: return _value/60000.00000;
-                case VolumeFlowUnit.CubicFootPerHour: return _value*7.8657907199999087346816086183876e-6;
-                case VolumeFlowUnit.CubicFootPerMinute: return _value/2118.88000326;
-                case VolumeFlowUnit.CubicFootPerSecond: return _value/35.314666721;
-                case VolumeFlowUnit.CubicMeterPerDay: return _value/86400;
-                case VolumeFlowUnit.CubicMeterPerHour: return _value/3600;
-                case VolumeFlowUnit.CubicMeterPerMinute: return _value/60;
+                case VolumeFlowUnit.AcreFootPerDay: return _value/70.0457m;
+                case VolumeFlowUnit.AcreFootPerHour: return _value/2.91857m;
+                case VolumeFlowUnit.AcreFootPerMinute: return _value/0.0486427916m;
+                case VolumeFlowUnit.AcreFootPerSecond: return _value/0.000810713194m;
+                case VolumeFlowUnit.CentiliterPerDay: return (_value/86400000m) * 1e-2m;
+                case VolumeFlowUnit.CentiliterPerMinute: return (_value/60000.00000m) * 1e-2m;
+                case VolumeFlowUnit.CentiliterPerSecond: return (_value/1000m) * 1e-2m;
+                case VolumeFlowUnit.CubicDecimeterPerMinute: return _value/60000.00000m;
+                case VolumeFlowUnit.CubicFootPerHour: return _value*7.8657907199999087346816086183876e-6m;
+                case VolumeFlowUnit.CubicFootPerMinute: return _value/2118.88000326m;
+                case VolumeFlowUnit.CubicFootPerSecond: return _value/35.314666721m;
+                case VolumeFlowUnit.CubicMeterPerDay: return _value/86400m;
+                case VolumeFlowUnit.CubicMeterPerHour: return _value/3600m;
+                case VolumeFlowUnit.CubicMeterPerMinute: return _value/60m;
                 case VolumeFlowUnit.CubicMeterPerSecond: return _value;
-                case VolumeFlowUnit.CubicMillimeterPerSecond: return _value*1e-9;
-                case VolumeFlowUnit.CubicYardPerDay: return _value/113007;
-                case VolumeFlowUnit.CubicYardPerHour: return _value*2.1237634944E-4;
-                case VolumeFlowUnit.CubicYardPerMinute: return _value*0.0127425809664;
-                case VolumeFlowUnit.CubicYardPerSecond: return _value*0.764554857984;
-                case VolumeFlowUnit.DeciliterPerDay: return (_value/86400000) * 1e-1d;
-                case VolumeFlowUnit.DeciliterPerMinute: return (_value/60000.00000) * 1e-1d;
-                case VolumeFlowUnit.DeciliterPerSecond: return (_value/1000) * 1e-1d;
-                case VolumeFlowUnit.KiloliterPerDay: return (_value/86400000) * 1e3d;
-                case VolumeFlowUnit.KiloliterPerMinute: return (_value/60000.00000) * 1e3d;
-                case VolumeFlowUnit.KiloliterPerSecond: return (_value/1000) * 1e3d;
-                case VolumeFlowUnit.KilousGallonPerMinute: return _value/15.850323141489;
-                case VolumeFlowUnit.LiterPerDay: return _value/86400000;
-                case VolumeFlowUnit.LiterPerHour: return _value/3600000.000;
-                case VolumeFlowUnit.LiterPerMinute: return _value/60000.00000;
-                case VolumeFlowUnit.LiterPerSecond: return _value/1000;
-                case VolumeFlowUnit.MegaliterPerDay: return (_value/86400000) * 1e6d;
-                case VolumeFlowUnit.MegaukGallonPerSecond: return (_value/219.969) * 1e6d;
-                case VolumeFlowUnit.MicroliterPerDay: return (_value/86400000) * 1e-6d;
-                case VolumeFlowUnit.MicroliterPerMinute: return (_value/60000.00000) * 1e-6d;
-                case VolumeFlowUnit.MicroliterPerSecond: return (_value/1000) * 1e-6d;
-                case VolumeFlowUnit.MilliliterPerDay: return (_value/86400000) * 1e-3d;
-                case VolumeFlowUnit.MilliliterPerMinute: return (_value/60000.00000) * 1e-3d;
-                case VolumeFlowUnit.MilliliterPerSecond: return (_value/1000) * 1e-3d;
-                case VolumeFlowUnit.MillionUsGallonsPerDay: return _value/22.824465227;
-                case VolumeFlowUnit.NanoliterPerDay: return (_value/86400000) * 1e-9d;
-                case VolumeFlowUnit.NanoliterPerMinute: return (_value/60000.00000) * 1e-9d;
-                case VolumeFlowUnit.NanoliterPerSecond: return (_value/1000) * 1e-9d;
-                case VolumeFlowUnit.OilBarrelPerDay: return _value*1.8401307283333333333333333333333e-6;
-                case VolumeFlowUnit.OilBarrelPerHour: return _value*4.41631375e-5;
-                case VolumeFlowUnit.OilBarrelPerMinute: return _value*2.64978825e-3;
-                case VolumeFlowUnit.OilBarrelPerSecond: return _value/6.28981;
-                case VolumeFlowUnit.UkGallonPerDay: return _value/19005304;
-                case VolumeFlowUnit.UkGallonPerHour: return _value/791887.667;
-                case VolumeFlowUnit.UkGallonPerMinute: return _value/13198.2;
-                case VolumeFlowUnit.UkGallonPerSecond: return _value/219.969;
-                case VolumeFlowUnit.UsGallonPerDay: return _value/22824465.227;
-                case VolumeFlowUnit.UsGallonPerHour: return _value/951019.38848933424;
-                case VolumeFlowUnit.UsGallonPerMinute: return _value/15850.323141489;
-                case VolumeFlowUnit.UsGallonPerSecond: return _value/264.1720523581484;
+                case VolumeFlowUnit.CubicMillimeterPerSecond: return _value*1e-9m;
+                case VolumeFlowUnit.CubicYardPerDay: return _value/113007m;
+                case VolumeFlowUnit.CubicYardPerHour: return _value*2.1237634944E-4m;
+                case VolumeFlowUnit.CubicYardPerMinute: return _value*0.0127425809664m;
+                case VolumeFlowUnit.CubicYardPerSecond: return _value*0.764554857984m;
+                case VolumeFlowUnit.DeciliterPerDay: return (_value/86400000m) * 1e-1m;
+                case VolumeFlowUnit.DeciliterPerMinute: return (_value/60000.00000m) * 1e-1m;
+                case VolumeFlowUnit.DeciliterPerSecond: return (_value/1000m) * 1e-1m;
+                case VolumeFlowUnit.KiloliterPerDay: return (_value/86400000m) * 1e3m;
+                case VolumeFlowUnit.KiloliterPerMinute: return (_value/60000.00000m) * 1e3m;
+                case VolumeFlowUnit.KiloliterPerSecond: return (_value/1000m) * 1e3m;
+                case VolumeFlowUnit.KilousGallonPerMinute: return _value/15.850323141489m;
+                case VolumeFlowUnit.LiterPerDay: return _value/86400000m;
+                case VolumeFlowUnit.LiterPerHour: return _value/3600000.000m;
+                case VolumeFlowUnit.LiterPerMinute: return _value/60000.00000m;
+                case VolumeFlowUnit.LiterPerSecond: return _value/1000m;
+                case VolumeFlowUnit.MegaliterPerDay: return (_value/86400000m) * 1e6m;
+                case VolumeFlowUnit.MegaukGallonPerSecond: return (_value/219.969m) * 1e6m;
+                case VolumeFlowUnit.MicroliterPerDay: return (_value/86400000m) * 1e-6m;
+                case VolumeFlowUnit.MicroliterPerMinute: return (_value/60000.00000m) * 1e-6m;
+                case VolumeFlowUnit.MicroliterPerSecond: return (_value/1000m) * 1e-6m;
+                case VolumeFlowUnit.MilliliterPerDay: return (_value/86400000m) * 1e-3m;
+                case VolumeFlowUnit.MilliliterPerMinute: return (_value/60000.00000m) * 1e-3m;
+                case VolumeFlowUnit.MilliliterPerSecond: return (_value/1000m) * 1e-3m;
+                case VolumeFlowUnit.MillionUsGallonsPerDay: return _value/22.824465227m;
+                case VolumeFlowUnit.NanoliterPerDay: return (_value/86400000m) * 1e-9m;
+                case VolumeFlowUnit.NanoliterPerMinute: return (_value/60000.00000m) * 1e-9m;
+                case VolumeFlowUnit.NanoliterPerSecond: return (_value/1000m) * 1e-9m;
+                case VolumeFlowUnit.OilBarrelPerDay: return _value*1.8401307283333333333333333333333e-6m;
+                case VolumeFlowUnit.OilBarrelPerHour: return _value*4.41631375e-5m;
+                case VolumeFlowUnit.OilBarrelPerMinute: return _value*2.64978825e-3m;
+                case VolumeFlowUnit.OilBarrelPerSecond: return _value/6.28981m;
+                case VolumeFlowUnit.UkGallonPerDay: return _value/19005304m;
+                case VolumeFlowUnit.UkGallonPerHour: return _value/791887.667m;
+                case VolumeFlowUnit.UkGallonPerMinute: return _value/13198.2m;
+                case VolumeFlowUnit.UkGallonPerSecond: return _value/219.969m;
+                case VolumeFlowUnit.UsGallonPerDay: return _value/22824465.227m;
+                case VolumeFlowUnit.UsGallonPerHour: return _value/951019.38848933424m;
+                case VolumeFlowUnit.UsGallonPerMinute: return _value/15850.323141489m;
+                case VolumeFlowUnit.UsGallonPerSecond: return _value/264.1720523581484m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(VolumeFlowUnit unit)
+        private decimal AsBaseNumericType(VolumeFlowUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -1370,61 +1370,61 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case VolumeFlowUnit.AcreFootPerDay: return baseUnitValue*70.0457;
-                case VolumeFlowUnit.AcreFootPerHour: return baseUnitValue*2.91857;
-                case VolumeFlowUnit.AcreFootPerMinute: return baseUnitValue*0.0486427916;
-                case VolumeFlowUnit.AcreFootPerSecond: return baseUnitValue*0.000810713194;
-                case VolumeFlowUnit.CentiliterPerDay: return (baseUnitValue*86400000) / 1e-2d;
-                case VolumeFlowUnit.CentiliterPerMinute: return (baseUnitValue*60000.00000) / 1e-2d;
-                case VolumeFlowUnit.CentiliterPerSecond: return (baseUnitValue*1000) / 1e-2d;
-                case VolumeFlowUnit.CubicDecimeterPerMinute: return baseUnitValue*60000.00000;
-                case VolumeFlowUnit.CubicFootPerHour: return baseUnitValue/7.8657907199999087346816086183876e-6;
-                case VolumeFlowUnit.CubicFootPerMinute: return baseUnitValue*2118.88000326;
-                case VolumeFlowUnit.CubicFootPerSecond: return baseUnitValue*35.314666721;
-                case VolumeFlowUnit.CubicMeterPerDay: return baseUnitValue*86400;
-                case VolumeFlowUnit.CubicMeterPerHour: return baseUnitValue*3600;
-                case VolumeFlowUnit.CubicMeterPerMinute: return baseUnitValue*60;
+                case VolumeFlowUnit.AcreFootPerDay: return baseUnitValue*70.0457m;
+                case VolumeFlowUnit.AcreFootPerHour: return baseUnitValue*2.91857m;
+                case VolumeFlowUnit.AcreFootPerMinute: return baseUnitValue*0.0486427916m;
+                case VolumeFlowUnit.AcreFootPerSecond: return baseUnitValue*0.000810713194m;
+                case VolumeFlowUnit.CentiliterPerDay: return (baseUnitValue*86400000m) / 1e-2m;
+                case VolumeFlowUnit.CentiliterPerMinute: return (baseUnitValue*60000.00000m) / 1e-2m;
+                case VolumeFlowUnit.CentiliterPerSecond: return (baseUnitValue*1000m) / 1e-2m;
+                case VolumeFlowUnit.CubicDecimeterPerMinute: return baseUnitValue*60000.00000m;
+                case VolumeFlowUnit.CubicFootPerHour: return baseUnitValue/7.8657907199999087346816086183876e-6m;
+                case VolumeFlowUnit.CubicFootPerMinute: return baseUnitValue*2118.88000326m;
+                case VolumeFlowUnit.CubicFootPerSecond: return baseUnitValue*35.314666721m;
+                case VolumeFlowUnit.CubicMeterPerDay: return baseUnitValue*86400m;
+                case VolumeFlowUnit.CubicMeterPerHour: return baseUnitValue*3600m;
+                case VolumeFlowUnit.CubicMeterPerMinute: return baseUnitValue*60m;
                 case VolumeFlowUnit.CubicMeterPerSecond: return baseUnitValue;
-                case VolumeFlowUnit.CubicMillimeterPerSecond: return baseUnitValue/1e-9;
-                case VolumeFlowUnit.CubicYardPerDay: return baseUnitValue*113007;
-                case VolumeFlowUnit.CubicYardPerHour: return baseUnitValue/2.1237634944E-4;
-                case VolumeFlowUnit.CubicYardPerMinute: return baseUnitValue/0.0127425809664;
-                case VolumeFlowUnit.CubicYardPerSecond: return baseUnitValue/0.764554857984;
-                case VolumeFlowUnit.DeciliterPerDay: return (baseUnitValue*86400000) / 1e-1d;
-                case VolumeFlowUnit.DeciliterPerMinute: return (baseUnitValue*60000.00000) / 1e-1d;
-                case VolumeFlowUnit.DeciliterPerSecond: return (baseUnitValue*1000) / 1e-1d;
-                case VolumeFlowUnit.KiloliterPerDay: return (baseUnitValue*86400000) / 1e3d;
-                case VolumeFlowUnit.KiloliterPerMinute: return (baseUnitValue*60000.00000) / 1e3d;
-                case VolumeFlowUnit.KiloliterPerSecond: return (baseUnitValue*1000) / 1e3d;
-                case VolumeFlowUnit.KilousGallonPerMinute: return baseUnitValue*15.850323141489;
-                case VolumeFlowUnit.LiterPerDay: return baseUnitValue*86400000;
-                case VolumeFlowUnit.LiterPerHour: return baseUnitValue*3600000.000;
-                case VolumeFlowUnit.LiterPerMinute: return baseUnitValue*60000.00000;
-                case VolumeFlowUnit.LiterPerSecond: return baseUnitValue*1000;
-                case VolumeFlowUnit.MegaliterPerDay: return (baseUnitValue*86400000) / 1e6d;
-                case VolumeFlowUnit.MegaukGallonPerSecond: return (baseUnitValue*219.969) / 1e6d;
-                case VolumeFlowUnit.MicroliterPerDay: return (baseUnitValue*86400000) / 1e-6d;
-                case VolumeFlowUnit.MicroliterPerMinute: return (baseUnitValue*60000.00000) / 1e-6d;
-                case VolumeFlowUnit.MicroliterPerSecond: return (baseUnitValue*1000) / 1e-6d;
-                case VolumeFlowUnit.MilliliterPerDay: return (baseUnitValue*86400000) / 1e-3d;
-                case VolumeFlowUnit.MilliliterPerMinute: return (baseUnitValue*60000.00000) / 1e-3d;
-                case VolumeFlowUnit.MilliliterPerSecond: return (baseUnitValue*1000) / 1e-3d;
-                case VolumeFlowUnit.MillionUsGallonsPerDay: return baseUnitValue*22.824465227;
-                case VolumeFlowUnit.NanoliterPerDay: return (baseUnitValue*86400000) / 1e-9d;
-                case VolumeFlowUnit.NanoliterPerMinute: return (baseUnitValue*60000.00000) / 1e-9d;
-                case VolumeFlowUnit.NanoliterPerSecond: return (baseUnitValue*1000) / 1e-9d;
-                case VolumeFlowUnit.OilBarrelPerDay: return baseUnitValue/1.8401307283333333333333333333333e-6;
-                case VolumeFlowUnit.OilBarrelPerHour: return baseUnitValue/4.41631375e-5;
-                case VolumeFlowUnit.OilBarrelPerMinute: return baseUnitValue/2.64978825e-3;
-                case VolumeFlowUnit.OilBarrelPerSecond: return baseUnitValue*6.28981;
-                case VolumeFlowUnit.UkGallonPerDay: return baseUnitValue*19005304;
-                case VolumeFlowUnit.UkGallonPerHour: return baseUnitValue*791887.667;
-                case VolumeFlowUnit.UkGallonPerMinute: return baseUnitValue*13198.2;
-                case VolumeFlowUnit.UkGallonPerSecond: return baseUnitValue*219.969;
-                case VolumeFlowUnit.UsGallonPerDay: return baseUnitValue*22824465.227;
-                case VolumeFlowUnit.UsGallonPerHour: return baseUnitValue*951019.38848933424;
-                case VolumeFlowUnit.UsGallonPerMinute: return baseUnitValue*15850.323141489;
-                case VolumeFlowUnit.UsGallonPerSecond: return baseUnitValue*264.1720523581484;
+                case VolumeFlowUnit.CubicMillimeterPerSecond: return baseUnitValue/1e-9m;
+                case VolumeFlowUnit.CubicYardPerDay: return baseUnitValue*113007m;
+                case VolumeFlowUnit.CubicYardPerHour: return baseUnitValue/2.1237634944E-4m;
+                case VolumeFlowUnit.CubicYardPerMinute: return baseUnitValue/0.0127425809664m;
+                case VolumeFlowUnit.CubicYardPerSecond: return baseUnitValue/0.764554857984m;
+                case VolumeFlowUnit.DeciliterPerDay: return (baseUnitValue*86400000m) / 1e-1m;
+                case VolumeFlowUnit.DeciliterPerMinute: return (baseUnitValue*60000.00000m) / 1e-1m;
+                case VolumeFlowUnit.DeciliterPerSecond: return (baseUnitValue*1000m) / 1e-1m;
+                case VolumeFlowUnit.KiloliterPerDay: return (baseUnitValue*86400000m) / 1e3m;
+                case VolumeFlowUnit.KiloliterPerMinute: return (baseUnitValue*60000.00000m) / 1e3m;
+                case VolumeFlowUnit.KiloliterPerSecond: return (baseUnitValue*1000m) / 1e3m;
+                case VolumeFlowUnit.KilousGallonPerMinute: return baseUnitValue*15.850323141489m;
+                case VolumeFlowUnit.LiterPerDay: return baseUnitValue*86400000m;
+                case VolumeFlowUnit.LiterPerHour: return baseUnitValue*3600000.000m;
+                case VolumeFlowUnit.LiterPerMinute: return baseUnitValue*60000.00000m;
+                case VolumeFlowUnit.LiterPerSecond: return baseUnitValue*1000m;
+                case VolumeFlowUnit.MegaliterPerDay: return (baseUnitValue*86400000m) / 1e6m;
+                case VolumeFlowUnit.MegaukGallonPerSecond: return (baseUnitValue*219.969m) / 1e6m;
+                case VolumeFlowUnit.MicroliterPerDay: return (baseUnitValue*86400000m) / 1e-6m;
+                case VolumeFlowUnit.MicroliterPerMinute: return (baseUnitValue*60000.00000m) / 1e-6m;
+                case VolumeFlowUnit.MicroliterPerSecond: return (baseUnitValue*1000m) / 1e-6m;
+                case VolumeFlowUnit.MilliliterPerDay: return (baseUnitValue*86400000m) / 1e-3m;
+                case VolumeFlowUnit.MilliliterPerMinute: return (baseUnitValue*60000.00000m) / 1e-3m;
+                case VolumeFlowUnit.MilliliterPerSecond: return (baseUnitValue*1000m) / 1e-3m;
+                case VolumeFlowUnit.MillionUsGallonsPerDay: return baseUnitValue*22.824465227m;
+                case VolumeFlowUnit.NanoliterPerDay: return (baseUnitValue*86400000m) / 1e-9m;
+                case VolumeFlowUnit.NanoliterPerMinute: return (baseUnitValue*60000.00000m) / 1e-9m;
+                case VolumeFlowUnit.NanoliterPerSecond: return (baseUnitValue*1000m) / 1e-9m;
+                case VolumeFlowUnit.OilBarrelPerDay: return baseUnitValue/1.8401307283333333333333333333333e-6m;
+                case VolumeFlowUnit.OilBarrelPerHour: return baseUnitValue/4.41631375e-5m;
+                case VolumeFlowUnit.OilBarrelPerMinute: return baseUnitValue/2.64978825e-3m;
+                case VolumeFlowUnit.OilBarrelPerSecond: return baseUnitValue*6.28981m;
+                case VolumeFlowUnit.UkGallonPerDay: return baseUnitValue*19005304m;
+                case VolumeFlowUnit.UkGallonPerHour: return baseUnitValue*791887.667m;
+                case VolumeFlowUnit.UkGallonPerMinute: return baseUnitValue*13198.2m;
+                case VolumeFlowUnit.UkGallonPerSecond: return baseUnitValue*219.969m;
+                case VolumeFlowUnit.UsGallonPerDay: return baseUnitValue*22824465.227m;
+                case VolumeFlowUnit.UsGallonPerHour: return baseUnitValue*951019.38848933424m;
+                case VolumeFlowUnit.UsGallonPerMinute: return baseUnitValue*15850.323141489m;
+                case VolumeFlowUnit.UsGallonPerSecond: return baseUnitValue*264.1720523581484m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -1463,7 +1463,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -1483,7 +1483,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

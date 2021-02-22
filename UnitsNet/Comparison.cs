@@ -49,7 +49,7 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">Whether the tolerance is absolute or relative.</param>
         /// <returns></returns>
-        public static bool Equals(double referenceValue, double otherValue, double tolerance, ComparisonType comparisonType)
+        public static bool Equals(decimal referenceValue, decimal otherValue, decimal tolerance, ComparisonType comparisonType)
         {
             if (tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0");
@@ -86,7 +86,7 @@ namespace UnitsNet
         /// <param name="otherValue">The value to compare to.</param>
         /// <param name="tolerance">The relative tolerance. Must be greater than or equal to 0.</param>
         /// <returns>True if the two values are equal within the given relative tolerance, otherwise false.</returns>
-        public static bool EqualsRelative(double referenceValue, double otherValue, double tolerance)
+        public static bool EqualsRelative(decimal referenceValue, decimal otherValue, decimal tolerance)
         {
             if (tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0");
@@ -114,7 +114,7 @@ namespace UnitsNet
         /// <param name="value2">The second value.</param>
         /// <param name="tolerance">The absolute tolerance. Must be greater than or equal to 0.</param>
         /// <returns>True if the two values are equal within the given absolute tolerance, otherwise false.</returns>
-        public static bool EqualsAbsolute(double value1, double value2, double tolerance)
+        public static bool EqualsAbsolute(decimal value1, decimal value2, decimal tolerance)
         {
             if (tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0");

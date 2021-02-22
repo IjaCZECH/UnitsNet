@@ -37,54 +37,54 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class VolumeConcentrationTestsBase : QuantityTestsBase
     {
-        protected abstract double CentilitersPerLiterInOneDecimalFraction { get; }
-        protected abstract double CentilitersPerMililiterInOneDecimalFraction { get; }
-        protected abstract double DecilitersPerLiterInOneDecimalFraction { get; }
-        protected abstract double DecilitersPerMililiterInOneDecimalFraction { get; }
-        protected abstract double DecimalFractionsInOneDecimalFraction { get; }
-        protected abstract double LitersPerLiterInOneDecimalFraction { get; }
-        protected abstract double LitersPerMililiterInOneDecimalFraction { get; }
-        protected abstract double MicrolitersPerLiterInOneDecimalFraction { get; }
-        protected abstract double MicrolitersPerMililiterInOneDecimalFraction { get; }
-        protected abstract double MillilitersPerLiterInOneDecimalFraction { get; }
-        protected abstract double MillilitersPerMililiterInOneDecimalFraction { get; }
-        protected abstract double NanolitersPerLiterInOneDecimalFraction { get; }
-        protected abstract double NanolitersPerMililiterInOneDecimalFraction { get; }
-        protected abstract double PartsPerBillionInOneDecimalFraction { get; }
-        protected abstract double PartsPerMillionInOneDecimalFraction { get; }
-        protected abstract double PartsPerThousandInOneDecimalFraction { get; }
-        protected abstract double PartsPerTrillionInOneDecimalFraction { get; }
-        protected abstract double PercentInOneDecimalFraction { get; }
-        protected abstract double PicolitersPerLiterInOneDecimalFraction { get; }
-        protected abstract double PicolitersPerMililiterInOneDecimalFraction { get; }
+        protected abstract decimal CentilitersPerLiterInOneDecimalFraction { get; }
+        protected abstract decimal CentilitersPerMililiterInOneDecimalFraction { get; }
+        protected abstract decimal DecilitersPerLiterInOneDecimalFraction { get; }
+        protected abstract decimal DecilitersPerMililiterInOneDecimalFraction { get; }
+        protected abstract decimal DecimalFractionsInOneDecimalFraction { get; }
+        protected abstract decimal LitersPerLiterInOneDecimalFraction { get; }
+        protected abstract decimal LitersPerMililiterInOneDecimalFraction { get; }
+        protected abstract decimal MicrolitersPerLiterInOneDecimalFraction { get; }
+        protected abstract decimal MicrolitersPerMililiterInOneDecimalFraction { get; }
+        protected abstract decimal MillilitersPerLiterInOneDecimalFraction { get; }
+        protected abstract decimal MillilitersPerMililiterInOneDecimalFraction { get; }
+        protected abstract decimal NanolitersPerLiterInOneDecimalFraction { get; }
+        protected abstract decimal NanolitersPerMililiterInOneDecimalFraction { get; }
+        protected abstract decimal PartsPerBillionInOneDecimalFraction { get; }
+        protected abstract decimal PartsPerMillionInOneDecimalFraction { get; }
+        protected abstract decimal PartsPerThousandInOneDecimalFraction { get; }
+        protected abstract decimal PartsPerTrillionInOneDecimalFraction { get; }
+        protected abstract decimal PercentInOneDecimalFraction { get; }
+        protected abstract decimal PicolitersPerLiterInOneDecimalFraction { get; }
+        protected abstract decimal PicolitersPerMililiterInOneDecimalFraction { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double CentilitersPerLiterTolerance { get { return 1e-5; } }
-        protected virtual double CentilitersPerMililiterTolerance { get { return 1e-5; } }
-        protected virtual double DecilitersPerLiterTolerance { get { return 1e-5; } }
-        protected virtual double DecilitersPerMililiterTolerance { get { return 1e-5; } }
-        protected virtual double DecimalFractionsTolerance { get { return 1e-5; } }
-        protected virtual double LitersPerLiterTolerance { get { return 1e-5; } }
-        protected virtual double LitersPerMililiterTolerance { get { return 1e-5; } }
-        protected virtual double MicrolitersPerLiterTolerance { get { return 1e-5; } }
-        protected virtual double MicrolitersPerMililiterTolerance { get { return 1e-5; } }
-        protected virtual double MillilitersPerLiterTolerance { get { return 1e-5; } }
-        protected virtual double MillilitersPerMililiterTolerance { get { return 1e-5; } }
-        protected virtual double NanolitersPerLiterTolerance { get { return 1e-5; } }
-        protected virtual double NanolitersPerMililiterTolerance { get { return 1e-5; } }
-        protected virtual double PartsPerBillionTolerance { get { return 1e-5; } }
-        protected virtual double PartsPerMillionTolerance { get { return 1e-5; } }
-        protected virtual double PartsPerThousandTolerance { get { return 1e-5; } }
-        protected virtual double PartsPerTrillionTolerance { get { return 1e-5; } }
-        protected virtual double PercentTolerance { get { return 1e-5; } }
-        protected virtual double PicolitersPerLiterTolerance { get { return 1e-5; } }
-        protected virtual double PicolitersPerMililiterTolerance { get { return 1e-5; } }
+        protected virtual decimal CentilitersPerLiterTolerance { get { return 1e-5; } }
+        protected virtual decimal CentilitersPerMililiterTolerance { get { return 1e-5; } }
+        protected virtual decimal DecilitersPerLiterTolerance { get { return 1e-5; } }
+        protected virtual decimal DecilitersPerMililiterTolerance { get { return 1e-5; } }
+        protected virtual decimal DecimalFractionsTolerance { get { return 1e-5; } }
+        protected virtual decimal LitersPerLiterTolerance { get { return 1e-5; } }
+        protected virtual decimal LitersPerMililiterTolerance { get { return 1e-5; } }
+        protected virtual decimal MicrolitersPerLiterTolerance { get { return 1e-5; } }
+        protected virtual decimal MicrolitersPerMililiterTolerance { get { return 1e-5; } }
+        protected virtual decimal MillilitersPerLiterTolerance { get { return 1e-5; } }
+        protected virtual decimal MillilitersPerMililiterTolerance { get { return 1e-5; } }
+        protected virtual decimal NanolitersPerLiterTolerance { get { return 1e-5; } }
+        protected virtual decimal NanolitersPerMililiterTolerance { get { return 1e-5; } }
+        protected virtual decimal PartsPerBillionTolerance { get { return 1e-5; } }
+        protected virtual decimal PartsPerMillionTolerance { get { return 1e-5; } }
+        protected virtual decimal PartsPerThousandTolerance { get { return 1e-5; } }
+        protected virtual decimal PartsPerTrillionTolerance { get { return 1e-5; } }
+        protected virtual decimal PercentTolerance { get { return 1e-5; } }
+        protected virtual decimal PicolitersPerLiterTolerance { get { return 1e-5; } }
+        protected virtual decimal PicolitersPerMililiterTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new VolumeConcentration((double)0.0, VolumeConcentrationUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new VolumeConcentration((decimal)0.0, VolumeConcentrationUnit.Undefined));
         }
 
         [Fact]
@@ -95,19 +95,6 @@ namespace UnitsNet.Tests
             Assert.Equal(VolumeConcentrationUnit.DecimalFraction, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new VolumeConcentration(double.PositiveInfinity, VolumeConcentrationUnit.DecimalFraction));
-            Assert.Throws<ArgumentException>(() => new VolumeConcentration(double.NegativeInfinity, VolumeConcentrationUnit.DecimalFraction));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new VolumeConcentration(double.NaN, VolumeConcentrationUnit.DecimalFraction));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -263,19 +250,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromDecimalFractions_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => VolumeConcentration.FromDecimalFractions(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => VolumeConcentration.FromDecimalFractions(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromDecimalFractions_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => VolumeConcentration.FromDecimalFractions(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var decimalfraction = VolumeConcentration.FromDecimalFractions(1);
@@ -309,7 +283,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -324,83 +298,83 @@ namespace UnitsNet.Tests
             var decimalfraction = VolumeConcentration.FromDecimalFractions(1);
 
             var centilitersperliterQuantity = decimalfraction.ToUnit(VolumeConcentrationUnit.CentilitersPerLiter);
-            AssertEx.EqualTolerance(CentilitersPerLiterInOneDecimalFraction, (double)centilitersperliterQuantity.Value, CentilitersPerLiterTolerance);
+            AssertEx.EqualTolerance(CentilitersPerLiterInOneDecimalFraction, (decimal)centilitersperliterQuantity.Value, CentilitersPerLiterTolerance);
             Assert.Equal(VolumeConcentrationUnit.CentilitersPerLiter, centilitersperliterQuantity.Unit);
 
             var centiliterspermililiterQuantity = decimalfraction.ToUnit(VolumeConcentrationUnit.CentilitersPerMililiter);
-            AssertEx.EqualTolerance(CentilitersPerMililiterInOneDecimalFraction, (double)centiliterspermililiterQuantity.Value, CentilitersPerMililiterTolerance);
+            AssertEx.EqualTolerance(CentilitersPerMililiterInOneDecimalFraction, (decimal)centiliterspermililiterQuantity.Value, CentilitersPerMililiterTolerance);
             Assert.Equal(VolumeConcentrationUnit.CentilitersPerMililiter, centiliterspermililiterQuantity.Unit);
 
             var decilitersperliterQuantity = decimalfraction.ToUnit(VolumeConcentrationUnit.DecilitersPerLiter);
-            AssertEx.EqualTolerance(DecilitersPerLiterInOneDecimalFraction, (double)decilitersperliterQuantity.Value, DecilitersPerLiterTolerance);
+            AssertEx.EqualTolerance(DecilitersPerLiterInOneDecimalFraction, (decimal)decilitersperliterQuantity.Value, DecilitersPerLiterTolerance);
             Assert.Equal(VolumeConcentrationUnit.DecilitersPerLiter, decilitersperliterQuantity.Unit);
 
             var deciliterspermililiterQuantity = decimalfraction.ToUnit(VolumeConcentrationUnit.DecilitersPerMililiter);
-            AssertEx.EqualTolerance(DecilitersPerMililiterInOneDecimalFraction, (double)deciliterspermililiterQuantity.Value, DecilitersPerMililiterTolerance);
+            AssertEx.EqualTolerance(DecilitersPerMililiterInOneDecimalFraction, (decimal)deciliterspermililiterQuantity.Value, DecilitersPerMililiterTolerance);
             Assert.Equal(VolumeConcentrationUnit.DecilitersPerMililiter, deciliterspermililiterQuantity.Unit);
 
             var decimalfractionQuantity = decimalfraction.ToUnit(VolumeConcentrationUnit.DecimalFraction);
-            AssertEx.EqualTolerance(DecimalFractionsInOneDecimalFraction, (double)decimalfractionQuantity.Value, DecimalFractionsTolerance);
+            AssertEx.EqualTolerance(DecimalFractionsInOneDecimalFraction, (decimal)decimalfractionQuantity.Value, DecimalFractionsTolerance);
             Assert.Equal(VolumeConcentrationUnit.DecimalFraction, decimalfractionQuantity.Unit);
 
             var litersperliterQuantity = decimalfraction.ToUnit(VolumeConcentrationUnit.LitersPerLiter);
-            AssertEx.EqualTolerance(LitersPerLiterInOneDecimalFraction, (double)litersperliterQuantity.Value, LitersPerLiterTolerance);
+            AssertEx.EqualTolerance(LitersPerLiterInOneDecimalFraction, (decimal)litersperliterQuantity.Value, LitersPerLiterTolerance);
             Assert.Equal(VolumeConcentrationUnit.LitersPerLiter, litersperliterQuantity.Unit);
 
             var literspermililiterQuantity = decimalfraction.ToUnit(VolumeConcentrationUnit.LitersPerMililiter);
-            AssertEx.EqualTolerance(LitersPerMililiterInOneDecimalFraction, (double)literspermililiterQuantity.Value, LitersPerMililiterTolerance);
+            AssertEx.EqualTolerance(LitersPerMililiterInOneDecimalFraction, (decimal)literspermililiterQuantity.Value, LitersPerMililiterTolerance);
             Assert.Equal(VolumeConcentrationUnit.LitersPerMililiter, literspermililiterQuantity.Unit);
 
             var microlitersperliterQuantity = decimalfraction.ToUnit(VolumeConcentrationUnit.MicrolitersPerLiter);
-            AssertEx.EqualTolerance(MicrolitersPerLiterInOneDecimalFraction, (double)microlitersperliterQuantity.Value, MicrolitersPerLiterTolerance);
+            AssertEx.EqualTolerance(MicrolitersPerLiterInOneDecimalFraction, (decimal)microlitersperliterQuantity.Value, MicrolitersPerLiterTolerance);
             Assert.Equal(VolumeConcentrationUnit.MicrolitersPerLiter, microlitersperliterQuantity.Unit);
 
             var microliterspermililiterQuantity = decimalfraction.ToUnit(VolumeConcentrationUnit.MicrolitersPerMililiter);
-            AssertEx.EqualTolerance(MicrolitersPerMililiterInOneDecimalFraction, (double)microliterspermililiterQuantity.Value, MicrolitersPerMililiterTolerance);
+            AssertEx.EqualTolerance(MicrolitersPerMililiterInOneDecimalFraction, (decimal)microliterspermililiterQuantity.Value, MicrolitersPerMililiterTolerance);
             Assert.Equal(VolumeConcentrationUnit.MicrolitersPerMililiter, microliterspermililiterQuantity.Unit);
 
             var millilitersperliterQuantity = decimalfraction.ToUnit(VolumeConcentrationUnit.MillilitersPerLiter);
-            AssertEx.EqualTolerance(MillilitersPerLiterInOneDecimalFraction, (double)millilitersperliterQuantity.Value, MillilitersPerLiterTolerance);
+            AssertEx.EqualTolerance(MillilitersPerLiterInOneDecimalFraction, (decimal)millilitersperliterQuantity.Value, MillilitersPerLiterTolerance);
             Assert.Equal(VolumeConcentrationUnit.MillilitersPerLiter, millilitersperliterQuantity.Unit);
 
             var milliliterspermililiterQuantity = decimalfraction.ToUnit(VolumeConcentrationUnit.MillilitersPerMililiter);
-            AssertEx.EqualTolerance(MillilitersPerMililiterInOneDecimalFraction, (double)milliliterspermililiterQuantity.Value, MillilitersPerMililiterTolerance);
+            AssertEx.EqualTolerance(MillilitersPerMililiterInOneDecimalFraction, (decimal)milliliterspermililiterQuantity.Value, MillilitersPerMililiterTolerance);
             Assert.Equal(VolumeConcentrationUnit.MillilitersPerMililiter, milliliterspermililiterQuantity.Unit);
 
             var nanolitersperliterQuantity = decimalfraction.ToUnit(VolumeConcentrationUnit.NanolitersPerLiter);
-            AssertEx.EqualTolerance(NanolitersPerLiterInOneDecimalFraction, (double)nanolitersperliterQuantity.Value, NanolitersPerLiterTolerance);
+            AssertEx.EqualTolerance(NanolitersPerLiterInOneDecimalFraction, (decimal)nanolitersperliterQuantity.Value, NanolitersPerLiterTolerance);
             Assert.Equal(VolumeConcentrationUnit.NanolitersPerLiter, nanolitersperliterQuantity.Unit);
 
             var nanoliterspermililiterQuantity = decimalfraction.ToUnit(VolumeConcentrationUnit.NanolitersPerMililiter);
-            AssertEx.EqualTolerance(NanolitersPerMililiterInOneDecimalFraction, (double)nanoliterspermililiterQuantity.Value, NanolitersPerMililiterTolerance);
+            AssertEx.EqualTolerance(NanolitersPerMililiterInOneDecimalFraction, (decimal)nanoliterspermililiterQuantity.Value, NanolitersPerMililiterTolerance);
             Assert.Equal(VolumeConcentrationUnit.NanolitersPerMililiter, nanoliterspermililiterQuantity.Unit);
 
             var partperbillionQuantity = decimalfraction.ToUnit(VolumeConcentrationUnit.PartPerBillion);
-            AssertEx.EqualTolerance(PartsPerBillionInOneDecimalFraction, (double)partperbillionQuantity.Value, PartsPerBillionTolerance);
+            AssertEx.EqualTolerance(PartsPerBillionInOneDecimalFraction, (decimal)partperbillionQuantity.Value, PartsPerBillionTolerance);
             Assert.Equal(VolumeConcentrationUnit.PartPerBillion, partperbillionQuantity.Unit);
 
             var partpermillionQuantity = decimalfraction.ToUnit(VolumeConcentrationUnit.PartPerMillion);
-            AssertEx.EqualTolerance(PartsPerMillionInOneDecimalFraction, (double)partpermillionQuantity.Value, PartsPerMillionTolerance);
+            AssertEx.EqualTolerance(PartsPerMillionInOneDecimalFraction, (decimal)partpermillionQuantity.Value, PartsPerMillionTolerance);
             Assert.Equal(VolumeConcentrationUnit.PartPerMillion, partpermillionQuantity.Unit);
 
             var partperthousandQuantity = decimalfraction.ToUnit(VolumeConcentrationUnit.PartPerThousand);
-            AssertEx.EqualTolerance(PartsPerThousandInOneDecimalFraction, (double)partperthousandQuantity.Value, PartsPerThousandTolerance);
+            AssertEx.EqualTolerance(PartsPerThousandInOneDecimalFraction, (decimal)partperthousandQuantity.Value, PartsPerThousandTolerance);
             Assert.Equal(VolumeConcentrationUnit.PartPerThousand, partperthousandQuantity.Unit);
 
             var partpertrillionQuantity = decimalfraction.ToUnit(VolumeConcentrationUnit.PartPerTrillion);
-            AssertEx.EqualTolerance(PartsPerTrillionInOneDecimalFraction, (double)partpertrillionQuantity.Value, PartsPerTrillionTolerance);
+            AssertEx.EqualTolerance(PartsPerTrillionInOneDecimalFraction, (decimal)partpertrillionQuantity.Value, PartsPerTrillionTolerance);
             Assert.Equal(VolumeConcentrationUnit.PartPerTrillion, partpertrillionQuantity.Unit);
 
             var percentQuantity = decimalfraction.ToUnit(VolumeConcentrationUnit.Percent);
-            AssertEx.EqualTolerance(PercentInOneDecimalFraction, (double)percentQuantity.Value, PercentTolerance);
+            AssertEx.EqualTolerance(PercentInOneDecimalFraction, (decimal)percentQuantity.Value, PercentTolerance);
             Assert.Equal(VolumeConcentrationUnit.Percent, percentQuantity.Unit);
 
             var picolitersperliterQuantity = decimalfraction.ToUnit(VolumeConcentrationUnit.PicolitersPerLiter);
-            AssertEx.EqualTolerance(PicolitersPerLiterInOneDecimalFraction, (double)picolitersperliterQuantity.Value, PicolitersPerLiterTolerance);
+            AssertEx.EqualTolerance(PicolitersPerLiterInOneDecimalFraction, (decimal)picolitersperliterQuantity.Value, PicolitersPerLiterTolerance);
             Assert.Equal(VolumeConcentrationUnit.PicolitersPerLiter, picolitersperliterQuantity.Unit);
 
             var picoliterspermililiterQuantity = decimalfraction.ToUnit(VolumeConcentrationUnit.PicolitersPerMililiter);
-            AssertEx.EqualTolerance(PicolitersPerMililiterInOneDecimalFraction, (double)picoliterspermililiterQuantity.Value, PicolitersPerMililiterTolerance);
+            AssertEx.EqualTolerance(PicolitersPerMililiterInOneDecimalFraction, (decimal)picoliterspermililiterQuantity.Value, PicolitersPerMililiterTolerance);
             Assert.Equal(VolumeConcentrationUnit.PicolitersPerMililiter, picoliterspermililiterQuantity.Unit);
         }
 
@@ -653,10 +627,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 ", new VolumeConcentration(0.123456, VolumeConcentrationUnit.DecimalFraction).ToString("s1"));
-                Assert.Equal("0.12 ", new VolumeConcentration(0.123456, VolumeConcentrationUnit.DecimalFraction).ToString("s2"));
-                Assert.Equal("0.123 ", new VolumeConcentration(0.123456, VolumeConcentrationUnit.DecimalFraction).ToString("s3"));
-                Assert.Equal("0.1235 ", new VolumeConcentration(0.123456, VolumeConcentrationUnit.DecimalFraction).ToString("s4"));
+                Assert.Equal("0.1 ", new VolumeConcentration(0.123456m, VolumeConcentrationUnit.DecimalFraction).ToString("s1"));
+                Assert.Equal("0.12 ", new VolumeConcentration(0.123456m, VolumeConcentrationUnit.DecimalFraction).ToString("s2"));
+                Assert.Equal("0.123 ", new VolumeConcentration(0.123456m, VolumeConcentrationUnit.DecimalFraction).ToString("s3"));
+                Assert.Equal("0.1235 ", new VolumeConcentration(0.123456m, VolumeConcentrationUnit.DecimalFraction).ToString("s4"));
             }
             finally
             {
@@ -668,10 +642,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 ", new VolumeConcentration(0.123456, VolumeConcentrationUnit.DecimalFraction).ToString("s1", culture));
-            Assert.Equal("0.12 ", new VolumeConcentration(0.123456, VolumeConcentrationUnit.DecimalFraction).ToString("s2", culture));
-            Assert.Equal("0.123 ", new VolumeConcentration(0.123456, VolumeConcentrationUnit.DecimalFraction).ToString("s3", culture));
-            Assert.Equal("0.1235 ", new VolumeConcentration(0.123456, VolumeConcentrationUnit.DecimalFraction).ToString("s4", culture));
+            Assert.Equal("0.1 ", new VolumeConcentration(0.123456m, VolumeConcentrationUnit.DecimalFraction).ToString("s1", culture));
+            Assert.Equal("0.12 ", new VolumeConcentration(0.123456m, VolumeConcentrationUnit.DecimalFraction).ToString("s2", culture));
+            Assert.Equal("0.123 ", new VolumeConcentration(0.123456m, VolumeConcentrationUnit.DecimalFraction).ToString("s3", culture));
+            Assert.Equal("0.1235 ", new VolumeConcentration(0.123456m, VolumeConcentrationUnit.DecimalFraction).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -849,7 +823,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = VolumeConcentration.FromDecimalFractions(value);
             Assert.Equal(VolumeConcentration.FromDecimalFractions(-value), -quantity);

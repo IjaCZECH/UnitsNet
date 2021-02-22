@@ -37,20 +37,20 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class ReactiveEnergyTestsBase : QuantityTestsBase
     {
-        protected abstract double KilovoltampereReactiveHoursInOneVoltampereReactiveHour { get; }
-        protected abstract double MegavoltampereReactiveHoursInOneVoltampereReactiveHour { get; }
-        protected abstract double VoltampereReactiveHoursInOneVoltampereReactiveHour { get; }
+        protected abstract decimal KilovoltampereReactiveHoursInOneVoltampereReactiveHour { get; }
+        protected abstract decimal MegavoltampereReactiveHoursInOneVoltampereReactiveHour { get; }
+        protected abstract decimal VoltampereReactiveHoursInOneVoltampereReactiveHour { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double KilovoltampereReactiveHoursTolerance { get { return 1e-5; } }
-        protected virtual double MegavoltampereReactiveHoursTolerance { get { return 1e-5; } }
-        protected virtual double VoltampereReactiveHoursTolerance { get { return 1e-5; } }
+        protected virtual decimal KilovoltampereReactiveHoursTolerance { get { return 1e-5; } }
+        protected virtual decimal MegavoltampereReactiveHoursTolerance { get { return 1e-5; } }
+        protected virtual decimal VoltampereReactiveHoursTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new ReactiveEnergy((double)0.0, ReactiveEnergyUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new ReactiveEnergy((decimal)0.0, ReactiveEnergyUnit.Undefined));
         }
 
         [Fact]
@@ -61,19 +61,6 @@ namespace UnitsNet.Tests
             Assert.Equal(ReactiveEnergyUnit.VoltampereReactiveHour, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new ReactiveEnergy(double.PositiveInfinity, ReactiveEnergyUnit.VoltampereReactiveHour));
-            Assert.Throws<ArgumentException>(() => new ReactiveEnergy(double.NegativeInfinity, ReactiveEnergyUnit.VoltampereReactiveHour));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new ReactiveEnergy(double.NaN, ReactiveEnergyUnit.VoltampereReactiveHour));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -144,19 +131,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromVoltampereReactiveHours_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => ReactiveEnergy.FromVoltampereReactiveHours(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => ReactiveEnergy.FromVoltampereReactiveHours(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromVoltampereReactiveHours_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => ReactiveEnergy.FromVoltampereReactiveHours(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var voltamperereactivehour = ReactiveEnergy.FromVoltampereReactiveHours(1);
@@ -173,7 +147,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -188,15 +162,15 @@ namespace UnitsNet.Tests
             var voltamperereactivehour = ReactiveEnergy.FromVoltampereReactiveHours(1);
 
             var kilovoltamperereactivehourQuantity = voltamperereactivehour.ToUnit(ReactiveEnergyUnit.KilovoltampereReactiveHour);
-            AssertEx.EqualTolerance(KilovoltampereReactiveHoursInOneVoltampereReactiveHour, (double)kilovoltamperereactivehourQuantity.Value, KilovoltampereReactiveHoursTolerance);
+            AssertEx.EqualTolerance(KilovoltampereReactiveHoursInOneVoltampereReactiveHour, (decimal)kilovoltamperereactivehourQuantity.Value, KilovoltampereReactiveHoursTolerance);
             Assert.Equal(ReactiveEnergyUnit.KilovoltampereReactiveHour, kilovoltamperereactivehourQuantity.Unit);
 
             var megavoltamperereactivehourQuantity = voltamperereactivehour.ToUnit(ReactiveEnergyUnit.MegavoltampereReactiveHour);
-            AssertEx.EqualTolerance(MegavoltampereReactiveHoursInOneVoltampereReactiveHour, (double)megavoltamperereactivehourQuantity.Value, MegavoltampereReactiveHoursTolerance);
+            AssertEx.EqualTolerance(MegavoltampereReactiveHoursInOneVoltampereReactiveHour, (decimal)megavoltamperereactivehourQuantity.Value, MegavoltampereReactiveHoursTolerance);
             Assert.Equal(ReactiveEnergyUnit.MegavoltampereReactiveHour, megavoltamperereactivehourQuantity.Unit);
 
             var voltamperereactivehourQuantity = voltamperereactivehour.ToUnit(ReactiveEnergyUnit.VoltampereReactiveHour);
-            AssertEx.EqualTolerance(VoltampereReactiveHoursInOneVoltampereReactiveHour, (double)voltamperereactivehourQuantity.Value, VoltampereReactiveHoursTolerance);
+            AssertEx.EqualTolerance(VoltampereReactiveHoursInOneVoltampereReactiveHour, (decimal)voltamperereactivehourQuantity.Value, VoltampereReactiveHoursTolerance);
             Assert.Equal(ReactiveEnergyUnit.VoltampereReactiveHour, voltamperereactivehourQuantity.Unit);
         }
 
@@ -398,10 +372,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 varh", new ReactiveEnergy(0.123456, ReactiveEnergyUnit.VoltampereReactiveHour).ToString("s1"));
-                Assert.Equal("0.12 varh", new ReactiveEnergy(0.123456, ReactiveEnergyUnit.VoltampereReactiveHour).ToString("s2"));
-                Assert.Equal("0.123 varh", new ReactiveEnergy(0.123456, ReactiveEnergyUnit.VoltampereReactiveHour).ToString("s3"));
-                Assert.Equal("0.1235 varh", new ReactiveEnergy(0.123456, ReactiveEnergyUnit.VoltampereReactiveHour).ToString("s4"));
+                Assert.Equal("0.1 varh", new ReactiveEnergy(0.123456m, ReactiveEnergyUnit.VoltampereReactiveHour).ToString("s1"));
+                Assert.Equal("0.12 varh", new ReactiveEnergy(0.123456m, ReactiveEnergyUnit.VoltampereReactiveHour).ToString("s2"));
+                Assert.Equal("0.123 varh", new ReactiveEnergy(0.123456m, ReactiveEnergyUnit.VoltampereReactiveHour).ToString("s3"));
+                Assert.Equal("0.1235 varh", new ReactiveEnergy(0.123456m, ReactiveEnergyUnit.VoltampereReactiveHour).ToString("s4"));
             }
             finally
             {
@@ -413,10 +387,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 varh", new ReactiveEnergy(0.123456, ReactiveEnergyUnit.VoltampereReactiveHour).ToString("s1", culture));
-            Assert.Equal("0.12 varh", new ReactiveEnergy(0.123456, ReactiveEnergyUnit.VoltampereReactiveHour).ToString("s2", culture));
-            Assert.Equal("0.123 varh", new ReactiveEnergy(0.123456, ReactiveEnergyUnit.VoltampereReactiveHour).ToString("s3", culture));
-            Assert.Equal("0.1235 varh", new ReactiveEnergy(0.123456, ReactiveEnergyUnit.VoltampereReactiveHour).ToString("s4", culture));
+            Assert.Equal("0.1 varh", new ReactiveEnergy(0.123456m, ReactiveEnergyUnit.VoltampereReactiveHour).ToString("s1", culture));
+            Assert.Equal("0.12 varh", new ReactiveEnergy(0.123456m, ReactiveEnergyUnit.VoltampereReactiveHour).ToString("s2", culture));
+            Assert.Equal("0.123 varh", new ReactiveEnergy(0.123456m, ReactiveEnergyUnit.VoltampereReactiveHour).ToString("s3", culture));
+            Assert.Equal("0.1235 varh", new ReactiveEnergy(0.123456m, ReactiveEnergyUnit.VoltampereReactiveHour).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -594,7 +568,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = ReactiveEnergy.FromVoltampereReactiveHours(value);
             Assert.Equal(ReactiveEnergy.FromVoltampereReactiveHours(-value), -quantity);

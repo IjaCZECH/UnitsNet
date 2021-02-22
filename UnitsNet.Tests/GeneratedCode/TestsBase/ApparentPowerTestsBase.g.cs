@@ -37,22 +37,22 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class ApparentPowerTestsBase : QuantityTestsBase
     {
-        protected abstract double GigavoltamperesInOneVoltampere { get; }
-        protected abstract double KilovoltamperesInOneVoltampere { get; }
-        protected abstract double MegavoltamperesInOneVoltampere { get; }
-        protected abstract double VoltamperesInOneVoltampere { get; }
+        protected abstract decimal GigavoltamperesInOneVoltampere { get; }
+        protected abstract decimal KilovoltamperesInOneVoltampere { get; }
+        protected abstract decimal MegavoltamperesInOneVoltampere { get; }
+        protected abstract decimal VoltamperesInOneVoltampere { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double GigavoltamperesTolerance { get { return 1e-5; } }
-        protected virtual double KilovoltamperesTolerance { get { return 1e-5; } }
-        protected virtual double MegavoltamperesTolerance { get { return 1e-5; } }
-        protected virtual double VoltamperesTolerance { get { return 1e-5; } }
+        protected virtual decimal GigavoltamperesTolerance { get { return 1e-5; } }
+        protected virtual decimal KilovoltamperesTolerance { get { return 1e-5; } }
+        protected virtual decimal MegavoltamperesTolerance { get { return 1e-5; } }
+        protected virtual decimal VoltamperesTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new ApparentPower((double)0.0, ApparentPowerUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new ApparentPower((decimal)0.0, ApparentPowerUnit.Undefined));
         }
 
         [Fact]
@@ -63,19 +63,6 @@ namespace UnitsNet.Tests
             Assert.Equal(ApparentPowerUnit.Voltampere, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new ApparentPower(double.PositiveInfinity, ApparentPowerUnit.Voltampere));
-            Assert.Throws<ArgumentException>(() => new ApparentPower(double.NegativeInfinity, ApparentPowerUnit.Voltampere));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new ApparentPower(double.NaN, ApparentPowerUnit.Voltampere));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -151,19 +138,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromVoltamperes_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => ApparentPower.FromVoltamperes(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => ApparentPower.FromVoltamperes(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromVoltamperes_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => ApparentPower.FromVoltamperes(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var voltampere = ApparentPower.FromVoltamperes(1);
@@ -181,7 +155,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -196,19 +170,19 @@ namespace UnitsNet.Tests
             var voltampere = ApparentPower.FromVoltamperes(1);
 
             var gigavoltampereQuantity = voltampere.ToUnit(ApparentPowerUnit.Gigavoltampere);
-            AssertEx.EqualTolerance(GigavoltamperesInOneVoltampere, (double)gigavoltampereQuantity.Value, GigavoltamperesTolerance);
+            AssertEx.EqualTolerance(GigavoltamperesInOneVoltampere, (decimal)gigavoltampereQuantity.Value, GigavoltamperesTolerance);
             Assert.Equal(ApparentPowerUnit.Gigavoltampere, gigavoltampereQuantity.Unit);
 
             var kilovoltampereQuantity = voltampere.ToUnit(ApparentPowerUnit.Kilovoltampere);
-            AssertEx.EqualTolerance(KilovoltamperesInOneVoltampere, (double)kilovoltampereQuantity.Value, KilovoltamperesTolerance);
+            AssertEx.EqualTolerance(KilovoltamperesInOneVoltampere, (decimal)kilovoltampereQuantity.Value, KilovoltamperesTolerance);
             Assert.Equal(ApparentPowerUnit.Kilovoltampere, kilovoltampereQuantity.Unit);
 
             var megavoltampereQuantity = voltampere.ToUnit(ApparentPowerUnit.Megavoltampere);
-            AssertEx.EqualTolerance(MegavoltamperesInOneVoltampere, (double)megavoltampereQuantity.Value, MegavoltamperesTolerance);
+            AssertEx.EqualTolerance(MegavoltamperesInOneVoltampere, (decimal)megavoltampereQuantity.Value, MegavoltamperesTolerance);
             Assert.Equal(ApparentPowerUnit.Megavoltampere, megavoltampereQuantity.Unit);
 
             var voltampereQuantity = voltampere.ToUnit(ApparentPowerUnit.Voltampere);
-            AssertEx.EqualTolerance(VoltamperesInOneVoltampere, (double)voltampereQuantity.Value, VoltamperesTolerance);
+            AssertEx.EqualTolerance(VoltamperesInOneVoltampere, (decimal)voltampereQuantity.Value, VoltamperesTolerance);
             Assert.Equal(ApparentPowerUnit.Voltampere, voltampereQuantity.Unit);
         }
 
@@ -413,10 +387,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 VA", new ApparentPower(0.123456, ApparentPowerUnit.Voltampere).ToString("s1"));
-                Assert.Equal("0.12 VA", new ApparentPower(0.123456, ApparentPowerUnit.Voltampere).ToString("s2"));
-                Assert.Equal("0.123 VA", new ApparentPower(0.123456, ApparentPowerUnit.Voltampere).ToString("s3"));
-                Assert.Equal("0.1235 VA", new ApparentPower(0.123456, ApparentPowerUnit.Voltampere).ToString("s4"));
+                Assert.Equal("0.1 VA", new ApparentPower(0.123456m, ApparentPowerUnit.Voltampere).ToString("s1"));
+                Assert.Equal("0.12 VA", new ApparentPower(0.123456m, ApparentPowerUnit.Voltampere).ToString("s2"));
+                Assert.Equal("0.123 VA", new ApparentPower(0.123456m, ApparentPowerUnit.Voltampere).ToString("s3"));
+                Assert.Equal("0.1235 VA", new ApparentPower(0.123456m, ApparentPowerUnit.Voltampere).ToString("s4"));
             }
             finally
             {
@@ -428,10 +402,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 VA", new ApparentPower(0.123456, ApparentPowerUnit.Voltampere).ToString("s1", culture));
-            Assert.Equal("0.12 VA", new ApparentPower(0.123456, ApparentPowerUnit.Voltampere).ToString("s2", culture));
-            Assert.Equal("0.123 VA", new ApparentPower(0.123456, ApparentPowerUnit.Voltampere).ToString("s3", culture));
-            Assert.Equal("0.1235 VA", new ApparentPower(0.123456, ApparentPowerUnit.Voltampere).ToString("s4", culture));
+            Assert.Equal("0.1 VA", new ApparentPower(0.123456m, ApparentPowerUnit.Voltampere).ToString("s1", culture));
+            Assert.Equal("0.12 VA", new ApparentPower(0.123456m, ApparentPowerUnit.Voltampere).ToString("s2", culture));
+            Assert.Equal("0.123 VA", new ApparentPower(0.123456m, ApparentPowerUnit.Voltampere).ToString("s3", culture));
+            Assert.Equal("0.1235 VA", new ApparentPower(0.123456m, ApparentPowerUnit.Voltampere).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -609,7 +583,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = ApparentPower.FromVoltamperes(value);
             Assert.Equal(ApparentPower.FromVoltamperes(-value), -quantity);

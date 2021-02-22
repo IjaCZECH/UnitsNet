@@ -30,83 +30,83 @@ namespace UnitsNet.NumberExtensions.NumberToElectricPotentialChangeRate
     {
         /// <inheritdoc cref="ElectricPotentialChangeRate.FromKilovoltsPerHours(UnitsNet.QuantityValue)" />
         public static ElectricPotentialChangeRate KilovoltsPerHours<T>(this T value) =>
-            ElectricPotentialChangeRate.FromKilovoltsPerHours(Convert.ToDouble(value));
+            ElectricPotentialChangeRate.FromKilovoltsPerHours(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricPotentialChangeRate.FromKilovoltsPerMicroseconds(UnitsNet.QuantityValue)" />
         public static ElectricPotentialChangeRate KilovoltsPerMicroseconds<T>(this T value) =>
-            ElectricPotentialChangeRate.FromKilovoltsPerMicroseconds(Convert.ToDouble(value));
+            ElectricPotentialChangeRate.FromKilovoltsPerMicroseconds(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricPotentialChangeRate.FromKilovoltsPerMinutes(UnitsNet.QuantityValue)" />
         public static ElectricPotentialChangeRate KilovoltsPerMinutes<T>(this T value) =>
-            ElectricPotentialChangeRate.FromKilovoltsPerMinutes(Convert.ToDouble(value));
+            ElectricPotentialChangeRate.FromKilovoltsPerMinutes(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricPotentialChangeRate.FromKilovoltsPerSeconds(UnitsNet.QuantityValue)" />
         public static ElectricPotentialChangeRate KilovoltsPerSeconds<T>(this T value) =>
-            ElectricPotentialChangeRate.FromKilovoltsPerSeconds(Convert.ToDouble(value));
+            ElectricPotentialChangeRate.FromKilovoltsPerSeconds(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricPotentialChangeRate.FromMegavoltsPerHours(UnitsNet.QuantityValue)" />
         public static ElectricPotentialChangeRate MegavoltsPerHours<T>(this T value) =>
-            ElectricPotentialChangeRate.FromMegavoltsPerHours(Convert.ToDouble(value));
+            ElectricPotentialChangeRate.FromMegavoltsPerHours(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricPotentialChangeRate.FromMegavoltsPerMicroseconds(UnitsNet.QuantityValue)" />
         public static ElectricPotentialChangeRate MegavoltsPerMicroseconds<T>(this T value) =>
-            ElectricPotentialChangeRate.FromMegavoltsPerMicroseconds(Convert.ToDouble(value));
+            ElectricPotentialChangeRate.FromMegavoltsPerMicroseconds(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricPotentialChangeRate.FromMegavoltsPerMinutes(UnitsNet.QuantityValue)" />
         public static ElectricPotentialChangeRate MegavoltsPerMinutes<T>(this T value) =>
-            ElectricPotentialChangeRate.FromMegavoltsPerMinutes(Convert.ToDouble(value));
+            ElectricPotentialChangeRate.FromMegavoltsPerMinutes(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricPotentialChangeRate.FromMegavoltsPerSeconds(UnitsNet.QuantityValue)" />
         public static ElectricPotentialChangeRate MegavoltsPerSeconds<T>(this T value) =>
-            ElectricPotentialChangeRate.FromMegavoltsPerSeconds(Convert.ToDouble(value));
+            ElectricPotentialChangeRate.FromMegavoltsPerSeconds(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricPotentialChangeRate.FromMicrovoltsPerHours(UnitsNet.QuantityValue)" />
         public static ElectricPotentialChangeRate MicrovoltsPerHours<T>(this T value) =>
-            ElectricPotentialChangeRate.FromMicrovoltsPerHours(Convert.ToDouble(value));
+            ElectricPotentialChangeRate.FromMicrovoltsPerHours(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricPotentialChangeRate.FromMicrovoltsPerMicroseconds(UnitsNet.QuantityValue)" />
         public static ElectricPotentialChangeRate MicrovoltsPerMicroseconds<T>(this T value) =>
-            ElectricPotentialChangeRate.FromMicrovoltsPerMicroseconds(Convert.ToDouble(value));
+            ElectricPotentialChangeRate.FromMicrovoltsPerMicroseconds(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricPotentialChangeRate.FromMicrovoltsPerMinutes(UnitsNet.QuantityValue)" />
         public static ElectricPotentialChangeRate MicrovoltsPerMinutes<T>(this T value) =>
-            ElectricPotentialChangeRate.FromMicrovoltsPerMinutes(Convert.ToDouble(value));
+            ElectricPotentialChangeRate.FromMicrovoltsPerMinutes(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricPotentialChangeRate.FromMicrovoltsPerSeconds(UnitsNet.QuantityValue)" />
         public static ElectricPotentialChangeRate MicrovoltsPerSeconds<T>(this T value) =>
-            ElectricPotentialChangeRate.FromMicrovoltsPerSeconds(Convert.ToDouble(value));
+            ElectricPotentialChangeRate.FromMicrovoltsPerSeconds(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricPotentialChangeRate.FromMillivoltsPerHours(UnitsNet.QuantityValue)" />
         public static ElectricPotentialChangeRate MillivoltsPerHours<T>(this T value) =>
-            ElectricPotentialChangeRate.FromMillivoltsPerHours(Convert.ToDouble(value));
+            ElectricPotentialChangeRate.FromMillivoltsPerHours(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricPotentialChangeRate.FromMillivoltsPerMicroseconds(UnitsNet.QuantityValue)" />
         public static ElectricPotentialChangeRate MillivoltsPerMicroseconds<T>(this T value) =>
-            ElectricPotentialChangeRate.FromMillivoltsPerMicroseconds(Convert.ToDouble(value));
+            ElectricPotentialChangeRate.FromMillivoltsPerMicroseconds(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricPotentialChangeRate.FromMillivoltsPerMinutes(UnitsNet.QuantityValue)" />
         public static ElectricPotentialChangeRate MillivoltsPerMinutes<T>(this T value) =>
-            ElectricPotentialChangeRate.FromMillivoltsPerMinutes(Convert.ToDouble(value));
+            ElectricPotentialChangeRate.FromMillivoltsPerMinutes(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricPotentialChangeRate.FromMillivoltsPerSeconds(UnitsNet.QuantityValue)" />
         public static ElectricPotentialChangeRate MillivoltsPerSeconds<T>(this T value) =>
-            ElectricPotentialChangeRate.FromMillivoltsPerSeconds(Convert.ToDouble(value));
+            ElectricPotentialChangeRate.FromMillivoltsPerSeconds(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricPotentialChangeRate.FromVoltsPerHours(UnitsNet.QuantityValue)" />
         public static ElectricPotentialChangeRate VoltsPerHours<T>(this T value) =>
-            ElectricPotentialChangeRate.FromVoltsPerHours(Convert.ToDouble(value));
+            ElectricPotentialChangeRate.FromVoltsPerHours(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricPotentialChangeRate.FromVoltsPerMicroseconds(UnitsNet.QuantityValue)" />
         public static ElectricPotentialChangeRate VoltsPerMicroseconds<T>(this T value) =>
-            ElectricPotentialChangeRate.FromVoltsPerMicroseconds(Convert.ToDouble(value));
+            ElectricPotentialChangeRate.FromVoltsPerMicroseconds(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricPotentialChangeRate.FromVoltsPerMinutes(UnitsNet.QuantityValue)" />
         public static ElectricPotentialChangeRate VoltsPerMinutes<T>(this T value) =>
-            ElectricPotentialChangeRate.FromVoltsPerMinutes(Convert.ToDouble(value));
+            ElectricPotentialChangeRate.FromVoltsPerMinutes(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricPotentialChangeRate.FromVoltsPerSeconds(UnitsNet.QuantityValue)" />
         public static ElectricPotentialChangeRate VoltsPerSeconds<T>(this T value) =>
-            ElectricPotentialChangeRate.FromVoltsPerSeconds(Convert.ToDouble(value));
+            ElectricPotentialChangeRate.FromVoltsPerSeconds(Convert.ToDecimal(value));
 
     }
 }

@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -71,12 +71,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private SpecificEntropy(double value, SpecificEntropyUnit unit)
+        private SpecificEntropy(decimal value, SpecificEntropyUnit unit)
         {
             if(unit == SpecificEntropyUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -100,12 +100,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of SpecificEntropy
         /// </summary>
-        public static SpecificEntropy MaxValue { get; } = new SpecificEntropy(double.MaxValue, BaseUnit);
+        public static SpecificEntropy MaxValue { get; } = new SpecificEntropy(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of SpecificEntropy
         /// </summary>
-        public static SpecificEntropy MinValue { get; } = new SpecificEntropy(double.MinValue, BaseUnit);
+        public static SpecificEntropy MinValue { get; } = new SpecificEntropy(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -129,7 +129,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -158,47 +158,47 @@ namespace UnitsNet
         /// <summary>
         ///     Get SpecificEntropy in BtusPerPoundFahrenheit.
         /// </summary>
-        public double BtusPerPoundFahrenheit => As(SpecificEntropyUnit.BtuPerPoundFahrenheit);
+        public decimal BtusPerPoundFahrenheit => As(SpecificEntropyUnit.BtuPerPoundFahrenheit);
 
         /// <summary>
         ///     Get SpecificEntropy in CaloriesPerGramKelvin.
         /// </summary>
-        public double CaloriesPerGramKelvin => As(SpecificEntropyUnit.CaloriePerGramKelvin);
+        public decimal CaloriesPerGramKelvin => As(SpecificEntropyUnit.CaloriePerGramKelvin);
 
         /// <summary>
         ///     Get SpecificEntropy in JoulesPerKilogramDegreeCelsius.
         /// </summary>
-        public double JoulesPerKilogramDegreeCelsius => As(SpecificEntropyUnit.JoulePerKilogramDegreeCelsius);
+        public decimal JoulesPerKilogramDegreeCelsius => As(SpecificEntropyUnit.JoulePerKilogramDegreeCelsius);
 
         /// <summary>
         ///     Get SpecificEntropy in JoulesPerKilogramKelvin.
         /// </summary>
-        public double JoulesPerKilogramKelvin => As(SpecificEntropyUnit.JoulePerKilogramKelvin);
+        public decimal JoulesPerKilogramKelvin => As(SpecificEntropyUnit.JoulePerKilogramKelvin);
 
         /// <summary>
         ///     Get SpecificEntropy in KilocaloriesPerGramKelvin.
         /// </summary>
-        public double KilocaloriesPerGramKelvin => As(SpecificEntropyUnit.KilocaloriePerGramKelvin);
+        public decimal KilocaloriesPerGramKelvin => As(SpecificEntropyUnit.KilocaloriePerGramKelvin);
 
         /// <summary>
         ///     Get SpecificEntropy in KilojoulesPerKilogramDegreeCelsius.
         /// </summary>
-        public double KilojoulesPerKilogramDegreeCelsius => As(SpecificEntropyUnit.KilojoulePerKilogramDegreeCelsius);
+        public decimal KilojoulesPerKilogramDegreeCelsius => As(SpecificEntropyUnit.KilojoulePerKilogramDegreeCelsius);
 
         /// <summary>
         ///     Get SpecificEntropy in KilojoulesPerKilogramKelvin.
         /// </summary>
-        public double KilojoulesPerKilogramKelvin => As(SpecificEntropyUnit.KilojoulePerKilogramKelvin);
+        public decimal KilojoulesPerKilogramKelvin => As(SpecificEntropyUnit.KilojoulePerKilogramKelvin);
 
         /// <summary>
         ///     Get SpecificEntropy in MegajoulesPerKilogramDegreeCelsius.
         /// </summary>
-        public double MegajoulesPerKilogramDegreeCelsius => As(SpecificEntropyUnit.MegajoulePerKilogramDegreeCelsius);
+        public decimal MegajoulesPerKilogramDegreeCelsius => As(SpecificEntropyUnit.MegajoulePerKilogramDegreeCelsius);
 
         /// <summary>
         ///     Get SpecificEntropy in MegajoulesPerKilogramKelvin.
         /// </summary>
-        public double MegajoulesPerKilogramKelvin => As(SpecificEntropyUnit.MegajoulePerKilogramKelvin);
+        public decimal MegajoulesPerKilogramKelvin => As(SpecificEntropyUnit.MegajoulePerKilogramKelvin);
 
         #endregion
 
@@ -235,9 +235,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static SpecificEntropy FromBtusPerPoundFahrenheit(double btusperpoundfahrenheit)
+        public static SpecificEntropy FromBtusPerPoundFahrenheit(decimal btusperpoundfahrenheit)
         {
-            double value = (double) btusperpoundfahrenheit;
+            decimal value = (decimal) btusperpoundfahrenheit;
             return new SpecificEntropy(value, SpecificEntropyUnit.BtuPerPoundFahrenheit);
         }
         /// <summary>
@@ -245,9 +245,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static SpecificEntropy FromCaloriesPerGramKelvin(double caloriespergramkelvin)
+        public static SpecificEntropy FromCaloriesPerGramKelvin(decimal caloriespergramkelvin)
         {
-            double value = (double) caloriespergramkelvin;
+            decimal value = (decimal) caloriespergramkelvin;
             return new SpecificEntropy(value, SpecificEntropyUnit.CaloriePerGramKelvin);
         }
         /// <summary>
@@ -255,9 +255,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static SpecificEntropy FromJoulesPerKilogramDegreeCelsius(double joulesperkilogramdegreecelsius)
+        public static SpecificEntropy FromJoulesPerKilogramDegreeCelsius(decimal joulesperkilogramdegreecelsius)
         {
-            double value = (double) joulesperkilogramdegreecelsius;
+            decimal value = (decimal) joulesperkilogramdegreecelsius;
             return new SpecificEntropy(value, SpecificEntropyUnit.JoulePerKilogramDegreeCelsius);
         }
         /// <summary>
@@ -265,9 +265,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static SpecificEntropy FromJoulesPerKilogramKelvin(double joulesperkilogramkelvin)
+        public static SpecificEntropy FromJoulesPerKilogramKelvin(decimal joulesperkilogramkelvin)
         {
-            double value = (double) joulesperkilogramkelvin;
+            decimal value = (decimal) joulesperkilogramkelvin;
             return new SpecificEntropy(value, SpecificEntropyUnit.JoulePerKilogramKelvin);
         }
         /// <summary>
@@ -275,9 +275,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static SpecificEntropy FromKilocaloriesPerGramKelvin(double kilocaloriespergramkelvin)
+        public static SpecificEntropy FromKilocaloriesPerGramKelvin(decimal kilocaloriespergramkelvin)
         {
-            double value = (double) kilocaloriespergramkelvin;
+            decimal value = (decimal) kilocaloriespergramkelvin;
             return new SpecificEntropy(value, SpecificEntropyUnit.KilocaloriePerGramKelvin);
         }
         /// <summary>
@@ -285,9 +285,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static SpecificEntropy FromKilojoulesPerKilogramDegreeCelsius(double kilojoulesperkilogramdegreecelsius)
+        public static SpecificEntropy FromKilojoulesPerKilogramDegreeCelsius(decimal kilojoulesperkilogramdegreecelsius)
         {
-            double value = (double) kilojoulesperkilogramdegreecelsius;
+            decimal value = (decimal) kilojoulesperkilogramdegreecelsius;
             return new SpecificEntropy(value, SpecificEntropyUnit.KilojoulePerKilogramDegreeCelsius);
         }
         /// <summary>
@@ -295,9 +295,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static SpecificEntropy FromKilojoulesPerKilogramKelvin(double kilojoulesperkilogramkelvin)
+        public static SpecificEntropy FromKilojoulesPerKilogramKelvin(decimal kilojoulesperkilogramkelvin)
         {
-            double value = (double) kilojoulesperkilogramkelvin;
+            decimal value = (decimal) kilojoulesperkilogramkelvin;
             return new SpecificEntropy(value, SpecificEntropyUnit.KilojoulePerKilogramKelvin);
         }
         /// <summary>
@@ -305,9 +305,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static SpecificEntropy FromMegajoulesPerKilogramDegreeCelsius(double megajoulesperkilogramdegreecelsius)
+        public static SpecificEntropy FromMegajoulesPerKilogramDegreeCelsius(decimal megajoulesperkilogramdegreecelsius)
         {
-            double value = (double) megajoulesperkilogramdegreecelsius;
+            decimal value = (decimal) megajoulesperkilogramdegreecelsius;
             return new SpecificEntropy(value, SpecificEntropyUnit.MegajoulePerKilogramDegreeCelsius);
         }
         /// <summary>
@@ -315,9 +315,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static SpecificEntropy FromMegajoulesPerKilogramKelvin(double megajoulesperkilogramkelvin)
+        public static SpecificEntropy FromMegajoulesPerKilogramKelvin(decimal megajoulesperkilogramkelvin)
         {
-            double value = (double) megajoulesperkilogramkelvin;
+            decimal value = (decimal) megajoulesperkilogramkelvin;
             return new SpecificEntropy(value, SpecificEntropyUnit.MegajoulePerKilogramKelvin);
         }
 
@@ -329,9 +329,9 @@ namespace UnitsNet
         /// <returns>SpecificEntropy unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static SpecificEntropy From(double value, SpecificEntropyUnit fromUnit)
+        public static SpecificEntropy From(decimal value, SpecificEntropyUnit fromUnit)
         {
-            return new SpecificEntropy((double)value, fromUnit);
+            return new SpecificEntropy((decimal)value, fromUnit);
         }
 
         #endregion
@@ -553,13 +553,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(SpecificEntropy other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(SpecificEntropy other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -577,19 +577,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((SpecificEntropyUnit)unit);
+        decimal IQuantity.As(object unit) => As((SpecificEntropyUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(SpecificEntropyUnit unit)
+        public decimal As(SpecificEntropyUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -607,25 +607,25 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
-                case SpecificEntropyUnit.BtuPerPoundFahrenheit: return _value * 4.1868e3;
-                case SpecificEntropyUnit.CaloriePerGramKelvin: return _value*4.184e3;
+                case SpecificEntropyUnit.BtuPerPoundFahrenheit: return _value * 4.1868e3m;
+                case SpecificEntropyUnit.CaloriePerGramKelvin: return _value*4.184e3m;
                 case SpecificEntropyUnit.JoulePerKilogramDegreeCelsius: return _value;
                 case SpecificEntropyUnit.JoulePerKilogramKelvin: return _value;
-                case SpecificEntropyUnit.KilocaloriePerGramKelvin: return (_value*4.184e3) * 1e3d;
-                case SpecificEntropyUnit.KilojoulePerKilogramDegreeCelsius: return (_value) * 1e3d;
-                case SpecificEntropyUnit.KilojoulePerKilogramKelvin: return (_value) * 1e3d;
-                case SpecificEntropyUnit.MegajoulePerKilogramDegreeCelsius: return (_value) * 1e6d;
-                case SpecificEntropyUnit.MegajoulePerKilogramKelvin: return (_value) * 1e6d;
+                case SpecificEntropyUnit.KilocaloriePerGramKelvin: return (_value*4.184e3m) * 1e3m;
+                case SpecificEntropyUnit.KilojoulePerKilogramDegreeCelsius: return (_value) * 1e3m;
+                case SpecificEntropyUnit.KilojoulePerKilogramKelvin: return (_value) * 1e3m;
+                case SpecificEntropyUnit.MegajoulePerKilogramDegreeCelsius: return (_value) * 1e6m;
+                case SpecificEntropyUnit.MegajoulePerKilogramKelvin: return (_value) * 1e6m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(SpecificEntropyUnit unit)
+        private decimal AsBaseNumericType(SpecificEntropyUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -634,15 +634,15 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case SpecificEntropyUnit.BtuPerPoundFahrenheit: return baseUnitValue / 4.1868e3;
-                case SpecificEntropyUnit.CaloriePerGramKelvin: return baseUnitValue/4.184e3;
+                case SpecificEntropyUnit.BtuPerPoundFahrenheit: return baseUnitValue / 4.1868e3m;
+                case SpecificEntropyUnit.CaloriePerGramKelvin: return baseUnitValue/4.184e3m;
                 case SpecificEntropyUnit.JoulePerKilogramDegreeCelsius: return baseUnitValue;
                 case SpecificEntropyUnit.JoulePerKilogramKelvin: return baseUnitValue;
-                case SpecificEntropyUnit.KilocaloriePerGramKelvin: return (baseUnitValue/4.184e3) / 1e3d;
-                case SpecificEntropyUnit.KilojoulePerKilogramDegreeCelsius: return (baseUnitValue) / 1e3d;
-                case SpecificEntropyUnit.KilojoulePerKilogramKelvin: return (baseUnitValue) / 1e3d;
-                case SpecificEntropyUnit.MegajoulePerKilogramDegreeCelsius: return (baseUnitValue) / 1e6d;
-                case SpecificEntropyUnit.MegajoulePerKilogramKelvin: return (baseUnitValue) / 1e6d;
+                case SpecificEntropyUnit.KilocaloriePerGramKelvin: return (baseUnitValue/4.184e3m) / 1e3m;
+                case SpecificEntropyUnit.KilojoulePerKilogramDegreeCelsius: return (baseUnitValue) / 1e3m;
+                case SpecificEntropyUnit.KilojoulePerKilogramKelvin: return (baseUnitValue) / 1e3m;
+                case SpecificEntropyUnit.MegajoulePerKilogramDegreeCelsius: return (baseUnitValue) / 1e6m;
+                case SpecificEntropyUnit.MegajoulePerKilogramKelvin: return (baseUnitValue) / 1e6m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -681,7 +681,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -701,7 +701,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

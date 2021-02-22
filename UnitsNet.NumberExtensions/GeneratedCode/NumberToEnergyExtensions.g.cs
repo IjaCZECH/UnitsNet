@@ -30,147 +30,147 @@ namespace UnitsNet.NumberExtensions.NumberToEnergy
     {
         /// <inheritdoc cref="Energy.FromBritishThermalUnits(UnitsNet.QuantityValue)" />
         public static Energy BritishThermalUnits<T>(this T value) =>
-            Energy.FromBritishThermalUnits(Convert.ToDouble(value));
+            Energy.FromBritishThermalUnits(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromCalories(UnitsNet.QuantityValue)" />
         public static Energy Calories<T>(this T value) =>
-            Energy.FromCalories(Convert.ToDouble(value));
+            Energy.FromCalories(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromDecathermsEc(UnitsNet.QuantityValue)" />
         public static Energy DecathermsEc<T>(this T value) =>
-            Energy.FromDecathermsEc(Convert.ToDouble(value));
+            Energy.FromDecathermsEc(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromDecathermsImperial(UnitsNet.QuantityValue)" />
         public static Energy DecathermsImperial<T>(this T value) =>
-            Energy.FromDecathermsImperial(Convert.ToDouble(value));
+            Energy.FromDecathermsImperial(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromDecathermsUs(UnitsNet.QuantityValue)" />
         public static Energy DecathermsUs<T>(this T value) =>
-            Energy.FromDecathermsUs(Convert.ToDouble(value));
+            Energy.FromDecathermsUs(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromElectronVolts(UnitsNet.QuantityValue)" />
         public static Energy ElectronVolts<T>(this T value) =>
-            Energy.FromElectronVolts(Convert.ToDouble(value));
+            Energy.FromElectronVolts(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromErgs(UnitsNet.QuantityValue)" />
         public static Energy Ergs<T>(this T value) =>
-            Energy.FromErgs(Convert.ToDouble(value));
+            Energy.FromErgs(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromFootPounds(UnitsNet.QuantityValue)" />
         public static Energy FootPounds<T>(this T value) =>
-            Energy.FromFootPounds(Convert.ToDouble(value));
+            Energy.FromFootPounds(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromGigabritishThermalUnits(UnitsNet.QuantityValue)" />
         public static Energy GigabritishThermalUnits<T>(this T value) =>
-            Energy.FromGigabritishThermalUnits(Convert.ToDouble(value));
+            Energy.FromGigabritishThermalUnits(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromGigaelectronVolts(UnitsNet.QuantityValue)" />
         public static Energy GigaelectronVolts<T>(this T value) =>
-            Energy.FromGigaelectronVolts(Convert.ToDouble(value));
+            Energy.FromGigaelectronVolts(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromGigajoules(UnitsNet.QuantityValue)" />
         public static Energy Gigajoules<T>(this T value) =>
-            Energy.FromGigajoules(Convert.ToDouble(value));
+            Energy.FromGigajoules(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromGigawattDays(UnitsNet.QuantityValue)" />
         public static Energy GigawattDays<T>(this T value) =>
-            Energy.FromGigawattDays(Convert.ToDouble(value));
+            Energy.FromGigawattDays(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromGigawattHours(UnitsNet.QuantityValue)" />
         public static Energy GigawattHours<T>(this T value) =>
-            Energy.FromGigawattHours(Convert.ToDouble(value));
+            Energy.FromGigawattHours(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromHorsepowerHours(UnitsNet.QuantityValue)" />
         public static Energy HorsepowerHours<T>(this T value) =>
-            Energy.FromHorsepowerHours(Convert.ToDouble(value));
+            Energy.FromHorsepowerHours(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromJoules(UnitsNet.QuantityValue)" />
         public static Energy Joules<T>(this T value) =>
-            Energy.FromJoules(Convert.ToDouble(value));
+            Energy.FromJoules(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromKilobritishThermalUnits(UnitsNet.QuantityValue)" />
         public static Energy KilobritishThermalUnits<T>(this T value) =>
-            Energy.FromKilobritishThermalUnits(Convert.ToDouble(value));
+            Energy.FromKilobritishThermalUnits(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromKilocalories(UnitsNet.QuantityValue)" />
         public static Energy Kilocalories<T>(this T value) =>
-            Energy.FromKilocalories(Convert.ToDouble(value));
+            Energy.FromKilocalories(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromKiloelectronVolts(UnitsNet.QuantityValue)" />
         public static Energy KiloelectronVolts<T>(this T value) =>
-            Energy.FromKiloelectronVolts(Convert.ToDouble(value));
+            Energy.FromKiloelectronVolts(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromKilojoules(UnitsNet.QuantityValue)" />
         public static Energy Kilojoules<T>(this T value) =>
-            Energy.FromKilojoules(Convert.ToDouble(value));
+            Energy.FromKilojoules(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromKilowattDays(UnitsNet.QuantityValue)" />
         public static Energy KilowattDays<T>(this T value) =>
-            Energy.FromKilowattDays(Convert.ToDouble(value));
+            Energy.FromKilowattDays(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromKilowattHours(UnitsNet.QuantityValue)" />
         public static Energy KilowattHours<T>(this T value) =>
-            Energy.FromKilowattHours(Convert.ToDouble(value));
+            Energy.FromKilowattHours(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromMegabritishThermalUnits(UnitsNet.QuantityValue)" />
         public static Energy MegabritishThermalUnits<T>(this T value) =>
-            Energy.FromMegabritishThermalUnits(Convert.ToDouble(value));
+            Energy.FromMegabritishThermalUnits(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromMegacalories(UnitsNet.QuantityValue)" />
         public static Energy Megacalories<T>(this T value) =>
-            Energy.FromMegacalories(Convert.ToDouble(value));
+            Energy.FromMegacalories(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromMegaelectronVolts(UnitsNet.QuantityValue)" />
         public static Energy MegaelectronVolts<T>(this T value) =>
-            Energy.FromMegaelectronVolts(Convert.ToDouble(value));
+            Energy.FromMegaelectronVolts(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromMegajoules(UnitsNet.QuantityValue)" />
         public static Energy Megajoules<T>(this T value) =>
-            Energy.FromMegajoules(Convert.ToDouble(value));
+            Energy.FromMegajoules(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromMegawattDays(UnitsNet.QuantityValue)" />
         public static Energy MegawattDays<T>(this T value) =>
-            Energy.FromMegawattDays(Convert.ToDouble(value));
+            Energy.FromMegawattDays(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromMegawattHours(UnitsNet.QuantityValue)" />
         public static Energy MegawattHours<T>(this T value) =>
-            Energy.FromMegawattHours(Convert.ToDouble(value));
+            Energy.FromMegawattHours(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromMillijoules(UnitsNet.QuantityValue)" />
         public static Energy Millijoules<T>(this T value) =>
-            Energy.FromMillijoules(Convert.ToDouble(value));
+            Energy.FromMillijoules(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromTeraelectronVolts(UnitsNet.QuantityValue)" />
         public static Energy TeraelectronVolts<T>(this T value) =>
-            Energy.FromTeraelectronVolts(Convert.ToDouble(value));
+            Energy.FromTeraelectronVolts(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromTerawattDays(UnitsNet.QuantityValue)" />
         public static Energy TerawattDays<T>(this T value) =>
-            Energy.FromTerawattDays(Convert.ToDouble(value));
+            Energy.FromTerawattDays(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromTerawattHours(UnitsNet.QuantityValue)" />
         public static Energy TerawattHours<T>(this T value) =>
-            Energy.FromTerawattHours(Convert.ToDouble(value));
+            Energy.FromTerawattHours(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromThermsEc(UnitsNet.QuantityValue)" />
         public static Energy ThermsEc<T>(this T value) =>
-            Energy.FromThermsEc(Convert.ToDouble(value));
+            Energy.FromThermsEc(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromThermsImperial(UnitsNet.QuantityValue)" />
         public static Energy ThermsImperial<T>(this T value) =>
-            Energy.FromThermsImperial(Convert.ToDouble(value));
+            Energy.FromThermsImperial(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromThermsUs(UnitsNet.QuantityValue)" />
         public static Energy ThermsUs<T>(this T value) =>
-            Energy.FromThermsUs(Convert.ToDouble(value));
+            Energy.FromThermsUs(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromWattDays(UnitsNet.QuantityValue)" />
         public static Energy WattDays<T>(this T value) =>
-            Energy.FromWattDays(Convert.ToDouble(value));
+            Energy.FromWattDays(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Energy.FromWattHours(UnitsNet.QuantityValue)" />
         public static Energy WattHours<T>(this T value) =>
-            Energy.FromWattHours(Convert.ToDouble(value));
+            Energy.FromWattHours(Convert.ToDecimal(value));
 
     }
 }

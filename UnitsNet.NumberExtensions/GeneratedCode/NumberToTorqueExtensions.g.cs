@@ -30,91 +30,91 @@ namespace UnitsNet.NumberExtensions.NumberToTorque
     {
         /// <inheritdoc cref="Torque.FromKilogramForceCentimeters(UnitsNet.QuantityValue)" />
         public static Torque KilogramForceCentimeters<T>(this T value) =>
-            Torque.FromKilogramForceCentimeters(Convert.ToDouble(value));
+            Torque.FromKilogramForceCentimeters(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Torque.FromKilogramForceMeters(UnitsNet.QuantityValue)" />
         public static Torque KilogramForceMeters<T>(this T value) =>
-            Torque.FromKilogramForceMeters(Convert.ToDouble(value));
+            Torque.FromKilogramForceMeters(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Torque.FromKilogramForceMillimeters(UnitsNet.QuantityValue)" />
         public static Torque KilogramForceMillimeters<T>(this T value) =>
-            Torque.FromKilogramForceMillimeters(Convert.ToDouble(value));
+            Torque.FromKilogramForceMillimeters(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Torque.FromKilonewtonCentimeters(UnitsNet.QuantityValue)" />
         public static Torque KilonewtonCentimeters<T>(this T value) =>
-            Torque.FromKilonewtonCentimeters(Convert.ToDouble(value));
+            Torque.FromKilonewtonCentimeters(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Torque.FromKilonewtonMeters(UnitsNet.QuantityValue)" />
         public static Torque KilonewtonMeters<T>(this T value) =>
-            Torque.FromKilonewtonMeters(Convert.ToDouble(value));
+            Torque.FromKilonewtonMeters(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Torque.FromKilonewtonMillimeters(UnitsNet.QuantityValue)" />
         public static Torque KilonewtonMillimeters<T>(this T value) =>
-            Torque.FromKilonewtonMillimeters(Convert.ToDouble(value));
+            Torque.FromKilonewtonMillimeters(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Torque.FromKilopoundForceFeet(UnitsNet.QuantityValue)" />
         public static Torque KilopoundForceFeet<T>(this T value) =>
-            Torque.FromKilopoundForceFeet(Convert.ToDouble(value));
+            Torque.FromKilopoundForceFeet(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Torque.FromKilopoundForceInches(UnitsNet.QuantityValue)" />
         public static Torque KilopoundForceInches<T>(this T value) =>
-            Torque.FromKilopoundForceInches(Convert.ToDouble(value));
+            Torque.FromKilopoundForceInches(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Torque.FromMeganewtonCentimeters(UnitsNet.QuantityValue)" />
         public static Torque MeganewtonCentimeters<T>(this T value) =>
-            Torque.FromMeganewtonCentimeters(Convert.ToDouble(value));
+            Torque.FromMeganewtonCentimeters(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Torque.FromMeganewtonMeters(UnitsNet.QuantityValue)" />
         public static Torque MeganewtonMeters<T>(this T value) =>
-            Torque.FromMeganewtonMeters(Convert.ToDouble(value));
+            Torque.FromMeganewtonMeters(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Torque.FromMeganewtonMillimeters(UnitsNet.QuantityValue)" />
         public static Torque MeganewtonMillimeters<T>(this T value) =>
-            Torque.FromMeganewtonMillimeters(Convert.ToDouble(value));
+            Torque.FromMeganewtonMillimeters(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Torque.FromMegapoundForceFeet(UnitsNet.QuantityValue)" />
         public static Torque MegapoundForceFeet<T>(this T value) =>
-            Torque.FromMegapoundForceFeet(Convert.ToDouble(value));
+            Torque.FromMegapoundForceFeet(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Torque.FromMegapoundForceInches(UnitsNet.QuantityValue)" />
         public static Torque MegapoundForceInches<T>(this T value) =>
-            Torque.FromMegapoundForceInches(Convert.ToDouble(value));
+            Torque.FromMegapoundForceInches(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Torque.FromNewtonCentimeters(UnitsNet.QuantityValue)" />
         public static Torque NewtonCentimeters<T>(this T value) =>
-            Torque.FromNewtonCentimeters(Convert.ToDouble(value));
+            Torque.FromNewtonCentimeters(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Torque.FromNewtonMeters(UnitsNet.QuantityValue)" />
         public static Torque NewtonMeters<T>(this T value) =>
-            Torque.FromNewtonMeters(Convert.ToDouble(value));
+            Torque.FromNewtonMeters(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Torque.FromNewtonMillimeters(UnitsNet.QuantityValue)" />
         public static Torque NewtonMillimeters<T>(this T value) =>
-            Torque.FromNewtonMillimeters(Convert.ToDouble(value));
+            Torque.FromNewtonMillimeters(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Torque.FromPoundalFeet(UnitsNet.QuantityValue)" />
         public static Torque PoundalFeet<T>(this T value) =>
-            Torque.FromPoundalFeet(Convert.ToDouble(value));
+            Torque.FromPoundalFeet(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Torque.FromPoundForceFeet(UnitsNet.QuantityValue)" />
         public static Torque PoundForceFeet<T>(this T value) =>
-            Torque.FromPoundForceFeet(Convert.ToDouble(value));
+            Torque.FromPoundForceFeet(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Torque.FromPoundForceInches(UnitsNet.QuantityValue)" />
         public static Torque PoundForceInches<T>(this T value) =>
-            Torque.FromPoundForceInches(Convert.ToDouble(value));
+            Torque.FromPoundForceInches(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Torque.FromTonneForceCentimeters(UnitsNet.QuantityValue)" />
         public static Torque TonneForceCentimeters<T>(this T value) =>
-            Torque.FromTonneForceCentimeters(Convert.ToDouble(value));
+            Torque.FromTonneForceCentimeters(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Torque.FromTonneForceMeters(UnitsNet.QuantityValue)" />
         public static Torque TonneForceMeters<T>(this T value) =>
-            Torque.FromTonneForceMeters(Convert.ToDouble(value));
+            Torque.FromTonneForceMeters(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Torque.FromTonneForceMillimeters(UnitsNet.QuantityValue)" />
         public static Torque TonneForceMillimeters<T>(this T value) =>
-            Torque.FromTonneForceMillimeters(Convert.ToDouble(value));
+            Torque.FromTonneForceMillimeters(Convert.ToDecimal(value));
 
     }
 }

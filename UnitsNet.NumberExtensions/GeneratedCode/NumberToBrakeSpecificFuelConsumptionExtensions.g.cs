@@ -30,15 +30,15 @@ namespace UnitsNet.NumberExtensions.NumberToBrakeSpecificFuelConsumption
     {
         /// <inheritdoc cref="BrakeSpecificFuelConsumption.FromGramsPerKiloWattHour(UnitsNet.QuantityValue)" />
         public static BrakeSpecificFuelConsumption GramsPerKiloWattHour<T>(this T value) =>
-            BrakeSpecificFuelConsumption.FromGramsPerKiloWattHour(Convert.ToDouble(value));
+            BrakeSpecificFuelConsumption.FromGramsPerKiloWattHour(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="BrakeSpecificFuelConsumption.FromKilogramsPerJoule(UnitsNet.QuantityValue)" />
         public static BrakeSpecificFuelConsumption KilogramsPerJoule<T>(this T value) =>
-            BrakeSpecificFuelConsumption.FromKilogramsPerJoule(Convert.ToDouble(value));
+            BrakeSpecificFuelConsumption.FromKilogramsPerJoule(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="BrakeSpecificFuelConsumption.FromPoundsPerMechanicalHorsepowerHour(UnitsNet.QuantityValue)" />
         public static BrakeSpecificFuelConsumption PoundsPerMechanicalHorsepowerHour<T>(this T value) =>
-            BrakeSpecificFuelConsumption.FromPoundsPerMechanicalHorsepowerHour(Convert.ToDouble(value));
+            BrakeSpecificFuelConsumption.FromPoundsPerMechanicalHorsepowerHour(Convert.ToDecimal(value));
 
     }
 }

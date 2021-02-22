@@ -37,42 +37,42 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class AngleTestsBase : QuantityTestsBase
     {
-        protected abstract double ArcminutesInOneDegree { get; }
-        protected abstract double ArcsecondsInOneDegree { get; }
-        protected abstract double CentiradiansInOneDegree { get; }
-        protected abstract double DeciradiansInOneDegree { get; }
-        protected abstract double DegreesInOneDegree { get; }
-        protected abstract double GradiansInOneDegree { get; }
-        protected abstract double MicrodegreesInOneDegree { get; }
-        protected abstract double MicroradiansInOneDegree { get; }
-        protected abstract double MillidegreesInOneDegree { get; }
-        protected abstract double MilliradiansInOneDegree { get; }
-        protected abstract double NanodegreesInOneDegree { get; }
-        protected abstract double NanoradiansInOneDegree { get; }
-        protected abstract double RadiansInOneDegree { get; }
-        protected abstract double RevolutionsInOneDegree { get; }
+        protected abstract decimal ArcminutesInOneDegree { get; }
+        protected abstract decimal ArcsecondsInOneDegree { get; }
+        protected abstract decimal CentiradiansInOneDegree { get; }
+        protected abstract decimal DeciradiansInOneDegree { get; }
+        protected abstract decimal DegreesInOneDegree { get; }
+        protected abstract decimal GradiansInOneDegree { get; }
+        protected abstract decimal MicrodegreesInOneDegree { get; }
+        protected abstract decimal MicroradiansInOneDegree { get; }
+        protected abstract decimal MillidegreesInOneDegree { get; }
+        protected abstract decimal MilliradiansInOneDegree { get; }
+        protected abstract decimal NanodegreesInOneDegree { get; }
+        protected abstract decimal NanoradiansInOneDegree { get; }
+        protected abstract decimal RadiansInOneDegree { get; }
+        protected abstract decimal RevolutionsInOneDegree { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double ArcminutesTolerance { get { return 1e-5; } }
-        protected virtual double ArcsecondsTolerance { get { return 1e-5; } }
-        protected virtual double CentiradiansTolerance { get { return 1e-5; } }
-        protected virtual double DeciradiansTolerance { get { return 1e-5; } }
-        protected virtual double DegreesTolerance { get { return 1e-5; } }
-        protected virtual double GradiansTolerance { get { return 1e-5; } }
-        protected virtual double MicrodegreesTolerance { get { return 1e-5; } }
-        protected virtual double MicroradiansTolerance { get { return 1e-5; } }
-        protected virtual double MillidegreesTolerance { get { return 1e-5; } }
-        protected virtual double MilliradiansTolerance { get { return 1e-5; } }
-        protected virtual double NanodegreesTolerance { get { return 1e-5; } }
-        protected virtual double NanoradiansTolerance { get { return 1e-5; } }
-        protected virtual double RadiansTolerance { get { return 1e-5; } }
-        protected virtual double RevolutionsTolerance { get { return 1e-5; } }
+        protected virtual decimal ArcminutesTolerance { get { return 1e-5; } }
+        protected virtual decimal ArcsecondsTolerance { get { return 1e-5; } }
+        protected virtual decimal CentiradiansTolerance { get { return 1e-5; } }
+        protected virtual decimal DeciradiansTolerance { get { return 1e-5; } }
+        protected virtual decimal DegreesTolerance { get { return 1e-5; } }
+        protected virtual decimal GradiansTolerance { get { return 1e-5; } }
+        protected virtual decimal MicrodegreesTolerance { get { return 1e-5; } }
+        protected virtual decimal MicroradiansTolerance { get { return 1e-5; } }
+        protected virtual decimal MillidegreesTolerance { get { return 1e-5; } }
+        protected virtual decimal MilliradiansTolerance { get { return 1e-5; } }
+        protected virtual decimal NanodegreesTolerance { get { return 1e-5; } }
+        protected virtual decimal NanoradiansTolerance { get { return 1e-5; } }
+        protected virtual decimal RadiansTolerance { get { return 1e-5; } }
+        protected virtual decimal RevolutionsTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new Angle((double)0.0, AngleUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new Angle((decimal)0.0, AngleUnit.Undefined));
         }
 
         [Fact]
@@ -83,19 +83,6 @@ namespace UnitsNet.Tests
             Assert.Equal(AngleUnit.Degree, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new Angle(double.PositiveInfinity, AngleUnit.Degree));
-            Assert.Throws<ArgumentException>(() => new Angle(double.NegativeInfinity, AngleUnit.Degree));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new Angle(double.NaN, AngleUnit.Degree));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -221,19 +208,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromDegrees_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => Angle.FromDegrees(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => Angle.FromDegrees(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromDegrees_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => Angle.FromDegrees(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var degree = Angle.FromDegrees(1);
@@ -261,7 +235,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -276,59 +250,59 @@ namespace UnitsNet.Tests
             var degree = Angle.FromDegrees(1);
 
             var arcminuteQuantity = degree.ToUnit(AngleUnit.Arcminute);
-            AssertEx.EqualTolerance(ArcminutesInOneDegree, (double)arcminuteQuantity.Value, ArcminutesTolerance);
+            AssertEx.EqualTolerance(ArcminutesInOneDegree, (decimal)arcminuteQuantity.Value, ArcminutesTolerance);
             Assert.Equal(AngleUnit.Arcminute, arcminuteQuantity.Unit);
 
             var arcsecondQuantity = degree.ToUnit(AngleUnit.Arcsecond);
-            AssertEx.EqualTolerance(ArcsecondsInOneDegree, (double)arcsecondQuantity.Value, ArcsecondsTolerance);
+            AssertEx.EqualTolerance(ArcsecondsInOneDegree, (decimal)arcsecondQuantity.Value, ArcsecondsTolerance);
             Assert.Equal(AngleUnit.Arcsecond, arcsecondQuantity.Unit);
 
             var centiradianQuantity = degree.ToUnit(AngleUnit.Centiradian);
-            AssertEx.EqualTolerance(CentiradiansInOneDegree, (double)centiradianQuantity.Value, CentiradiansTolerance);
+            AssertEx.EqualTolerance(CentiradiansInOneDegree, (decimal)centiradianQuantity.Value, CentiradiansTolerance);
             Assert.Equal(AngleUnit.Centiradian, centiradianQuantity.Unit);
 
             var deciradianQuantity = degree.ToUnit(AngleUnit.Deciradian);
-            AssertEx.EqualTolerance(DeciradiansInOneDegree, (double)deciradianQuantity.Value, DeciradiansTolerance);
+            AssertEx.EqualTolerance(DeciradiansInOneDegree, (decimal)deciradianQuantity.Value, DeciradiansTolerance);
             Assert.Equal(AngleUnit.Deciradian, deciradianQuantity.Unit);
 
             var degreeQuantity = degree.ToUnit(AngleUnit.Degree);
-            AssertEx.EqualTolerance(DegreesInOneDegree, (double)degreeQuantity.Value, DegreesTolerance);
+            AssertEx.EqualTolerance(DegreesInOneDegree, (decimal)degreeQuantity.Value, DegreesTolerance);
             Assert.Equal(AngleUnit.Degree, degreeQuantity.Unit);
 
             var gradianQuantity = degree.ToUnit(AngleUnit.Gradian);
-            AssertEx.EqualTolerance(GradiansInOneDegree, (double)gradianQuantity.Value, GradiansTolerance);
+            AssertEx.EqualTolerance(GradiansInOneDegree, (decimal)gradianQuantity.Value, GradiansTolerance);
             Assert.Equal(AngleUnit.Gradian, gradianQuantity.Unit);
 
             var microdegreeQuantity = degree.ToUnit(AngleUnit.Microdegree);
-            AssertEx.EqualTolerance(MicrodegreesInOneDegree, (double)microdegreeQuantity.Value, MicrodegreesTolerance);
+            AssertEx.EqualTolerance(MicrodegreesInOneDegree, (decimal)microdegreeQuantity.Value, MicrodegreesTolerance);
             Assert.Equal(AngleUnit.Microdegree, microdegreeQuantity.Unit);
 
             var microradianQuantity = degree.ToUnit(AngleUnit.Microradian);
-            AssertEx.EqualTolerance(MicroradiansInOneDegree, (double)microradianQuantity.Value, MicroradiansTolerance);
+            AssertEx.EqualTolerance(MicroradiansInOneDegree, (decimal)microradianQuantity.Value, MicroradiansTolerance);
             Assert.Equal(AngleUnit.Microradian, microradianQuantity.Unit);
 
             var millidegreeQuantity = degree.ToUnit(AngleUnit.Millidegree);
-            AssertEx.EqualTolerance(MillidegreesInOneDegree, (double)millidegreeQuantity.Value, MillidegreesTolerance);
+            AssertEx.EqualTolerance(MillidegreesInOneDegree, (decimal)millidegreeQuantity.Value, MillidegreesTolerance);
             Assert.Equal(AngleUnit.Millidegree, millidegreeQuantity.Unit);
 
             var milliradianQuantity = degree.ToUnit(AngleUnit.Milliradian);
-            AssertEx.EqualTolerance(MilliradiansInOneDegree, (double)milliradianQuantity.Value, MilliradiansTolerance);
+            AssertEx.EqualTolerance(MilliradiansInOneDegree, (decimal)milliradianQuantity.Value, MilliradiansTolerance);
             Assert.Equal(AngleUnit.Milliradian, milliradianQuantity.Unit);
 
             var nanodegreeQuantity = degree.ToUnit(AngleUnit.Nanodegree);
-            AssertEx.EqualTolerance(NanodegreesInOneDegree, (double)nanodegreeQuantity.Value, NanodegreesTolerance);
+            AssertEx.EqualTolerance(NanodegreesInOneDegree, (decimal)nanodegreeQuantity.Value, NanodegreesTolerance);
             Assert.Equal(AngleUnit.Nanodegree, nanodegreeQuantity.Unit);
 
             var nanoradianQuantity = degree.ToUnit(AngleUnit.Nanoradian);
-            AssertEx.EqualTolerance(NanoradiansInOneDegree, (double)nanoradianQuantity.Value, NanoradiansTolerance);
+            AssertEx.EqualTolerance(NanoradiansInOneDegree, (decimal)nanoradianQuantity.Value, NanoradiansTolerance);
             Assert.Equal(AngleUnit.Nanoradian, nanoradianQuantity.Unit);
 
             var radianQuantity = degree.ToUnit(AngleUnit.Radian);
-            AssertEx.EqualTolerance(RadiansInOneDegree, (double)radianQuantity.Value, RadiansTolerance);
+            AssertEx.EqualTolerance(RadiansInOneDegree, (decimal)radianQuantity.Value, RadiansTolerance);
             Assert.Equal(AngleUnit.Radian, radianQuantity.Unit);
 
             var revolutionQuantity = degree.ToUnit(AngleUnit.Revolution);
-            AssertEx.EqualTolerance(RevolutionsInOneDegree, (double)revolutionQuantity.Value, RevolutionsTolerance);
+            AssertEx.EqualTolerance(RevolutionsInOneDegree, (decimal)revolutionQuantity.Value, RevolutionsTolerance);
             Assert.Equal(AngleUnit.Revolution, revolutionQuantity.Unit);
         }
 
@@ -563,10 +537,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 °", new Angle(0.123456, AngleUnit.Degree).ToString("s1"));
-                Assert.Equal("0.12 °", new Angle(0.123456, AngleUnit.Degree).ToString("s2"));
-                Assert.Equal("0.123 °", new Angle(0.123456, AngleUnit.Degree).ToString("s3"));
-                Assert.Equal("0.1235 °", new Angle(0.123456, AngleUnit.Degree).ToString("s4"));
+                Assert.Equal("0.1 °", new Angle(0.123456m, AngleUnit.Degree).ToString("s1"));
+                Assert.Equal("0.12 °", new Angle(0.123456m, AngleUnit.Degree).ToString("s2"));
+                Assert.Equal("0.123 °", new Angle(0.123456m, AngleUnit.Degree).ToString("s3"));
+                Assert.Equal("0.1235 °", new Angle(0.123456m, AngleUnit.Degree).ToString("s4"));
             }
             finally
             {
@@ -578,10 +552,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 °", new Angle(0.123456, AngleUnit.Degree).ToString("s1", culture));
-            Assert.Equal("0.12 °", new Angle(0.123456, AngleUnit.Degree).ToString("s2", culture));
-            Assert.Equal("0.123 °", new Angle(0.123456, AngleUnit.Degree).ToString("s3", culture));
-            Assert.Equal("0.1235 °", new Angle(0.123456, AngleUnit.Degree).ToString("s4", culture));
+            Assert.Equal("0.1 °", new Angle(0.123456m, AngleUnit.Degree).ToString("s1", culture));
+            Assert.Equal("0.12 °", new Angle(0.123456m, AngleUnit.Degree).ToString("s2", culture));
+            Assert.Equal("0.123 °", new Angle(0.123456m, AngleUnit.Degree).ToString("s3", culture));
+            Assert.Equal("0.1235 °", new Angle(0.123456m, AngleUnit.Degree).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -759,7 +733,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = Angle.FromDegrees(value);
             Assert.Equal(Angle.FromDegrees(-value), -quantity);

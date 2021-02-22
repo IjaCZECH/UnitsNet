@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -71,12 +71,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private ApparentPower(double value, ApparentPowerUnit unit)
+        private ApparentPower(decimal value, ApparentPowerUnit unit)
         {
             if(unit == ApparentPowerUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -100,12 +100,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of ApparentPower
         /// </summary>
-        public static ApparentPower MaxValue { get; } = new ApparentPower(double.MaxValue, BaseUnit);
+        public static ApparentPower MaxValue { get; } = new ApparentPower(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of ApparentPower
         /// </summary>
-        public static ApparentPower MinValue { get; } = new ApparentPower(double.MinValue, BaseUnit);
+        public static ApparentPower MinValue { get; } = new ApparentPower(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -129,7 +129,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -158,22 +158,22 @@ namespace UnitsNet
         /// <summary>
         ///     Get ApparentPower in Gigavoltamperes.
         /// </summary>
-        public double Gigavoltamperes => As(ApparentPowerUnit.Gigavoltampere);
+        public decimal Gigavoltamperes => As(ApparentPowerUnit.Gigavoltampere);
 
         /// <summary>
         ///     Get ApparentPower in Kilovoltamperes.
         /// </summary>
-        public double Kilovoltamperes => As(ApparentPowerUnit.Kilovoltampere);
+        public decimal Kilovoltamperes => As(ApparentPowerUnit.Kilovoltampere);
 
         /// <summary>
         ///     Get ApparentPower in Megavoltamperes.
         /// </summary>
-        public double Megavoltamperes => As(ApparentPowerUnit.Megavoltampere);
+        public decimal Megavoltamperes => As(ApparentPowerUnit.Megavoltampere);
 
         /// <summary>
         ///     Get ApparentPower in Voltamperes.
         /// </summary>
-        public double Voltamperes => As(ApparentPowerUnit.Voltampere);
+        public decimal Voltamperes => As(ApparentPowerUnit.Voltampere);
 
         #endregion
 
@@ -210,9 +210,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ApparentPower FromGigavoltamperes(double gigavoltamperes)
+        public static ApparentPower FromGigavoltamperes(decimal gigavoltamperes)
         {
-            double value = (double) gigavoltamperes;
+            decimal value = (decimal) gigavoltamperes;
             return new ApparentPower(value, ApparentPowerUnit.Gigavoltampere);
         }
         /// <summary>
@@ -220,9 +220,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ApparentPower FromKilovoltamperes(double kilovoltamperes)
+        public static ApparentPower FromKilovoltamperes(decimal kilovoltamperes)
         {
-            double value = (double) kilovoltamperes;
+            decimal value = (decimal) kilovoltamperes;
             return new ApparentPower(value, ApparentPowerUnit.Kilovoltampere);
         }
         /// <summary>
@@ -230,9 +230,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ApparentPower FromMegavoltamperes(double megavoltamperes)
+        public static ApparentPower FromMegavoltamperes(decimal megavoltamperes)
         {
-            double value = (double) megavoltamperes;
+            decimal value = (decimal) megavoltamperes;
             return new ApparentPower(value, ApparentPowerUnit.Megavoltampere);
         }
         /// <summary>
@@ -240,9 +240,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ApparentPower FromVoltamperes(double voltamperes)
+        public static ApparentPower FromVoltamperes(decimal voltamperes)
         {
-            double value = (double) voltamperes;
+            decimal value = (decimal) voltamperes;
             return new ApparentPower(value, ApparentPowerUnit.Voltampere);
         }
 
@@ -254,9 +254,9 @@ namespace UnitsNet
         /// <returns>ApparentPower unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static ApparentPower From(double value, ApparentPowerUnit fromUnit)
+        public static ApparentPower From(decimal value, ApparentPowerUnit fromUnit)
         {
-            return new ApparentPower((double)value, fromUnit);
+            return new ApparentPower((decimal)value, fromUnit);
         }
 
         #endregion
@@ -478,13 +478,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(ApparentPower other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(ApparentPower other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -502,19 +502,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((ApparentPowerUnit)unit);
+        decimal IQuantity.As(object unit) => As((ApparentPowerUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(ApparentPowerUnit unit)
+        public decimal As(ApparentPowerUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -532,20 +532,20 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
-                case ApparentPowerUnit.Gigavoltampere: return (_value) * 1e9d;
-                case ApparentPowerUnit.Kilovoltampere: return (_value) * 1e3d;
-                case ApparentPowerUnit.Megavoltampere: return (_value) * 1e6d;
+                case ApparentPowerUnit.Gigavoltampere: return (_value) * 1e9m;
+                case ApparentPowerUnit.Kilovoltampere: return (_value) * 1e3m;
+                case ApparentPowerUnit.Megavoltampere: return (_value) * 1e6m;
                 case ApparentPowerUnit.Voltampere: return _value;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(ApparentPowerUnit unit)
+        private decimal AsBaseNumericType(ApparentPowerUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -554,9 +554,9 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case ApparentPowerUnit.Gigavoltampere: return (baseUnitValue) / 1e9d;
-                case ApparentPowerUnit.Kilovoltampere: return (baseUnitValue) / 1e3d;
-                case ApparentPowerUnit.Megavoltampere: return (baseUnitValue) / 1e6d;
+                case ApparentPowerUnit.Gigavoltampere: return (baseUnitValue) / 1e9m;
+                case ApparentPowerUnit.Kilovoltampere: return (baseUnitValue) / 1e3m;
+                case ApparentPowerUnit.Megavoltampere: return (baseUnitValue) / 1e6m;
                 case ApparentPowerUnit.Voltampere: return baseUnitValue;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
@@ -596,7 +596,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -616,7 +616,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

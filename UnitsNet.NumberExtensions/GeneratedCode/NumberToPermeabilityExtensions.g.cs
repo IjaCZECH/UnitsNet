@@ -30,7 +30,7 @@ namespace UnitsNet.NumberExtensions.NumberToPermeability
     {
         /// <inheritdoc cref="Permeability.FromHenriesPerMeter(UnitsNet.QuantityValue)" />
         public static Permeability HenriesPerMeter<T>(this T value) =>
-            Permeability.FromHenriesPerMeter(Convert.ToDouble(value));
+            Permeability.FromHenriesPerMeter(Convert.ToDecimal(value));
 
     }
 }

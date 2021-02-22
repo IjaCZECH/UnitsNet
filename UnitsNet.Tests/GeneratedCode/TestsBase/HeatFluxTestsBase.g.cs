@@ -37,50 +37,50 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class HeatFluxTestsBase : QuantityTestsBase
     {
-        protected abstract double BtusPerHourSquareFootInOneWattPerSquareMeter { get; }
-        protected abstract double BtusPerMinuteSquareFootInOneWattPerSquareMeter { get; }
-        protected abstract double BtusPerSecondSquareFootInOneWattPerSquareMeter { get; }
-        protected abstract double BtusPerSecondSquareInchInOneWattPerSquareMeter { get; }
-        protected abstract double CaloriesPerSecondSquareCentimeterInOneWattPerSquareMeter { get; }
-        protected abstract double CentiwattsPerSquareMeterInOneWattPerSquareMeter { get; }
-        protected abstract double DeciwattsPerSquareMeterInOneWattPerSquareMeter { get; }
-        protected abstract double KilocaloriesPerHourSquareMeterInOneWattPerSquareMeter { get; }
-        protected abstract double KilocaloriesPerSecondSquareCentimeterInOneWattPerSquareMeter { get; }
-        protected abstract double KilowattsPerSquareMeterInOneWattPerSquareMeter { get; }
-        protected abstract double MicrowattsPerSquareMeterInOneWattPerSquareMeter { get; }
-        protected abstract double MilliwattsPerSquareMeterInOneWattPerSquareMeter { get; }
-        protected abstract double NanowattsPerSquareMeterInOneWattPerSquareMeter { get; }
-        protected abstract double PoundsForcePerFootSecondInOneWattPerSquareMeter { get; }
-        protected abstract double PoundsPerSecondCubedInOneWattPerSquareMeter { get; }
-        protected abstract double WattsPerSquareFootInOneWattPerSquareMeter { get; }
-        protected abstract double WattsPerSquareInchInOneWattPerSquareMeter { get; }
-        protected abstract double WattsPerSquareMeterInOneWattPerSquareMeter { get; }
+        protected abstract decimal BtusPerHourSquareFootInOneWattPerSquareMeter { get; }
+        protected abstract decimal BtusPerMinuteSquareFootInOneWattPerSquareMeter { get; }
+        protected abstract decimal BtusPerSecondSquareFootInOneWattPerSquareMeter { get; }
+        protected abstract decimal BtusPerSecondSquareInchInOneWattPerSquareMeter { get; }
+        protected abstract decimal CaloriesPerSecondSquareCentimeterInOneWattPerSquareMeter { get; }
+        protected abstract decimal CentiwattsPerSquareMeterInOneWattPerSquareMeter { get; }
+        protected abstract decimal DeciwattsPerSquareMeterInOneWattPerSquareMeter { get; }
+        protected abstract decimal KilocaloriesPerHourSquareMeterInOneWattPerSquareMeter { get; }
+        protected abstract decimal KilocaloriesPerSecondSquareCentimeterInOneWattPerSquareMeter { get; }
+        protected abstract decimal KilowattsPerSquareMeterInOneWattPerSquareMeter { get; }
+        protected abstract decimal MicrowattsPerSquareMeterInOneWattPerSquareMeter { get; }
+        protected abstract decimal MilliwattsPerSquareMeterInOneWattPerSquareMeter { get; }
+        protected abstract decimal NanowattsPerSquareMeterInOneWattPerSquareMeter { get; }
+        protected abstract decimal PoundsForcePerFootSecondInOneWattPerSquareMeter { get; }
+        protected abstract decimal PoundsPerSecondCubedInOneWattPerSquareMeter { get; }
+        protected abstract decimal WattsPerSquareFootInOneWattPerSquareMeter { get; }
+        protected abstract decimal WattsPerSquareInchInOneWattPerSquareMeter { get; }
+        protected abstract decimal WattsPerSquareMeterInOneWattPerSquareMeter { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double BtusPerHourSquareFootTolerance { get { return 1e-5; } }
-        protected virtual double BtusPerMinuteSquareFootTolerance { get { return 1e-5; } }
-        protected virtual double BtusPerSecondSquareFootTolerance { get { return 1e-5; } }
-        protected virtual double BtusPerSecondSquareInchTolerance { get { return 1e-5; } }
-        protected virtual double CaloriesPerSecondSquareCentimeterTolerance { get { return 1e-5; } }
-        protected virtual double CentiwattsPerSquareMeterTolerance { get { return 1e-5; } }
-        protected virtual double DeciwattsPerSquareMeterTolerance { get { return 1e-5; } }
-        protected virtual double KilocaloriesPerHourSquareMeterTolerance { get { return 1e-5; } }
-        protected virtual double KilocaloriesPerSecondSquareCentimeterTolerance { get { return 1e-5; } }
-        protected virtual double KilowattsPerSquareMeterTolerance { get { return 1e-5; } }
-        protected virtual double MicrowattsPerSquareMeterTolerance { get { return 1e-5; } }
-        protected virtual double MilliwattsPerSquareMeterTolerance { get { return 1e-5; } }
-        protected virtual double NanowattsPerSquareMeterTolerance { get { return 1e-5; } }
-        protected virtual double PoundsForcePerFootSecondTolerance { get { return 1e-5; } }
-        protected virtual double PoundsPerSecondCubedTolerance { get { return 1e-5; } }
-        protected virtual double WattsPerSquareFootTolerance { get { return 1e-5; } }
-        protected virtual double WattsPerSquareInchTolerance { get { return 1e-5; } }
-        protected virtual double WattsPerSquareMeterTolerance { get { return 1e-5; } }
+        protected virtual decimal BtusPerHourSquareFootTolerance { get { return 1e-5; } }
+        protected virtual decimal BtusPerMinuteSquareFootTolerance { get { return 1e-5; } }
+        protected virtual decimal BtusPerSecondSquareFootTolerance { get { return 1e-5; } }
+        protected virtual decimal BtusPerSecondSquareInchTolerance { get { return 1e-5; } }
+        protected virtual decimal CaloriesPerSecondSquareCentimeterTolerance { get { return 1e-5; } }
+        protected virtual decimal CentiwattsPerSquareMeterTolerance { get { return 1e-5; } }
+        protected virtual decimal DeciwattsPerSquareMeterTolerance { get { return 1e-5; } }
+        protected virtual decimal KilocaloriesPerHourSquareMeterTolerance { get { return 1e-5; } }
+        protected virtual decimal KilocaloriesPerSecondSquareCentimeterTolerance { get { return 1e-5; } }
+        protected virtual decimal KilowattsPerSquareMeterTolerance { get { return 1e-5; } }
+        protected virtual decimal MicrowattsPerSquareMeterTolerance { get { return 1e-5; } }
+        protected virtual decimal MilliwattsPerSquareMeterTolerance { get { return 1e-5; } }
+        protected virtual decimal NanowattsPerSquareMeterTolerance { get { return 1e-5; } }
+        protected virtual decimal PoundsForcePerFootSecondTolerance { get { return 1e-5; } }
+        protected virtual decimal PoundsPerSecondCubedTolerance { get { return 1e-5; } }
+        protected virtual decimal WattsPerSquareFootTolerance { get { return 1e-5; } }
+        protected virtual decimal WattsPerSquareInchTolerance { get { return 1e-5; } }
+        protected virtual decimal WattsPerSquareMeterTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new HeatFlux((double)0.0, HeatFluxUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new HeatFlux((decimal)0.0, HeatFluxUnit.Undefined));
         }
 
         [Fact]
@@ -91,19 +91,6 @@ namespace UnitsNet.Tests
             Assert.Equal(HeatFluxUnit.WattPerSquareMeter, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new HeatFlux(double.PositiveInfinity, HeatFluxUnit.WattPerSquareMeter));
-            Assert.Throws<ArgumentException>(() => new HeatFlux(double.NegativeInfinity, HeatFluxUnit.WattPerSquareMeter));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new HeatFlux(double.NaN, HeatFluxUnit.WattPerSquareMeter));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -249,19 +236,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromWattsPerSquareMeter_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => HeatFlux.FromWattsPerSquareMeter(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => HeatFlux.FromWattsPerSquareMeter(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromWattsPerSquareMeter_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => HeatFlux.FromWattsPerSquareMeter(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var wattpersquaremeter = HeatFlux.FromWattsPerSquareMeter(1);
@@ -293,7 +267,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -308,75 +282,75 @@ namespace UnitsNet.Tests
             var wattpersquaremeter = HeatFlux.FromWattsPerSquareMeter(1);
 
             var btuperhoursquarefootQuantity = wattpersquaremeter.ToUnit(HeatFluxUnit.BtuPerHourSquareFoot);
-            AssertEx.EqualTolerance(BtusPerHourSquareFootInOneWattPerSquareMeter, (double)btuperhoursquarefootQuantity.Value, BtusPerHourSquareFootTolerance);
+            AssertEx.EqualTolerance(BtusPerHourSquareFootInOneWattPerSquareMeter, (decimal)btuperhoursquarefootQuantity.Value, BtusPerHourSquareFootTolerance);
             Assert.Equal(HeatFluxUnit.BtuPerHourSquareFoot, btuperhoursquarefootQuantity.Unit);
 
             var btuperminutesquarefootQuantity = wattpersquaremeter.ToUnit(HeatFluxUnit.BtuPerMinuteSquareFoot);
-            AssertEx.EqualTolerance(BtusPerMinuteSquareFootInOneWattPerSquareMeter, (double)btuperminutesquarefootQuantity.Value, BtusPerMinuteSquareFootTolerance);
+            AssertEx.EqualTolerance(BtusPerMinuteSquareFootInOneWattPerSquareMeter, (decimal)btuperminutesquarefootQuantity.Value, BtusPerMinuteSquareFootTolerance);
             Assert.Equal(HeatFluxUnit.BtuPerMinuteSquareFoot, btuperminutesquarefootQuantity.Unit);
 
             var btupersecondsquarefootQuantity = wattpersquaremeter.ToUnit(HeatFluxUnit.BtuPerSecondSquareFoot);
-            AssertEx.EqualTolerance(BtusPerSecondSquareFootInOneWattPerSquareMeter, (double)btupersecondsquarefootQuantity.Value, BtusPerSecondSquareFootTolerance);
+            AssertEx.EqualTolerance(BtusPerSecondSquareFootInOneWattPerSquareMeter, (decimal)btupersecondsquarefootQuantity.Value, BtusPerSecondSquareFootTolerance);
             Assert.Equal(HeatFluxUnit.BtuPerSecondSquareFoot, btupersecondsquarefootQuantity.Unit);
 
             var btupersecondsquareinchQuantity = wattpersquaremeter.ToUnit(HeatFluxUnit.BtuPerSecondSquareInch);
-            AssertEx.EqualTolerance(BtusPerSecondSquareInchInOneWattPerSquareMeter, (double)btupersecondsquareinchQuantity.Value, BtusPerSecondSquareInchTolerance);
+            AssertEx.EqualTolerance(BtusPerSecondSquareInchInOneWattPerSquareMeter, (decimal)btupersecondsquareinchQuantity.Value, BtusPerSecondSquareInchTolerance);
             Assert.Equal(HeatFluxUnit.BtuPerSecondSquareInch, btupersecondsquareinchQuantity.Unit);
 
             var caloriepersecondsquarecentimeterQuantity = wattpersquaremeter.ToUnit(HeatFluxUnit.CaloriePerSecondSquareCentimeter);
-            AssertEx.EqualTolerance(CaloriesPerSecondSquareCentimeterInOneWattPerSquareMeter, (double)caloriepersecondsquarecentimeterQuantity.Value, CaloriesPerSecondSquareCentimeterTolerance);
+            AssertEx.EqualTolerance(CaloriesPerSecondSquareCentimeterInOneWattPerSquareMeter, (decimal)caloriepersecondsquarecentimeterQuantity.Value, CaloriesPerSecondSquareCentimeterTolerance);
             Assert.Equal(HeatFluxUnit.CaloriePerSecondSquareCentimeter, caloriepersecondsquarecentimeterQuantity.Unit);
 
             var centiwattpersquaremeterQuantity = wattpersquaremeter.ToUnit(HeatFluxUnit.CentiwattPerSquareMeter);
-            AssertEx.EqualTolerance(CentiwattsPerSquareMeterInOneWattPerSquareMeter, (double)centiwattpersquaremeterQuantity.Value, CentiwattsPerSquareMeterTolerance);
+            AssertEx.EqualTolerance(CentiwattsPerSquareMeterInOneWattPerSquareMeter, (decimal)centiwattpersquaremeterQuantity.Value, CentiwattsPerSquareMeterTolerance);
             Assert.Equal(HeatFluxUnit.CentiwattPerSquareMeter, centiwattpersquaremeterQuantity.Unit);
 
             var deciwattpersquaremeterQuantity = wattpersquaremeter.ToUnit(HeatFluxUnit.DeciwattPerSquareMeter);
-            AssertEx.EqualTolerance(DeciwattsPerSquareMeterInOneWattPerSquareMeter, (double)deciwattpersquaremeterQuantity.Value, DeciwattsPerSquareMeterTolerance);
+            AssertEx.EqualTolerance(DeciwattsPerSquareMeterInOneWattPerSquareMeter, (decimal)deciwattpersquaremeterQuantity.Value, DeciwattsPerSquareMeterTolerance);
             Assert.Equal(HeatFluxUnit.DeciwattPerSquareMeter, deciwattpersquaremeterQuantity.Unit);
 
             var kilocalorieperhoursquaremeterQuantity = wattpersquaremeter.ToUnit(HeatFluxUnit.KilocaloriePerHourSquareMeter);
-            AssertEx.EqualTolerance(KilocaloriesPerHourSquareMeterInOneWattPerSquareMeter, (double)kilocalorieperhoursquaremeterQuantity.Value, KilocaloriesPerHourSquareMeterTolerance);
+            AssertEx.EqualTolerance(KilocaloriesPerHourSquareMeterInOneWattPerSquareMeter, (decimal)kilocalorieperhoursquaremeterQuantity.Value, KilocaloriesPerHourSquareMeterTolerance);
             Assert.Equal(HeatFluxUnit.KilocaloriePerHourSquareMeter, kilocalorieperhoursquaremeterQuantity.Unit);
 
             var kilocaloriepersecondsquarecentimeterQuantity = wattpersquaremeter.ToUnit(HeatFluxUnit.KilocaloriePerSecondSquareCentimeter);
-            AssertEx.EqualTolerance(KilocaloriesPerSecondSquareCentimeterInOneWattPerSquareMeter, (double)kilocaloriepersecondsquarecentimeterQuantity.Value, KilocaloriesPerSecondSquareCentimeterTolerance);
+            AssertEx.EqualTolerance(KilocaloriesPerSecondSquareCentimeterInOneWattPerSquareMeter, (decimal)kilocaloriepersecondsquarecentimeterQuantity.Value, KilocaloriesPerSecondSquareCentimeterTolerance);
             Assert.Equal(HeatFluxUnit.KilocaloriePerSecondSquareCentimeter, kilocaloriepersecondsquarecentimeterQuantity.Unit);
 
             var kilowattpersquaremeterQuantity = wattpersquaremeter.ToUnit(HeatFluxUnit.KilowattPerSquareMeter);
-            AssertEx.EqualTolerance(KilowattsPerSquareMeterInOneWattPerSquareMeter, (double)kilowattpersquaremeterQuantity.Value, KilowattsPerSquareMeterTolerance);
+            AssertEx.EqualTolerance(KilowattsPerSquareMeterInOneWattPerSquareMeter, (decimal)kilowattpersquaremeterQuantity.Value, KilowattsPerSquareMeterTolerance);
             Assert.Equal(HeatFluxUnit.KilowattPerSquareMeter, kilowattpersquaremeterQuantity.Unit);
 
             var microwattpersquaremeterQuantity = wattpersquaremeter.ToUnit(HeatFluxUnit.MicrowattPerSquareMeter);
-            AssertEx.EqualTolerance(MicrowattsPerSquareMeterInOneWattPerSquareMeter, (double)microwattpersquaremeterQuantity.Value, MicrowattsPerSquareMeterTolerance);
+            AssertEx.EqualTolerance(MicrowattsPerSquareMeterInOneWattPerSquareMeter, (decimal)microwattpersquaremeterQuantity.Value, MicrowattsPerSquareMeterTolerance);
             Assert.Equal(HeatFluxUnit.MicrowattPerSquareMeter, microwattpersquaremeterQuantity.Unit);
 
             var milliwattpersquaremeterQuantity = wattpersquaremeter.ToUnit(HeatFluxUnit.MilliwattPerSquareMeter);
-            AssertEx.EqualTolerance(MilliwattsPerSquareMeterInOneWattPerSquareMeter, (double)milliwattpersquaremeterQuantity.Value, MilliwattsPerSquareMeterTolerance);
+            AssertEx.EqualTolerance(MilliwattsPerSquareMeterInOneWattPerSquareMeter, (decimal)milliwattpersquaremeterQuantity.Value, MilliwattsPerSquareMeterTolerance);
             Assert.Equal(HeatFluxUnit.MilliwattPerSquareMeter, milliwattpersquaremeterQuantity.Unit);
 
             var nanowattpersquaremeterQuantity = wattpersquaremeter.ToUnit(HeatFluxUnit.NanowattPerSquareMeter);
-            AssertEx.EqualTolerance(NanowattsPerSquareMeterInOneWattPerSquareMeter, (double)nanowattpersquaremeterQuantity.Value, NanowattsPerSquareMeterTolerance);
+            AssertEx.EqualTolerance(NanowattsPerSquareMeterInOneWattPerSquareMeter, (decimal)nanowattpersquaremeterQuantity.Value, NanowattsPerSquareMeterTolerance);
             Assert.Equal(HeatFluxUnit.NanowattPerSquareMeter, nanowattpersquaremeterQuantity.Unit);
 
             var poundforceperfootsecondQuantity = wattpersquaremeter.ToUnit(HeatFluxUnit.PoundForcePerFootSecond);
-            AssertEx.EqualTolerance(PoundsForcePerFootSecondInOneWattPerSquareMeter, (double)poundforceperfootsecondQuantity.Value, PoundsForcePerFootSecondTolerance);
+            AssertEx.EqualTolerance(PoundsForcePerFootSecondInOneWattPerSquareMeter, (decimal)poundforceperfootsecondQuantity.Value, PoundsForcePerFootSecondTolerance);
             Assert.Equal(HeatFluxUnit.PoundForcePerFootSecond, poundforceperfootsecondQuantity.Unit);
 
             var poundpersecondcubedQuantity = wattpersquaremeter.ToUnit(HeatFluxUnit.PoundPerSecondCubed);
-            AssertEx.EqualTolerance(PoundsPerSecondCubedInOneWattPerSquareMeter, (double)poundpersecondcubedQuantity.Value, PoundsPerSecondCubedTolerance);
+            AssertEx.EqualTolerance(PoundsPerSecondCubedInOneWattPerSquareMeter, (decimal)poundpersecondcubedQuantity.Value, PoundsPerSecondCubedTolerance);
             Assert.Equal(HeatFluxUnit.PoundPerSecondCubed, poundpersecondcubedQuantity.Unit);
 
             var wattpersquarefootQuantity = wattpersquaremeter.ToUnit(HeatFluxUnit.WattPerSquareFoot);
-            AssertEx.EqualTolerance(WattsPerSquareFootInOneWattPerSquareMeter, (double)wattpersquarefootQuantity.Value, WattsPerSquareFootTolerance);
+            AssertEx.EqualTolerance(WattsPerSquareFootInOneWattPerSquareMeter, (decimal)wattpersquarefootQuantity.Value, WattsPerSquareFootTolerance);
             Assert.Equal(HeatFluxUnit.WattPerSquareFoot, wattpersquarefootQuantity.Unit);
 
             var wattpersquareinchQuantity = wattpersquaremeter.ToUnit(HeatFluxUnit.WattPerSquareInch);
-            AssertEx.EqualTolerance(WattsPerSquareInchInOneWattPerSquareMeter, (double)wattpersquareinchQuantity.Value, WattsPerSquareInchTolerance);
+            AssertEx.EqualTolerance(WattsPerSquareInchInOneWattPerSquareMeter, (decimal)wattpersquareinchQuantity.Value, WattsPerSquareInchTolerance);
             Assert.Equal(HeatFluxUnit.WattPerSquareInch, wattpersquareinchQuantity.Unit);
 
             var wattpersquaremeterQuantity = wattpersquaremeter.ToUnit(HeatFluxUnit.WattPerSquareMeter);
-            AssertEx.EqualTolerance(WattsPerSquareMeterInOneWattPerSquareMeter, (double)wattpersquaremeterQuantity.Value, WattsPerSquareMeterTolerance);
+            AssertEx.EqualTolerance(WattsPerSquareMeterInOneWattPerSquareMeter, (decimal)wattpersquaremeterQuantity.Value, WattsPerSquareMeterTolerance);
             Assert.Equal(HeatFluxUnit.WattPerSquareMeter, wattpersquaremeterQuantity.Unit);
         }
 
@@ -623,10 +597,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 W/m²", new HeatFlux(0.123456, HeatFluxUnit.WattPerSquareMeter).ToString("s1"));
-                Assert.Equal("0.12 W/m²", new HeatFlux(0.123456, HeatFluxUnit.WattPerSquareMeter).ToString("s2"));
-                Assert.Equal("0.123 W/m²", new HeatFlux(0.123456, HeatFluxUnit.WattPerSquareMeter).ToString("s3"));
-                Assert.Equal("0.1235 W/m²", new HeatFlux(0.123456, HeatFluxUnit.WattPerSquareMeter).ToString("s4"));
+                Assert.Equal("0.1 W/m²", new HeatFlux(0.123456m, HeatFluxUnit.WattPerSquareMeter).ToString("s1"));
+                Assert.Equal("0.12 W/m²", new HeatFlux(0.123456m, HeatFluxUnit.WattPerSquareMeter).ToString("s2"));
+                Assert.Equal("0.123 W/m²", new HeatFlux(0.123456m, HeatFluxUnit.WattPerSquareMeter).ToString("s3"));
+                Assert.Equal("0.1235 W/m²", new HeatFlux(0.123456m, HeatFluxUnit.WattPerSquareMeter).ToString("s4"));
             }
             finally
             {
@@ -638,10 +612,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 W/m²", new HeatFlux(0.123456, HeatFluxUnit.WattPerSquareMeter).ToString("s1", culture));
-            Assert.Equal("0.12 W/m²", new HeatFlux(0.123456, HeatFluxUnit.WattPerSquareMeter).ToString("s2", culture));
-            Assert.Equal("0.123 W/m²", new HeatFlux(0.123456, HeatFluxUnit.WattPerSquareMeter).ToString("s3", culture));
-            Assert.Equal("0.1235 W/m²", new HeatFlux(0.123456, HeatFluxUnit.WattPerSquareMeter).ToString("s4", culture));
+            Assert.Equal("0.1 W/m²", new HeatFlux(0.123456m, HeatFluxUnit.WattPerSquareMeter).ToString("s1", culture));
+            Assert.Equal("0.12 W/m²", new HeatFlux(0.123456m, HeatFluxUnit.WattPerSquareMeter).ToString("s2", culture));
+            Assert.Equal("0.123 W/m²", new HeatFlux(0.123456m, HeatFluxUnit.WattPerSquareMeter).ToString("s3", culture));
+            Assert.Equal("0.1235 W/m²", new HeatFlux(0.123456m, HeatFluxUnit.WattPerSquareMeter).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -819,7 +793,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = HeatFlux.FromWattsPerSquareMeter(value);
             Assert.Equal(HeatFlux.FromWattsPerSquareMeter(-value), -quantity);

@@ -37,16 +37,16 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class LuminousFluxTestsBase : QuantityTestsBase
     {
-        protected abstract double LumensInOneLumen { get; }
+        protected abstract decimal LumensInOneLumen { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double LumensTolerance { get { return 1e-5; } }
+        protected virtual decimal LumensTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new LuminousFlux((double)0.0, LuminousFluxUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new LuminousFlux((decimal)0.0, LuminousFluxUnit.Undefined));
         }
 
         [Fact]
@@ -57,19 +57,6 @@ namespace UnitsNet.Tests
             Assert.Equal(LuminousFluxUnit.Lumen, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new LuminousFlux(double.PositiveInfinity, LuminousFluxUnit.Lumen));
-            Assert.Throws<ArgumentException>(() => new LuminousFlux(double.NegativeInfinity, LuminousFluxUnit.Lumen));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new LuminousFlux(double.NaN, LuminousFluxUnit.Lumen));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -130,19 +117,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromLumens_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => LuminousFlux.FromLumens(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => LuminousFlux.FromLumens(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromLumens_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => LuminousFlux.FromLumens(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var lumen = LuminousFlux.FromLumens(1);
@@ -157,7 +131,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -172,7 +146,7 @@ namespace UnitsNet.Tests
             var lumen = LuminousFlux.FromLumens(1);
 
             var lumenQuantity = lumen.ToUnit(LuminousFluxUnit.Lumen);
-            AssertEx.EqualTolerance(LumensInOneLumen, (double)lumenQuantity.Value, LumensTolerance);
+            AssertEx.EqualTolerance(LumensInOneLumen, (decimal)lumenQuantity.Value, LumensTolerance);
             Assert.Equal(LuminousFluxUnit.Lumen, lumenQuantity.Unit);
         }
 
@@ -368,10 +342,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 lm", new LuminousFlux(0.123456, LuminousFluxUnit.Lumen).ToString("s1"));
-                Assert.Equal("0.12 lm", new LuminousFlux(0.123456, LuminousFluxUnit.Lumen).ToString("s2"));
-                Assert.Equal("0.123 lm", new LuminousFlux(0.123456, LuminousFluxUnit.Lumen).ToString("s3"));
-                Assert.Equal("0.1235 lm", new LuminousFlux(0.123456, LuminousFluxUnit.Lumen).ToString("s4"));
+                Assert.Equal("0.1 lm", new LuminousFlux(0.123456m, LuminousFluxUnit.Lumen).ToString("s1"));
+                Assert.Equal("0.12 lm", new LuminousFlux(0.123456m, LuminousFluxUnit.Lumen).ToString("s2"));
+                Assert.Equal("0.123 lm", new LuminousFlux(0.123456m, LuminousFluxUnit.Lumen).ToString("s3"));
+                Assert.Equal("0.1235 lm", new LuminousFlux(0.123456m, LuminousFluxUnit.Lumen).ToString("s4"));
             }
             finally
             {
@@ -383,10 +357,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 lm", new LuminousFlux(0.123456, LuminousFluxUnit.Lumen).ToString("s1", culture));
-            Assert.Equal("0.12 lm", new LuminousFlux(0.123456, LuminousFluxUnit.Lumen).ToString("s2", culture));
-            Assert.Equal("0.123 lm", new LuminousFlux(0.123456, LuminousFluxUnit.Lumen).ToString("s3", culture));
-            Assert.Equal("0.1235 lm", new LuminousFlux(0.123456, LuminousFluxUnit.Lumen).ToString("s4", culture));
+            Assert.Equal("0.1 lm", new LuminousFlux(0.123456m, LuminousFluxUnit.Lumen).ToString("s1", culture));
+            Assert.Equal("0.12 lm", new LuminousFlux(0.123456m, LuminousFluxUnit.Lumen).ToString("s2", culture));
+            Assert.Equal("0.123 lm", new LuminousFlux(0.123456m, LuminousFluxUnit.Lumen).ToString("s3", culture));
+            Assert.Equal("0.1235 lm", new LuminousFlux(0.123456m, LuminousFluxUnit.Lumen).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -564,7 +538,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = LuminousFlux.FromLumens(value);
             Assert.Equal(LuminousFlux.FromLumens(-value), -quantity);

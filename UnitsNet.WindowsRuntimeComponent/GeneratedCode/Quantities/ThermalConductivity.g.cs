@@ -42,7 +42,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -74,12 +74,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private ThermalConductivity(double value, ThermalConductivityUnit unit)
+        private ThermalConductivity(decimal value, ThermalConductivityUnit unit)
         {
             if(unit == ThermalConductivityUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -103,12 +103,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of ThermalConductivity
         /// </summary>
-        public static ThermalConductivity MaxValue { get; } = new ThermalConductivity(double.MaxValue, BaseUnit);
+        public static ThermalConductivity MaxValue { get; } = new ThermalConductivity(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of ThermalConductivity
         /// </summary>
-        public static ThermalConductivity MinValue { get; } = new ThermalConductivity(double.MinValue, BaseUnit);
+        public static ThermalConductivity MinValue { get; } = new ThermalConductivity(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -132,7 +132,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -161,12 +161,12 @@ namespace UnitsNet
         /// <summary>
         ///     Get ThermalConductivity in BtusPerHourFootFahrenheit.
         /// </summary>
-        public double BtusPerHourFootFahrenheit => As(ThermalConductivityUnit.BtuPerHourFootFahrenheit);
+        public decimal BtusPerHourFootFahrenheit => As(ThermalConductivityUnit.BtuPerHourFootFahrenheit);
 
         /// <summary>
         ///     Get ThermalConductivity in WattsPerMeterKelvin.
         /// </summary>
-        public double WattsPerMeterKelvin => As(ThermalConductivityUnit.WattPerMeterKelvin);
+        public decimal WattsPerMeterKelvin => As(ThermalConductivityUnit.WattPerMeterKelvin);
 
         #endregion
 
@@ -203,9 +203,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ThermalConductivity FromBtusPerHourFootFahrenheit(double btusperhourfootfahrenheit)
+        public static ThermalConductivity FromBtusPerHourFootFahrenheit(decimal btusperhourfootfahrenheit)
         {
-            double value = (double) btusperhourfootfahrenheit;
+            decimal value = (decimal) btusperhourfootfahrenheit;
             return new ThermalConductivity(value, ThermalConductivityUnit.BtuPerHourFootFahrenheit);
         }
         /// <summary>
@@ -213,9 +213,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ThermalConductivity FromWattsPerMeterKelvin(double wattspermeterkelvin)
+        public static ThermalConductivity FromWattsPerMeterKelvin(decimal wattspermeterkelvin)
         {
-            double value = (double) wattspermeterkelvin;
+            decimal value = (decimal) wattspermeterkelvin;
             return new ThermalConductivity(value, ThermalConductivityUnit.WattPerMeterKelvin);
         }
 
@@ -227,9 +227,9 @@ namespace UnitsNet
         /// <returns>ThermalConductivity unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static ThermalConductivity From(double value, ThermalConductivityUnit fromUnit)
+        public static ThermalConductivity From(decimal value, ThermalConductivityUnit fromUnit)
         {
-            return new ThermalConductivity((double)value, fromUnit);
+            return new ThermalConductivity((decimal)value, fromUnit);
         }
 
         #endregion
@@ -451,13 +451,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(ThermalConductivity other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(ThermalConductivity other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -475,19 +475,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((ThermalConductivityUnit)unit);
+        decimal IQuantity.As(object unit) => As((ThermalConductivityUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(ThermalConductivityUnit unit)
+        public decimal As(ThermalConductivityUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -505,18 +505,18 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
-                case ThermalConductivityUnit.BtuPerHourFootFahrenheit: return _value*1.73073467;
+                case ThermalConductivityUnit.BtuPerHourFootFahrenheit: return _value*1.73073467m;
                 case ThermalConductivityUnit.WattPerMeterKelvin: return _value;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(ThermalConductivityUnit unit)
+        private decimal AsBaseNumericType(ThermalConductivityUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -525,7 +525,7 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case ThermalConductivityUnit.BtuPerHourFootFahrenheit: return baseUnitValue/1.73073467;
+                case ThermalConductivityUnit.BtuPerHourFootFahrenheit: return baseUnitValue/1.73073467m;
                 case ThermalConductivityUnit.WattPerMeterKelvin: return baseUnitValue;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
@@ -565,7 +565,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -585,7 +585,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

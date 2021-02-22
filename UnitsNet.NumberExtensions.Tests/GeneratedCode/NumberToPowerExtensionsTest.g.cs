@@ -77,16 +77,16 @@ namespace UnitsNet.Tests
             Assert.Equal(Power.FromKilowatts(2), 2.Kilowatts());
 
         [Fact]
-        public void NumberToMechanicalHorsepowerTest() =>
-            Assert.Equal(Power.FromMechanicalHorsepower(2), 2.MechanicalHorsepower());
-
-        [Fact]
         public void NumberToMegajoulesPerHourTest() =>
             Assert.Equal(Power.FromMegajoulesPerHour(2), 2.MegajoulesPerHour());
 
         [Fact]
         public void NumberToMegawattsTest() =>
             Assert.Equal(Power.FromMegawatts(2), 2.Megawatts());
+
+        [Fact]
+        public void NumberToMechanicalHorsepowerTest() =>
+            Assert.Equal(Power.FromMechanicalHorsepower(2), 2.MechanicalHorsepower());
 
         [Fact]
         public void NumberToMetricHorsepowerTest() =>

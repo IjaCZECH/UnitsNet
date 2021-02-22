@@ -42,7 +42,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -74,12 +74,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private SolidAngle(double value, SolidAngleUnit unit)
+        private SolidAngle(decimal value, SolidAngleUnit unit)
         {
             if(unit == SolidAngleUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -103,12 +103,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of SolidAngle
         /// </summary>
-        public static SolidAngle MaxValue { get; } = new SolidAngle(double.MaxValue, BaseUnit);
+        public static SolidAngle MaxValue { get; } = new SolidAngle(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of SolidAngle
         /// </summary>
-        public static SolidAngle MinValue { get; } = new SolidAngle(double.MinValue, BaseUnit);
+        public static SolidAngle MinValue { get; } = new SolidAngle(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -132,7 +132,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -161,7 +161,7 @@ namespace UnitsNet
         /// <summary>
         ///     Get SolidAngle in Steradians.
         /// </summary>
-        public double Steradians => As(SolidAngleUnit.Steradian);
+        public decimal Steradians => As(SolidAngleUnit.Steradian);
 
         #endregion
 
@@ -198,9 +198,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static SolidAngle FromSteradians(double steradians)
+        public static SolidAngle FromSteradians(decimal steradians)
         {
-            double value = (double) steradians;
+            decimal value = (decimal) steradians;
             return new SolidAngle(value, SolidAngleUnit.Steradian);
         }
 
@@ -212,9 +212,9 @@ namespace UnitsNet
         /// <returns>SolidAngle unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static SolidAngle From(double value, SolidAngleUnit fromUnit)
+        public static SolidAngle From(decimal value, SolidAngleUnit fromUnit)
         {
-            return new SolidAngle((double)value, fromUnit);
+            return new SolidAngle((decimal)value, fromUnit);
         }
 
         #endregion
@@ -436,13 +436,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(SolidAngle other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(SolidAngle other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -460,19 +460,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((SolidAngleUnit)unit);
+        decimal IQuantity.As(object unit) => As((SolidAngleUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(SolidAngleUnit unit)
+        public decimal As(SolidAngleUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -490,7 +490,7 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
@@ -500,7 +500,7 @@ namespace UnitsNet
             }
         }
 
-        private double AsBaseNumericType(SolidAngleUnit unit)
+        private decimal AsBaseNumericType(SolidAngleUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -548,7 +548,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -568,7 +568,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

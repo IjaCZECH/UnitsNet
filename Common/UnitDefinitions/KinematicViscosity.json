@@ -27,8 +27,8 @@
     {
       "SingularName": "Stokes",
       "PluralName": "Stokes",
-      "FromUnitToBaseFunc": "x/1e4",
-      "FromBaseToUnitFunc": "x*1e4",
+      "FromUnitToBaseFunc": "x/1e4m",
+      "FromBaseToUnitFunc": "x*1e4m",
       "Prefixes": [ "Nano", "Micro", "Milli", "Centi", "Deci", "Kilo" ],
       "Localization": [
         {

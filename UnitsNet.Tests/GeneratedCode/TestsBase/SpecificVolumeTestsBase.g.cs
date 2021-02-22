@@ -37,20 +37,20 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class SpecificVolumeTestsBase : QuantityTestsBase
     {
-        protected abstract double CubicFeetPerPoundInOneCubicMeterPerKilogram { get; }
-        protected abstract double CubicMetersPerKilogramInOneCubicMeterPerKilogram { get; }
-        protected abstract double MillicubicMetersPerKilogramInOneCubicMeterPerKilogram { get; }
+        protected abstract decimal CubicFeetPerPoundInOneCubicMeterPerKilogram { get; }
+        protected abstract decimal CubicMetersPerKilogramInOneCubicMeterPerKilogram { get; }
+        protected abstract decimal MillicubicMetersPerKilogramInOneCubicMeterPerKilogram { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double CubicFeetPerPoundTolerance { get { return 1e-5; } }
-        protected virtual double CubicMetersPerKilogramTolerance { get { return 1e-5; } }
-        protected virtual double MillicubicMetersPerKilogramTolerance { get { return 1e-5; } }
+        protected virtual decimal CubicFeetPerPoundTolerance { get { return 1e-5; } }
+        protected virtual decimal CubicMetersPerKilogramTolerance { get { return 1e-5; } }
+        protected virtual decimal MillicubicMetersPerKilogramTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new SpecificVolume((double)0.0, SpecificVolumeUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new SpecificVolume((decimal)0.0, SpecificVolumeUnit.Undefined));
         }
 
         [Fact]
@@ -61,19 +61,6 @@ namespace UnitsNet.Tests
             Assert.Equal(SpecificVolumeUnit.CubicMeterPerKilogram, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new SpecificVolume(double.PositiveInfinity, SpecificVolumeUnit.CubicMeterPerKilogram));
-            Assert.Throws<ArgumentException>(() => new SpecificVolume(double.NegativeInfinity, SpecificVolumeUnit.CubicMeterPerKilogram));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new SpecificVolume(double.NaN, SpecificVolumeUnit.CubicMeterPerKilogram));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -144,19 +131,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromCubicMetersPerKilogram_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => SpecificVolume.FromCubicMetersPerKilogram(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => SpecificVolume.FromCubicMetersPerKilogram(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromCubicMetersPerKilogram_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => SpecificVolume.FromCubicMetersPerKilogram(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var cubicmeterperkilogram = SpecificVolume.FromCubicMetersPerKilogram(1);
@@ -173,7 +147,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -188,15 +162,15 @@ namespace UnitsNet.Tests
             var cubicmeterperkilogram = SpecificVolume.FromCubicMetersPerKilogram(1);
 
             var cubicfootperpoundQuantity = cubicmeterperkilogram.ToUnit(SpecificVolumeUnit.CubicFootPerPound);
-            AssertEx.EqualTolerance(CubicFeetPerPoundInOneCubicMeterPerKilogram, (double)cubicfootperpoundQuantity.Value, CubicFeetPerPoundTolerance);
+            AssertEx.EqualTolerance(CubicFeetPerPoundInOneCubicMeterPerKilogram, (decimal)cubicfootperpoundQuantity.Value, CubicFeetPerPoundTolerance);
             Assert.Equal(SpecificVolumeUnit.CubicFootPerPound, cubicfootperpoundQuantity.Unit);
 
             var cubicmeterperkilogramQuantity = cubicmeterperkilogram.ToUnit(SpecificVolumeUnit.CubicMeterPerKilogram);
-            AssertEx.EqualTolerance(CubicMetersPerKilogramInOneCubicMeterPerKilogram, (double)cubicmeterperkilogramQuantity.Value, CubicMetersPerKilogramTolerance);
+            AssertEx.EqualTolerance(CubicMetersPerKilogramInOneCubicMeterPerKilogram, (decimal)cubicmeterperkilogramQuantity.Value, CubicMetersPerKilogramTolerance);
             Assert.Equal(SpecificVolumeUnit.CubicMeterPerKilogram, cubicmeterperkilogramQuantity.Unit);
 
             var millicubicmeterperkilogramQuantity = cubicmeterperkilogram.ToUnit(SpecificVolumeUnit.MillicubicMeterPerKilogram);
-            AssertEx.EqualTolerance(MillicubicMetersPerKilogramInOneCubicMeterPerKilogram, (double)millicubicmeterperkilogramQuantity.Value, MillicubicMetersPerKilogramTolerance);
+            AssertEx.EqualTolerance(MillicubicMetersPerKilogramInOneCubicMeterPerKilogram, (decimal)millicubicmeterperkilogramQuantity.Value, MillicubicMetersPerKilogramTolerance);
             Assert.Equal(SpecificVolumeUnit.MillicubicMeterPerKilogram, millicubicmeterperkilogramQuantity.Unit);
         }
 
@@ -398,10 +372,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 m³/kg", new SpecificVolume(0.123456, SpecificVolumeUnit.CubicMeterPerKilogram).ToString("s1"));
-                Assert.Equal("0.12 m³/kg", new SpecificVolume(0.123456, SpecificVolumeUnit.CubicMeterPerKilogram).ToString("s2"));
-                Assert.Equal("0.123 m³/kg", new SpecificVolume(0.123456, SpecificVolumeUnit.CubicMeterPerKilogram).ToString("s3"));
-                Assert.Equal("0.1235 m³/kg", new SpecificVolume(0.123456, SpecificVolumeUnit.CubicMeterPerKilogram).ToString("s4"));
+                Assert.Equal("0.1 m³/kg", new SpecificVolume(0.123456m, SpecificVolumeUnit.CubicMeterPerKilogram).ToString("s1"));
+                Assert.Equal("0.12 m³/kg", new SpecificVolume(0.123456m, SpecificVolumeUnit.CubicMeterPerKilogram).ToString("s2"));
+                Assert.Equal("0.123 m³/kg", new SpecificVolume(0.123456m, SpecificVolumeUnit.CubicMeterPerKilogram).ToString("s3"));
+                Assert.Equal("0.1235 m³/kg", new SpecificVolume(0.123456m, SpecificVolumeUnit.CubicMeterPerKilogram).ToString("s4"));
             }
             finally
             {
@@ -413,10 +387,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 m³/kg", new SpecificVolume(0.123456, SpecificVolumeUnit.CubicMeterPerKilogram).ToString("s1", culture));
-            Assert.Equal("0.12 m³/kg", new SpecificVolume(0.123456, SpecificVolumeUnit.CubicMeterPerKilogram).ToString("s2", culture));
-            Assert.Equal("0.123 m³/kg", new SpecificVolume(0.123456, SpecificVolumeUnit.CubicMeterPerKilogram).ToString("s3", culture));
-            Assert.Equal("0.1235 m³/kg", new SpecificVolume(0.123456, SpecificVolumeUnit.CubicMeterPerKilogram).ToString("s4", culture));
+            Assert.Equal("0.1 m³/kg", new SpecificVolume(0.123456m, SpecificVolumeUnit.CubicMeterPerKilogram).ToString("s1", culture));
+            Assert.Equal("0.12 m³/kg", new SpecificVolume(0.123456m, SpecificVolumeUnit.CubicMeterPerKilogram).ToString("s2", culture));
+            Assert.Equal("0.123 m³/kg", new SpecificVolume(0.123456m, SpecificVolumeUnit.CubicMeterPerKilogram).ToString("s3", culture));
+            Assert.Equal("0.1235 m³/kg", new SpecificVolume(0.123456m, SpecificVolumeUnit.CubicMeterPerKilogram).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -594,7 +568,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = SpecificVolume.FromCubicMetersPerKilogram(value);
             Assert.Equal(SpecificVolume.FromCubicMetersPerKilogram(-value), -quantity);

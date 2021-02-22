@@ -37,18 +37,18 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class PowerRatioTestsBase : QuantityTestsBase
     {
-        protected abstract double DecibelMilliwattsInOneDecibelWatt { get; }
-        protected abstract double DecibelWattsInOneDecibelWatt { get; }
+        protected abstract decimal DecibelMilliwattsInOneDecibelWatt { get; }
+        protected abstract decimal DecibelWattsInOneDecibelWatt { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double DecibelMilliwattsTolerance { get { return 1e-5; } }
-        protected virtual double DecibelWattsTolerance { get { return 1e-5; } }
+        protected virtual decimal DecibelMilliwattsTolerance { get { return 1e-5; } }
+        protected virtual decimal DecibelWattsTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new PowerRatio((double)0.0, PowerRatioUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new PowerRatio((decimal)0.0, PowerRatioUnit.Undefined));
         }
 
         [Fact]
@@ -59,19 +59,6 @@ namespace UnitsNet.Tests
             Assert.Equal(PowerRatioUnit.DecibelWatt, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new PowerRatio(double.PositiveInfinity, PowerRatioUnit.DecibelWatt));
-            Assert.Throws<ArgumentException>(() => new PowerRatio(double.NegativeInfinity, PowerRatioUnit.DecibelWatt));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new PowerRatio(double.NaN, PowerRatioUnit.DecibelWatt));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -137,19 +124,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromDecibelWatts_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => PowerRatio.FromDecibelWatts(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => PowerRatio.FromDecibelWatts(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromDecibelWatts_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => PowerRatio.FromDecibelWatts(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var decibelwatt = PowerRatio.FromDecibelWatts(1);
@@ -165,7 +139,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -180,11 +154,11 @@ namespace UnitsNet.Tests
             var decibelwatt = PowerRatio.FromDecibelWatts(1);
 
             var decibelmilliwattQuantity = decibelwatt.ToUnit(PowerRatioUnit.DecibelMilliwatt);
-            AssertEx.EqualTolerance(DecibelMilliwattsInOneDecibelWatt, (double)decibelmilliwattQuantity.Value, DecibelMilliwattsTolerance);
+            AssertEx.EqualTolerance(DecibelMilliwattsInOneDecibelWatt, (decimal)decibelmilliwattQuantity.Value, DecibelMilliwattsTolerance);
             Assert.Equal(PowerRatioUnit.DecibelMilliwatt, decibelmilliwattQuantity.Unit);
 
             var decibelwattQuantity = decibelwatt.ToUnit(PowerRatioUnit.DecibelWatt);
-            AssertEx.EqualTolerance(DecibelWattsInOneDecibelWatt, (double)decibelwattQuantity.Value, DecibelWattsTolerance);
+            AssertEx.EqualTolerance(DecibelWattsInOneDecibelWatt, (decimal)decibelwattQuantity.Value, DecibelWattsTolerance);
             Assert.Equal(PowerRatioUnit.DecibelWatt, decibelwattQuantity.Unit);
         }
 
@@ -387,10 +361,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 dBW", new PowerRatio(0.123456, PowerRatioUnit.DecibelWatt).ToString("s1"));
-                Assert.Equal("0.12 dBW", new PowerRatio(0.123456, PowerRatioUnit.DecibelWatt).ToString("s2"));
-                Assert.Equal("0.123 dBW", new PowerRatio(0.123456, PowerRatioUnit.DecibelWatt).ToString("s3"));
-                Assert.Equal("0.1235 dBW", new PowerRatio(0.123456, PowerRatioUnit.DecibelWatt).ToString("s4"));
+                Assert.Equal("0.1 dBW", new PowerRatio(0.123456m, PowerRatioUnit.DecibelWatt).ToString("s1"));
+                Assert.Equal("0.12 dBW", new PowerRatio(0.123456m, PowerRatioUnit.DecibelWatt).ToString("s2"));
+                Assert.Equal("0.123 dBW", new PowerRatio(0.123456m, PowerRatioUnit.DecibelWatt).ToString("s3"));
+                Assert.Equal("0.1235 dBW", new PowerRatio(0.123456m, PowerRatioUnit.DecibelWatt).ToString("s4"));
             }
             finally
             {
@@ -402,10 +376,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 dBW", new PowerRatio(0.123456, PowerRatioUnit.DecibelWatt).ToString("s1", culture));
-            Assert.Equal("0.12 dBW", new PowerRatio(0.123456, PowerRatioUnit.DecibelWatt).ToString("s2", culture));
-            Assert.Equal("0.123 dBW", new PowerRatio(0.123456, PowerRatioUnit.DecibelWatt).ToString("s3", culture));
-            Assert.Equal("0.1235 dBW", new PowerRatio(0.123456, PowerRatioUnit.DecibelWatt).ToString("s4", culture));
+            Assert.Equal("0.1 dBW", new PowerRatio(0.123456m, PowerRatioUnit.DecibelWatt).ToString("s1", culture));
+            Assert.Equal("0.12 dBW", new PowerRatio(0.123456m, PowerRatioUnit.DecibelWatt).ToString("s2", culture));
+            Assert.Equal("0.123 dBW", new PowerRatio(0.123456m, PowerRatioUnit.DecibelWatt).ToString("s3", culture));
+            Assert.Equal("0.1235 dBW", new PowerRatio(0.123456m, PowerRatioUnit.DecibelWatt).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -583,7 +557,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = PowerRatio.FromDecibelWatts(value);
             Assert.Equal(PowerRatio.FromDecibelWatts(-value), -quantity);

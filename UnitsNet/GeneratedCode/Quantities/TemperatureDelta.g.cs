@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -71,12 +71,12 @@ namespace UnitsNet
         /// <param name="value">The numeric value to construct this quantity with.</param>
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        public TemperatureDelta(double value, TemperatureDeltaUnit unit)
+        public TemperatureDelta(decimal value, TemperatureDeltaUnit unit)
         {
             if(unit == TemperatureDeltaUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -88,14 +88,14 @@ namespace UnitsNet
         /// <param name="unitSystem">The unit system to create the quantity with.</param>
         /// <exception cref="ArgumentNullException">The given <see cref="UnitSystem"/> is null.</exception>
         /// <exception cref="ArgumentException">No unit was found for the given <see cref="UnitSystem"/>.</exception>
-        public TemperatureDelta(double value, UnitSystem unitSystem)
+        public TemperatureDelta(decimal value, UnitSystem unitSystem)
         {
             if(unitSystem is null) throw new ArgumentNullException(nameof(unitSystem));
 
             var unitInfos = Info.GetUnitInfosFor(unitSystem.BaseUnits);
             var firstUnitInfo = unitInfos.FirstOrDefault();
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = firstUnitInfo?.Value ?? throw new ArgumentException("No units were found for the given UnitSystem.", nameof(unitSystem));
         }
 
@@ -117,12 +117,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of TemperatureDelta
         /// </summary>
-        public static TemperatureDelta MaxValue { get; } = new TemperatureDelta(double.MaxValue, BaseUnit);
+        public static TemperatureDelta MaxValue { get; } = new TemperatureDelta(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of TemperatureDelta
         /// </summary>
-        public static TemperatureDelta MinValue { get; } = new TemperatureDelta(double.MinValue, BaseUnit);
+        public static TemperatureDelta MinValue { get; } = new TemperatureDelta(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -146,7 +146,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => _value;
+        public decimal Value => _value;
 
         Enum IQuantity.Unit => Unit;
 
@@ -176,47 +176,47 @@ namespace UnitsNet
         /// <summary>
         ///     Get TemperatureDelta in DegreesCelsius.
         /// </summary>
-        public double DegreesCelsius => As(TemperatureDeltaUnit.DegreeCelsius);
+        public decimal DegreesCelsius => As(TemperatureDeltaUnit.DegreeCelsius);
 
         /// <summary>
         ///     Get TemperatureDelta in DegreesDelisle.
         /// </summary>
-        public double DegreesDelisle => As(TemperatureDeltaUnit.DegreeDelisle);
+        public decimal DegreesDelisle => As(TemperatureDeltaUnit.DegreeDelisle);
 
         /// <summary>
         ///     Get TemperatureDelta in DegreesFahrenheit.
         /// </summary>
-        public double DegreesFahrenheit => As(TemperatureDeltaUnit.DegreeFahrenheit);
+        public decimal DegreesFahrenheit => As(TemperatureDeltaUnit.DegreeFahrenheit);
 
         /// <summary>
         ///     Get TemperatureDelta in DegreesNewton.
         /// </summary>
-        public double DegreesNewton => As(TemperatureDeltaUnit.DegreeNewton);
+        public decimal DegreesNewton => As(TemperatureDeltaUnit.DegreeNewton);
 
         /// <summary>
         ///     Get TemperatureDelta in DegreesRankine.
         /// </summary>
-        public double DegreesRankine => As(TemperatureDeltaUnit.DegreeRankine);
+        public decimal DegreesRankine => As(TemperatureDeltaUnit.DegreeRankine);
 
         /// <summary>
         ///     Get TemperatureDelta in DegreesReaumur.
         /// </summary>
-        public double DegreesReaumur => As(TemperatureDeltaUnit.DegreeReaumur);
+        public decimal DegreesReaumur => As(TemperatureDeltaUnit.DegreeReaumur);
 
         /// <summary>
         ///     Get TemperatureDelta in DegreesRoemer.
         /// </summary>
-        public double DegreesRoemer => As(TemperatureDeltaUnit.DegreeRoemer);
+        public decimal DegreesRoemer => As(TemperatureDeltaUnit.DegreeRoemer);
 
         /// <summary>
         ///     Get TemperatureDelta in Kelvins.
         /// </summary>
-        public double Kelvins => As(TemperatureDeltaUnit.Kelvin);
+        public decimal Kelvins => As(TemperatureDeltaUnit.Kelvin);
 
         /// <summary>
         ///     Get TemperatureDelta in MillidegreesCelsius.
         /// </summary>
-        public double MillidegreesCelsius => As(TemperatureDeltaUnit.MillidegreeCelsius);
+        public decimal MillidegreesCelsius => As(TemperatureDeltaUnit.MillidegreeCelsius);
 
         #endregion
 
@@ -253,7 +253,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static TemperatureDelta FromDegreesCelsius(QuantityValue degreescelsius)
         {
-            double value = (double) degreescelsius;
+            decimal value = (decimal) degreescelsius;
             return new TemperatureDelta(value, TemperatureDeltaUnit.DegreeCelsius);
         }
         /// <summary>
@@ -262,7 +262,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static TemperatureDelta FromDegreesDelisle(QuantityValue degreesdelisle)
         {
-            double value = (double) degreesdelisle;
+            decimal value = (decimal) degreesdelisle;
             return new TemperatureDelta(value, TemperatureDeltaUnit.DegreeDelisle);
         }
         /// <summary>
@@ -271,7 +271,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static TemperatureDelta FromDegreesFahrenheit(QuantityValue degreesfahrenheit)
         {
-            double value = (double) degreesfahrenheit;
+            decimal value = (decimal) degreesfahrenheit;
             return new TemperatureDelta(value, TemperatureDeltaUnit.DegreeFahrenheit);
         }
         /// <summary>
@@ -280,7 +280,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static TemperatureDelta FromDegreesNewton(QuantityValue degreesnewton)
         {
-            double value = (double) degreesnewton;
+            decimal value = (decimal) degreesnewton;
             return new TemperatureDelta(value, TemperatureDeltaUnit.DegreeNewton);
         }
         /// <summary>
@@ -289,7 +289,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static TemperatureDelta FromDegreesRankine(QuantityValue degreesrankine)
         {
-            double value = (double) degreesrankine;
+            decimal value = (decimal) degreesrankine;
             return new TemperatureDelta(value, TemperatureDeltaUnit.DegreeRankine);
         }
         /// <summary>
@@ -298,7 +298,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static TemperatureDelta FromDegreesReaumur(QuantityValue degreesreaumur)
         {
-            double value = (double) degreesreaumur;
+            decimal value = (decimal) degreesreaumur;
             return new TemperatureDelta(value, TemperatureDeltaUnit.DegreeReaumur);
         }
         /// <summary>
@@ -307,7 +307,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static TemperatureDelta FromDegreesRoemer(QuantityValue degreesroemer)
         {
-            double value = (double) degreesroemer;
+            decimal value = (decimal) degreesroemer;
             return new TemperatureDelta(value, TemperatureDeltaUnit.DegreeRoemer);
         }
         /// <summary>
@@ -316,7 +316,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static TemperatureDelta FromKelvins(QuantityValue kelvins)
         {
-            double value = (double) kelvins;
+            decimal value = (decimal) kelvins;
             return new TemperatureDelta(value, TemperatureDeltaUnit.Kelvin);
         }
         /// <summary>
@@ -325,7 +325,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static TemperatureDelta FromMillidegreesCelsius(QuantityValue millidegreescelsius)
         {
-            double value = (double) millidegreescelsius;
+            decimal value = (decimal) millidegreescelsius;
             return new TemperatureDelta(value, TemperatureDeltaUnit.MillidegreeCelsius);
         }
 
@@ -337,7 +337,7 @@ namespace UnitsNet
         /// <returns>TemperatureDelta unit value.</returns>
         public static TemperatureDelta From(QuantityValue value, TemperatureDeltaUnit fromUnit)
         {
-            return new TemperatureDelta((double)value, fromUnit);
+            return new TemperatureDelta((decimal)value, fromUnit);
         }
 
         #endregion
@@ -507,25 +507,25 @@ namespace UnitsNet
         }
 
         /// <summary>Get <see cref="TemperatureDelta"/> from multiplying value and <see cref="TemperatureDelta"/>.</summary>
-        public static TemperatureDelta operator *(double left, TemperatureDelta right)
+        public static TemperatureDelta operator *(decimal left, TemperatureDelta right)
         {
             return new TemperatureDelta(left * right.Value, right.Unit);
         }
 
         /// <summary>Get <see cref="TemperatureDelta"/> from multiplying value and <see cref="TemperatureDelta"/>.</summary>
-        public static TemperatureDelta operator *(TemperatureDelta left, double right)
+        public static TemperatureDelta operator *(TemperatureDelta left, decimal right)
         {
             return new TemperatureDelta(left.Value * right, left.Unit);
         }
 
         /// <summary>Get <see cref="TemperatureDelta"/> from dividing <see cref="TemperatureDelta"/> by value.</summary>
-        public static TemperatureDelta operator /(TemperatureDelta left, double right)
+        public static TemperatureDelta operator /(TemperatureDelta left, decimal right)
         {
             return new TemperatureDelta(left.Value / right, left.Unit);
         }
 
         /// <summary>Get ratio value from dividing <see cref="TemperatureDelta"/> by <see cref="TemperatureDelta"/>.</summary>
-        public static double operator /(TemperatureDelta left, TemperatureDelta right)
+        public static decimal operator /(TemperatureDelta left, TemperatureDelta right)
         {
             return left.Kelvins / right.Kelvins;
         }
@@ -559,14 +559,14 @@ namespace UnitsNet
         }
 
         /// <summary>Returns true if exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(TemperatureDelta, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(TemperatureDelta, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator ==(TemperatureDelta left, TemperatureDelta right)
         {
             return left.Equals(right);
         }
 
         /// <summary>Returns true if not exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(TemperatureDelta, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(TemperatureDelta, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator !=(TemperatureDelta left, TemperatureDelta right)
         {
             return !(left == right);
@@ -588,7 +588,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(TemperatureDelta, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(TemperatureDelta, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public override bool Equals(object obj)
         {
             if(obj is null || !(obj is TemperatureDelta objTemperatureDelta))
@@ -598,7 +598,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(TemperatureDelta, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(TemperatureDelta, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public bool Equals(TemperatureDelta other)
         {
             return _value.Equals(other.GetValueAs(this.Unit));
@@ -644,13 +644,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(TemperatureDelta other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(TemperatureDelta other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -672,17 +672,17 @@ namespace UnitsNet
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(TemperatureDeltaUnit unit)
+        public decimal As(TemperatureDeltaUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = GetValueAs(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <inheritdoc cref="IQuantity.As(UnitSystem)"/>
-        public double As(UnitSystem unitSystem)
+        public decimal As(UnitSystem unitSystem)
         {
             if(unitSystem is null)
                 throw new ArgumentNullException(nameof(unitSystem));
@@ -697,7 +697,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        double IQuantity.As(Enum unit)
+        decimal IQuantity.As(Enum unit)
         {
             if(!(unit is TemperatureDeltaUnit unitAsTemperatureDeltaUnit))
                 throw new ArgumentException($"The given unit is of type {unit.GetType()}. Only {typeof(TemperatureDeltaUnit)} is supported.", nameof(unit));
@@ -753,19 +753,19 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double GetValueInBaseUnit()
+        private decimal GetValueInBaseUnit()
         {
             switch(Unit)
             {
                 case TemperatureDeltaUnit.DegreeCelsius: return _value;
-                case TemperatureDeltaUnit.DegreeDelisle: return _value*-2/3;
-                case TemperatureDeltaUnit.DegreeFahrenheit: return _value*5/9;
-                case TemperatureDeltaUnit.DegreeNewton: return _value*100/33;
-                case TemperatureDeltaUnit.DegreeRankine: return _value*5/9;
-                case TemperatureDeltaUnit.DegreeReaumur: return _value*5/4;
-                case TemperatureDeltaUnit.DegreeRoemer: return _value*40/21;
+                case TemperatureDeltaUnit.DegreeDelisle: return _value*-2m/3m;
+                case TemperatureDeltaUnit.DegreeFahrenheit: return _value*5m/9m;
+                case TemperatureDeltaUnit.DegreeNewton: return _value*100m/33m;
+                case TemperatureDeltaUnit.DegreeRankine: return _value*5m/9m;
+                case TemperatureDeltaUnit.DegreeReaumur: return _value*5m/4m;
+                case TemperatureDeltaUnit.DegreeRoemer: return _value*40m/21m;
                 case TemperatureDeltaUnit.Kelvin: return _value;
-                case TemperatureDeltaUnit.MillidegreeCelsius: return (_value) * 1e-3d;
+                case TemperatureDeltaUnit.MillidegreeCelsius: return (_value) * 1e-3m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
@@ -782,7 +782,7 @@ namespace UnitsNet
             return new TemperatureDelta(baseUnitValue, BaseUnit);
         }
 
-        private double GetValueAs(TemperatureDeltaUnit unit)
+        private decimal GetValueAs(TemperatureDeltaUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -792,14 +792,14 @@ namespace UnitsNet
             switch(unit)
             {
                 case TemperatureDeltaUnit.DegreeCelsius: return baseUnitValue;
-                case TemperatureDeltaUnit.DegreeDelisle: return baseUnitValue*-3/2;
-                case TemperatureDeltaUnit.DegreeFahrenheit: return baseUnitValue*9/5;
-                case TemperatureDeltaUnit.DegreeNewton: return baseUnitValue*33/100;
-                case TemperatureDeltaUnit.DegreeRankine: return baseUnitValue*9/5;
-                case TemperatureDeltaUnit.DegreeReaumur: return baseUnitValue*4/5;
-                case TemperatureDeltaUnit.DegreeRoemer: return baseUnitValue*21/40;
+                case TemperatureDeltaUnit.DegreeDelisle: return baseUnitValue*-3m/2m;
+                case TemperatureDeltaUnit.DegreeFahrenheit: return baseUnitValue*9m/5m;
+                case TemperatureDeltaUnit.DegreeNewton: return baseUnitValue*33m/100m;
+                case TemperatureDeltaUnit.DegreeRankine: return baseUnitValue*9m/5m;
+                case TemperatureDeltaUnit.DegreeReaumur: return baseUnitValue*4m/5m;
+                case TemperatureDeltaUnit.DegreeRoemer: return baseUnitValue*21m/40m;
                 case TemperatureDeltaUnit.Kelvin: return baseUnitValue;
-                case TemperatureDeltaUnit.MillidegreeCelsius: return (baseUnitValue) / 1e-3d;
+                case TemperatureDeltaUnit.MillidegreeCelsius: return (baseUnitValue) / 1e-3m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -837,7 +837,7 @@ namespace UnitsNet
         [Obsolete(@"This method is deprecated and will be removed at a future release. Please use ToString(""s2"") or ToString(""s2"", provider) where 2 is an example of the number passed to significantDigitsAfterRadix.")]
         public string ToString(IFormatProvider? provider, int significantDigitsAfterRadix)
         {
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -857,7 +857,7 @@ namespace UnitsNet
 
             provider = provider ?? CultureInfo.CurrentUICulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

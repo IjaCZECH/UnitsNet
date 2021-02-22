@@ -42,7 +42,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -74,12 +74,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private ElectricCurrentDensity(double value, ElectricCurrentDensityUnit unit)
+        private ElectricCurrentDensity(decimal value, ElectricCurrentDensityUnit unit)
         {
             if(unit == ElectricCurrentDensityUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -103,12 +103,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of ElectricCurrentDensity
         /// </summary>
-        public static ElectricCurrentDensity MaxValue { get; } = new ElectricCurrentDensity(double.MaxValue, BaseUnit);
+        public static ElectricCurrentDensity MaxValue { get; } = new ElectricCurrentDensity(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of ElectricCurrentDensity
         /// </summary>
-        public static ElectricCurrentDensity MinValue { get; } = new ElectricCurrentDensity(double.MinValue, BaseUnit);
+        public static ElectricCurrentDensity MinValue { get; } = new ElectricCurrentDensity(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -132,7 +132,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -161,17 +161,17 @@ namespace UnitsNet
         /// <summary>
         ///     Get ElectricCurrentDensity in AmperesPerSquareFoot.
         /// </summary>
-        public double AmperesPerSquareFoot => As(ElectricCurrentDensityUnit.AmperePerSquareFoot);
+        public decimal AmperesPerSquareFoot => As(ElectricCurrentDensityUnit.AmperePerSquareFoot);
 
         /// <summary>
         ///     Get ElectricCurrentDensity in AmperesPerSquareInch.
         /// </summary>
-        public double AmperesPerSquareInch => As(ElectricCurrentDensityUnit.AmperePerSquareInch);
+        public decimal AmperesPerSquareInch => As(ElectricCurrentDensityUnit.AmperePerSquareInch);
 
         /// <summary>
         ///     Get ElectricCurrentDensity in AmperesPerSquareMeter.
         /// </summary>
-        public double AmperesPerSquareMeter => As(ElectricCurrentDensityUnit.AmperePerSquareMeter);
+        public decimal AmperesPerSquareMeter => As(ElectricCurrentDensityUnit.AmperePerSquareMeter);
 
         #endregion
 
@@ -208,9 +208,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ElectricCurrentDensity FromAmperesPerSquareFoot(double amperespersquarefoot)
+        public static ElectricCurrentDensity FromAmperesPerSquareFoot(decimal amperespersquarefoot)
         {
-            double value = (double) amperespersquarefoot;
+            decimal value = (decimal) amperespersquarefoot;
             return new ElectricCurrentDensity(value, ElectricCurrentDensityUnit.AmperePerSquareFoot);
         }
         /// <summary>
@@ -218,9 +218,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ElectricCurrentDensity FromAmperesPerSquareInch(double amperespersquareinch)
+        public static ElectricCurrentDensity FromAmperesPerSquareInch(decimal amperespersquareinch)
         {
-            double value = (double) amperespersquareinch;
+            decimal value = (decimal) amperespersquareinch;
             return new ElectricCurrentDensity(value, ElectricCurrentDensityUnit.AmperePerSquareInch);
         }
         /// <summary>
@@ -228,9 +228,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static ElectricCurrentDensity FromAmperesPerSquareMeter(double amperespersquaremeter)
+        public static ElectricCurrentDensity FromAmperesPerSquareMeter(decimal amperespersquaremeter)
         {
-            double value = (double) amperespersquaremeter;
+            decimal value = (decimal) amperespersquaremeter;
             return new ElectricCurrentDensity(value, ElectricCurrentDensityUnit.AmperePerSquareMeter);
         }
 
@@ -242,9 +242,9 @@ namespace UnitsNet
         /// <returns>ElectricCurrentDensity unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static ElectricCurrentDensity From(double value, ElectricCurrentDensityUnit fromUnit)
+        public static ElectricCurrentDensity From(decimal value, ElectricCurrentDensityUnit fromUnit)
         {
-            return new ElectricCurrentDensity((double)value, fromUnit);
+            return new ElectricCurrentDensity((decimal)value, fromUnit);
         }
 
         #endregion
@@ -466,13 +466,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(ElectricCurrentDensity other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(ElectricCurrentDensity other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -490,19 +490,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((ElectricCurrentDensityUnit)unit);
+        decimal IQuantity.As(object unit) => As((ElectricCurrentDensityUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(ElectricCurrentDensityUnit unit)
+        public decimal As(ElectricCurrentDensityUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -520,19 +520,19 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
-                case ElectricCurrentDensityUnit.AmperePerSquareFoot: return _value * 1.0763910416709722e1;
-                case ElectricCurrentDensityUnit.AmperePerSquareInch: return _value * 1.5500031000062000e3;
+                case ElectricCurrentDensityUnit.AmperePerSquareFoot: return _value * 1.0763910416709722e1m;
+                case ElectricCurrentDensityUnit.AmperePerSquareInch: return _value * 1.5500031000062000e3m;
                 case ElectricCurrentDensityUnit.AmperePerSquareMeter: return _value;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(ElectricCurrentDensityUnit unit)
+        private decimal AsBaseNumericType(ElectricCurrentDensityUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -541,8 +541,8 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case ElectricCurrentDensityUnit.AmperePerSquareFoot: return baseUnitValue / 1.0763910416709722e1;
-                case ElectricCurrentDensityUnit.AmperePerSquareInch: return baseUnitValue / 1.5500031000062000e3;
+                case ElectricCurrentDensityUnit.AmperePerSquareFoot: return baseUnitValue / 1.0763910416709722e1m;
+                case ElectricCurrentDensityUnit.AmperePerSquareInch: return baseUnitValue / 1.5500031000062000e3m;
                 case ElectricCurrentDensityUnit.AmperePerSquareMeter: return baseUnitValue;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
@@ -582,7 +582,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -602,7 +602,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

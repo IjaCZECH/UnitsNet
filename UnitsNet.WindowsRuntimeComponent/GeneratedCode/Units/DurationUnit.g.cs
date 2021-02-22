@@ -31,11 +31,11 @@ namespace UnitsNet.Units
         Microsecond,
         Millisecond,
         Minute,
-        Month30,
+        Month30m,
         Nanosecond,
         Second,
         Week,
-        Year365,
+        Year365m,
     }
 
     #pragma warning restore 1591

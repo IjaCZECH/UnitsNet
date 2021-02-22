@@ -37,7 +37,7 @@ namespace UnitsNet
         /// <param name="unit">Unit enum value.</param>
         /// <param name="quantity">The resulting quantity if successful, otherwise <c>default</c>.</param>
         /// <returns><c>True</c> if successful with <paramref name="quantity"/> assigned the value, otherwise <c>false</c>.</returns>
-        internal static bool TryFrom(double value, Enum unit, out IQuantity quantity)
+        internal static bool TryFrom(decimal value, Enum unit, out IQuantity quantity)
         {
             switch (unit)
             {

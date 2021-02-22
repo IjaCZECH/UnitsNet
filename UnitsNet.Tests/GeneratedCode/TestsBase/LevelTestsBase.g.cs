@@ -37,18 +37,18 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class LevelTestsBase : QuantityTestsBase
     {
-        protected abstract double DecibelsInOneDecibel { get; }
-        protected abstract double NepersInOneDecibel { get; }
+        protected abstract decimal DecibelsInOneDecibel { get; }
+        protected abstract decimal NepersInOneDecibel { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double DecibelsTolerance { get { return 1e-5; } }
-        protected virtual double NepersTolerance { get { return 1e-5; } }
+        protected virtual decimal DecibelsTolerance { get { return 1e-5; } }
+        protected virtual decimal NepersTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new Level((double)0.0, LevelUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new Level((decimal)0.0, LevelUnit.Undefined));
         }
 
         [Fact]
@@ -59,19 +59,6 @@ namespace UnitsNet.Tests
             Assert.Equal(LevelUnit.Decibel, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new Level(double.PositiveInfinity, LevelUnit.Decibel));
-            Assert.Throws<ArgumentException>(() => new Level(double.NegativeInfinity, LevelUnit.Decibel));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new Level(double.NaN, LevelUnit.Decibel));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -137,19 +124,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromDecibels_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => Level.FromDecibels(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => Level.FromDecibels(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromDecibels_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => Level.FromDecibels(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var decibel = Level.FromDecibels(1);
@@ -165,7 +139,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -180,11 +154,11 @@ namespace UnitsNet.Tests
             var decibel = Level.FromDecibels(1);
 
             var decibelQuantity = decibel.ToUnit(LevelUnit.Decibel);
-            AssertEx.EqualTolerance(DecibelsInOneDecibel, (double)decibelQuantity.Value, DecibelsTolerance);
+            AssertEx.EqualTolerance(DecibelsInOneDecibel, (decimal)decibelQuantity.Value, DecibelsTolerance);
             Assert.Equal(LevelUnit.Decibel, decibelQuantity.Unit);
 
             var neperQuantity = decibel.ToUnit(LevelUnit.Neper);
-            AssertEx.EqualTolerance(NepersInOneDecibel, (double)neperQuantity.Value, NepersTolerance);
+            AssertEx.EqualTolerance(NepersInOneDecibel, (decimal)neperQuantity.Value, NepersTolerance);
             Assert.Equal(LevelUnit.Neper, neperQuantity.Unit);
         }
 
@@ -387,10 +361,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 dB", new Level(0.123456, LevelUnit.Decibel).ToString("s1"));
-                Assert.Equal("0.12 dB", new Level(0.123456, LevelUnit.Decibel).ToString("s2"));
-                Assert.Equal("0.123 dB", new Level(0.123456, LevelUnit.Decibel).ToString("s3"));
-                Assert.Equal("0.1235 dB", new Level(0.123456, LevelUnit.Decibel).ToString("s4"));
+                Assert.Equal("0.1 dB", new Level(0.123456m, LevelUnit.Decibel).ToString("s1"));
+                Assert.Equal("0.12 dB", new Level(0.123456m, LevelUnit.Decibel).ToString("s2"));
+                Assert.Equal("0.123 dB", new Level(0.123456m, LevelUnit.Decibel).ToString("s3"));
+                Assert.Equal("0.1235 dB", new Level(0.123456m, LevelUnit.Decibel).ToString("s4"));
             }
             finally
             {
@@ -402,10 +376,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 dB", new Level(0.123456, LevelUnit.Decibel).ToString("s1", culture));
-            Assert.Equal("0.12 dB", new Level(0.123456, LevelUnit.Decibel).ToString("s2", culture));
-            Assert.Equal("0.123 dB", new Level(0.123456, LevelUnit.Decibel).ToString("s3", culture));
-            Assert.Equal("0.1235 dB", new Level(0.123456, LevelUnit.Decibel).ToString("s4", culture));
+            Assert.Equal("0.1 dB", new Level(0.123456m, LevelUnit.Decibel).ToString("s1", culture));
+            Assert.Equal("0.12 dB", new Level(0.123456m, LevelUnit.Decibel).ToString("s2", culture));
+            Assert.Equal("0.123 dB", new Level(0.123456m, LevelUnit.Decibel).ToString("s3", culture));
+            Assert.Equal("0.1235 dB", new Level(0.123456m, LevelUnit.Decibel).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -583,7 +557,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = Level.FromDecibels(value);
             Assert.Equal(Level.FromDecibels(-value), -quantity);

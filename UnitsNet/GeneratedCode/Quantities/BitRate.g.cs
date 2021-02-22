@@ -168,8 +168,6 @@ namespace UnitsNet
         /// </summary>
         public decimal Value => _value;
 
-        double IQuantity.Value => (double) _value;
-
         Enum IQuantity.Unit => Unit;
 
         /// <inheritdoc />
@@ -198,132 +196,132 @@ namespace UnitsNet
         /// <summary>
         ///     Get BitRate in BitsPerSecond.
         /// </summary>
-        public double BitsPerSecond => As(BitRateUnit.BitPerSecond);
+        public decimal BitsPerSecond => As(BitRateUnit.BitPerSecond);
 
         /// <summary>
         ///     Get BitRate in BytesPerSecond.
         /// </summary>
-        public double BytesPerSecond => As(BitRateUnit.BytePerSecond);
+        public decimal BytesPerSecond => As(BitRateUnit.BytePerSecond);
 
         /// <summary>
         ///     Get BitRate in ExabitsPerSecond.
         /// </summary>
-        public double ExabitsPerSecond => As(BitRateUnit.ExabitPerSecond);
+        public decimal ExabitsPerSecond => As(BitRateUnit.ExabitPerSecond);
 
         /// <summary>
         ///     Get BitRate in ExabytesPerSecond.
         /// </summary>
-        public double ExabytesPerSecond => As(BitRateUnit.ExabytePerSecond);
+        public decimal ExabytesPerSecond => As(BitRateUnit.ExabytePerSecond);
 
         /// <summary>
         ///     Get BitRate in ExbibitsPerSecond.
         /// </summary>
-        public double ExbibitsPerSecond => As(BitRateUnit.ExbibitPerSecond);
+        public decimal ExbibitsPerSecond => As(BitRateUnit.ExbibitPerSecond);
 
         /// <summary>
         ///     Get BitRate in ExbibytesPerSecond.
         /// </summary>
-        public double ExbibytesPerSecond => As(BitRateUnit.ExbibytePerSecond);
+        public decimal ExbibytesPerSecond => As(BitRateUnit.ExbibytePerSecond);
 
         /// <summary>
         ///     Get BitRate in GibibitsPerSecond.
         /// </summary>
-        public double GibibitsPerSecond => As(BitRateUnit.GibibitPerSecond);
+        public decimal GibibitsPerSecond => As(BitRateUnit.GibibitPerSecond);
 
         /// <summary>
         ///     Get BitRate in GibibytesPerSecond.
         /// </summary>
-        public double GibibytesPerSecond => As(BitRateUnit.GibibytePerSecond);
+        public decimal GibibytesPerSecond => As(BitRateUnit.GibibytePerSecond);
 
         /// <summary>
         ///     Get BitRate in GigabitsPerSecond.
         /// </summary>
-        public double GigabitsPerSecond => As(BitRateUnit.GigabitPerSecond);
+        public decimal GigabitsPerSecond => As(BitRateUnit.GigabitPerSecond);
 
         /// <summary>
         ///     Get BitRate in GigabytesPerSecond.
         /// </summary>
-        public double GigabytesPerSecond => As(BitRateUnit.GigabytePerSecond);
+        public decimal GigabytesPerSecond => As(BitRateUnit.GigabytePerSecond);
 
         /// <summary>
         ///     Get BitRate in KibibitsPerSecond.
         /// </summary>
-        public double KibibitsPerSecond => As(BitRateUnit.KibibitPerSecond);
+        public decimal KibibitsPerSecond => As(BitRateUnit.KibibitPerSecond);
 
         /// <summary>
         ///     Get BitRate in KibibytesPerSecond.
         /// </summary>
-        public double KibibytesPerSecond => As(BitRateUnit.KibibytePerSecond);
+        public decimal KibibytesPerSecond => As(BitRateUnit.KibibytePerSecond);
 
         /// <summary>
         ///     Get BitRate in KilobitsPerSecond.
         /// </summary>
-        public double KilobitsPerSecond => As(BitRateUnit.KilobitPerSecond);
+        public decimal KilobitsPerSecond => As(BitRateUnit.KilobitPerSecond);
 
         /// <summary>
         ///     Get BitRate in KilobytesPerSecond.
         /// </summary>
-        public double KilobytesPerSecond => As(BitRateUnit.KilobytePerSecond);
+        public decimal KilobytesPerSecond => As(BitRateUnit.KilobytePerSecond);
 
         /// <summary>
         ///     Get BitRate in MebibitsPerSecond.
         /// </summary>
-        public double MebibitsPerSecond => As(BitRateUnit.MebibitPerSecond);
+        public decimal MebibitsPerSecond => As(BitRateUnit.MebibitPerSecond);
 
         /// <summary>
         ///     Get BitRate in MebibytesPerSecond.
         /// </summary>
-        public double MebibytesPerSecond => As(BitRateUnit.MebibytePerSecond);
+        public decimal MebibytesPerSecond => As(BitRateUnit.MebibytePerSecond);
 
         /// <summary>
         ///     Get BitRate in MegabitsPerSecond.
         /// </summary>
-        public double MegabitsPerSecond => As(BitRateUnit.MegabitPerSecond);
+        public decimal MegabitsPerSecond => As(BitRateUnit.MegabitPerSecond);
 
         /// <summary>
         ///     Get BitRate in MegabytesPerSecond.
         /// </summary>
-        public double MegabytesPerSecond => As(BitRateUnit.MegabytePerSecond);
+        public decimal MegabytesPerSecond => As(BitRateUnit.MegabytePerSecond);
 
         /// <summary>
         ///     Get BitRate in PebibitsPerSecond.
         /// </summary>
-        public double PebibitsPerSecond => As(BitRateUnit.PebibitPerSecond);
+        public decimal PebibitsPerSecond => As(BitRateUnit.PebibitPerSecond);
 
         /// <summary>
         ///     Get BitRate in PebibytesPerSecond.
         /// </summary>
-        public double PebibytesPerSecond => As(BitRateUnit.PebibytePerSecond);
+        public decimal PebibytesPerSecond => As(BitRateUnit.PebibytePerSecond);
 
         /// <summary>
         ///     Get BitRate in PetabitsPerSecond.
         /// </summary>
-        public double PetabitsPerSecond => As(BitRateUnit.PetabitPerSecond);
+        public decimal PetabitsPerSecond => As(BitRateUnit.PetabitPerSecond);
 
         /// <summary>
         ///     Get BitRate in PetabytesPerSecond.
         /// </summary>
-        public double PetabytesPerSecond => As(BitRateUnit.PetabytePerSecond);
+        public decimal PetabytesPerSecond => As(BitRateUnit.PetabytePerSecond);
 
         /// <summary>
         ///     Get BitRate in TebibitsPerSecond.
         /// </summary>
-        public double TebibitsPerSecond => As(BitRateUnit.TebibitPerSecond);
+        public decimal TebibitsPerSecond => As(BitRateUnit.TebibitPerSecond);
 
         /// <summary>
         ///     Get BitRate in TebibytesPerSecond.
         /// </summary>
-        public double TebibytesPerSecond => As(BitRateUnit.TebibytePerSecond);
+        public decimal TebibytesPerSecond => As(BitRateUnit.TebibytePerSecond);
 
         /// <summary>
         ///     Get BitRate in TerabitsPerSecond.
         /// </summary>
-        public double TerabitsPerSecond => As(BitRateUnit.TerabitPerSecond);
+        public decimal TerabitsPerSecond => As(BitRateUnit.TerabitPerSecond);
 
         /// <summary>
         ///     Get BitRate in TerabytesPerSecond.
         /// </summary>
-        public double TerabytesPerSecond => As(BitRateUnit.TerabytePerSecond);
+        public decimal TerabytesPerSecond => As(BitRateUnit.TerabytePerSecond);
 
         #endregion
 
@@ -785,7 +783,7 @@ namespace UnitsNet
         }
 
         /// <summary>Get ratio value from dividing <see cref="BitRate"/> by <see cref="BitRate"/>.</summary>
-        public static double operator /(BitRate left, BitRate right)
+        public static decimal operator /(BitRate left, BitRate right)
         {
             return left.BitsPerSecond / right.BitsPerSecond;
         }
@@ -819,14 +817,14 @@ namespace UnitsNet
         }
 
         /// <summary>Returns true if exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(BitRate, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(BitRate, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator ==(BitRate left, BitRate right)
         {
             return left.Equals(right);
         }
 
         /// <summary>Returns true if not exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(BitRate, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(BitRate, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator !=(BitRate left, BitRate right)
         {
             return !(left == right);
@@ -848,7 +846,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(BitRate, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(BitRate, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public override bool Equals(object obj)
         {
             if(obj is null || !(obj is BitRate objBitRate))
@@ -858,7 +856,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(BitRate, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(BitRate, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public bool Equals(BitRate other)
         {
             return _value.Equals(other.GetValueAs(this.Unit));
@@ -904,13 +902,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(BitRate other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(BitRate other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -932,17 +930,17 @@ namespace UnitsNet
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(BitRateUnit unit)
+        public decimal As(BitRateUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = GetValueAs(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <inheritdoc cref="IQuantity.As(UnitSystem)"/>
-        public double As(UnitSystem unitSystem)
+        public decimal As(UnitSystem unitSystem)
         {
             if(unitSystem is null)
                 throw new ArgumentNullException(nameof(unitSystem));
@@ -957,7 +955,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        double IQuantity.As(Enum unit)
+        decimal IQuantity.As(Enum unit)
         {
             if(!(unit is BitRateUnit unitAsBitRateUnit))
                 throw new ArgumentException($"The given unit is of type {unit.GetType()}. Only {typeof(BitRateUnit)} is supported.", nameof(unit));
@@ -1131,7 +1129,7 @@ namespace UnitsNet
         [Obsolete(@"This method is deprecated and will be removed at a future release. Please use ToString(""s2"") or ToString(""s2"", provider) where 2 is an example of the number passed to significantDigitsAfterRadix.")]
         public string ToString(IFormatProvider? provider, int significantDigitsAfterRadix)
         {
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -1151,7 +1149,7 @@ namespace UnitsNet
 
             provider = provider ?? CultureInfo.CurrentUICulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

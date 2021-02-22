@@ -30,59 +30,59 @@ namespace UnitsNet.NumberExtensions.NumberToArea
     {
         /// <inheritdoc cref="Area.FromAcres(UnitsNet.QuantityValue)" />
         public static Area Acres<T>(this T value) =>
-            Area.FromAcres(Convert.ToDouble(value));
+            Area.FromAcres(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Area.FromHectares(UnitsNet.QuantityValue)" />
         public static Area Hectares<T>(this T value) =>
-            Area.FromHectares(Convert.ToDouble(value));
+            Area.FromHectares(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Area.FromSquareCentimeters(UnitsNet.QuantityValue)" />
         public static Area SquareCentimeters<T>(this T value) =>
-            Area.FromSquareCentimeters(Convert.ToDouble(value));
+            Area.FromSquareCentimeters(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Area.FromSquareDecimeters(UnitsNet.QuantityValue)" />
         public static Area SquareDecimeters<T>(this T value) =>
-            Area.FromSquareDecimeters(Convert.ToDouble(value));
+            Area.FromSquareDecimeters(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Area.FromSquareFeet(UnitsNet.QuantityValue)" />
         public static Area SquareFeet<T>(this T value) =>
-            Area.FromSquareFeet(Convert.ToDouble(value));
+            Area.FromSquareFeet(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Area.FromSquareInches(UnitsNet.QuantityValue)" />
         public static Area SquareInches<T>(this T value) =>
-            Area.FromSquareInches(Convert.ToDouble(value));
+            Area.FromSquareInches(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Area.FromSquareKilometers(UnitsNet.QuantityValue)" />
         public static Area SquareKilometers<T>(this T value) =>
-            Area.FromSquareKilometers(Convert.ToDouble(value));
+            Area.FromSquareKilometers(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Area.FromSquareMeters(UnitsNet.QuantityValue)" />
         public static Area SquareMeters<T>(this T value) =>
-            Area.FromSquareMeters(Convert.ToDouble(value));
+            Area.FromSquareMeters(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Area.FromSquareMicrometers(UnitsNet.QuantityValue)" />
         public static Area SquareMicrometers<T>(this T value) =>
-            Area.FromSquareMicrometers(Convert.ToDouble(value));
+            Area.FromSquareMicrometers(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Area.FromSquareMiles(UnitsNet.QuantityValue)" />
         public static Area SquareMiles<T>(this T value) =>
-            Area.FromSquareMiles(Convert.ToDouble(value));
+            Area.FromSquareMiles(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Area.FromSquareMillimeters(UnitsNet.QuantityValue)" />
         public static Area SquareMillimeters<T>(this T value) =>
-            Area.FromSquareMillimeters(Convert.ToDouble(value));
+            Area.FromSquareMillimeters(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Area.FromSquareNauticalMiles(UnitsNet.QuantityValue)" />
         public static Area SquareNauticalMiles<T>(this T value) =>
-            Area.FromSquareNauticalMiles(Convert.ToDouble(value));
+            Area.FromSquareNauticalMiles(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Area.FromSquareYards(UnitsNet.QuantityValue)" />
         public static Area SquareYards<T>(this T value) =>
-            Area.FromSquareYards(Convert.ToDouble(value));
+            Area.FromSquareYards(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Area.FromUsSurveySquareFeet(UnitsNet.QuantityValue)" />
         public static Area UsSurveySquareFeet<T>(this T value) =>
-            Area.FromUsSurveySquareFeet(Convert.ToDouble(value));
+            Area.FromUsSurveySquareFeet(Convert.ToDecimal(value));
 
     }
 }

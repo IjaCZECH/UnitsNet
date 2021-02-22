@@ -30,15 +30,15 @@ namespace UnitsNet.NumberExtensions.NumberToReactiveEnergy
     {
         /// <inheritdoc cref="ReactiveEnergy.FromKilovoltampereReactiveHours(UnitsNet.QuantityValue)" />
         public static ReactiveEnergy KilovoltampereReactiveHours<T>(this T value) =>
-            ReactiveEnergy.FromKilovoltampereReactiveHours(Convert.ToDouble(value));
+            ReactiveEnergy.FromKilovoltampereReactiveHours(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ReactiveEnergy.FromMegavoltampereReactiveHours(UnitsNet.QuantityValue)" />
         public static ReactiveEnergy MegavoltampereReactiveHours<T>(this T value) =>
-            ReactiveEnergy.FromMegavoltampereReactiveHours(Convert.ToDouble(value));
+            ReactiveEnergy.FromMegavoltampereReactiveHours(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ReactiveEnergy.FromVoltampereReactiveHours(UnitsNet.QuantityValue)" />
         public static ReactiveEnergy VoltampereReactiveHours<T>(this T value) =>
-            ReactiveEnergy.FromVoltampereReactiveHours(Convert.ToDouble(value));
+            ReactiveEnergy.FromVoltampereReactiveHours(Convert.ToDecimal(value));
 
     }
 }

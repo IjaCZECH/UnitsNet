@@ -30,15 +30,15 @@ namespace UnitsNet.NumberExtensions.NumberToElectricConductivity
     {
         /// <inheritdoc cref="ElectricConductivity.FromSiemensPerFoot(UnitsNet.QuantityValue)" />
         public static ElectricConductivity SiemensPerFoot<T>(this T value) =>
-            ElectricConductivity.FromSiemensPerFoot(Convert.ToDouble(value));
+            ElectricConductivity.FromSiemensPerFoot(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricConductivity.FromSiemensPerInch(UnitsNet.QuantityValue)" />
         public static ElectricConductivity SiemensPerInch<T>(this T value) =>
-            ElectricConductivity.FromSiemensPerInch(Convert.ToDouble(value));
+            ElectricConductivity.FromSiemensPerInch(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="ElectricConductivity.FromSiemensPerMeter(UnitsNet.QuantityValue)" />
         public static ElectricConductivity SiemensPerMeter<T>(this T value) =>
-            ElectricConductivity.FromSiemensPerMeter(Convert.ToDouble(value));
+            ElectricConductivity.FromSiemensPerMeter(Convert.ToDecimal(value));
 
     }
 }

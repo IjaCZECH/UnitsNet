@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -66,12 +66,12 @@ namespace UnitsNet
         /// <param name="value">The numeric value to construct this quantity with.</param>
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        public ElectricAdmittance(double value, ElectricAdmittanceUnit unit)
+        public ElectricAdmittance(decimal value, ElectricAdmittanceUnit unit)
         {
             if(unit == ElectricAdmittanceUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -83,14 +83,14 @@ namespace UnitsNet
         /// <param name="unitSystem">The unit system to create the quantity with.</param>
         /// <exception cref="ArgumentNullException">The given <see cref="UnitSystem"/> is null.</exception>
         /// <exception cref="ArgumentException">No unit was found for the given <see cref="UnitSystem"/>.</exception>
-        public ElectricAdmittance(double value, UnitSystem unitSystem)
+        public ElectricAdmittance(decimal value, UnitSystem unitSystem)
         {
             if(unitSystem is null) throw new ArgumentNullException(nameof(unitSystem));
 
             var unitInfos = Info.GetUnitInfosFor(unitSystem.BaseUnits);
             var firstUnitInfo = unitInfos.FirstOrDefault();
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = firstUnitInfo?.Value ?? throw new ArgumentException("No units were found for the given UnitSystem.", nameof(unitSystem));
         }
 
@@ -112,12 +112,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of ElectricAdmittance
         /// </summary>
-        public static ElectricAdmittance MaxValue { get; } = new ElectricAdmittance(double.MaxValue, BaseUnit);
+        public static ElectricAdmittance MaxValue { get; } = new ElectricAdmittance(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of ElectricAdmittance
         /// </summary>
-        public static ElectricAdmittance MinValue { get; } = new ElectricAdmittance(double.MinValue, BaseUnit);
+        public static ElectricAdmittance MinValue { get; } = new ElectricAdmittance(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -141,7 +141,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => _value;
+        public decimal Value => _value;
 
         Enum IQuantity.Unit => Unit;
 
@@ -171,22 +171,22 @@ namespace UnitsNet
         /// <summary>
         ///     Get ElectricAdmittance in Microsiemens.
         /// </summary>
-        public double Microsiemens => As(ElectricAdmittanceUnit.Microsiemens);
+        public decimal Microsiemens => As(ElectricAdmittanceUnit.Microsiemens);
 
         /// <summary>
         ///     Get ElectricAdmittance in Millisiemens.
         /// </summary>
-        public double Millisiemens => As(ElectricAdmittanceUnit.Millisiemens);
+        public decimal Millisiemens => As(ElectricAdmittanceUnit.Millisiemens);
 
         /// <summary>
         ///     Get ElectricAdmittance in Nanosiemens.
         /// </summary>
-        public double Nanosiemens => As(ElectricAdmittanceUnit.Nanosiemens);
+        public decimal Nanosiemens => As(ElectricAdmittanceUnit.Nanosiemens);
 
         /// <summary>
         ///     Get ElectricAdmittance in Siemens.
         /// </summary>
-        public double Siemens => As(ElectricAdmittanceUnit.Siemens);
+        public decimal Siemens => As(ElectricAdmittanceUnit.Siemens);
 
         #endregion
 
@@ -223,7 +223,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ElectricAdmittance FromMicrosiemens(QuantityValue microsiemens)
         {
-            double value = (double) microsiemens;
+            decimal value = (decimal) microsiemens;
             return new ElectricAdmittance(value, ElectricAdmittanceUnit.Microsiemens);
         }
         /// <summary>
@@ -232,7 +232,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ElectricAdmittance FromMillisiemens(QuantityValue millisiemens)
         {
-            double value = (double) millisiemens;
+            decimal value = (decimal) millisiemens;
             return new ElectricAdmittance(value, ElectricAdmittanceUnit.Millisiemens);
         }
         /// <summary>
@@ -241,7 +241,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ElectricAdmittance FromNanosiemens(QuantityValue nanosiemens)
         {
-            double value = (double) nanosiemens;
+            decimal value = (decimal) nanosiemens;
             return new ElectricAdmittance(value, ElectricAdmittanceUnit.Nanosiemens);
         }
         /// <summary>
@@ -250,7 +250,7 @@ namespace UnitsNet
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         public static ElectricAdmittance FromSiemens(QuantityValue siemens)
         {
-            double value = (double) siemens;
+            decimal value = (decimal) siemens;
             return new ElectricAdmittance(value, ElectricAdmittanceUnit.Siemens);
         }
 
@@ -262,7 +262,7 @@ namespace UnitsNet
         /// <returns>ElectricAdmittance unit value.</returns>
         public static ElectricAdmittance From(QuantityValue value, ElectricAdmittanceUnit fromUnit)
         {
-            return new ElectricAdmittance((double)value, fromUnit);
+            return new ElectricAdmittance((decimal)value, fromUnit);
         }
 
         #endregion
@@ -432,25 +432,25 @@ namespace UnitsNet
         }
 
         /// <summary>Get <see cref="ElectricAdmittance"/> from multiplying value and <see cref="ElectricAdmittance"/>.</summary>
-        public static ElectricAdmittance operator *(double left, ElectricAdmittance right)
+        public static ElectricAdmittance operator *(decimal left, ElectricAdmittance right)
         {
             return new ElectricAdmittance(left * right.Value, right.Unit);
         }
 
         /// <summary>Get <see cref="ElectricAdmittance"/> from multiplying value and <see cref="ElectricAdmittance"/>.</summary>
-        public static ElectricAdmittance operator *(ElectricAdmittance left, double right)
+        public static ElectricAdmittance operator *(ElectricAdmittance left, decimal right)
         {
             return new ElectricAdmittance(left.Value * right, left.Unit);
         }
 
         /// <summary>Get <see cref="ElectricAdmittance"/> from dividing <see cref="ElectricAdmittance"/> by value.</summary>
-        public static ElectricAdmittance operator /(ElectricAdmittance left, double right)
+        public static ElectricAdmittance operator /(ElectricAdmittance left, decimal right)
         {
             return new ElectricAdmittance(left.Value / right, left.Unit);
         }
 
         /// <summary>Get ratio value from dividing <see cref="ElectricAdmittance"/> by <see cref="ElectricAdmittance"/>.</summary>
-        public static double operator /(ElectricAdmittance left, ElectricAdmittance right)
+        public static decimal operator /(ElectricAdmittance left, ElectricAdmittance right)
         {
             return left.Siemens / right.Siemens;
         }
@@ -484,14 +484,14 @@ namespace UnitsNet
         }
 
         /// <summary>Returns true if exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(ElectricAdmittance, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ElectricAdmittance, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator ==(ElectricAdmittance left, ElectricAdmittance right)
         {
             return left.Equals(right);
         }
 
         /// <summary>Returns true if not exactly equal.</summary>
-        /// <remarks>Consider using <see cref="Equals(ElectricAdmittance, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ElectricAdmittance, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public static bool operator !=(ElectricAdmittance left, ElectricAdmittance right)
         {
             return !(left == right);
@@ -513,7 +513,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(ElectricAdmittance, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ElectricAdmittance, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public override bool Equals(object obj)
         {
             if(obj is null || !(obj is ElectricAdmittance objElectricAdmittance))
@@ -523,7 +523,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        /// <remarks>Consider using <see cref="Equals(ElectricAdmittance, double, ComparisonType)"/> for safely comparing floating point values.</remarks>
+        /// <remarks>Consider using <see cref="Equals(ElectricAdmittance, decimal, ComparisonType)"/> for safely comparing floating point values.</remarks>
         public bool Equals(ElectricAdmittance other)
         {
             return _value.Equals(other.GetValueAs(this.Unit));
@@ -569,13 +569,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(ElectricAdmittance other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(ElectricAdmittance other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -597,17 +597,17 @@ namespace UnitsNet
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(ElectricAdmittanceUnit unit)
+        public decimal As(ElectricAdmittanceUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = GetValueAs(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <inheritdoc cref="IQuantity.As(UnitSystem)"/>
-        public double As(UnitSystem unitSystem)
+        public decimal As(UnitSystem unitSystem)
         {
             if(unitSystem is null)
                 throw new ArgumentNullException(nameof(unitSystem));
@@ -622,7 +622,7 @@ namespace UnitsNet
         }
 
         /// <inheritdoc />
-        double IQuantity.As(Enum unit)
+        decimal IQuantity.As(Enum unit)
         {
             if(!(unit is ElectricAdmittanceUnit unitAsElectricAdmittanceUnit))
                 throw new ArgumentException($"The given unit is of type {unit.GetType()}. Only {typeof(ElectricAdmittanceUnit)} is supported.", nameof(unit));
@@ -678,13 +678,13 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double GetValueInBaseUnit()
+        private decimal GetValueInBaseUnit()
         {
             switch(Unit)
             {
-                case ElectricAdmittanceUnit.Microsiemens: return (_value) * 1e-6d;
-                case ElectricAdmittanceUnit.Millisiemens: return (_value) * 1e-3d;
-                case ElectricAdmittanceUnit.Nanosiemens: return (_value) * 1e-9d;
+                case ElectricAdmittanceUnit.Microsiemens: return (_value) * 1e-6m;
+                case ElectricAdmittanceUnit.Millisiemens: return (_value) * 1e-3m;
+                case ElectricAdmittanceUnit.Nanosiemens: return (_value) * 1e-9m;
                 case ElectricAdmittanceUnit.Siemens: return _value;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
@@ -702,7 +702,7 @@ namespace UnitsNet
             return new ElectricAdmittance(baseUnitValue, BaseUnit);
         }
 
-        private double GetValueAs(ElectricAdmittanceUnit unit)
+        private decimal GetValueAs(ElectricAdmittanceUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -711,9 +711,9 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case ElectricAdmittanceUnit.Microsiemens: return (baseUnitValue) / 1e-6d;
-                case ElectricAdmittanceUnit.Millisiemens: return (baseUnitValue) / 1e-3d;
-                case ElectricAdmittanceUnit.Nanosiemens: return (baseUnitValue) / 1e-9d;
+                case ElectricAdmittanceUnit.Microsiemens: return (baseUnitValue) / 1e-6m;
+                case ElectricAdmittanceUnit.Millisiemens: return (baseUnitValue) / 1e-3m;
+                case ElectricAdmittanceUnit.Nanosiemens: return (baseUnitValue) / 1e-9m;
                 case ElectricAdmittanceUnit.Siemens: return baseUnitValue;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
@@ -752,7 +752,7 @@ namespace UnitsNet
         [Obsolete(@"This method is deprecated and will be removed at a future release. Please use ToString(""s2"") or ToString(""s2"", provider) where 2 is an example of the number passed to significantDigitsAfterRadix.")]
         public string ToString(IFormatProvider? provider, int significantDigitsAfterRadix)
         {
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -772,7 +772,7 @@ namespace UnitsNet
 
             provider = provider ?? CultureInfo.CurrentUICulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

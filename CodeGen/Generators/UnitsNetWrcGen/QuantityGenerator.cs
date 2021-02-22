@@ -1,4 +1,4 @@
-// Licensed under MIT No Attribution, see LICENSE file at the root.
+﻿// Licensed under MIT No Attribution, see LICENSE file at the root.
 // Copyright 2013 Andreas Gullberg Larsen (andreas.larsen84@gmail.com). Maintained at https://github.com/angularsen/UnitsNet.
 
 using System;
@@ -218,7 +218,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 ");
 
             Writer.WL($@"
@@ -259,7 +259,7 @@ namespace UnitsNet
         /// </summary>");
                 Writer.WLIfText(2, GetObsoleteAttributeOrNull(unit));
                 Writer.WL($@"
-        public double {unit.PluralName} => As({_unitEnumName}.{unit.SingularName});
+        public decimal {unit.PluralName} => As({_unitEnumName}.{unit.SingularName});
 ");
             }
 
@@ -317,7 +317,7 @@ namespace UnitsNet
                 Writer.WLIfText(2, GetObsoleteAttributeOrNull(unit));
                 Writer.WL($@"
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static {_quantity.Name} From{unit.PluralName}(double {valueParamName})
+        public static {_quantity.Name} From{unit.PluralName}(decimal {valueParamName})
         {{
             {_valueType} value = ({_valueType}) {valueParamName};
             return new {_quantity.Name}(value, {_unitEnumName}.{unit.SingularName});
@@ -334,7 +334,7 @@ namespace UnitsNet
         /// <returns>{_quantity.Name} unit value.</returns>
         // Fix name conflict with parameter ""value""
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName(""returnValue"")]
-        public static {_quantity.Name} From(double value, {_unitEnumName} fromUnit)
+        public static {_quantity.Name} From(decimal value, {_unitEnumName} fromUnit)
         {{
             return new {_quantity.Name}(({_valueType})value, fromUnit);
         }}
@@ -568,13 +568,13 @@ namespace UnitsNet
         /// <param name=""tolerance"">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name=""comparisonType"">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals({_quantity.Name} other, double tolerance, ComparisonType comparisonType)
+        public bool Equals({_quantity.Name} other, decimal tolerance, ComparisonType comparisonType)
         {{
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException(""tolerance"", ""Tolerance must be greater than or equal to 0."");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }}
@@ -597,19 +597,19 @@ namespace UnitsNet
             Writer.WL($@"
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As(({_quantity.Name}Unit)unit);
+        decimal IQuantity.As(object unit) => As(({_quantity.Name}Unit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name=""unit"" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As({_unitEnumName} unit)
+        public decimal As({_unitEnumName} unit)
         {{
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }}
 
         /// <summary>
@@ -704,7 +704,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {{
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }}
@@ -724,7 +724,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }}

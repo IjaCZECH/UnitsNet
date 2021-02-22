@@ -37,16 +37,16 @@ namespace UnitsNet.Tests
 // ReSharper disable once PartialTypeWithSinglePart
     public abstract partial class PermeabilityTestsBase : QuantityTestsBase
     {
-        protected abstract double HenriesPerMeterInOneHenryPerMeter { get; }
+        protected abstract decimal HenriesPerMeterInOneHenryPerMeter { get; }
 
 // ReSharper disable VirtualMemberNeverOverriden.Global
-        protected virtual double HenriesPerMeterTolerance { get { return 1e-5; } }
+        protected virtual decimal HenriesPerMeterTolerance { get { return 1e-5; } }
 // ReSharper restore VirtualMemberNeverOverriden.Global
 
         [Fact]
         public void Ctor_WithUndefinedUnit_ThrowsArgumentException()
         {
-            Assert.Throws<ArgumentException>(() => new Permeability((double)0.0, PermeabilityUnit.Undefined));
+            Assert.Throws<ArgumentException>(() => new Permeability((decimal)0.0, PermeabilityUnit.Undefined));
         }
 
         [Fact]
@@ -57,19 +57,6 @@ namespace UnitsNet.Tests
             Assert.Equal(PermeabilityUnit.HenryPerMeter, quantity.Unit);
         }
 
-
-        [Fact]
-        public void Ctor_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new Permeability(double.PositiveInfinity, PermeabilityUnit.HenryPerMeter));
-            Assert.Throws<ArgumentException>(() => new Permeability(double.NegativeInfinity, PermeabilityUnit.HenryPerMeter));
-        }
-
-        [Fact]
-        public void Ctor_WithNaNValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => new Permeability(double.NaN, PermeabilityUnit.HenryPerMeter));
-        }
 
         [Fact]
         public void Ctor_NullAsUnitSystem_ThrowsArgumentNullException()
@@ -130,19 +117,6 @@ namespace UnitsNet.Tests
         }
 
         [Fact]
-        public void FromHenriesPerMeter_WithInfinityValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => Permeability.FromHenriesPerMeter(double.PositiveInfinity));
-            Assert.Throws<ArgumentException>(() => Permeability.FromHenriesPerMeter(double.NegativeInfinity));
-        }
-
-        [Fact]
-        public void FromHenriesPerMeter_WithNanValue_ThrowsArgumentException()
-        {
-            Assert.Throws<ArgumentException>(() => Permeability.FromHenriesPerMeter(double.NaN));
-        }
-
-        [Fact]
         public void As()
         {
             var henrypermeter = Permeability.FromHenriesPerMeter(1);
@@ -157,7 +131,7 @@ namespace UnitsNet.Tests
 
             if (SupportsSIUnitSystem)
             {
-                var value = (double) AsWithSIUnitSystem();
+                var value = (decimal) AsWithSIUnitSystem();
                 Assert.Equal(1, value);
             }
             else
@@ -172,7 +146,7 @@ namespace UnitsNet.Tests
             var henrypermeter = Permeability.FromHenriesPerMeter(1);
 
             var henrypermeterQuantity = henrypermeter.ToUnit(PermeabilityUnit.HenryPerMeter);
-            AssertEx.EqualTolerance(HenriesPerMeterInOneHenryPerMeter, (double)henrypermeterQuantity.Value, HenriesPerMeterTolerance);
+            AssertEx.EqualTolerance(HenriesPerMeterInOneHenryPerMeter, (decimal)henrypermeterQuantity.Value, HenriesPerMeterTolerance);
             Assert.Equal(PermeabilityUnit.HenryPerMeter, henrypermeterQuantity.Unit);
         }
 
@@ -368,10 +342,10 @@ namespace UnitsNet.Tests
             try
             {
                 CultureInfo.CurrentUICulture = CultureInfo.InvariantCulture;
-                Assert.Equal("0.1 H/m", new Permeability(0.123456, PermeabilityUnit.HenryPerMeter).ToString("s1"));
-                Assert.Equal("0.12 H/m", new Permeability(0.123456, PermeabilityUnit.HenryPerMeter).ToString("s2"));
-                Assert.Equal("0.123 H/m", new Permeability(0.123456, PermeabilityUnit.HenryPerMeter).ToString("s3"));
-                Assert.Equal("0.1235 H/m", new Permeability(0.123456, PermeabilityUnit.HenryPerMeter).ToString("s4"));
+                Assert.Equal("0.1 H/m", new Permeability(0.123456m, PermeabilityUnit.HenryPerMeter).ToString("s1"));
+                Assert.Equal("0.12 H/m", new Permeability(0.123456m, PermeabilityUnit.HenryPerMeter).ToString("s2"));
+                Assert.Equal("0.123 H/m", new Permeability(0.123456m, PermeabilityUnit.HenryPerMeter).ToString("s3"));
+                Assert.Equal("0.1235 H/m", new Permeability(0.123456m, PermeabilityUnit.HenryPerMeter).ToString("s4"));
             }
             finally
             {
@@ -383,10 +357,10 @@ namespace UnitsNet.Tests
         public void ToString_SFormatAndCulture_FormatsNumberWithGivenDigitsAfterRadixForGivenCulture()
         {
             var culture = CultureInfo.InvariantCulture;
-            Assert.Equal("0.1 H/m", new Permeability(0.123456, PermeabilityUnit.HenryPerMeter).ToString("s1", culture));
-            Assert.Equal("0.12 H/m", new Permeability(0.123456, PermeabilityUnit.HenryPerMeter).ToString("s2", culture));
-            Assert.Equal("0.123 H/m", new Permeability(0.123456, PermeabilityUnit.HenryPerMeter).ToString("s3", culture));
-            Assert.Equal("0.1235 H/m", new Permeability(0.123456, PermeabilityUnit.HenryPerMeter).ToString("s4", culture));
+            Assert.Equal("0.1 H/m", new Permeability(0.123456m, PermeabilityUnit.HenryPerMeter).ToString("s1", culture));
+            Assert.Equal("0.12 H/m", new Permeability(0.123456m, PermeabilityUnit.HenryPerMeter).ToString("s2", culture));
+            Assert.Equal("0.123 H/m", new Permeability(0.123456m, PermeabilityUnit.HenryPerMeter).ToString("s3", culture));
+            Assert.Equal("0.1235 H/m", new Permeability(0.123456m, PermeabilityUnit.HenryPerMeter).ToString("s4", culture));
         }
 
         #pragma warning disable 612, 618
@@ -564,7 +538,7 @@ namespace UnitsNet.Tests
         [Theory]
         [InlineData(1.0)]
         [InlineData(-1.0)]
-        public void NegationOperator_ReturnsQuantity_WithNegatedValue(double value)
+        public void NegationOperator_ReturnsQuantity_WithNegatedValue(decimal value)
         {
             var quantity = Permeability.FromHenriesPerMeter(value);
             Assert.Equal(Permeability.FromHenriesPerMeter(-value), -quantity);

@@ -30,43 +30,43 @@ namespace UnitsNet.NumberExtensions.NumberToTemperatureChangeRate
     {
         /// <inheritdoc cref="TemperatureChangeRate.FromCentidegreesCelsiusPerSecond(UnitsNet.QuantityValue)" />
         public static TemperatureChangeRate CentidegreesCelsiusPerSecond<T>(this T value) =>
-            TemperatureChangeRate.FromCentidegreesCelsiusPerSecond(Convert.ToDouble(value));
+            TemperatureChangeRate.FromCentidegreesCelsiusPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TemperatureChangeRate.FromDecadegreesCelsiusPerSecond(UnitsNet.QuantityValue)" />
         public static TemperatureChangeRate DecadegreesCelsiusPerSecond<T>(this T value) =>
-            TemperatureChangeRate.FromDecadegreesCelsiusPerSecond(Convert.ToDouble(value));
+            TemperatureChangeRate.FromDecadegreesCelsiusPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TemperatureChangeRate.FromDecidegreesCelsiusPerSecond(UnitsNet.QuantityValue)" />
         public static TemperatureChangeRate DecidegreesCelsiusPerSecond<T>(this T value) =>
-            TemperatureChangeRate.FromDecidegreesCelsiusPerSecond(Convert.ToDouble(value));
+            TemperatureChangeRate.FromDecidegreesCelsiusPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TemperatureChangeRate.FromDegreesCelsiusPerMinute(UnitsNet.QuantityValue)" />
         public static TemperatureChangeRate DegreesCelsiusPerMinute<T>(this T value) =>
-            TemperatureChangeRate.FromDegreesCelsiusPerMinute(Convert.ToDouble(value));
+            TemperatureChangeRate.FromDegreesCelsiusPerMinute(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TemperatureChangeRate.FromDegreesCelsiusPerSecond(UnitsNet.QuantityValue)" />
         public static TemperatureChangeRate DegreesCelsiusPerSecond<T>(this T value) =>
-            TemperatureChangeRate.FromDegreesCelsiusPerSecond(Convert.ToDouble(value));
+            TemperatureChangeRate.FromDegreesCelsiusPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TemperatureChangeRate.FromHectodegreesCelsiusPerSecond(UnitsNet.QuantityValue)" />
         public static TemperatureChangeRate HectodegreesCelsiusPerSecond<T>(this T value) =>
-            TemperatureChangeRate.FromHectodegreesCelsiusPerSecond(Convert.ToDouble(value));
+            TemperatureChangeRate.FromHectodegreesCelsiusPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TemperatureChangeRate.FromKilodegreesCelsiusPerSecond(UnitsNet.QuantityValue)" />
         public static TemperatureChangeRate KilodegreesCelsiusPerSecond<T>(this T value) =>
-            TemperatureChangeRate.FromKilodegreesCelsiusPerSecond(Convert.ToDouble(value));
+            TemperatureChangeRate.FromKilodegreesCelsiusPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TemperatureChangeRate.FromMicrodegreesCelsiusPerSecond(UnitsNet.QuantityValue)" />
         public static TemperatureChangeRate MicrodegreesCelsiusPerSecond<T>(this T value) =>
-            TemperatureChangeRate.FromMicrodegreesCelsiusPerSecond(Convert.ToDouble(value));
+            TemperatureChangeRate.FromMicrodegreesCelsiusPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TemperatureChangeRate.FromMillidegreesCelsiusPerSecond(UnitsNet.QuantityValue)" />
         public static TemperatureChangeRate MillidegreesCelsiusPerSecond<T>(this T value) =>
-            TemperatureChangeRate.FromMillidegreesCelsiusPerSecond(Convert.ToDouble(value));
+            TemperatureChangeRate.FromMillidegreesCelsiusPerSecond(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="TemperatureChangeRate.FromNanodegreesCelsiusPerSecond(UnitsNet.QuantityValue)" />
         public static TemperatureChangeRate NanodegreesCelsiusPerSecond<T>(this T value) =>
-            TemperatureChangeRate.FromNanodegreesCelsiusPerSecond(Convert.ToDouble(value));
+            TemperatureChangeRate.FromNanodegreesCelsiusPerSecond(Convert.ToDecimal(value));
 
     }
 }

@@ -39,7 +39,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -71,12 +71,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private AmplitudeRatio(double value, AmplitudeRatioUnit unit)
+        private AmplitudeRatio(decimal value, AmplitudeRatioUnit unit)
         {
             if(unit == AmplitudeRatioUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -100,12 +100,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of AmplitudeRatio
         /// </summary>
-        public static AmplitudeRatio MaxValue { get; } = new AmplitudeRatio(double.MaxValue, BaseUnit);
+        public static AmplitudeRatio MaxValue { get; } = new AmplitudeRatio(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of AmplitudeRatio
         /// </summary>
-        public static AmplitudeRatio MinValue { get; } = new AmplitudeRatio(double.MinValue, BaseUnit);
+        public static AmplitudeRatio MinValue { get; } = new AmplitudeRatio(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -129,7 +129,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -158,22 +158,22 @@ namespace UnitsNet
         /// <summary>
         ///     Get AmplitudeRatio in DecibelMicrovolts.
         /// </summary>
-        public double DecibelMicrovolts => As(AmplitudeRatioUnit.DecibelMicrovolt);
+        public decimal DecibelMicrovolts => As(AmplitudeRatioUnit.DecibelMicrovolt);
 
         /// <summary>
         ///     Get AmplitudeRatio in DecibelMillivolts.
         /// </summary>
-        public double DecibelMillivolts => As(AmplitudeRatioUnit.DecibelMillivolt);
+        public decimal DecibelMillivolts => As(AmplitudeRatioUnit.DecibelMillivolt);
 
         /// <summary>
         ///     Get AmplitudeRatio in DecibelsUnloaded.
         /// </summary>
-        public double DecibelsUnloaded => As(AmplitudeRatioUnit.DecibelUnloaded);
+        public decimal DecibelsUnloaded => As(AmplitudeRatioUnit.DecibelUnloaded);
 
         /// <summary>
         ///     Get AmplitudeRatio in DecibelVolts.
         /// </summary>
-        public double DecibelVolts => As(AmplitudeRatioUnit.DecibelVolt);
+        public decimal DecibelVolts => As(AmplitudeRatioUnit.DecibelVolt);
 
         #endregion
 
@@ -210,9 +210,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static AmplitudeRatio FromDecibelMicrovolts(double decibelmicrovolts)
+        public static AmplitudeRatio FromDecibelMicrovolts(decimal decibelmicrovolts)
         {
-            double value = (double) decibelmicrovolts;
+            decimal value = (decimal) decibelmicrovolts;
             return new AmplitudeRatio(value, AmplitudeRatioUnit.DecibelMicrovolt);
         }
         /// <summary>
@@ -220,9 +220,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static AmplitudeRatio FromDecibelMillivolts(double decibelmillivolts)
+        public static AmplitudeRatio FromDecibelMillivolts(decimal decibelmillivolts)
         {
-            double value = (double) decibelmillivolts;
+            decimal value = (decimal) decibelmillivolts;
             return new AmplitudeRatio(value, AmplitudeRatioUnit.DecibelMillivolt);
         }
         /// <summary>
@@ -230,9 +230,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static AmplitudeRatio FromDecibelsUnloaded(double decibelsunloaded)
+        public static AmplitudeRatio FromDecibelsUnloaded(decimal decibelsunloaded)
         {
-            double value = (double) decibelsunloaded;
+            decimal value = (decimal) decibelsunloaded;
             return new AmplitudeRatio(value, AmplitudeRatioUnit.DecibelUnloaded);
         }
         /// <summary>
@@ -240,9 +240,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static AmplitudeRatio FromDecibelVolts(double decibelvolts)
+        public static AmplitudeRatio FromDecibelVolts(decimal decibelvolts)
         {
-            double value = (double) decibelvolts;
+            decimal value = (decimal) decibelvolts;
             return new AmplitudeRatio(value, AmplitudeRatioUnit.DecibelVolt);
         }
 
@@ -254,9 +254,9 @@ namespace UnitsNet
         /// <returns>AmplitudeRatio unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static AmplitudeRatio From(double value, AmplitudeRatioUnit fromUnit)
+        public static AmplitudeRatio From(decimal value, AmplitudeRatioUnit fromUnit)
         {
-            return new AmplitudeRatio((double)value, fromUnit);
+            return new AmplitudeRatio((decimal)value, fromUnit);
         }
 
         #endregion
@@ -478,13 +478,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(AmplitudeRatio other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(AmplitudeRatio other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -502,19 +502,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((AmplitudeRatioUnit)unit);
+        decimal IQuantity.As(object unit) => As((AmplitudeRatioUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(AmplitudeRatioUnit unit)
+        public decimal As(AmplitudeRatioUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -532,20 +532,20 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
                 case AmplitudeRatioUnit.DecibelMicrovolt: return _value - 120;
                 case AmplitudeRatioUnit.DecibelMillivolt: return _value - 60;
-                case AmplitudeRatioUnit.DecibelUnloaded: return _value - 2.218487499;
+                case AmplitudeRatioUnit.DecibelUnloaded: return _value - 2.218487499m;
                 case AmplitudeRatioUnit.DecibelVolt: return _value;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(AmplitudeRatioUnit unit)
+        private decimal AsBaseNumericType(AmplitudeRatioUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -556,7 +556,7 @@ namespace UnitsNet
             {
                 case AmplitudeRatioUnit.DecibelMicrovolt: return baseUnitValue + 120;
                 case AmplitudeRatioUnit.DecibelMillivolt: return baseUnitValue + 60;
-                case AmplitudeRatioUnit.DecibelUnloaded: return baseUnitValue + 2.218487499;
+                case AmplitudeRatioUnit.DecibelUnloaded: return baseUnitValue + 2.218487499m;
                 case AmplitudeRatioUnit.DecibelVolt: return baseUnitValue;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
@@ -596,7 +596,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -616,7 +616,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

@@ -30,31 +30,31 @@ namespace UnitsNet.NumberExtensions.NumberToEntropy
     {
         /// <inheritdoc cref="Entropy.FromCaloriesPerKelvin(UnitsNet.QuantityValue)" />
         public static Entropy CaloriesPerKelvin<T>(this T value) =>
-            Entropy.FromCaloriesPerKelvin(Convert.ToDouble(value));
+            Entropy.FromCaloriesPerKelvin(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Entropy.FromJoulesPerDegreeCelsius(UnitsNet.QuantityValue)" />
         public static Entropy JoulesPerDegreeCelsius<T>(this T value) =>
-            Entropy.FromJoulesPerDegreeCelsius(Convert.ToDouble(value));
+            Entropy.FromJoulesPerDegreeCelsius(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Entropy.FromJoulesPerKelvin(UnitsNet.QuantityValue)" />
         public static Entropy JoulesPerKelvin<T>(this T value) =>
-            Entropy.FromJoulesPerKelvin(Convert.ToDouble(value));
+            Entropy.FromJoulesPerKelvin(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Entropy.FromKilocaloriesPerKelvin(UnitsNet.QuantityValue)" />
         public static Entropy KilocaloriesPerKelvin<T>(this T value) =>
-            Entropy.FromKilocaloriesPerKelvin(Convert.ToDouble(value));
+            Entropy.FromKilocaloriesPerKelvin(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Entropy.FromKilojoulesPerDegreeCelsius(UnitsNet.QuantityValue)" />
         public static Entropy KilojoulesPerDegreeCelsius<T>(this T value) =>
-            Entropy.FromKilojoulesPerDegreeCelsius(Convert.ToDouble(value));
+            Entropy.FromKilojoulesPerDegreeCelsius(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Entropy.FromKilojoulesPerKelvin(UnitsNet.QuantityValue)" />
         public static Entropy KilojoulesPerKelvin<T>(this T value) =>
-            Entropy.FromKilojoulesPerKelvin(Convert.ToDouble(value));
+            Entropy.FromKilojoulesPerKelvin(Convert.ToDecimal(value));
 
         /// <inheritdoc cref="Entropy.FromMegajoulesPerKelvin(UnitsNet.QuantityValue)" />
         public static Entropy MegajoulesPerKelvin<T>(this T value) =>
-            Entropy.FromMegajoulesPerKelvin(Convert.ToDouble(value));
+            Entropy.FromMegajoulesPerKelvin(Convert.ToDecimal(value));
 
     }
 }

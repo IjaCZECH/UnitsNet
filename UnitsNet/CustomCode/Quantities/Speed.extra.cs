@@ -10,19 +10,19 @@ namespace UnitsNet
         /// <summary>Get <see cref="Acceleration"/> from <see cref="Speed"/> divided by <see cref="TimeSpan"/>.</summary>
         public static Acceleration operator /(Speed speed, TimeSpan timeSpan)
         {
-            return Acceleration.FromMetersPerSecondSquared(speed.MetersPerSecond / timeSpan.TotalSeconds);
+            return Acceleration.FromMetersPerSecondSquared(speed.MetersPerSecond / (decimal)timeSpan.TotalSeconds);
         }
 
         /// <summary>Get <see cref="Length"/> from <see cref="Speed"/> times <see cref="TimeSpan"/>.</summary>
         public static Length operator *(Speed speed, TimeSpan timeSpan)
         {
-            return Length.FromMeters(speed.MetersPerSecond * timeSpan.TotalSeconds);
+            return Length.FromMeters(speed.MetersPerSecond * (decimal)timeSpan.TotalSeconds);
         }
 
         /// <summary>Get <see cref="Length"/> from <see cref="TimeSpan"/> times <see cref="Speed"/>.</summary>
         public static Length operator *(TimeSpan timeSpan, Speed speed)
         {
-            return Length.FromMeters(speed.MetersPerSecond * timeSpan.TotalSeconds);
+            return Length.FromMeters(speed.MetersPerSecond * (decimal)timeSpan.TotalSeconds);
         }
 
         /// <summary>Get <see cref="Acceleration"/> from <see cref="Speed"/> divided by <see cref="Duration"/>.</summary>

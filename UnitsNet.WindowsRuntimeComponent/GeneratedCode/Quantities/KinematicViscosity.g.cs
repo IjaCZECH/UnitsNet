@@ -42,7 +42,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        private readonly double _value;
+        private readonly decimal _value;
 
         /// <summary>
         ///     The unit this quantity was constructed with.
@@ -74,12 +74,12 @@ namespace UnitsNet
         /// <param name="unit">The unit representation to construct this quantity with.</param>
         /// <remarks>Value parameter cannot be named 'value' due to constraint when targeting Windows Runtime Component.</remarks>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
-        private KinematicViscosity(double value, KinematicViscosityUnit unit)
+        private KinematicViscosity(decimal value, KinematicViscosityUnit unit)
         {
             if(unit == KinematicViscosityUnit.Undefined)
               throw new ArgumentException("The quantity can not be created with an undefined unit.", nameof(unit));
 
-            _value = Guard.EnsureValidNumber(value, nameof(value));
+            _value = value;
             _unit = unit;
         }
 
@@ -103,12 +103,12 @@ namespace UnitsNet
         /// <summary>
         /// Represents the largest possible value of KinematicViscosity
         /// </summary>
-        public static KinematicViscosity MaxValue { get; } = new KinematicViscosity(double.MaxValue, BaseUnit);
+        public static KinematicViscosity MaxValue { get; } = new KinematicViscosity(decimal.MaxValue, BaseUnit);
 
         /// <summary>
         /// Represents the smallest possible value of KinematicViscosity
         /// </summary>
-        public static KinematicViscosity MinValue { get; } = new KinematicViscosity(double.MinValue, BaseUnit);
+        public static KinematicViscosity MinValue { get; } = new KinematicViscosity(decimal.MinValue, BaseUnit);
 
         /// <summary>
         ///     The <see cref="QuantityType" /> of this quantity.
@@ -132,7 +132,7 @@ namespace UnitsNet
         /// <summary>
         ///     The numeric value this quantity was constructed with.
         /// </summary>
-        public double Value => Convert.ToDouble(_value);
+        public decimal Value => Convert.ToDecimal(_value);
 
         /// <inheritdoc cref="IQuantity.Unit"/>
         object IQuantity.Unit => Unit;
@@ -161,42 +161,42 @@ namespace UnitsNet
         /// <summary>
         ///     Get KinematicViscosity in Centistokes.
         /// </summary>
-        public double Centistokes => As(KinematicViscosityUnit.Centistokes);
+        public decimal Centistokes => As(KinematicViscosityUnit.Centistokes);
 
         /// <summary>
         ///     Get KinematicViscosity in Decistokes.
         /// </summary>
-        public double Decistokes => As(KinematicViscosityUnit.Decistokes);
+        public decimal Decistokes => As(KinematicViscosityUnit.Decistokes);
 
         /// <summary>
         ///     Get KinematicViscosity in Kilostokes.
         /// </summary>
-        public double Kilostokes => As(KinematicViscosityUnit.Kilostokes);
+        public decimal Kilostokes => As(KinematicViscosityUnit.Kilostokes);
 
         /// <summary>
         ///     Get KinematicViscosity in Microstokes.
         /// </summary>
-        public double Microstokes => As(KinematicViscosityUnit.Microstokes);
+        public decimal Microstokes => As(KinematicViscosityUnit.Microstokes);
 
         /// <summary>
         ///     Get KinematicViscosity in Millistokes.
         /// </summary>
-        public double Millistokes => As(KinematicViscosityUnit.Millistokes);
+        public decimal Millistokes => As(KinematicViscosityUnit.Millistokes);
 
         /// <summary>
         ///     Get KinematicViscosity in Nanostokes.
         /// </summary>
-        public double Nanostokes => As(KinematicViscosityUnit.Nanostokes);
+        public decimal Nanostokes => As(KinematicViscosityUnit.Nanostokes);
 
         /// <summary>
         ///     Get KinematicViscosity in SquareMetersPerSecond.
         /// </summary>
-        public double SquareMetersPerSecond => As(KinematicViscosityUnit.SquareMeterPerSecond);
+        public decimal SquareMetersPerSecond => As(KinematicViscosityUnit.SquareMeterPerSecond);
 
         /// <summary>
         ///     Get KinematicViscosity in Stokes.
         /// </summary>
-        public double Stokes => As(KinematicViscosityUnit.Stokes);
+        public decimal Stokes => As(KinematicViscosityUnit.Stokes);
 
         #endregion
 
@@ -233,9 +233,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static KinematicViscosity FromCentistokes(double centistokes)
+        public static KinematicViscosity FromCentistokes(decimal centistokes)
         {
-            double value = (double) centistokes;
+            decimal value = (decimal) centistokes;
             return new KinematicViscosity(value, KinematicViscosityUnit.Centistokes);
         }
         /// <summary>
@@ -243,9 +243,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static KinematicViscosity FromDecistokes(double decistokes)
+        public static KinematicViscosity FromDecistokes(decimal decistokes)
         {
-            double value = (double) decistokes;
+            decimal value = (decimal) decistokes;
             return new KinematicViscosity(value, KinematicViscosityUnit.Decistokes);
         }
         /// <summary>
@@ -253,9 +253,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static KinematicViscosity FromKilostokes(double kilostokes)
+        public static KinematicViscosity FromKilostokes(decimal kilostokes)
         {
-            double value = (double) kilostokes;
+            decimal value = (decimal) kilostokes;
             return new KinematicViscosity(value, KinematicViscosityUnit.Kilostokes);
         }
         /// <summary>
@@ -263,9 +263,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static KinematicViscosity FromMicrostokes(double microstokes)
+        public static KinematicViscosity FromMicrostokes(decimal microstokes)
         {
-            double value = (double) microstokes;
+            decimal value = (decimal) microstokes;
             return new KinematicViscosity(value, KinematicViscosityUnit.Microstokes);
         }
         /// <summary>
@@ -273,9 +273,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static KinematicViscosity FromMillistokes(double millistokes)
+        public static KinematicViscosity FromMillistokes(decimal millistokes)
         {
-            double value = (double) millistokes;
+            decimal value = (decimal) millistokes;
             return new KinematicViscosity(value, KinematicViscosityUnit.Millistokes);
         }
         /// <summary>
@@ -283,9 +283,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static KinematicViscosity FromNanostokes(double nanostokes)
+        public static KinematicViscosity FromNanostokes(decimal nanostokes)
         {
-            double value = (double) nanostokes;
+            decimal value = (decimal) nanostokes;
             return new KinematicViscosity(value, KinematicViscosityUnit.Nanostokes);
         }
         /// <summary>
@@ -293,9 +293,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static KinematicViscosity FromSquareMetersPerSecond(double squaremeterspersecond)
+        public static KinematicViscosity FromSquareMetersPerSecond(decimal squaremeterspersecond)
         {
-            double value = (double) squaremeterspersecond;
+            decimal value = (decimal) squaremeterspersecond;
             return new KinematicViscosity(value, KinematicViscosityUnit.SquareMeterPerSecond);
         }
         /// <summary>
@@ -303,9 +303,9 @@ namespace UnitsNet
         /// </summary>
         /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
         [Windows.Foundation.Metadata.DefaultOverload]
-        public static KinematicViscosity FromStokes(double stokes)
+        public static KinematicViscosity FromStokes(decimal stokes)
         {
-            double value = (double) stokes;
+            decimal value = (decimal) stokes;
             return new KinematicViscosity(value, KinematicViscosityUnit.Stokes);
         }
 
@@ -317,9 +317,9 @@ namespace UnitsNet
         /// <returns>KinematicViscosity unit value.</returns>
         // Fix name conflict with parameter "value"
         [return: System.Runtime.InteropServices.WindowsRuntime.ReturnValueName("returnValue")]
-        public static KinematicViscosity From(double value, KinematicViscosityUnit fromUnit)
+        public static KinematicViscosity From(decimal value, KinematicViscosityUnit fromUnit)
         {
-            return new KinematicViscosity((double)value, fromUnit);
+            return new KinematicViscosity((decimal)value, fromUnit);
         }
 
         #endregion
@@ -541,13 +541,13 @@ namespace UnitsNet
         /// <param name="tolerance">The absolute or relative tolerance value. Must be greater than or equal to 0.</param>
         /// <param name="comparisonType">The comparison type: either relative or absolute.</param>
         /// <returns>True if the absolute difference between the two values is not greater than the specified relative or absolute tolerance.</returns>
-        public bool Equals(KinematicViscosity other, double tolerance, ComparisonType comparisonType)
+        public bool Equals(KinematicViscosity other, decimal tolerance, ComparisonType comparisonType)
         {
             if(tolerance < 0)
                 throw new ArgumentOutOfRangeException("tolerance", "Tolerance must be greater than or equal to 0.");
 
-            double thisValue = (double)this.Value;
-            double otherValueInThisUnits = other.As(this.Unit);
+            decimal thisValue = (decimal)this.Value;
+            decimal otherValueInThisUnits = other.As(this.Unit);
 
             return UnitsNet.Comparison.Equals(thisValue, otherValueInThisUnits, tolerance, comparisonType);
         }
@@ -565,19 +565,19 @@ namespace UnitsNet
 
         #region Conversion Methods
 
-        double IQuantity.As(object unit) => As((KinematicViscosityUnit)unit);
+        decimal IQuantity.As(object unit) => As((KinematicViscosityUnit)unit);
 
         /// <summary>
         ///     Convert to the unit representation <paramref name="unit" />.
         /// </summary>
         /// <returns>Value converted to the specified unit.</returns>
-        public double As(KinematicViscosityUnit unit)
+        public decimal As(KinematicViscosityUnit unit)
         {
             if(Unit == unit)
-                return Convert.ToDouble(Value);
+                return Convert.ToDecimal(Value);
 
             var converted = AsBaseNumericType(unit);
-            return Convert.ToDouble(converted);
+            return Convert.ToDecimal(converted);
         }
 
         /// <summary>
@@ -595,24 +595,24 @@ namespace UnitsNet
         ///     This is typically the first step in converting from one unit to another.
         /// </summary>
         /// <returns>The value in the base unit representation.</returns>
-        private double AsBaseUnit()
+        private decimal AsBaseUnit()
         {
             switch(Unit)
             {
-                case KinematicViscosityUnit.Centistokes: return (_value/1e4) * 1e-2d;
-                case KinematicViscosityUnit.Decistokes: return (_value/1e4) * 1e-1d;
-                case KinematicViscosityUnit.Kilostokes: return (_value/1e4) * 1e3d;
-                case KinematicViscosityUnit.Microstokes: return (_value/1e4) * 1e-6d;
-                case KinematicViscosityUnit.Millistokes: return (_value/1e4) * 1e-3d;
-                case KinematicViscosityUnit.Nanostokes: return (_value/1e4) * 1e-9d;
+                case KinematicViscosityUnit.Centistokes: return (_value/1e4m) * 1e-2m;
+                case KinematicViscosityUnit.Decistokes: return (_value/1e4m) * 1e-1m;
+                case KinematicViscosityUnit.Kilostokes: return (_value/1e4m) * 1e3m;
+                case KinematicViscosityUnit.Microstokes: return (_value/1e4m) * 1e-6m;
+                case KinematicViscosityUnit.Millistokes: return (_value/1e4m) * 1e-3m;
+                case KinematicViscosityUnit.Nanostokes: return (_value/1e4m) * 1e-9m;
                 case KinematicViscosityUnit.SquareMeterPerSecond: return _value;
-                case KinematicViscosityUnit.Stokes: return _value/1e4;
+                case KinematicViscosityUnit.Stokes: return _value/1e4m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
             }
         }
 
-        private double AsBaseNumericType(KinematicViscosityUnit unit)
+        private decimal AsBaseNumericType(KinematicViscosityUnit unit)
         {
             if(Unit == unit)
                 return _value;
@@ -621,14 +621,14 @@ namespace UnitsNet
 
             switch(unit)
             {
-                case KinematicViscosityUnit.Centistokes: return (baseUnitValue*1e4) / 1e-2d;
-                case KinematicViscosityUnit.Decistokes: return (baseUnitValue*1e4) / 1e-1d;
-                case KinematicViscosityUnit.Kilostokes: return (baseUnitValue*1e4) / 1e3d;
-                case KinematicViscosityUnit.Microstokes: return (baseUnitValue*1e4) / 1e-6d;
-                case KinematicViscosityUnit.Millistokes: return (baseUnitValue*1e4) / 1e-3d;
-                case KinematicViscosityUnit.Nanostokes: return (baseUnitValue*1e4) / 1e-9d;
+                case KinematicViscosityUnit.Centistokes: return (baseUnitValue*1e4m) / 1e-2m;
+                case KinematicViscosityUnit.Decistokes: return (baseUnitValue*1e4m) / 1e-1m;
+                case KinematicViscosityUnit.Kilostokes: return (baseUnitValue*1e4m) / 1e3m;
+                case KinematicViscosityUnit.Microstokes: return (baseUnitValue*1e4m) / 1e-6m;
+                case KinematicViscosityUnit.Millistokes: return (baseUnitValue*1e4m) / 1e-3m;
+                case KinematicViscosityUnit.Nanostokes: return (baseUnitValue*1e4m) / 1e-9m;
                 case KinematicViscosityUnit.SquareMeterPerSecond: return baseUnitValue;
-                case KinematicViscosityUnit.Stokes: return baseUnitValue*1e4;
+                case KinematicViscosityUnit.Stokes: return baseUnitValue*1e4m;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
             }
@@ -667,7 +667,7 @@ namespace UnitsNet
         public string ToString(string cultureName, int significantDigitsAfterRadix)
         {
             var provider = cultureName;
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var format = UnitFormatter.GetFormat(value, significantDigitsAfterRadix);
             return ToString(provider, format);
         }
@@ -687,7 +687,7 @@ namespace UnitsNet
 
             provider = provider ?? GlobalConfiguration.DefaultCulture;
 
-            var value = Convert.ToDouble(Value);
+            var value = Convert.ToDecimal(Value);
             var formatArgs = UnitFormatter.GetFormatArgs(Unit, value, provider, args);
             return string.Format(provider, format, formatArgs);
         }

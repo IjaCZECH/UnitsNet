@@ -43,7 +43,7 @@ namespace UnitsNet.NumberExtensions.NumberTo{_quantityName}
                 Writer.WLIfText(2, GetObsoleteAttributeOrNull(unit.ObsoleteText));
 
                 Writer.WL(2, $@"public static {_quantityName} {unit.PluralName}<T>(this T value) =>
-            {_quantityName}.From{unit.PluralName}(Convert.ToDouble(value));
+            {_quantityName}.From{unit.PluralName}(Convert.ToDecimal(value));
 ");
             }
 
